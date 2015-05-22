@@ -1,0 +1,49 @@
+################################################################################################
+#  This file is part of the Oracle Service Cloud Accelerator Reference Integration set published
+#  by Oracle Service Cloud under the MIT license (MIT) included in the original distribution.
+#  Copyright (c) 2014, 2015, Oracle and/or its affiliates. All rights reserved.
+################################################################################################
+#  Accelerator Package: OSVC WSS + EBS Case Management Accelerator
+#  link: http://www-content.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
+#  OSvC release: 15.2 (February 2015)
+#  EBS release: 12.1.3
+#  reference: 140626-000078
+#  date: Fri May 15 13:41:42 PDT 2015
+
+#  revision: rnw-15-2-fixes-release-01
+#  SHA1: $Id: a68de9cae205b33f71ea70338589bcc432b2fec6 $
+################################################################################################
+#  File: info.yml
+################################################################################################
+version: "1.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+extends:
+  widget: standard/input/TextInput
+  components:
+  - php
+  - css
+  overrideViewAndLogic: "true"
+attributes:  
+  serial_number_validate_ajax:
+    name: serial_number_validate_ajax
+    type: ajax
+    description: Validate the serial number
+    default: /ci/ajax/widget
+    required: false
+  timeout:
+    name: rn:msg:TIMEOUT_LBL
+    description: time out for the Ajax call
+    type: INT
+    default: 10000
+    min: 0
+  ajax_failure_message:
+    name: ajax_failure_message
+    description: error message displayed when ajax failed
+    default: 'We are experiencing technical difficulty communicating with the server. Please try again later.'
+    type: STRING
+discription:
+    SerialNumberInput widget help to validate the input serial number and product. 
+    It display a hint to user to indicate if the input serial number and selected product mapping are correct.

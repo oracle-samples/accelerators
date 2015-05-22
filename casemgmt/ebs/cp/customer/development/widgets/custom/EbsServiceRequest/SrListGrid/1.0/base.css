@@ -1,0 +1,132 @@
+/* * *******************************************************************************************
+ *  This file is part of the Oracle Service Cloud Accelerator Reference Integration set published
+ *  by Oracle Service Cloud under the MIT license (MIT) included in the original distribution.
+ *  Copyright (c) 2014, 2015, Oracle and/or its affiliates. All rights reserved.
+ ***********************************************************************************************
+ *  Accelerator Package: OSVC WSS + EBS Case Management Accelerator
+ *  link: http://www-content.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
+ *  OSvC release: 15.2 (February 2015)
+ *  EBS release: 12.1.3
+ *  reference: 140626-000078
+ *  date: Fri May 15 13:41:43 PDT 2015
+
+ *  revision: rnw-15-2-fixes-release-01
+ *  SHA1: $Id: 55ef1e6f6bf23f9cb52692aaf3e1ac45d87ffab2 $
+ * *********************************************************************************************
+ *  File: base.css
+ * ****************************************************************************************** */
+
+.rn_SrListGrid {
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-top: 30px;
+    *padding-bottom: 10px;
+    margin-bottom: 8px;
+}
+
+.rn_SrListGrid .yui3-datatable-table {
+    border-spacing: 0;
+    border-collapse: separate;
+    width: 100%;
+    border: 1px solid #cbcbcb;
+}
+
+.rn_SrListGrid .yui3-datatable-table th, .rn_SrListGrid .yui3-datatable-table td {
+    padding: 4px 10px 4px 6px;
+}
+
+.rn_SrListGrid .yui3-datatable-table th, .rn_SrListGrid .yui3-datatable-table th a, .rn_SrListGrid .yui3-datatable-table th a:hover {
+    color: #000;
+    font-weight: normal;
+    text-decoration: none;
+    vertical-align: bottom;
+}
+
+.rn_SrListGrid .yui3-datatable-sortable-column {
+    cursor: pointer;
+}
+
+.rn_SrListGrid .yui3-datatable-caption {
+    color: #000;
+    font-size: 90%;
+    padding: 0;
+    text-align: center;
+}
+
+.rn_SrListGrid .yui3-datatable-cell, .rn_SrListGrid .yui3-datatable-header {
+    border-left: 1px solid #cbcbcb;
+    border-width: 0 0 0 1px;
+    font-size: inherit;
+    margin: 0;
+    overflow: visible;
+    padding: 4px 10px;
+}
+
+.rn_SrListGrid .yui3-datatable-cell:first-child, .rn_SrListGrid .yui3-datatable-first-header {
+    border-left-width: 0;
+}
+
+.rn_SrListGrid .yui3-datatable-header {
+    background: #fff url(/euf/assets/themes/standard/images/gridHeader.png) repeat-x scroll 0 0;
+    background-image: -webkit-linear-gradient(transparent 40%,rgba(0,0,0,0.21));
+    background-image: -moz-linear-gradient(top,transparent 40%,rgba(0,0,0,0.21));
+    background-image: -ms-linear-gradient(transparent 40%,rgba(0,0,0,0.21));
+    background-image: -o-linear-gradient(transparent 40%,rgba(0,0,0,0.21));
+    background-image: linear-gradient(transparent 40%,rgba(0,0,0,0.21));
+    color: #000;
+    text-align: left;
+    text-shadow: 0 1px 1px #fff;
+    vertical-align: bottom;
+    white-space: nowrap;
+}
+
+.rn_SrListGrid .yui3-datatable-cell {
+    background-color: transparent;
+}
+
+.rn_SrListGrid .yui3-datatable-even .yui3-datatable-cell {
+    background-color: #fff;
+}
+
+.rn_SrListGrid .yui3-datatable-odd .yui3-datatable-cell {
+    background-color: #edf5ff;
+}
+
+.rn_SrListGrid .yui3-datatable-sort-liner {
+    display: block;
+    height: 100%;
+    position: relative;
+    padding-right: 15px;
+}
+
+.rn_SrListGrid .yui3-datatable-sort-indicator {
+    position: absolute;
+    right: 0;
+    bottom: .5ex;
+    width: 8px;
+    height: 10px;
+    background: url(/euf/assets/themes/standard/images/gridHeader.png) no-repeat scroll right -88px;
+    overflow: hidden;
+}
+
+.rn_SrListGrid .yui3-datatable-sorted .yui3-datatable-sort-indicator {
+    background: transparent url(/euf/assets/themes/standard/images/gridHeader.png) no-repeat scroll right -98px;
+}
+
+.rn_SrListGrid .yui3-datatable-sorted-desc .yui3-datatable-sort-indicator {
+    background: transparent url(/euf/assets/themes/standard/images/gridHeader.png) no-repeat scroll right -108px;
+}
+
+.rn_SrListGrid .yui3-datatable-data .yui3-datatable-even .yui3-datatable-sorted {
+    background-color: #edf5ff;
+}
+
+.rn_SrListGrid .yui3-datatable-data .yui3-datatable-odd .yui3-datatable-sorted {
+    background-color: #dbeaff;
+}
+
+.rn_SrListGrid .yui3-datatable-message-content {
+    border: 0 none;
+    border-bottom: 1px solid #cbcbcb;
+    padding: 4px 10px;
+}

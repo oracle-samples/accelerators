@@ -1,0 +1,34 @@
+<%#
+################################################################################################
+#  $ACCELERATOR_HEADER_PLACE_HOLDER$
+#  SHA1: $Id: c48bac03f96ffb90e662cf9e9b01e2f21b669418 $
+################################################################################################
+#  File: $ACCELERATOR_HEADER_FILE_NAME_PLACE_HOLDER$
+################################################################################################
+%>
+
+<table id="<%= tableID %>" class="yui3-datatable-table" role="grid">
+    <caption><%= caption %></caption>
+     <thead class="yui3-datatable-columns">
+     <rn:block id="topHeader"/>
+        <tr>
+        <% for (var h=0; h < headers.length; h++) { %>
+            <th class="yui3-datatable-header yui3-datatable-sortable-column" ><%= headers[h].label %></th>
+        <% } %>
+        </tr>
+     <rn:block id="bottomHeader"/>
+    </thead>
+    <tbody class="yui3-datatable-data">
+    <rn:block id="topBody"/>
+    <% for (var r=0; r < rows.length; r++) { %>
+        <rn:block id="preBodyRow"/>
+        <tr role="row" class="yui3-datatable-<%= (r % 2 === 0) ? 'even' : 'odd' %>">
+        <% for (var d=0; d < rows[r].length; d++) { %>
+            <td role="gridcell" class="yui3-datatable-cell"><%= rows[r][d] %></td>
+        <% } %>
+        </tr>
+        <rn:block id="postBodyRow"/>
+    <% } %>
+    <rn:block id="bottomBody"/>
+    </tbody>
+</table>

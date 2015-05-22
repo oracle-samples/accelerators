@@ -1,0 +1,71 @@
+################################################################################################
+#  This file is part of the Oracle Service Cloud Accelerator Reference Integration set published
+#  by Oracle Service Cloud under the MIT license (MIT) included in the original distribution.
+#  Copyright (c) 2014, 2015, Oracle and/or its affiliates. All rights reserved.
+################################################################################################
+#  Accelerator Package: OSVC WSS + EBS Case Management Accelerator
+#  link: http://www-content.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
+#  OSvC release: 15.2 (February 2015)
+#  EBS release: 12.1.3
+#  reference: 140626-000078
+#  date: Fri May 15 13:41:43 PDT 2015
+
+#  revision: rnw-15-2-fixes-release-01
+#  SHA1: $Id: 8b102da088e0d31a6e97303465279e54f633cc0f $
+################################################################################################
+#  File: info.yml
+################################################################################################
+version: "1.0"
+requires:
+  jsModule: [standard]
+  yui: [datatable-base, datatable-sort, datatable-message]
+attributes:
+  get_sr_list_ajax_endpoint:
+    name: get_sr_list_ajax_endpoint
+    type: ajax
+    description: Default AJAX endpoint
+    default: /ci/ajax/widget
+    required: false
+  display_attrs:
+    name: Display Attributes
+    type: STRING
+    description: Customize attributes shown in List Grid
+    default: 'SR_ID,IncidentRef,Created Date,Subject,Status'
+  max_row:
+    name: Number of row displayed
+    type: INT
+    description: Set the number of row displayed in Grid
+    default: 25
+  headers:
+    name: rn:msg:SHOW_HEADERS_CMD
+    description: rn:msg:BOOLEAN_DENOTING_HEADERS_SHOWN_RPT_MSG
+    default: true
+    type: BOOLEAN
+  label_caption:
+    name: rn:msg:TABLE_CAPTION_LBL
+    description: rn:msg:CAPTION_TITLE_DISPLAYED_TB_CAPTION_MSG
+    type: STRING
+  no_records_found:
+    name: NO Records Found
+    description: display when no record is found.
+    default: No records found.
+    type: String
+  timeout:
+    name: rn:msg:TIMEOUT_LBL
+    description: time out for the Ajax call
+    type: INT
+    default: 50000
+    min: 0
+  ajax_timeout_message:
+    name: ajax_failure_message
+    description: error message displayed when ajax failed
+    default: 'Siebel Server Timeout'
+    type: STRING
+  ajax_failure_message:
+    name: ajax_failure_message
+    description: error message displayed when ajax failed
+    default: 'We are experiencing technical difficulty communicating with the server. Please try again later.'
+    type: STRING
+info:
+  description: rn:msg:WIDGET_DISP_DATA_TB_GRID_FMT_RPT_MSG
+
