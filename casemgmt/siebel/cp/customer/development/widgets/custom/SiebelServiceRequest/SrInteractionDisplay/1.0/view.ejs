@@ -1,0 +1,41 @@
+<%#
+################################################################################################
+#  $ACCELERATOR_HEADER_PLACE_HOLDER$
+#  SHA1: $Id: SHA1_ID_PLACE_HOLDER $
+################################################################################################
+#  File: $ACCELERATOR_HEADER_FILE_NAME_PLACE_HOLDER$
+################################################################################################
+%>
+<% if(data){ %>
+    <rn:block id="preList"/>
+
+    <% for (var i = 0; i < data.length; i++) { %>
+        <rn:block id="preListItem"/>
+            <div class="rn_ThreadHeader rn_Customer">
+                <rn:block id="preThreadHeader"/>
+                    <span class="rn_ThreadAuthor">
+                        <rn:block id="threadAuthor">
+                            <%= data[i]['EntryType'] %>
+                            <%= data[i]['Author'] %>
+                            <% if(data[i]['Channel']) { %>
+                                via <%= data[i]['Channel'] %>
+                            <% } %>
+                        </rn:block>
+                    </span>
+
+                    <span class="rn_ThreadTime">
+                        <rn:block id="threadTime">
+                            <%= data[i]['CreatedTime'] %>
+                        </rn:block>
+                    </span>
+                <rn:block id="postThreadHeader"/>
+            </div>
+            
+            <div class="rn_ThreadContent">
+                <rn:block id="threadContent">
+                    <%= data[i]['Text'] %>
+                </rn:block>
+            </div>
+    <rn:block id="postListItem"/>
+    <% } %>
+<% } %>

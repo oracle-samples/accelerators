@@ -1,0 +1,12 @@
+Requirement: Package "Microsoft.Web.Services3.dll" in Accelerator.EBS.ServiceStatusBarAddIn.zip
+===============================================================================================
+
+Microsoft.Web.Services3.dll is required for Accelerator.EBS.ServiceStatusBarAddIn at runtime. "Microsoft.Web.Services3.dll" has been integrated into WSE3.0 SDK. After you install it, you can find the assembly in GAC(%windir%\Assembly directory) and %System Root%\Program Files\Microsoft WSE\v3.0\
+
+Steps to download, install, and package the "Microsoft.Web.Services3.dll" in Accelerator.EBS.ServiceStatusBarAddIn.zip:
+
+Step 1: Download WSE3.0 SDK from : http://www.microsoft.com/downloads/details.aspx?familyid=018a09fd-3a74-43c5-8ec1-8d789091255d&displaylang=en
+Step 2: Install WSE3.0
+Step 3: Locate Microsoft.Web.Services3.dll at path %System Root%\Program Files\Microsoft WSE\v3.0\ 
+Step 4: Add Microsoft.Web.Services3.dll in Accelerator.EBS.ServiceStatusBarAddIn.zip
+Step 5: Deploy Accelerator.EBS.ServiceStatusBarAddIn.zip in CX Add-in Manager

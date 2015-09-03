@@ -1,0 +1,784 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="EBSMockSvc" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://schemas.datacontract.org/2004/07/EBSMockSvcLib" />
+      <xs:element name="GetSRInfoByContact">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="contact_id" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="maxRows" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetSRInfoByContactResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/EBSMockSvcLib" minOccurs="0" name="GetSRInfoByContactResult" nillable="true" type="q1:SRListOutputParameters" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetSRInfoById">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="incident_id" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetSRInfoByIdResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/EBSMockSvcLib" minOccurs="0" name="GetSRInfoByIdResult" nillable="true" type="q2:SRListOutputParameters" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CreateSR">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/EBSMockSvcLib" minOccurs="0" name="req" nillable="true" type="q3:CreateSRInputParameters" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CreateSRResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/EBSMockSvcLib" minOccurs="0" name="CreateSRResult" nillable="true" type="q4:SRIdOutputParameters" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="UpdateSR">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/EBSMockSvcLib" minOccurs="0" name="req" nillable="true" type="q5:UpdateSRInputParameters" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="UpdateSRResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/EBSMockSvcLib" minOccurs="0" name="UpdateSRResult" nillable="true" type="q6:SRInfoOutputParameters" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CreateNote">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/EBSMockSvcLib" minOccurs="0" name="req" nillable="true" type="q7:CreateNoteInputParameters" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CreateNoteResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/EBSMockSvcLib" minOccurs="0" name="CreateNoteResult" nillable="true" type="q8:NoteIdOutputParameters" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetSRNotesDetails">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="incident_id" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="maxRows" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetSRNotesDetailsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/EBSMockSvcLib" minOccurs="0" name="GetSRNotesDetailsResult" nillable="true" type="q9:NoteListOutputParameters" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CreateContact">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/EBSMockSvcLib" minOccurs="0" name="req" nillable="true" type="q10:ContactPartyItem" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CreateContactResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/EBSMockSvcLib" minOccurs="0" name="CreateContactResult" nillable="true" type="q11:ContactOutputParameters" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getContactDetailsByPartyID">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="contactPartyID" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getContactDetailsByPartyIDResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/EBSMockSvcLib" minOccurs="0" name="getContactDetailsByPartyIDResult" nillable="true" type="q12:ContactListOutputParameters" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getContactList">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="phone" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="fn" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="ln" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="maxRows" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getContactListResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/EBSMockSvcLib" minOccurs="0" name="getContactListResult" nillable="true" type="q13:ContactListOutputParameters" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CreateRepairOrder">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/EBSMockSvcLib" minOccurs="0" name="req" nillable="true" type="q14:RepairOrderItem" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CreateRepairOrderResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/EBSMockSvcLib" minOccurs="0" name="CreateRepairOrderResult" nillable="true" type="q15:RepairOrderOutputParameters" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetRepairOrderByRepairNumber">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="repair_number" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetRepairOrderByRepairNumberResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/EBSMockSvcLib" minOccurs="0" name="GetRepairOrderByRepairNumberResult" nillable="true" type="q16:RepairOrderListOutputParameters" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetRepairOrderList">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="incident_number" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetRepairOrderListResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/EBSMockSvcLib" minOccurs="0" name="GetRepairOrderListResult" nillable="true" type="q17:RepairOrderListOutputParameters" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="UpdateConfig">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/EBSMockSvcLib" minOccurs="0" name="req" nillable="true" type="q18:MockEBSConfig" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="UpdateConfigResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/EBSMockSvcLib" minOccurs="0" name="UpdateConfigResult" nillable="true" type="q19:ArrayOfConfigOutputParameters" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="anyType" nillable="true" type="xs:anyType" />
+      <xs:element name="anyURI" nillable="true" type="xs:anyURI" />
+      <xs:element name="base64Binary" nillable="true" type="xs:base64Binary" />
+      <xs:element name="boolean" nillable="true" type="xs:boolean" />
+      <xs:element name="byte" nillable="true" type="xs:byte" />
+      <xs:element name="dateTime" nillable="true" type="xs:dateTime" />
+      <xs:element name="decimal" nillable="true" type="xs:decimal" />
+      <xs:element name="double" nillable="true" type="xs:double" />
+      <xs:element name="float" nillable="true" type="xs:float" />
+      <xs:element name="int" nillable="true" type="xs:int" />
+      <xs:element name="long" nillable="true" type="xs:long" />
+      <xs:element name="QName" nillable="true" type="xs:QName" />
+      <xs:element name="short" nillable="true" type="xs:short" />
+      <xs:element name="string" nillable="true" type="xs:string" />
+      <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte" />
+      <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt" />
+      <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong" />
+      <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort" />
+      <xs:element name="char" nillable="true" type="tns:char" />
+      <xs:simpleType name="char">
+        <xs:restriction base="xs:int" />
+      </xs:simpleType>
+      <xs:element name="duration" nillable="true" type="tns:duration" />
+      <xs:simpleType name="duration">
+        <xs:restriction base="xs:duration">
+          <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?" />
+          <xs:minInclusive value="-P10675199DT2H48M5.4775808S" />
+          <xs:maxInclusive value="P10675199DT2H48M5.4775807S" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="guid" nillable="true" type="tns:guid" />
+      <xs:simpleType name="guid">
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:attribute name="FactoryType" type="xs:QName" />
+      <xs:attribute name="Id" type="xs:ID" />
+      <xs:attribute name="Ref" type="xs:IDREF" />
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/EBSMockSvcLib" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/EBSMockSvcLib" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="SRListOutputParameters">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="X_MSG_DATA" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="X_RETURN_STATUS" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="X_SR_LIST" nillable="true" type="tns:ArrayOfServiceRequestItem" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="SRListOutputParameters" nillable="true" type="tns:SRListOutputParameters" />
+      <xs:complexType name="ArrayOfServiceRequestItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="ServiceRequestItem" nillable="true" type="tns:ServiceRequestItem" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfServiceRequestItem" nillable="true" type="tns:ArrayOfServiceRequestItem" />
+      <xs:complexType name="ServiceRequestItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CONTACT_PARTY_ID" type="xs:long" />
+          <xs:element minOccurs="0" name="CREATION_DATE" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="CUSTOMER_ID" type="xs:long" />
+          <xs:element minOccurs="0" name="CUSTOMER_TYPE" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="EXTATTRIBUTE14" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="EXTATTRIBUTE15" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="INCIDENT_ID" type="xs:long" />
+          <xs:element minOccurs="0" name="INCIDENT_NUMBER" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="INCIDENT_SEVERITY" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="INCIDENT_SEVERITY_ID" type="xs:long" />
+          <xs:element minOccurs="0" name="INCIDENT_STATUS" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="INCIDENT_STATUS_ID" type="xs:long" />
+          <xs:element minOccurs="0" name="INCIDENT_TYPE" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="INCIDENT_TYPE_ID" type="xs:long" />
+          <xs:element minOccurs="0" name="OBJECT_VERSION_NUMBER" type="xs:long" />
+          <xs:element minOccurs="0" name="PRODUCT" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SERIAL_NUMBER" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SR_OWNER_ID" type="xs:long" />
+          <xs:element minOccurs="0" name="SUMMARY" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ServiceRequestItem" nillable="true" type="tns:ServiceRequestItem" />
+      <xs:complexType name="CreateSRInputParameters">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CONTACT_PARTY_ID" type="xs:long" />
+          <xs:element minOccurs="0" name="CREATION_DATE" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="CUSTOMER_ID" type="xs:long" />
+          <xs:element minOccurs="0" name="CUSTOMER_TYPE" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="EXTATTRIBUTE14" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="EXTATTRIBUTE15" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="INCIDENT_SEVERITY" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="INCIDENT_SEVERITY_ID" type="xs:long" />
+          <xs:element minOccurs="0" name="INCIDENT_STATUS" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="INCIDENT_STATUS_ID" type="xs:long" />
+          <xs:element minOccurs="0" name="INCIDENT_TYPE" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="INCIDENT_TYPE_ID" type="xs:long" />
+          <xs:element minOccurs="0" name="OBJECT_VERSION_NUMBER" type="xs:long" />
+          <xs:element minOccurs="0" name="PRODUCT" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SERIAL_NUMBER" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SR_OWNER_ID" type="xs:long" />
+          <xs:element minOccurs="0" name="SUMMARY" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="CreateSRInputParameters" nillable="true" type="tns:CreateSRInputParameters" />
+      <xs:complexType name="SRIdOutputParameters">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="INCIDENT_ID" type="xs:long" />
+          <xs:element minOccurs="0" name="INCIDENT_NUMBER" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="X_MSG_DATA" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="X_RETURN_STATUS" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="SRIdOutputParameters" nillable="true" type="tns:SRIdOutputParameters" />
+      <xs:complexType name="UpdateSRInputParameters">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CONTACT_PARTY_ID" type="xs:long" />
+          <xs:element minOccurs="0" name="CREATION_DATE" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="CUSTOMER_ID" type="xs:long" />
+          <xs:element minOccurs="0" name="CUSTOMER_TYPE" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="EXTATTRIBUTE14" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="EXTATTRIBUTE15" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="INCIDENT_ID" type="xs:long" />
+          <xs:element minOccurs="0" name="INCIDENT_NUMBER" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="INCIDENT_SEVERITY" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="INCIDENT_SEVERITY_ID" type="xs:long" />
+          <xs:element minOccurs="0" name="INCIDENT_STATUS" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="INCIDENT_STATUS_ID" type="xs:long" />
+          <xs:element minOccurs="0" name="INCIDENT_TYPE" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="INCIDENT_TYPE_ID" type="xs:long" />
+          <xs:element minOccurs="0" name="OBJECT_VERSION_NUMBER" type="xs:long" />
+          <xs:element minOccurs="0" name="PRODUCT" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SERIAL_NUMBER" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SR_OWNER_ID" type="xs:long" />
+          <xs:element minOccurs="0" name="SUMMARY" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="UpdateSRInputParameters" nillable="true" type="tns:UpdateSRInputParameters" />
+      <xs:complexType name="SRInfoOutputParameters">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="INCIDENT_DETAIL" nillable="true" type="tns:ServiceRequestItem" />
+          <xs:element minOccurs="0" name="X_MSG_DATA" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="X_RETURN_STATUS" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="SRInfoOutputParameters" nillable="true" type="tns:SRInfoOutputParameters" />
+      <xs:complexType name="CreateNoteInputParameters">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CONTACT_PARTY_ID" type="xs:long" />
+          <xs:element minOccurs="0" name="CREATED_BY" type="xs:long" />
+          <xs:element minOccurs="0" name="CREATED_BY_NAME" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CREATED_BY_USER_TYPE" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CREATION_DATE" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="NOTES" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NOTES_DETAIL" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NOTE_STATUS" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NOTE_STATUS_MEANING" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NOTE_TYPE" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NOTE_TYPE_MEANING" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SOURCE_OBJECT_ID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="CreateNoteInputParameters" nillable="true" type="tns:CreateNoteInputParameters" />
+      <xs:complexType name="NoteIdOutputParameters">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ID" type="xs:long" />
+          <xs:element minOccurs="0" name="X_MSG_DATA" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="X_RETURN_STATUS" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="NoteIdOutputParameters" nillable="true" type="tns:NoteIdOutputParameters" />
+      <xs:complexType name="NoteListOutputParameters">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="X_MSG_DATA" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="X_NOTE_LIST" nillable="true" type="tns:ArrayOfNoteItem" />
+          <xs:element minOccurs="0" name="X_RETURN_STATUS" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="NoteListOutputParameters" nillable="true" type="tns:NoteListOutputParameters" />
+      <xs:complexType name="ArrayOfNoteItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="NoteItem" nillable="true" type="tns:NoteItem" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfNoteItem" nillable="true" type="tns:ArrayOfNoteItem" />
+      <xs:complexType name="NoteItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CONTACT_PARTY_ID" type="xs:long" />
+          <xs:element minOccurs="0" name="CREATED_BY" type="xs:long" />
+          <xs:element minOccurs="0" name="CREATED_BY_NAME" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CREATED_BY_USER_TYPE" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CREATION_DATE" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="NOTES" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NOTES_DETAIL" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NOTE_STATUS" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NOTE_STATUS_MEANING" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NOTE_TYPE" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NOTE_TYPE_MEANING" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SOURCE_OBJECT_ID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="NoteItem" nillable="true" type="tns:NoteItem" />
+      <xs:complexType name="ContactPartyItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DEPARTMENT" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="JOB_TITLE" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ORG_CONTACT_ID" type="xs:long" />
+          <xs:element minOccurs="0" name="ORG_NAME" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ORG_PARTY_ID" type="xs:long" />
+          <xs:element minOccurs="0" name="ORG_PARTY_NUMBER" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PERSON_FIRST_NAME" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PERSON_LAST_NAME" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PERSON_MIDDLE_NAME" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PERSON_PARTY_ID" type="xs:long" />
+          <xs:element minOccurs="0" name="PERSON_PARTY_NUMBER" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PRIMARY_ADDRESS_LINE_1" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PRIMARY_ADDRESS_LINE_2" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PRIMARY_ADDRESS_LINE_3" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PRIMARY_ADDRESS_LINE_4" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PRIMARY_CITY" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PRIMARY_COUNTRY" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PRIMARY_EMAIL" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PRIMARY_PHONE" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PRIMARY_POSTAL_CODE" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PRIMARY_PROVINCE" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PRIMARY_STATE" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RELATIONSHIP_CODE" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RELATIONSHIP_CODE_MEANING" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RELATIONSHIP_CREATION_DT" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="RELATIONSHIP_ID" type="xs:long" />
+          <xs:element minOccurs="0" name="RELATIONSHIP_PARTY_ID" type="xs:long" />
+          <xs:element minOccurs="0" name="RELATIONSHIP_TYPE" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RELATIONSHIP_TYPE_MEANING" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ContactPartyItem" nillable="true" type="tns:ContactPartyItem" />
+      <xs:complexType name="ContactOutputParameters">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ContactID" type="xs:long" />
+          <xs:element minOccurs="0" name="Error_Message" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ContactOutputParameters" nillable="true" type="tns:ContactOutputParameters" />
+      <xs:complexType name="ContactListOutputParameters">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="X_CONTACT_LIST" nillable="true" type="tns:ArrayOfContactPartyItem" />
+          <xs:element minOccurs="0" name="X_MSG_DATA" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="X_RETURN_STATUS" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ContactListOutputParameters" nillable="true" type="tns:ContactListOutputParameters" />
+      <xs:complexType name="ArrayOfContactPartyItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="ContactPartyItem" nillable="true" type="tns:ContactPartyItem" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfContactPartyItem" nillable="true" type="tns:ArrayOfContactPartyItem" />
+      <xs:complexType name="RepairOrderItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CLOSE_DATE" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="CONTRACT" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CREATED_DATE" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="CURRENCY" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DEFAULT_PO_NUMBER" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ESCALATION" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ESTIMATE_APPROVED" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="INCIDENT_NUMBER" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ITEM" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ITEM_DESC" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="LOT_NUMBER" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PRICE_LIST" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PRIORITY" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PROBLEM_DESCRIPTION" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PROJECT" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PROJECT_TASK" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PROMISE_DATE" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="QUANTITY" type="xs:long" />
+          <xs:element minOccurs="0" name="REPAIR_ID" type="xs:long" />
+          <xs:element minOccurs="0" name="REPAIR_NUMBER" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="REPAIR_ORG" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="REPAIR_OWNER" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="REPAIR_STATUS" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="REPAIR_TYPE" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RESOLVE_BY_DATE" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="SERIAL_NUMBER" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UNIT_NUMBER" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UNIT_OF_MEASURE" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="WARRANTY_STATUS" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="RepairOrderItem" nillable="true" type="tns:RepairOrderItem" />
+      <xs:complexType name="RepairOrderOutputParameters">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Error_Message" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RepairOrderID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="RepairOrderOutputParameters" nillable="true" type="tns:RepairOrderOutputParameters" />
+      <xs:complexType name="RepairOrderListOutputParameters">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="X_MSG_DATA" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="X_REPAIR_ORDER_LIST" nillable="true" type="tns:ArrayOfRepairOrderItem" />
+          <xs:element minOccurs="0" name="X_RETURN_STATUS" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="RepairOrderListOutputParameters" nillable="true" type="tns:RepairOrderListOutputParameters" />
+      <xs:complexType name="ArrayOfRepairOrderItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="RepairOrderItem" nillable="true" type="tns:RepairOrderItem" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfRepairOrderItem" nillable="true" type="tns:ArrayOfRepairOrderItem" />
+      <xs:complexType name="MockEBSConfig">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ConfigName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ConfigValue" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="MockEBSConfig" nillable="true" type="tns:MockEBSConfig" />
+      <xs:complexType name="ArrayOfConfigOutputParameters">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="ConfigOutputParameters" nillable="true" type="tns:ConfigOutputParameters" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfConfigOutputParameters" nillable="true" type="tns:ArrayOfConfigOutputParameters" />
+      <xs:complexType name="ConfigOutputParameters">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ConfigName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ConfigValue" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Error_Message" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ConfigOutputParameters" nillable="true" type="tns:ConfigOutputParameters" />
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="IEBSMockSvc_GetSRInfoByContact_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSRInfoByContact" />
+  </wsdl:message>
+  <wsdl:message name="IEBSMockSvc_GetSRInfoByContact_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSRInfoByContactResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEBSMockSvc_GetSRInfoById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSRInfoById" />
+  </wsdl:message>
+  <wsdl:message name="IEBSMockSvc_GetSRInfoById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSRInfoByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEBSMockSvc_CreateSR_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateSR" />
+  </wsdl:message>
+  <wsdl:message name="IEBSMockSvc_CreateSR_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateSRResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEBSMockSvc_UpdateSR_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSR" />
+  </wsdl:message>
+  <wsdl:message name="IEBSMockSvc_UpdateSR_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSRResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEBSMockSvc_CreateNote_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateNote" />
+  </wsdl:message>
+  <wsdl:message name="IEBSMockSvc_CreateNote_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateNoteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEBSMockSvc_GetSRNotesDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSRNotesDetails" />
+  </wsdl:message>
+  <wsdl:message name="IEBSMockSvc_GetSRNotesDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSRNotesDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEBSMockSvc_CreateContact_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateContact" />
+  </wsdl:message>
+  <wsdl:message name="IEBSMockSvc_CreateContact_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateContactResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEBSMockSvc_getContactDetailsByPartyID_InputMessage">
+    <wsdl:part name="parameters" element="tns:getContactDetailsByPartyID" />
+  </wsdl:message>
+  <wsdl:message name="IEBSMockSvc_getContactDetailsByPartyID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getContactDetailsByPartyIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEBSMockSvc_getContactList_InputMessage">
+    <wsdl:part name="parameters" element="tns:getContactList" />
+  </wsdl:message>
+  <wsdl:message name="IEBSMockSvc_getContactList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getContactListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEBSMockSvc_CreateRepairOrder_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateRepairOrder" />
+  </wsdl:message>
+  <wsdl:message name="IEBSMockSvc_CreateRepairOrder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateRepairOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEBSMockSvc_GetRepairOrderByRepairNumber_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRepairOrderByRepairNumber" />
+  </wsdl:message>
+  <wsdl:message name="IEBSMockSvc_GetRepairOrderByRepairNumber_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRepairOrderByRepairNumberResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEBSMockSvc_GetRepairOrderList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRepairOrderList" />
+  </wsdl:message>
+  <wsdl:message name="IEBSMockSvc_GetRepairOrderList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRepairOrderListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEBSMockSvc_UpdateConfig_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateConfig" />
+  </wsdl:message>
+  <wsdl:message name="IEBSMockSvc_UpdateConfig_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateConfigResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IEBSMockSvc">
+    <wsdl:operation name="GetSRInfoByContact">
+      <wsdl:input wsam:Action="http://tempuri.org/IEBSMockSvc/GetSRInfoByContact" message="tns:IEBSMockSvc_GetSRInfoByContact_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IEBSMockSvc/GetSRInfoByContactResponse" message="tns:IEBSMockSvc_GetSRInfoByContact_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSRInfoById">
+      <wsdl:input wsam:Action="http://tempuri.org/IEBSMockSvc/GetSRInfoById" message="tns:IEBSMockSvc_GetSRInfoById_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IEBSMockSvc/GetSRInfoByIdResponse" message="tns:IEBSMockSvc_GetSRInfoById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateSR">
+      <wsdl:input wsam:Action="http://tempuri.org/IEBSMockSvc/CreateSR" message="tns:IEBSMockSvc_CreateSR_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IEBSMockSvc/CreateSRResponse" message="tns:IEBSMockSvc_CreateSR_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSR">
+      <wsdl:input wsam:Action="http://tempuri.org/IEBSMockSvc/UpdateSR" message="tns:IEBSMockSvc_UpdateSR_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IEBSMockSvc/UpdateSRResponse" message="tns:IEBSMockSvc_UpdateSR_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateNote">
+      <wsdl:input wsam:Action="http://tempuri.org/IEBSMockSvc/CreateNote" message="tns:IEBSMockSvc_CreateNote_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IEBSMockSvc/CreateNoteResponse" message="tns:IEBSMockSvc_CreateNote_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSRNotesDetails">
+      <wsdl:input wsam:Action="http://tempuri.org/IEBSMockSvc/GetSRNotesDetails" message="tns:IEBSMockSvc_GetSRNotesDetails_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IEBSMockSvc/GetSRNotesDetailsResponse" message="tns:IEBSMockSvc_GetSRNotesDetails_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateContact">
+      <wsdl:input wsam:Action="http://tempuri.org/IEBSMockSvc/CreateContact" message="tns:IEBSMockSvc_CreateContact_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IEBSMockSvc/CreateContactResponse" message="tns:IEBSMockSvc_CreateContact_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getContactDetailsByPartyID">
+      <wsdl:input wsam:Action="http://tempuri.org/IEBSMockSvc/getContactDetailsByPartyID" message="tns:IEBSMockSvc_getContactDetailsByPartyID_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IEBSMockSvc/getContactDetailsByPartyIDResponse" message="tns:IEBSMockSvc_getContactDetailsByPartyID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getContactList">
+      <wsdl:input wsam:Action="http://tempuri.org/IEBSMockSvc/getContactList" message="tns:IEBSMockSvc_getContactList_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IEBSMockSvc/getContactListResponse" message="tns:IEBSMockSvc_getContactList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateRepairOrder">
+      <wsdl:input wsam:Action="http://tempuri.org/IEBSMockSvc/CreateRepairOrder" message="tns:IEBSMockSvc_CreateRepairOrder_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IEBSMockSvc/CreateRepairOrderResponse" message="tns:IEBSMockSvc_CreateRepairOrder_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRepairOrderByRepairNumber">
+      <wsdl:input wsam:Action="http://tempuri.org/IEBSMockSvc/GetRepairOrderByRepairNumber" message="tns:IEBSMockSvc_GetRepairOrderByRepairNumber_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IEBSMockSvc/GetRepairOrderByRepairNumberResponse" message="tns:IEBSMockSvc_GetRepairOrderByRepairNumber_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRepairOrderList">
+      <wsdl:input wsam:Action="http://tempuri.org/IEBSMockSvc/GetRepairOrderList" message="tns:IEBSMockSvc_GetRepairOrderList_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IEBSMockSvc/GetRepairOrderListResponse" message="tns:IEBSMockSvc_GetRepairOrderList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateConfig">
+      <wsdl:input wsam:Action="http://tempuri.org/IEBSMockSvc/UpdateConfig" message="tns:IEBSMockSvc_UpdateConfig_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IEBSMockSvc/UpdateConfigResponse" message="tns:IEBSMockSvc_UpdateConfig_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IEBSMockSvc" type="tns:IEBSMockSvc">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetSRInfoByContact">
+      <soap:operation soapAction="http://tempuri.org/IEBSMockSvc/GetSRInfoByContact" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSRInfoById">
+      <soap:operation soapAction="http://tempuri.org/IEBSMockSvc/GetSRInfoById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateSR">
+      <soap:operation soapAction="http://tempuri.org/IEBSMockSvc/CreateSR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSR">
+      <soap:operation soapAction="http://tempuri.org/IEBSMockSvc/UpdateSR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateNote">
+      <soap:operation soapAction="http://tempuri.org/IEBSMockSvc/CreateNote" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSRNotesDetails">
+      <soap:operation soapAction="http://tempuri.org/IEBSMockSvc/GetSRNotesDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateContact">
+      <soap:operation soapAction="http://tempuri.org/IEBSMockSvc/CreateContact" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getContactDetailsByPartyID">
+      <soap:operation soapAction="http://tempuri.org/IEBSMockSvc/getContactDetailsByPartyID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getContactList">
+      <soap:operation soapAction="http://tempuri.org/IEBSMockSvc/getContactList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateRepairOrder">
+      <soap:operation soapAction="http://tempuri.org/IEBSMockSvc/CreateRepairOrder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRepairOrderByRepairNumber">
+      <soap:operation soapAction="http://tempuri.org/IEBSMockSvc/GetRepairOrderByRepairNumber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRepairOrderList">
+      <soap:operation soapAction="http://tempuri.org/IEBSMockSvc/GetRepairOrderList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateConfig">
+      <soap:operation soapAction="http://tempuri.org/IEBSMockSvc/UpdateConfig" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EBSMockSvc">
+    <wsdl:port name="BasicHttpBinding_IEBSMockSvc" binding="tns:BasicHttpBinding_IEBSMockSvc">
+      <soap:address location="http://adc6170583.us.oracle.com:9050/EBSMockSvc/soap" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

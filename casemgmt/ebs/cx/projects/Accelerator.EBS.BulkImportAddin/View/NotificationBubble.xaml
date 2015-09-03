@@ -1,0 +1,72 @@
+﻿<!--
+/* *********************************************************************************************
+ *  $ACCELERATOR_HEADER_PLACE_HOLDER$
+ *  SHA1: $Id$
+ * *********************************************************************************************
+ *  File: $ACCELERATOR_HEADER_FILE_NAME_PLACE_HOLDER$
+ * *********************************************************************************************/
+-->
+<Window x:Class="Accelerator.EBS.BulkImportAddin.NotificationBubble"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Accelerator.EBS.BulkImportAddin"
+        SizeToContent="Height"
+        WindowStyle="None"
+        Title="Notification Window"
+        Width="300"
+        Background="Transparent"
+        AllowsTransparency="True">
+    <Window.Resources>
+        <LinearGradientBrush x:Key="BorderGradient" StartPoint="0.5,0.1" EndPoint="0.5,1">
+            <GradientStop Color="#FFFFB67B"
+                          Offset="0"/>
+            <GradientStop Color="#FFFFD36B"
+                          Offset="0.4"/>
+        </LinearGradientBrush>
+    </Window.Resources>
+        <Grid Name="bubbleGrid" MouseUp="bubbleGrid_MouseUp">
+        <Border Background="{StaticResource BorderGradient}" 
+                CornerRadius="5"
+                    BorderThickness="1">
+                    <TextBlock Name="msgText"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               FontSize="14"
+                               Text="{Binding Message, Mode=OneTime}"
+                               TextWrapping="Wrap"/>
+            </Border>
+            <Grid.Triggers>
+                <EventTrigger RoutedEvent="Loaded">
+                <BeginStoryboard Name="animationEnter">
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                             From="0" To="1" Duration="0:0:5" />
+                            <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                             From="1" To="0" Duration="0:0:10"
+                                             BeginTime="0:0:15"
+                                             Completed="AnimationCompleted"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            <EventTrigger RoutedEvent="MouseEnter">
+                <EventTrigger.Actions>
+                    <RemoveStoryboard BeginStoryboardName="animationEnter" />
+                    <RemoveStoryboard BeginStoryboardName="animationExit" />
+                </EventTrigger.Actions>
+            </EventTrigger>
+            <EventTrigger RoutedEvent="MouseLeave">
+                <BeginStoryboard Name="animationExit">
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                         From="1"
+                                         To="0"
+                                         Duration="0:0:5"
+                                         BeginTime="0:0:2"
+                                         Completed="AnimationCompleted" />
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </Grid.Triggers>
+    </Grid>
+</Window>

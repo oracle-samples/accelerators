@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Accelerator.EBS.ServiceRequestAddin", "Accelerator.EBS.ServiceRequestAddin\Accelerator.EBS.ServiceRequestAddin.csproj", "{0235BBA2-DF8E-433F-94F3-03A14898F67A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Accelerator.EBS.RepairOrderAddin", "Accelerator.EBS.RepairOrderAddin\Accelerator.EBS.RepairOrderAddin.csproj", "{00DBE238-7966-4DE4-A34D-93EB3D828406}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Accelerator.EBS.ServiceStatusBarAddIn", "Accelerator.EBS.ServiceStatusBarAddIn\Accelerator.EBS.ServiceStatusBarAddIn.csproj", "{7BF7AEFE-6C6D-47A6-8616-01248666C9AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Accelerator.EBS.ContactSearchAddin", "Accelerator.EBS.ContactSearchAddIn\Accelerator.EBS.ContactSearchAddin.csproj", "{1BF980DB-B48D-43B9-8F25-D46E5945B6E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Accelerator.EBS.ReportTablesAddIn", "Accelerator.EBS.ReportTablesAddIn\Accelerator.EBS.ReportTablesAddIn.csproj", "{F72A6D87-FF4B-45B6-A3BD-DED22D2F13BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Accelerator.EBS.BulkImportAddin", "Accelerator.EBS.BulkImportAddin\Accelerator.EBS.BulkImportAddin.csproj", "{750D5F58-CFFA-4097-8179-765D9B45D20A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0235BBA2-DF8E-433F-94F3-03A14898F67A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0235BBA2-DF8E-433F-94F3-03A14898F67A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0235BBA2-DF8E-433F-94F3-03A14898F67A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0235BBA2-DF8E-433F-94F3-03A14898F67A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00DBE238-7966-4DE4-A34D-93EB3D828406}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00DBE238-7966-4DE4-A34D-93EB3D828406}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00DBE238-7966-4DE4-A34D-93EB3D828406}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00DBE238-7966-4DE4-A34D-93EB3D828406}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BF7AEFE-6C6D-47A6-8616-01248666C9AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BF7AEFE-6C6D-47A6-8616-01248666C9AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BF7AEFE-6C6D-47A6-8616-01248666C9AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BF7AEFE-6C6D-47A6-8616-01248666C9AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BF980DB-B48D-43B9-8F25-D46E5945B6E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BF980DB-B48D-43B9-8F25-D46E5945B6E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BF980DB-B48D-43B9-8F25-D46E5945B6E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BF980DB-B48D-43B9-8F25-D46E5945B6E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F72A6D87-FF4B-45B6-A3BD-DED22D2F13BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F72A6D87-FF4B-45B6-A3BD-DED22D2F13BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F72A6D87-FF4B-45B6-A3BD-DED22D2F13BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F72A6D87-FF4B-45B6-A3BD-DED22D2F13BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{750D5F58-CFFA-4097-8179-765D9B45D20A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{750D5F58-CFFA-4097-8179-765D9B45D20A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{750D5F58-CFFA-4097-8179-765D9B45D20A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{750D5F58-CFFA-4097-8179-765D9B45D20A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,596 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsdLocal3="http://www.siebel.com/xml/Asset_Management_IO/Query" xmlns:xsdLocal2="http://www.siebel.com/xml/Asset_Management_IO/Id" xmlns:xsdLocal1="http://www.siebel.com/xml/Asset_Management_IO/Data" xmlns:tns="http://www.siebel.com/Service/FS/Assets" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.siebel.com/Service/FS/Assets" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.siebel.com/xml/Asset_Management_IO/Query">
+      <xsd:annotation>
+        <xsd:documentation>Copyright (C) 2001-2004 Siebel Systems, Inc. All rights reserved. Siebel XSD Generation</xsd:documentation>
+      </xsd:annotation>
+      <xsd:element name="ListOfAsset_Management_Io" type="xsdLocal3:ListOfAsset_Management_IoQuery" />
+      <xsd:complexType name="ListOfAsset_Management_IoTopElmtQuery">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="ListOfAsset_Management_Io" type="xsdLocal3:ListOfAsset_Management_IoQuery" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ListOfAsset_Management_IoQuery">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="AssetMgmt-Asset" type="xsdLocal3:AssetMgmt-AssetQuery" />
+        </xsd:sequence>
+        <xsd:attribute name="pagesize" type="xsd:integer" />
+        <xsd:attribute name="startrownum" type="xsd:integer" />
+        <xsd:attribute name="recordcountneeded" type="xsd:boolean" />
+      </xsd:complexType>
+      <xsd:complexType name="AssetMgmt-AssetQuery">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="Id" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Created" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Updated" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ConflictId" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ModId" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AccountCompetitor" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AccountIntegrationId" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AccountLocation" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AccountName" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AccountOrgId" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AccountPrimaryAddress" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AccountPrimaryAddressId" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AccountPrimaryAddressLine2" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AccountPrimaryCity" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AccountPrimaryCompleteAddress" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AccountPrimaryCountry" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AccountPrimaryServiceAgreementId" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AccountPrimaryState" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AccountPrimaryZip" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AccountingMethod" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ActionCode" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AdjustedListPrice" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AdjustedValue" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AssetAge" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AssetCategory" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AssetCurrencyCode" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AssetDescription" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AssetId" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AssetLabel" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AssetNumber" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AssetValue" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AssetValueExchangeDate" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="BasePrice" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="BillingAccount" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="BillingAccountId" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="BucketID" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Build" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="CDAPagesetId" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="CfgLatestReleasedFlag" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="CfgReleasedFlag" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="CfgStateCode" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="CfgType" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="CfgVersion" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ChangeinValue" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Comments" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="CommitmentCoveredFlag" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="CompoundProductFlag" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="CompoundProductNumber" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Condition" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ConfigurationModelId" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ConvertToAgreementFlag" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ConvertToAssetFlag" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="CostList" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="CostListId" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="CurrencyCode" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="CustomizableFlag" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="DaysOn-Hand" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="DiscountAmount" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="DiscountPercent" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="DomainName" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="DueDate" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="EffectiveEndDate" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="EligibilityReason" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="EligibilityStatus" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="EndDate" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ExchangeDate" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ExcludePricingFlag" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ExplorerLabel" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ExtendedQuantity" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ForcastableFlag" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="HasChildren" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="HasGenericsFlag" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="HouseholdNumber" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="InclusiveEligibilityFlag" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="InstallDate" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="IntegrationId" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="InternalAssetFlag" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="InventoryLocation" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="InventoryLocationId" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="IsExpanded" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ItemType" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ItemType-LanguageIndependent" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="License" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="LicenseNumber" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="LineNumber" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="MeterCount" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="MfgDate" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Name" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="NetworkElementType" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Node" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="OperatingStatus" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Options" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="OrderAccountId" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="OrderHeaderId" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="OrderIntegrationId" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Organization" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="OrganizationId" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="OrganizationalUnitAddressId" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="OriginalCost" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="OriginalOrderId" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="OutlineNumber" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Owner" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="OwnerAccountId" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="OwnerAssetNumber" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="OwnerContactId" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="OwnerFirstName" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="OwnerLastName" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="OwnerName" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Ownership" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ParentAssetId" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ParentAssetNumber" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PersonalAddress" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PersonalAddressId" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PersonalCity" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PersonalCountry" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PersonalState" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PersonalZip" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PostPickCD" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PrePickCD" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PriceListId" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PriceType" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PrimaryContactAccountId" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PrimaryContactId" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PrimaryEmployeeId" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PrimaryWarrantyCoverageId" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PrimaryWarrantyEndDate" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PrimaryWarrantyName" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PrimaryWarrantyStartDate" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PrimaryWarrantyType" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PrimaryWarranyId" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ProdItemId" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ProdPromId" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ProdPromInstanceId" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ProdPromName" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ProdPromRuleId" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ProdPromSourceId" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ProductBuild" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ProductDefTypeCode" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ProductDescription" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ProductEffectiveFrom" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ProductEffectiveTo" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ProductId" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ProductInventoryId" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ProductName" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ProductPartNumber" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ProductPortId" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ProductPrimaryProductLine" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ProductPrimaryProductLineId" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ProductSerializedFlag" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ProductType" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ProductVersion" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ProductXAClassId" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PurchaseDate" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PurchaseLocationDescription" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Quantity" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="QuoteId" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="QuoteIntegrationId" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ReferenceFlag" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ReferenceNumber2" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ReferenceNumber3" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="RegisteredDate" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ReplacementValue" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="RootAssetId" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="RootAssetNumber" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="RootCfgLatestReleasedFlag" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="RootCfgType" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="RootIntegrationId" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="RootProductDefTypeCode" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="RootProductId" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ScenarioTestFlag" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="SerialNumber" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="SerialNumberVerifiedFlag" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ServiceAccount" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ServiceAccountId" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ShipDate" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="SmartPartNumber" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="StartDate" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Status" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ToNode" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ToServiceAccount" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ToServiceAccountId" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ToolFlag" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="UnitPrice" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="UnitofMeasure" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="VODRowId" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ValidationDate" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ValidationStatus" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ValueBasis" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Version" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="WarrantyEndDate" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="WarrantyStartDate" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="WarrantyType" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Type" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="BillingProfileName" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="BillingProfileId" type="xsdLocal3:queryType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AssetMgmt-Asset" type="xsdLocal3:AssetMgmt-AssetQuery" />
+        </xsd:sequence>
+        <xsd:attribute name="searchspec" type="xsd:string" />
+      </xsd:complexType>
+      <xsd:complexType name="queryType">
+        <xsd:simpleContent>
+          <xsd:extension base="xsd:string">
+            <xsd:attribute name="sortorder" type="xsd:string" />
+            <xsd:attribute name="sortsequence" type="xsd:string" />
+          </xsd:extension>
+        </xsd:simpleContent>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.siebel.com/xml/Asset_Management_IO/Id">
+      <xsd:annotation>
+        <xsd:documentation>Copyright (C) 2001-2004 Siebel Systems, Inc. All rights reserved. Siebel XSD Generation</xsd:documentation>
+      </xsd:annotation>
+      <xsd:element name="ListOfAsset_Management_Io" type="xsdLocal2:ListOfAsset_Management_IoId" />
+      <xsd:complexType name="ListOfAsset_Management_IoTopElmtId">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="ListOfAsset_Management_Io" type="xsdLocal2:ListOfAsset_Management_IoId" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ListOfAsset_Management_IoId">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="AssetMgmt-Asset" type="xsdLocal2:AssetMgmt-AssetId" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="AssetMgmt-AssetId">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="Id" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ModId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="AssetMgmt-Asset" type="xsdLocal2:AssetMgmt-AssetId" />
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.siebel.com/xml/Asset_Management_IO/Data">
+      <xsd:annotation>
+        <xsd:documentation>Copyright (C) 2001-2004 Siebel Systems, Inc. All rights reserved. Siebel XSD Generation</xsd:documentation>
+      </xsd:annotation>
+      <xsd:element name="ListOfAsset_Management_Io" type="xsdLocal1:ListOfAsset_Management_IoData" />
+      <xsd:complexType name="ListOfAsset_Management_IoTopElmtData">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="ListOfAsset_Management_Io" type="xsdLocal1:ListOfAsset_Management_IoData" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ListOfAsset_Management_IoData">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="AssetMgmt-Asset" type="xsdLocal1:AssetMgmt-AssetData" />
+        </xsd:sequence>
+        <xsd:attribute name="lastpage" type="xsd:boolean" />
+        <xsd:attribute name="recordcount" type="xsd:integer" />
+      </xsd:complexType>
+      <xsd:complexType name="AssetMgmt-AssetData">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="Id" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Created" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Updated" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ConflictId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ModId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AccountCompetitor" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AccountIntegrationId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AccountLocation" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AccountName" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AccountOrgId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AccountPrimaryAddress" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AccountPrimaryAddressId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AccountPrimaryAddressLine2" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AccountPrimaryCity" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AccountPrimaryCompleteAddress" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AccountPrimaryCountry" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AccountPrimaryServiceAgreementId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AccountPrimaryState" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AccountPrimaryZip" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AccountingMethod" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ActionCode" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AdjustedListPrice" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AdjustedValue" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AssetAge" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AssetCategory" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AssetCurrencyCode" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AssetDescription" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AssetId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AssetLabel" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AssetNumber" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AssetValue" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AssetValueExchangeDate" type="xsd:date" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="BasePrice" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="BillingAccount" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="BillingAccountId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="BucketID" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Build" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="CDAPagesetId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="CfgLatestReleasedFlag" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="CfgReleasedFlag" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="CfgStateCode" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="CfgType" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="CfgVersion" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ChangeinValue" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Comments" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="CommitmentCoveredFlag" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="CompoundProductFlag" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="CompoundProductNumber" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Condition" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ConfigurationModelId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ConvertToAgreementFlag" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ConvertToAssetFlag" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="CostList" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="CostListId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="CurrencyCode" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="CustomizableFlag" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="DaysOn-Hand" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="DiscountAmount" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="DiscountPercent" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="DomainName" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="DueDate" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="EffectiveEndDate" type="xsd:date" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="EligibilityReason" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="EligibilityStatus" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="EndDate" type="xsd:date" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ExchangeDate" type="xsd:date" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ExcludePricingFlag" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ExplorerLabel" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ExtendedQuantity" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ForcastableFlag" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="HasChildren" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="HasGenericsFlag" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="HouseholdNumber" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="InclusiveEligibilityFlag" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="InstallDate" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="IntegrationId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="InternalAssetFlag" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="InventoryLocation" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="InventoryLocationId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="IsExpanded" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ItemType" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ItemType-LanguageIndependent" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="License" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="LicenseNumber" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="LineNumber" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="MeterCount" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="MfgDate" type="xsd:date" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Name" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="NetworkElementType" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Node" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="OperatingStatus" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Options" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="OrderAccountId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="OrderHeaderId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="OrderIntegrationId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Organization" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="OrganizationId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="OrganizationalUnitAddressId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="OriginalCost" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="OriginalOrderId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="OutlineNumber" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Owner" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="OwnerAccountId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="OwnerAssetNumber" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="OwnerContactId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="OwnerFirstName" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="OwnerLastName" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="OwnerName" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Ownership" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ParentAssetId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ParentAssetNumber" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PersonalAddress" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PersonalAddressId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PersonalCity" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PersonalCountry" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PersonalState" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PersonalZip" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PostPickCD" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PrePickCD" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PriceListId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PriceType" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PrimaryContactAccountId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PrimaryContactId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PrimaryEmployeeId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PrimaryWarrantyCoverageId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PrimaryWarrantyEndDate" type="xsd:date" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PrimaryWarrantyName" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PrimaryWarrantyStartDate" type="xsd:date" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PrimaryWarrantyType" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PrimaryWarranyId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ProdItemId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ProdPromId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ProdPromInstanceId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ProdPromName" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ProdPromRuleId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ProdPromSourceId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ProductBuild" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ProductDefTypeCode" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ProductDescription" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ProductEffectiveFrom" type="xsd:date" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ProductEffectiveTo" type="xsd:date" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ProductId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ProductInventoryId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ProductName" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ProductPartNumber" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ProductPortId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ProductPrimaryProductLine" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ProductPrimaryProductLineId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ProductSerializedFlag" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ProductType" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ProductVersion" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ProductXAClassId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PurchaseDate" type="xsd:date" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PurchaseLocationDescription" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Quantity" type="xsd:int" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="QuoteId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="QuoteIntegrationId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ReferenceFlag" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ReferenceNumber2" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ReferenceNumber3" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="RegisteredDate" type="xsd:date" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ReplacementValue" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="RootAssetId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="RootAssetNumber" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="RootCfgLatestReleasedFlag" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="RootCfgType" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="RootIntegrationId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="RootProductDefTypeCode" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="RootProductId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ScenarioTestFlag" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="SerialNumber" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="SerialNumberVerifiedFlag" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ServiceAccount" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ServiceAccountId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ShipDate" type="xsd:date" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="SmartPartNumber" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="StartDate" type="xsd:date" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Status" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ToNode" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ToServiceAccount" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ToServiceAccountId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ToolFlag" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="UnitPrice" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="UnitofMeasure" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="VODRowId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ValidationDate" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ValidationStatus" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ValueBasis" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Version" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="WarrantyEndDate" type="xsd:date" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="WarrantyStartDate" type="xsd:date" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="WarrantyType" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Type" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="BillingProfileName" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="BillingProfileId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="AssetMgmt-Asset" type="xsdLocal1:AssetMgmt-AssetData" />
+        </xsd:sequence>
+        <xsd:attribute name="operation" type="xsd:string" />
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.siebel.com/Service/FS/Assets">
+      <xsd:import namespace="http://www.siebel.com/xml/Asset_Management_IO/Query" />
+      <xsd:import namespace="http://www.siebel.com/xml/Asset_Management_IO/Id" />
+      <xsd:import namespace="http://www.siebel.com/xml/Asset_Management_IO/Data" />
+      <xsd:element name="AssetManagementUpdate_Input">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="xsdLocal1:ListOfAsset_Management_Io" />
+            <xsd:element name="LOVLanguageMode" type="xsd:string" />
+            <xsd:element minOccurs="0" name="ViewMode" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AssetManagementUpdate_Output">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="xsdLocal2:ListOfAsset_Management_Io" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AssetManagementQueryPage_Input">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="NamedSearchSpec" type="xsd:string" />
+            <xsd:element minOccurs="0" ref="xsdLocal3:ListOfAsset_Management_Io" />
+            <xsd:element name="LOVLanguageMode" type="xsd:string" />
+            <xsd:element minOccurs="0" name="ViewMode" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AssetManagementQueryPage_Output">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="xsdLocal1:ListOfAsset_Management_Io" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AssetManagementInsert_Input">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="xsdLocal1:ListOfAsset_Management_Io" />
+            <xsd:element name="LOVLanguageMode" type="xsd:string" />
+            <xsd:element minOccurs="0" name="ViewMode" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="AssetManagementInsert_Output">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="xsdLocal2:ListOfAsset_Management_Io" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </types>
+  <message name="AssetManagementUpdate_Input">
+    <part name="AssetManagementUpdate_Input" element="tns:AssetManagementUpdate_Input" />
+  </message>
+  <message name="AssetManagementUpdate_Output">
+    <part name="AssetManagementUpdate_Output" element="tns:AssetManagementUpdate_Output" />
+  </message>
+  <message name="AssetManagementQueryPage_Input">
+    <part name="AssetManagementQueryPage_Input" element="tns:AssetManagementQueryPage_Input" />
+  </message>
+  <message name="AssetManagementQueryPage_Output">
+    <part name="AssetManagementQueryPage_Output" element="tns:AssetManagementQueryPage_Output" />
+  </message>
+  <message name="AssetManagementInsert_Input">
+    <part name="AssetManagementInsert_Input" element="tns:AssetManagementInsert_Input" />
+  </message>
+  <message name="AssetManagementInsert_Output">
+    <part name="AssetManagementInsert_Output" element="tns:AssetManagementInsert_Output" />
+  </message>
+  <portType name="AssetManagementPort">
+    <operation name="AssetManagementUpdate">
+      <input message="tns:AssetManagementUpdate_Input" />
+      <output message="tns:AssetManagementUpdate_Output" />
+    </operation>
+    <operation name="AssetManagementQueryPage">
+      <input message="tns:AssetManagementQueryPage_Input" />
+      <output message="tns:AssetManagementQueryPage_Output" />
+    </operation>
+    <operation name="AssetManagementInsert">
+      <input message="tns:AssetManagementInsert_Input" />
+      <output message="tns:AssetManagementInsert_Output" />
+    </operation>
+  </portType>
+  <binding name="AssetManagementPort" type="tns:AssetManagementPort">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="AssetManagementUpdate">
+      <soap:operation soapAction="document/http://www.siebel.com/Service/FS/Assets:AssetManagementUpdate" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="AssetManagementQueryPage">
+      <soap:operation soapAction="document/http://www.siebel.com/Service/FS/Assets:AssetManagementQueryPage" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="AssetManagementInsert">
+      <soap:operation soapAction="document/http://www.siebel.com/Service/FS/Assets:AssetManagementInsert" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="AssetManagement">
+    <port name="AssetManagementPort" binding="tns:AssetManagementPort">
+      <soap:address location="http://slc02wps.us.oracle.com/eai_enu/start.swe?SWEExtSource=WebService&amp;SWEExtCmd=Execute" />
+    </port>
+  </service>
+</definitions>

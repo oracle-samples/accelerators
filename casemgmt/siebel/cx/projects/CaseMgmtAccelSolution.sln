@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Accelerator.Siebel.ServiceStatusBarAddIn", "Accelerator.Siebel.ServiceStatusBarAddIn\Accelerator.Siebel.ServiceStatusBarAddIn.csproj", "{7BF7AEFE-6C6D-47A6-8616-01248666C9AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Accelerator.Siebel.ServiceRequestAddin", "Accelerator.Siebel.ServiceRequestAddin\Accelerator.Siebel.ServiceRequestAddin.csproj", "{B52EECC2-13D1-4F6B-9B5F-B19B112815C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Accelerator.Siebel.ReportTablesAddIn", "Accelerator.Siebel.ReportTablesAddIn\Accelerator.Siebel.ReportTablesAddIn.csproj", "{5A68CD8D-E825-40B5-9E2C-79183FEEBC4E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Accelerator.Siebel.ContactSearchAddin", "Accelerator.Siebel.ContactSearchAddIn\Accelerator.Siebel.ContactSearchAddin.csproj", "{1BF980DB-B48D-43B9-8F25-D46E5945B6E5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7BF7AEFE-6C6D-47A6-8616-01248666C9AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BF7AEFE-6C6D-47A6-8616-01248666C9AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BF7AEFE-6C6D-47A6-8616-01248666C9AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BF7AEFE-6C6D-47A6-8616-01248666C9AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B52EECC2-13D1-4F6B-9B5F-B19B112815C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B52EECC2-13D1-4F6B-9B5F-B19B112815C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B52EECC2-13D1-4F6B-9B5F-B19B112815C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B52EECC2-13D1-4F6B-9B5F-B19B112815C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A68CD8D-E825-40B5-9E2C-79183FEEBC4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A68CD8D-E825-40B5-9E2C-79183FEEBC4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A68CD8D-E825-40B5-9E2C-79183FEEBC4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A68CD8D-E825-40B5-9E2C-79183FEEBC4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BF980DB-B48D-43B9-8F25-D46E5945B6E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BF980DB-B48D-43B9-8F25-D46E5945B6E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BF980DB-B48D-43B9-8F25-D46E5945B6E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BF980DB-B48D-43B9-8F25-D46E5945B6E5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

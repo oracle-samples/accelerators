@@ -1,0 +1,43 @@
+################################################################################################
+#  This file is part of the Oracle Service Cloud Accelerator Reference Integration set published
+#  by Oracle Service Cloud under the MIT license (MIT) included in the original distribution.
+#  Copyright (c) 2014, 2015, Oracle and/or its affiliates. All rights reserved.
+################################################################################################
+#  Accelerator Package: OSVC Contact Center + Siebel Case Management Accelerator
+#  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
+#  OSvC release: 15.5 (May 2015)
+#  Siebel release: 8.1.1.15
+#  reference: 141216-000121
+#  date: Wed Sep  2 23:14:34 PDT 2015
+
+#  revision: rnw-15-8-fixes-release-01
+#  SHA1: $Id: 1b2c1cdbd4d217d8c4672ba727692430cd03894d $
+################################################################################################
+#  File: info.yml
+################################################################################################
+version: "1.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+attributes:
+  get_sr_detail_ajax_endpoint:
+    name: get_sr_detail_ajax_endpoint
+    type: ajax
+    description: Default AJAX endpoint
+    default: /ci/ajax/widget
+    required: false
+  timeout:
+    name: rn:msg:TIMEOUT_LBL
+    description: time out for the getSRDetail Ajax call
+    type: INT
+    default: 10000
+    min: 0
+  ajax_failure_message:
+    name: ajax_failure_message
+    description: error message displayed when ajax failed
+    default: 'We are experiencing technical difficulty communicating with the server. Please try again later.'
+    type: STRING
+discription:
+    GetSrDetail widget fetches Service Request detail by calling getSRDetailByID in SiebelServiceRequest Custom Model.
+    It displays a loading spinner during the communication and fires an event after the response returned.

@@ -3,14 +3,14 @@
  *  by Oracle Service Cloud under the MIT license (MIT) included in the original distribution.
  *  Copyright (c) 2014, 2015, Oracle and/or its affiliates. All rights reserved.
  ***********************************************************************************************
- *  Accelerator Package: OSVC WSS + EBS Case Management Accelerator
- *  link: http://www-content.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
- *  OSvC release: 15.2 (February 2015)
+ *  Accelerator Package: OSVC + EBS Enhancement
+ *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
+ *  OSvC release: 15.5 (May 2015)
  *  EBS release: 12.1.3
- *  reference: 140626-000078
- *  date: Fri May 15 13:41:41 PDT 2015
+ *  reference: 150202-000157
+ *  date: Wed Sep  2 23:11:32 PDT 2015
 
- *  revision: rnw-15-2-fixes-release-01
+ *  revision: rnw-15-8-fixes-release-01
  *  SHA1: $Id: b1103685b45d31f53ed58a6950d0c981c623038e $
  * *********************************************************************************************
  *  File: logic.js

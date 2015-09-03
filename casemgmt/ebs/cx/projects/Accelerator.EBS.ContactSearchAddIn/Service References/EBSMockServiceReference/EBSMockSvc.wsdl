@@ -1,0 +1,706 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="EBSMockSvc" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://schemas.datacontract.org/2004/07/EBSMockSvcLib" />
+      <xs:element name="SaveSR">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/EBSMockSvcLib" minOccurs="0" name="req" nillable="true" type="q1:MockEBSServiceRequest" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SaveSRResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/EBSMockSvcLib" minOccurs="0" name="SaveSRResult" nillable="true" type="q2:SROutputParameters" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="LookupSR">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="sr_id" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="LookupSRResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/EBSMockSvcLib" minOccurs="0" name="LookupSRResult" nillable="true" type="q3:MockEBSServiceRequest" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="wssLookupSRBySR_ID">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="sr_id" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="contactPartyID" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="wssLookupSRBySR_IDResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/EBSMockSvcLib" minOccurs="0" name="wssLookupSRBySR_IDResult" nillable="true" type="q4:MockEBSServiceRequest" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="cxLookupContactDetailsByPartyID">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="contactPartyID" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="cxLookupContactDetailsByPartyIDResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/EBSMockSvcLib" minOccurs="0" name="cxLookupContactDetailsByPartyIDResult" nillable="true" type="q5:MockEBSContact" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="cxLookupContact">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="phone" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="fn" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="ln" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="cxLookupContactResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/EBSMockSvcLib" minOccurs="0" name="cxLookupContactResult" nillable="true" type="q6:ArrayOfMockEBSContact" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="wssLookupSRsByContactPartyID">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="contact_id" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="maxRows" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="wssLookupSRsByContactPartyIDResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/EBSMockSvcLib" minOccurs="0" name="wssLookupSRsByContactPartyIDResult" nillable="true" type="q7:ArrayOfMockEBSServiceRequest" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="wssLookupSRsByContactPartyIDNoAuth">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="contact_id" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="maxRows" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="wssLookupSRsByContactPartyIDNoAuthResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/EBSMockSvcLib" minOccurs="0" name="wssLookupSRsByContactPartyIDNoAuthResult" nillable="true" type="q8:ArrayOfMockEBSServiceRequest" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="wssLookupInteractionsBySR_ID">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="sr_id" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="contactPartyID" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="maxRows" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="wssLookupInteractionsBySR_IDResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/EBSMockSvcLib" minOccurs="0" name="wssLookupInteractionsBySR_IDResult" nillable="true" type="q9:ArrayOfMockEBSInteraction" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="LookupRepairOrder">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="repair_line_id" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="LookupRepairOrderResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/EBSMockSvcLib" minOccurs="0" name="LookupRepairOrderResult" nillable="true" type="q10:MockEBSRepairOrder" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="wssCreateSR">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/EBSMockSvcLib" minOccurs="0" name="req" nillable="true" type="q11:MockEBSServiceRequest" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="wssCreateSRResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/EBSMockSvcLib" minOccurs="0" name="wssCreateSRResult" nillable="true" type="q12:SROutputParameters" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="wssUpdateSR">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/EBSMockSvcLib" minOccurs="0" name="req" nillable="true" type="q13:MockEBSServiceRequest" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="wssUpdateSRResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/EBSMockSvcLib" minOccurs="0" name="wssUpdateSRResult" nillable="true" type="q14:SROutputParameters" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SaveRepairOrder">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/EBSMockSvcLib" minOccurs="0" name="repair_order" nillable="true" type="q15:MockEBSRepairOrder" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SaveRepairOrderResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/EBSMockSvcLib" minOccurs="0" name="SaveRepairOrderResult" nillable="true" type="q16:RepairOrderOutputParameters" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="VerifyInstallation">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="VerifyInstallationResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="VerifyInstallationResult" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="LookupAllSR">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="LookupAllSRResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/EBSMockSvcLib" minOccurs="0" name="LookupAllSRResult" nillable="true" type="q17:ArrayOfMockEBSServiceRequest" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CreateContact">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/EBSMockSvcLib" minOccurs="0" name="req" nillable="true" type="q18:MockEBSContact" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CreateContactResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/EBSMockSvcLib" minOccurs="0" name="CreateContactResult" nillable="true" type="q19:ContactOutputParameters" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="wssCreateInteractionsForSR_ID">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/EBSMockSvcLib" minOccurs="0" name="req" nillable="true" type="q20:MockEBSInteraction" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="wssCreateInteractionsForSR_IDResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/EBSMockSvcLib" minOccurs="0" name="wssCreateInteractionsForSR_IDResult" nillable="true" type="q21:InteractionOutputParameters" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="anyType" nillable="true" type="xs:anyType" />
+      <xs:element name="anyURI" nillable="true" type="xs:anyURI" />
+      <xs:element name="base64Binary" nillable="true" type="xs:base64Binary" />
+      <xs:element name="boolean" nillable="true" type="xs:boolean" />
+      <xs:element name="byte" nillable="true" type="xs:byte" />
+      <xs:element name="dateTime" nillable="true" type="xs:dateTime" />
+      <xs:element name="decimal" nillable="true" type="xs:decimal" />
+      <xs:element name="double" nillable="true" type="xs:double" />
+      <xs:element name="float" nillable="true" type="xs:float" />
+      <xs:element name="int" nillable="true" type="xs:int" />
+      <xs:element name="long" nillable="true" type="xs:long" />
+      <xs:element name="QName" nillable="true" type="xs:QName" />
+      <xs:element name="short" nillable="true" type="xs:short" />
+      <xs:element name="string" nillable="true" type="xs:string" />
+      <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte" />
+      <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt" />
+      <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong" />
+      <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort" />
+      <xs:element name="char" nillable="true" type="tns:char" />
+      <xs:simpleType name="char">
+        <xs:restriction base="xs:int" />
+      </xs:simpleType>
+      <xs:element name="duration" nillable="true" type="tns:duration" />
+      <xs:simpleType name="duration">
+        <xs:restriction base="xs:duration">
+          <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?" />
+          <xs:minInclusive value="-P10675199DT2H48M5.4775808S" />
+          <xs:maxInclusive value="P10675199DT2H48M5.4775807S" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="guid" nillable="true" type="tns:guid" />
+      <xs:simpleType name="guid">
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:attribute name="FactoryType" type="xs:QName" />
+      <xs:attribute name="Id" type="xs:ID" />
+      <xs:attribute name="Ref" type="xs:IDREF" />
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/EBSMockSvcLib" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/EBSMockSvcLib" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="MockEBSServiceRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ContactID" type="xs:long" />
+          <xs:element minOccurs="0" name="ContractID" type="xs:long" />
+          <xs:element minOccurs="0" name="ErrorMessage" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IncidentID" type="xs:long" />
+          <xs:element minOccurs="0" name="IncidentOccurredDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="IncidentRef" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Notes" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Owner" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RequestDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="RequestID" type="xs:long" />
+          <xs:element minOccurs="0" name="RequestNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RequestType" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RequestTypeID" type="xs:long" />
+          <xs:element minOccurs="0" name="SerialNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Severity" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SeverityID" type="xs:long" />
+          <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="StatusID" type="xs:long" />
+          <xs:element minOccurs="0" name="Summary" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="MockEBSServiceRequest" nillable="true" type="tns:MockEBSServiceRequest" />
+      <xs:complexType name="SROutputParameters">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Error_Message" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Request_ID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="SROutputParameters" nillable="true" type="tns:SROutputParameters" />
+      <xs:complexType name="MockEBSContact">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ContactID" type="xs:long" />
+          <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ErrorMessage" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PhoneNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="MockEBSContact" nillable="true" type="tns:MockEBSContact" />
+      <xs:complexType name="ArrayOfMockEBSContact">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="MockEBSContact" nillable="true" type="tns:MockEBSContact" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfMockEBSContact" nillable="true" type="tns:ArrayOfMockEBSContact" />
+      <xs:complexType name="ArrayOfMockEBSServiceRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="MockEBSServiceRequest" nillable="true" type="tns:MockEBSServiceRequest" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfMockEBSServiceRequest" nillable="true" type="tns:ArrayOfMockEBSServiceRequest" />
+      <xs:complexType name="ArrayOfMockEBSInteraction">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="MockEBSInteraction" nillable="true" type="tns:MockEBSInteraction" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfMockEBSInteraction" nillable="true" type="tns:ArrayOfMockEBSInteraction" />
+      <xs:complexType name="MockEBSInteraction">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Author" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Channel" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Content" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Created" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="ErrorMessage" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="InteractionID" type="xs:long" />
+          <xs:element minOccurs="0" name="SrID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="MockEBSInteraction" nillable="true" type="tns:MockEBSInteraction" />
+      <xs:complexType name="MockEBSRepairOrder">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ApprovalRequired" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ApprovalStatus" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Currency" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CustomerProductID" type="xs:long" />
+          <xs:element minOccurs="0" name="ErrorMessage" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IncidentID" type="xs:long" />
+          <xs:element minOccurs="0" name="InventoryItemID" type="xs:long" />
+          <xs:element minOccurs="0" name="ProblemDescription" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Quantity" type="xs:long" />
+          <xs:element minOccurs="0" name="RepairLineID" type="xs:long" />
+          <xs:element minOccurs="0" name="RepairNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RepairTypeID" type="xs:long" />
+          <xs:element minOccurs="0" name="ResourceID" type="xs:long" />
+          <xs:element minOccurs="0" name="UnitOfMeasure" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="MockEBSRepairOrder" nillable="true" type="tns:MockEBSRepairOrder" />
+      <xs:complexType name="RepairOrderOutputParameters">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Error_Message" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Repair_Line_ID" type="xs:long" />
+          <xs:element minOccurs="0" name="Repair_Number" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="RepairOrderOutputParameters" nillable="true" type="tns:RepairOrderOutputParameters" />
+      <xs:complexType name="ContactOutputParameters">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ContactID" type="xs:long" />
+          <xs:element minOccurs="0" name="Error_Message" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ContactOutputParameters" nillable="true" type="tns:ContactOutputParameters" />
+      <xs:complexType name="InteractionOutputParameters">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Error_Message" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="InteractionID" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="InteractionOutputParameters" nillable="true" type="tns:InteractionOutputParameters" />
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="IEBSMockSvc_SaveSR_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveSR" />
+  </wsdl:message>
+  <wsdl:message name="IEBSMockSvc_SaveSR_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveSRResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEBSMockSvc_LookupSR_InputMessage">
+    <wsdl:part name="parameters" element="tns:LookupSR" />
+  </wsdl:message>
+  <wsdl:message name="IEBSMockSvc_LookupSR_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LookupSRResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEBSMockSvc_wssLookupSRBySR_ID_InputMessage">
+    <wsdl:part name="parameters" element="tns:wssLookupSRBySR_ID" />
+  </wsdl:message>
+  <wsdl:message name="IEBSMockSvc_wssLookupSRBySR_ID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:wssLookupSRBySR_IDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEBSMockSvc_cxLookupContactDetailsByPartyID_InputMessage">
+    <wsdl:part name="parameters" element="tns:cxLookupContactDetailsByPartyID" />
+  </wsdl:message>
+  <wsdl:message name="IEBSMockSvc_cxLookupContactDetailsByPartyID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:cxLookupContactDetailsByPartyIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEBSMockSvc_cxLookupContact_InputMessage">
+    <wsdl:part name="parameters" element="tns:cxLookupContact" />
+  </wsdl:message>
+  <wsdl:message name="IEBSMockSvc_cxLookupContact_OutputMessage">
+    <wsdl:part name="parameters" element="tns:cxLookupContactResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEBSMockSvc_wssLookupSRsByContactPartyID_InputMessage">
+    <wsdl:part name="parameters" element="tns:wssLookupSRsByContactPartyID" />
+  </wsdl:message>
+  <wsdl:message name="IEBSMockSvc_wssLookupSRsByContactPartyID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:wssLookupSRsByContactPartyIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEBSMockSvc_wssLookupSRsByContactPartyIDNoAuth_InputMessage">
+    <wsdl:part name="parameters" element="tns:wssLookupSRsByContactPartyIDNoAuth" />
+  </wsdl:message>
+  <wsdl:message name="IEBSMockSvc_wssLookupSRsByContactPartyIDNoAuth_OutputMessage">
+    <wsdl:part name="parameters" element="tns:wssLookupSRsByContactPartyIDNoAuthResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEBSMockSvc_wssLookupInteractionsBySR_ID_InputMessage">
+    <wsdl:part name="parameters" element="tns:wssLookupInteractionsBySR_ID" />
+  </wsdl:message>
+  <wsdl:message name="IEBSMockSvc_wssLookupInteractionsBySR_ID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:wssLookupInteractionsBySR_IDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEBSMockSvc_LookupRepairOrder_InputMessage">
+    <wsdl:part name="parameters" element="tns:LookupRepairOrder" />
+  </wsdl:message>
+  <wsdl:message name="IEBSMockSvc_LookupRepairOrder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LookupRepairOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEBSMockSvc_wssCreateSR_InputMessage">
+    <wsdl:part name="parameters" element="tns:wssCreateSR" />
+  </wsdl:message>
+  <wsdl:message name="IEBSMockSvc_wssCreateSR_OutputMessage">
+    <wsdl:part name="parameters" element="tns:wssCreateSRResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEBSMockSvc_wssUpdateSR_InputMessage">
+    <wsdl:part name="parameters" element="tns:wssUpdateSR" />
+  </wsdl:message>
+  <wsdl:message name="IEBSMockSvc_wssUpdateSR_OutputMessage">
+    <wsdl:part name="parameters" element="tns:wssUpdateSRResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEBSMockSvc_SaveRepairOrder_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveRepairOrder" />
+  </wsdl:message>
+  <wsdl:message name="IEBSMockSvc_SaveRepairOrder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveRepairOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEBSMockSvc_VerifyInstallation_InputMessage">
+    <wsdl:part name="parameters" element="tns:VerifyInstallation" />
+  </wsdl:message>
+  <wsdl:message name="IEBSMockSvc_VerifyInstallation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:VerifyInstallationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEBSMockSvc_LookupAllSR_InputMessage">
+    <wsdl:part name="parameters" element="tns:LookupAllSR" />
+  </wsdl:message>
+  <wsdl:message name="IEBSMockSvc_LookupAllSR_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LookupAllSRResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEBSMockSvc_CreateContact_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateContact" />
+  </wsdl:message>
+  <wsdl:message name="IEBSMockSvc_CreateContact_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateContactResponse" />
+  </wsdl:message>
+  <wsdl:message name="IEBSMockSvc_wssCreateInteractionsForSR_ID_InputMessage">
+    <wsdl:part name="parameters" element="tns:wssCreateInteractionsForSR_ID" />
+  </wsdl:message>
+  <wsdl:message name="IEBSMockSvc_wssCreateInteractionsForSR_ID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:wssCreateInteractionsForSR_IDResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IEBSMockSvc">
+    <wsdl:operation name="SaveSR">
+      <wsdl:input wsam:Action="http://tempuri.org/IEBSMockSvc/SaveSR" message="tns:IEBSMockSvc_SaveSR_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IEBSMockSvc/SaveSRResponse" message="tns:IEBSMockSvc_SaveSR_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LookupSR">
+      <wsdl:input wsam:Action="http://tempuri.org/IEBSMockSvc/LookupSR" message="tns:IEBSMockSvc_LookupSR_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IEBSMockSvc/LookupSRResponse" message="tns:IEBSMockSvc_LookupSR_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="wssLookupSRBySR_ID">
+      <wsdl:input wsam:Action="http://tempuri.org/IEBSMockSvc/wssLookupSRBySR_ID" message="tns:IEBSMockSvc_wssLookupSRBySR_ID_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IEBSMockSvc/wssLookupSRBySR_IDResponse" message="tns:IEBSMockSvc_wssLookupSRBySR_ID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="cxLookupContactDetailsByPartyID">
+      <wsdl:input wsam:Action="http://tempuri.org/IEBSMockSvc/cxLookupContactDetailsByPartyID" message="tns:IEBSMockSvc_cxLookupContactDetailsByPartyID_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IEBSMockSvc/cxLookupContactDetailsByPartyIDResponse" message="tns:IEBSMockSvc_cxLookupContactDetailsByPartyID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="cxLookupContact">
+      <wsdl:input wsam:Action="http://tempuri.org/IEBSMockSvc/cxLookupContact" message="tns:IEBSMockSvc_cxLookupContact_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IEBSMockSvc/cxLookupContactResponse" message="tns:IEBSMockSvc_cxLookupContact_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="wssLookupSRsByContactPartyID">
+      <wsdl:input wsam:Action="http://tempuri.org/IEBSMockSvc/wssLookupSRsByContactPartyID" message="tns:IEBSMockSvc_wssLookupSRsByContactPartyID_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IEBSMockSvc/wssLookupSRsByContactPartyIDResponse" message="tns:IEBSMockSvc_wssLookupSRsByContactPartyID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="wssLookupSRsByContactPartyIDNoAuth">
+      <wsdl:input wsam:Action="http://tempuri.org/IEBSMockSvc/wssLookupSRsByContactPartyIDNoAuth" message="tns:IEBSMockSvc_wssLookupSRsByContactPartyIDNoAuth_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IEBSMockSvc/wssLookupSRsByContactPartyIDNoAuthResponse" message="tns:IEBSMockSvc_wssLookupSRsByContactPartyIDNoAuth_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="wssLookupInteractionsBySR_ID">
+      <wsdl:input wsam:Action="http://tempuri.org/IEBSMockSvc/wssLookupInteractionsBySR_ID" message="tns:IEBSMockSvc_wssLookupInteractionsBySR_ID_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IEBSMockSvc/wssLookupInteractionsBySR_IDResponse" message="tns:IEBSMockSvc_wssLookupInteractionsBySR_ID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LookupRepairOrder">
+      <wsdl:input wsam:Action="http://tempuri.org/IEBSMockSvc/LookupRepairOrder" message="tns:IEBSMockSvc_LookupRepairOrder_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IEBSMockSvc/LookupRepairOrderResponse" message="tns:IEBSMockSvc_LookupRepairOrder_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="wssCreateSR">
+      <wsdl:input wsam:Action="http://tempuri.org/IEBSMockSvc/wssCreateSR" message="tns:IEBSMockSvc_wssCreateSR_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IEBSMockSvc/wssCreateSRResponse" message="tns:IEBSMockSvc_wssCreateSR_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="wssUpdateSR">
+      <wsdl:input wsam:Action="http://tempuri.org/IEBSMockSvc/wssUpdateSR" message="tns:IEBSMockSvc_wssUpdateSR_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IEBSMockSvc/wssUpdateSRResponse" message="tns:IEBSMockSvc_wssUpdateSR_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveRepairOrder">
+      <wsdl:input wsam:Action="http://tempuri.org/IEBSMockSvc/SaveRepairOrder" message="tns:IEBSMockSvc_SaveRepairOrder_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IEBSMockSvc/SaveRepairOrderResponse" message="tns:IEBSMockSvc_SaveRepairOrder_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="VerifyInstallation">
+      <wsdl:input wsam:Action="http://tempuri.org/IEBSMockSvc/VerifyInstallation" message="tns:IEBSMockSvc_VerifyInstallation_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IEBSMockSvc/VerifyInstallationResponse" message="tns:IEBSMockSvc_VerifyInstallation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LookupAllSR">
+      <wsdl:input wsam:Action="http://tempuri.org/IEBSMockSvc/LookupAllSR" message="tns:IEBSMockSvc_LookupAllSR_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IEBSMockSvc/LookupAllSRResponse" message="tns:IEBSMockSvc_LookupAllSR_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateContact">
+      <wsdl:input wsam:Action="http://tempuri.org/IEBSMockSvc/CreateContact" message="tns:IEBSMockSvc_CreateContact_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IEBSMockSvc/CreateContactResponse" message="tns:IEBSMockSvc_CreateContact_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="wssCreateInteractionsForSR_ID">
+      <wsdl:input wsam:Action="http://tempuri.org/IEBSMockSvc/wssCreateInteractionsForSR_ID" message="tns:IEBSMockSvc_wssCreateInteractionsForSR_ID_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IEBSMockSvc/wssCreateInteractionsForSR_IDResponse" message="tns:IEBSMockSvc_wssCreateInteractionsForSR_ID_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IEBSMockSvc" type="tns:IEBSMockSvc">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SaveSR">
+      <soap:operation soapAction="http://tempuri.org/IEBSMockSvc/SaveSR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LookupSR">
+      <soap:operation soapAction="http://tempuri.org/IEBSMockSvc/LookupSR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="wssLookupSRBySR_ID">
+      <soap:operation soapAction="http://tempuri.org/IEBSMockSvc/wssLookupSRBySR_ID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cxLookupContactDetailsByPartyID">
+      <soap:operation soapAction="http://tempuri.org/IEBSMockSvc/cxLookupContactDetailsByPartyID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cxLookupContact">
+      <soap:operation soapAction="http://tempuri.org/IEBSMockSvc/cxLookupContact" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="wssLookupSRsByContactPartyID">
+      <soap:operation soapAction="http://tempuri.org/IEBSMockSvc/wssLookupSRsByContactPartyID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="wssLookupSRsByContactPartyIDNoAuth">
+      <soap:operation soapAction="http://tempuri.org/IEBSMockSvc/wssLookupSRsByContactPartyIDNoAuth" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="wssLookupInteractionsBySR_ID">
+      <soap:operation soapAction="http://tempuri.org/IEBSMockSvc/wssLookupInteractionsBySR_ID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LookupRepairOrder">
+      <soap:operation soapAction="http://tempuri.org/IEBSMockSvc/LookupRepairOrder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="wssCreateSR">
+      <soap:operation soapAction="http://tempuri.org/IEBSMockSvc/wssCreateSR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="wssUpdateSR">
+      <soap:operation soapAction="http://tempuri.org/IEBSMockSvc/wssUpdateSR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveRepairOrder">
+      <soap:operation soapAction="http://tempuri.org/IEBSMockSvc/SaveRepairOrder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerifyInstallation">
+      <soap:operation soapAction="http://tempuri.org/IEBSMockSvc/VerifyInstallation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LookupAllSR">
+      <soap:operation soapAction="http://tempuri.org/IEBSMockSvc/LookupAllSR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateContact">
+      <soap:operation soapAction="http://tempuri.org/IEBSMockSvc/CreateContact" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="wssCreateInteractionsForSR_ID">
+      <soap:operation soapAction="http://tempuri.org/IEBSMockSvc/wssCreateInteractionsForSR_ID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EBSMockSvc">
+    <wsdl:port name="BasicHttpBinding_IEBSMockSvc" binding="tns:BasicHttpBinding_IEBSMockSvc">
+      <soap:address location="http://localhost:9000/EBSMockSvc/soap" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

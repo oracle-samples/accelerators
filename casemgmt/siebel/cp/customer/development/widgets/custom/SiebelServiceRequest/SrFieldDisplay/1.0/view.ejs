@@ -1,0 +1,19 @@
+<%#
+################################################################################################
+#  $ACCELERATOR_HEADER_PLACE_HOLDER$
+#  SHA1: $Id: SHA1_ID_PLACE_HOLDER $
+################################################################################################
+#  File: $ACCELERATOR_HEADER_FILE_NAME_PLACE_HOLDER$
+################################################################################################
+%>
+<% if(data) {%>
+    <rn:block id="label">
+        <span class="rn_DataLabel"><%= data['label'] %> </span>
+    </rn:block>
+
+    <div class="rn_DataValue">
+        <rn:block id="value">
+            <%= data['value'] %>
+        </rn:block>
+    </div>
+<% } %> 

@@ -1,0 +1,48 @@
+################################################################################################
+#  This file is part of the Oracle Service Cloud Accelerator Reference Integration set published
+#  by Oracle Service Cloud under the MIT license (MIT) included in the original distribution.
+#  Copyright (c) 2014, 2015, Oracle and/or its affiliates. All rights reserved.
+################################################################################################
+#  Accelerator Package: OSVC Contact Center + Siebel Case Management Accelerator
+#  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
+#  OSvC release: 15.5 (May 2015)
+#  Siebel release: 8.1.1.15
+#  reference: 141216-000121
+#  date: Wed Sep  2 23:14:35 PDT 2015
+
+#  revision: rnw-15-8-fixes-release-01
+#  SHA1: $Id: 1984b4172125ca924258217aa80c59a688c1aab0 $
+################################################################################################
+#  File: info.yml
+################################################################################################
+version: "1.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+attributes:
+  get_interaction_ajax_endpoint:
+    name: get_interaction_ajax_endpoint
+    type: ajax
+    description: Default AJAX endpoint
+    default: /ci/ajax/widget
+    required: false
+  max_rows:
+    name: max_rows
+    type: int
+    description: The maximum number of interactions that will be displayed.
+    default: 20
+    required: false
+  timeout:
+    name: rn:msg:TIMEOUT_LBL
+    description: time out for the Ajax call
+    type: INT
+    default: 10000
+    min: 0
+  ajax_failure_message:
+    name: ajax_failure_message
+    description: error message displayed when ajax failed
+    default: 'We are experiencing technical difficulty communicating with the server. Please try again later.'
+    type: STRING
+discription:
+    SrInteractionDisplay widget displays the communication history of the Service Request.

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="1671ff7f-4932-467e-8bd4-d95d203f1348" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://day12-14801-sql-113h.dv.lan/cgi-bin/day12_14801_sql_113h.cfg/services/soap?wsdl=typed" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="RightNow.wsdl" MetadataType="Wsdl" ID="d9c4b622-bc0d-46b7-83ea-7b93402e1c23" SourceId="1" SourceUrl="https://day12-14801-sql-113h.dv.lan/cgi-bin/day12_14801_sql_113h.cfg/services/soap?wsdl=typed" />
+    <MetadataFile FileName="soap.xsd" MetadataType="Schema" ID="99588b15-512b-44e9-894b-fa3415fe11fd" SourceId="1" SourceUrl="http://day12-14801-sql-113h.dv.lan/cgi-bin/day12_14801_sql_113h.cfg/services/soap?xsd=messagestyped" />
+    <MetadataFile FileName="soap1.xsd" MetadataType="Schema" ID="8069d16f-27fc-4bf2-a1bc-ce7ace048f79" SourceId="1" SourceUrl="http://day12-14801-sql-113h.dv.lan/cgi-bin/day12_14801_sql_113h.cfg/services/soap?xsd=faults" />
+    <MetadataFile FileName="soap2.xsd" MetadataType="Schema" ID="da79e387-ed7a-4d92-8904-5cbd6e175395" SourceId="1" SourceUrl="http://day12-14801-sql-113h.dv.lan/cgi-bin/day12_14801_sql_113h.cfg/services/soap?xsd=nullfields" />
+    <MetadataFile FileName="soap3.xsd" MetadataType="Schema" ID="14fc1c8c-ed87-4511-9663-4bf588ffedc4" SourceId="1" SourceUrl="http://day12-14801-sql-113h.dv.lan/cgi-bin/day12_14801_sql_113h.cfg/services/soap?xsd=generic" />
+    <MetadataFile FileName="soap4.xsd" MetadataType="Schema" ID="6e2cfd03-b05f-44f2-956f-042212c09f7a" SourceId="1" SourceUrl="http://day12-14801-sql-113h.dv.lan/cgi-bin/day12_14801_sql_113h.cfg/services/soap?xsd=metadata" />
+    <MetadataFile FileName="soap5.xsd" MetadataType="Schema" ID="42b5cee6-eaf9-4bf7-b46d-d69d70b0c7ca" SourceId="1" SourceUrl="http://day12-14801-sql-113h.dv.lan/cgi-bin/day12_14801_sql_113h.cfg/services/soap?xsd=objects" />
+    <MetadataFile FileName="soap6.xsd" MetadataType="Schema" ID="9c868648-dffe-41d0-aeb7-1203e72650b4" SourceId="1" SourceUrl="http://day12-14801-sql-113h.dv.lan/cgi-bin/day12_14801_sql_113h.cfg/services/soap?xsd=base" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

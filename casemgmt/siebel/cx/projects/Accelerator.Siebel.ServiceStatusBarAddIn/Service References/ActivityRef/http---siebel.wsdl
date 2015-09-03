@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsdLocal1="http://www.siebel.com/xml/Action_EMR" xmlns:tns="http://siebel.com/asi/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://siebel.com/asi/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.siebel.com/xml/Action_EMR">
+      <xsd:annotation>
+        <xsd:documentation>Copyright (C) 2001-2004 Siebel Systems, Inc. All rights reserved. Siebel XSD Generation</xsd:documentation>
+      </xsd:annotation>
+      <xsd:element name="ListOfActivity" type="xsdLocal1:ListOfActivity" />
+      <xsd:complexType name="ListOfActivityTopElmt">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="ListOfActivity" type="xsdLocal1:ListOfActivity" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ListOfActivity">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Activity" type="xsdLocal1:Activity" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Activity">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="ServiceRequestId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ContactId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Id" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Created" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Updated" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ConflictId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ModId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ACDCallDuration" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Abstract" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AccountCurrencyCode" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AccountId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AccountIssueId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AccountLocation" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AccountName" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AccountSourceId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Action2" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ActivityDefectId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ActivitySRId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ActivityUID" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AgreementId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Alarm" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AlarmFired" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ApptAlarmTimeMin" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AssetId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AssetNumber" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Owner" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AssignmentExcluded" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AssociatedCost" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AttachmentFlag" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AttachmentId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Audience" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="BestAction" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="BillableFlag" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Breakableflag" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="CHAMPObjectiveId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="CRMCDTAActive" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="CalculatedActivityStatus" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="CalendarEventId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="CalendarEventId2" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="CallDuration" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="CallId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="CallMePhoneNo." type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="CampaignId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Campaign" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Class" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Description" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="CompletedFlag" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ConcatField" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ContactFullName" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ContactPerId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="CreatedById" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="CreatedByName" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="CreatedDate" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="CreatedDetail" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="CreatedFirstName" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="CreatedLastName" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="CurrencyCode" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="CurrencyCodeAtComplete" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="DayDescription" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="DefectNum" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="DefectiveTag" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="DenormAsgnFlag" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="Subject" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Display" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="DisplayEmailBody" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Division" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Done" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="DoneFlag" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Due" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Due-ServiceRegion" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="DueDate" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="DurationHours" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="DurationMinutes" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="EmailAttachmentFlag" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="EmailBCCLine" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="EmailBody" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="EmailCCLine" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="EmailCatalogId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="EmailFormat" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="EmailForwardFlag" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="EmailLanguageId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="EmailLanguageName" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="EmailManualEditFlag" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="EmailNormalizedSubject" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="EmailRecipientAddress" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="EmailRecipientName" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="EmailSenderAddress" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="EmailSenderName" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="EmailToLine" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="EndTime" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="EntitlementId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="EntitlementName" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="EstWorkTimeRemaining" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ExchangeDate" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ExchangeDateAtComplete" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ExpenseAutogenType" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ExpenseAutogenTypeA" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ExpenseAutogenTypeB" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ExpenseItemType" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ExpenseItemTypeId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ExpenseRelatedFlag" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ExpenseReportId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ExpenseReportNumber" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ExplorerLabel" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ExternalSystemId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="FullName" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="FundRequest" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="FundRequestId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="JoinedAccountId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="LastUpdated" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="LeadFirstName" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Lead" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="LeadLastName" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="LocationLevel" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ManualAsgnFlag" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Location" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="MessageId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="MessagingId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ModifiedById" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ModifiedDate" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ModifiedBy" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ModifiedFirstName" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ModifiedLastName" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="MonthDescription" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="NoSoonerThanDate" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="NoSoonerThanDate-ServiceRegion" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Opportunity" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="OpportunityCurrencyCode" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="OpportunityId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="OrderItemId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="OrigApptId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Overdue" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="OverrideType" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="OwnerFirstName" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="OwnerId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="OwnerLastName" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ParentActivityDesc" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ParentActivityId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ParentObjectiveId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Part" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PercentComplete" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PersonalCity" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PersonalCountry" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PersonalLocationId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PersonalPostalCode" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PersonalState" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PersonalStreetAddress" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PersonalStreetAddressURL" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="StartTime" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Planned-ServiceRegion" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PlannedCompletion" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PlannedCompletion-ServiceRegion" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PreviousActivityDescription" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PreviousActivityId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PriceList" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PriceListId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PrimaryAddressId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PrimaryAttachmentId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PrimaryContactFirstName" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PrimaryContactId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PrimaryContactLastName" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PrimaryOrderId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PrimaryOrganizationId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PrimaryOwnedBy" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PrimaryOwnerId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PrimaryRowIdEmpEquivalent" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="PrimarySymptomCode" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Priority" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Private" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ProductId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ProductName" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ProjectClass" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ProjectCurrencyCode" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ProjectId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ProjectItemActualEnd" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ProjectItemActualStart" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ProjectItemId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ProjectItemName" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ProjectItemParentActualEnd" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ProjectItemParentActualStart" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ProjectItemParentPlannedEnd" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ProjectItemParentPlannedStart" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ProjectItemPlannedEnd" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ProjectItemPlannedStart" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ProjectName" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ProjectNumber" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ProspectId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="RateList" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="RateListId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Region" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="RepairId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Repeating" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="RepeatingExpires" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="RepeatingMasterId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="RepeatingType" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Required" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ResolutionCode" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="RiskId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="RowStatusAsterisk" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="RowStatusOld" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="S-SInstance" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="S-SInstanceId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="S-SKeyId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="SRDescription" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ServiceRequest" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="SRStatus" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ScheduleExcluded" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="SerialNumber" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ServerOnly" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ServiceCity" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ServiceCountry" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ServiceLocationId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ServicePostalCode" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ServiceRegion" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ServiceRegionId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ServiceRegionTimeZone" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ServiceRegionTimeZoneId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ServiceState" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ServiceStreetAddress" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ServiceStreetAddressURL" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ShortComment" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="SiebelContext" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="SourceName" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Started" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Status" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="StatusReportFlag" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="SubItem" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="SuppressCalendar" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="SystemAsgnFlag" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="TemplateFlag" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ThreadId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="TimeSheetId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="TimeSheetLineId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="TimeSheetNumber" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="TimeSheetRelatedFlag" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="TimeSpan" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="TimeZoneId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="TravelTimeMin" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Type" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="TypeName" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="WebCollabDefaultType" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="WebCollabSessionHandle" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="WebCollabStartView" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="WebCollabType" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="WebphoneDescription" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="WebphoneFullName" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="WebphoneOpportunity" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="WeekDescription" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="WorkTimeMin" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="WorkItemId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="EXCH_DT" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="LeadId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="CreatedBy" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ListOfRelatedAttachment" type="xsdLocal1:ListOfRelatedAttachment" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ListOfRelatedContact" type="xsdLocal1:ListOfRelatedContact" />
+        </xsd:sequence>
+        <xsd:attribute name="operation" type="xsd:string" />
+        <xsd:attribute name="searchspec" type="xsd:string" />
+      </xsd:complexType>
+      <xsd:complexType name="ListOfRelatedAttachment">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="RelatedAttachment" type="xsdLocal1:RelatedAttachment" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="RelatedAttachment">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="LastUpdated" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="AttachmentId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="CreatedDate" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ModId" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="ActivityId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="FileExt" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="FileName" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="CreatedBy" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="CreatedById" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ModifiedBy" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Attachment" type="xsd:base64Binary" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ActivityDispFilename" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ModifiedById" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ModifiedDate" type="xsd:string" />
+        </xsd:sequence>
+        <xsd:attribute name="operation" type="xsd:string" />
+        <xsd:attribute name="searchspec" type="xsd:string" />
+      </xsd:complexType>
+      <xsd:complexType name="ListOfRelatedContact">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="RelatedContact" type="xsdLocal1:RelatedContact" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="RelatedContact">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="ContactFirstName" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ContactId" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="ContactLastName" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="CreatedDate" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="IntegrationId2" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ModifiedBy" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ModifiedById" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ModifiedDate" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="OwnerId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ModId" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="CreatedById" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="CreatedBy" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://siebel.com/asi/">
+      <xsd:import namespace="http://www.siebel.com/xml/Action_EMR" />
+      <xsd:element name="ActivityInsertMSO_Input">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="xsdLocal1:ListOfActivity" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ActivityInsertMSO_Output">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="xsdLocal1:ListOfActivity" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ActivityUpdateMSO_Input">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="xsdLocal1:ListOfActivity" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ActivityUpdateMSO_Output">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="xsdLocal1:ListOfActivity" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ActivityDeleteMSO_Input">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="xsdLocal1:ListOfActivity" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ActivityDeleteMSO_Output">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="xsdLocal1:ListOfActivity" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </types>
+  <message name="ActivityInsertMSO_Input">
+    <part name="ActivityInsertMSO_Input" element="tns:ActivityInsertMSO_Input" />
+  </message>
+  <message name="ActivityInsertMSO_Output">
+    <part name="ActivityInsertMSO_Output" element="tns:ActivityInsertMSO_Output" />
+  </message>
+  <message name="ActivityUpdateMSO_Input">
+    <part name="ActivityUpdateMSO_Input" element="tns:ActivityUpdateMSO_Input" />
+  </message>
+  <message name="ActivityUpdateMSO_Output">
+    <part name="ActivityUpdateMSO_Output" element="tns:ActivityUpdateMSO_Output" />
+  </message>
+  <message name="ActivityDeleteMSO_Input">
+    <part name="ActivityDeleteMSO_Input" element="tns:ActivityDeleteMSO_Input" />
+  </message>
+  <message name="ActivityDeleteMSO_Output">
+    <part name="ActivityDeleteMSO_Output" element="tns:ActivityDeleteMSO_Output" />
+  </message>
+  <portType name="ActivityWSPort">
+    <operation name="ActivityInsertMSO">
+      <input message="tns:ActivityInsertMSO_Input" />
+      <output message="tns:ActivityInsertMSO_Output" />
+    </operation>
+    <operation name="ActivityUpdateMSO">
+      <input message="tns:ActivityUpdateMSO_Input" />
+      <output message="tns:ActivityUpdateMSO_Output" />
+    </operation>
+    <operation name="ActivityDeleteMSO">
+      <input message="tns:ActivityDeleteMSO_Input" />
+      <output message="tns:ActivityDeleteMSO_Output" />
+    </operation>
+  </portType>
+  <binding name="ActivityWSPort" type="tns:ActivityWSPort">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="ActivityInsertMSO">
+      <soap:operation soapAction="document/http://siebel.com/asi/:ActivityInsertMSO" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="ActivityUpdateMSO">
+      <soap:operation soapAction="document/http://siebel.com/asi/:ActivityUpdateMSO" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="ActivityDeleteMSO">
+      <soap:operation soapAction="document/http://siebel.com/asi/:ActivityDeleteMSO" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="ActivityWS">
+    <port name="ActivityWSPort" binding="tns:ActivityWSPort">
+      <soap:address location="http://&lt;webserver&gt;/eai_&lt;lang&gt;/start.swe?SWEExtSource=WebService&amp;SWEExtCmd=Execute&amp;UserName=&lt;UserName&gt;&amp;Password=&lt;Password&gt;" />
+    </port>
+  </service>
+</definitions>
