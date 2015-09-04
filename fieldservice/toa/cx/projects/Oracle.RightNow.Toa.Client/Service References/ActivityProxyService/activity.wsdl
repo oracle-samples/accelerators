@@ -1,0 +1,829 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="urn:toa:activity" xmlns:xmime="http://www.w3.org/2005/05/xmlmime" name="activity" targetNamespace="urn:toa:activity" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema targetNamespace="urn:toa:activity">
+      <xsd:import schemaLocation="http://www.w3.org/2005/05/xmlmime" namespace="http://www.w3.org/2005/05/xmlmime" />
+      <xsd:complexType name="user">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="now" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="login" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="company" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="auth_string" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="property">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="name" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="value" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="work_skill">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="name" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="description" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="required_level" type="xsd:int" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="preferable_level" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="capacity_category">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="name" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="description" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="result_type">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="single" />
+          <xsd:enumeration value="list" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="activity">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="properties" type="tns:property" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="activities">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="activity" type="tns:activity" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="link">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="link_type" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="activity_id" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="resource_id" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="resource_name" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="activity_status" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="activity_identifier" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="activity_start_time" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="alerts" type="xsd:int" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="is_broken" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="min_interval" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="max_interval" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="activity_list">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="total" type="xsd:int" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="activities" type="tns:activities" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="route_start_time" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="route_end_time" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="links">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="total" type="xsd:int" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="link" type="tns:link" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="create_activity_parameters">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="user" type="tns:user" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="date" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="resource_id" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="position_in_route" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="properties" type="tns:property" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="update_activity_parameters">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="user" type="tns:user" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="activity_id" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="position_in_route" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="properties" type="tns:property" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="delay_activity_parameters">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="user" type="tns:user" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="activity_id" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="date" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="value" type="xsd:int" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="properties" type="tns:property" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="action_activity_parameters">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="user" type="tns:user" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="activity_id" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="date" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="time" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="properties" type="tns:property" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="get_route_parameters">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="user" type="tns:user" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="date" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="resource_id" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="property_filter" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="select_from" type="xsd:int" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="select_count" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="get_activity_parameters">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="user" type="tns:user" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="activity_id" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="search_activities_parameters">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="user" type="tns:user" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="search_in" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="search_for" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="date_from" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="date_to" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="select_from" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="select_count" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="order" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="property_filter" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="start_route_parameters">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="user" type="tns:user" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="resource_id" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="time" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="date" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="link_activities_parameters">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="user" type="tns:user" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="from_activity_id" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="to_activity_id" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="link_type" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="min_interval" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="max_interval" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="unlink_activities_parameters">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="user" type="tns:user" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="from_activity_id" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="to_activity_id" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="link_type" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="get_activity_links_parameters">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="user" type="tns:user" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="activity_id" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="set_file_parameters">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="user" type="tns:user" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="entity_id" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="property_id" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="file_name" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="file_data" type="xmime:base64Binary" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="file_mime_type" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="resource_preference">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="resource_id" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="type" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="set_resource_preferences_parameters">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="user" type="tns:user" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="activity_id" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="preference" type="tns:resource_preference" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="get_resource_preferences_parameters">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="user" type="tns:user" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="activity_id" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="required_inventory">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="type" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="model" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="quantity" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="set_required_inventories_parameters">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="user" type="tns:user" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="activity_id" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="required_inventory" type="tns:required_inventory" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="get_required_inventories_parameters">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="user" type="tns:user" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="activity_id" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="get_activity_work_skills_parameters">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="user" type="tns:user" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="activity_id" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="get_file_parameters">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="user" type="tns:user" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="entity_id" type="xsd:string" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="property_id" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="simple_response">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="result_code" type="xsd:int" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="error_msg" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="get_activity_links_response_element">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="result_code" type="xsd:int" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="error_msg" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="link" type="tns:link" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="activity_response">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="result_code" type="xsd:int" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="error_msg" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="activity" type="tns:activity" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="activity_list" type="tns:activity_list" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="get_file_response_element">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="result_code" type="xsd:int" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="error_msg" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="file_name" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="file_data" type="xmime:base64Binary" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="file_mime_type" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="get_resource_preferences_response">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="result_code" type="xsd:int" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="error_msg" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="preference" type="tns:resource_preference" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="get_required_inventories_response">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="result_code" type="xsd:int" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="error_msg" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="required_inventory" type="tns:required_inventory" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="get_activity_work_skills_response">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="result_code" type="xsd:int" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="error_msg" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="work_skill" type="tns:work_skill" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="capacity_category" type="tns:capacity_category" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="create_activity" type="tns:create_activity_parameters" />
+      <xsd:element name="create_activity_response" type="tns:activity_response" />
+      <xsd:element name="update_activity" type="tns:update_activity_parameters" />
+      <xsd:element name="update_activity_response" type="tns:activity_response" />
+      <xsd:element name="reopen_activity" type="tns:update_activity_parameters" />
+      <xsd:element name="reopen_activity_response" type="tns:activity_response" />
+      <xsd:element name="start_activity" type="tns:action_activity_parameters" />
+      <xsd:element name="start_activity_response" type="tns:activity_response" />
+      <xsd:element name="complete_activity" type="tns:action_activity_parameters" />
+      <xsd:element name="complete_activity_response" type="tns:activity_response" />
+      <xsd:element name="suspend_activity" type="tns:action_activity_parameters" />
+      <xsd:element name="suspend_activity_response" type="tns:activity_response" />
+      <xsd:element name="cancel_activity" type="tns:action_activity_parameters" />
+      <xsd:element name="cancel_activity_response" type="tns:activity_response" />
+      <xsd:element name="prework_activity" type="tns:action_activity_parameters" />
+      <xsd:element name="prework_activity_response" type="tns:activity_response" />
+      <xsd:element name="delay_activity" type="tns:delay_activity_parameters" />
+      <xsd:element name="delay_activity_response" type="tns:activity_response" />
+      <xsd:element name="get_activity" type="tns:get_activity_parameters" />
+      <xsd:element name="get_activity_response" type="tns:activity_response" />
+      <xsd:element name="search_activities" type="tns:search_activities_parameters" />
+      <xsd:element name="search_activities_response" type="tns:activity_response" />
+      <xsd:element name="get_route" type="tns:get_route_parameters" />
+      <xsd:element name="get_route_response" type="tns:activity_response" />
+      <xsd:element name="start_route" type="tns:start_route_parameters" />
+      <xsd:element name="start_route_response" type="tns:simple_response" />
+      <xsd:element name="end_route" type="tns:start_route_parameters" />
+      <xsd:element name="end_route_response" type="tns:simple_response" />
+      <xsd:element name="link_activities" type="tns:link_activities_parameters" />
+      <xsd:element name="link_activities_response" type="tns:simple_response" />
+      <xsd:element name="unlink_activities" type="tns:unlink_activities_parameters" />
+      <xsd:element name="unlink_activities_response" type="tns:simple_response" />
+      <xsd:element name="get_activity_links" type="tns:get_activity_links_parameters" />
+      <xsd:element name="get_activity_links_response" type="tns:get_activity_links_response_element" />
+      <xsd:element name="set_file" type="tns:set_file_parameters" />
+      <xsd:element name="set_file_response" type="tns:simple_response" />
+      <xsd:element name="get_file" type="tns:get_file_parameters" />
+      <xsd:element name="get_file_response" type="tns:get_file_response_element" />
+      <xsd:element name="delete_file" type="tns:get_file_parameters" />
+      <xsd:element name="delete_file_response" type="tns:simple_response" />
+      <xsd:element name="set_resource_preferences" type="tns:set_resource_preferences_parameters" />
+      <xsd:element name="set_resource_preferences_response" type="tns:simple_response" />
+      <xsd:element name="get_resource_preferences" type="tns:get_resource_preferences_parameters" />
+      <xsd:element name="get_resource_preferences_response" type="tns:get_resource_preferences_response" />
+      <xsd:element name="set_required_inventories" type="tns:set_required_inventories_parameters" />
+      <xsd:element name="set_required_inventories_response" type="tns:simple_response" />
+      <xsd:element name="get_required_inventories" type="tns:get_required_inventories_parameters" />
+      <xsd:element name="get_required_inventories_response" type="tns:get_required_inventories_response" />
+      <xsd:element name="get_activity_work_skills" type="tns:get_activity_work_skills_parameters" />
+      <xsd:element name="get_activity_work_skills_response" type="tns:get_activity_work_skills_response" />
+    </xsd:schema>
+  </types>
+  <message name="create_activity_request">
+    <part name="body" element="tns:create_activity" />
+  </message>
+  <message name="create_activity_response">
+    <part name="body" element="tns:create_activity_response" />
+  </message>
+  <message name="update_activity_request">
+    <part name="body" element="tns:update_activity" />
+  </message>
+  <message name="update_activity_response">
+    <part name="body" element="tns:update_activity_response" />
+  </message>
+  <message name="reopen_activity_request">
+    <part name="body" element="tns:reopen_activity" />
+  </message>
+  <message name="reopen_activity_response">
+    <part name="body" element="tns:reopen_activity_response" />
+  </message>
+  <message name="start_activity_request">
+    <part name="body" element="tns:start_activity" />
+  </message>
+  <message name="start_activity_response">
+    <part name="body" element="tns:start_activity_response" />
+  </message>
+  <message name="complete_activity_request">
+    <part name="body" element="tns:complete_activity" />
+  </message>
+  <message name="complete_activity_response">
+    <part name="body" element="tns:complete_activity_response" />
+  </message>
+  <message name="suspend_activity_request">
+    <part name="body" element="tns:suspend_activity" />
+  </message>
+  <message name="suspend_activity_response">
+    <part name="body" element="tns:suspend_activity_response" />
+  </message>
+  <message name="cancel_activity_request">
+    <part name="body" element="tns:cancel_activity" />
+  </message>
+  <message name="cancel_activity_response">
+    <part name="body" element="tns:cancel_activity_response" />
+  </message>
+  <message name="prework_activity_request">
+    <part name="body" element="tns:prework_activity" />
+  </message>
+  <message name="prework_activity_response">
+    <part name="body" element="tns:prework_activity_response" />
+  </message>
+  <message name="delay_activity_request">
+    <part name="body" element="tns:delay_activity" />
+  </message>
+  <message name="delay_activity_response">
+    <part name="body" element="tns:delay_activity_response" />
+  </message>
+  <message name="get_activity_request">
+    <part name="body" element="tns:get_activity" />
+  </message>
+  <message name="get_activity_response">
+    <part name="body" element="tns:get_activity_response" />
+  </message>
+  <message name="search_activities_request">
+    <part name="body" element="tns:search_activities" />
+  </message>
+  <message name="search_activities_response">
+    <part name="body" element="tns:search_activities_response" />
+  </message>
+  <message name="get_route_request">
+    <part name="body" element="tns:get_route" />
+  </message>
+  <message name="get_route_response">
+    <part name="body" element="tns:get_route_response" />
+  </message>
+  <message name="start_route_request">
+    <part name="body" element="tns:start_route" />
+  </message>
+  <message name="start_route_response">
+    <part name="body" element="tns:start_route_response" />
+  </message>
+  <message name="end_route_request">
+    <part name="body" element="tns:end_route" />
+  </message>
+  <message name="end_route_response">
+    <part name="body" element="tns:end_route_response" />
+  </message>
+  <message name="link_activities_request">
+    <part name="body" element="tns:link_activities" />
+  </message>
+  <message name="link_activities_response">
+    <part name="body" element="tns:link_activities_response" />
+  </message>
+  <message name="unlink_activities_request">
+    <part name="body" element="tns:unlink_activities" />
+  </message>
+  <message name="unlink_activities_response">
+    <part name="body" element="tns:unlink_activities_response" />
+  </message>
+  <message name="get_activity_links_request">
+    <part name="body" element="tns:get_activity_links" />
+  </message>
+  <message name="get_activity_links_response">
+    <part name="body" element="tns:get_activity_links_response" />
+  </message>
+  <message name="set_file_request">
+    <part name="body" element="tns:set_file" />
+  </message>
+  <message name="set_file_response">
+    <part name="body" element="tns:set_file_response" />
+  </message>
+  <message name="get_file_request">
+    <part name="body" element="tns:get_file" />
+  </message>
+  <message name="get_file_response">
+    <part name="body" element="tns:get_file_response" />
+  </message>
+  <message name="delete_file_request">
+    <part name="body" element="tns:delete_file" />
+  </message>
+  <message name="delete_file_response">
+    <part name="body" element="tns:delete_file_response" />
+  </message>
+  <message name="set_resource_preferences_request">
+    <part name="body" element="tns:set_resource_preferences" />
+  </message>
+  <message name="set_resource_preferences_response">
+    <part name="body" element="tns:set_resource_preferences_response" />
+  </message>
+  <message name="get_resource_preferences_request">
+    <part name="body" element="tns:get_resource_preferences" />
+  </message>
+  <message name="get_resource_preferences_response">
+    <part name="body" element="tns:get_resource_preferences_response" />
+  </message>
+  <message name="set_required_inventories_request">
+    <part name="body" element="tns:set_required_inventories" />
+  </message>
+  <message name="set_required_inventories_response">
+    <part name="body" element="tns:set_required_inventories_response" />
+  </message>
+  <message name="get_required_inventories_request">
+    <part name="body" element="tns:get_required_inventories" />
+  </message>
+  <message name="get_required_inventories_response">
+    <part name="body" element="tns:get_required_inventories_response" />
+  </message>
+  <message name="get_activity_work_skills_request">
+    <part name="body" element="tns:get_activity_work_skills" />
+  </message>
+  <message name="get_activity_work_skills_response">
+    <part name="body" element="tns:get_activity_work_skills_response" />
+  </message>
+  <portType name="ApiPortType">
+    <jaxws:bindings xmlns:jaxws="http://java.sun.com/xml/ns/jaxws">
+      <jaxws:enableWrapperStyle>false</jaxws:enableWrapperStyle>
+    </jaxws:bindings>
+    <operation name="create_activity">
+      <input message="tns:create_activity_request" />
+      <output message="tns:create_activity_response" />
+    </operation>
+    <operation name="update_activity">
+      <input message="tns:update_activity_request" />
+      <output message="tns:update_activity_response" />
+    </operation>
+    <operation name="reopen_activity">
+      <input message="tns:reopen_activity_request" />
+      <output message="tns:reopen_activity_response" />
+    </operation>
+    <operation name="start_activity">
+      <input message="tns:start_activity_request" />
+      <output message="tns:start_activity_response" />
+    </operation>
+    <operation name="complete_activity">
+      <input message="tns:complete_activity_request" />
+      <output message="tns:complete_activity_response" />
+    </operation>
+    <operation name="suspend_activity">
+      <input message="tns:suspend_activity_request" />
+      <output message="tns:suspend_activity_response" />
+    </operation>
+    <operation name="cancel_activity">
+      <input message="tns:cancel_activity_request" />
+      <output message="tns:cancel_activity_response" />
+    </operation>
+    <operation name="prework_activity">
+      <input message="tns:prework_activity_request" />
+      <output message="tns:prework_activity_response" />
+    </operation>
+    <operation name="delay_activity">
+      <input message="tns:delay_activity_request" />
+      <output message="tns:delay_activity_response" />
+    </operation>
+    <operation name="get_activity">
+      <input message="tns:get_activity_request" />
+      <output message="tns:get_activity_response" />
+    </operation>
+    <operation name="search_activities">
+      <input message="tns:search_activities_request" />
+      <output message="tns:search_activities_response" />
+    </operation>
+    <operation name="get_route">
+      <input message="tns:get_route_request" />
+      <output message="tns:get_route_response" />
+    </operation>
+    <operation name="start_route">
+      <input message="tns:start_route_request" />
+      <output message="tns:start_route_response" />
+    </operation>
+    <operation name="end_route">
+      <input message="tns:end_route_request" />
+      <output message="tns:end_route_response" />
+    </operation>
+    <operation name="link_activities">
+      <input message="tns:link_activities_request" />
+      <output message="tns:link_activities_response" />
+    </operation>
+    <operation name="unlink_activities">
+      <input message="tns:unlink_activities_request" />
+      <output message="tns:unlink_activities_response" />
+    </operation>
+    <operation name="get_activity_links">
+      <input message="tns:get_activity_links_request" />
+      <output message="tns:get_activity_links_response" />
+    </operation>
+    <operation name="set_file">
+      <input message="tns:set_file_request" />
+      <output message="tns:set_file_response" />
+    </operation>
+    <operation name="get_file">
+      <input message="tns:get_file_request" />
+      <output message="tns:get_file_response" />
+    </operation>
+    <operation name="delete_file">
+      <input message="tns:delete_file_request" />
+      <output message="tns:delete_file_response" />
+    </operation>
+    <operation name="set_resource_preferences">
+      <input message="tns:set_resource_preferences_request" />
+      <output message="tns:set_resource_preferences_response" />
+    </operation>
+    <operation name="get_resource_preferences">
+      <input message="tns:get_resource_preferences_request" />
+      <output message="tns:get_resource_preferences_response" />
+    </operation>
+    <operation name="set_required_inventories">
+      <input message="tns:set_required_inventories_request" />
+      <output message="tns:set_required_inventories_response" />
+    </operation>
+    <operation name="get_required_inventories">
+      <input message="tns:get_required_inventories_request" />
+      <output message="tns:get_required_inventories_response" />
+    </operation>
+    <operation name="get_activity_work_skills">
+      <input message="tns:get_activity_work_skills_request" />
+      <output message="tns:get_activity_work_skills_response" />
+    </operation>
+  </portType>
+  <binding name="ApiBinding" type="tns:ApiPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="create_activity">
+      <soap:operation soapAction="activity/create_activity" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="update_activity">
+      <soap:operation soapAction="activity/update_activity" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="reopen_activity">
+      <soap:operation soapAction="activity/reopen_activity" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="start_activity">
+      <soap:operation soapAction="activity/start_activity" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="complete_activity">
+      <soap:operation soapAction="activity/complete_activity" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="suspend_activity">
+      <soap:operation soapAction="activity/suspend_activity" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="cancel_activity">
+      <soap:operation soapAction="activity/cancel_activity" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="prework_activity">
+      <soap:operation soapAction="activity/prework_activity" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="delay_activity">
+      <soap:operation soapAction="activity/delay_activity" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="get_activity">
+      <soap:operation soapAction="activity/get_activity" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="search_activities">
+      <soap:operation soapAction="activity/search_activities" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="get_route">
+      <soap:operation soapAction="activity/get_route" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="start_route">
+      <soap:operation soapAction="activity/start_route" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="end_route">
+      <soap:operation soapAction="activity/end_route" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="link_activities">
+      <soap:operation soapAction="activity/link_activities" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="unlink_activities">
+      <soap:operation soapAction="activity/unlink_activities" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="get_activity_links">
+      <soap:operation soapAction="activity/get_activity_links" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="set_file">
+      <soap:operation soapAction="activity/set_file" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="get_file">
+      <soap:operation soapAction="activity/get_file" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="delete_file">
+      <soap:operation soapAction="activity/delete_file" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="set_resource_preferences">
+      <soap:operation soapAction="activity/set_resource_preferences" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="get_resource_preferences">
+      <soap:operation soapAction="activity/get_resource_preferences" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="set_required_inventories">
+      <soap:operation soapAction="activity/set_required_inventories" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="get_required_inventories">
+      <soap:operation soapAction="activity/get_required_inventories" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="get_activity_work_skills">
+      <soap:operation soapAction="activity/get_activity_work_skills" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="activity">
+    <port name="activity" binding="tns:ApiBinding">
+      <soap:address location="https://demo.etadirect.com/soap/activity/" />
+    </port>
+  </service>
+</definitions>

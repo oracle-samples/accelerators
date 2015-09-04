@@ -1,0 +1,47 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oracle.RightNow.Toa.Client", "Oracle.RightNow.Toa.Client\Oracle.RightNow.Toa.Client.csproj", "{6EACE413-6A81-48AD-AF52-5404C499DA92}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestServices", "TestServices\TestServices.csproj", "{B89ABC20-2DDE-4178-9736-BF4572CC288F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{ABD5B7F7-75F6-4EA1-BE2A-9F2489D1D51A} = {ABD5B7F7-75F6-4EA1-BE2A-9F2489D1D51A}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oracle.RightNow.Toa.WorkOrderAddIn", "Oracle.RightNow.Toa.WorkOrderAddIn\Oracle.RightNow.Toa.WorkOrderAddIn.csproj", "{ABD5B7F7-75F6-4EA1-BE2A-9F2489D1D51A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oracle.RightNow.Toa.WorkOrderAreaAddIn", "Oracle.RightNow.Toa.WorkOrderAreaAddIn\Oracle.RightNow.Toa.WorkOrderAreaAddIn.csproj", "{750D5F58-CFFA-4097-8179-765D9B45D20A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oracle.RightNow.Toa.MonthlyViewSchedulerAddIn", "Oracle.RightNow.Toa.MonthlyViewSchedulerAddIn\Oracle.RightNow.Toa.MonthlyViewSchedulerAddIn.csproj", "{6C0590D1-C5CE-4B87-885B-A1BF709F6275}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6EACE413-6A81-48AD-AF52-5404C499DA92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EACE413-6A81-48AD-AF52-5404C499DA92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EACE413-6A81-48AD-AF52-5404C499DA92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EACE413-6A81-48AD-AF52-5404C499DA92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B89ABC20-2DDE-4178-9736-BF4572CC288F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B89ABC20-2DDE-4178-9736-BF4572CC288F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B89ABC20-2DDE-4178-9736-BF4572CC288F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B89ABC20-2DDE-4178-9736-BF4572CC288F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABD5B7F7-75F6-4EA1-BE2A-9F2489D1D51A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABD5B7F7-75F6-4EA1-BE2A-9F2489D1D51A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABD5B7F7-75F6-4EA1-BE2A-9F2489D1D51A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABD5B7F7-75F6-4EA1-BE2A-9F2489D1D51A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{750D5F58-CFFA-4097-8179-765D9B45D20A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{750D5F58-CFFA-4097-8179-765D9B45D20A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{750D5F58-CFFA-4097-8179-765D9B45D20A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{750D5F58-CFFA-4097-8179-765D9B45D20A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C0590D1-C5CE-4B87-885B-A1BF709F6275}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C0590D1-C5CE-4B87-885B-A1BF709F6275}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C0590D1-C5CE-4B87-885B-A1BF709F6275}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C0590D1-C5CE-4B87-885B-A1BF709F6275}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

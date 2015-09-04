@@ -1,0 +1,123 @@
+﻿<UserControl x:Class="Oracle.RightNow.Toa.MonthlyViewSchedulerAddIn.MonthlyViewScheduler"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:calendar="clr-namespace:Oracle.RightNow.Toa.MonthlyViewSchedulerAddIn"
+             mc:Ignorable="d" Width="390" Height="485">
+    <Grid Margin="0,0,20,0">
+        <Border BorderThickness="1" BorderBrush="Black"
+                HorizontalAlignment="Left" VerticalAlignment="Top" CornerRadius="2" Height="auto" Width="auto">
+            <StackPanel Orientation="Vertical" Height="auto" Width="370">
+                <StackPanel Orientation="Horizontal">
+                    <DockPanel Width="370">
+                        <Label Content="TimeSlot" FontSize="12" FontFamily="Microsoft Sans Serif" HorizontalAlignment="Left" Margin="0,0,0,0" DockPanel.Dock="Left"/>
+                        <ComboBox x:Name="TimeSlotComboBox" Margin="5,0,0,-1"  MinWidth="100" BorderBrush="#FF707070" BorderThickness="1" ItemsSource="{Binding TimeSlotItems}" SelectionChanged="TimeSlotComboBox_SelectionChanged" Height="21.5" Width="120" SelectedIndex="0"/>
+                        <Button Content="Refresh" Foreground="Black" FontFamily="Microsoft Sans Serif" Width="100" Height="22" DockPanel.Dock="Right" Margin="0,0,-80,-2" Click="RefreshScheduler"/>
+                    </DockPanel>
+                </StackPanel>
+                <calendar:MonthlyViewCalendar x:Name="MonthlyViewCalendar" SelectedDatesChanged="MonthlyViewCalendar_SelectedDatesChanged"
+                	DisplayDate="{Binding DisplayDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                	HighlightedDateText="{Binding HighlightedDateText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                	HorizontalAlignment="Left"
+                	VerticalAlignment="Top"
+                	ShowHighlightedDateText ="True" DisplayDateChanged="MonthlyViewCalendar_DisplayDateChanged" Width="370" FirstDayOfWeek="Sunday"/>
+                <DataGrid x:Name="TimeSlotDataGrid" IsReadOnly="True"  MouseDoubleClick="TimeSlotDataGrid_MouseDoubleClick" ItemsSource="{Binding TimeSlotRowInDataGrid}" AutoGenerateColumns="False" HeadersVisibility="None" SelectionUnit="Cell" Visibility="Collapsed">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Name" Binding="{Binding TsC1.Slot}">
+                            <DataGridTextColumn.CellStyle>
+                                <Style TargetType="{x:Type DataGridCell}">
+                                    <Setter Property= "BorderThickness" Value="1"/>
+                                    <Setter Property= "Height" Value="35"/>
+                                    <Setter Property= "Width" Value="92"/>
+                                    <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+                                    <Setter Property="TextBlock.FontSize" Value="15"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding TsC1.Color, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Value="Green">
+                                            <Setter Property="Background" Value="Green" />
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding TsC1.Color, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Value="Yellow">
+                                            <Setter Property="Background" Value="Yellow" />
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding TsC1.Color, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Value="Red">
+                                            <Setter Property="Background" Value="Red" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGridTextColumn.CellStyle>
+                        </DataGridTextColumn>
+
+                        <DataGridTextColumn Header="Name" Binding="{Binding TsC2.Slot}">
+                            <DataGridTextColumn.CellStyle>
+                                <Style TargetType="{x:Type DataGridCell}">
+                                    <Setter Property= "BorderThickness" Value="1"/>
+                                    <Setter Property= "Height" Value="35"/>
+                                    <Setter Property= "Width" Value="92"/>
+                                    <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+                                    <Setter Property="TextBlock.FontSize" Value="15"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding TsC2.Color, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Value="Green">
+                                            <Setter Property="Background" Value="Green" />
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding TsC2.Color, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Value="Yellow">
+                                            <Setter Property="Background" Value="Yellow" />
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding TsC2.Color, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Value="Red">
+                                            <Setter Property="Background" Value="Red" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGridTextColumn.CellStyle>
+                        </DataGridTextColumn>
+
+                        <DataGridTextColumn Header="Name" Binding="{Binding TsC3.Slot}">
+                            <DataGridTextColumn.CellStyle>
+                                <Style TargetType="{x:Type DataGridCell}">
+                                    <Setter Property= "BorderThickness" Value="1"/>
+                                    <Setter Property= "Height" Value="35"/>
+                                    <Setter Property= "Width" Value="92"/>
+                                    <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+                                    <Setter Property="TextBlock.FontSize" Value="15"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding TsC3.Color, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Value="Green">
+                                            <Setter Property="Background" Value="Green" />
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding TsC3.Color, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Value="Yellow">
+                                            <Setter Property="Background" Value="Yellow" />
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding TsC3.Color, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Value="Red">
+                                            <Setter Property="Background" Value="Red" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGridTextColumn.CellStyle>
+                        </DataGridTextColumn>
+
+                        <DataGridTextColumn Header="Name" Binding="{Binding TsC4.Slot}">
+                            <DataGridTextColumn.CellStyle>
+                                <Style TargetType="{x:Type DataGridCell}">
+                                    <Setter Property= "BorderThickness" Value="1"/>
+                                    <Setter Property= "Height" Value="35"/>
+                                    <Setter Property= "Width" Value="92"/>
+                                    <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+                                    <Setter Property="TextBlock.FontSize" Value="15"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding TsC4.Color, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Value="Green">
+                                            <Setter Property="Background" Value="Green" />
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding TsC4.Color, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Value="Yellow">
+                                            <Setter Property="Background" Value="Yellow" />
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding TsC4.Color, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Value="Red">
+                                            <Setter Property="Background" Value="Red" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGridTextColumn.CellStyle>
+                        </DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

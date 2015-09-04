@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="a8eb795e-5499-445b-9a3b-771830dfd727" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://toa-15-2-b122-pks--tushar.qb.lan/cgi-bin/toa_15_2_b122_pks.cfg/services/soap?wsdl=typed_v1.2" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="soap.xsd" MetadataType="Schema" ID="d13cbcdf-a05d-4670-a8bb-5b22ffc1d6b8" SourceId="1" SourceUrl="http://toa-15-2-b122-pks--tushar.qb.lan/cgi-bin/toa_15_2_b122_pks.cfg/services/soap?xsd=generic_v1.2" />
+    <MetadataFile FileName="soap1.xsd" MetadataType="Schema" ID="876ea197-8f0e-4872-8d3c-77138c025b78" SourceId="1" SourceUrl="http://toa-15-2-b122-pks--tushar.qb.lan/cgi-bin/toa_15_2_b122_pks.cfg/services/soap?xsd=base_v1.2" />
+    <MetadataFile FileName="RightNow.wsdl" MetadataType="Wsdl" ID="1752f992-d90f-4551-9127-ef6e1d8d7f04" SourceId="1" SourceUrl="https://toa-15-2-b122-pks--tushar.qb.lan/cgi-bin/toa_15_2_b122_pks.cfg/services/soap?wsdl=typed_v1.2" />
+    <MetadataFile FileName="soap2.xsd" MetadataType="Schema" ID="ca6c363c-409b-4390-96ae-b9e24d7fe236" SourceId="1" SourceUrl="http://toa-15-2-b122-pks--tushar.qb.lan/cgi-bin/toa_15_2_b122_pks.cfg/services/soap?xsd=metadata_v1.2" />
+    <MetadataFile FileName="soap3.xsd" MetadataType="Schema" ID="e6474b1e-94b9-4066-8e4d-64225e8a1e86" SourceId="1" SourceUrl="http://toa-15-2-b122-pks--tushar.qb.lan/cgi-bin/toa_15_2_b122_pks.cfg/services/soap?xsd=nullfields_v1.2" />
+    <MetadataFile FileName="soap4.xsd" MetadataType="Schema" ID="9ad0b1b3-2cb2-4001-92de-999957853e5a" SourceId="1" SourceUrl="http://toa-15-2-b122-pks--tushar.qb.lan/cgi-bin/toa_15_2_b122_pks.cfg/services/soap?xsd=faults_v1.2" />
+    <MetadataFile FileName="soap5.xsd" MetadataType="Schema" ID="22edcdb6-506d-4102-8817-3cd47cc35554" SourceId="1" SourceUrl="http://toa-15-2-b122-pks--tushar.qb.lan/cgi-bin/toa_15_2_b122_pks.cfg/services/soap?xsd=messagestyped_v1.2" />
+    <MetadataFile FileName="soap6.xsd" MetadataType="Schema" ID="47a7dd4f-bb7a-4b08-8cf2-df6f267979ea" SourceId="1" SourceUrl="http://toa-15-2-b122-pks--tushar.qb.lan/cgi-bin/toa_15_2_b122_pks.cfg/services/soap?xsd=objects_v1.2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
