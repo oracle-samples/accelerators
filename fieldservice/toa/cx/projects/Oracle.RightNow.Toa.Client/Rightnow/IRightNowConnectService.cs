@@ -8,9 +8,9 @@
  *  OSvC release: 15.2 (Feb 2015)
  *  OFSC release: 15.2 (Feb 2015)
  *  reference: 150622-000130
- *  date: Mon Aug 24 09:01:18 PDT 2015
+ *  date: Thu Sep  3 23:14:02 PDT 2015
 
- *  revision: rnw-15-11-fixes-release-01
+ *  revision: rnw-15-11-fixes-release-03
 *  SHA1: $Id: c80864d66e3b255599bf24eee6f44459781a7f81 $
 * *********************************************************************************************
 *  File: IRightNowConnectService.cs

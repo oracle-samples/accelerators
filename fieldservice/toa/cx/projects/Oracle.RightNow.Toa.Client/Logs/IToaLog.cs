@@ -8,9 +8,9 @@
  *  OSvC release: 15.2 (Feb 2015)
  *  OFSC release: 15.2 (Feb 2015)
  *  reference: 150622-000130
- *  date: Mon Aug 24 09:01:17 PDT 2015
+ *  date: Thu Sep  3 23:14:00 PDT 2015
 
- *  revision: rnw-15-11-fixes-release-01
+ *  revision: rnw-15-11-fixes-release-03
 *  SHA1: $Id: 16e867e0a6e8db5a36bd6e50caa3cf56cd9ea45f $
 * *********************************************************************************************
 *  File: IToaLog.cs

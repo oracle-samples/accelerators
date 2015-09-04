@@ -8,9 +8,9 @@
  *  OSvC release: 15.2 (Feb 2015)
  *  OFSC release: 15.2 (Feb 2015)
  *  reference: 150622-000130
- *  date: Mon Aug 24 09:01:19 PDT 2015
+ *  date: Thu Sep  3 23:14:02 PDT 2015
 
- *  revision: rnw-15-11-fixes-release-01
+ *  revision: rnw-15-11-fixes-release-03
 *  SHA1: $Id: 242d92293be5b30f0c751f76085144594ecd1833 $
 * *********************************************************************************************
 *  File: InboundRequest.cs

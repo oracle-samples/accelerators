@@ -8,9 +8,9 @@
  *  OSvC release: 15.2 (Feb 2015)
  *  OFSC release: 15.2 (Feb 2015)
  *  reference: 150622-000130
- *  date: Mon Aug 24 09:01:22 PDT 2015
+ *  date: Thu Sep  3 23:14:05 PDT 2015
 
- *  revision: rnw-15-11-fixes-release-01
+ *  revision: rnw-15-11-fixes-release-03
  *  SHA1: $Id: c695cc6af6dafa67ca0ff8cfa5fb69ee17ce3f99 $
  * *********************************************************************************************
  *  File: OracleRightnowToaWorkOrderAreaAddIn.cs

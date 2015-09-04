@@ -10,9 +10,9 @@
  *  OSvC release: 15.2 (Feb 2015)
  *  OFSC release: 15.2 (Feb 2015)
  *  reference: 150622-000130
- *  date: Mon Aug 24 09:01:23 PDT 2015
+ *  date: Thu Sep  3 23:14:07 PDT 2015
 
- *  revision: rnw-15-11-fixes-release-01
+ *  revision: rnw-15-11-fixes-release-03
  *  SHA1: $Id: 64f3c29a6026a8d448b4e0ed24497620bfc8547f $
  * *********************************************************************************************
  *  File: toalogservice.php

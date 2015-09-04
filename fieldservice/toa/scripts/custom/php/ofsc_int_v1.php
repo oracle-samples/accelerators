@@ -10,9 +10,9 @@
  *  OSvC release: 15.2 (Feb 2015)
  *  OFSC release: 15.2 (Feb 2015)
  *  reference: 150622-000130
- *  date: Mon Aug 24 09:01:23 PDT 2015
+ *  date: Thu Sep  3 23:14:06 PDT 2015
 
- *  revision: rnw-15-11-fixes-release-01
+ *  revision: rnw-15-11-fixes-release-03
  *  SHA1: $Id: 4b7adc2a0c4f349d6ad2201b864d9cb615b6bf9a $
  * *********************************************************************************************
  *  File: ofsc_int_v1.php

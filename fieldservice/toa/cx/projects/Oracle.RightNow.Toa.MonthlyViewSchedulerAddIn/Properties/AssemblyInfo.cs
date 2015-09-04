@@ -8,9 +8,9 @@
  *  OSvC release: 15.2 (Feb 2015)
  *  OFSC release: 15.2 (Feb 2015)
  *  reference: 150622-000130
- *  date: Mon Aug 24 09:01:20 PDT 2015
+ *  date: Thu Sep  3 23:14:03 PDT 2015
 
- *  revision: rnw-15-11-fixes-release-01
+ *  revision: rnw-15-11-fixes-release-03
  *  SHA1: $Id: d255669fccc1a1e3f89b42d0937bf2ec2907e408 $
  * *********************************************************************************************
  *  File: AssemblyInfo.cs
