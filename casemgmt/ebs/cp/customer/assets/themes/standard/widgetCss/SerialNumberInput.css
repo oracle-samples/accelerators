@@ -1,0 +1,46 @@
+/* * *******************************************************************************************
+ *  This file is part of the Oracle Service Cloud Accelerator Reference Integration set published
+ *  by Oracle Service Cloud under the MIT license (MIT) included in the original distribution.
+ *  Copyright (c) 2014, 2015, Oracle and/or its affiliates. All rights reserved.
+ ***********************************************************************************************
+ *  Accelerator Package: OSVC + EBS Enhancement
+ *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
+ *  OSvC release: 15.8 (August 2015)
+ *  EBS release: 12.1.3
+ *  reference: 150505-000099, 150420-000127
+ *  date: Thu Nov 12 00:52:34 PST 2015
+
+ *  revision: rnw-15-11-fixes-release-1
+ *  SHA1: $Id: 77d3c0ad36a0ce6d18f6a22b24925c5b741ac91c $
+ * *********************************************************************************************
+ *  File: SerialNumberInput.css
+ * ****************************************************************************************** */
+
+ /**
+ * CSS for SerialNumberInput widget
+ */
+.rn_SerialNumberInput .rn_SerialNumberTextInput {
+    width : 48%;
+    display: inline-block;
+}
+
+.rn_SerialNumberInput .rn_SerialNumberValidationButton {
+    margin-top: 0px;
+}
+
+.rn_SerialNumberInput .rn_InvalidSerialNumberValidationHint{
+    color: #B20000;
+}
+
+.rn_SerialNumberInput .rn_ValidSerialNumberValidationResult{
+    color: #009933;
+}
+
+.rn_SerialNumberInput .rn_SerialNumberValidationLoadingIndicator {
+    background-image: url(/euf/assets/themes/standard/images/indicator.gif);
+    background-repeat: no-repeat;
+    background-position: center center;
+    min-height:66px; 
+    height:auto !important;
+    height: 66px;
+} 

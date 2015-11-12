@@ -5,13 +5,13 @@
  ***********************************************************************************************
  *  Accelerator Package: OSVC Contact Center + Siebel Case Management Accelerator
  *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
- *  OSvC release: 15.5 (May 2015)
+ *  OSvC release: 15.8 (August 2015)
  *  Siebel release: 8.1.1.15
- *  reference: 141216-000121
- *  date: Wed Sep  2 23:14:41 PDT 2015
+ *  reference: 150520-000047
+ *  date: Thu Nov 12 00:55:36 PST 2015
 
- *  revision: rnw-15-8-fixes-release-01
- *  SHA1: $Id: b05d116f19247db75fdbb81ee85da69117dd4bb7 $
+ *  revision: rnw-15-11-fixes-release-1
+ *  SHA1: $Id: d84fadbc6c70940f8bb385d89eaada9ee45ffe18 $
  * *********************************************************************************************
  *  File: LogWrapper.cs
  * *********************************************************************************************/
@@ -45,6 +45,8 @@ namespace Accelerator.Siebel.SharedServices.Logs
             contactId.id = 0;
             contact.ID = contactId;
         }
+
+
         public void ErrorLog(int incidentId = 0, int contactId = 0, string logMessage = null, string logNote = null, int timeElapsed = 0,
              [CallerMemberName] string memberName = "",
              [CallerFilePath] string sourceFilePath = "",
@@ -67,13 +69,13 @@ namespace Accelerator.Siebel.SharedServices.Logs
             {
                 contact.ID.id = 0;
             }
-            // todo: not sure the file delimiter / on linux machine. need test  
+
             string fileName = sourceFilePath.Substring(sourceFilePath.LastIndexOf('\\') + 1);
             string source = fileName + ":" + memberName + ":" + sourceLineNumber;
-
             m_log.ErrorLog(incident, contact, logMessage, logNote, source, timeElapsed);
             ConfigurationSetting.updateStatusBar("Error", logMessage);
         }
+
 
         public void DebugLog(int incidentId = 0, int contactId = 0, string logMessage = null, string logNote = null, int timeElapsed = 0,
              [CallerMemberName] string memberName = "",
@@ -100,7 +102,6 @@ namespace Accelerator.Siebel.SharedServices.Logs
                 {
                     contact.ID.id = 0;
                 }
-                // todo: not sure the file delimiter / on linux machine. need test  
                 string fileName = sourceFilePath.Substring(sourceFilePath.LastIndexOf('\\') + 1);
                 string source = fileName + ":" + memberName + ":" + sourceLineNumber;
                 m_log.DebugLog(incident, contact, logMessage, logNote, source, timeElapsed);
@@ -133,7 +134,6 @@ namespace Accelerator.Siebel.SharedServices.Logs
                 {
                     contact.ID.id = 0;
                 }
-                // todo: not sure the file delimiter / on linux machine. need test  
                 string fileName = sourceFilePath.Substring(sourceFilePath.LastIndexOf('\\') + 1);
                 string source = fileName + ":" + memberName + ":" + sourceLineNumber;
                 m_log.NoticeLog(incident, contact, logMessage, logNote, source, timeElapsed);

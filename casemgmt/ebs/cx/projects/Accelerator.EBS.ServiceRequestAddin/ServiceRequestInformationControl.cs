@@ -5,13 +5,13 @@
  ***********************************************************************************************
  *  Accelerator Package: OSVC + EBS Enhancement
  *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
- *  OSvC release: 15.5 (May 2015)
+ *  OSvC release: 15.8 (August 2015)
  *  EBS release: 12.1.3
- *  reference: 150202-000157
- *  date: Wed Sep  2 23:11:39 PDT 2015
+ *  reference: 150505-000099, 150420-000127
+ *  date: Thu Nov 12 00:52:46 PST 2015
 
- *  revision: rnw-15-8-fixes-release-01
- *  SHA1: $Id: e8859d2e980d12ccb51f619a933927adcd1ac049 $
+ *  revision: rnw-15-11-fixes-release-1
+ *  SHA1: $Id: 3b233e8302922b33a0753289ead58adce1ec39eb $
  * *********************************************************************************************
  *  File: ServiceRequestInformationControl.cs
  * *********************************************************************************************/
@@ -386,6 +386,8 @@ namespace Accelerator.EBS.ServiceRequestAddin
                     this.inputInstanceID = (decimal)items[0].InstanceID;
                     return true;
                 }
+                string logMessage = "The serial number validation is failed. (serial number = " + serial_number + ", org id = " + org_id + ")";
+                _log.NoticeLog(incidentId: _logIncidentId, logMessage: logMessage);
                 return false;
             }
             catch (Exception ex)

@@ -5,13 +5,13 @@
  ***********************************************************************************************
  *  Accelerator Package: OSVC + EBS Enhancement
  *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
- *  OSvC release: 15.5 (May 2015)
+ *  OSvC release: 15.8 (August 2015)
  *  EBS release: 12.1.3
- *  reference: 150202-000157
- *  date: Wed Sep  2 23:11:40 PDT 2015
+ *  reference: 150505-000099, 150420-000127
+ *  date: Thu Nov 12 00:52:48 PST 2015
 
- *  revision: rnw-15-8-fixes-release-01
- *  SHA1: $Id: 9a69b1a1e5ae53a02d44004f995804c868241837 $
+ *  revision: rnw-15-11-fixes-release-1
+ *  SHA1: $Id: 411d03a5ed0aa03a64ec9410e48433b1d2eb9ea1 $
  * *********************************************************************************************
  *  File: Contact.cs
  * *********************************************************************************************/
@@ -25,7 +25,7 @@ using System.Text;
 
 namespace Accelerator.EBS.SharedServices
 {
-    public class Contact : ModelObjectBase
+    public class ContactModel : ModelObjectBase
     {
         public static string ListLookupURL { get; set; }
 
@@ -40,22 +40,22 @@ namespace Accelerator.EBS.SharedServices
         private static IEBSProvider _provider = null;
 
 
-        public Contact[] LookupList(string firstname, string lastname, string phone, string email, int _logIncidentId = 0, int _logContactId = 0)
+        public ContactModel[] LookupList(string firstname, string lastname, string phone, string email, int _logIncidentId = 0, int _logContactId = 0)
         {
-            Contact[] contactArr = null;
+            ContactModel[] contactArr = null;
             //Switch Provider to call web service    
-            contactArr = Contact._provider.LookupContactList(firstname, lastname, phone, email, _logIncidentId, _logContactId);
+            contactArr = ContactModel._provider.LookupContactList(firstname, lastname, phone, email, _logIncidentId, _logContactId);
             return contactArr;
         }
 
         public static Dictionary<string, string> LookupDetail(decimal party_id, int _logIncidentId = 0, int _logContactId = 0)
         {
-            return Contact._provider.LookupContactDetail(party_id, _logIncidentId, _logContactId);
+            return ContactModel._provider.LookupContactDetail(party_id, _logIncidentId, _logContactId);
         }
 
         public static Dictionary<string, string> getDetailSchema()
         {
-            return Contact._provider.getContactDetailSchema();
+            return ContactModel._provider.getContactDetailSchema();
         }
 
         public static void InitEBSProvider()
@@ -74,7 +74,7 @@ namespace Accelerator.EBS.SharedServices
                 {
                     string logMessage = "Error in init Provider in Contact Model. Error: " + ex.Message;
                     string logNote = "";
-                    ConfigurationSetting.logWrap.DebugLog(logMessage: logMessage, logNote: logNote);
+                    ConfigurationSetting.logWrap.ErrorLog(logMessage: logMessage, logNote: logNote);
                 }
                 throw;
             }

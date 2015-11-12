@@ -5,13 +5,13 @@
  ***********************************************************************************************
  *  Accelerator Package: OSVC Contact Center + Siebel Case Management Accelerator
  *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
- *  OSvC release: 15.5 (May 2015)
+ *  OSvC release: 15.8 (August 2015)
  *  Siebel release: 8.1.1.15
- *  reference: 141216-000121
- *  date: Wed Sep  2 23:14:41 PDT 2015
+ *  reference: 150520-000047
+ *  date: Thu Nov 12 00:55:37 PST 2015
 
- *  revision: rnw-15-8-fixes-release-01
- *  SHA1: $Id: 1de90612e2d2b5f2021f18b240ffdcb2021dbce0 $
+ *  revision: rnw-15-11-fixes-release-1
+ *  SHA1: $Id: 3ab47a9d654a849b4dcf5e45e73d1b2b706cb47b $
  * *********************************************************************************************
  *  File: ServiceRequest.cs
  * *********************************************************************************************/
@@ -129,7 +129,7 @@ namespace Accelerator.Siebel.SharedServices
                 {
                     string logMessage = "Error in init Provider in Service Request Model. Error: " + ex.Message;
                     string logNote = "";
-                    ConfigurationSetting.logWrap.DebugLog(logMessage: logMessage, logNote: logNote);
+                    ConfigurationSetting.logWrap.ErrorLog(logMessage: logMessage, logNote: logNote);
                 }
 
                 throw;

@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Accelerator.EBS.ReportTable
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Accelerator.EBS.BulkImportAddin", "Accelerator.EBS.BulkImportAddin\Accelerator.EBS.BulkImportAddin.csproj", "{750D5F58-CFFA-4097-8179-765D9B45D20A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Accelerator.EBS.AddressValidationAddIn", "Accelerator.EBS.AddressValidationAddIn\Accelerator.EBS.AddressValidationAddIn.csproj", "{CF438CC4-C233-42ED-828C-2D0A4A034C06}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Accelerator.EBS.OrderManagementAddin", "Accelerator.EBS.OrderManagementAddin\Accelerator.EBS.OrderManagementAddin.csproj", "{5A2D1973-DC4B-4444-8BCD-120D7F3CF642}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +47,14 @@ Global
 		{750D5F58-CFFA-4097-8179-765D9B45D20A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{750D5F58-CFFA-4097-8179-765D9B45D20A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{750D5F58-CFFA-4097-8179-765D9B45D20A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF438CC4-C233-42ED-828C-2D0A4A034C06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF438CC4-C233-42ED-828C-2D0A4A034C06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF438CC4-C233-42ED-828C-2D0A4A034C06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF438CC4-C233-42ED-828C-2D0A4A034C06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A2D1973-DC4B-4444-8BCD-120D7F3CF642}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A2D1973-DC4B-4444-8BCD-120D7F3CF642}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A2D1973-DC4B-4444-8BCD-120D7F3CF642}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A2D1973-DC4B-4444-8BCD-120D7F3CF642}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

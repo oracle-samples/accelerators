@@ -5,13 +5,13 @@
  ***********************************************************************************************
  *  Accelerator Package: OSVC Contact Center + Siebel Case Management Accelerator
  *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
- *  OSvC release: 15.5 (May 2015)
+ *  OSvC release: 15.8 (August 2015)
  *  Siebel release: 8.1.1.15
- *  reference: 141216-000121
- *  date: Wed Sep  2 23:14:42 PDT 2015
+ *  reference: 150520-000047
+ *  date: Thu Nov 12 00:55:37 PST 2015
 
- *  revision: rnw-15-8-fixes-release-01
- *  SHA1: $Id: b078e396f3de57519ae857058c53637d9f02028e $
+ *  revision: rnw-15-11-fixes-release-1
+ *  SHA1: $Id: e106aaea70905df5e98a995c849f5c5f92cf96d9 $
  * *********************************************************************************************
  *  File: ISiebelProvider.cs
  * *********************************************************************************************/
@@ -27,12 +27,15 @@ namespace Accelerator.Siebel.SharedServices.Providers
 {
     public interface ISiebelProvider
     {
+
+        // Contact
         string ContactURL { get; set; }
         string ContactServiceUsername { get; set; }
         string ContactServicePassword { get; set; }
         int ContactServiceTimeout { get; set; } // come from ConfigurationSetting SiebelServiceTimeout, and pass in to InitForXx()
         void InitForContact(string contact_url, string user_name, string password, int timeout = -1);
 
+        // SR
         string SRURL { get; set; }
         string SRServiceUsername { get; set; }
         string SRServicePassword { get; set; }
@@ -46,7 +49,7 @@ namespace Accelerator.Siebel.SharedServices.Providers
         void InitForNote(string note_url, string user_name, string password, int timeout = -1);
         Logs.LogWrapper log { get; set; }
 
-        Contact[] LookupContactList(string firstname, string lastname, string phone, string email, int _logIncidentId = 0, int _logContactId = 0);
+        ContactModel[] LookupContactList(string firstname, string lastname, string phone, string email, int _logIncidentId = 0, int _logContactId = 0);
         Dictionary<string, string> LookupContactDetail(IList<string> columns, string party_id, int _logIncidentId = 0, int _logContactId = 0);
         Dictionary<string, string> getContactDetailSchema();
         ServiceRequest[] LookupSRbyContactPartyID(IList<string> columns, string contact_id, int _logIncidentId = 0, int _logContactId = 0);
@@ -67,5 +70,10 @@ namespace Accelerator.Siebel.SharedServices.Providers
         KeyValuePair<String, String> rnStatusToServerStatus(int rnStatusID);
         KeyValuePair<String, String> rnSeverityToServerSeverity(int rnSeverityID);
         KeyValuePair<String, String> rnRequestTypeToServerRequestType(int rnRequestTypeID);
+
+
+        // Activity
+        Activity CreateActivity(Activity activity, int _logIncidentId = 0, int _logContactId = 0);
+        void InitForActivity(string activity_url, string user_name, string password, int timeout = -1);
     }
 }

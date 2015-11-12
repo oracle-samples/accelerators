@@ -5,13 +5,13 @@
  ***********************************************************************************************
  *  Accelerator Package: OSVC + EBS Enhancement
  *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
- *  OSvC release: 15.5 (May 2015)
+ *  OSvC release: 15.8 (August 2015)
  *  EBS release: 12.1.3
- *  reference: 150202-000157
- *  date: Wed Sep  2 23:11:40 PDT 2015
+ *  reference: 150505-000099, 150420-000127
+ *  date: Thu Nov 12 00:52:47 PST 2015
 
- *  revision: rnw-15-8-fixes-release-01
- *  SHA1: $Id: 0dc5e3dcc161aee2026c4e87e7280f9511ea78de $
+ *  revision: rnw-15-11-fixes-release-1
+ *  SHA1: $Id: 5c8c65026ee72cca1a1ad0d078e7e470a4e70350 $
  * *********************************************************************************************
  *  File: Log.cs
  * *********************************************************************************************/
@@ -29,5 +29,7 @@ namespace Accelerator.EBS.SharedServices.Logs
         void ErrorLog(Incident incident = null, RightNowServiceReference.Contact contact = null, string LogMessage = null, string LogNote = null, string source = null, int timeElapsed = 0);
         void DebugLog(Incident incident = null, RightNowServiceReference.Contact contact = null, string LogMessage = null, string LogNote = null, string source = null, int timeElapsed = 0);
         void NoticeLog(Incident incident = null, RightNowServiceReference.Contact contact = null, string LogMessage = null, string LogNote = null, string source = null, int timeElapsed = 0);
+        void ClickLog(Incident incident = null, RightNowServiceReference.Contact contact = null, string LogMessage = null, string LogNote = null, string source = null, int timeElapsed = 0);
+
     }
 }

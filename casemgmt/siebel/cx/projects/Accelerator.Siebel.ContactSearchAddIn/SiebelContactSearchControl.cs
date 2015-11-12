@@ -5,13 +5,13 @@
  ***********************************************************************************************
  *  Accelerator Package: OSVC Contact Center + Siebel Case Management Accelerator
  *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
- *  OSvC release: 15.5 (May 2015)
+ *  OSvC release: 15.8 (August 2015)
  *  Siebel release: 8.1.1.15
- *  reference: 141216-000121
- *  date: Wed Sep  2 23:14:38 PDT 2015
+ *  reference: 150520-000047
+ *  date: Thu Nov 12 00:55:33 PST 2015
 
- *  revision: rnw-15-8-fixes-release-01
- *  SHA1: $Id: bfd15b562e2f3274a42998a0956c44bbf0533cbe $
+ *  revision: rnw-15-11-fixes-release-1
+ *  SHA1: $Id: f0e1674cf3f51d61d75bfd76e20863b47896e8b0 $
  * *********************************************************************************************
  *  File: SiebelContactSearchControl.cs
  * *********************************************************************************************/
@@ -222,8 +222,8 @@ namespace Accelerator.Siebel.ContactSearchAddIn
             string firstname = searchField["firstname"];
             string lastname = searchField["lastname"];
             //Send request to Siebel Server, if endpoint is set
-            SharedServices.Contact cont = new SharedServices.Contact();
-            SharedServices.Contact[] results = null;
+            SharedServices.ContactModel cont = new SharedServices.ContactModel();
+            SharedServices.ContactModel[] results = null;
             try
             {
                 results = cont.LookupList(firstname, lastname, phoneDigits, email, _logIncidentId, _logContactId);
@@ -274,7 +274,7 @@ namespace Accelerator.Siebel.ContactSearchAddIn
                     }
                     if (e.Result != null)
                     {
-                        foreach (Accelerator.Siebel.SharedServices.Contact contact in (SharedServices.Contact[])e.Result)
+                        foreach (Accelerator.Siebel.SharedServices.ContactModel contact in (SharedServices.ContactModel[])e.Result)
                         {
 
                             ListViewItem item = null;

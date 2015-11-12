@@ -1,17 +1,17 @@
-﻿/* *********************************************************************************************
+/* *********************************************************************************************
  *  This file is part of the Oracle Service Cloud Accelerator Reference Integration set published
  *  by Oracle Service Cloud under the MIT license (MIT) included in the original distribution.
  *  Copyright (c) 2014, 2015, Oracle and/or its affiliates. All rights reserved.
  ***********************************************************************************************
  *  Accelerator Package: OSVC Contact Center + Siebel Case Management Accelerator
  *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
- *  OSvC release: 15.5 (May 2015)
+ *  OSvC release: 15.8 (August 2015)
  *  Siebel release: 8.1.1.15
- *  reference: 141216-000121
- *  date: Wed Sep  2 23:14:42 PDT 2015
+ *  reference: 150520-000047
+ *  date: Thu Nov 12 00:55:37 PST 2015
 
- *  revision: rnw-15-8-fixes-release-01
- *  SHA1: $Id: 01df8e71cd48e0187d5a2a30cca9ec9c981b7cff $
+ *  revision: rnw-15-11-fixes-release-1
+ *  SHA1: $Id: 96da9d78664cbc6f84f50590a26e2dc854d232c6 $
  * *********************************************************************************************
  *  File: LiveSiebelProvider.cs
  * *********************************************************************************************/
@@ -39,7 +39,7 @@ namespace Accelerator.Siebel.SharedServices.Providers
     internal class LiveSiebelProvider : ISiebelProvider
     {
         #region Properties
-        private BasicHttpBinding binding;
+        private HttpBindingBase binding;
         private EndpointAddress addr;
 
         public string SRURL
@@ -111,6 +111,33 @@ namespace Accelerator.Siebel.SharedServices.Providers
             set;
         }
 
+        public string ActivityURL
+        {
+            get;
+            set;
+        }
+
+        public string ActivityServiceUsername
+        {
+            get;
+            set;
+        }
+
+        public string ActivityServicePassword
+        {
+            get;
+            set;
+        }
+
+        public int ActivityServiceTimeout
+        {
+            get;
+            set;
+        }
+
+
+
+
         public Logs.LogWrapper log { get; set; }
 
         #endregion
@@ -135,6 +162,8 @@ namespace Accelerator.Siebel.SharedServices.Providers
             InitBindings(sr_url);
         }
 
+
+
         public void InitForNote(string note_url, string user_name, string password, int timeout)
         {
             NoteURL = note_url;
@@ -144,10 +173,29 @@ namespace Accelerator.Siebel.SharedServices.Providers
             InitBindings(note_url);
         }
 
+        // Activity
+        public void InitForActivity(string activity_url, string user_name, string password, int timeout)
+        {
+            ActivityURL = activity_url;
+            ActivityServiceUsername = user_name;
+            ActivityServicePassword = password;
+            ActivityServiceTimeout = timeout;
+            InitBindings(activity_url);
+        }
+        
+
+
         private void InitBindings(string url)
         {
             addr = new EndpointAddress(url);
-            binding = new BasicHttpBinding();
+            if (url.StartsWith("https://"))
+            {
+                binding = new BasicHttpsBinding();
+            }
+            else
+            {
+                binding = new BasicHttpBinding();
+            }
         }
         #endregion
 
@@ -195,6 +243,9 @@ namespace Accelerator.Siebel.SharedServices.Providers
                     }
                 }
             }
+
+            if (ip.ListOfWc_Contacts_Io.Contact.Id == null)
+                ip.ListOfWc_Contacts_Io.Contact.Id = new CONTACTSVC.queryType();
 
             ip.ListOfWc_Contacts_Io.Contact.Id.Value = "='" + party_id + "'";
 
@@ -341,7 +392,7 @@ namespace Accelerator.Siebel.SharedServices.Providers
             return dictDetail;
         }
 
-        public Contact[] LookupContactList(string firstname, string lastname, string phone, string email, int _logIncidentId = 0, int _logContactId = 0)
+        public ContactModel[] LookupContactList(string firstname, string lastname, string phone, string email, int _logIncidentId = 0, int _logContactId = 0)
         {
             string request, response, logMessage, logNote;
             CONTACTSVC.WC_Contacts_BSClient client = new CONTACTSVC.WC_Contacts_BSClient(binding, addr);
@@ -349,7 +400,7 @@ namespace Accelerator.Siebel.SharedServices.Providers
             client.Endpoint.Behaviors.Add(eBehavior);
             if (ContactServiceTimeout > 0)
                 client.InnerChannel.OperationTimeout = TimeSpan.FromMilliseconds(ContactServiceTimeout );
-            Contact[] retvals = null;
+            ContactModel[] retvals = null;
 
 
             if (String.IsNullOrWhiteSpace(ContactURL) || String.IsNullOrWhiteSpace(ContactServiceUsername) || String.IsNullOrWhiteSpace(ContactServicePassword))
@@ -455,11 +506,11 @@ namespace Accelerator.Siebel.SharedServices.Providers
                 if (opList.ListOfWc_Contacts_Io.Contact == null)
                     return retvals;
 
-                List<Contact> contacts = new List<Contact>();
+                List<ContactModel> contacts = new List<ContactModel>();
 
                 foreach (CONTACTSVC.ContactData op in opList.ListOfWc_Contacts_Io.Contact)
                 {
-                    Contact contact = new Contact();
+                    ContactModel contact = new ContactModel();
                     contact.ContactPartyID = op.Id;
                     contact.FirstName = op.FirstName;
                     contact.LastName = op.LastName;
@@ -485,8 +536,8 @@ namespace Accelerator.Siebel.SharedServices.Providers
                 request = eBehavior.msgInspector.reqPayload;
                 response = eBehavior.msgInspector.resPayload;
 
-                List<Contact> contacts = new List<Contact>();
-                Contact contact = new Contact();
+                List<ContactModel> contacts = new List<ContactModel>();
+                ContactModel contact = new ContactModel();
                 contact.ErrorMessage = "There has been an error communicating with Siebel. Please check log for detail.";
                 contacts.Add(contact);
                 retvals = contacts.ToArray();
@@ -537,13 +588,16 @@ namespace Accelerator.Siebel.SharedServices.Providers
             foreach (PropertyInfo propertyInfo in ip.ListOfWc_Contacts_Io.Contact.ListOfServiceRequest.ServiceRequest.GetType().GetProperties())
             {
                 /* bc Incident/SR report tab is a special case, the columns are hard coded and fixed
-                 * to show the combined rnow and siebel rows, IntegratrionId and summary are diffent name
-                 */ 
+                 * to show the combined rnow and siebel rows, IntegratrionId, summary, Id
+                 * are diffent name
+                 */
                 foreach (string column in columns)
                 {
                     if (propertyInfo.Name == column.Split('.')[1] ||
                         propertyInfo.Name == "IntegrationId" ||
-                        propertyInfo.Name == "Description3")
+                        propertyInfo.Name == "Id" ||
+                        propertyInfo.Name == "Abstract"
+                       )
                     {
                         if (propertyInfo.PropertyType == typeof(CONTACTSVC.queryType))
                         {
@@ -609,7 +663,7 @@ namespace Accelerator.Siebel.SharedServices.Providers
                     req.RequestID = sr.Id;
                     req.RequestNumber = sr.SRNumber;
                     req.Status = sr.Status;
-                    req.Summary = sr.Description3;
+                    req.Summary = sr.Abstract;
                     req.RequestDate = (DateTime)sr.Created;
                     retvals[i] = req;
                     i++;
@@ -1047,6 +1101,7 @@ namespace Accelerator.Siebel.SharedServices.Providers
             }
             return sr;
         }
+
 
         public Note CreateNote(Note note, int _logIncidentId = 0, int _logContactId = 0)
         {
@@ -1565,6 +1620,14 @@ namespace Accelerator.Siebel.SharedServices.Providers
                 if (assets == null)
                 {
                     retval = null;
+
+                    logMessage = "Request of serial number validation (Failure). Serial Number = " + serialNum + "; Account Org ID = " + orgId;
+                    logNote = "Request Payload: " + request;
+                    log.NoticeLog(_logIncidentId, _logContactId, logMessage, logNote);
+
+                    logMessage = "Response of serial number validation (Failure). Serial Number = " + serialNum + "; Account Org ID = " + orgId;
+                    logNote = "Response Payload: " + response;
+                    log.NoticeLog(_logIncidentId, _logContactId, logMessage, logNote, (int)stopwatch.ElapsedMilliseconds);
                 }
                 else
                 {
@@ -1575,15 +1638,15 @@ namespace Accelerator.Siebel.SharedServices.Providers
                     retval.AccountOrgID = asset.AccountOrgId;
                     retval.ProductID = asset.ProductId;
                     retval.ProductName = asset.ProductName;
+
+                    logMessage = "Request of serial number validation (Success). Serial Number = " + serialNum + "; Account Org ID = " + orgId;
+                    logNote = "Request Payload: " + request;
+                    log.DebugLog(_logIncidentId, _logContactId, logMessage, logNote);
+
+                    logMessage = "Response of serial number validation (Success). Serial Number = " + serialNum + "; Account Org ID = " + orgId;
+                    logNote = "Response Payload: " + response;
+                    log.DebugLog(_logIncidentId, _logContactId, logMessage, logNote, (int)stopwatch.ElapsedMilliseconds);
                 }
-
-                logMessage = "Request of serial number validation (Success). Serial Number = " + serialNum + "; Account Org ID = " + orgId;
-                logNote = "Request Payload: " + request;
-                log.DebugLog(_logIncidentId, _logContactId, logMessage, logNote);
-
-                logMessage = "Response of serial number validation (Success). Serial Number = " + serialNum + "; Account Org ID = " + orgId;
-                logNote = "Response Payload: " + response;
-                log.DebugLog(_logIncidentId, _logContactId, logMessage, logNote, (int)stopwatch.ElapsedMilliseconds);
             }
             catch (Exception ex)
             {
@@ -1841,13 +1904,6 @@ namespace Accelerator.Siebel.SharedServices.Providers
             KeyValuePair<String, String> rnStatusToMockStatus;
             switch (rnStatusID)
             {
-                case 1:
-                    rnStatusToMockStatus = new KeyValuePair<String, String>("Open", "Open");
-                    break;
-                case 3:
-                case 8:
-                    rnStatusToMockStatus = new KeyValuePair<String, String>("In Progress", "In Progress");
-                    break;
                 case 2:
                     rnStatusToMockStatus = new KeyValuePair<String, String>("Close", "Close");
                     break;
@@ -1962,5 +2018,108 @@ namespace Accelerator.Siebel.SharedServices.Providers
             }
         }
         #endregion
+
+
+
+        // Activity
+
+        public Activity CreateActivity(Activity activity, int _logIncidentId = 0, int _logContactId = 0)
+        {
+            // reuse SR web service
+            if (String.IsNullOrWhiteSpace(SRURL) || String.IsNullOrWhiteSpace(SRServiceUsername)
+                || String.IsNullOrWhiteSpace(SRServicePassword))
+            {
+                throw new Exception("Provider's InitForSR not run.");
+            }
+
+            string request, response, logMessage, logNote;
+
+            SRSVC.WC_Service_Request_BSClient client = new SRSVC.WC_Service_Request_BSClient(binding, addr);
+            MyEndpointBehavior eBehavior = new MyEndpointBehavior();
+            client.Endpoint.Behaviors.Add(eBehavior);
+            if (ActivityServiceTimeout > 0)
+                client.InnerChannel.OperationTimeout = TimeSpan.FromMilliseconds(ActivityServiceTimeout);
+
+            SRSVC.WC_Service_Request_BSInsert_Input ip = new SRSVC.WC_Service_Request_BSInsert_Input();
+
+
+            ip.ListOfWc_Service_Request_Io = new SRSVC.ListOfWc_Service_Request_IoData();
+            ip.ListOfWc_Service_Request_Io.ServiceRequest = new SRSVC.ServiceRequestData[1];
+            ip.ListOfWc_Service_Request_Io.ServiceRequest[0] = new SRSVC.ServiceRequestData();
+            if (activity.SrID != null)
+            {
+                ip.ListOfWc_Service_Request_Io.ServiceRequest[0].Id = activity.SrID;
+            }
+            else
+            {
+                activity.ErrorMessage = "The following error occurred when doing the Create: SR ID is empty";
+                return activity;
+            }
+
+            ip.ListOfWc_Service_Request_Io.ServiceRequest[0].ListOfAction = new SRSVC.ListOfActionData();
+            ip.ListOfWc_Service_Request_Io.ServiceRequest[0].ListOfAction.Action = new SRSVC.ActionData[1];
+            ip.ListOfWc_Service_Request_Io.ServiceRequest[0].ListOfAction.Action[0] = new SRSVC.ActionData();
+            if (activity.Comment != null)
+            {
+                ip.ListOfWc_Service_Request_Io.ServiceRequest[0].ListOfAction.Action[0].Description2 = activity.Description;
+                ip.ListOfWc_Service_Request_Io.ServiceRequest[0].ListOfAction.Action[0].Type = activity.ActivityType;
+                ip.ListOfWc_Service_Request_Io.ServiceRequest[0].ListOfAction.Action[0].Comment = activity.Comment;
+                ip.ListOfWc_Service_Request_Io.ServiceRequest[0].ListOfAction.Action[0].Description2 = activity.Description;
+                ip.ListOfWc_Service_Request_Io.ServiceRequest[0].ListOfAction.Action[0].Due = activity.Due;
+                ip.ListOfWc_Service_Request_Io.ServiceRequest[0].ListOfAction.Action[0].DueSpecified = true;
+                ip.ListOfWc_Service_Request_Io.ServiceRequest[0].ListOfAction.Action[0].Priority = activity.Priority;
+                ip.ListOfWc_Service_Request_Io.ServiceRequest[0].ListOfAction.Action[0].Status = activity.Status;
+            }
+
+            ip.LOVLanguageMode = "LIC";
+            ip.ViewMode = "All";
+            Stopwatch stopwatch = new Stopwatch();
+            try
+            {
+                SRSVC.WC_Service_Request_BSInsert_Output op;
+                using (new OperationContextScope(client.InnerChannel))
+                {
+                    MessageHeader usrMsgHdr = MessageHeader.CreateHeader("UsernameToken", "http://siebel.com/webservices", SRServiceUsername);
+                    OperationContext.Current.OutgoingMessageHeaders.Add(usrMsgHdr);
+                    MessageHeader pwdMsgHdr = MessageHeader.CreateHeader("PasswordText", "http://siebel.com/webservices", SRServicePassword);
+                    OperationContext.Current.OutgoingMessageHeaders.Add(pwdMsgHdr);
+                    stopwatch.Start();
+                    op = client.WC_Service_Request_BSInsert(ip);
+                    stopwatch.Stop();
+                    request = eBehavior.msgInspector.reqPayload;
+                    response = eBehavior.msgInspector.resPayload;
+
+                    SRSVC.ServiceRequestId opData = op.ListOfWc_Service_Request_Io[0];
+                    activity.ID = opData.ListOfAction[0].Id;
+                }
+                logMessage = "Request of creating Activity (Success). Created Activity ID = " + activity.ID;
+                logNote = "Request Payload: " + request;
+                log.DebugLog(_logIncidentId, _logContactId, logMessage, logNote);
+
+                logMessage = "Response of creating Activity(Success). Created Activity ID = " + activity.ID;
+                logNote = "Response Payload: " + response;
+                log.DebugLog(_logIncidentId, _logContactId, logMessage, logNote, (int)stopwatch.ElapsedMilliseconds);
+            }
+            catch (Exception ex)
+            {
+                request = eBehavior.msgInspector.reqPayload;
+                response = eBehavior.msgInspector.resPayload;
+
+                activity.ErrorMessage = "There has been an error communicating with Siebel. Please check log for detail.";
+
+                logMessage = "Request of creating  Activity(Failure). " + ex.Message;
+                logNote = "Request Payload: " + request;
+                log.ErrorLog(_logIncidentId, _logContactId, logMessage, logNote);
+
+                logMessage = "Response of creating  Activity(Failure). " + ex.Message;
+                logNote = "Response Payload: " + response;
+                log.ErrorLog(_logIncidentId, _logContactId, logMessage, logNote);
+
+                handleSiebelException(ex, "Create  Activity of Service Request", _logIncidentId, _logContactId);
+            }
+            return activity;
+        }
+
+
     }
 }

@@ -6,13 +6,13 @@
  ***********************************************************************************************
  *  Accelerator Package: OSVC + EBS Enhancement
  *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
- *  OSvC release: 15.5 (May 2015)
+ *  OSvC release: 15.8 (August 2015)
  *  EBS release: 12.1.3
- *  reference: 150202-000157
- *  date: Wed Sep  2 23:11:32 PDT 2015
+ *  reference: 150505-000099, 150420-000127
+ *  date: Thu Nov 12 00:52:37 PST 2015
 
- *  revision: rnw-15-8-fixes-release-01
- *  SHA1: $Id: 03ca879f5a2c2be39ffa18019a7a1fa2b91c3c2c $
+ *  revision: rnw-15-11-fixes-release-1
+ *  SHA1: $Id: 252ff6c1868f108331706134b1b013706ce8cd01 $
  * *********************************************************************************************
  *  File: view.php
  * ****************************************************************************************** */
@@ -60,7 +60,11 @@
     ?>
     <? else: ?>
     <rn:block id="preInput"/>
-        <input type="<?=$this->data['inputType']?>" id="rn_<?=$this->instanceID?>_<?=$this->data['js']['name']?>" name="<?= $this->data['inputName'] ?>" class="rn_<?=$this->data['displayType']?> rn_SerialNumberInput" <?=$this->outputConstraints();?> <?if($this->data['value']
+        <input type="<?=$this->data['inputType']?>" 
+               id="rn_<?=$this->instanceID?>_<?=$this->data['js']['name']?>" 
+               name="<?= $this->data['inputName'] ?>" 
+               class="rn_<?=$this->data['displayType']?> rn_SerialNumberInput" 
+            <?=$this->outputConstraints();?> <?if($this->data['value']
     !== null && $this->data['value'] !== '') echo "value='{$this->data['value']}'";?> />
     <rn:block id="postInput"/>
     <?

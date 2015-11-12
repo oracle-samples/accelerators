@@ -7,13 +7,13 @@
  ***********************************************************************************************
  *  Accelerator Package: OSVC Contact Center + Siebel Case Management Accelerator
  *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
- *  OSvC release: 15.5 (May 2015)
+ *  OSvC release: 15.8 (August 2015)
  *  Siebel release: 8.1.1.15
- *  reference: 141216-000121
- *  date: Wed Sep  2 23:14:32 PDT 2015
+ *  reference: 150520-000047
+ *  date: Thu Nov 12 00:55:26 PST 2015
 
- *  revision: rnw-15-8-fixes-release-01
- *  SHA1: $Id: 8f3a2dd4d54b37d86bd32f34b30868f1eb54e8cc $
+ *  revision: rnw-15-11-fixes-release-1
+ *  SHA1: $Id: 2feb705c0c707d0884bf39508388e466349d78a9 $
  * *********************************************************************************************
  *  File: SiebelRequestGenerator.php
  * ****************************************************************************************** */
@@ -104,7 +104,7 @@ REQUEST;
         <quer:ListOfWc_Contacts_Io pagesize="10" startrownum="0" recordcountneeded="TRUE">
             <quer:Contact searchspec="">
                 <quer:Id sortorder="" sortsequence="">='{$contactPartyID}'</quer:Id>
-                <quer:ListOfServiceRequest pagesize="10" startrownum="0" recordcountneeded="TRUE">
+                <quer:ListOfServiceRequest pagesize="100" startrownum="0" recordcountneeded="TRUE">
                     <quer:ServiceRequest searchspec="">
                     {$queryEntries}
                     </quer:ServiceRequest>

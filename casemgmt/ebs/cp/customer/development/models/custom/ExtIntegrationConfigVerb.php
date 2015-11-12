@@ -7,13 +7,13 @@
  ***********************************************************************************************
  *  Accelerator Package: OSVC + EBS Enhancement
  *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
- *  OSvC release: 15.5 (May 2015)
+ *  OSvC release: 15.8 (August 2015)
  *  EBS release: 12.1.3
- *  reference: 150202-000157
- *  date: Wed Sep  2 23:11:31 PDT 2015
+ *  reference: 150505-000099, 150420-000127
+ *  date: Thu Nov 12 00:52:35 PST 2015
 
- *  revision: rnw-15-8-fixes-release-01
- *  SHA1: $Id: 128c51c51b746ee97c2e93d072dfb97058dc2e51 $
+ *  revision: rnw-15-11-fixes-release-1
+ *  SHA1: $Id: 853433df51d1aa835edfa9f5b766dd68742c13bb $
  * *********************************************************************************************
  *  File: ExtIntegrationConfigVerb.php
  * ****************************************************************************************** */
@@ -56,7 +56,7 @@ class ExtIntegrationConfigVerb extends \RightNow\Models\Base {
         // check if CUSTOM_CFG_EBS_Web_Service_Endpoint is defined in the current site
         if (IS_DEVELOPMENT === true && !defined('CUSTOM_CFG_Accel_Ext_Integrations')) {
             $this->log->error('CUSTOM_CFG_' . 'Accel_Ext_Integrations is not set', __METHOD__, array(null, $this->contact));
-            Url::redirectToErrorPage(8);
+            Url::redirectToErrorPage(13);
         }
 
         // get the value of config verb CUSTOM_CFG_Accel_Ext_Integrations
@@ -64,14 +64,14 @@ class ExtIntegrationConfigVerb extends \RightNow\Models\Base {
         $configVerb = json_decode($config->Value, true);
         if (is_null($configVerb)) {
             $this->log->error('Unable to get the value of CUSTOM_CFG_' . 'Accel_Ext_Integrations', __METHOD__, array(null, $this->contact), $config);
-            Url::redirectToErrorPage(8);
+            Url::redirectToErrorPage(13);
         }
 
         // check if current site is defined in the config rnt_host
         $server = \RightNow\Utils\Config::getConfig(OE_WEB_SERVER);
         $hosts = $configVerb['hosts'];
         if (is_null($hosts)) {
-            $this->log->error('Unable to find hosts inside CUSTOM_CFG_' . 'Accel_Ext_Integrations', __METHOD__, array(null, $this->contact), json_encode($configVerb));
+            $this->log->error('Unable to find hosts inside CUSTOM_CFG_' . 'Accel_Ext_Integrations', __METHOD__, array(null, $this->contact), var_export($configVerb, true));
             Url::redirectToErrorPage(8);
         }
         foreach ($hosts as $host) {

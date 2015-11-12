@@ -5,13 +5,13 @@
  ***********************************************************************************************
  *  Accelerator Package: OSVC Contact Center + Siebel Case Management Accelerator
  *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
- *  OSvC release: 15.5 (May 2015)
+ *  OSvC release: 15.8 (August 2015)
  *  Siebel release: 8.1.1.15
- *  reference: 141216-000121
- *  date: Wed Sep  2 23:14:36 PDT 2015
+ *  reference: 150520-000047
+ *  date: Thu Nov 12 00:55:30 PST 2015
 
- *  revision: rnw-15-8-fixes-release-01
- *  SHA1: $Id: 575b3821ccb72858dc25e877798bc822c348bd9d $
+ *  revision: rnw-15-11-fixes-release-1
+ *  SHA1: $Id: 35d0202222aa8bffce6c5bc1d1437a3a7ac17aee $
  * *********************************************************************************************
  *  File: logic.js
  * ****************************************************************************************** */
@@ -31,11 +31,11 @@ Custom.Widgets.SiebelServiceRequest.SrListGrid = RightNow.Widgets.extend({
         // show the spinner
         this._showSpinner();
 
-        // send Ajax request
+        // send AJAX request
         this.getSrListAjaxEndpoint();
     },
     /**
-     * Makes an AJAX request for `getSrList_ajax_endpoint`.
+     * Makes an AJAX request for `get_sr_list_ajax_endpoint`.
      */
     getSrListAjaxEndpoint: function() {
         // Make AJAX request:
@@ -53,12 +53,11 @@ Custom.Widgets.SiebelServiceRequest.SrListGrid = RightNow.Widgets.extend({
         });
     },
     /**
-     * Ajax requeest failure hander
+     * Failure handler for the AJAX request
      */
     ajaxFailureHandler: function() {
-        this._showErrorMessage(this.data.attrs.ajax_failure_message);
+        this._showErrorMessage(this.data.attrs.ajax_timeout_message);
     },
-    
     /**
      * Display error message
      */
@@ -73,14 +72,14 @@ Custom.Widgets.SiebelServiceRequest.SrListGrid = RightNow.Widgets.extend({
     /**
      * Handel the getSrList AJAX request
      * @param {object} response JSON-parsed response from the server
-     * @param {object} originalEventObj `eventObj` from #getDefault_ajax_endpoint
+     * @param {object} originalEventObj `eventObj` from #get_sr_list_ajax_endpoint
      */
     getSrListAjaxEndpointCallback: function(response) {
         if (response.error !== null) {
             this._showErrorMessage(response.error);
             return;
         }
-        
+
         this.renderView(response.result);
         this._hideSpinner();
     },

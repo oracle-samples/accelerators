@@ -5,13 +5,13 @@
  ***********************************************************************************************
  *  Accelerator Package: OSVC Contact Center + Siebel Case Management Accelerator
  *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
- *  OSvC release: 15.5 (May 2015)
+ *  OSvC release: 15.8 (August 2015)
  *  Siebel release: 8.1.1.15
- *  reference: 141216-000121
- *  date: Wed Sep  2 23:14:40 PDT 2015
+ *  reference: 150520-000047
+ *  date: Thu Nov 12 00:55:35 PST 2015
 
- *  revision: rnw-15-8-fixes-release-01
- *  SHA1: $Id: 1548e02c4f51a2acec23cdf53b1bbecaefc91e16 $
+ *  revision: rnw-15-11-fixes-release-1
+ *  SHA1: $Id: ac8d23ef75680893a7320f64d65234b5dd4440ca $
  * *********************************************************************************************
  *  File: ServiceRequestAddIn.cs
  * *********************************************************************************************/
@@ -274,7 +274,7 @@ namespace Accelerator.Siebel.ServiceRequestAddin
                     //Invalid Error
                     logMessage = "The serial number (" + current_serial_num + ") is invalid. It does not belong to current contact's organization.";
                     logNote = "";
-                    _log.DebugLog(incidentId: _logIncidentId, logMessage: logMessage, logNote: logNote);
+                    _log.NoticeLog(incidentId: _logIncidentId, logMessage: logMessage, logNote: logNote);
                     
                     string message = "The serial number is invalid. It does not belong to current contact's organization.";
                     MessageBoxButtons buttons = MessageBoxButtons.OK;
@@ -920,7 +920,7 @@ namespace Accelerator.Siebel.ServiceRequestAddin
                 result = System.Windows.Forms.MessageBox.Show(this, message, "Warning", buttons, MessageBoxIcon.Warning);
                 logMessage = "Cannot propagate the message to Siebel.";
                 logNote = message;
-                _log.DebugLog(logMessage: logMessage, logNote: logNote, incidentId: _logIncidentId);
+                _log.ErrorLog(logMessage: logMessage, logNote: logNote, incidentId: _logIncidentId);
 
                 if (result == DialogResult.OK)
                 {
@@ -953,16 +953,16 @@ namespace Accelerator.Siebel.ServiceRequestAddin
                 {
                     logMessage = "Thread is created from CP. Do not need to propagate to Siebel again. Thread ID = " + thread.ID;
                     _log.DebugLog(incidentId: _logIncidentId, logMessage: logMessage);
-                    storedThreadCount++;
+                    storedThreadCount = thread.ID;
                     continue;
                 }
 
                 // If thread is created by CWSS_API_Siebel_Service_User as a private note, ignore it.
-                if (thread.AcctID == ConfigurationSetting.cwssApiEbsServiceUserId && thread.ChanID == null)
+                if (thread.AcctID == ConfigurationSetting.cwssApiSiebelServiceUserId && thread.ChanID == null)
                 {
                     logMessage = "Thread is created from Siebel side. Do not need to propagate to Siebel again. Thread ID = " + thread.ID;
                     _log.DebugLog(incidentId: _logIncidentId, logMessage: logMessage);
-                    storedThreadCount++;
+                    storedThreadCount = thread.ID;
                     continue;
                 }
 

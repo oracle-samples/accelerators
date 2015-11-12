@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <analytics_core xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <ac_id xmlns="urn:obj.api.rightnow.com">101047</ac_id>
+  <ac_id xmlns="urn:obj.api.rightnow.com">101051</ac_id>
   <ac_public xmlns="urn:obj.api.rightnow.com">true</ac_public>
   <ac_type xmlns="urn:obj.api.rightnow.com">1</ac_type>
   <aux xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
   <cdate_offset xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
   <co_version xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
-  <created xmlns="urn:obj.api.rightnow.com">2015-04-06T23:56:32Z</created>
+  <created xmlns="urn:obj.api.rightnow.com">2015-09-08T21:28:25Z</created>
   <file_id xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
   <filters xmlns="urn:obj.api.rightnow.com">
     <filter_item>
@@ -19,8 +19,8 @@
       <revision>1</revision>
       <type>1</type>
       <val1>SRData$RepairLogisticsTable.HiddenRepairOrderID</val1>
-      <val1_attrs>0</val1_attrs>
-      <val1_col_refs xsi:nil="true" />
+      <val1_attrs>1</val1_attrs>
+      <val1_col_refs>SRData$RepairLogisticsTable.HiddenRepairOrderID;32006</val1_col_refs>
       <val2 xsi:nil="true" />
       <val2_col_refs xsi:nil="true" />
       <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
@@ -62,7 +62,7 @@
           <display_order>1</display_order>
           <group_order xsi:nil="true" />
           <max_len xsi:nil="true" />
-          <min_vuse xsi:nil="true" />
+          <min_vuse>5</min_vuse>
           <opts xsi:nil="true" />
           <rpt_links />
           <sort_direction xsi:nil="true" />
@@ -70,8 +70,8 @@
           <trend_opts xsi:nil="true" />
           <type>1</type>
           <val>SRData$RepairLogisticsTable.PRODUCT_TRANSACTION_ID</val>
-          <val_attrs>0</val_attrs>
-          <val_col_refs xsi:nil="true" />
+          <val_attrs>1</val_attrs>
+          <val_col_refs>SRData$RepairLogisticsTable.PRODUCT_TRANSACTION_ID;32006</val_col_refs>
           <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;UnitType&gt;Auto&lt;/UnitType&gt;
@@ -94,7 +94,7 @@
           <display_order>2</display_order>
           <group_order xsi:nil="true" />
           <max_len xsi:nil="true" />
-          <min_vuse xsi:nil="true" />
+          <min_vuse>5</min_vuse>
           <opts xsi:nil="true" />
           <rpt_links />
           <sort_direction xsi:nil="true" />
@@ -102,8 +102,8 @@
           <trend_opts xsi:nil="true" />
           <type>1</type>
           <val>SRData$RepairLogisticsTable.REPAIR_QUANTITY</val>
-          <val_attrs>0</val_attrs>
-          <val_col_refs xsi:nil="true" />
+          <val_attrs>1</val_attrs>
+          <val_col_refs>SRData$RepairLogisticsTable.REPAIR_QUANTITY;32006</val_col_refs>
           <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;UnitType&gt;Auto&lt;/UnitType&gt;
@@ -126,7 +126,7 @@
           <display_order>3</display_order>
           <group_order xsi:nil="true" />
           <max_len xsi:nil="true" />
-          <min_vuse xsi:nil="true" />
+          <min_vuse>5</min_vuse>
           <opts xsi:nil="true" />
           <rpt_links />
           <sort_direction xsi:nil="true" />
@@ -134,8 +134,8 @@
           <trend_opts xsi:nil="true" />
           <type>1</type>
           <val>SRData$RepairLogisticsTable.ACTION_CODE_MEANING</val>
-          <val_attrs>0</val_attrs>
-          <val_col_refs xsi:nil="true" />
+          <val_attrs>1</val_attrs>
+          <val_col_refs>SRData$RepairLogisticsTable.ACTION_CODE_MEANING;32006</val_col_refs>
           <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;UnitType&gt;Auto&lt;/UnitType&gt;
@@ -155,7 +155,7 @@
           <display_order>4</display_order>
           <group_order xsi:nil="true" />
           <max_len xsi:nil="true" />
-          <min_vuse xsi:nil="true" />
+          <min_vuse>5</min_vuse>
           <opts xsi:nil="true" />
           <rpt_links />
           <sort_direction xsi:nil="true" />
@@ -163,8 +163,8 @@
           <trend_opts xsi:nil="true" />
           <type>1</type>
           <val>SRData$RepairLogisticsTable.ACTION_TYPE_MEANING</val>
-          <val_attrs>0</val_attrs>
-          <val_col_refs xsi:nil="true" />
+          <val_attrs>1</val_attrs>
+          <val_col_refs>SRData$RepairLogisticsTable.ACTION_TYPE_MEANING;32006</val_col_refs>
           <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;UnitType&gt;Auto&lt;/UnitType&gt;
@@ -184,7 +184,7 @@
           <display_order>5</display_order>
           <group_order xsi:nil="true" />
           <max_len xsi:nil="true" />
-          <min_vuse xsi:nil="true" />
+          <min_vuse>5</min_vuse>
           <opts xsi:nil="true" />
           <rpt_links />
           <sort_direction xsi:nil="true" />
@@ -192,8 +192,8 @@
           <trend_opts xsi:nil="true" />
           <type>1</type>
           <val>SRData$RepairLogisticsTable.INVENTORY_ITEM_NAME</val>
-          <val_attrs>0</val_attrs>
-          <val_col_refs xsi:nil="true" />
+          <val_attrs>1</val_attrs>
+          <val_col_refs>SRData$RepairLogisticsTable.INVENTORY_ITEM_NAME;32006</val_col_refs>
           <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;UnitType&gt;Auto&lt;/UnitType&gt;
@@ -213,7 +213,7 @@
           <display_order>6</display_order>
           <group_order xsi:nil="true" />
           <max_len xsi:nil="true" />
-          <min_vuse xsi:nil="true" />
+          <min_vuse>5</min_vuse>
           <opts xsi:nil="true" />
           <rpt_links />
           <sort_direction xsi:nil="true" />
@@ -221,8 +221,8 @@
           <trend_opts xsi:nil="true" />
           <type>1</type>
           <val>SRData$RepairLogisticsTable.INVENTORY_ITEM_ID</val>
-          <val_attrs>0</val_attrs>
-          <val_col_refs xsi:nil="true" />
+          <val_attrs>1</val_attrs>
+          <val_col_refs>SRData$RepairLogisticsTable.INVENTORY_ITEM_ID;32006</val_col_refs>
           <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;UnitType&gt;Auto&lt;/UnitType&gt;
@@ -444,10 +444,10 @@
     </table_item>
   </tables>
   <time_zone xmlns="urn:obj.api.rightnow.com">0</time_zone>
-  <updated xmlns="urn:obj.api.rightnow.com">2015-04-08T21:24:13Z</updated>
+  <updated xmlns="urn:obj.api.rightnow.com">2015-09-08T21:28:25Z</updated>
   <version xmlns="urn:obj.api.rightnow.com">0</version>
   <xml_data xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
   <xml_report xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
 </analytics_core>
 Version: 
-uvAK3iJQ2byYBbK31345bbeXdVxeWg6idg==
+JC71iGGk+iU9BjjvjSnXzQOHxeyy5NjM

@@ -5,13 +5,13 @@
  ***********************************************************************************************
  *  Accelerator Package: OSVC Contact Center + Siebel Case Management Accelerator
  *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
- *  OSvC release: 15.5 (May 2015)
+ *  OSvC release: 15.8 (August 2015)
  *  Siebel release: 8.1.1.15
- *  reference: 141216-000121
- *  date: Wed Sep  2 23:14:41 PDT 2015
+ *  reference: 150520-000047
+ *  date: Thu Nov 12 00:55:36 PST 2015
 
- *  revision: rnw-15-8-fixes-release-01
- *  SHA1: $Id: fa71ce09002905ecc92e9eacd64442e8ce34c890 $
+ *  revision: rnw-15-11-fixes-release-1
+ *  SHA1: $Id: e43a92c6d0dbc00ee70fea1984c87f2ca7e48e60 $
  * *********************************************************************************************
  *  File: Contact.cs
  * *********************************************************************************************/
@@ -25,7 +25,7 @@ using System.Text;
 
 namespace Accelerator.Siebel.SharedServices
 {
-    public class Contact : ModelObjectBase
+    public class ContactModel : ModelObjectBase
     {
         public static ISiebelProvider _provider;
         public static string ListLookupURL { get; set; }
@@ -38,22 +38,22 @@ namespace Accelerator.Siebel.SharedServices
         public string ContactOrgID { get; set; }
         public string ErrorMessage { get; set; }
 
-        public Contact[] LookupList(string firstname, string lastname, string phone, string email, int _logIncidentId = 0, int _logContactId = 0)
+        public ContactModel[] LookupList(string firstname, string lastname, string phone, string email, int _logIncidentId = 0, int _logContactId = 0)
         {
-            Contact[] contactArr = null;
+            ContactModel[] contactArr = null;
             //Switch Provider to call web service    
-            contactArr = Contact._provider.LookupContactList(firstname, lastname, phone, email, _logIncidentId, _logContactId);
+            contactArr = ContactModel._provider.LookupContactList(firstname, lastname, phone, email, _logIncidentId, _logContactId);
             return contactArr;
         }
 
         public static Dictionary<string, string> LookupDetail(IList<string> columns, string party_id, int _logIncidentId = 0, int _logContactId = 0)
         {
-            return Contact._provider.LookupContactDetail(columns, party_id, _logIncidentId, _logContactId);
+            return ContactModel._provider.LookupContactDetail(columns, party_id, _logIncidentId, _logContactId);
         }
 
         public static Dictionary<string, string> getDetailSchema()
         {
-            return Contact._provider.getContactDetailSchema();
+            return ContactModel._provider.getContactDetailSchema();
         }
 
         public static void InitSiebelProvider()
@@ -72,7 +72,7 @@ namespace Accelerator.Siebel.SharedServices
                 {
                     string logMessage = "Error in init Provider in Contact Model. Error: " + ex.Message;
                     string logNote = "";
-                    ConfigurationSetting.logWrap.DebugLog(logMessage: logMessage, logNote: logNote);
+                    ConfigurationSetting.logWrap.ErrorLog(logMessage: logMessage, logNote: logNote);
                 }
                 throw;
             }

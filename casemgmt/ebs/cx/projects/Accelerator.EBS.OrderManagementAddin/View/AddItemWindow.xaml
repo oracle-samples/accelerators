@@ -1,0 +1,89 @@
+﻿<Window x:Class="Accelerator.EBS.OrderManagementAddin.AddItemWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Order Management: Add Item"
+        Height="300"
+        Width="300">
+    <Window.Resources>
+        <Style x:Key="collapsedHeader"
+               TargetType="{x:Type GridViewColumnHeader}">
+            <Setter Property="Visibility"
+                    Value="Collapsed" />
+        </Style>
+    </Window.Resources>
+    <Grid Name="orderSummaryGrid"
+          Margin="0,4,0,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <TextBox Grid.Row="0"
+                 Grid.Column="0"
+                 Grid.ColumnSpan="4"
+                 Margin="5,5,5,0"
+                 BorderBrush="LightGray"
+                 BorderThickness="1,1,1,0"
+                 Padding="5,0,0,0"
+                 MaxLength="30"
+                 Text="{Binding Path=ItemsFilter, Delay=400, UpdateSourceTrigger=PropertyChanged}" />
+        <ListView Name="itemsList"
+                  Grid.Row="1"
+                  Grid.Column="0"
+                  Margin="5,0,5,5"
+                  MaxHeight="100"
+                  Grid.ColumnSpan="4"
+                  BorderBrush="LightGray"
+                  BorderThickness="1"
+                  SelectionMode="Single"
+                  SelectedItem="{Binding Path=CurrentParent.SelectedItem}"
+                  ItemsSource="{Binding Path=AvailableItemsFiltered}">
+            <ListView.View>
+                <GridView ColumnHeaderContainerStyle="{StaticResource collapsedHeader}">
+                    <GridViewColumn>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock DockPanel.Dock="Left"
+                                           TextWrapping="Wrap"
+                                           Background="Transparent"
+                                           Text="{Binding Path=Title}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <TextBlock Grid.Row="2"
+                   Grid.Column="0"
+                   Margin="5"
+                   Text="Qty" />
+        <TextBox Name="quantity"
+                 Grid.Row="2"
+                 Grid.Column="1"
+                 MaxLength="10"
+                 Margin="5">
+            <TextBox.Text>
+                <Binding Path="CurrentParent.SelectedItem.Quantity">
+                    <Binding.ValidationRules>
+                        <ExceptionValidationRule />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <Button Name="add"
+                Grid.Row="2"
+                Grid.Column="3"
+                Margin="5"
+                Content="Add"
+                Foreground="Black"
+                Click="add_Click" />
+    </Grid>
+</Window>

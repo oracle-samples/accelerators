@@ -6,7 +6,7 @@
   <aux xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
   <cdate_offset xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
   <co_version xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
-  <created xmlns="urn:obj.api.rightnow.com">2015-04-10T22:54:29Z</created>
+  <created xmlns="urn:obj.api.rightnow.com">2015-08-25T21:34:35Z</created>
   <file_id xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
   <filters xmlns="urn:obj.api.rightnow.com" />
   <fltr_expr xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
@@ -36,14 +36,14 @@
           <display_order>1</display_order>
           <group_order xsi:nil="true" />
           <max_len xsi:nil="true" />
-          <min_vuse xsi:nil="true" />
+          <min_vuse>23</min_vuse>
           <opts xsi:nil="true" />
           <rpt_links>
             <rpt_link_item>
               <cond_col_id xsi:nil="true" />
               <cond_oper xsi:nil="true" />
               <cond_value xsi:nil="true" />
-              <rpt_link_ac_id>101042</rpt_link_ac_id>
+              <rpt_link_ac_id>101040</rpt_link_ac_id>
               <rpt_link_id>1</rpt_link_id>
               <rpt_link_run_vals>
                 <rpt_link_run_val_item>
@@ -67,14 +67,15 @@
           <trend_opts xsi:nil="true" />
           <type>1</type>
           <val>Siebel$ActivityListTable.ActivityId</val>
-          <val_attrs>0</val_attrs>
-          <val_col_refs xsi:nil="true" />
+          <val_attrs>1</val_attrs>
+          <val_col_refs>Siebel$ActivityListTable.ActivityId;32005</val_col_refs>
           <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;UnitType&gt;Auto&lt;/UnitType&gt;
+  &lt;UnitType&gt;Percentage&lt;/UnitType&gt;
   &lt;Header&gt;
     &lt;LabelStr&gt;ActivityId&lt;/LabelStr&gt;
   &lt;/Header&gt;
+  &lt;Width&gt;12.7892027&lt;/Width&gt;
   &lt;HeaderAlignment&gt;Near&lt;/HeaderAlignment&gt;
   &lt;DataAlignment&gt;Near&lt;/DataAlignment&gt;
 &lt;/ColumnXmlData&gt;</xml_data>
@@ -88,22 +89,23 @@
           <display_order>2</display_order>
           <group_order xsi:nil="true" />
           <max_len xsi:nil="true" />
-          <min_vuse xsi:nil="true" />
+          <min_vuse>23</min_vuse>
           <opts xsi:nil="true" />
           <rpt_links />
           <sort_direction xsi:nil="true" />
           <sort_order xsi:nil="true" />
           <trend_opts xsi:nil="true" />
           <type>1</type>
-          <val>Siebel$ActivityListTable.Type</val>
-          <val_attrs>0</val_attrs>
-          <val_col_refs xsi:nil="true" />
+          <val>Siebel$ActivityListTable.Description2</val>
+          <val_attrs>1</val_attrs>
+          <val_col_refs>Siebel$ActivityListTable.Description2;32005</val_col_refs>
           <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;UnitType&gt;Auto&lt;/UnitType&gt;
+  &lt;UnitType&gt;Percentage&lt;/UnitType&gt;
   &lt;Header&gt;
-    &lt;LabelStr&gt;Type&lt;/LabelStr&gt;
+    &lt;LabelStr&gt;Description&lt;/LabelStr&gt;
   &lt;/Header&gt;
+  &lt;Width&gt;13.4961443&lt;/Width&gt;
   &lt;HeaderAlignment&gt;Near&lt;/HeaderAlignment&gt;
   &lt;DataAlignment&gt;Near&lt;/DataAlignment&gt;
 &lt;/ColumnXmlData&gt;</xml_data>
@@ -117,22 +119,23 @@
           <display_order>3</display_order>
           <group_order xsi:nil="true" />
           <max_len xsi:nil="true" />
-          <min_vuse xsi:nil="true" />
+          <min_vuse>23</min_vuse>
           <opts xsi:nil="true" />
           <rpt_links />
           <sort_direction xsi:nil="true" />
           <sort_order xsi:nil="true" />
           <trend_opts xsi:nil="true" />
           <type>1</type>
-          <val>Siebel$ActivityListTable.TypeDescriptionLabel</val>
-          <val_attrs>0</val_attrs>
-          <val_col_refs xsi:nil="true" />
+          <val>Siebel$ActivityListTable.Type</val>
+          <val_attrs>1</val_attrs>
+          <val_col_refs>Siebel$ActivityListTable.Type;32005</val_col_refs>
           <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;UnitType&gt;Auto&lt;/UnitType&gt;
+  &lt;UnitType&gt;Percentage&lt;/UnitType&gt;
   &lt;Header&gt;
-    &lt;LabelStr&gt;TypeDescriptionLabel&lt;/LabelStr&gt;
+    &lt;LabelStr&gt;Type&lt;/LabelStr&gt;
   &lt;/Header&gt;
+  &lt;Width&gt;14.3958864&lt;/Width&gt;
   &lt;HeaderAlignment&gt;Near&lt;/HeaderAlignment&gt;
   &lt;DataAlignment&gt;Near&lt;/DataAlignment&gt;
 &lt;/ColumnXmlData&gt;</xml_data>
@@ -142,69 +145,11 @@
           <col_id>4</col_id>
           <col_rf>4</col_rf>
           <comp_opts xsi:nil="true" />
-          <data_type>5</data_type>
+          <data_type>4</data_type>
           <display_order>4</display_order>
           <group_order xsi:nil="true" />
           <max_len xsi:nil="true" />
-          <min_vuse xsi:nil="true" />
-          <opts xsi:nil="true" />
-          <rpt_links />
-          <sort_direction xsi:nil="true" />
-          <sort_order xsi:nil="true" />
-          <trend_opts xsi:nil="true" />
-          <type>1</type>
-          <val>Siebel$ActivityListTable.Status</val>
-          <val_attrs>0</val_attrs>
-          <val_col_refs xsi:nil="true" />
-          <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
-&lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;UnitType&gt;Auto&lt;/UnitType&gt;
-  &lt;Header&gt;
-    &lt;LabelStr&gt;Status&lt;/LabelStr&gt;
-  &lt;/Header&gt;
-  &lt;HeaderAlignment&gt;Near&lt;/HeaderAlignment&gt;
-  &lt;DataAlignment&gt;Near&lt;/DataAlignment&gt;
-&lt;/ColumnXmlData&gt;</xml_data>
-        </cols_item>
-        <cols_item>
-          <calc_units xsi:nil="true" />
-          <col_id>5</col_id>
-          <col_rf>5</col_rf>
-          <comp_opts xsi:nil="true" />
-          <data_type>5</data_type>
-          <display_order>5</display_order>
-          <group_order xsi:nil="true" />
-          <max_len xsi:nil="true" />
-          <min_vuse xsi:nil="true" />
-          <opts xsi:nil="true" />
-          <rpt_links />
-          <sort_direction xsi:nil="true" />
-          <sort_order xsi:nil="true" />
-          <trend_opts xsi:nil="true" />
-          <type>1</type>
-          <val>Siebel$ActivityListTable.SRStatus</val>
-          <val_attrs>0</val_attrs>
-          <val_col_refs xsi:nil="true" />
-          <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
-&lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;UnitType&gt;Auto&lt;/UnitType&gt;
-  &lt;Header&gt;
-    &lt;LabelStr&gt;SRStatus&lt;/LabelStr&gt;
-  &lt;/Header&gt;
-  &lt;HeaderAlignment&gt;Near&lt;/HeaderAlignment&gt;
-  &lt;DataAlignment&gt;Near&lt;/DataAlignment&gt;
-&lt;/ColumnXmlData&gt;</xml_data>
-        </cols_item>
-        <cols_item>
-          <calc_units xsi:nil="true" />
-          <col_id>6</col_id>
-          <col_rf>6</col_rf>
-          <comp_opts xsi:nil="true" />
-          <data_type>4</data_type>
-          <display_order>6</display_order>
-          <group_order xsi:nil="true" />
-          <max_len xsi:nil="true" />
-          <min_vuse xsi:nil="true" />
+          <min_vuse>23</min_vuse>
           <opts xsi:nil="true" />
           <rpt_links />
           <sort_direction xsi:nil="true" />
@@ -212,17 +157,78 @@
           <trend_opts xsi:nil="true" />
           <type>1</type>
           <val>Siebel$ActivityListTable.Created</val>
-          <val_attrs>0</val_attrs>
-          <val_col_refs xsi:nil="true" />
+          <val_attrs>1</val_attrs>
+          <val_col_refs>Siebel$ActivityListTable.Created;32005</val_col_refs>
+          <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;UnitType&gt;Percentage&lt;/UnitType&gt;
+  &lt;Header&gt;
+    &lt;LabelStr&gt;Start&lt;/LabelStr&gt;
+  &lt;/Header&gt;
+  &lt;Width&gt;18.3804626&lt;/Width&gt;
+  &lt;HeaderAlignment&gt;Near&lt;/HeaderAlignment&gt;
+  &lt;DataAlignment&gt;Near&lt;/DataAlignment&gt;
+  &lt;DateFormatType&gt;DateTime&lt;/DateFormatType&gt;
+&lt;/ColumnXmlData&gt;</xml_data>
+        </cols_item>
+        <cols_item>
+          <calc_units xsi:nil="true" />
+          <col_id>5</col_id>
+          <col_rf>5</col_rf>
+          <comp_opts xsi:nil="true" />
+          <data_type>4</data_type>
+          <display_order>5</display_order>
+          <group_order xsi:nil="true" />
+          <max_len xsi:nil="true" />
+          <min_vuse>23</min_vuse>
+          <opts xsi:nil="true" />
+          <rpt_links />
+          <sort_direction xsi:nil="true" />
+          <sort_order xsi:nil="true" />
+          <trend_opts xsi:nil="true" />
+          <type>1</type>
+          <val>Siebel$ActivityListTable.Due</val>
+          <val_attrs>1</val_attrs>
+          <val_col_refs>Siebel$ActivityListTable.Due;32005</val_col_refs>
           <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;UnitType&gt;Auto&lt;/UnitType&gt;
   &lt;Header&gt;
-    &lt;LabelStr&gt;Created&lt;/LabelStr&gt;
+    &lt;LabelStr&gt;Due&lt;/LabelStr&gt;
   &lt;/Header&gt;
   &lt;HeaderAlignment&gt;Near&lt;/HeaderAlignment&gt;
   &lt;DataAlignment&gt;Near&lt;/DataAlignment&gt;
   &lt;DateFormatType&gt;DateTime&lt;/DateFormatType&gt;
+&lt;/ColumnXmlData&gt;</xml_data>
+        </cols_item>
+        <cols_item>
+          <calc_units xsi:nil="true" />
+          <col_id>6</col_id>
+          <col_rf>6</col_rf>
+          <comp_opts xsi:nil="true" />
+          <data_type>5</data_type>
+          <display_order>6</display_order>
+          <group_order xsi:nil="true" />
+          <max_len xsi:nil="true" />
+          <min_vuse>23</min_vuse>
+          <opts xsi:nil="true" />
+          <rpt_links />
+          <sort_direction xsi:nil="true" />
+          <sort_order xsi:nil="true" />
+          <trend_opts xsi:nil="true" />
+          <type>1</type>
+          <val>Siebel$ActivityListTable.Status</val>
+          <val_attrs>1</val_attrs>
+          <val_col_refs>Siebel$ActivityListTable.Status;32005</val_col_refs>
+          <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;UnitType&gt;Percentage&lt;/UnitType&gt;
+  &lt;Header&gt;
+    &lt;LabelStr&gt;Status&lt;/LabelStr&gt;
+  &lt;/Header&gt;
+  &lt;Width&gt;12.2750645&lt;/Width&gt;
+  &lt;HeaderAlignment&gt;Near&lt;/HeaderAlignment&gt;
+  &lt;DataAlignment&gt;Near&lt;/DataAlignment&gt;
 &lt;/ColumnXmlData&gt;</xml_data>
         </cols_item>
         <cols_item>
@@ -234,7 +240,36 @@
           <display_order>7</display_order>
           <group_order xsi:nil="true" />
           <max_len xsi:nil="true" />
-          <min_vuse xsi:nil="true" />
+          <min_vuse>23</min_vuse>
+          <opts xsi:nil="true" />
+          <rpt_links />
+          <sort_direction xsi:nil="true" />
+          <sort_order xsi:nil="true" />
+          <trend_opts xsi:nil="true" />
+          <type>1</type>
+          <val>Siebel$ActivityListTable.Priority</val>
+          <val_attrs>1</val_attrs>
+          <val_col_refs>Siebel$ActivityListTable.Priority;32005</val_col_refs>
+          <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;UnitType&gt;Auto&lt;/UnitType&gt;
+  &lt;Header&gt;
+    &lt;LabelStr&gt;Priority&lt;/LabelStr&gt;
+  &lt;/Header&gt;
+  &lt;HeaderAlignment&gt;Near&lt;/HeaderAlignment&gt;
+  &lt;DataAlignment&gt;Near&lt;/DataAlignment&gt;
+&lt;/ColumnXmlData&gt;</xml_data>
+        </cols_item>
+        <cols_item>
+          <calc_units xsi:nil="true" />
+          <col_id>8</col_id>
+          <col_rf>8</col_rf>
+          <comp_opts xsi:nil="true" />
+          <data_type>5</data_type>
+          <display_order>8</display_order>
+          <group_order xsi:nil="true" />
+          <max_len xsi:nil="true" />
+          <min_vuse>23</min_vuse>
           <opts xsi:nil="true" />
           <rpt_links />
           <sort_direction xsi:nil="true" />
@@ -242,16 +277,80 @@
           <trend_opts xsi:nil="true" />
           <type>1</type>
           <val>Siebel$ActivityListTable.CreatedByName</val>
-          <val_attrs>0</val_attrs>
-          <val_col_refs xsi:nil="true" />
+          <val_attrs>1</val_attrs>
+          <val_col_refs>Siebel$ActivityListTable.CreatedByName;32005</val_col_refs>
+          <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;UnitType&gt;Percentage&lt;/UnitType&gt;
+  &lt;Header&gt;
+    &lt;LabelStr&gt;Owner&lt;/LabelStr&gt;
+  &lt;/Header&gt;
+  &lt;Width&gt;8.868895&lt;/Width&gt;
+  &lt;HeaderAlignment&gt;Near&lt;/HeaderAlignment&gt;
+  &lt;DataAlignment&gt;Near&lt;/DataAlignment&gt;
+&lt;/ColumnXmlData&gt;</xml_data>
+        </cols_item>
+        <cols_item>
+          <calc_units xsi:nil="true" />
+          <col_id>9</col_id>
+          <col_rf>9</col_rf>
+          <comp_opts xsi:nil="true" />
+          <data_type>4</data_type>
+          <display_order>9</display_order>
+          <group_order xsi:nil="true" />
+          <max_len xsi:nil="true" />
+          <min_vuse>23</min_vuse>
+          <opts xsi:nil="true" />
+          <rpt_links />
+          <sort_direction xsi:nil="true" />
+          <sort_order xsi:nil="true" />
+          <trend_opts xsi:nil="true" />
+          <type>1</type>
+          <val>Siebel$ActivityListTable.LastUpdated</val>
+          <val_attrs>1</val_attrs>
+          <val_col_refs>Siebel$ActivityListTable.LastUpdated;32005</val_col_refs>
           <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;UnitType&gt;Auto&lt;/UnitType&gt;
   &lt;Header&gt;
-    &lt;LabelStr&gt;CreatedByName&lt;/LabelStr&gt;
+    &lt;LabelStr&gt;End&lt;/LabelStr&gt;
   &lt;/Header&gt;
   &lt;HeaderAlignment&gt;Near&lt;/HeaderAlignment&gt;
   &lt;DataAlignment&gt;Near&lt;/DataAlignment&gt;
+  &lt;DateFormatType&gt;DateTime&lt;/DateFormatType&gt;
+&lt;/ColumnXmlData&gt;</xml_data>
+        </cols_item>
+        <cols_item>
+          <calc_units xsi:nil="true" />
+          <col_id>10</col_id>
+          <col_rf>10</col_rf>
+          <comp_opts xsi:nil="true" />
+          <data_type>3</data_type>
+          <display_order>10</display_order>
+          <group_order xsi:nil="true" />
+          <max_len xsi:nil="true" />
+          <min_vuse>23</min_vuse>
+          <opts xsi:nil="true" />
+          <rpt_links />
+          <sort_direction xsi:nil="true" />
+          <sort_order xsi:nil="true" />
+          <trend_opts xsi:nil="true" />
+          <type>1</type>
+          <val>Siebel$ActivityListTable.DurationMinutes</val>
+          <val_attrs>1</val_attrs>
+          <val_col_refs>Siebel$ActivityListTable.DurationMinutes;32005</val_col_refs>
+          <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;UnitType&gt;Percentage&lt;/UnitType&gt;
+  &lt;Header&gt;
+    &lt;LabelStr&gt;Duration&lt;/LabelStr&gt;
+  &lt;/Header&gt;
+  &lt;NumberFormat&gt;
+    &lt;NumberType&gt;Number&lt;/NumberType&gt;
+  &lt;/NumberFormat&gt;
+  &lt;Width&gt;19.7943439&lt;/Width&gt;
+  &lt;HeaderAlignment&gt;Far&lt;/HeaderAlignment&gt;
+  &lt;DataAlignment&gt;Far&lt;/DataAlignment&gt;
 &lt;/ColumnXmlData&gt;</xml_data>
         </cols_item>
       </cols>
@@ -305,12 +404,46 @@
       &lt;Visible&gt;true&lt;/Visible&gt;
     &lt;/ReportSection&gt;
     &lt;ReportSection&gt;
-      &lt;Height&gt;80&lt;/Height&gt;
+      &lt;Fields&gt;
+        &lt;ReportField xsi:type="ReportTextField"&gt;
+          &lt;Padding&gt;
+            &lt;Bottom&gt;2&lt;/Bottom&gt;
+            &lt;Left&gt;2&lt;/Left&gt;
+            &lt;Right&gt;2&lt;/Right&gt;
+            &lt;Top&gt;2&lt;/Top&gt;
+          &lt;/Padding&gt;
+          &lt;StyleType&gt;None&lt;/StyleType&gt;
+          &lt;Style&gt;
+            &lt;AllCaps&gt;false&lt;/AllCaps&gt;
+            &lt;ForeColorString&gt;FF000000&lt;/ForeColorString&gt;
+            &lt;Padding&gt;
+              &lt;Bottom&gt;2&lt;/Bottom&gt;
+              &lt;Left&gt;2&lt;/Left&gt;
+              &lt;Right&gt;2&lt;/Right&gt;
+              &lt;Top&gt;2&lt;/Top&gt;
+            &lt;/Padding&gt;
+            &lt;Spacing&gt;0&lt;/Spacing&gt;
+            &lt;FontSize&gt;10&lt;/FontSize&gt;
+            &lt;FontStyle&gt;Bold&lt;/FontStyle&gt;
+            &lt;FontFamily&gt;Tahoma&lt;/FontFamily&gt;
+            &lt;StyleType&gt;None&lt;/StyleType&gt;
+          &lt;/Style&gt;
+          &lt;AnchorStyles&gt;Top Left&lt;/AnchorStyles&gt;
+          &lt;AutoSize&gt;true&lt;/AutoSize&gt;
+          &lt;TextAlign&gt;Near&lt;/TextAlign&gt;
+          &lt;LineAlign&gt;Center&lt;/LineAlign&gt;
+          &lt;Text&gt;
+            &lt;LabelStr&gt;Siebel Activity&lt;/LabelStr&gt;
+          &lt;/Text&gt;
+          &lt;TextType&gt;New&lt;/TextType&gt;
+        &lt;/ReportField&gt;
+      &lt;/Fields&gt;
+      &lt;Height&gt;24&lt;/Height&gt;
       &lt;SectionType&gt;ReportHeader&lt;/SectionType&gt;
       &lt;StyleType&gt;ReportHeader&lt;/StyleType&gt;
       &lt;LayoutType&gt;Fixed&lt;/LayoutType&gt;
       &lt;AutoHeight&gt;false&lt;/AutoHeight&gt;
-      &lt;Visible&gt;false&lt;/Visible&gt;
+      &lt;Visible&gt;true&lt;/Visible&gt;
     &lt;/ReportSection&gt;
     &lt;ReportSection&gt;
       &lt;Height&gt;-1&lt;/Height&gt;
@@ -405,7 +538,7 @@
   </nodes>
   <notes xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
   <opts xmlns="urn:obj.api.rightnow.com">4</opts>
-  <owner_acct_id xmlns="urn:obj.api.rightnow.com">66</owner_acct_id>
+  <owner_acct_id xmlns="urn:obj.api.rightnow.com">67</owner_acct_id>
   <params xmlns="urn:obj.api.rightnow.com" />
   <perms xmlns="urn:obj.api.rightnow.com" />
   <rpt xmlns="urn:obj.api.rightnow.com" />
@@ -426,10 +559,10 @@
     </table_item>
   </tables>
   <time_zone xmlns="urn:obj.api.rightnow.com">0</time_zone>
-  <updated xmlns="urn:obj.api.rightnow.com">2015-04-13T19:56:03Z</updated>
+  <updated xmlns="urn:obj.api.rightnow.com">2015-08-25T21:34:35Z</updated>
   <version xmlns="urn:obj.api.rightnow.com">0</version>
   <xml_data xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
   <xml_report xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
 </analytics_core>
 Version: 
-pV7Eht9HvwggXlrSYSfCP2DaVo0afrG81g==
+Bc9OA7scSy+Q8AI950HB7NPN5XW1CbPSvw==

@@ -1,0 +1,25 @@
+/**
+ * base.css: Base CSS for PostalValidate
+*/ 
+/*.rn_PostalValidate.rn_TextInput {
+    width : 100%;
+}*/
+
+.rn_VerifyButton {
+    margin-top: 0;
+}
+
+.rn_InvalidPostalValidationHint{
+    color: #B20000;
+}
+
+.rn_ValidPostalValidationResult{
+    color: #093;
+}
+
+.rn_PostalValidationLoadingIndicator {
+    background-image: url(/euf/assets/themes/standard/images/indicator.gif);
+    background-repeat: no-repeat;
+    background-position: center center;
+    min-height:66px; 
+}

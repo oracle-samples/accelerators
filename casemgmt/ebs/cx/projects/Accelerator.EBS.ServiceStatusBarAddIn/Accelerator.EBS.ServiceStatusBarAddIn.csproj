@@ -33,8 +33,9 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Web.Services3">
-      <HintPath>..\..\..\..\..\..\rnw-15-5-fixes\casemgmt\ebs\cx\CaseMgmtAccelSolution\Accelerator.EBS.ServiceStatusBarAddIn\bin\Debug\Microsoft.Web.Services3.dll</HintPath>
+    <Reference Include="Microsoft.Web.Services3, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Microsoft WSE\v3.0\Microsoft.Web.Services3.dll</HintPath>
     </Reference>
     <Reference Include="RightNow.AddIns.AddInViews">
       <HintPath>
@@ -74,6 +75,7 @@
     <Compile Include="Logs\DefaultLog.cs" />
     <Compile Include="Logs\Log.cs" />
     <Compile Include="Logs\LogWrapper.cs" />
+    <Compile Include="Models\Order.cs" />
     <Compile Include="Models\RepairLogistics.cs" />
     <Compile Include="Models\Entitlement.cs" />
     <Compile Include="Models\IReport.cs" />
@@ -89,9 +91,12 @@
     <Compile Include="Providers\LiveEBSProvider.cs" />
     <Compile Include="Providers\MockEBSProvider.cs" />
     <Compile Include="ProxyClasses\Contact\EBSContactProxy.cs" />
+    <Compile Include="ProxyClasses\OrderMgmt\EBSOrdersByContactProxy.cs" />
     <Compile Include="ProxyClasses\Entitlement\EBSEntitlementProxy.cs" />
     <Compile Include="ProxyClasses\Interaction\EBSInteractionProxy.cs" />
     <Compile Include="ProxyClasses\Item\EBSItemProxy.cs" />
+    <Compile Include="ProxyClasses\OrderMgmt\EBSOrderMgmtProxy.cs" />
+    <Compile Include="ProxyClasses\OrderMgmt\OrderMgmtInbound.cs" />
     <Compile Include="ProxyClasses\RepairOrder\EBSRepairLogisticsListProxy.cs" />
     <Compile Include="ProxyClasses\RepairOrder\EBSRepairOrderListProxy.cs" />
     <Compile Include="ProxyClasses\RepairOrder\EBSRepairOrderProxy.cs" />
@@ -203,8 +208,7 @@ copy /Y "$(TargetDir)$(TargetName).*" "%25USERPROFILE%25\RightNowDev\AddIns\$(Pr
 copy /Y "$(TargetDir)Microsoft.Web.Services3.dll" "%25USERPROFILE%25\RightNowDev\AddIns\$(ProjectName)\"
 mkdir "$(SolutionDir)shiphome"
 cd "$(TargetDir)"
-zip "$(TargetDir)$(TargetName).zip" "$(TargetDir)$(TargetName)$(TargetExt)" "$(SolutionDir)$(TargetName)\README"
-copy /Y "$(TargetDir)$(TargetName).zip" "$(SolutionDir)shiphome"</PostBuildEvent>
+zip "$(SolutionDir)shiphome\$(ProjectName).zip" "$(TargetName)$(TargetExt)" "Microsoft.Web.Services3.dll"</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PreBuildEvent>

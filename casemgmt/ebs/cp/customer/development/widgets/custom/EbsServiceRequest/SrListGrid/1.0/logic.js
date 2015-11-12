@@ -5,13 +5,13 @@
  ***********************************************************************************************
  *  Accelerator Package: OSVC + EBS Enhancement
  *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
- *  OSvC release: 15.5 (May 2015)
+ *  OSvC release: 15.8 (August 2015)
  *  EBS release: 12.1.3
- *  reference: 150202-000157
- *  date: Wed Sep  2 23:11:34 PDT 2015
+ *  reference: 150505-000099, 150420-000127
+ *  date: Thu Nov 12 00:52:38 PST 2015
 
- *  revision: rnw-15-8-fixes-release-01
- *  SHA1: $Id: 6952260e0d39a4449d56b48b23d6330cfd95fc2f $
+ *  revision: rnw-15-11-fixes-release-1
+ *  SHA1: $Id: 12e15ecf6eab789637723faf228cb22a54f1dac2 $
  * *********************************************************************************************
  *  File: logic.js
  * ****************************************************************************************** */
@@ -62,13 +62,13 @@ Custom.Widgets.EbsServiceRequest.SrListGrid = RightNow.Widgets.extend({
         }
     },
     /**
-     * Ajax requeest failure hander
+     * Failure handler for the AJAX request
      */
     ajaxFailureHandler: function() {
-        this._showErrorMessage(this.data.attrs.ajax_failure_message);
+        this._showErrorMessage(this.data.attrs.ajax_timeout_message);
     },
     /**
-     * Handles the AJAX response for `default_ajax_endpoint`.
+     * Handles the AJAX response for `get_sr_list_ajax_endpoint`.
      * @param {object} response JSON-parsed response from the server
      * @param {object} originalEventObj `eventObj` from #getDefault_ajax_endpoint
      */

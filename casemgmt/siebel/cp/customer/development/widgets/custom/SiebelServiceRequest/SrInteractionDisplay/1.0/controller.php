@@ -7,13 +7,13 @@
  ***********************************************************************************************
  *  Accelerator Package: OSVC Contact Center + Siebel Case Management Accelerator
  *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
- *  OSvC release: 15.5 (May 2015)
+ *  OSvC release: 15.8 (August 2015)
  *  Siebel release: 8.1.1.15
- *  reference: 141216-000121
- *  date: Wed Sep  2 23:14:35 PDT 2015
+ *  reference: 150520-000047
+ *  date: Thu Nov 12 00:55:29 PST 2015
 
- *  revision: rnw-15-8-fixes-release-01
- *  SHA1: $Id: 66060b611800f9afcb128a49a264bc40e8c55152 $
+ *  revision: rnw-15-11-fixes-release-1
+ *  SHA1: $Id: dee18c1f32aefa370a4a52197baaf1213aad612d $
  * *********************************************************************************************
  *  File: controller.php
  * ****************************************************************************************** */
@@ -115,7 +115,7 @@ class SrInteractionDisplay extends \RightNow\Libraries\Widget\Base {
      */
     private function getDataForSiebel($srID) {
         if (!$srID) {
-            return $this->getAjaxJsonResponse(null, 'Invalid Service Request ID');
+            return $this->getAjaxJsonResponse(null, 'Unable to find the associated Service Request ID of the Incident.');
         }
 
         // get maxRows attributes

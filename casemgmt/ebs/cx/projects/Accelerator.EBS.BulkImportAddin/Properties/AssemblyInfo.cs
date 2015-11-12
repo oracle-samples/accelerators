@@ -5,12 +5,12 @@ using System.Windows;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("$Id: 3e990bc1f64e0848e2c0507af99b4cba2843e6ac $")]
+[assembly: AssemblyTitle("$Id: 99e96afd21b74d83a61fd4be23e49a96feb52ecd $")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Oracle Corporation")]
 [assembly: AssemblyProduct("Accelerator.EBS.BulkImportAddin")]
-[assembly: AssemblyCopyright("Copyright © Oracle Corporation 2015")]
+[assembly: AssemblyCopyright("Copyright © Oracle Corp 2014, 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -49,4 +49,4 @@ using System.Windows;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("15.8.*")]
+[assembly: AssemblyVersion("15.11.*")]

@@ -1,0 +1,142 @@
+version: "1.0"
+requires:
+  jsModule:
+  - standard
+  - mobile
+info:
+  description: validates using USPS service
+extends:
+  widget: standard/input/TextInput
+  components:
+  - php
+  - view
+  - js
+  - css
+attributes:
+  addressverification_ajax_endpoint:
+    name: addressverification_ajax_endpoint
+    type: ajax
+    description: AJAX endpoint to call address validation
+    default: /ci/ajax/widget
+    required: false
+  label_button:
+    name: label_button
+    type: string
+    description: the label to be displayed on the Validate button.
+    default: Verify Address
+    required: false
+  verification_required:
+    name: verification_required
+    type: boolean
+    description: If set to true, you need to click the Verify Address Button
+      before submission.  Otherwise you won't be able to submit the form. 
+      The error will be Displayed on top of the screen.
+    default: false
+    required: true
+  field_street:
+    name: field_street
+    type: string
+    required: false
+    description: Use this attribute to specify which backend field to contain
+        the Street portion of the address.  For example, ...
+        field_street="Contact.CustomFields.Accelerator.Shipping_Street" .
+          IF you DO NOT specify this field, it is assumed that the 'name' attribute
+        points to an Address type which type contains all of the following 
+        sub-fields-- e.g. name="Contact.Address.PostalCode" assumes there exist
+        other widgets with fields name= Contact.Address.Street, 
+        Contact.Address.City, Contact.Address.Country, 
+        Contact.Address.StateOrProvince and Contact.Address.PostalCode .
+          IF you DO SPECIFY this field, it is REQUIRED TO SPECIFY THE REST OF 
+        THE FIELD_  ATTRIBUTES FOR AN ADDRESS, such as, field_city, field_state 
+        and field_zip.
+          In either case the name= field is also required in order to submit to 
+        the field you want in the backend.
+  field_city:
+    name: field_city
+    type: string
+    required: false
+    description: Use this attribute to specify which backend field to contain
+        the CITY portion of the address.  For example, ...
+        field_city="Contact.CustomFields.Accelerator.Shipping_City" .
+          IF you DO NOT specify this field, it is assumed that the 'name' attribute
+        points to an Address type which type contains all of the following 
+        sub-fields-- e.g. name="Contact.Address.City" assumes there exist
+        other widgets with fields name= Contact.Address.Street, 
+        Contact.Address.City, Contact.Address.Country, 
+        Contact.Address.StateOrProvince and Contact.Address.PostalCode .
+          IF you DO SPECIFY this field, it is REQUIRED TO SPECIFY THE REST OF 
+        THE FIELD_  ATTRIBUTES FOR AN ADDRESS, such as, field_street, field_state 
+        and field_zip.
+          In either case the name= field is also required in order to submit to 
+        the field you want in the backend.
+  field_state:
+    name: field_state
+    type: string
+    required: false
+    description: Use this attribute to specify which backend field to contain
+        the CITY portion of the address.  For example, ...
+        field_city="Contact.CustomFields.Accelerator.Shipping_State" .
+          IF you DO NOT specify this field, it is assumed that the 'name' attribute
+        points to an Address type which type contains all of the following 
+        sub-fields-- e.g. name="Contact.Address.StateOrProvince" assumes there exist
+        other widgets with fields name= Contact.Address.Street, 
+        Contact.Address.City, Contact.Address.Country, 
+        Contact.Address.StateOrProvince and Contact.Address.PostalCode .
+          IF you DO SPECIFY this field, it is REQUIRED TO SPECIFY THE REST OF 
+        THE FIELD_  ATTRIBUTES FOR AN ADDRESS, such as, field_street, field_city 
+        and field_zip.
+          In either case the name= attribute is also required in order to submit 
+          to the field you want in the backend.
+  field_country:
+    name: field_country
+    type: string
+    required: false
+    description: Use this attribute to specify which backend field to contain
+        the CITY portion of the address.  For example, ...
+        field_city="Contact.CustomFields.Accelerator.Shipping_Country" .
+          IF you DO NOT specify this field, it is assumed that the 'name' attribute
+        points to an Address type which type contains all of the following 
+        sub-fields-- e.g. name="Contact.Address.Country" assumes there exist
+        other widgets with fields name= Contact.Address.Street, 
+        Contact.Address.City, Contact.Address.Country, 
+        Contact.Address.StateOrProvince and Contact.Address.PostalCode .
+          IF you DO SPECIFY this field, it is REQUIRED TO SPECIFY THE REST OF 
+        THE FIELD_  ATTRIBUTES FOR AN ADDRESS, such as, field_street, field_city, 
+        field_state and field_zip.
+          In either case the name= attribute is also required in order to submit 
+          to the field you want in the backend.
+  field_zip:
+    name: field_zip
+    type: string
+    required: false
+    description: Use this attribute to specify which backend field to contain
+        the CITY portion of the address.  For example, ...
+        field_city="Contact.CustomFields.Accelerator.Shipping_PostalCode" .
+          IF you DO NOT specify this field, it is assumed that the 'name' attribute
+        points to an Address type which type contains all of the following 
+        sub-fields-- e.g. name="Contact.Address.Country" assumes there exist
+        other widgets with fields name= Contact.PostalCode.Street, 
+        Contact.Address.City, Contact.Address.Country, 
+        Contact.Address.StateOrProvince and Contact.Address.PostalCode .
+          IF you DO SPECIFY this field, it is REQUIRED TO SPECIFY THE REST OF 
+        THE FIELD_  ATTRIBUTES FOR AN ADDRESS, such as, field_street, field_city, 
+        and field_state.
+          In either case the name= attribute is also required in order to submit 
+          to the field you want in the backend.
+  timeout:
+    name: rn:msg:TIMEOUT_LBL
+    description: time out for the Ajax call
+    type: INT
+    default: 20000
+    min: 0
+  ajax_timeout_message:
+    name: ajax_timeout_message
+    description: error message displayed when AJAX timeout in dev mode
+    default: 'Connection to Ze Verification Server has timed out.'
+    type: STRING
+  ajax_failure_message:
+    name: ajax_failure_message
+    description: error message displayed when AJAX failed in production mode
+    default: 'There has been an error communicating with Verification. Please try again later.'
+    type: STRING
+  

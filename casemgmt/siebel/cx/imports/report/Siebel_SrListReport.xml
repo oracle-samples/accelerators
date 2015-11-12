@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <analytics_core xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <ac_id xmlns="urn:obj.api.rightnow.com">101034</ac_id>
+  <ac_id xmlns="urn:obj.api.rightnow.com">101036</ac_id>
   <ac_public xmlns="urn:obj.api.rightnow.com">true</ac_public>
   <ac_type xmlns="urn:obj.api.rightnow.com">1</ac_type>
   <aux xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
   <cdate_offset xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
   <co_version xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
-  <created xmlns="urn:obj.api.rightnow.com">2015-01-25T21:02:50Z</created>
+  <created xmlns="urn:obj.api.rightnow.com">2015-08-25T21:30:24Z</created>
   <file_id xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
   <filters xmlns="urn:obj.api.rightnow.com" />
   <fltr_expr xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
@@ -36,7 +36,7 @@
           <display_order>1</display_order>
           <group_order xsi:nil="true" />
           <max_len xsi:nil="true" />
-          <min_vuse xsi:nil="true" />
+          <min_vuse>23</min_vuse>
           <opts xsi:nil="true" />
           <rpt_links />
           <sort_direction xsi:nil="true" />
@@ -44,8 +44,8 @@
           <trend_opts xsi:nil="true" />
           <type>1</type>
           <val>Siebel$SRlistTable.SrNumber</val>
-          <val_attrs>0</val_attrs>
-          <val_col_refs xsi:nil="true" />
+          <val_attrs>1</val_attrs>
+          <val_col_refs>Siebel$SRlistTable.SrNumber;32000</val_col_refs>
           <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;UnitType&gt;Auto&lt;/UnitType&gt;
@@ -65,7 +65,7 @@
           <display_order>2</display_order>
           <group_order xsi:nil="true" />
           <max_len xsi:nil="true" />
-          <min_vuse xsi:nil="true" />
+          <min_vuse>5</min_vuse>
           <opts xsi:nil="true" />
           <rpt_links />
           <sort_direction xsi:nil="true" />
@@ -73,8 +73,8 @@
           <trend_opts xsi:nil="true" />
           <type>1</type>
           <val>Siebel$SRlistTable.IncidentRef</val>
-          <val_attrs>0</val_attrs>
-          <val_col_refs xsi:nil="true" />
+          <val_attrs>1</val_attrs>
+          <val_col_refs>Siebel$SRlistTable.IncidentRef;32000</val_col_refs>
           <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;UnitType&gt;Auto&lt;/UnitType&gt;
@@ -94,7 +94,7 @@
           <display_order>3</display_order>
           <group_order xsi:nil="true" />
           <max_len xsi:nil="true" />
-          <min_vuse xsi:nil="true" />
+          <min_vuse>5</min_vuse>
           <opts xsi:nil="true" />
           <rpt_links />
           <sort_direction>2</sort_direction>
@@ -102,8 +102,8 @@
           <trend_opts xsi:nil="true" />
           <type>1</type>
           <val>Siebel$SRlistTable.Created</val>
-          <val_attrs>0</val_attrs>
-          <val_col_refs xsi:nil="true" />
+          <val_attrs>1</val_attrs>
+          <val_col_refs>Siebel$SRlistTable.Created;32000</val_col_refs>
           <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;UnitType&gt;Auto&lt;/UnitType&gt;
@@ -124,14 +124,14 @@
           <display_order>4</display_order>
           <group_order xsi:nil="true" />
           <max_len xsi:nil="true" />
-          <min_vuse xsi:nil="true" />
+          <min_vuse>5</min_vuse>
           <opts xsi:nil="true" />
           <rpt_links>
             <rpt_link_item>
               <cond_col_id xsi:nil="true" />
               <cond_oper xsi:nil="true" />
               <cond_value xsi:nil="true" />
-              <rpt_link_ac_id>101035</rpt_link_ac_id>
+              <rpt_link_ac_id>101037</rpt_link_ac_id>
               <rpt_link_id>1</rpt_link_id>
               <rpt_link_run_vals>
                 <rpt_link_run_val_item>
@@ -155,8 +155,8 @@
           <trend_opts xsi:nil="true" />
           <type>1</type>
           <val>Siebel$SRlistTable.Summary</val>
-          <val_attrs>0</val_attrs>
-          <val_col_refs xsi:nil="true" />
+          <val_attrs>1</val_attrs>
+          <val_col_refs>Siebel$SRlistTable.Summary;32000</val_col_refs>
           <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;UnitType&gt;Auto&lt;/UnitType&gt;
@@ -176,7 +176,7 @@
           <display_order>5</display_order>
           <group_order xsi:nil="true" />
           <max_len xsi:nil="true" />
-          <min_vuse xsi:nil="true" />
+          <min_vuse>23</min_vuse>
           <opts xsi:nil="true" />
           <rpt_links />
           <sort_direction xsi:nil="true" />
@@ -184,8 +184,8 @@
           <trend_opts xsi:nil="true" />
           <type>1</type>
           <val>Siebel$SRlistTable.Status</val>
-          <val_attrs>0</val_attrs>
-          <val_col_refs xsi:nil="true" />
+          <val_attrs>1</val_attrs>
+          <val_col_refs>Siebel$SRlistTable.Status;32000</val_col_refs>
           <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;UnitType&gt;Auto&lt;/UnitType&gt;
@@ -205,7 +205,7 @@
           <display_order>6</display_order>
           <group_order xsi:nil="true" />
           <max_len xsi:nil="true" />
-          <min_vuse xsi:nil="true" />
+          <min_vuse>23</min_vuse>
           <opts xsi:nil="true" />
           <rpt_links />
           <sort_direction xsi:nil="true" />
@@ -213,8 +213,8 @@
           <trend_opts xsi:nil="true" />
           <type>1</type>
           <val>Siebel$SRlistTable.HiddenSRconcatIncident_ID</val>
-          <val_attrs>0</val_attrs>
-          <val_col_refs xsi:nil="true" />
+          <val_attrs>1</val_attrs>
+          <val_col_refs>Siebel$SRlistTable.HiddenSRconcatIncident_ID;32000</val_col_refs>
           <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;UnitType&gt;Auto&lt;/UnitType&gt;
@@ -377,7 +377,7 @@
   </nodes>
   <notes xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
   <opts xmlns="urn:obj.api.rightnow.com">16384</opts>
-  <owner_acct_id xmlns="urn:obj.api.rightnow.com">66</owner_acct_id>
+  <owner_acct_id xmlns="urn:obj.api.rightnow.com">67</owner_acct_id>
   <params xmlns="urn:obj.api.rightnow.com" />
   <perms xmlns="urn:obj.api.rightnow.com" />
   <rpt xmlns="urn:obj.api.rightnow.com" />
@@ -398,10 +398,10 @@
     </table_item>
   </tables>
   <time_zone xmlns="urn:obj.api.rightnow.com">0</time_zone>
-  <updated xmlns="urn:obj.api.rightnow.com">2015-04-15T21:00:57Z</updated>
+  <updated xmlns="urn:obj.api.rightnow.com">2015-08-26T22:54:15Z</updated>
   <version xmlns="urn:obj.api.rightnow.com">0</version>
   <xml_data xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
   <xml_report xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
 </analytics_core>
 Version: 
-sEaah+Aj1EicTOo9vIyfeCkeJtov7cSn
+O+X/9ZVybfMs4vrJZfqLjUKgPdG4qVGx

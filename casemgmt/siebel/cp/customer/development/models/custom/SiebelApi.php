@@ -7,20 +7,21 @@
  ***********************************************************************************************
  *  Accelerator Package: OSVC Contact Center + Siebel Case Management Accelerator
  *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
- *  OSvC release: 15.5 (May 2015)
+ *  OSvC release: 15.8 (August 2015)
  *  Siebel release: 8.1.1.15
- *  reference: 141216-000121
- *  date: Wed Sep  2 23:14:33 PDT 2015
+ *  reference: 150520-000047
+ *  date: Thu Nov 12 00:55:27 PST 2015
 
- *  revision: rnw-15-8-fixes-release-01
- *  SHA1: $Id: fadc015e11c4548629fb27e0a395d111c441ee2a $
+ *  revision: rnw-15-11-fixes-release-1
+ *  SHA1: $Id: 868cbff3ba03354527958e5e0d51dbe884caf8da $
  * *********************************************************************************************
  *  File: SiebelApi.php
  * ****************************************************************************************** */
 
 namespace Custom\Models;
 
-use RightNow\Connect\v1_2 as RNCPHP;
+use RightNow\Connect\v1_2 as RNCPHP,
+    \RightNow\Libraries\ResponseError as ResponseError;
 
 class SiebelApi extends \RightNow\Models\Base {
 
@@ -78,11 +79,74 @@ class SiebelApi extends \RightNow\Models\Base {
         $result = $this->CI->curlrequest->sendCurlSoapRequest($endpoint, $httpHeaders, $requestString, $logMsg, $incident, $contact);
 
         // check result
-        if ($result['status'] === false) {
-            $this->log->error("{$extObj} :: {$extAction} :: Request failed", __METHOD__, array($incident, $contact), json_encode($result));
-            return $this->getResponseObject(null, null, "Request failed." . $result['response']);
-        } else if ($result['status'] === true) {
+        if ($result['status'] === 200) {
             return $this->parseSoapResponse($extObj, $extAction, $result['response'], $responseFields, $errorFields, $incident, $contact);
+        } else if ($result['status'] === -1) {
+            $this->log->error("{$extObj} :: {$extAction} :: Request failed", __METHOD__, array($incident, $contact), var_export($result, true));
+            return $this->getResponseObject(null, null, new ResponseError("Request failed." . $result['response'], 1));
+        } else {
+            return $this->parseErrorSoapResponse($result['response'], $errorFields);
+        }
+    }
+
+    /**
+     * More like a regular HTTP request with some HTTP processing at the end. 
+     * @param type $extUrl
+     * @param array $requestParams
+     * @param array $responseEntries
+     * @param array $errorFields
+     * @return type
+     */
+    function sendAddressRequest($extUrl, array $requestParams = null, array $responseEntries = null, array $errorFields = null) {
+        // check input params
+        if ($extUrl === null ) {
+            $errorMsg = ":: Unable to get ext_config_verb or extUrl";
+            $this->log->error($errorMsg, __METHOD__ );
+            return $this->getResponseObject(null, null, $errorMsg);
+        }
+
+        $endpoint = $extUrl ;
+        $logMsg = " :: :: HTTP ";
+
+        if (count($requestParams)>0) {
+            $endpoint .= '?';
+            foreach ($requestParams as $key=>$value) {
+                $endpoint .= $key.'='. urlencode($value) .'&';
+            }
+            $endpoint = rtrim($endpoint, "&");
+        }
+        
+        // prepare  HTTP headers   
+        $headers = array(
+            "HOST: ". parse_url($extUrl, PHP_URL_HOST),
+            "User-Agent:\"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:38.0) Gecko/20100101 Firefox/38.0\"",
+            //"Content-type: text/xml;charset=\"utf-8\"",
+            //"Content-length: 0",
+            "Accept: text/html,application/xhtml+xml,application/xml,text/xml",
+            "Cache-Control: no-cache",
+            "Pragma: no-cache",
+            "Connection: keep-alive"
+        ); 
+        
+        // send cURL request-- not Soap but just HTTP
+        // you need the NULL postMessage parameter, to make it send a GET 
+        $result = $this->CI->curlrequest->sendCurlSoapRequest(
+                $endpoint, $headers, NULL, $logMsg);
+
+        // used to display $result here: $this->log->debug("Result from sendCurlSoapRequest:",
+        // check the result - comes in an array from the Curl function
+		// We're checking for both false AND -1 for code compatibility (Ergo true & 200)
+        if ($result['status'] === false || $result['status'] === -1) {
+            $this->log->error("cURL HTTP Request failed", __METHOD__, NULL, print_r($result, TRUE));
+            return $this->getResponseObject(null, null, new ResponseError($result['response'], 1));
+        } else if ($result['status'] === true || $result['status'] === 200) {
+            // $result is: ([status] => 1,[response] => < xml ... > )
+            // $this->log->debug("Result from sendCurlSoapRequest:", __METHOD__, null,  print_r($result, TRUE));
+            return 
+                $this->parseAddressXmlResponse($result['response'], $responseEntries, $errorFields);
+        } else {  // should not happen
+            $this->log->debug("cURL Return in SiebelApi", __METHOD__, null, 'Result:'.  print_r($result, TRUE));        
+            return $this->getResponseObject(null, null, new ResponseError($result['response'], 1));
         }
     }
 
@@ -167,9 +231,9 @@ class SiebelApi extends \RightNow\Models\Base {
 
         // check parse result
         if ($parsingResult->error) {
-            $this->log->error("{$extObj} :: {$extAction} :: failed", __METHOD__, array($incident, $contact), json_encode($parsingResult->error->externalMessage));
+            $this->log->error("{$extObj} :: {$extAction} :: failed", __METHOD__, array($incident, $contact), var_export($parsingResult->error->externalMessage, true));
         } else {
-            $this->log->debug("{$extObj} :: {$extAction} :: success", __METHOD__, array($incident, $contact), json_encode($parsingResult->result));
+            $this->log->debug("{$extObj} :: {$extAction} :: success", __METHOD__, array($incident, $contact), var_export($parsingResult->result, true));
         }
 
         return $parsingResult;
@@ -256,6 +320,123 @@ class SiebelApi extends \RightNow\Models\Base {
         } else {
             return $this->getResponseObject($response, 'is_array');
         }
+    }
+
+    /**
+     * Check if the parsed response data is empty
+     * @param array $data Parsed response data
+     * @return boolean If the parsed response data is empty
+     */
+    private function isResponseDataEmpty(array $data) {
+        if (empty($data)) {
+            return true;
+        }
+        foreach ($data as $key => $value) {
+            if ($value !== null) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+
+    /**
+     * Parse Response contains a single item, for example a single Service Request
+     * @param array $responseString Response from Siebel server
+     * @param array $responseFields List of fields will be parsed from the response
+     * @param array $errorFields List of error fields that may contains the error message
+     * @param boolean $treatEmptyAsError Indicate if treat empty parsing result as an error
+     * @return RNCPHP\RNObject Parsing result
+     */
+    private function parseErrorSoapResponse($responseString, array $errorFields = null) {
+        $responseStruct = array();
+        $parser = xml_parser_create();
+        xml_parse_into_struct($parser, $responseString, $responseStruct);
+
+        foreach ($responseStruct as $item) {
+            if (in_array($item['tag'], $errorFields) && $item['value'] !== null) {
+                return $this->getResponseObject(null, null, new ResponseError("Request failed." . $item['value'], 1));
+            }
+        }        
+        // if not parsable, return the whole response
+        return  $this->getResponseObject(null, null, new ResponseError("Request failed.", 1));
+    }
+
+    /**
+     * kind of like parse single item
+     * $errorFields shouldn't have empty elements inside if you wanna return the content.
+     * 
+     * @param type $response
+     * @param array $responseEntries
+     * @param array $errorFields
+     * @param type $treatEmptyAsError
+     * @return type
+     */
+    private function parseAddressXmlResponse($response, array $responseEntries = null, array $errorFields = null, $treatEmptyAsError = true) {
+	
+        if ($response === null) {
+            return $this->getResponseObject(null, null, 'Unable to parse Address Verify XML response :: itz empty');
+        }
+        if ($errorFields == null) { // otherwise, in_array crashes o.O
+            $errorFields = array('ERROR');
+        }
+
+        $responseStruct = array();
+        $parser = xml_parser_create();
+        xml_parse_into_struct($parser, $response, $responseStruct);
+        /* After XML parsing, Each item is:  (tag is in Caps)
+            Array (
+                [tag] => ADDRESS2
+                [type] => complete
+                [level] => 3
+                [value] => 250 CALIFORNIA AVE
+            ) */
+
+        $response = array();
+        $hasErrorField = false;
+        foreach ($responseStruct as $item) {
+            // check if error returned; not used yet?
+            if (in_array($item['tag'], $errorFields) && $item['value'] !== null) {
+                // this will give any eventual ERROR message:
+                $hasErrorField = $item['value'];
+                break;
+            }
+
+            // only parse the tag in the required field list
+            if (in_array($item['tag'], $responseEntries)) {
+                $response[$item['tag']] = $item[value];
+            }
+            
+            //$debugPrint .= print_r($item, true);
+        }
+
+        if ($hasErrorField != FALSE) {
+            $this->log->notice("Parsed address, has Error:", __METHOD__, null, 'errorField:'.  print_r($hasErrorField, TRUE));     
+            return $this->getResponseObject(null, null, $hasErrorField);
+        } else if (IS_DEVELOPMENT === true) {
+	    // it's an array of items with keys from the responseEntries.
+            $this->log->debug("Parsed address, in entries:", __METHOD__, null, 'Items:'.  print_r($response, TRUE));     
+        }
+        
+        if ($this->isResponseDataEmpty($response)) {
+            if ($treatEmptyAsError) {
+                $parsingResult = $this->getResponseObject(null, null, 'Unable to parse response :: parsing result is empty');
+            } else {
+                $parsingResult = $this->getResponseObject(null, null);
+            }
+        } else {
+            $parsingResult = $this->getResponseObject($response, 'is_array');
+        }
+        
+        // check the parsing result
+        if ($parsingResult->error) {
+            $this->log->error("parse :: failed ::: externalMessage", __METHOD__, null, json_encode($parsingResult->error->externalMessage));
+        } else {
+            // same as printed in sendAddressRequest
+            // $this->log->debug("parse :: success", __METHOD__, null, print_r($parsingResult, true));
+        }
+
+        return $parsingResult;
     }
 
 }

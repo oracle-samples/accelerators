@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("$Id: 40b9df807f7175c69a03d7ea7b5bcc6f9d687fbb $")]
+[assembly: AssemblyTitle("$Id: acb6fb90f1174c7766b54d43303c963592a1cb49 $")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Oracle Corp.")]
@@ -32,4 +32,4 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("15.5.*")]
+[assembly: AssemblyVersion("15.11.*")]

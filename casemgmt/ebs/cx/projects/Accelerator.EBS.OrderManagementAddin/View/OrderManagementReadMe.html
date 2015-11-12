@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+<title></title>
+
+
+
+
+<link href="data:text/css,%0Ahtml%2C%20body%0A%7B%0A%20%20color%3A%20%230071CE%3B%0A%7D%0A%0A" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+
+
+
+
+
+<p><strong>EBS Order Management Addin</strong> allows you to manage sales orders in Oracle E-Business Suite (EBS). It allows the Oracle Service Cloud (OSvC) user to perform following operations in EBS.</p>
+<ol style="list-style-type: decimal">
+<li>Display a list of EBS sales orders for a given OSvC Incident.</li>
+<li>Display a list of sales items for the selected EBS sales order.</li>
+<li>Enables an agent to add product items to an order from OSvC product catalog.</li>
+<li>Allows an agent to set the quantity for the items added to the order.</li>
+<li>On save, the new sales orders are added to EBS.</li>
+</ol>
+<div id="prerequisite" class="section level3">
+<h3>Prerequisite</h3>
+<ol style="list-style-type: decimal">
+<li>EBS release 12.1.3 or higher</li>
+<li>OSvC release 15.5 or higher</li>
+<li>.NET framework 4.5</li>
+<li>Accelerator.EBS.ServiceStatusBarAddIn</li>
+</ol>
+</div>
+<div id="setup" class="section level3">
+<h3>Setup</h3>
+<ol style="list-style-type: decimal">
+<li><p>EBS <code>PL/SQL</code> web services that need to be deployed for the Addin are listed below. Please read the accompanying documentation or request your EBS administrator to perform this initial setup.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Name</th>
+<th align="left">Internal Name</th>
+<th align="left">Application Code</th>
+<th align="left">Responsibility Key</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Process Order API</td>
+<td align="left">OE_ORDER_PUB</td>
+<td align="left">ONT</td>
+<td align="left">ORDER_MGMT_SUPER_USER</td>
+</tr>
+<tr class="even">
+<td align="left">Sales Order Services</td>
+<td align="left">OE_INBOUND_INT</td>
+<td align="left">ONT</td>
+<td align="left">ORDER_MGMT_SUPER_USER</td>
+</tr>
+<tr class="odd">
+<td align="left">Custom API to get orders by incident</td>
+<td align="left">OE_ORDER_CUST</td>
+<td align="left">ONT</td>
+<td align="left">ORDER_MGMT_SUPER_USER</td>
+</tr>
+</tbody>
+</table></li>
+<li><p>Configure the EBS web service endpoints in OSvC. A sample configuration of the EBS endpoints used in the Addin is shown below.</p></li>
+</ol>
+<pre><code>          &quot;order&quot;: {
+            &quot;read&quot;: {
+              &quot;service_name&quot;: &quot;GET_ORDER&quot;,
+              &quot;soap_action&quot;: &quot;http://ebs.example.com:8000/webservices/SOAProvider/plsql/oe_order_pub/&quot;,
+              &quot;relative_path&quot;: &quot;webservices/SOAProvider/plsql/oe_order_pub/&quot;
+            }
+          },
+          &quot;order_list&quot;: {
+            &quot;read&quot;: {
+              &quot;service_name&quot;: &quot;GET_ORDERS_BY_CONTACT&quot;,
+              &quot;soap_action&quot;: &quot;http://ebs.example.com:8000/webservices/SOAProvider/plsql/oe_order_cust/&quot;,
+              &quot;relative_path&quot;: &quot;webservices/SOAProvider/plsql/oe_order_cust/&quot;
+            }
+          },
+          &quot;order_save&quot;: {
+            &quot;read&quot;: {
+              &quot;service_name&quot;: &quot;PROCESS_ORDER&quot;,
+              &quot;soap_action&quot;: &quot;http://ebs.example.com:8000/webservices/SOAProvider/plsql/oe_inbound_int/&quot;,
+              &quot;relative_path&quot;: &quot;webservices/SOAProvider/plsql/oe_inbound_int/&quot;
+            }
+          }</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>Deploy <code>Accelerator.EBS.OrderManagementAddin</code> to OSvC using agent desktop.</li>
+<li>Drop the Addin on a new tab in the Incident workspace. You may also drop an Order Management analytics report on one side, to split the tab vertically.</li>
+<li>Resize the Addin in design view of the workspace. <code>Design</code> &gt; <code>Size</code> &gt; <code>Enable Auto Sizing</code>.</li>
+<li>Add EBS sales products to OSvC &gt; <code>Sales</code> &gt; <code>Product Catalog</code>. EBS Products must be added to the folder called <code>EBS Products</code>. Addin fetches products under this folder using RightNow Object Query Language (<code>ROQL</code>).</li>
+<li><p>This addin uses the fields mentioned below to map EBS to OSvC. You will find these mappings useful to create a report or to add an EBS product to OSvC.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">EBS GET_ORDER</th>
+<th align="left"></th>
+<th align="left">OSvC</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">X_HEADER_REC.ATTRIBUTE15</td>
+<td align="left"></td>
+<td align="left">Incident.ID</td>
+</tr>
+<tr class="even">
+<td align="left">X_LINE_TBL.INVENTORY_ITEM_ID</td>
+<td align="left"></td>
+<td align="left">SalesProduct.ID</td>
+</tr>
+<tr class="odd">
+<td align="left">X_LINE_TBL.UNIT_SELLING_PRICE</td>
+<td align="left"></td>
+<td align="left">SalesProduct.Schedules.SalesProductScheduleList.Price</td>
+</tr>
+<tr class="even">
+<td align="left">X_LINE_VAL_TBL.INVENTORY_ITEM_DESC</td>
+<td align="left"></td>
+<td align="left">SalesProduct.Name</td>
+</tr>
+</tbody>
+</table></li>
+</ol>
+</div>
+<div id="limitations" class="section level3">
+<h3>Limitations</h3>
+<ol style="list-style-type: decimal">
+<li>This addin does not replace the corresponding functionality in EBS.</li>
+<li>It currently supports only USD as the currency.</li>
+<li>Number of sales products fetched from OSvC, using <code>ROQL</code> is limited to 1000.</li>
+<li>It does not allow you to cancel or update a sales order that has already been saved to EBS.</li>
+</ol>
+</div>
+<div id="troubleshooting" class="section level3">
+<h3>Troubleshooting</h3>
+<p>Suggested steps for troubleshooting in case you run into a problem.</p>
+<ol style="list-style-type: decimal">
+<li>Check the prerequisite and make a note of your version numbers.</li>
+<li>Check logs and collect the relevant messages.</li>
+<li>Check that the EBS web service endpoints are configured correctly.</li>
+<li>Manually test the EBS web service operations and collect the payloads.</li>
+<li><p>Get sales orders for an OSvC incident, from the EBS database, using a query similar to the one given below. You may also wrap a similar query inside a <code>PL/SQL</code> API and expose it as a web service.</p>
+<pre><code>SELECT HEADER_ID,
+  SOLD_TO_CONTACT_ID,
+  CREATION_DATE,
+  LAST_UPDATE_DATE,
+  ORDER_NUMBER,
+  FLOW_STATUS_CODE,
+  ORDER_CATEGORY_CODE,
+  ORDER_TYPE_ID,
+  ORIG_SYS_DOCUMENT_REF,
+  TRANSACTIONAL_CURR_CODE,
+  CANCELLED_FLAG,
+  OPEN_FLAG,
+  BOOKED_FLAG,
+  VERSION_NUMBER,
+  ATTRIBUTE15,
+  ATTRIBUTE16
+FROM oe_order_headers_all
+WHERE ATTRIBUTE15 = :incident_id
+ORDER BY creation_date DESC;</code></pre></li>
+<li><p>If you are getting products from the OSvC sales product catalog, test using the <code>ROQL</code> given below.</p>
+<pre><code>SELECT sp.PartNumber, sp.Name, sp.Schedules.SalesProductScheduleList.Price.Value
+FROM SalesProduct sp
+WHERE sp.Folder.Name = 'EBS Products'
+AND sp.Schedules.SalesProductScheduleList.Price.Currency.Name = 'USD' 
+AND sp.Schedules.SalesProductScheduleList.Price.Value &gt; 0 
+LIMIT 1000</code></pre></li>
+<li>Note the version number of the addin in the info tab.</li>
+<li>Upgrade if there is a newer version available.</li>
+<li>Check that <code>ebs_default_sr_owner_id</code> is configured correctly.</li>
+<li><p>After you have collected all the information in the previous steps, ask for support and have your EBS and OSvC administrators on the call.</p></li>
+</ol>
+</div>
+
+
+
+
+</body>
+</html>

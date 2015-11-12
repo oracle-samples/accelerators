@@ -5,13 +5,13 @@
  ***********************************************************************************************
  *  Accelerator Package: OSVC + EBS Enhancement
  *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
- *  OSvC release: 15.5 (May 2015)
+ *  OSvC release: 15.8 (August 2015)
  *  EBS release: 12.1.3
- *  reference: 150202-000157
- *  date: Wed Sep  2 23:11:33 PDT 2015
+ *  reference: 150505-000099, 150420-000127
+ *  date: Thu Nov 12 00:52:38 PST 2015
 
- *  revision: rnw-15-8-fixes-release-01
- *  SHA1: $Id: d909a5803d471f81beb63f99e04d3d71ccd8123c $
+ *  revision: rnw-15-11-fixes-release-1
+ *  SHA1: $Id: b4a1e6a69d128108059c4231ac002c2ff7638557 $
  * *********************************************************************************************
  *  File: logic.js
  * ****************************************************************************************** */
@@ -27,10 +27,14 @@ Custom.Widgets.EbsServiceRequest.SrInteractionDisplay = RightNow.Widgets.extend(
 
         this._showSpinner();
 
-        this.getInteractionAjaxEndpoint();
+        if(this.data.js.sr_id !== undefined && this.data.js.sr_id !== null ){
+            this.getInteractionAjaxEndpoint();
+        }else{
+            this._showErrorMessage('Unable to find the associated Service Request ID of the Incident.');
+        }
     },
     /**
-     * Makes an AJAX request for `getInteraction_ajax_endpoint`.
+     * Makes an AJAX request for `get_interaction_ajax_endpoint`.
      */
     getInteractionAjaxEndpoint: function() {
         var eventObj = new RightNow.Event.EventObject(this, {data: {
@@ -50,15 +54,15 @@ Custom.Widgets.EbsServiceRequest.SrInteractionDisplay = RightNow.Widgets.extend(
         });
     },
     /**
-     * Ajax requeest failure hander
+     * Failure handler for the AJAX request
      */
     ajaxFailureHandler: function() {
-        this._showErrorMessage(this.data.attrs.ajax_failure_message);
+        this._showErrorMessage(this.data.attrs.ajax_timeout_message);
     },
     /**
-     * Handles the AJAX response for `default_ajax_endpoint`.
+     * Handles the AJAX response for `get_interaction_ajax_endpoint`.
      * @param {object} response JSON-parsed response from the server
-     * @param {object} originalEventObj `eventObj` from #getDefault_ajax_endpoint
+     * @param {object} originalEventObj `eventObj` from #get_interaction_ajax_endpoint
      */
     getInteractionAjaxEndpointCallback: function(response) {
         if (response.error !== null) {

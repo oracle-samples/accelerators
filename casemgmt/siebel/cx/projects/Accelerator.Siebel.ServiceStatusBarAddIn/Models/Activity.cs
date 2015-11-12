@@ -5,13 +5,13 @@
  ***********************************************************************************************
  *  Accelerator Package: OSVC Contact Center + Siebel Case Management Accelerator
  *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
- *  OSvC release: 15.5 (May 2015)
+ *  OSvC release: 15.8 (August 2015)
  *  Siebel release: 8.1.1.15
- *  reference: 141216-000121
- *  date: Wed Sep  2 23:14:41 PDT 2015
+ *  reference: 150520-000047
+ *  date: Thu Nov 12 00:55:36 PST 2015
 
- *  revision: rnw-15-8-fixes-release-01
- *  SHA1: $Id: 04da5ff9b86230fddaffa670554a4ea9cce5fecc $
+ *  revision: rnw-15-11-fixes-release-1
+ *  SHA1: $Id: c9170beac3995910d6da214f2625e29aca7d4d65 $
  * *********************************************************************************************
  *  File: Activity.cs
  * *********************************************************************************************/
@@ -28,9 +28,57 @@ namespace Accelerator.Siebel.SharedServices
     {
         public static string LookupURL { get; set; }
         public string ErrorMessage { get; set; }
+        public string ID { get; set; }
+        public string SrID { get; set; }
+        public string Description { get; set; }
+        public string Comment { get; set; }
+        public string ActivityType { get; set; }
+        public System.DateTime Due { get; set; }
+        public string Priority { get; set; }
+        public string Status { get; set; }
 
         public static ISiebelProvider _provider;
 
+        public bool Create(int _logIncidentId = 0, int _logContactId = 0)
+        {
+            if (_provider == null)
+            {
+                throw new Exception("Siebel Provider not initialized.");
+            }
+
+            Activity activity = Activity._provider.CreateActivity(this, _logIncidentId, _logContactId);
+            this.ID = activity.ID;
+            this.ErrorMessage = activity.ErrorMessage;
+
+            return String.IsNullOrWhiteSpace(this.ErrorMessage);
+        }
+
+        //public static void InitSiebelProviderToCreateActivity()
+        //{
+        //    Type t = Type.GetType(ServiceProvider);
+
+        //    try
+        //    {
+        //        // reuse InitForSR
+        //        _provider = Activator.CreateInstance(t) as ISiebelProvider;
+        //        _provider.InitForActivity(CreateURL, ServiceUsername, ServicePassword, ServiceClientTimeout);
+        //        _provider.log = ConfigurationSetting.logWrap;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        if (ConfigurationSetting.logWrap != null)
+        //        {
+        //            string logMessage = "Error in init Provider in Activity Model. Error: " + ex.Message;
+        //            string logNote = "";
+        //            ConfigurationSetting.logWrap.ErrorLog(logMessage: logMessage, logNote: logNote);
+        //        }
+
+        //        throw;
+        //    }
+        //}
+
+
+ 
         public static void InitSiebelProvider()
         {
             Type t = Type.GetType(ServiceProvider);
@@ -48,7 +96,7 @@ namespace Accelerator.Siebel.SharedServices
                 {
                     string logMessage = "Error in init Provider in Activity Model. Error: " + ex.Message;
                     string logNote = "";
-                    ConfigurationSetting.logWrap.DebugLog(logMessage: logMessage, logNote: logNote);
+                    ConfigurationSetting.logWrap.ErrorLog(logMessage: logMessage, logNote: logNote);
                 }
 
                 throw;

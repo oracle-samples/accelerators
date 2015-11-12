@@ -5,13 +5,13 @@
  ***********************************************************************************************
  *  Accelerator Package: OSVC + EBS Enhancement
  *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
- *  OSvC release: 15.5 (May 2015)
+ *  OSvC release: 15.8 (August 2015)
  *  EBS release: 12.1.3
- *  reference: 150202-000157
- *  date: Wed Sep  2 23:11:37 PDT 2015
+ *  reference: 150505-000099, 150420-000127
+ *  date: Thu Nov 12 00:52:44 PST 2015
 
- *  revision: rnw-15-8-fixes-release-01
- *  SHA1: $Id: 7b78186ff9b14c91e0b2e4b13fe6d208f7f7c4ea $
+ *  revision: rnw-15-11-fixes-release-1
+ *  SHA1: $Id: a89aa742ed1392de1971220a94f79994d1a06df6 $
  * *********************************************************************************************
  *  File: RepairOrderInformationControl.cs
  * *********************************************************************************************/
@@ -802,6 +802,8 @@ namespace Accelerator.EBS.RepairOrderAddin
                     this.inputInventoryItemID = (decimal)items[0].InventoryItemID;
                     return true;
                 }
+                string logMessage = "The serial number validation is failed. (serial number = "+serial_number+", org id = "+org_id+")";
+                _log.NoticeLog(incidentId: _logIncidentId, logMessage: logMessage);
                 return false;
             }
             catch (Exception ex)

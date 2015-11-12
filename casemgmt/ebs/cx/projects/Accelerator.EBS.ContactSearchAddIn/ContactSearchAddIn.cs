@@ -5,13 +5,13 @@
  ***********************************************************************************************
  *  Accelerator Package: OSVC + EBS Enhancement
  *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
- *  OSvC release: 15.5 (May 2015)
+ *  OSvC release: 15.8 (August 2015)
  *  EBS release: 12.1.3
- *  reference: 150202-000157
- *  date: Wed Sep  2 23:11:37 PDT 2015
+ *  reference: 150505-000099, 150420-000127
+ *  date: Thu Nov 12 00:52:42 PST 2015
 
- *  revision: rnw-15-8-fixes-release-01
- *  SHA1: $Id: ec3e8e7b7f58f9cf1284c197a8a3ef373b10c264 $
+ *  revision: rnw-15-11-fixes-release-1
+ *  SHA1: $Id: b077028bd32ae0432ed58ec09ff45d252f9b0af1 $
  * *********************************************************************************************
  *  File: ContactSearchAddIn.cs
  * *********************************************************************************************/
@@ -287,12 +287,12 @@ namespace Accelerator.EBS.ContactSearchAddIn
                 _rnSrv = ConfigurationSetting.rnSrv;
                 _log = ConfigurationSetting.logWrap;
 
-                Accelerator.EBS.SharedServices.Contact.ServiceProvider = ConfigurationSetting.EBSProvider;
-                Accelerator.EBS.SharedServices.Contact.ListLookupURL = ConfigurationSetting.LookupContactList_WSDL;
-                Accelerator.EBS.SharedServices.Contact.ServiceUsername = String.IsNullOrEmpty(_usr) ? "ebusiness" : _usr;
-                Accelerator.EBS.SharedServices.Contact.ServicePassword = String.IsNullOrEmpty(_pwd) ? "password" : _pwd;
-                Accelerator.EBS.SharedServices.Contact.ServiceClientTimeout = ConfigurationSetting.EBSServiceTimeout;
-                Accelerator.EBS.SharedServices.Contact.InitEBSProvider();
+                Accelerator.EBS.SharedServices.ContactModel.ServiceProvider = ConfigurationSetting.EBSProvider;
+                Accelerator.EBS.SharedServices.ContactModel.ListLookupURL = ConfigurationSetting.LookupContactList_WSDL;
+                Accelerator.EBS.SharedServices.ContactModel.ServiceUsername = String.IsNullOrEmpty(_usr) ? "ebusiness" : _usr;
+                Accelerator.EBS.SharedServices.ContactModel.ServicePassword = String.IsNullOrEmpty(_pwd) ? "password" : _pwd;
+                Accelerator.EBS.SharedServices.ContactModel.ServiceClientTimeout = ConfigurationSetting.EBSServiceTimeout;
+                Accelerator.EBS.SharedServices.ContactModel.InitEBSProvider();
 
                 Contact_Search_Report_ID = ConfigurationSetting.contactSearchReportID;
             }

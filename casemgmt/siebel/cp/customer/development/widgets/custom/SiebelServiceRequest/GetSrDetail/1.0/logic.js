@@ -5,13 +5,13 @@
  ***********************************************************************************************
  *  Accelerator Package: OSVC Contact Center + Siebel Case Management Accelerator
  *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
- *  OSvC release: 15.5 (May 2015)
+ *  OSvC release: 15.8 (August 2015)
  *  Siebel release: 8.1.1.15
- *  reference: 141216-000121
- *  date: Wed Sep  2 23:14:34 PDT 2015
+ *  reference: 150520-000047
+ *  date: Thu Nov 12 00:55:28 PST 2015
 
- *  revision: rnw-15-8-fixes-release-01
- *  SHA1: $Id: de110a39976c47b0564ff5455d16c2982501c743 $
+ *  revision: rnw-15-11-fixes-release-1
+ *  SHA1: $Id: 910190d9475ced8de16aea50f843c0d11197fd5f $
  * *********************************************************************************************
  *  File: logic.js
  * ****************************************************************************************** */
@@ -32,7 +32,7 @@ Custom.Widgets.SiebelServiceRequest.GetSrDetail = RightNow.Widgets.extend({
         this.getSrDetailAjaxEndpoint();
     },
     /**
-     * Makes an AJAX request for `default_ajax_endpoint`.
+     * Makes an AJAX request for `get_sr_detail_ajax_endpoint`.
      */
     getSrDetailAjaxEndpoint: function() {
         // Make AJAX request:
@@ -51,10 +51,10 @@ Custom.Widgets.SiebelServiceRequest.GetSrDetail = RightNow.Widgets.extend({
         });
     },
     /**
-     * Failure handler for the Ajax request
+     * Failure handler for the AJAX request
      */
     ajaxFailureHandler: function() {
-        this._showErrorMessage(this.data.attrs.ajax_failure_message);
+        this._showErrorMessage(this.data.attrs.ajax_timeout_message);
     },
     /**
      * Display error message

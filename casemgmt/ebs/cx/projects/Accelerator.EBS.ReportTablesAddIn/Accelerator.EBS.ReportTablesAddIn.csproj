@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Web.Services3, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Accelerator.EBS.ServiceStatusBarAddIn\lib\Microsoft.Web.Services3.dll</HintPath>
+    </Reference>
     <Reference Include="RightNow.AddIns.AddInViews, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Accelerator.EBS.ServiceStatusBarAddIn\lib\RightNow.AddIns.AddInViews.dll</HintPath>
@@ -48,6 +52,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="OrderHeaderByIncidentVirtualTable.cs" />
+    <Compile Include="OrderHeaderByContactVirtualTable.cs" />
+    <Compile Include="OrderMgmtHeaderVirtualTable.cs" />
+    <Compile Include="OrderMgmtGenericChildTable.cs" />
     <Compile Include="RepairLogisticsVirtualTable.cs" />
     <Compile Include="RepairOrderVirtualTable.cs" />
     <Compile Include="EntitlementListVirtualTable.cs" />

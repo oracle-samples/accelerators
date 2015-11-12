@@ -5,13 +5,13 @@
  ***********************************************************************************************
  *  Accelerator Package: OSVC Contact Center + Siebel Case Management Accelerator
  *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
- *  OSvC release: 15.5 (May 2015)
+ *  OSvC release: 15.8 (August 2015)
  *  Siebel release: 8.1.1.15
- *  reference: 141216-000121
- *  date: Wed Sep  2 23:14:39 PDT 2015
+ *  reference: 150520-000047
+ *  date: Thu Nov 12 00:55:34 PST 2015
 
- *  revision: rnw-15-8-fixes-release-01
- *  SHA1: $Id: 3c50bf998d8e27537bd69a22ba856a9d4621c417 $
+ *  revision: rnw-15-11-fixes-release-1
+ *  SHA1: $Id: e7e69710ff7c241da7c0efae7baecd5a5921b0a2 $
  * *********************************************************************************************
  *  File: ContactDetailVirtualTable.cs
  * *********************************************************************************************/
@@ -39,7 +39,7 @@ namespace Accelerator.Siebel.ReportTablesAddin
             this.Name = "ContactDetailTable";
             this.Label = "Siebel Contact Detail Table";
             this.Description = "Siebel Contact Detail Table";
-            Dictionary<string, string> dictDetail = Contact.getDetailSchema();
+            Dictionary<string, string> dictDetail = ContactModel.getDetailSchema();
 
             addColumns(dictDetail);       
         }
@@ -75,7 +75,7 @@ namespace Accelerator.Siebel.ReportTablesAddin
                 if (partyID == "" || partyID == null)
                     return reportRows;
 
-                dictDetail = Contact.LookupDetail(columns, partyID);
+                dictDetail = ContactModel.LookupDetail(columns, partyID);
             }
             else
             {
@@ -92,7 +92,7 @@ namespace Accelerator.Siebel.ReportTablesAddin
                 ConfigurationSetting.logWrap.DebugLog(0, contactRecord.ID, logMessage: logMessage);
 
                 // call Siebel Contact.LookupDetail, which return <columnName, type+TYPE_VALUE_DELIMITER+value)
-                dictDetail = Contact.LookupDetail(columns, contactPartyID, 0, contactRecord.ID);               
+                dictDetail = ContactModel.LookupDetail(columns, contactPartyID, 0, contactRecord.ID);               
             }
             
             ReportDataRow reportDataRow = new ReportDataRow(this.Columns.Count);

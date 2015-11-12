@@ -1,0 +1,29 @@
+/*
+ * PostalValidate.css: Presentation css for this widget's' elements as per custom examples
+*/
+/*
+    Created on : Sep 4, 2015, 10:36:58 AM
+    Author     : jgrouevs
+*/
+/*.rn_PostalValidate.rn_TextInput {
+    width : 100%;
+}*/
+
+.rn_PostalValidate .rn_VerifyButton {
+    margin-top: 0;
+}
+
+.rn_PostalValidate .rn_InvalidPostalValidationHint {
+    color: #B20000;
+}
+
+.rn_PostalValidate .rn_ValidPostalValidationResult {
+    color: #093;
+}
+
+.rn_PostalValidate .rn_PostalValidationLoadingIndicator {
+    background-image: url(/euf/assets/themes/standard/images/indicator.gif);
+    background-repeat: no-repeat;
+    background-position: center center;
+    min-height:66px;
+}

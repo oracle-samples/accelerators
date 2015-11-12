@@ -7,13 +7,13 @@
  ***********************************************************************************************
  *  Accelerator Package: OSVC + EBS Enhancement
  *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
- *  OSvC release: 15.5 (May 2015)
+ *  OSvC release: 15.8 (August 2015)
  *  EBS release: 12.1.3
- *  reference: 150202-000157
- *  date: Wed Sep  2 23:11:31 PDT 2015
+ *  reference: 150505-000099, 150420-000127
+ *  date: Thu Nov 12 00:52:35 PST 2015
 
- *  revision: rnw-15-8-fixes-release-01
- *  SHA1: $Id: 2ac1cc36825fda8fd5f78fc5368882f2e7d8d0f4 $
+ *  revision: rnw-15-11-fixes-release-1
+ *  SHA1: $Id: 7e049a1db27e3093f19f6ceecb50e41d90d51141 $
  * *********************************************************************************************
  *  File: CustomHook.php
  * ****************************************************************************************** */
@@ -41,88 +41,130 @@ class CustomHook extends \RightNow\Models\Base {
     }
 
     /**
-     * Hook function to check permission before loading the page
-     * Handle cases like:
-     * - SR does not exist
-     * - user dosen't have the right to access the SR
+     * CheckBeforeLoadingPageHook
      */
     function checkBeforeLoadingPageHook() {
+        if (Text::beginsWith($_SERVER['REQUEST_URI'], '/app/error/')) {
+            return;
+        }
+
         if ($this->extServerType === 'EBS') {
             $this->checkBeforeLoadingPageHookForEbs();
-        } else if ($this->extServerType === 'MOCK') {
-            $this->checkBeforeLoadingPageHookForMock();
         } else {
             $this->log->error('Invalid external server type', __METHOD__);
         }
     }
 
     /**
-     * CheckBeforeLoadingPageHook for EBS
+     * Execute the following check before loading page
+     * - SR doesn't exist
+     * - user doesn't have the right to access the SR
+     * - SR has been closed
      */
     private function checkBeforeLoadingPageHookForEbs() {
         $url = $_SERVER['REQUEST_URI'];
+
+        // incident detail page
         if (Text::beginsWith($url, '/app/account/questions/detail/i_id')) {
-            // check if the i_id in URL is valid
+            // check if the i_id is valid
             $incidentID = Url::getParameter('i_id');
             if (!$incidentID || !is_numeric($incidentID)) {
                 $this->log->error("Invalid i_id#{$incidentID}", __METHOD__, array(null, $this->contact));
                 Url::redirectToErrorPage(9);
             }
-        } else if (Text::beginsWith($url, '/app/account/questions/detail/sr_id') === true) {
-            // check if the sr_id in URL is valid
+
+            // check if the linked SR has been closed
+            if ($incident = RNCPHP\Incident::fetch(intval($incidentID))) {
+                if ($incident->StatusWithType->Status->ID === 2) { // solved
+                    return;
+                }
+                if ($srID = $incident->CustomFields->Accelerator->ebs_sr_id) {
+                    $srDetail = $this->checkServiceRequest($srID);
+
+                    // if the status is closed, redirect to the read only page
+                    if ($srDetail['INCIDENT_STATUS'] === 'Closed' && Url::getParameter('readonly') !== "1") {
+                        $this->log->debug("Redirect to read-only page", __METHOD__, array(null, $this->contact));
+                        header("Location: /app/account/questions/detail/i_id/$incidentID/readonly/1" . Url::sessionParameter());
+                        exit;
+                    }
+                }
+            }
+            return;
+        }
+
+        // sr detail page
+        if (Text::beginsWith($url, '/app/account/questions/detail/sr_id')) {
             $srID = Url::getParameter('sr_id');
-            if (!$srID || !is_numeric($srID)) {
-                $this->log->error("Invalid sr_id#{$srID}", __METHOD__, array(null, $this->contact));
-                Url::redirectToErrorPage(10);
-            }
 
-            // check if the contact party id and org id have been set
-            if (!$this->CI->utility->validateEbsContactID($this->contact)) {
-                $this->log->error("contact_party_id and/or contact_org_id not provided", __METHOD__, array(null, $this->contact));
-                Url::redirectToErrorPage(12);
-            }
+            // check SR
+            $srDetail = $this->checkServiceRequest($srID);
 
-            // get the SR by sr_id
-            $getSRResult = $this->CI->model('custom/EbsServiceRequest')->getSRDetailByID($srID);
-            if ($getSRResult->error) {
-                $this->log->error("Unable to get SR#{$srID}", __METHOD__, array(null, $this->contact));
-                Url::redirectToErrorPage(4);
-            }
-
-            // check if the current user is the owner of the SR, if not, redirect to the permission deny error page
-            $srDetail = $getSRResult->result;
-            $contactPartyID = ($this->contact !== null) ? $this->contact->CustomFields->Accelerator->ebs_contact_party_id : null;
-            if ((string) $contactPartyID !== (string) $srDetail['CONTACT_PARTY_ID']) {
-                $this->log->error('Permission Denied', __METHOD__, array(null, $this->contact), "ContactPartyID#{$contactPartyID} dosen't match SR.contactId #{$srDetail['CONTACT_PARTY_ID']}");
-                Url::redirectToErrorPage(4);
-            }
-
-            // redirect to the corresponding Incident detail page if the SR has already associated with an Incident in RN
+            // redirect to the incident detail page if the SR has already associated with an incident
             $incidentID = $srDetail['EXTATTRIBUTE15'];
             if ($incidentID) {
                 $this->log->debug("Redirect to incident#{$incidentID} page", __METHOD__, array(null, $this->contact));
                 header("Location: /app/account/questions/detail/i_id/{$incidentID}" . Url::sessionParameter());
                 exit;
             }
+
+            // if the status is closed, redirect to the read only page
+            if ($srDetail['INCIDENT_STATUS'] === 'Closed' && Url::getParameter('readonly') !== "1") {
+                $this->log->debug("Redirect to read-only page", __METHOD__, array(null, $this->contact));
+                header("Location: /app/account/questions/detail/sr_id/$srID/readonly/1" . Url::sessionParameter());
+                exit;
+            }
         }
     }
 
     /**
+     * fetch SR and check if the current user is the owner of the SR
+     * @param int $srID Serivce Request ID
+     * @return array|null Service Request detail
+     */
+    private function checkServiceRequest($srID) {
+        if (!$srID || !is_numeric($srID)) {
+            $this->log->error("Invalid sr_id#{$srID}", __METHOD__, array(null, $this->contact));
+            Url::redirectToErrorPage(10);
+        }
+
+        // check if the contact party id and org id have been set
+        if (!$this->CI->utility->validateEbsContactID($this->contact)) {
+            $this->log->error("contact_party_id and/or contact_org_id not provided", __METHOD__, array(null, $this->contact));
+            Url::redirectToErrorPage(12);
+        }
+
+        // get SR by sr_id
+        $getSRResult = $this->CI->model('custom/EbsServiceRequest')->getSRDetailByID($srID);
+        if ($getSRResult->error) {
+            $this->log->error("Unable to get SR#{$srID}", __METHOD__, array(null, $this->contact));
+            Url::redirectToErrorPage(11);
+        }
+
+        // check if the current user is the owner of the SR, if not, redirect to the permission deny error page
+        $srDetail = $getSRResult->result;
+        $contactPartyID = ($this->contact !== null) ? $this->contact->CustomFields->Accelerator->ebs_contact_party_id : null;
+        if ((string) $contactPartyID !== (string) $srDetail['CONTACT_PARTY_ID']) {
+            $this->log->error('Permission Denied', __METHOD__, array(null, $this->contact), "ContactPartyID#{$contactPartyID} dosen't match SR.contactId #{$srDetail['CONTACT_PARTY_ID']}");
+            Url::redirectToErrorPage(4);
+        }
+
+        return $srDetail;
+    }
+
+    /**
      * Hook function after update an incident
-     * @param array &$hookData Hook data which contains the updated incident info
+     * @param array &$hookData Hook data
      */
     function updateSRAfterUpdateIncidentHook(array &$hookData) {
         if ($this->extServerType === 'EBS') {
             $this->updateSRAfterUpdateIncidentHookForEbs($hookData);
-        } else if ($this->extServerType === 'MOCK') {
-            $this->updateSrAfterUpdateIncidentHookForMock($hookData);
         } else {
             $this->log->error('Invalid external server type', __METHOD__);
         }
     }
 
     /**
-     * UpdateSrAfterUpdateIncidentHook function for EBS.
+     * UpdateSrAfterUpdateIncidentHook function for EBS
      * @param array &$hookData Hook data
      * @return null
      */
@@ -242,4 +284,5 @@ class CustomHook extends \RightNow\Models\Base {
         }
         $this->CI->model('custom/EbsServiceRequest')->updateSR($srID, $srDetail, $incident);
     }
+
 }

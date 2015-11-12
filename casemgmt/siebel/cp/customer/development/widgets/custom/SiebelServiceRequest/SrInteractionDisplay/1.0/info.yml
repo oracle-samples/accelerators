@@ -5,13 +5,13 @@
 ################################################################################################
 #  Accelerator Package: OSVC Contact Center + Siebel Case Management Accelerator
 #  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
-#  OSvC release: 15.5 (May 2015)
+#  OSvC release: 15.8 (August 2015)
 #  Siebel release: 8.1.1.15
-#  reference: 141216-000121
-#  date: Wed Sep  2 23:14:35 PDT 2015
+#  reference: 150520-000047
+#  date: Thu Nov 12 00:55:29 PST 2015
 
-#  revision: rnw-15-8-fixes-release-01
-#  SHA1: $Id: 1984b4172125ca924258217aa80c59a688c1aab0 $
+#  revision: rnw-15-11-fixes-release-1
+#  SHA1: $Id: 3f53496fa72e79a8ef4c13c179ec283e4f649a7a $
 ################################################################################################
 #  File: info.yml
 ################################################################################################
@@ -24,7 +24,7 @@ attributes:
   get_interaction_ajax_endpoint:
     name: get_interaction_ajax_endpoint
     type: ajax
-    description: Default AJAX endpoint
+    description: AJAX endpoint
     default: /ci/ajax/widget
     required: false
   max_rows:
@@ -37,12 +37,17 @@ attributes:
     name: rn:msg:TIMEOUT_LBL
     description: time out for the Ajax call
     type: INT
-    default: 10000
+    default: 60000
     min: 0
+  ajax_timeout_message:
+    name: ajax_timeout_message
+    description: error message displayed when AJAX timeout in dev mode
+    default: 'Connection to Siebel server has timed out.'
+    type: STRING
   ajax_failure_message:
     name: ajax_failure_message
-    description: error message displayed when ajax failed
-    default: 'We are experiencing technical difficulty communicating with the server. Please try again later.'
+    description: error message displayed when AJAX failed in production mode
+    default: 'There has been an error communicating with Siebel. Please try again later.'
     type: STRING
 discription:
     SrInteractionDisplay widget displays the communication history of the Service Request.

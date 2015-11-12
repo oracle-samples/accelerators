@@ -5,13 +5,13 @@
  ***********************************************************************************************
  *  Accelerator Package: OSVC + EBS Enhancement
  *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
- *  OSvC release: 15.5 (May 2015)
+ *  OSvC release: 15.8 (August 2015)
  *  EBS release: 12.1.3
- *  reference: 150202-000157
- *  date: Wed Sep  2 23:11:36 PDT 2015
+ *  reference: 150505-000099, 150420-000127
+ *  date: Thu Nov 12 00:52:41 PST 2015
 
- *  revision: rnw-15-8-fixes-release-01
- *  SHA1: $Id: 47d257a3dff0744c0a9ecf9b64edd0cf1d762aad $
+ *  revision: rnw-15-11-fixes-release-1
+ *  SHA1: $Id: b6abf2ab557efab745907088d377194f19c54f15 $
  * *********************************************************************************************
  *  File: BulkImportAddin.cs
  * *********************************************************************************************/
@@ -75,11 +75,11 @@ namespace Accelerator.EBS.BulkImportAddin
                 _client = ConfigurationSetting.client;
                 _rnSrv = ConfigurationSetting.rnSrv;
 
-                Accelerator.EBS.SharedServices.Contact.ServiceProvider = ConfigurationSetting.EBSProvider;
-                Accelerator.EBS.SharedServices.Contact.ListLookupURL = ConfigurationSetting.LookupContactList_WSDL;
-                Accelerator.EBS.SharedServices.Contact.ServiceUsername = String.IsNullOrEmpty(_usr) ? "ebusiness" : _usr;
-                Accelerator.EBS.SharedServices.Contact.ServicePassword = String.IsNullOrEmpty(_pwd) ? "password" : _pwd;
-                Accelerator.EBS.SharedServices.Contact.InitEBSProvider();
+                Accelerator.EBS.SharedServices.ContactModel.ServiceProvider = ConfigurationSetting.EBSProvider;
+                Accelerator.EBS.SharedServices.ContactModel.ListLookupURL = ConfigurationSetting.LookupContactList_WSDL;
+                Accelerator.EBS.SharedServices.ContactModel.ServiceUsername = String.IsNullOrEmpty(_usr) ? "ebusiness" : _usr;
+                Accelerator.EBS.SharedServices.ContactModel.ServicePassword = String.IsNullOrEmpty(_pwd) ? "password" : _pwd;
+                Accelerator.EBS.SharedServices.ContactModel.InitEBSProvider();
 
                 Accelerator.EBS.SharedServices.RepairOrder.ServiceProvider = ConfigurationSetting.EBSProvider;
                 Accelerator.EBS.SharedServices.RepairOrder.ListLookupURL = ConfigurationSetting.LookupRepairList_WSDL;

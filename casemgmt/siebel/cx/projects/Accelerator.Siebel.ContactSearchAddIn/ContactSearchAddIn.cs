@@ -5,13 +5,13 @@
  ***********************************************************************************************
  *  Accelerator Package: OSVC Contact Center + Siebel Case Management Accelerator
  *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
- *  OSvC release: 15.5 (May 2015)
+ *  OSvC release: 15.8 (August 2015)
  *  Siebel release: 8.1.1.15
- *  reference: 141216-000121
- *  date: Wed Sep  2 23:14:37 PDT 2015
+ *  reference: 150520-000047
+ *  date: Thu Nov 12 00:55:33 PST 2015
 
- *  revision: rnw-15-8-fixes-release-01
- *  SHA1: $Id: 13d051e80f813c7a87d28494e2e3d1116aa2311e $
+ *  revision: rnw-15-11-fixes-release-1
+ *  SHA1: $Id: 356de64b25b3c2eb6b3e749154977a695b16eea1 $
  * *********************************************************************************************
  *  File: ContactSearchAddIn.cs
  * *********************************************************************************************/
@@ -284,12 +284,12 @@ namespace Accelerator.Siebel.ContactSearchAddIn
                 _rnSrv = ConfigurationSetting.rnSrv;
                 _log = ConfigurationSetting.logWrap;
 
-                Accelerator.Siebel.SharedServices.Contact.ServiceProvider = ConfigurationSetting.SiebelProvider;
-                Accelerator.Siebel.SharedServices.Contact.ListLookupURL = ConfigurationSetting.LookupContactList_WSDL;
-                Accelerator.Siebel.SharedServices.Contact.ServiceUsername = String.IsNullOrEmpty(_usr) ? "ebusiness" : _usr;
-                Accelerator.Siebel.SharedServices.Contact.ServicePassword = String.IsNullOrEmpty(_pwd) ? "password" : _pwd;
-                Accelerator.Siebel.SharedServices.Contact.ServiceClientTimeout = ConfigurationSetting.SiebelServiceTimeout;
-                Accelerator.Siebel.SharedServices.Contact.InitSiebelProvider();
+                Accelerator.Siebel.SharedServices.ContactModel.ServiceProvider = ConfigurationSetting.SiebelProvider;
+                Accelerator.Siebel.SharedServices.ContactModel.ListLookupURL = ConfigurationSetting.LookupContactList_WSDL;
+                Accelerator.Siebel.SharedServices.ContactModel.ServiceUsername = String.IsNullOrEmpty(_usr) ? "ebusiness" : _usr;
+                Accelerator.Siebel.SharedServices.ContactModel.ServicePassword = String.IsNullOrEmpty(_pwd) ? "password" : _pwd;
+                Accelerator.Siebel.SharedServices.ContactModel.ServiceClientTimeout = ConfigurationSetting.SiebelServiceTimeout;
+                Accelerator.Siebel.SharedServices.ContactModel.InitSiebelProvider();
 
                 Contact_Search_Report_ID = ConfigurationSetting.contactSearchReportID;
             }

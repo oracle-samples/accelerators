@@ -5,13 +5,13 @@
  ***********************************************************************************************
  *  Accelerator Package: OSVC + EBS Enhancement
  *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
- *  OSvC release: 15.5 (May 2015)
+ *  OSvC release: 15.8 (August 2015)
  *  EBS release: 12.1.3
- *  reference: 150202-000157
- *  date: Wed Sep  2 23:11:39 PDT 2015
+ *  reference: 150505-000099, 150420-000127
+ *  date: Thu Nov 12 00:52:46 PST 2015
 
- *  revision: rnw-15-8-fixes-release-01
- *  SHA1: $Id: ea68cc46f648406b215c280f69d476fbcff36704 $
+ *  revision: rnw-15-11-fixes-release-1
+ *  SHA1: $Id: 429b6f39c002e5b1954afe325b806d643fc35438 $
  * *********************************************************************************************
  *  File: ServiceRequestAddIn.cs
  * *********************************************************************************************/
@@ -276,7 +276,7 @@ namespace Accelerator.EBS.ServiceRequestAddin
                     //Invalid Error
                     logMessage = "The serial number (" + current_serial_num + ") is invalid. It does not belong to current contact's organization.";
                     logNote = "";
-                    _log.DebugLog(incidentId: _logIncidentId, logMessage: logMessage, logNote: logNote);
+                    _log.NoticeLog(incidentId: _logIncidentId, logMessage: logMessage, logNote: logNote);
                     
                     string message = "The serial number is invalid. It does not belong to current contact's organization.";
                     MessageBoxButtons buttons = MessageBoxButtons.OK;

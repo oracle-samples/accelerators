@@ -5,13 +5,13 @@
  ***********************************************************************************************
  *  Accelerator Package: OSVC + EBS Enhancement
  *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
- *  OSvC release: 15.5 (May 2015)
+ *  OSvC release: 15.8 (August 2015)
  *  EBS release: 12.1.3
- *  reference: 150202-000157
- *  date: Wed Sep  2 23:11:37 PDT 2015
+ *  reference: 150505-000099, 150420-000127
+ *  date: Thu Nov 12 00:52:44 PST 2015
 
- *  revision: rnw-15-8-fixes-release-01
- *  SHA1: $Id: a80b0d707e8caca7cfedcd1a71b9865c6128fe25 $
+ *  revision: rnw-15-11-fixes-release-1
+ *  SHA1: $Id: 926be70b2aa5ab610c8edf65be75f655cc9b16d8 $
  * *********************************************************************************************
  *  File: RepairOrderAddIn.cs
  * *********************************************************************************************/
@@ -261,7 +261,7 @@ namespace Accelerator.EBS.RepairOrderAddin
                     //Invalid Error
                     logMessage = "The serial number (" + current_serial_num + ") is invalid. It does not belong to current contact's organization.";
                     logNote = "";
-                    _log.DebugLog(incidentId: _logIncidentId, logMessage: logMessage, logNote: logNote);
+                    _log.NoticeLog(incidentId: _logIncidentId, logMessage: logMessage, logNote: logNote);
 
                     string message = "The serial number is invalid. It does not belong to current contact's organization.";
                     MessageBoxButtons buttons = MessageBoxButtons.OK;
@@ -525,7 +525,7 @@ namespace Accelerator.EBS.RepairOrderAddin
                 MessageBox.Show(message, "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 logMessage = "Error in creating/updating RepairOrder. " + message;
-                _log.NoticeLog(incidentId: _logIncidentId, logMessage: logMessage);
+                _log.ErrorLog(incidentId: _logIncidentId, logMessage: logMessage);
                 return;
             }else if (String.IsNullOrEmpty(ro_saved_num))
             {

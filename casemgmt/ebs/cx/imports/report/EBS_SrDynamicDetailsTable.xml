@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <analytics_core xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <ac_id xmlns="urn:obj.api.rightnow.com">101042</ac_id>
+  <ac_id xmlns="urn:obj.api.rightnow.com">101044</ac_id>
   <ac_public xmlns="urn:obj.api.rightnow.com">true</ac_public>
   <ac_type xmlns="urn:obj.api.rightnow.com">1</ac_type>
   <aux xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
   <cdate_offset xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
   <co_version xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
-  <created xmlns="urn:obj.api.rightnow.com">2015-02-19T22:52:30Z</created>
+  <created xmlns="urn:obj.api.rightnow.com">2015-09-08T16:46:12Z</created>
   <file_id xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
   <filters xmlns="urn:obj.api.rightnow.com">
     <filter_item>
       <applies_to xsi:nil="true" />
-      <data_type>0</data_type>
+      <data_type>5</data_type>
       <fltr_id>1</fltr_id>
       <oper>1</oper>
       <optl_id xsi:nil="true" />
@@ -19,8 +19,8 @@
       <revision>1</revision>
       <type>1</type>
       <val1>SRData$SRDetailTable.HiddenSRconcatIncident_ID</val1>
-      <val1_attrs>0</val1_attrs>
-      <val1_col_refs xsi:nil="true" />
+      <val1_attrs>1</val1_attrs>
+      <val1_col_refs>SRData$SRDetailTable.HiddenSRconcatIncident_ID;32001</val1_col_refs>
       <val2 xsi:nil="true" />
       <val2_col_refs xsi:nil="true" />
       <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
@@ -58,11 +58,11 @@
           <col_id>1</col_id>
           <col_rf>1</col_rf>
           <comp_opts xsi:nil="true" />
-          <data_type>0</data_type>
+          <data_type>3</data_type>
           <display_order>1</display_order>
           <group_order xsi:nil="true" />
           <max_len xsi:nil="true" />
-          <min_vuse xsi:nil="true" />
+          <min_vuse>23</min_vuse>
           <opts xsi:nil="true" />
           <rpt_links />
           <sort_direction xsi:nil="true" />
@@ -70,14 +70,17 @@
           <trend_opts xsi:nil="true" />
           <type>1</type>
           <val>SRData$SRDetailTable.INCIDENT_ID</val>
-          <val_attrs>0</val_attrs>
-          <val_col_refs xsi:nil="true" />
+          <val_attrs>1</val_attrs>
+          <val_col_refs>SRData$SRDetailTable.INCIDENT_ID;32001</val_col_refs>
           <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;UnitType&gt;Auto&lt;/UnitType&gt;
   &lt;Header&gt;
     &lt;LabelStr&gt;INCIDENT_ID&lt;/LabelStr&gt;
   &lt;/Header&gt;
+  &lt;NumberFormat&gt;
+    &lt;NumberType&gt;Number&lt;/NumberType&gt;
+  &lt;/NumberFormat&gt;
   &lt;HeaderAlignment&gt;Far&lt;/HeaderAlignment&gt;
   &lt;DataAlignment&gt;Far&lt;/DataAlignment&gt;
   &lt;Row&gt;0&lt;/Row&gt;
@@ -91,11 +94,11 @@
           <col_id>2</col_id>
           <col_rf>2</col_rf>
           <comp_opts xsi:nil="true" />
-          <data_type>0</data_type>
+          <data_type>5</data_type>
           <display_order>2</display_order>
           <group_order xsi:nil="true" />
           <max_len xsi:nil="true" />
-          <min_vuse xsi:nil="true" />
+          <min_vuse>23</min_vuse>
           <opts xsi:nil="true" />
           <rpt_links />
           <sort_direction xsi:nil="true" />
@@ -103,8 +106,8 @@
           <trend_opts xsi:nil="true" />
           <type>1</type>
           <val>SRData$SRDetailTable.INCIDENT_NUMBER</val>
-          <val_attrs>0</val_attrs>
-          <val_col_refs xsi:nil="true" />
+          <val_attrs>1</val_attrs>
+          <val_col_refs>SRData$SRDetailTable.INCIDENT_NUMBER;32001</val_col_refs>
           <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;UnitType&gt;Auto&lt;/UnitType&gt;
@@ -124,11 +127,11 @@
           <col_id>3</col_id>
           <col_rf>3</col_rf>
           <comp_opts xsi:nil="true" />
-          <data_type>0</data_type>
+          <data_type>4</data_type>
           <display_order>3</display_order>
           <group_order xsi:nil="true" />
           <max_len xsi:nil="true" />
-          <min_vuse xsi:nil="true" />
+          <min_vuse>23</min_vuse>
           <opts xsi:nil="true" />
           <rpt_links />
           <sort_direction xsi:nil="true" />
@@ -136,8 +139,8 @@
           <trend_opts xsi:nil="true" />
           <type>1</type>
           <val>SRData$SRDetailTable.CREATION_DATE</val>
-          <val_attrs>0</val_attrs>
-          <val_col_refs xsi:nil="true" />
+          <val_attrs>1</val_attrs>
+          <val_col_refs>SRData$SRDetailTable.CREATION_DATE;32001</val_col_refs>
           <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;UnitType&gt;Auto&lt;/UnitType&gt;
@@ -146,6 +149,7 @@
   &lt;/Header&gt;
   &lt;HeaderAlignment&gt;Near&lt;/HeaderAlignment&gt;
   &lt;DataAlignment&gt;Near&lt;/DataAlignment&gt;
+  &lt;DateFormatType&gt;DateTime&lt;/DateFormatType&gt;
   &lt;Row&gt;2&lt;/Row&gt;
   &lt;RowSpan&gt;1&lt;/RowSpan&gt;
   &lt;Column&gt;0&lt;/Column&gt;
@@ -157,11 +161,11 @@
           <col_id>4</col_id>
           <col_rf>4</col_rf>
           <comp_opts xsi:nil="true" />
-          <data_type>0</data_type>
+          <data_type>5</data_type>
           <display_order>4</display_order>
           <group_order xsi:nil="true" />
           <max_len xsi:nil="true" />
-          <min_vuse xsi:nil="true" />
+          <min_vuse>23</min_vuse>
           <opts xsi:nil="true" />
           <rpt_links />
           <sort_direction xsi:nil="true" />
@@ -169,8 +173,8 @@
           <trend_opts xsi:nil="true" />
           <type>1</type>
           <val>SRData$SRDetailTable.SUMMARY</val>
-          <val_attrs>0</val_attrs>
-          <val_col_refs xsi:nil="true" />
+          <val_attrs>1</val_attrs>
+          <val_col_refs>SRData$SRDetailTable.SUMMARY;32001</val_col_refs>
           <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;UnitType&gt;Auto&lt;/UnitType&gt;
@@ -190,11 +194,11 @@
           <col_id>5</col_id>
           <col_rf>5</col_rf>
           <comp_opts xsi:nil="true" />
-          <data_type>0</data_type>
+          <data_type>5</data_type>
           <display_order>5</display_order>
           <group_order xsi:nil="true" />
           <max_len xsi:nil="true" />
-          <min_vuse xsi:nil="true" />
+          <min_vuse>23</min_vuse>
           <opts xsi:nil="true" />
           <rpt_links />
           <sort_direction xsi:nil="true" />
@@ -202,8 +206,8 @@
           <trend_opts xsi:nil="true" />
           <type>1</type>
           <val>SRData$SRDetailTable.INCIDENT_SEVERITY</val>
-          <val_attrs>0</val_attrs>
-          <val_col_refs xsi:nil="true" />
+          <val_attrs>1</val_attrs>
+          <val_col_refs>SRData$SRDetailTable.INCIDENT_SEVERITY;32001</val_col_refs>
           <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;UnitType&gt;Auto&lt;/UnitType&gt;
@@ -223,11 +227,11 @@
           <col_id>6</col_id>
           <col_rf>6</col_rf>
           <comp_opts xsi:nil="true" />
-          <data_type>0</data_type>
+          <data_type>5</data_type>
           <display_order>6</display_order>
           <group_order xsi:nil="true" />
           <max_len xsi:nil="true" />
-          <min_vuse xsi:nil="true" />
+          <min_vuse>23</min_vuse>
           <opts xsi:nil="true" />
           <rpt_links />
           <sort_direction xsi:nil="true" />
@@ -235,8 +239,8 @@
           <trend_opts xsi:nil="true" />
           <type>1</type>
           <val>SRData$SRDetailTable.INCIDENT_STATUS</val>
-          <val_attrs>0</val_attrs>
-          <val_col_refs xsi:nil="true" />
+          <val_attrs>1</val_attrs>
+          <val_col_refs>SRData$SRDetailTable.INCIDENT_STATUS;32001</val_col_refs>
           <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;UnitType&gt;Auto&lt;/UnitType&gt;
@@ -256,11 +260,11 @@
           <col_id>7</col_id>
           <col_rf>7</col_rf>
           <comp_opts xsi:nil="true" />
-          <data_type>0</data_type>
+          <data_type>5</data_type>
           <display_order>7</display_order>
           <group_order xsi:nil="true" />
           <max_len xsi:nil="true" />
-          <min_vuse xsi:nil="true" />
+          <min_vuse>23</min_vuse>
           <opts xsi:nil="true" />
           <rpt_links />
           <sort_direction xsi:nil="true" />
@@ -268,8 +272,8 @@
           <trend_opts xsi:nil="true" />
           <type>1</type>
           <val>SRData$SRDetailTable.SERIAL_NUMBER</val>
-          <val_attrs>0</val_attrs>
-          <val_col_refs xsi:nil="true" />
+          <val_attrs>1</val_attrs>
+          <val_col_refs>SRData$SRDetailTable.SERIAL_NUMBER;32001</val_col_refs>
           <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;UnitType&gt;Auto&lt;/UnitType&gt;
@@ -435,7 +439,7 @@
   </nodes>
   <notes xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
   <opts xmlns="urn:obj.api.rightnow.com">4</opts>
-  <owner_acct_id xmlns="urn:obj.api.rightnow.com">2</owner_acct_id>
+  <owner_acct_id xmlns="urn:obj.api.rightnow.com">67</owner_acct_id>
   <params xmlns="urn:obj.api.rightnow.com" />
   <perms xmlns="urn:obj.api.rightnow.com" />
   <rpt xmlns="urn:obj.api.rightnow.com" />
@@ -456,10 +460,10 @@
     </table_item>
   </tables>
   <time_zone xmlns="urn:obj.api.rightnow.com">0</time_zone>
-  <updated xmlns="urn:obj.api.rightnow.com">2015-02-26T22:17:26Z</updated>
+  <updated xmlns="urn:obj.api.rightnow.com">2015-09-08T16:46:12Z</updated>
   <version xmlns="urn:obj.api.rightnow.com">0</version>
   <xml_data xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
   <xml_report xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
 </analytics_core>
 Version: 
-XKqw42JIgiXgXkxxVl0zemneRy8FITJbdg==
+kY4xHwRbhldJGH7Sr+KhksgYfsABxxEMxw==

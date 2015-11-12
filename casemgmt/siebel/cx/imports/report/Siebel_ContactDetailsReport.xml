@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <analytics_core xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <ac_id xmlns="urn:obj.api.rightnow.com">101037</ac_id>
+  <ac_id xmlns="urn:obj.api.rightnow.com">101039</ac_id>
   <ac_public xmlns="urn:obj.api.rightnow.com">true</ac_public>
   <ac_type xmlns="urn:obj.api.rightnow.com">1</ac_type>
   <aux xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
   <cdate_offset xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
   <co_version xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
-  <created xmlns="urn:obj.api.rightnow.com">2015-01-26T01:16:46Z</created>
+  <created xmlns="urn:obj.api.rightnow.com">2015-08-25T21:31:33Z</created>
   <file_id xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
   <filters xmlns="urn:obj.api.rightnow.com" />
   <fltr_expr xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
@@ -36,7 +36,7 @@
           <display_order>1</display_order>
           <group_order xsi:nil="true" />
           <max_len xsi:nil="true" />
-          <min_vuse xsi:nil="true" />
+          <min_vuse>23</min_vuse>
           <opts xsi:nil="true" />
           <rpt_links />
           <sort_direction xsi:nil="true" />
@@ -44,8 +44,8 @@
           <trend_opts xsi:nil="true" />
           <type>1</type>
           <val>Siebel$ContactDetailTable.EmailAddress</val>
-          <val_attrs>0</val_attrs>
-          <val_col_refs xsi:nil="true" />
+          <val_attrs>1</val_attrs>
+          <val_col_refs>Siebel$ContactDetailTable.EmailAddress;32002</val_col_refs>
           <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;UnitType&gt;Auto&lt;/UnitType&gt;
@@ -54,7 +54,7 @@
   &lt;/Header&gt;
   &lt;HeaderAlignment&gt;Near&lt;/HeaderAlignment&gt;
   &lt;DataAlignment&gt;Near&lt;/DataAlignment&gt;
-  &lt;Row&gt;7&lt;/Row&gt;
+  &lt;Row&gt;8&lt;/Row&gt;
   &lt;RowSpan&gt;1&lt;/RowSpan&gt;
   &lt;Column&gt;0&lt;/Column&gt;
   &lt;ColSpan&gt;1&lt;/ColSpan&gt;
@@ -69,7 +69,7 @@
           <display_order>2</display_order>
           <group_order xsi:nil="true" />
           <max_len xsi:nil="true" />
-          <min_vuse xsi:nil="true" />
+          <min_vuse>23</min_vuse>
           <opts xsi:nil="true" />
           <rpt_links />
           <sort_direction xsi:nil="true" />
@@ -77,8 +77,8 @@
           <trend_opts xsi:nil="true" />
           <type>1</type>
           <val>Siebel$ContactDetailTable.FirstName</val>
-          <val_attrs>0</val_attrs>
-          <val_col_refs xsi:nil="true" />
+          <val_attrs>1</val_attrs>
+          <val_col_refs>Siebel$ContactDetailTable.FirstName;32002</val_col_refs>
           <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;UnitType&gt;Auto&lt;/UnitType&gt;
@@ -87,7 +87,7 @@
   &lt;/Header&gt;
   &lt;HeaderAlignment&gt;Near&lt;/HeaderAlignment&gt;
   &lt;DataAlignment&gt;Near&lt;/DataAlignment&gt;
-  &lt;Row&gt;2&lt;/Row&gt;
+  &lt;Row&gt;0&lt;/Row&gt;
   &lt;RowSpan&gt;1&lt;/RowSpan&gt;
   &lt;Column&gt;0&lt;/Column&gt;
   &lt;ColSpan&gt;1&lt;/ColSpan&gt;
@@ -102,7 +102,7 @@
           <display_order>3</display_order>
           <group_order xsi:nil="true" />
           <max_len xsi:nil="true" />
-          <min_vuse xsi:nil="true" />
+          <min_vuse>23</min_vuse>
           <opts xsi:nil="true" />
           <rpt_links />
           <sort_direction xsi:nil="true" />
@@ -110,8 +110,8 @@
           <trend_opts xsi:nil="true" />
           <type>1</type>
           <val>Siebel$ContactDetailTable.LastName</val>
-          <val_attrs>0</val_attrs>
-          <val_col_refs xsi:nil="true" />
+          <val_attrs>1</val_attrs>
+          <val_col_refs>Siebel$ContactDetailTable.LastName;32002</val_col_refs>
           <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;UnitType&gt;Auto&lt;/UnitType&gt;
@@ -120,7 +120,7 @@
   &lt;/Header&gt;
   &lt;HeaderAlignment&gt;Near&lt;/HeaderAlignment&gt;
   &lt;DataAlignment&gt;Near&lt;/DataAlignment&gt;
-  &lt;Row&gt;3&lt;/Row&gt;
+  &lt;Row&gt;1&lt;/Row&gt;
   &lt;RowSpan&gt;1&lt;/RowSpan&gt;
   &lt;Column&gt;0&lt;/Column&gt;
   &lt;ColSpan&gt;1&lt;/ColSpan&gt;
@@ -135,7 +135,7 @@
           <display_order>4</display_order>
           <group_order xsi:nil="true" />
           <max_len xsi:nil="true" />
-          <min_vuse xsi:nil="true" />
+          <min_vuse>23</min_vuse>
           <opts xsi:nil="true" />
           <rpt_links />
           <sort_direction xsi:nil="true" />
@@ -143,8 +143,8 @@
           <trend_opts xsi:nil="true" />
           <type>1</type>
           <val>Siebel$ContactDetailTable.FullName</val>
-          <val_attrs>0</val_attrs>
-          <val_col_refs xsi:nil="true" />
+          <val_attrs>1</val_attrs>
+          <val_col_refs>Siebel$ContactDetailTable.FullName;32002</val_col_refs>
           <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;UnitType&gt;Auto&lt;/UnitType&gt;
@@ -153,7 +153,7 @@
   &lt;/Header&gt;
   &lt;HeaderAlignment&gt;Near&lt;/HeaderAlignment&gt;
   &lt;DataAlignment&gt;Near&lt;/DataAlignment&gt;
-  &lt;Row&gt;4&lt;/Row&gt;
+  &lt;Row&gt;2&lt;/Row&gt;
   &lt;RowSpan&gt;1&lt;/RowSpan&gt;
   &lt;Column&gt;0&lt;/Column&gt;
   &lt;ColSpan&gt;1&lt;/ColSpan&gt;
@@ -168,7 +168,7 @@
           <display_order>5</display_order>
           <group_order xsi:nil="true" />
           <max_len xsi:nil="true" />
-          <min_vuse xsi:nil="true" />
+          <min_vuse>23</min_vuse>
           <opts xsi:nil="true" />
           <rpt_links />
           <sort_direction xsi:nil="true" />
@@ -176,8 +176,8 @@
           <trend_opts xsi:nil="true" />
           <type>1</type>
           <val>Siebel$ContactDetailTable.WorkPhone</val>
-          <val_attrs>0</val_attrs>
-          <val_col_refs xsi:nil="true" />
+          <val_attrs>1</val_attrs>
+          <val_col_refs>Siebel$ContactDetailTable.WorkPhone;32002</val_col_refs>
           <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;UnitType&gt;Auto&lt;/UnitType&gt;
@@ -186,7 +186,7 @@
   &lt;/Header&gt;
   &lt;HeaderAlignment&gt;Near&lt;/HeaderAlignment&gt;
   &lt;DataAlignment&gt;Near&lt;/DataAlignment&gt;
-  &lt;Row&gt;8&lt;/Row&gt;
+  &lt;Row&gt;9&lt;/Row&gt;
   &lt;RowSpan&gt;1&lt;/RowSpan&gt;
   &lt;Column&gt;0&lt;/Column&gt;
   &lt;ColSpan&gt;1&lt;/ColSpan&gt;
@@ -201,28 +201,28 @@
           <display_order>6</display_order>
           <group_order xsi:nil="true" />
           <max_len xsi:nil="true" />
-          <min_vuse xsi:nil="true" />
+          <min_vuse>23</min_vuse>
           <opts xsi:nil="true" />
           <rpt_links />
           <sort_direction xsi:nil="true" />
           <sort_order xsi:nil="true" />
           <trend_opts xsi:nil="true" />
           <type>1</type>
-          <val>Siebel$ContactDetailTable.PrimaryOrganizationId</val>
-          <val_attrs>0</val_attrs>
-          <val_col_refs xsi:nil="true" />
+          <val>Siebel$ContactDetailTable.JobTitle</val>
+          <val_attrs>1</val_attrs>
+          <val_col_refs>Siebel$ContactDetailTable.JobTitle;32002</val_col_refs>
           <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;UnitType&gt;Auto&lt;/UnitType&gt;
   &lt;Header&gt;
-    &lt;LabelStr&gt;PrimaryOrganizationId&lt;/LabelStr&gt;
+    &lt;LabelStr&gt;JobTitle&lt;/LabelStr&gt;
   &lt;/Header&gt;
   &lt;HeaderAlignment&gt;Near&lt;/HeaderAlignment&gt;
   &lt;DataAlignment&gt;Near&lt;/DataAlignment&gt;
-  &lt;Row&gt;0&lt;/Row&gt;
+  &lt;Row&gt;7&lt;/Row&gt;
   &lt;RowSpan&gt;1&lt;/RowSpan&gt;
   &lt;Column&gt;0&lt;/Column&gt;
-  &lt;ColSpan&gt;2&lt;/ColSpan&gt;
+  &lt;ColSpan&gt;1&lt;/ColSpan&gt;
 &lt;/ColumnXmlData&gt;</xml_data>
         </cols_item>
         <cols_item>
@@ -234,28 +234,28 @@
           <display_order>7</display_order>
           <group_order xsi:nil="true" />
           <max_len xsi:nil="true" />
-          <min_vuse xsi:nil="true" />
+          <min_vuse>23</min_vuse>
           <opts xsi:nil="true" />
           <rpt_links />
           <sort_direction xsi:nil="true" />
           <sort_order xsi:nil="true" />
           <trend_opts xsi:nil="true" />
           <type>1</type>
-          <val>Siebel$ContactDetailTable.Id</val>
-          <val_attrs>0</val_attrs>
-          <val_col_refs xsi:nil="true" />
+          <val>Siebel$ContactDetailTable.PrimaryCountry</val>
+          <val_attrs>1</val_attrs>
+          <val_col_refs>Siebel$ContactDetailTable.PrimaryCountry;32002</val_col_refs>
           <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;UnitType&gt;Auto&lt;/UnitType&gt;
   &lt;Header&gt;
-    &lt;LabelStr&gt;Id&lt;/LabelStr&gt;
+    &lt;LabelStr&gt;PrimaryCountry&lt;/LabelStr&gt;
   &lt;/Header&gt;
   &lt;HeaderAlignment&gt;Near&lt;/HeaderAlignment&gt;
   &lt;DataAlignment&gt;Near&lt;/DataAlignment&gt;
-  &lt;Row&gt;1&lt;/Row&gt;
+  &lt;Row&gt;9&lt;/Row&gt;
   &lt;RowSpan&gt;1&lt;/RowSpan&gt;
-  &lt;Column&gt;0&lt;/Column&gt;
-  &lt;ColSpan&gt;2&lt;/ColSpan&gt;
+  &lt;Column&gt;1&lt;/Column&gt;
+  &lt;ColSpan&gt;1&lt;/ColSpan&gt;
 &lt;/ColumnXmlData&gt;</xml_data>
         </cols_item>
         <cols_item>
@@ -267,27 +267,27 @@
           <display_order>8</display_order>
           <group_order xsi:nil="true" />
           <max_len xsi:nil="true" />
-          <min_vuse xsi:nil="true" />
+          <min_vuse>23</min_vuse>
           <opts xsi:nil="true" />
           <rpt_links />
           <sort_direction xsi:nil="true" />
           <sort_order xsi:nil="true" />
           <trend_opts xsi:nil="true" />
           <type>1</type>
-          <val>Siebel$ContactDetailTable.JobTitle</val>
-          <val_attrs>0</val_attrs>
-          <val_col_refs xsi:nil="true" />
+          <val>Siebel$ContactDetailTable.PrimaryCity</val>
+          <val_attrs>1</val_attrs>
+          <val_col_refs>Siebel$ContactDetailTable.PrimaryCity;32002</val_col_refs>
           <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;UnitType&gt;Auto&lt;/UnitType&gt;
   &lt;Header&gt;
-    &lt;LabelStr&gt;JobTitle&lt;/LabelStr&gt;
+    &lt;LabelStr&gt;PrimaryCity&lt;/LabelStr&gt;
   &lt;/Header&gt;
   &lt;HeaderAlignment&gt;Near&lt;/HeaderAlignment&gt;
   &lt;DataAlignment&gt;Near&lt;/DataAlignment&gt;
-  &lt;Row&gt;6&lt;/Row&gt;
+  &lt;Row&gt;4&lt;/Row&gt;
   &lt;RowSpan&gt;1&lt;/RowSpan&gt;
-  &lt;Column&gt;0&lt;/Column&gt;
+  &lt;Column&gt;1&lt;/Column&gt;
   &lt;ColSpan&gt;1&lt;/ColSpan&gt;
 &lt;/ColumnXmlData&gt;</xml_data>
         </cols_item>
@@ -300,21 +300,21 @@
           <display_order>9</display_order>
           <group_order xsi:nil="true" />
           <max_len xsi:nil="true" />
-          <min_vuse xsi:nil="true" />
+          <min_vuse>23</min_vuse>
           <opts xsi:nil="true" />
           <rpt_links />
           <sort_direction xsi:nil="true" />
           <sort_order xsi:nil="true" />
           <trend_opts xsi:nil="true" />
           <type>1</type>
-          <val>Siebel$ContactDetailTable.PrimaryCountry</val>
-          <val_attrs>0</val_attrs>
-          <val_col_refs xsi:nil="true" />
+          <val>Siebel$ContactDetailTable.PrimaryPostalCode</val>
+          <val_attrs>1</val_attrs>
+          <val_col_refs>Siebel$ContactDetailTable.PrimaryPostalCode;32002</val_col_refs>
           <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;UnitType&gt;Auto&lt;/UnitType&gt;
   &lt;Header&gt;
-    &lt;LabelStr&gt;PrimaryCountry&lt;/LabelStr&gt;
+    &lt;LabelStr&gt;PrimaryPostalCode&lt;/LabelStr&gt;
   &lt;/Header&gt;
   &lt;HeaderAlignment&gt;Near&lt;/HeaderAlignment&gt;
   &lt;DataAlignment&gt;Near&lt;/DataAlignment&gt;
@@ -333,26 +333,26 @@
           <display_order>10</display_order>
           <group_order xsi:nil="true" />
           <max_len xsi:nil="true" />
-          <min_vuse xsi:nil="true" />
+          <min_vuse>23</min_vuse>
           <opts xsi:nil="true" />
           <rpt_links />
           <sort_direction xsi:nil="true" />
           <sort_order xsi:nil="true" />
           <trend_opts xsi:nil="true" />
           <type>1</type>
-          <val>Siebel$ContactDetailTable.PrimaryCity</val>
-          <val_attrs>0</val_attrs>
-          <val_col_refs xsi:nil="true" />
+          <val>Siebel$ContactDetailTable.PrimaryState</val>
+          <val_attrs>1</val_attrs>
+          <val_col_refs>Siebel$ContactDetailTable.PrimaryState;32002</val_col_refs>
           <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;UnitType&gt;Auto&lt;/UnitType&gt;
   &lt;Header&gt;
-    &lt;LabelStr&gt;PrimaryCity&lt;/LabelStr&gt;
+    &lt;LabelStr&gt;PrimaryState&lt;/LabelStr&gt;
   &lt;/Header&gt;
   &lt;HeaderAlignment&gt;Near&lt;/HeaderAlignment&gt;
   &lt;DataAlignment&gt;Near&lt;/DataAlignment&gt;
-  &lt;Row&gt;4&lt;/Row&gt;
-  &lt;RowSpan&gt;1&lt;/RowSpan&gt;
+  &lt;Row&gt;5&lt;/Row&gt;
+  &lt;RowSpan&gt;3&lt;/RowSpan&gt;
   &lt;Column&gt;1&lt;/Column&gt;
   &lt;ColSpan&gt;1&lt;/ColSpan&gt;
 &lt;/ColumnXmlData&gt;</xml_data>
@@ -366,25 +366,25 @@
           <display_order>11</display_order>
           <group_order xsi:nil="true" />
           <max_len xsi:nil="true" />
-          <min_vuse xsi:nil="true" />
+          <min_vuse>23</min_vuse>
           <opts xsi:nil="true" />
           <rpt_links />
           <sort_direction xsi:nil="true" />
           <sort_order xsi:nil="true" />
           <trend_opts xsi:nil="true" />
           <type>1</type>
-          <val>Siebel$ContactDetailTable.PrimaryPostalCode</val>
-          <val_attrs>0</val_attrs>
-          <val_col_refs xsi:nil="true" />
+          <val>Siebel$ContactDetailTable.PrimaryAddressId</val>
+          <val_attrs>1</val_attrs>
+          <val_col_refs>Siebel$ContactDetailTable.PrimaryAddressId;32002</val_col_refs>
           <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;UnitType&gt;Auto&lt;/UnitType&gt;
   &lt;Header&gt;
-    &lt;LabelStr&gt;PrimaryPostalCode&lt;/LabelStr&gt;
+    &lt;LabelStr&gt;PrimaryAddressId&lt;/LabelStr&gt;
   &lt;/Header&gt;
   &lt;HeaderAlignment&gt;Near&lt;/HeaderAlignment&gt;
   &lt;DataAlignment&gt;Near&lt;/DataAlignment&gt;
-  &lt;Row&gt;7&lt;/Row&gt;
+  &lt;Row&gt;2&lt;/Row&gt;
   &lt;RowSpan&gt;1&lt;/RowSpan&gt;
   &lt;Column&gt;1&lt;/Column&gt;
   &lt;ColSpan&gt;1&lt;/ColSpan&gt;
@@ -399,26 +399,26 @@
           <display_order>12</display_order>
           <group_order xsi:nil="true" />
           <max_len xsi:nil="true" />
-          <min_vuse xsi:nil="true" />
+          <min_vuse>23</min_vuse>
           <opts xsi:nil="true" />
           <rpt_links />
           <sort_direction xsi:nil="true" />
           <sort_order xsi:nil="true" />
           <trend_opts xsi:nil="true" />
           <type>1</type>
-          <val>Siebel$ContactDetailTable.PrimaryState</val>
-          <val_attrs>0</val_attrs>
-          <val_col_refs xsi:nil="true" />
+          <val>Siebel$ContactDetailTable.PrimaryOrganization</val>
+          <val_attrs>1</val_attrs>
+          <val_col_refs>Siebel$ContactDetailTable.PrimaryOrganization;32002</val_col_refs>
           <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;UnitType&gt;Auto&lt;/UnitType&gt;
   &lt;Header&gt;
-    &lt;LabelStr&gt;PrimaryState&lt;/LabelStr&gt;
+    &lt;LabelStr&gt;PrimaryOrganization&lt;/LabelStr&gt;
   &lt;/Header&gt;
   &lt;HeaderAlignment&gt;Near&lt;/HeaderAlignment&gt;
   &lt;DataAlignment&gt;Near&lt;/DataAlignment&gt;
-  &lt;Row&gt;5&lt;/Row&gt;
-  &lt;RowSpan&gt;2&lt;/RowSpan&gt;
+  &lt;Row&gt;0&lt;/Row&gt;
+  &lt;RowSpan&gt;1&lt;/RowSpan&gt;
   &lt;Column&gt;1&lt;/Column&gt;
   &lt;ColSpan&gt;1&lt;/ColSpan&gt;
 &lt;/ColumnXmlData&gt;</xml_data>
@@ -428,77 +428,11 @@
           <col_id>13</col_id>
           <col_rf>13</col_rf>
           <comp_opts xsi:nil="true" />
-          <data_type>5</data_type>
+          <data_type>4</data_type>
           <display_order>13</display_order>
           <group_order xsi:nil="true" />
           <max_len xsi:nil="true" />
-          <min_vuse xsi:nil="true" />
-          <opts xsi:nil="true" />
-          <rpt_links />
-          <sort_direction xsi:nil="true" />
-          <sort_order xsi:nil="true" />
-          <trend_opts xsi:nil="true" />
-          <type>1</type>
-          <val>Siebel$ContactDetailTable.PrimaryAddressId</val>
-          <val_attrs>0</val_attrs>
-          <val_col_refs xsi:nil="true" />
-          <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
-&lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;UnitType&gt;Auto&lt;/UnitType&gt;
-  &lt;Header&gt;
-    &lt;LabelStr&gt;PrimaryAddressId&lt;/LabelStr&gt;
-  &lt;/Header&gt;
-  &lt;HeaderAlignment&gt;Near&lt;/HeaderAlignment&gt;
-  &lt;DataAlignment&gt;Near&lt;/DataAlignment&gt;
-  &lt;Row&gt;3&lt;/Row&gt;
-  &lt;RowSpan&gt;1&lt;/RowSpan&gt;
-  &lt;Column&gt;1&lt;/Column&gt;
-  &lt;ColSpan&gt;1&lt;/ColSpan&gt;
-&lt;/ColumnXmlData&gt;</xml_data>
-        </cols_item>
-        <cols_item>
-          <calc_units xsi:nil="true" />
-          <col_id>14</col_id>
-          <col_rf>14</col_rf>
-          <comp_opts xsi:nil="true" />
-          <data_type>5</data_type>
-          <display_order>14</display_order>
-          <group_order xsi:nil="true" />
-          <max_len xsi:nil="true" />
-          <min_vuse xsi:nil="true" />
-          <opts xsi:nil="true" />
-          <rpt_links />
-          <sort_direction xsi:nil="true" />
-          <sort_order xsi:nil="true" />
-          <trend_opts xsi:nil="true" />
-          <type>1</type>
-          <val>Siebel$ContactDetailTable.PrimaryOrganization</val>
-          <val_attrs>0</val_attrs>
-          <val_col_refs xsi:nil="true" />
-          <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
-&lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;UnitType&gt;Auto&lt;/UnitType&gt;
-  &lt;Header&gt;
-    &lt;LabelStr&gt;PrimaryOrganization&lt;/LabelStr&gt;
-  &lt;/Header&gt;
-  &lt;HeaderAlignment&gt;Near&lt;/HeaderAlignment&gt;
-  &lt;DataAlignment&gt;Near&lt;/DataAlignment&gt;
-  &lt;Row&gt;2&lt;/Row&gt;
-  &lt;RowSpan&gt;1&lt;/RowSpan&gt;
-  &lt;Column&gt;1&lt;/Column&gt;
-  &lt;ColSpan&gt;1&lt;/ColSpan&gt;
-&lt;/ColumnXmlData&gt;</xml_data>
-        </cols_item>
-        <cols_item>
-          <calc_units xsi:nil="true" />
-          <col_id>15</col_id>
-          <col_rf>15</col_rf>
-          <comp_opts xsi:nil="true" />
-          <data_type>4</data_type>
-          <display_order>15</display_order>
-          <group_order xsi:nil="true" />
-          <max_len xsi:nil="true" />
-          <min_vuse xsi:nil="true" />
+          <min_vuse>23</min_vuse>
           <opts xsi:nil="true" />
           <rpt_links />
           <sort_direction xsi:nil="true" />
@@ -506,8 +440,8 @@
           <trend_opts xsi:nil="true" />
           <type>1</type>
           <val>Siebel$ContactDetailTable.BirthDate</val>
-          <val_attrs>0</val_attrs>
-          <val_col_refs xsi:nil="true" />
+          <val_attrs>1</val_attrs>
+          <val_col_refs>Siebel$ContactDetailTable.BirthDate;32002</val_col_refs>
           <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;UnitType&gt;Auto&lt;/UnitType&gt;
@@ -520,6 +454,141 @@
   &lt;Row&gt;5&lt;/Row&gt;
   &lt;RowSpan&gt;1&lt;/RowSpan&gt;
   &lt;Column&gt;0&lt;/Column&gt;
+  &lt;ColSpan&gt;1&lt;/ColSpan&gt;
+&lt;/ColumnXmlData&gt;</xml_data>
+        </cols_item>
+        <cols_item>
+          <calc_units xsi:nil="true" />
+          <col_id>14</col_id>
+          <col_rf>14</col_rf>
+          <comp_opts xsi:nil="true" />
+          <data_type>5</data_type>
+          <display_order>14</display_order>
+          <group_order xsi:nil="true" />
+          <max_len xsi:nil="true" />
+          <min_vuse>23</min_vuse>
+          <opts xsi:nil="true" />
+          <rpt_links />
+          <sort_direction xsi:nil="true" />
+          <sort_order xsi:nil="true" />
+          <trend_opts xsi:nil="true" />
+          <type>1</type>
+          <val>Siebel$ContactDetailTable.PrimaryAccountName</val>
+          <val_attrs>1</val_attrs>
+          <val_col_refs>Siebel$ContactDetailTable.PrimaryAccountName;32002</val_col_refs>
+          <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;UnitType&gt;Auto&lt;/UnitType&gt;
+  &lt;Header&gt;
+    &lt;LabelStr&gt;PrimaryAccountName&lt;/LabelStr&gt;
+  &lt;/Header&gt;
+  &lt;HeaderAlignment&gt;Near&lt;/HeaderAlignment&gt;
+  &lt;DataAlignment&gt;Near&lt;/DataAlignment&gt;
+  &lt;Row&gt;1&lt;/Row&gt;
+  &lt;RowSpan&gt;1&lt;/RowSpan&gt;
+  &lt;Column&gt;1&lt;/Column&gt;
+  &lt;ColSpan&gt;1&lt;/ColSpan&gt;
+&lt;/ColumnXmlData&gt;</xml_data>
+        </cols_item>
+        <cols_item>
+          <calc_units xsi:nil="true" />
+          <col_id>15</col_id>
+          <col_rf>15</col_rf>
+          <comp_opts xsi:nil="true" />
+          <data_type>3</data_type>
+          <display_order>15</display_order>
+          <group_order xsi:nil="true" />
+          <max_len xsi:nil="true" />
+          <min_vuse>23</min_vuse>
+          <opts xsi:nil="true" />
+          <rpt_links />
+          <sort_direction xsi:nil="true" />
+          <sort_order xsi:nil="true" />
+          <trend_opts xsi:nil="true" />
+          <type>1</type>
+          <val>Siebel$ContactDetailTable.ApprovalAuthority</val>
+          <val_attrs>1</val_attrs>
+          <val_col_refs>Siebel$ContactDetailTable.ApprovalAuthority;32002</val_col_refs>
+          <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;UnitType&gt;Auto&lt;/UnitType&gt;
+  &lt;Header&gt;
+    &lt;LabelStr&gt;ApprovalAuthority&lt;/LabelStr&gt;
+  &lt;/Header&gt;
+  &lt;NumberFormat&gt;
+    &lt;NumberType&gt;Number&lt;/NumberType&gt;
+  &lt;/NumberFormat&gt;
+  &lt;HeaderAlignment&gt;Far&lt;/HeaderAlignment&gt;
+  &lt;DataAlignment&gt;Far&lt;/DataAlignment&gt;
+  &lt;Row&gt;6&lt;/Row&gt;
+  &lt;RowSpan&gt;1&lt;/RowSpan&gt;
+  &lt;Column&gt;0&lt;/Column&gt;
+  &lt;ColSpan&gt;1&lt;/ColSpan&gt;
+&lt;/ColumnXmlData&gt;</xml_data>
+        </cols_item>
+        <cols_item>
+          <calc_units xsi:nil="true" />
+          <col_id>16</col_id>
+          <col_rf>16</col_rf>
+          <comp_opts xsi:nil="true" />
+          <data_type>2</data_type>
+          <display_order>16</display_order>
+          <group_order xsi:nil="true" />
+          <max_len xsi:nil="true" />
+          <min_vuse>23</min_vuse>
+          <opts xsi:nil="true" />
+          <rpt_links />
+          <sort_direction xsi:nil="true" />
+          <sort_order xsi:nil="true" />
+          <trend_opts xsi:nil="true" />
+          <type>1</type>
+          <val>Siebel$ContactDetailTable.PrimaryAssignmentDenormFlag</val>
+          <val_attrs>1</val_attrs>
+          <val_col_refs>Siebel$ContactDetailTable.PrimaryAssignmentDenormFlag;32002</val_col_refs>
+          <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;UnitType&gt;Auto&lt;/UnitType&gt;
+  &lt;Header&gt;
+    &lt;LabelStr&gt;PrimaryAssignmentDenormFlag&lt;/LabelStr&gt;
+  &lt;/Header&gt;
+  &lt;HeaderAlignment&gt;Near&lt;/HeaderAlignment&gt;
+  &lt;DataAlignment&gt;Near&lt;/DataAlignment&gt;
+  &lt;Row&gt;3&lt;/Row&gt;
+  &lt;RowSpan&gt;2&lt;/RowSpan&gt;
+  &lt;Column&gt;0&lt;/Column&gt;
+  &lt;ColSpan&gt;1&lt;/ColSpan&gt;
+&lt;/ColumnXmlData&gt;</xml_data>
+        </cols_item>
+        <cols_item>
+          <calc_units xsi:nil="true" />
+          <col_id>17</col_id>
+          <col_rf>17</col_rf>
+          <comp_opts xsi:nil="true" />
+          <data_type>5</data_type>
+          <display_order>17</display_order>
+          <group_order xsi:nil="true" />
+          <max_len xsi:nil="true" />
+          <min_vuse>23</min_vuse>
+          <opts xsi:nil="true" />
+          <rpt_links />
+          <sort_direction xsi:nil="true" />
+          <sort_order xsi:nil="true" />
+          <trend_opts xsi:nil="true" />
+          <type>1</type>
+          <val>Siebel$ContactDetailTable.PrimaryStreetAddress</val>
+          <val_attrs>1</val_attrs>
+          <val_col_refs>Siebel$ContactDetailTable.PrimaryStreetAddress;32002</val_col_refs>
+          <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;UnitType&gt;Auto&lt;/UnitType&gt;
+  &lt;Header&gt;
+    &lt;LabelStr&gt;PrimaryStreetAddress&lt;/LabelStr&gt;
+  &lt;/Header&gt;
+  &lt;HeaderAlignment&gt;Near&lt;/HeaderAlignment&gt;
+  &lt;DataAlignment&gt;Near&lt;/DataAlignment&gt;
+  &lt;Row&gt;3&lt;/Row&gt;
+  &lt;RowSpan&gt;1&lt;/RowSpan&gt;
+  &lt;Column&gt;1&lt;/Column&gt;
   &lt;ColSpan&gt;1&lt;/ColSpan&gt;
 &lt;/ColumnXmlData&gt;</xml_data>
         </cols_item>
@@ -577,40 +646,27 @@
       &lt;Fields&gt;
         &lt;ReportField xsi:type="ReportTextField"&gt;
           &lt;Padding&gt;
-            &lt;Bottom&gt;1&lt;/Bottom&gt;
-            &lt;Left&gt;1&lt;/Left&gt;
-            &lt;Right&gt;1&lt;/Right&gt;
+            &lt;Bottom&gt;2&lt;/Bottom&gt;
+            &lt;Left&gt;0&lt;/Left&gt;
+            &lt;Right&gt;2&lt;/Right&gt;
             &lt;Top&gt;0&lt;/Top&gt;
           &lt;/Padding&gt;
+          &lt;Size&gt;
+            &lt;Width&gt;713&lt;/Width&gt;
+            &lt;Height&gt;25&lt;/Height&gt;
+          &lt;/Size&gt;
           &lt;StyleType&gt;Title&lt;/StyleType&gt;
           &lt;AnchorStyles&gt;Top Left Right&lt;/AnchorStyles&gt;
-          &lt;AutoSize&gt;true&lt;/AutoSize&gt;
+          &lt;AutoSize&gt;false&lt;/AutoSize&gt;
           &lt;TextAlign&gt;Near&lt;/TextAlign&gt;
           &lt;LineAlign&gt;Center&lt;/LineAlign&gt;
           &lt;Text&gt;
-            &lt;LabelStr&gt;Title&lt;/LabelStr&gt;
+            &lt;LabelStr&gt;Realtime Contact Details from Siebel&lt;/LabelStr&gt;
           &lt;/Text&gt;
           &lt;TextType&gt;Title&lt;/TextType&gt;
         &lt;/ReportField&gt;
-        &lt;ReportField xsi:type="ReportTextField"&gt;
-          &lt;Padding&gt;
-            &lt;Bottom&gt;1&lt;/Bottom&gt;
-            &lt;Left&gt;1&lt;/Left&gt;
-            &lt;Right&gt;1&lt;/Right&gt;
-            &lt;Top&gt;1&lt;/Top&gt;
-          &lt;/Padding&gt;
-          &lt;StyleType&gt;SubTitle&lt;/StyleType&gt;
-          &lt;AnchorStyles&gt;Bottom Left Right&lt;/AnchorStyles&gt;
-          &lt;AutoSize&gt;true&lt;/AutoSize&gt;
-          &lt;TextAlign&gt;Near&lt;/TextAlign&gt;
-          &lt;LineAlign&gt;Center&lt;/LineAlign&gt;
-          &lt;Text&gt;
-            &lt;LabelStr&gt;Sub Title&lt;/LabelStr&gt;
-          &lt;/Text&gt;
-          &lt;TextType&gt;SubTitle&lt;/TextType&gt;
-        &lt;/ReportField&gt;
       &lt;/Fields&gt;
-      &lt;Height&gt;52&lt;/Height&gt;
+      &lt;Height&gt;27&lt;/Height&gt;
       &lt;SectionType&gt;ReportHeader&lt;/SectionType&gt;
       &lt;StyleType&gt;ReportHeader&lt;/StyleType&gt;
       &lt;LayoutType&gt;Fixed&lt;/LayoutType&gt;
@@ -726,7 +782,7 @@
   </nodes>
   <notes xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
   <opts xmlns="urn:obj.api.rightnow.com">4</opts>
-  <owner_acct_id xmlns="urn:obj.api.rightnow.com">66</owner_acct_id>
+  <owner_acct_id xmlns="urn:obj.api.rightnow.com">67</owner_acct_id>
   <params xmlns="urn:obj.api.rightnow.com" />
   <perms xmlns="urn:obj.api.rightnow.com" />
   <rpt xmlns="urn:obj.api.rightnow.com" />
@@ -747,10 +803,10 @@
     </table_item>
   </tables>
   <time_zone xmlns="urn:obj.api.rightnow.com">0</time_zone>
-  <updated xmlns="urn:obj.api.rightnow.com">2015-04-17T20:17:56Z</updated>
+  <updated xmlns="urn:obj.api.rightnow.com">2015-10-20T21:57:57Z</updated>
   <version xmlns="urn:obj.api.rightnow.com">0</version>
   <xml_data xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
   <xml_report xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
 </analytics_core>
 Version: 
-G/Jk22ahd56m2ABoM1CJH2DMqTdSkVA3aD3o
+dv7pT5/uQvZCTG6HFURXOvmxwI6dxZdta9VV

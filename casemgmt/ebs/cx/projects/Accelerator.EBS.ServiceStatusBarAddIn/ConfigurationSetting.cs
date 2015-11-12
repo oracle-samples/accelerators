@@ -5,13 +5,13 @@
  ***********************************************************************************************
  *  Accelerator Package: OSVC + EBS Enhancement
  *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
- *  OSvC release: 15.5 (May 2015)
+ *  OSvC release: 15.8 (August 2015)
  *  EBS release: 12.1.3
- *  reference: 150202-000157
- *  date: Wed Sep  2 23:11:39 PDT 2015
+ *  reference: 150505-000099, 150420-000127
+ *  date: Thu Nov 12 00:52:47 PST 2015
 
- *  revision: rnw-15-8-fixes-release-01
- *  SHA1: $Id: 25ebf89049c5ad9adf8a79c0c06c0f3f356201bf $
+ *  revision: rnw-15-11-fixes-release-1
+ *  SHA1: $Id: 071051d9e726f1a99d4c238545ba9ff9dda59f92 $
  * *********************************************************************************************
  *  File: ConfigurationSetting.cs
  * *********************************************************************************************/
@@ -52,6 +52,7 @@ namespace Accelerator.EBS.SharedServices
 
         //Information parsing from configuration
         public static LogWrapper logWrap;
+        //public static string logClass = "Accelerator.EBS.SharedServices.Logs.Logger"; // SCLog
         public static string logClass = "Accelerator.EBS.SharedServices.Logs.DefaultLog";
         public static String rnt_host;
         public static String username;
@@ -79,10 +80,15 @@ namespace Accelerator.EBS.SharedServices
         public static String EntitlementList_WSDL;
         public static String RepairOrderList_WSDL;
         public static String RepairLogisticsList_WSDL;
+        public static String GetOrder_WSDL;
+        public static String GetOrdersByCust_WSDL;
+
+        public static string ext_address_validate_url;
+        public static string uspsUsername;
 
         public static string phoneNumANI = null; // for cti to pass this value to contact search addin
         public static bool loginUserIsAdmin; 
-        public enum LogLevelEnum { Error, Notice, Debug };
+        public enum LogLevelEnum { Error, Notice, Debug, Click };
         public static LogLevelEnum logLevel;
         public static int cwssApiEbsServiceUserId = 0;
 
@@ -94,6 +100,10 @@ namespace Accelerator.EBS.SharedServices
         public static IGlobalContext _gContext;
 
         public static string host;
+        public const string scLogProductExtSignature = "66acaed5cb6dc95783ea1d0b194347c542017bfc";
+        public const string scLogProductExtName = "ACC Extention";
+        public const string scLogBusinessFunction = "CX Addin";
+        public static string OrderInboundURL_WSDL;
 
         ConfigurationSetting(IGlobalContext gContext)
         {
@@ -277,6 +287,8 @@ namespace Accelerator.EBS.SharedServices
                     ebsServiceUserId = configVerb.integration.ebs_service_user_id;
                     ebsDefaultSrOwnerId = configVerb.integration.ebs_default_sr_owner_id;
                     EBSServiceTimeout = configVerb.integration.EBSServiceTimeout;
+                    if (EBSServiceTimeout == 0) // not in config verb, set to no timeout -1
+                        EBSServiceTimeout = -1;
                     log_level = configVerb.integration.log_level;
                     assignLogLevelEnum();
                     rnt_host = configVerb.rnt_host;
@@ -289,6 +301,9 @@ namespace Accelerator.EBS.SharedServices
 
                     incidentsByContactReportID = configVerb.integration.incidentsByContactReportID;
                     contactSearchReportID = configVerb.integration.contactSearchReportID;
+
+                    uspsUsername = configVerb.postalValidation.username;
+                    ext_address_validate_url = configVerb.postalValidation.ext_address_validate_url;
 
                     Dictionary<String, Service> extServices = configVerb.integration.ext_services;
                     foreach (KeyValuePair<String, Service> extService in extServices)
@@ -338,6 +353,18 @@ namespace Accelerator.EBS.SharedServices
                             case "repair_list":
                                 if (extService.Value.read != null)
                                     RepairOrderList_WSDL = extBaseUrl + extService.Value.read.relative_path;
+                                break;
+                            case "order":
+                                if (extService.Value.read != null)
+                                    GetOrder_WSDL = extBaseUrl + extService.Value.read.relative_path;
+                                break;
+                            case "order_list":
+                                if (extService.Value.read != null)
+                                    GetOrdersByCust_WSDL = extBaseUrl + extService.Value.read.relative_path;
+                                break;
+                            case "order_save":
+                                if (extService.Value.read != null)
+                                    OrderInboundURL_WSDL = extBaseUrl + extService.Value.read.relative_path;
                                 break;
                         }
                     }
@@ -417,7 +444,7 @@ namespace Accelerator.EBS.SharedServices
 
             try
             {
-                Log log = Activator.CreateInstance(t) as Log;
+                Log log = Activator.CreateInstance(t, scLogProductExtSignature, scLogProductExtName, scLogBusinessFunction) as Log;
 
                 logWrap = new LogWrapper(log);
 
@@ -558,7 +585,7 @@ namespace Accelerator.EBS.SharedServices
 
         }
 
-        public static void logAssemblyVersion(Assembly assembly, LogWrapper aLog)
+        public static string logAssemblyVersion(Assembly assembly, LogWrapper aLog)
         {
             // Log the build version of this assembly
             LogWrapper log = (null == aLog) ? ConfigurationSetting.logWrap : aLog;
@@ -570,6 +597,7 @@ namespace Accelerator.EBS.SharedServices
             string logMessage = sb.ToString();
             string logNote = null;
             log.DebugLog(logMessage: logMessage, logNote: logNote);
+            return logMessage;
         }
         
     }
@@ -606,7 +634,6 @@ namespace Accelerator.EBS.SharedServices
         public int ebs_service_user_id{ get; set; }
         public int ebs_default_sr_owner_id { get; set; }
         public int EBSServiceTimeout { get; set; }
-        public int AdminProfileID { get; set; }
         public string log_level { get; set; }
         public int incidentsByContactReportID { get; set; }
         public int contactSearchReportID { get; set; }
@@ -614,10 +641,16 @@ namespace Accelerator.EBS.SharedServices
         public List<TypeMapping> request_type_mapping{ get; set; }
     }
 
+    public class PostalValidation
+    {
+        public string ext_address_validate_url { get; set; }
+        public string username { get; set; }
+    }
     public class ConfigurationVerb
     {
         public string rnt_host { get; set; }
         public Integration integration { get; set; }
+        public PostalValidation postalValidation { get; set; }
     }
 #endregion
 }

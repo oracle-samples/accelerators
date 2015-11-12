@@ -5,13 +5,13 @@
  ***********************************************************************************************
  *  Accelerator Package: OSVC Contact Center + Siebel Case Management Accelerator
  *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
- *  OSvC release: 15.5 (May 2015)
+ *  OSvC release: 15.8 (August 2015)
  *  Siebel release: 8.1.1.15
- *  reference: 141216-000121
- *  date: Wed Sep  2 23:14:34 PDT 2015
+ *  reference: 150520-000047
+ *  date: Thu Nov 12 00:55:29 PST 2015
 
- *  revision: rnw-15-8-fixes-release-01
- *  SHA1: $Id: 7d50103378cca19a1db0371ae95e7a5bfbbad9a9 $
+ *  revision: rnw-15-11-fixes-release-1
+ *  SHA1: $Id: 2c5bca1b4a375f4c376795274f4f3b144d10dc8f $
  * *********************************************************************************************
  *  File: logic.js
  * ****************************************************************************************** */
@@ -47,7 +47,7 @@ Custom.Widgets.SiebelServiceRequest.SerialNumberInput = RightNow.Widgets.TextInp
         this._showSpinner();
 
         if (this.input.get("value") === "") {
-            this.displayVerifyResult(false, "Please input Serial Number first");
+            this.displayVerifyResult(false, "Please input Serial Number first", false);
             this._hideSpinner();
             return;
         }
@@ -68,13 +68,14 @@ Custom.Widgets.SiebelServiceRequest.SerialNumberInput = RightNow.Widgets.TextInp
         });
     },
     /**
-     * Failure handler for the Ajax request
+     * Failure handler for the AJAX request
      */
     ajaxFailureHandler: function() {
         this._hideSpinner();
+        this.displayVerifyResult(false, this.data.attrs.ajax_timeout_message, true);
     },
     /**
-     * Callback function of the validation Ajax request.
+     * Callback function of the validation AJAX request.
      * display the corresponding hint
      * @param {String} verify result
      */
@@ -82,18 +83,18 @@ Custom.Widgets.SiebelServiceRequest.SerialNumberInput = RightNow.Widgets.TextInp
         this._hideSpinner();
 
         if (typeof (result) === 'undefined' || result === null) {
-            this.displayVerifyResult(false, 'No response from Siebel server');
+            this.displayVerifyResult(false, 'No response from Siebel server', true);
             return false;
         }
 
         var eventObject = this.createEventObject();
         if (result.isValid === false) {
-            this.displayVerifyResult(false, result.message);
+            this.displayVerifyResult(false, result.message, result.isError);
             return false;
         }
 
-        this.displayVerifyResult(true, result.message);
-        RightNow.Event.fire("evt_formFieldValidatePass", eventObject);
+        this.displayVerifyResult(true, result.message, result.isError);
+        RightNow.Event.fire("evt_formFieldValidatePass", eventObject, result.isError);
         return eventObject;
     },
     /**
@@ -101,18 +102,21 @@ Custom.Widgets.SiebelServiceRequest.SerialNumberInput = RightNow.Widgets.TextInp
      * @param {boolean} Indicates if the serial number is valid
      * @param {String} Validation result message
      */
-    displayVerifyResult: function(status, message) {
+    displayVerifyResult: function(isValid, message, isError) {
         this.toggleErrorIndicator(false);
         this._validationResultDisplay.empty();
         this._validationResultDisplay.removeClass('rn_Hidden');
         this._validationResultDisplay.removeClass('rn_InvalidResult');
         this._validationResultDisplay.removeClass('rn_ValidResult');
 
-        if (status === false) {
+        if (isValid === false) {
             if (this.data.js.development_mode) {
                 this._validationResultDisplay.insert(message);
             } else {
-                this._validationResultDisplay.insert(this.data.attrs.ajax_failure_message);
+                if (isError)
+                    this._validationResultDisplay.insert(this.data.attrs.ajax_failure_message);
+                else
+                    this._validationResultDisplay.insert(message);
             }
 
             this._validationResultDisplay.addClass('rn_InvalidResult');

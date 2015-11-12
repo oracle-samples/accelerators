@@ -7,13 +7,13 @@
  ***********************************************************************************************
  *  Accelerator Package: OSVC + EBS Enhancement
  *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
- *  OSvC release: 15.5 (May 2015)
+ *  OSvC release: 15.8 (August 2015)
  *  EBS release: 12.1.3
- *  reference: 150202-000157
- *  date: Wed Sep  2 23:11:30 PDT 2015
+ *  reference: 150505-000099, 150420-000127
+ *  date: Thu Nov 12 00:52:34 PST 2015
 
- *  revision: rnw-15-8-fixes-release-01
- *  SHA1: $Id: b6c605c17af5b30801e3a96a413983ad21e7e1b2 $
+ *  revision: rnw-15-11-fixes-release-1
+ *  SHA1: $Id: cd1cf238139dc3d27eb3ea988f74d90e44a6e29c $
  * *********************************************************************************************
  *  File: ServiceRequestController.php
  * ****************************************************************************************** */
@@ -84,6 +84,7 @@ class ServiceRequestController extends \RightNow\Controllers\Base {
                 $this->log->error("Unable to get SR#{$srID}", __METHOD__, array(null, $this->contact));
                 return null;
             }
+            $srDetail = $getSRResult->result;
         }
 
         // set extra Incident fields used the value from SR
@@ -104,10 +105,15 @@ class ServiceRequestController extends \RightNow\Controllers\Base {
                     'value' => $srDetail['SR_OWNER_ID']
         );
         if ($srDetail['PRODUCT']) {
-            if ($rnProduct = $this->CI->utility->getProductByPartNumber($srDetail['PRODUCT'])) {
+            if ($rnProduct = $this->utility->getProductByPartNumber($srDetail['PRODUCT'])) {
                 $data[] = (object) array(
                             'name' => 'Incident.Product',
                             'value' => $rnProduct['ID']
+                );
+            } else {
+                $data[] = (object) array(
+                            'name' => 'Incident.CustomFields.Accelerator.cp_ebs_product_validation',
+                            'value' => "Service Request Product '{$srDetail['PRODUCT']}' can't be found in RightNow"
                 );
             }
         }
@@ -133,4 +139,5 @@ class ServiceRequestController extends \RightNow\Controllers\Base {
         $smartAssistant = $this->input->post('smrt_asst');
         echo $this->model('Field')->sendForm($data, intval($incidentID), ($smartAssistant === 'true'))->toJson();
     }
+
 }

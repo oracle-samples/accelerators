@@ -29,7 +29,7 @@ class LogWrapper {
      * @param string $message Log message
      */
     public function error($summary, $source = null, array $xRefArray = null, $message = null, $timeElapsed = null) {
-        $this->log->debug($summary, $source, $xRefArray, $message, $timeElapsed);
+        $this->log->error($summary, $source, $xRefArray, $message, $timeElapsed);
     }
 
      /**

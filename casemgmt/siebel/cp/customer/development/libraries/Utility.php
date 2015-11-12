@@ -7,13 +7,13 @@
  ***********************************************************************************************
  *  Accelerator Package: OSVC Contact Center + Siebel Case Management Accelerator
  *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
- *  OSvC release: 15.5 (May 2015)
+ *  OSvC release: 15.8 (August 2015)
  *  Siebel release: 8.1.1.15
- *  reference: 141216-000121
- *  date: Wed Sep  2 23:14:33 PDT 2015
+ *  reference: 150520-000047
+ *  date: Thu Nov 12 00:55:26 PST 2015
 
- *  revision: rnw-15-8-fixes-release-01
- *  SHA1: $Id: 092ff25a55d7ebfab0ae2cc73805bff869df4ae7 $
+ *  revision: rnw-15-11-fixes-release-1
+ *  SHA1: $Id: c5557f363bc60edf665df6aab248c593b416c1d9 $
  * *********************************************************************************************
  *  File: Utility.php
  * ****************************************************************************************** */
@@ -22,6 +22,8 @@ namespace Custom\Libraries;
 
 use RightNow\Connect\v1_2 as RNCPHP;
 
+//require_once (APPPATH . 'libraries/scTools/SCLog.php');
+//require_once (APPPATH . 'libraries/log/SCLog.php');
 require_once (APPPATH . 'libraries/log/LogWrapper.php');
 require_once (APPPATH . 'libraries/log/DefaultLog.php');
 
@@ -41,6 +43,7 @@ class Utility {
      * @return Logwrapper object
      */
     function getLogWrapper() {
+        //$log = new SCLog();
         $log = new DefaultLog();
         $logWrapper = new LogWrapper($log);
         return $logWrapper;
@@ -71,7 +74,7 @@ class Utility {
         if ($partNumber === null) {
             return null;
         }
-        $queryString = "SELECT S.PartNumber, S.Name, S.Descriptions.LabelText FROM SalesProduct S WHERE S.PartNumber='{$partNumber}'";
+        $queryString = "SELECT S.ServiceProduct.ID, S.PartNumber, S.Name, S.Descriptions.LabelText FROM SalesProduct S WHERE S.PartNumber='{$partNumber}'";
         $roqlResultSet = RNCPHP\ROQL::query($queryString)->next();
         if ($product = $roqlResultSet->next()) {
             return $product;

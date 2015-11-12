@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("$Id: 7dcdb10a20700a8773fbfa7a0a4678a4071de424 $")]
+[assembly: AssemblyTitle("$Id: d5195504dea38da6c7c9c6288583fcac3775b7e6 $")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Oracle Corp")]
-[assembly: AssemblyProduct("Accelerator.Siebel.SharedServices")]
+[assembly: AssemblyProduct("Accelerator.Siebel.ServiceStatusBarAddIn")]
 [assembly: AssemblyCopyright("Copyright © Oracle Corp 2014, 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -32,4 +32,4 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("15.5.*")]
+[assembly: AssemblyVersion("15.11.*")]

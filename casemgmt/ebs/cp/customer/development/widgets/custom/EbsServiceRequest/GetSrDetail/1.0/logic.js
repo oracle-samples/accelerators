@@ -5,13 +5,13 @@
  ***********************************************************************************************
  *  Accelerator Package: OSVC + EBS Enhancement
  *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
- *  OSvC release: 15.5 (May 2015)
+ *  OSvC release: 15.8 (August 2015)
  *  EBS release: 12.1.3
- *  reference: 150202-000157
- *  date: Wed Sep  2 23:11:32 PDT 2015
+ *  reference: 150505-000099, 150420-000127
+ *  date: Thu Nov 12 00:52:36 PST 2015
 
- *  revision: rnw-15-8-fixes-release-01
- *  SHA1: $Id: b1103685b45d31f53ed58a6950d0c981c623038e $
+ *  revision: rnw-15-11-fixes-release-1
+ *  SHA1: $Id: 0edf1eee2127b84052fc462bbcfca129ed6e2854 $
  * *********************************************************************************************
  *  File: logic.js
  * ****************************************************************************************** */
@@ -49,10 +49,10 @@ Custom.Widgets.EbsServiceRequest.GetSrDetail = RightNow.Widgets.extend({
         });
     },
     /**
-     * Failure handler for the Ajax request
+     * Failure handler for the AJAX request
      */
     ajaxFailureHandler: function() {
-        this._showErrorMessage(this.data.attrs.ajax_failure_message);
+        this._showErrorMessage(this.data.attrs.ajax_timeout_message);
     },
     /**
      * Handles the AJAX response for `getSrDetail_ajax_endpoint`.

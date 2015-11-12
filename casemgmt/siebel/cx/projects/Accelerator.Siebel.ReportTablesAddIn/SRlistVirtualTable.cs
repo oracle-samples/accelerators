@@ -5,13 +5,13 @@
  ***********************************************************************************************
  *  Accelerator Package: OSVC Contact Center + Siebel Case Management Accelerator
  *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
- *  OSvC release: 15.5 (May 2015)
+ *  OSvC release: 15.8 (August 2015)
  *  Siebel release: 8.1.1.15
- *  reference: 141216-000121
- *  date: Wed Sep  2 23:14:39 PDT 2015
+ *  reference: 150520-000047
+ *  date: Thu Nov 12 00:55:34 PST 2015
 
- *  revision: rnw-15-8-fixes-release-01
- *  SHA1: $Id: 109f3a8062ed8eddfaa2d39d85963dd2a3de2b3e $
+ *  revision: rnw-15-11-fixes-release-1
+ *  SHA1: $Id: 264e5654d0f56caf2ca92878755dd234e647c7da $
  * *********************************************************************************************
  *  File: SRlistVirtualTable.cs
  * *********************************************************************************************/
@@ -29,6 +29,7 @@ using System.ServiceModel.Channels;
 using Accelerator.Siebel.SharedServices.RightNowServiceReference;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.Collections;
 
 /*   class ServiceRequestVirtualTable is for the SR list report
  *   It show SR list based on Contact Workspace custom attribute
@@ -193,6 +194,7 @@ namespace Accelerator.Siebel.ReportTablesAddin
             int rNowIncidentCount = table.Rows.Length;
             int srVirtualTableCount = this.Columns.Count;
             string[] colHeadingIncidentReport = table.Columns.Split('\t');
+            Hashtable srHashtable = new Hashtable();
 
             foreach (String commaRow in table.Rows)
             {
@@ -210,7 +212,7 @@ namespace Accelerator.Siebel.ReportTablesAddin
                     i++;
                 }
 
-                addRnowIncidentRow(ref columns, ref reportDataRow, ref reportRows, dictRow);
+                addRnowIncidentRow(ref columns, ref reportDataRow, ref reportRows, ref srHashtable, dictRow);
             }
 
             if (contactPartyID != null)
@@ -224,14 +226,15 @@ namespace Accelerator.Siebel.ReportTablesAddin
                 {
                     ReportDataRow reportDataRow = new ReportDataRow(this.Columns.Count);
                     if (req != null) // live ebs row 316 of 319 of contact 4431 return null 
-                        addSiebelSrRow(ref columns, ref reportDataRow, ref reportRows, req);
+                        addSiebelSrRow(ref columns, ref reportDataRow, ref reportRows, srHashtable, req);
                 }
             }
             return reportRows;
         }
 
         // add Right Now Incident report row
-        private void addRnowIncidentRow(ref IList<string> columns, ref ReportDataRow reportDataRow, ref  IList<IReportRow> reportRows, Dictionary<string, string> colValue)
+        private void addRnowIncidentRow(ref IList<string> columns, ref ReportDataRow reportDataRow, 
+            ref  IList<IReportRow> reportRows, ref Hashtable srHashtable, Dictionary<string, string> colValue)
         {
             string heading = null;
             string dateTimeString = null;
@@ -245,6 +248,8 @@ namespace Accelerator.Siebel.ReportTablesAddin
                         case "Siebel$SRlistTable.SrNumber":
                             heading = "SIEBEL_SR_NUM";
                             reportDataCell.GenericValue = colValue[heading];
+                            if (!String.IsNullOrEmpty(colValue[heading]))
+                                srHashtable.Add(colValue[heading], true);
                             break;
                         case "Siebel$SRlistTable.IncidentRef":
                             heading = "REFERENCE #";
@@ -289,8 +294,10 @@ namespace Accelerator.Siebel.ReportTablesAddin
         }
 
         // Add Siebel Service Request row
-        private void addSiebelSrRow(ref IList<string> columns, ref ReportDataRow reportDataRow, ref  IList<IReportRow> reportRows, ServiceRequest req)
+        private void addSiebelSrRow(ref IList<string> columns, ref ReportDataRow reportDataRow, ref  IList<IReportRow> reportRows, Hashtable srHashtable, ServiceRequest req)
         {
+            bool srInRnow = false;
+
             foreach (var column in columns)
             {
                 ReportDataCell reportDataCell = new ReportDataCell();
@@ -299,6 +306,8 @@ namespace Accelerator.Siebel.ReportTablesAddin
                 {
                     case "Siebel$SRlistTable.SrNumber":
                         reportDataCell.GenericValue = req.RequestNumber;
+                        if (srHashtable.ContainsKey(req.RequestNumber))
+                            srInRnow = true;
                         break;
                     case "Siebel$SRlistTable.Status":
                         reportDataCell.GenericValue = req.Status;
@@ -318,7 +327,11 @@ namespace Accelerator.Siebel.ReportTablesAddin
                 }
                 reportDataRow.Cells.Add(reportDataCell);
             }
-            reportRows.Add(reportDataRow);
+            if (!srInRnow)
+            {
+                reportRows.Add(reportDataRow);
+                srInRnow = false;
+            }
         }
     }
 

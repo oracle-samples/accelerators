@@ -1,25 +1,24 @@
 <?php
 
-/* * *******************************************************************************************
+/** *******************************************************************************************
  *  This file is part of the Oracle Service Cloud Accelerator Reference Integration set published
  *  by Oracle Service Cloud under the MIT license (MIT) included in the original distribution.
  *  Copyright (c) 2014, 2015, Oracle and/or its affiliates. All rights reserved.
  ***********************************************************************************************
  *  Accelerator Package: OSVC + EBS Enhancement
  *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
- *  OSvC release: 15.5 (May 2015)
+ *  OSvC release: 15.8 (August 2015)
  *  EBS release: 12.1.3
- *  reference: 150202-000157
- *  date: Wed Sep  2 23:11:31 PDT 2015
+ *  reference: 150505-000099, 150420-000127
+ *  date: Thu Nov 12 00:52:35 PST 2015
 
- *  revision: rnw-15-8-fixes-release-01
- *  SHA1: $Id: d11e5feaaffa24c8dd38034d95c9ef2307ae11b8 $
+ *  revision: rnw-15-11-fixes-release-1
+ *  SHA1: $Id: 8e5c34d6680e3658313e659c936091481d8b2c29 $
  * *********************************************************************************************
  *  File: EbsServiceRequest.php
  * ****************************************************************************************** */
 
 namespace Custom\Models;
-
 use RightNow\Connect\v1_2 as RNCPHP;
 
 class EbsServiceRequest extends \RightNow\Models\Base {
@@ -83,6 +82,8 @@ class EbsServiceRequest extends \RightNow\Models\Base {
             'SERIAL_NUMBER',
             'PRODUCT',
             'CUSTOMER_ID',
+            'CUSTOMER_PRODUCT_ID',
+            'INVENTORY_ORG_ID',
             'EXTATTRIBUTE13',
             'EXTATTRIBUTE14',
             'EXTATTRIBUTE15',
@@ -247,6 +248,8 @@ class EbsServiceRequest extends \RightNow\Models\Base {
             'CALLER_TYPE' => $srDetail['CUSTOMER_TYPE'],
             'CUSTOMER_ID' => $srDetail['CUSTOMER_ID'],
             'VERIFY_CP_FLAG' => 'N',
+            'CUSTOMER_PRODUCT_ID' => $srDetail['CUSTOMER_PRODUCT_ID'],
+            'INVENTORY_ORG_ID' => $srDetail['INVENTORY_ORG_ID'],
             'CURRENT_SERIAL_NUMBER' => $srDetail['SERIAL_NUMBER'],
             'EXTERNAL_ATTRIBUTE_13' => $this->CI->model('custom/ExtIntegrationConfigVerb')->getRntHost(),
             'EXTERNAL_ATTRIBUTE_14' => $incident->ReferenceNumber,
@@ -382,7 +385,10 @@ NOTEDETAIL;
         );
 
         // send curl request
-        $result = $this->CI->model('custom/EbsApi')->sendSoapRequest($this->extConfigVerb, $extObj, $extAction, null, $this->contact, $requestParams, $requestFieldData, $responseFields, $errorFields);
+        $result = $this->CI->model('custom/EbsApi')->sendSoapRequest(
+            $this->extConfigVerb, $extObj, $extAction,
+            null, $this->contact, $requestParams,
+            $requestFieldData, $responseFields, $errorFields);
 
         // check result
         if ($result->error) {
@@ -399,7 +405,7 @@ NOTEDETAIL;
      * Check if the provided Serial Number and Product mapping is correct
      * @param int $productID ID of the product
      * @param RNCPHP\Incident $incident Related incident
-     * @param array $ebsItem EBS Item Instance data 
+     * @param array $ebsItem EBS Item Instance data
      * @return  RNCPHP\RNObject Mapping validation result
      */
     private function checkSerialNumberAndProductMapping($productID, RNCPHP\Incident $incident = null, array $ebsItem = null) {
@@ -434,7 +440,9 @@ NOTEDETAIL;
     private function composeSerialNumberValidationResult($isValid, $message, array $ebsItem = null, RNCPHP\Incident $incident = null, $ifNeedToSaveInIncident = false, $isError = false) {
         if ($isError) {
             $this->log->error("Serial Number validation :: {$message}", __METHOD__, array($incident, $this->contact));
-        } else {
+        } else if(!$isError && !$isValid) {
+            $this->log->notice("Serial Number validation :: {$message}", __METHOD__, array($incident, $this->contact));
+        } else{
             $this->log->debug("Serial Number validation :: {$message}", __METHOD__, array($incident, $this->contact));
         }
 
@@ -447,7 +455,206 @@ NOTEDETAIL;
         $result = (object) array(
                     'isValid' => $isValid,
                     'message' => $message,
-                    'ebsItem' => $ebsItem
+                    'ebsItem' => $ebsItem,
+                    'isError' => $isError
+        );
+        return $this->getResponseObject($result);
+    }
+
+
+    /**
+     * Calls a USPS web-service for Address Verification
+     * @param string $street Address, first or ONLY LINE
+     * @param string $city City
+     * @param string $state  State or Province
+     * @param string $zip   Zip or other postal code
+     * @param string $zipFourExt Ext Zip 4 can be null by default (4 digit zip)
+     * @return array Verification result contains status, response, and address item
+     */
+    public function callAddressVerification($street, $city, $state, $zip = null, $zipFourExt = null)
+    {
+        if ($zip == null) {
+            $zip = '';
+        }
+        if ($zipFourExt == null) {
+            $zipFourExt = '';
+        }
+
+        // get ext 'seting' from config verb
+        $extValidateUrl = $this->extConfigVerb['postalValidation']['ext_address_validate_url'];
+        $username = $this->extConfigVerb['postalValidation']['username'];
+        $password = $this->extConfigVerb['postalValidation']['password'];  // obsolete use
+        //
+        // Config Verb section expected ^^^ : is in the doc.
+        //
+
+        if ($extValidateUrl == '') {
+            if ($username == '') {
+                $tempObj = $this->composeAddressVerificationResult($false,
+                    "postalValidation username AND ext_address_validate_url are not configured", $result->result);
+                $this->log->debug("Returning Response2:", __METHOD__, null, var_export($tempObj, true));
+                return $tempObj;
+            } else {
+                // default USPS URL.. not gonna change unless you move the server??
+                $extValidateUrl = 'http://production.shippingapis.com/ShippingAPITest.dll';
+            }
+        }
+
+        // prepare request and response params
+        $xml = '<AddressValidateRequest USERID="'.$username.'"><Address><Address1></Address1><Address2>'
+                .$street.'</Address2><City>'.$city.'</City><State>'
+                .$state.'</State><Zip5>'.$zip.'</Zip5><Zip4>'.$zipFourExt.'</Zip4></Address></AddressValidateRequest>';
+
+        $requestParams = array(
+            'API' => 'Verify',
+            'XML' => $xml
+        );
+
+        // ReturnText doesn't always show up, but can be e.g. "Default address: The address you entered was found but more information is needed (such as an apartment, suite, or box number) to match to a specific address"
+        // Error is the parent element; Description and (error)Number always inside.
+        // The parsing takes the first error element, so putting 'Description'  if you want to get the content of the error.
+        $parseForFields = array('ADDRESS2', 'CITY', 'STATE', 'ZIP5', 'ZIP4', 'RETURNTEXT' );
+        $errorFields = array('DESCRIPTION', 'ERROR');
+
+        //
+        // Send request
+        $result = $this->CI->model('custom/EbsApi')->sendAddressRequest(
+            $extValidateUrl, $requestParams, $parseForFields, $errorFields);
+
+        // check the result and return a message and a 'correct' flag. Also output log.
+        $returnVals = $this->makeSanitizedUserMessage($result);
+        extract($returnVals);  // = $isCorrect, $message
+
+        $tempObj = $this->composeAddressVerificationResult($isCorrect, $message, $result->result);  // the address is inside ->result
+        // this is a DBG message; shows return to controller --Jordan
+        $this->log->debug("Returning Response2:", __METHOD__, null, var_export($tempObj, true));
+        return $tempObj;
+    }
+
+    /**
+     * Just checks the result WHETHER IT IS CORRECT,
+     * checks the message inside the result, depending on whether result is
+     * an error or not;
+     * Both an error and a non-error may include a message in the input data
+     * (ReturnText when no error)
+     *
+     * Therefore we 'sanitize' this message by returning a hardcoded one, if we
+     * are not in Development mode.  Sometimes in Development mode we return
+     * the message sent directly by the server, because that was the requirement.
+     *
+     * @param \RightNow\Libraries\ResponseObject $result The result from the Address API function.
+     * @return array  message to be displayed to the user and isCorrect flag
+     */
+    private function makeSanitizedUserMessage(\RightNow\Libraries\ResponseObject $result)
+    {
+        // check result and make $isCorrect flag,
+        if ($result == null || $result->error || $result->result === null) {
+            // result->errors[0]->externalMessage may be filled here ; changed to notice for non-critical error.
+            $isCorrect = false;
+        } else {
+            $isCorrect = true;
+        }
+
+        $seriousError = false;
+        if (!$isCorrect) {
+            // access this array only if there was error.
+            $message = $result->errors[0]->externalMessage;
+            $origErrorText = $message;
+
+            // 'Sanitizing' message
+            if (preg_match('/not found/i', $message)) {
+                $message = "Address Not Found.  ";
+            } else if (preg_match('/Multiple.*no default/i', $message)) {
+                $message = "Multiple addresses found; no default exists.";
+            } else if (preg_match('/Invalid.*State/i', $message)) {
+                $message = "Invalid or Incomplete State Code.";
+            } else if (preg_match('/Invalid.*City/i', $message)) {
+                $message = "Invalid City.";
+            } else if (preg_match('/password|Authorization|xceed.*len/i', $message)) {
+                $message = "Misconfiguration--invalid password or other error received.";
+                $seriousError = true;
+            } else if (preg_match('/disabled|test request.*valid|valid API/i', $message)) {
+                $message = "Misconfiguration--check the URL, API or some other error.";
+                $seriousError = true;
+            } else if (preg_match('/not.*connect/i', $message)) {
+                // When the URL is bad, it is reponse 502 containing HTML: html.+not\s*connect
+                $message = "Misconfiguration--invalid URL or cannot connect. Please see the Error log!";  // html/https error included.
+                $seriousError = true;
+            } else {
+                $message = "Misconfiguration or some other Error; or invalid data received. Please see the Error log!";
+            }
+
+            // original message shows up only in Dev mode (Per Req) and if msg is not huge or HTML
+            if (IS_DEVELOPMENT === true && strlen($origErrorText) > 4 && preg_match('/\<html/i', $origErrorText) !== 1 ) {
+                if (strlen($origErrorText) < 320) {
+                    $message = 'Not valid: '.$origErrorText;
+                } else {
+                    $message = 'Not valid: '.substr($origErrorText, 0, 320).'...';
+                }
+            } else {
+                $message = 'Not valid: '.$message;
+            }
+
+            // separate levels of logging; due to requirement. Notice all info logged on 'error'
+            if ($seriousError) {
+                $this->log->error("Error calling address verification", __METHOD__, null,
+                    "Result: ".var_export($result, true));
+            } else {
+                $this->log->notice("Address Not Found or Empty(error)", __METHOD__, null,
+                    "Message: ".var_export($message, true));
+            }
+        } else if ($result->result['RETURNTEXT'] !== '') {
+            // First correct situation handled here; there is return text.
+            // $result->result is an array.
+            $message = $result->result['RETURNTEXT'];
+            if (IS_DEVELOPMENT !== true) {
+                if (preg_match('/was\s+found.*more\s+information/i', $message)) {
+                    $message = 'Address verified: The address '
+                            . ' was found but more information is needed (such as an apt., suite)'
+                            . ' to match to a specific address.';
+                } else {
+                    $message = 'Address verified: The address you entered is found.';
+                }
+            } else if (strlen($message) > 320) {
+                // in Dev mode, displaying a 'shortened', un-'sanitized' message.
+                $message = substr($message, 0, 320).'...';
+            }
+
+            // removing extra long message.
+            $copyArray = $result->result;
+            unset($copyArray['RETURNTEXT']);
+            $result->result = $copyArray;
+
+            // putting back in the log by request from dev/qa
+            if (IS_DEVELOPMENT === true) {
+                // logging with a raised Log level (~ 4) due to the addtl info
+                $this->log->notice("Address message modified to:", __METHOD__, null, $message);
+            }
+        } else {
+            // Second correct situation handled here; WITHOUT return text.
+            // Lower log level for a completely correct result.
+            $message = 'Address verified.';
+        }
+
+        return array('message' => $message, 'isCorrect' => $isCorrect);
+    }
+    /**
+     * Compose the address result.
+     * Operations contains:
+     * @param boolean $isValid Indicate if the validation is correct
+     * @param string $message Validation result message
+     * @param array $address The address that will be put in the actual result.
+     * @return array Verification result contains status, response, and item
+     */
+    private function composeAddressVerificationResult($isValid, $message, array $address = null) {
+        if (!is_array($address)) {
+            $address = array('Address2' => '');
+        }
+        $result = (object) array(
+                    'isValid' => $isValid,
+                    'message' => $message,
+                    'address' => $address,
+                    'isError' => false
         );
         return $this->getResponseObject($result);
     }

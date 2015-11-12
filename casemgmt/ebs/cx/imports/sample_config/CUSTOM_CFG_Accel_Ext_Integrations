@@ -1,132 +1,163 @@
-{  
-   "hosts":[  
-      {  
-         "rnt_host":"replace.me.with.osvc.site.name",
-         "integration":{  
-            "server_type":"EBS",
-            "ext_base_url":"http://replace.me.with.ebs.server.base.url/",
-            "username":"ebusiness",
-            "password":"welcome",
-            "ebs_service_user_id":1001530,
-            "ebs_default_sr_owner_id":100000937,
-            "EBSServiceTimeout":60000,
-            "AdminProfileID":2,
-            "log_level":"Debug",
-            "incidentsByContactReportID":101038,
-            "contactSearchReportID":101034,
-         "request_type_mapping":[{"inc_type_id":1,"sr_type_id":13150},{"inc_type_id":2,"sr_type_id":86}],
-            "ext_services":{  
-               "repair_list":{  
-                  "read":{  
-                     "service_name":"GET_REPAIR_ORDERS_WEBSRVC",
-                     "soap_action":"http://replace.me.with.ebs.server.base.url/webservices/SOAProvider/plsql/csd_repair_orders_web/",
-                     "relative_path":"webservices/SOAProvider/plsql/csd_repair_orders_web/"
-                  }
-               },
-               "repair_logistics_list":{  
-                  "read":{  
-                     "service_name":"GET_LOGISTICS_LINES_WEBSRVC",
-                     "soap_action":"http://replace.me.with.ebs.server.base.url/webservices/SOAProvider/plsql/csd_logistics_web/",
-                     "relative_path":"webservices/SOAProvider/plsql/csd_logistics_web/"
-                  }
-               },
-               "item_list":{  
-                  "read":{  
-                     "service_name":"GET_INSTANCES_BY_ITEM_SERIAL",
-                     "soap_action":"http://replace.me.with.ebs.server.base.url/webservices/SOAProvider/plsql/cs_servicerequest_pub/",
-                     "relative_path":"webservices/SOAProvider/plsql/cs_servicerequest_pub/"
-                  }
-               },
-               "entitlement_list":{  
-                  "read":{  
-                     "service_name":"GET_CONTRACTS__1",
-                     "soap_action":"http://replace.me.with.ebs.server.base.url/webservices/SOAProvider/plsql/oks_entitlements_pub/",
-                     "relative_path":"webservices/SOAProvider/plsql/oks_entitlements_pub/"
-                  }
-               },
-               "service_request_detail":{  
-                  "read":{  
-                     "service_name":"GET_SERVICE_REQUEST_INFO",
-                     "soap_action":"http://replace.me.with.ebs.server.base.url/webservices/SOAProvider/plsql/cs_servicerequest_pub/",
-                     "relative_path":"webservices/SOAProvider/plsql/cs_servicerequest_pub/"
-                  },
-                  "create":{  
-                     "service_name":"CREATE_SERVICEREQUEST",
-                     "soap_action":"http://replace.me.with.ebs.server.base.url/webservices/SOAProvider/plsql/cs_servicerequest_pub/",
-                     "relative_path":"webservices/SOAProvider/plsql/cs_servicerequest_pub/"
-                  }
-               },
-               "service_request_interaction":{  
-                  "create":{  
-                     "service_name":"CREATE_NOTES",
-                     "soap_action":"http://replace.me.with.ebs.server.base.url/webservices/SOAProvider/plsql/jtf_notes_pub/",
-                     "relative_path":"webservices/SOAProvider/plsql/jtf_notes_pub/"
-                  }
-               },
-               "repair_order_detail":{  
-                  "create":{  
-                     "service_name":"CREATE_REPAIRORDER",
-                     "soap_action":"http://replace.me.with.ebs.server.base.url/webservices/SOAProvider/plsql/csd_repairs_pub/",
-                     "relative_path":"webservices/SOAProvider/plsql/csd_repairs_pub/"
-                  },
-                  "update":{  
-                     "service_name":"CREATE_REPAIRORDER",
-                     "soap_action":"http://replace.me.with.ebs.server.base.url/webservices/SOAProvider/plsql/csd_repairs_pub/",
-                     "relative_path":"webservices/SOAProvider/plsql/csd_repairs_pub/"
-                  }
-               },
-               "contact_list":{  
-                  "read":{  
-                     "service_name":"GET_CONTACT_LIST_INFO",
-                     "soap_action":"http://replace.me.with.ebs.server.base.url/webservices/SOAProvider/plsql/hz_integration_pub/",
-                     "relative_path":"webservices/SOAProvider/plsql/hz_integration_pub/"
-                  }
-               },
-               "service_request_detail":{  
-                  "read":{  
-                     "service_name":"GET_SR_INFO",
-                     "soap_action":"http://replace.me.with.ebs.server.base.url/webservices/SOAProvider/plsql/cs_servicerequest_pub/",
-                     "relative_path":"webservices/SOAProvider/plsql/cs_servicerequest_pub/"
-                  },
-                  "create":{  
-                     "service_name":"CREATE_SERVICEREQUEST",
-                     "soap_action":"http://replace.me.with.ebs.server.base.url/webservices/SOAProvider/plsql/cs_servicerequest_pub/",
-                     "relative_path":"webservices/SOAProvider/plsql/cs_servicerequest_pub/"
-                  },
-                  "update":{  
-                     "service_name":"UPDATE_SERVICEREQUEST",
-                     "soap_action":"http://replace.me.with.ebs.server.base.url/webservices/SOAProvider/plsql/cs_servicerequest_pub/",
-                     "relative_path":"webservices/SOAProvider/plsql/cs_servicerequest_pub/"
-                  }
-               },
-               "service_request_note":{  
-                  "create":{  
-                     "service_name":"SECURE_CREATE_NOTE",
-                     "soap_action":"http://replace.me.with.ebs.server.base.url/webservices/SOAProvider/plsql/jtf_notes_pub/",
-                     "relative_path":"webservices/SOAProvider/plsql/jtf_notes_pub/"
-                  },
-                  "read":{  
-                     "service_name":"GET_SR_NOTES_DETAILS",
-                     "soap_action":"http://replace.me.with.ebs.server.base.url/webservices/SOAProvider/plsql/jtf_notes_pub/",
-                     "relative_path":"webservices/SOAProvider/plsql/cs_servicerequest_pub/"
-                  }
-               },
-               "service_request_list":{  
-                  "read":{  
-                     "service_name":"GET_SRINFO_BYCONTACT",
-                     "soap_action":"http://replace.me.with.ebs.server.base.url/webservices/SOAProvider/plsql/cs_servicerequest_pub/",
-                     "relative_path":"webservices/SOAProvider/plsql/cs_servicerequest_pub/"
-                  }
-               },
-               "service_request_item_instance":{  
-                  "read":{  
-                     "service_name":"GET_ITEM_INSTANCE_DETAILS",
-                     "soap_action":"http://replace.me.with.ebs.server.base.url/webservices/SOAProvider/plsql/csi_item_instance_pub/",
-                     "relative_path":"webservices/SOAProvider/plsql/csi_item_instance_pub/"
-                  }
-               }
-            }
-         }
-      }
-   ]
+{
+	"AdminProfileID": 2,
+	"hosts": [{
+		"rnt_host": "replace.me.with.osvc.site.name",
+		"integration": {
+			"server_type": "EBS",
+			"ext_base_url": "http://replace.me.with.ebs.server.base.url/",
+			"username": "replace_me_with_username",
+			"password": "replace_me_with_password",
+			"ebs_service_user_id": 1001530,
+			"ebs_default_sr_owner_id": 100000937,
+			"EBSServiceTimeout": 30000,
+			"log_level": "Debug",
+			"incidentsByContactReportID": 101038,
+			"contactSearchReportID": 101034,
+			"salesItemSearchReportID": 101055,
+			"request_type_mapping": [{
+				"inc_type_id": 1,
+				"sr_type_id": 13150
+			},
+			{
+				"inc_type_id": 2,
+				"sr_type_id": 86
+			}],
+			"ext_services": {
+				"repair_list": {
+					"read": {
+						"service_name": "GET_REPAIR_ORDERS_WEBSRVC",
+						"soap_action": "http://replace.me.with.ebs.server.base.url/webservices/SOAProvider/plsql/csd_repair_orders_web/",
+						"relative_path": "webservices/SOAProvider/plsql/csd_repair_orders_web/"
+					}
+				},
+				"repair_logistics_list": {
+					"read": {
+						"service_name": "GET_LOGISTICS_LINES_WEBSRVC",
+						"soap_action": "http://replace.me.with.ebs.server.base.url/webservices/SOAProvider/plsql/csd_logistics_web/",
+						"relative_path": "webservices/SOAProvider/plsql/csd_logistics_web/"
+					}
+				},
+				"item_list": {
+					"read": {
+						"service_name": "GET_INSTANCES_BY_ITEM_SERIAL",
+						"soap_action": "http://replace.me.with.ebs.server.base.url/webservices/SOAProvider/plsql/cs_servicerequest_pub/",
+						"relative_path": "webservices/SOAProvider/plsql/cs_servicerequest_pub/"
+					}
+				},
+				"entitlement_list": {
+					"read": {
+						"service_name": "GET_CONTRACTS__1",
+						"soap_action": "http://replace.me.with.ebs.server.base.url/webservices/SOAProvider/plsql/oks_entitlements_pub/",
+						"relative_path": "webservices/SOAProvider/plsql/oks_entitlements_pub/"
+					}
+				},
+				"service_request_detail": {
+					"read": {
+						"service_name": "GET_SERVICE_REQUEST_INFO",
+						"soap_action": "http://replace.me.with.ebs.server.base.url/webservices/SOAProvider/plsql/cs_servicerequest_pub/",
+						"relative_path": "webservices/SOAProvider/plsql/cs_servicerequest_pub/"
+					},
+					"create": {
+						"service_name": "CREATE_SERVICEREQUEST",
+						"soap_action": "http://replace.me.with.ebs.server.base.url/webservices/SOAProvider/plsql/cs_servicerequest_pub/",
+						"relative_path": "webservices/SOAProvider/plsql/cs_servicerequest_pub/"
+					}
+				},
+				"service_request_interaction": {
+					"create": {
+						"service_name": "CREATE_NOTES",
+						"soap_action": "http://replace.me.with.ebs.server.base.url/webservices/SOAProvider/plsql/jtf_notes_pub/",
+						"relative_path": "webservices/SOAProvider/plsql/jtf_notes_pub/"
+					}
+				},
+				"repair_order_detail": {
+					"create": {
+						"service_name": "CREATE_REPAIRORDER",
+						"soap_action": "http://replace.me.with.ebs.server.base.url/webservices/SOAProvider/plsql/csd_repairs_pub/",
+						"relative_path": "webservices/SOAProvider/plsql/csd_repairs_pub/"
+					},
+					"update": {
+						"service_name": "CREATE_REPAIRORDER",
+						"soap_action": "http://replace.me.with.ebs.server.base.url/webservices/SOAProvider/plsql/csd_repairs_pub/",
+						"relative_path": "webservices/SOAProvider/plsql/csd_repairs_pub/"
+					}
+				},
+				"contact_list": {
+					"read": {
+						"service_name": "GET_CONTACT_LIST_INFO",
+						"soap_action": "http://replace.me.with.ebs.server.base.url/webservices/SOAProvider/plsql/hz_integration_pub/",
+						"relative_path": "webservices/SOAProvider/plsql/hz_integration_pub/"
+					}
+				},
+				"service_request_detail": {
+					"read": {
+						"service_name": "GET_SR_INFO",
+						"soap_action": "http://replace.me.with.ebs.server.base.url/webservices/SOAProvider/plsql/cs_servicerequest_pub/",
+						"relative_path": "webservices/SOAProvider/plsql/cs_servicerequest_pub/"
+					},
+					"create": {
+						"service_name": "CREATE_SERVICEREQUEST",
+						"soap_action": "http://replace.me.with.ebs.server.base.url/webservices/SOAProvider/plsql/cs_servicerequest_pub/",
+						"relative_path": "webservices/SOAProvider/plsql/cs_servicerequest_pub/"
+					},
+					"update": {
+						"service_name": "UPDATE_SERVICEREQUEST",
+						"soap_action": "http://replace.me.with.ebs.server.base.url/webservices/SOAProvider/plsql/cs_servicerequest_pub/",
+						"relative_path": "webservices/SOAProvider/plsql/cs_servicerequest_pub/"
+					}
+				},
+				"service_request_note": {
+					"create": {
+						"service_name": "SECURE_CREATE_NOTE",
+						"soap_action": "http://replace.me.with.ebs.server.base.url/webservices/SOAProvider/plsql/jtf_notes_pub/",
+						"relative_path": "webservices/SOAProvider/plsql/jtf_notes_pub/"
+					},
+					"read": {
+						"service_name": "GET_SR_NOTES_DETAILS",
+						"soap_action": "http://replace.me.with.ebs.server.base.url/webservices/SOAProvider/plsql/jtf_notes_pub/",
+						"relative_path": "webservices/SOAProvider/plsql/cs_servicerequest_pub/"
+					}
+				},
+				"service_request_list": {
+					"read": {
+						"service_name": "GET_SRINFO_BYCONTACT",
+						"soap_action": "http://replace.me.with.ebs.server.base.url/webservices/SOAProvider/plsql/cs_servicerequest_pub/",
+						"relative_path": "webservices/SOAProvider/plsql/cs_servicerequest_pub/"
+					}
+				},
+				"service_request_item_instance": {
+					"read": {
+						"service_name": "GET_ITEM_INSTANCE_DETAILS",
+						"soap_action": "http://replace.me.with.ebs.server.base.url/webservices/SOAProvider/plsql/csi_item_instance_pub/",
+						"relative_path": "webservices/SOAProvider/plsql/csi_item_instance_pub/"
+					}
+				},
+				"order": {
+					"read": {
+						"service_name": "GET_ORDER",
+						"soap_action": "http://replace.me.with.ebs.server.base.url/webservices/SOAProvider/plsql/oe_order_pub/",
+						"relative_path": "webservices/SOAProvider/plsql/oe_order_pub/"
+					}
+				},
+				"order_list": {
+					"read": {
+						"service_name": "GET_ORDERS_BY_CONTACT",
+						"soap_action": "http://replace.me.with.ebs.server.base.url/webservices/SOAProvider/plsql/oe_order_cust/",
+						"relative_path": "webservices/SOAProvider/plsql/oe_order_cust/"
+					}
+				},
+				"order_save": {
+					"read": {
+						"service_name": "PROCESS_ORDER",
+						"soap_action": "http://replace.me.with.ebs.server.base.url/webservices/SOAProvider/plsql/oe_inbound_int/",
+						"relative_path": "webservices/SOAProvider/plsql/oe_inbound_int/"
+					}
+				}
+			}
+		},
+		"postalValidation": {
+			"ext_address_validate_url": "http://production.shippingapis.com/ShippingAPITest.dll",
+			"username": "291ORACL5446"
+		}
+	}]
 }

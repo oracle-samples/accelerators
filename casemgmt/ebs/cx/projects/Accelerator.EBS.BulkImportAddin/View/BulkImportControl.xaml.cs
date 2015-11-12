@@ -5,12 +5,12 @@
  ***********************************************************************************************
  *  Accelerator Package: OSVC + EBS Enhancement
  *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
- *  OSvC release: 15.5 (May 2015)
+ *  OSvC release: 15.8 (August 2015)
  *  EBS release: 12.1.3
- *  reference: 150202-000157
- *  date: Wed Sep  2 23:11:36 PDT 2015
+ *  reference: 150505-000099, 150420-000127
+ *  date: Thu Nov 12 00:52:42 PST 2015
 
- *  revision: rnw-15-8-fixes-release-01
+ *  revision: rnw-15-11-fixes-release-1
  *  SHA1: $Id: 10a1d0f9eaa77bdf93d1192ab5b9fa853442f466 $
  * *********************************************************************************************
  *  File: BulkImportControl.xaml.cs

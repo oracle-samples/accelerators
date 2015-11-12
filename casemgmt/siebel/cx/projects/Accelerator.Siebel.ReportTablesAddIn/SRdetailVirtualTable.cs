@@ -5,13 +5,13 @@
  ***********************************************************************************************
  *  Accelerator Package: OSVC Contact Center + Siebel Case Management Accelerator
  *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
- *  OSvC release: 15.5 (May 2015)
+ *  OSvC release: 15.8 (August 2015)
  *  Siebel release: 8.1.1.15
- *  reference: 141216-000121
- *  date: Wed Sep  2 23:14:39 PDT 2015
+ *  reference: 150520-000047
+ *  date: Thu Nov 12 00:55:34 PST 2015
 
- *  revision: rnw-15-8-fixes-release-01
- *  SHA1: $Id: 260db72dad50dd7d9e0ee682f92f3efcc327d8bb $
+ *  revision: rnw-15-11-fixes-release-1
+ *  SHA1: $Id: 75c2f2d8a25b360a85cd9c57c4adcd8709f0266e $
  * *********************************************************************************************
  *  File: SRdetailVirtualTable.cs
  * *********************************************************************************************/
@@ -53,7 +53,7 @@ namespace Accelerator.Siebel.ReportTablesAddin
                 DataType = ReportColumnType.String,
                 Label = "HiddenSRconcatIncident_ID",
                 Name = "HiddenSRconcatIncident_ID",
-                CanDisplay = true,
+                CanDisplay = false,
                 CanFilter = true
             });
         }

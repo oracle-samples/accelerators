@@ -6,13 +6,13 @@
  ***********************************************************************************************
  *  Accelerator Package: OSVC Contact Center + Siebel Case Management Accelerator
  *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
- *  OSvC release: 15.5 (May 2015)
+ *  OSvC release: 15.8 (August 2015)
  *  Siebel release: 8.1.1.15
- *  reference: 141216-000121
- *  date: Wed Sep  2 23:14:34 PDT 2015
+ *  reference: 150520-000047
+ *  date: Thu Nov 12 00:55:28 PST 2015
 
- *  revision: rnw-15-8-fixes-release-01
- *  SHA1: $Id: 43f8e7464a7c9c56f2a09a76b6071df6fcde79cf $
+ *  revision: rnw-15-11-fixes-release-1
+ *  SHA1: $Id: 6f76fa150641ab827d0037c7ab4a2dec7afcdd9a $
  * *********************************************************************************************
  *  File: error.php
  * ****************************************************************************************** */
@@ -37,24 +37,29 @@ switch ($errorID) {
         break;
     case 11:
          // Siebel server error
-        list($errorTitle, $errorMessage) = array("Siebel Server Error", "Unable to resolve Siebel host");
+        list($errorTitle, $errorMessage) = array("Siebel Server Error", "There has been an error communicating with Siebel");
         break;
-        case 12:
+    case 12:
         // contact_party_id and/or contact_org_id not provided
         list($errorTitle, $errorMessage) = array("Permission Denied", "Please set Siebel Contact Party ID and/or Siebel Contact Org ID first.");
+        break;
+    case 13:
+         // configuration error
+        list($errorTitle, $errorMessage) = array("Configuration Error", 'Invalid configuration setting for CUSTOM_CFG_Accel_' . 'Ext_Integrations');
         break;
     default:
         list($errorTitle, $errorMessage) = \RightNow\Utils\Framework::getErrorMessageFromCode($errorID);
         break;
 }
 ?>
-<rn:meta title="#rn:msg:ERROR_LBL#" template="standard.php" login_required="false" />
-<div id="rn_PageTitle" class="rn_ErrorPage">
-    <h1><?php echo $errorTitle; ?></h1>
-</div>
 
-<div id="rn_PageContent" class="rn_ErrorPage">
-    <div class="rn_Padding">
-        <p><?php echo $errorMessage; ?></p>
+<rn:meta title="#rn:msg:ERROR_LBL#" template="standard.php" login_required="false" />
+
+<div class="rn_Hero">
+    <div class="rn_Container">
+        <h1><?=$errorTitle;?></h1>
     </div>
+</div>
+<div class="rn_PageContent rn_ErrorPage rn_Container">
+    <p><?=$errorMessage;?></p>
 </div>

@@ -5,13 +5,13 @@
  ***********************************************************************************************
  *  Accelerator Package: OSVC + EBS Enhancement
  *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
- *  OSvC release: 15.5 (May 2015)
+ *  OSvC release: 15.8 (August 2015)
  *  EBS release: 12.1.3
- *  reference: 150202-000157
- *  date: Wed Sep  2 23:11:41 PDT 2015
+ *  reference: 150505-000099, 150420-000127
+ *  date: Thu Nov 12 00:52:49 PST 2015
 
- *  revision: rnw-15-8-fixes-release-01
- *  SHA1: $Id: fb564e5f440d9dc1f74cb4d1e2d2845d2e5f8f56 $
+ *  revision: rnw-15-11-fixes-release-1
+ *  SHA1: $Id: f0fad2e5487974568c4bf2e03ecd68248ce3c0d7 $
  * *********************************************************************************************
  *  File: LiveEBSProvider.cs
  * *********************************************************************************************/
@@ -32,6 +32,8 @@ using ITEM_LIST = Accelerator.EBS.SharedServices.ProxyClasses.Item.APPSCSI_DATAS
 using ENTITLEMENT_LIST = Accelerator.EBS.SharedServices.ProxyClasses.Entitlement.APPSOKS_ENTITLEMENTSX226932X4X19;
 using REPAIR_ORDER_LIST = Accelerator.EBS.SharedServices.ProxyClasses.RepairOrderList.APPSCSD_REPAIR_ORDEX16435810X2X4;
 using REPAIR_LOGISTICS_LIST = Accelerator.EBS.SharedServices.ProxyClasses.RepairLogisticsList.APPSCSD_LOGISTICS_WX16435811X3X4;
+using Accelerator.EBS.SharedServices.ProxyClasses.OrderMgmt;
+using ORDERS = Accelerator.EBS.SharedServices.ProxyClasses.OrdersByContact;
 
 using NOTE = Accelerator.EBS.SharedServices.ProxyClasses.Interaction;
 using NOTE_CREATE = Accelerator.EBS.SharedServices.ProxyClasses.Interaction.InputParameters;
@@ -174,6 +176,17 @@ namespace Accelerator.EBS.SharedServices.Providers
             set;
         }
 
+        public string OrderLookupURL
+        {
+            get;
+            set;
+        }
+
+        public string OrderInboundURL
+        {
+            get;
+            set;
+        }
 
         public string ItemListURL { get; set; }
         public string ItemServiceUsername { get; set; }
@@ -236,6 +249,12 @@ namespace Accelerator.EBS.SharedServices.Providers
             ContactServiceUsername = user_name;
             ContactServicePassword = password;
             ContactServiceTimeout = timeout;
+        }
+
+        public void InitForOrder(string order_url, string inboundURL)
+        {
+            OrderLookupURL = order_url;
+            OrderInboundURL = inboundURL;
         }
 
         public void InitForItem(string list_url, string user_name, string password, int timeout)
@@ -665,6 +684,188 @@ namespace Accelerator.EBS.SharedServices.Providers
             return result;
         }
 
+        /*  call OE_ORDER_CUST_Service : GET_ORDERS_BY_CONTACT() 
+         *  Output : op
+         */
+        public ORDERS.OutputParameters LookupOrdersByContact(decimal contact_id, int _logIncidentId = 0, int _logContactId = 0)
+        {
+            string request = "";
+            string response = "";
+            string logMessage, logNote;
+
+            ORDERS.OE_ORDER_CUST_Service client = EBSProxyFactory.GetOrdersByContactServiceInstance(ConfigurationSetting.GetOrdersByCust_WSDL, ConfigurationSetting.username, ConfigurationSetting.password, ConfigurationSetting.EBSServiceTimeout);
+            ORDERS.SOAHeader hdr = new ORDERS.SOAHeader();
+            hdr.Responsibility = "ORDER_MGMT_SUPER_USER";
+            hdr.RespApplication = "ONT";
+            hdr.Org_Id = "204";
+            hdr.SecurityGroup = "STANDARD";
+            hdr.NLSLanguage = "AMERICAN";
+
+            client.SOAHeaderValue = hdr;
+     
+            ORDERS.InputParameters ip = new ORDERS.InputParameters();
+
+            ip.P_CONTACT_PARTY_ID = contact_id;
+            ip.P_CONTACT_PARTY_IDSpecified = true;
+
+            ORDERS.OutputParameters op = null;
+            Stopwatch stopwatch = new Stopwatch();
+
+            try
+            {
+                request = serializer.Serialize(ip);
+
+                logMessage = "Request of getting Orders by contact (GET_ORDERS_BY_CONTACT). ";
+                logNote = "Request Payload: " + request;
+                log.DebugLog(_logIncidentId, _logContactId, logMessage, logNote);
+                // call the web service, catch the exception right away
+                stopwatch.Start();
+                op = client.GET_ORDERS_BY_CONTACT(ip);
+                stopwatch.Stop();
+                response = serializer.Serialize(op);
+            }
+            catch (Exception ex)
+            {
+                handleEBSException(ex, "GET_ORDERS_BY_CONTACT", _logIncidentId, _logContactId);
+                // will throw the new exception (either timeout or error communicating ...)
+                throw;
+            }
+
+                logMessage = "Response of getting Order(GET_ORDERS_BY_CONTACT). ";
+                logNote = "Response Payload: " + response;
+
+                log.DebugLog(_logIncidentId, _logContactId, logMessage, logNote, (int)stopwatch.ElapsedMilliseconds);           
+
+            return op;
+        }
+
+        /*  call OE_ORDER_CUST_Service : GET_ORDERS_BY_INCIDENT() 
+         *  Output : op
+         */
+        public ORDERS.OutputParameters1 LookupOrdersByIncident(decimal incident_id, int _logIncidentId = 0, int _logContactId = 0)
+        {
+            string request = "";
+            string response = "";
+            string logMessage, logNote;
+
+            ORDERS.OE_ORDER_CUST_Service client = EBSProxyFactory.GetOrdersByContactServiceInstance(ConfigurationSetting.GetOrdersByCust_WSDL, ConfigurationSetting.username, ConfigurationSetting.password, ConfigurationSetting.EBSServiceTimeout);
+            ORDERS.SOAHeader hdr = new ORDERS.SOAHeader();
+            hdr.Responsibility = "ORDER_MGMT_SUPER_USER";
+            hdr.RespApplication = "ONT";
+            hdr.Org_Id = "204";
+            hdr.SecurityGroup = "STANDARD";
+            hdr.NLSLanguage = "AMERICAN";
+
+            client.SOAHeaderValue = hdr;
+
+            ORDERS.InputParameters1 ip = new ORDERS.InputParameters1();
+
+            ip.P_INCIDENT_NUMBER = incident_id.ToString();
+
+            ORDERS.OutputParameters1 op = null;
+            Stopwatch stopwatch = new Stopwatch();
+
+            try
+            {
+                request = serializer.Serialize(ip);
+
+                logMessage = "Request of getting Orders by incident (GET_ORDERS_BY_INCIDENT). ";
+                logNote = "Request Payload: " + request;
+                log.DebugLog(_logIncidentId, _logContactId, logMessage, logNote);
+                // call the web service, catch the exception right away
+                stopwatch.Start();
+                op = client.GET_ORDERS_BY_INCIDENT(ip);
+                stopwatch.Stop();
+                response = serializer.Serialize(op);
+            }
+            catch (Exception ex)
+            {
+                handleEBSException(ex, "GET_ORDERS_BY_INCIDENT", _logIncidentId, _logContactId);
+                // will throw the new exception (either timeout or error communicating ...)
+                throw;
+            }
+
+            logMessage = "Response of getting Order(GET_ORDERS_BY_INCIDENT). ";
+            logNote = "Response Payload: " + response;
+
+            log.DebugLog(_logIncidentId, _logContactId, logMessage, logNote, (int)stopwatch.ElapsedMilliseconds);
+
+            return op;
+        }
+
+        /*  call OE_ORDER_PUB_Service : GET_ORDER() 
+         *  Output : op.X_HEADER_VAL_REC
+         */
+        public OutputParameters2 LookupOrderDetail(decimal order_id, int _logIncidentId = 0, int _logContactId = 0)
+        {
+            string request = "";
+            string response = "";
+            string logMessage, logNote;
+            // reuse SR user, pwd, timeout settting, the same
+            
+            if (String.IsNullOrWhiteSpace(OrderLookupURL))
+            {
+                throw new Exception("Provider's InitForOrder not run.");
+            }
+
+            OE_ORDER_PUB_Service client = EBSProxyFactory.GetOrderServiceInstance(OrderLookupURL, ConfigurationSetting.username, ConfigurationSetting.password, ConfigurationSetting.EBSServiceTimeout);
+            SOAHeader hdr = new SOAHeader();
+            hdr.Responsibility = "ORDER_MGMT_SUPER_USER";
+            hdr.RespApplication = "ONT";
+            hdr.Org_Id = "204";
+            hdr.SecurityGroup = "STANDARD";
+            hdr.NLSLanguage = "AMERICAN";
+
+            client.SOAHeaderValue = hdr;
+
+            InputParameters2 ip = new InputParameters2();
+
+            ip.P_API_VERSION_NUMBER = 1;
+            ip.P_API_VERSION_NUMBERSpecified = true;
+            ip.P_INIT_MSG_LIST = "T";
+            ip.P_RETURN_VALUES = "T";
+            ip.P_HEADER_ID = order_id;
+            ip.P_HEADER_IDSpecified = true;
+
+            OutputParameters2 op = null;
+            Stopwatch stopwatch = new Stopwatch();
+
+            try
+            {
+                request = serializer.Serialize(ip);
+
+                logMessage = "Request of getting Order (GET_ORDER). ";
+                logNote = "Request Payload: " + request;
+                log.DebugLog(_logIncidentId, _logContactId, logMessage, logNote);
+                // call the web service, catch the exception right away
+                stopwatch.Start();
+                op = client.GET_ORDER(ip);
+                stopwatch.Stop();
+                response = serializer.Serialize(op);
+            }
+            catch (Exception ex)
+            {
+                handleEBSException(ex, "GET_ORDER", _logIncidentId, _logContactId);
+                // will throw the new exception (either timeout or error communicating ...)
+                throw;
+            }
+
+            if (op.X_RETURN_STATUS == "S")
+            {
+                logMessage = "Response of getting Order(GET_ORDER). ";
+                logNote = "Response Payload: " + response;
+
+                log.DebugLog(_logIncidentId, _logContactId, logMessage, logNote, (int)stopwatch.ElapsedMilliseconds);
+            }
+            else
+            {
+                logMessage = "Response of getting Order (GET_ORDER (Failure). " + op.X_MSG_DATA;
+                logNote = "Response Payload: " + response;
+                log.ErrorLog(_logIncidentId, _logContactId, logMessage, logNote);
+            }
+
+            return op;
+        }
         /*  call CS_SERVICEREQUEST_PUB_Service : GET_SR_INFO
          *  Output : op.X_GETSR_OUT_REC
          *  call dictAddProperty() to add the individual property name, type, and value
@@ -1087,11 +1288,11 @@ namespace Accelerator.EBS.SharedServices.Providers
 
                         logMessage = "Request of updating Repair Order(Failure). RO Number = " + result.RepairNumber + " Error: " + result.ErrorMessage;
                         logNote = "Request Payload: " + request;
-                        log.NoticeLog(_logIncidentId, _logContactId, logMessage, logNote);
+                        log.ErrorLog(_logIncidentId, _logContactId, logMessage, logNote);
 
                         logMessage = "Response of updating Repair Order (Failure). RO Number = " + result.RepairNumber + " Error: " + result.ErrorMessage;
                         logNote = "Response Payload: " + response;
-                        log.NoticeLog(_logIncidentId, _logContactId, logMessage, logNote);
+                        log.ErrorLog(_logIncidentId, _logContactId, logMessage, logNote);
 
                         result.RepairNumber = "-1";
                     }
@@ -1278,9 +1479,9 @@ namespace Accelerator.EBS.SharedServices.Providers
 
         }
 
-        public Contact[] LookupContactList(string firstname, string lastname, string phone, string email, int _logIncidentId = 0, int _logContactId = 0)
+        public ContactModel[] LookupContactList(string firstname, string lastname, string phone, string email, int _logIncidentId = 0, int _logContactId = 0)
         {
-            Contact[] retvals = null;
+            ContactModel[] retvals = null;
             string request = "";
             string response = "";
             string logMessage, logNote;
@@ -1337,11 +1538,11 @@ namespace Accelerator.EBS.SharedServices.Providers
 
                 if (op_contact_list.X_RETURN_STATUS == "S")
                 {
-                    List<Contact> contacts = new List<Contact>();
+                    List<ContactModel> contacts = new List<ContactModel>();
 
                     foreach (CONTACT.APPSHZ_INTEGRATION_PX3348183X1X7 op in op_contact_list.X_CONTACT_REC_TBL)
                     {
-                        Contact contact = new Contact();
+                        ContactModel contact = new ContactModel();
                         contact.ContactPartyID = op.RELATIONSHIP_PARTY_ID;
                         contact.FirstName = op.PERSON_FIRST_NAME;
                         contact.LastName = op.PERSON_LAST_NAME;
@@ -1362,8 +1563,8 @@ namespace Accelerator.EBS.SharedServices.Providers
                 }
                 else
                 {
-                    List<Contact> contacts = new List<Contact>();
-                    Contact contact = new Contact();
+                    List<ContactModel> contacts = new List<ContactModel>();
+                    ContactModel contact = new ContactModel();
                     contact.ErrorMessage = "There has been an error communicating with EBS. Please check log for detail.";
                     contacts.Add(contact);
                     retvals = contacts.ToArray();
@@ -1380,8 +1581,8 @@ namespace Accelerator.EBS.SharedServices.Providers
 
             catch (Exception ex)
             {
-                List<Contact> contacts = new List<Contact>();
-                Contact contact = new Contact();
+                List<ContactModel> contacts = new List<ContactModel>();
+                ContactModel contact = new ContactModel();
                 contact.ErrorMessage = "There has been an error communicating with EBS. Please check log for detail.";
                 contacts.Add(contact);
                 retvals = contacts.ToArray();
@@ -1462,7 +1663,7 @@ namespace Accelerator.EBS.SharedServices.Providers
                 log.ErrorLog(_logIncidentId, _logContactId, logMessage, logNote);
             }
             Dictionary<string, string> dictDetail = new Dictionary<string, string>();
-            Contact[] retvals = new Contact[op.X_CONTACT_REC_TBL.Length];
+            ContactModel[] retvals = new ContactModel[op.X_CONTACT_REC_TBL.Length];
 
             foreach (CONTACT.APPSHZ_INTEGRATION_PX3348183X1X7 contact in op.X_CONTACT_REC_TBL)
             {

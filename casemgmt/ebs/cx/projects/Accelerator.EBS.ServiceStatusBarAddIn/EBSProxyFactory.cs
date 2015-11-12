@@ -5,13 +5,13 @@
  ***********************************************************************************************
  *  Accelerator Package: OSVC + EBS Enhancement
  *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
- *  OSvC release: 15.5 (May 2015)
+ *  OSvC release: 15.8 (August 2015)
  *  EBS release: 12.1.3
- *  reference: 150202-000157
- *  date: Wed Sep  2 23:11:40 PDT 2015
+ *  reference: 150505-000099, 150420-000127
+ *  date: Thu Nov 12 00:52:47 PST 2015
 
- *  revision: rnw-15-8-fixes-release-01
- *  SHA1: $Id: df0c843ae408e3ae1f7d51695e2f65cbc706ed65 $
+ *  revision: rnw-15-11-fixes-release-1
+ *  SHA1: $Id: 0836ba6218bca26beb6d6ae20a59905263d222d6 $
  * *********************************************************************************************
  *  File: EBSProxyFactory.cs
  * *********************************************************************************************/
@@ -25,7 +25,8 @@ using Accelerator.EBS.SharedServices.ProxyClasses.Item;
 using Accelerator.EBS.SharedServices.ProxyClasses.Entitlement;
 using Accelerator.EBS.SharedServices.ProxyClasses.RepairOrderList;
 using Accelerator.EBS.SharedServices.ProxyClasses.RepairLogisticsList;
-
+using Accelerator.EBS.SharedServices.ProxyClasses.OrderMgmt;
+using Accelerator.EBS.SharedServices.ProxyClasses.OrdersByContact;
 
 using Microsoft.Web.Services3;
 using Microsoft.Web.Services3.Security;
@@ -38,6 +39,7 @@ using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.ServiceModel.Security;
 using System.Text;
+using Accelerator.EBS.SharedServices.ProxyClasses.OrderMgmtInbound;
 
 namespace Accelerator.EBS.SharedServices
 {
@@ -51,6 +53,9 @@ namespace Accelerator.EBS.SharedServices
         private static OKS_ENTITLEMENTS_PUB_Service _entitlement_client;
         private static CSD_REPAIR_ORDERS_WEB_Service _repair_order_list_client;
         private static CSD_LOGISTICS_WEB_Service _repair_logistics_client;
+        private static OE_ORDER_PUB_Service _order_client;
+        private static OE_ORDER_CUST_Service _orderByCust_client;
+        private static OE_INBOUND_INT_Service _order_inbound;
 
         private static void serviceClientSetting(WebServicesClientProtocol serviceClient, string url, string username = null, string password = null, int timeout = -1)
         {
@@ -79,6 +84,35 @@ namespace Accelerator.EBS.SharedServices
             return _sr_client;
         }
 
+        public static OE_ORDER_PUB_Service GetOrderServiceInstance(string url, string username = null, string password = null, int timeout = -1)
+        {
+            if (_order_client == null)
+            {
+                _order_client = new OE_ORDER_PUB_Service();
+                serviceClientSetting(_order_client, url, username, password, timeout);
+            }
+            return _order_client;
+        }
+
+        public static OE_INBOUND_INT_Service GetOrderInboundServiceInstance(string url, string username = null, string password = null, int timeout = -1)
+        {
+            if (_order_inbound == null)
+            {
+                _order_inbound = new OE_INBOUND_INT_Service();
+                serviceClientSetting(_order_inbound, url, username, password, timeout);
+            }
+            return _order_inbound;
+        }
+
+        public static OE_ORDER_CUST_Service GetOrdersByContactServiceInstance(string url, string username = null, string password = null, int timeout = -1)
+        {
+            if (_orderByCust_client == null)
+            {
+                _orderByCust_client = new OE_ORDER_CUST_Service();
+                serviceClientSetting(_orderByCust_client, url, username, password, timeout);
+            }
+            return _orderByCust_client;
+        }
 
         public static JTF_NOTES_PUB_Service GetNoteInstance(string url, string username = null, string password = null, int timeout = -1)
         {

@@ -7,12 +7,12 @@
  ***********************************************************************************************
  *  Accelerator Package: OSVC + EBS Enhancement
  *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
- *  OSvC release: 15.5 (May 2015)
+ *  OSvC release: 15.8 (August 2015)
  *  EBS release: 12.1.3
- *  reference: 150202-000157
- *  date: Wed Sep  2 23:11:32 PDT 2015
+ *  reference: 150505-000099, 150420-000127
+ *  date: Thu Nov 12 00:52:36 PST 2015
 
- *  revision: rnw-15-8-fixes-release-01
+ *  revision: rnw-15-11-fixes-release-1
  *  SHA1: $Id: 2753afb1636999fde611d4269542f4c9ebea2739 $
  * *********************************************************************************************
  *  File: controller.php

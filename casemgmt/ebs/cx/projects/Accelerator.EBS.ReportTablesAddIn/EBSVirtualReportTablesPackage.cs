@@ -5,13 +5,13 @@
  ***********************************************************************************************
  *  Accelerator Package: OSVC + EBS Enhancement
  *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
- *  OSvC release: 15.5 (May 2015)
+ *  OSvC release: 15.8 (August 2015)
  *  EBS release: 12.1.3
- *  reference: 150202-000157
- *  date: Wed Sep  2 23:11:38 PDT 2015
+ *  reference: 150505-000099, 150420-000127
+ *  date: Thu Nov 12 00:52:45 PST 2015
 
- *  revision: rnw-15-8-fixes-release-01
- *  SHA1: $Id: 393fc313733f60ca3eb2a0755ad4de3a5e453b23 $
+ *  revision: rnw-15-11-fixes-release-1
+ *  SHA1: $Id: 56d805512462e8bea8266fa03eccb8b4f42821db $
  * *********************************************************************************************
  *  File: EBSVirtualReportTablesPackage.cs
  * *********************************************************************************************/
@@ -21,6 +21,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using Accelerator.EBS.SharedServices;
 using RightNow.AddIns.AddInViews;
+using Accelerator.EBS.SharedServices.ProxyClasses.OrderMgmt;
 
 /*    class EBSVirtualReportTablesPackage is the tables package
  *    and Initialize() is the entry point for the add-in
@@ -76,8 +77,14 @@ namespace Accelerator.EBS.ReportTablesAddin
                                 new ItemListVirtualTable(this),
                                 new EntitlementListVirtualTable(this),
                                 new RepairOrderVirtualTable(this),
-                                new RepairLogisticsVirtualTable(this)
+                                new RepairLogisticsVirtualTable(this),
+                                new OrderHeaderByContactVirtualTable(this),
+                                new OrderHeaderByIncidentVirtualTable(this)
                             };
+
+                IReportTable  orderHeaderTable = new OrderMgmtHeaderVirtualTable(this, ref reportTables);
+                reportTables.Add(orderHeaderTable);
+
                 return reportTables;
             }
         }

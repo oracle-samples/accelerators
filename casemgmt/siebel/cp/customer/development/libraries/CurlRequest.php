@@ -7,13 +7,13 @@
  ***********************************************************************************************
  *  Accelerator Package: OSVC Contact Center + Siebel Case Management Accelerator
  *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
- *  OSvC release: 15.5 (May 2015)
+ *  OSvC release: 15.8 (August 2015)
  *  Siebel release: 8.1.1.15
- *  reference: 141216-000121
- *  date: Wed Sep  2 23:14:32 PDT 2015
+ *  reference: 150520-000047
+ *  date: Thu Nov 12 00:55:26 PST 2015
 
- *  revision: rnw-15-8-fixes-release-01
- *  SHA1: $Id: ec9a2b914c6c449acc674eb036a3b5aa0f1ae8c8 $
+ *  revision: rnw-15-11-fixes-release-1
+ *  SHA1: $Id: 1fde71c5c57188989a634f01aa5636dbdd3f129b $
  * *********************************************************************************************
  *  File: CurlRequest.php
  * ****************************************************************************************** */
@@ -24,20 +24,19 @@ use RightNow\Connect\v1_2 as RNCPHP;
 
 class CurlRequest {
 
-    const CONNECT_TIMEOUT = 5000;
-    const TIMEOUT = 50000;
+    const CONNECT_TIMEOUT = 10;
+    const TIMEOUT = 30;
 
     private $log;
 
     function __construct() {
         $CI = get_instance();
         $CI->load->library('Utility');
-
         $this->log = $CI->utility->getLogWrapper();
     }
 
     /**
-     * Send soap request to 3rd party server using cURL/
+     * Send soap(or HTTP!) request to 3rd party server using cURL.
      * The format of the response is
      * array(
      *  'status' => true/false,  // indicate if the curl request is successful
@@ -45,16 +44,16 @@ class CurlRequest {
      * )
      * @param string $url SOAP request URL
      * @param array $headers HTTP headers of the SOAP request
-     * @param string $postString SOAP request payload
+     * @param string $postString Request payload
      * @param string $logMsg Log message
      * @param RNCPHP\Incident $incident Incident related to the request
      * @param RNCPHP\Contact $contact Contact related to the request
-     * @return array Soap request result
+     * @return array SOAP request result
      */
     function sendCurlSoapRequest($url, array $headers, $postString, $logMsg = null, RNCPHP\Incident $incident = null, RNCPHP\Contact $contact = null) {
         // log the request payload and HTTP headers
         $logNote = <<<LOG
-REQUEST=>   
+REQUEST=>
 {$postString}
 
 -----
@@ -62,9 +61,9 @@ ENDPOINT=>  {$url}
 HTTP HEADERS=>
 LOG;
         foreach ($headers as $header) {
-            $logNote .= "\n" . $header;
+            $logNote .= '\n' . $header;
         }
-        $this->log->debug("{$logMsg} cURL Request", __METHOD__, array($incident, $contact), $logNote);
+        $this->log->debug($logMsg . 'cURL Request', __METHOD__, array($incident, $contact), $logNote);
 
         // start time
         $startTime = intval(microtime(true) * 1000);
@@ -72,7 +71,8 @@ LOG;
         // load curl
         if (!extension_loaded('curl') && !\load_curl()) {
             $result['status'] = false;
-            $result['response'] = __METHOD__ . " :: Server Error :: cUrl can't be loaded";
+            $result['response'] = __METHOD__ . ' :: Server Error :: cUrl cannot be loaded';
+            $this->log->error($logMsg . ' :: Server Error :: cUrl can not be loaded', __METHOD__, array($incident, $contact), $logNote);
             return $result;
         }
 
@@ -84,36 +84,45 @@ LOG;
         curl_setopt($soapCURL, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($soapCURL, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($soapCURL, CURLOPT_SSL_VERIFYHOST, false);
-        curl_setopt($soapCURL, CURLOPT_POST, true);
-        curl_setopt($soapCURL, CURLOPT_POSTFIELDS, $postString);
         curl_setopt($soapCURL, CURLOPT_HTTPHEADER, $headers);
+        // addtnl param: Method
+        if ($postString == NULL) {
+            curl_setopt($soapCURL, CURLOPT_HTTPGET, true);
+            curl_setopt($soapCURL, CURLOPT_HTTPPROXYTUNNEL, true);
+            curl_setopt($soapCURL, CURLOPT_PROXY, 'www-proxy.us.oracle.com');
+            curl_setopt($soapCURL, CURLOPT_PROXYPORT, 80);
+            curl_setopt($soapCURL, CURLOPT_PROXYTYPE, CURLPROXY_HTTP);
+        } else {
+            curl_setopt($soapCURL, CURLOPT_POST, true);
+            curl_setopt($soapCURL, CURLOPT_POSTFIELDS, $postString);
+        }
 
         // execute cURL
         $response = curl_exec($soapCURL);
         $err = curl_error($soapCURL);
 
-        // log the soap response
+        // check response
         $endTime = intval(microtime(true) * 1000);
-        $this->log->debug("{$logMsg} cURL Response", __METHOD__, array($incident, $contact), $response, $endTime - $startTime);
-
         if (empty($err)) {
             $info = curl_getinfo($soapCURL);
             if ($info['http_code'] !== 200) {
-                $result['status'] = false;
+                $result['status'] = $info['http_code'];
                 $result['response'] = $response;
+               $this->log->error("{$logMsg} cURL Response({$info['http_code']})", __METHOD__, array($incident, $contact), $response, $endTime - $startTime);
             } else {
-                $result['status'] = true;
+                $result['status'] = $info['http_code'];
                 $result['response'] = $response;
+                $this->log->debug("{$logMsg} cURL Response", __METHOD__, array($incident, $contact), $response, $endTime - $startTime);
             }
         } else {
-            $result['status'] = false;
+            $result['status'] = -1;
             $result['response'] = $err;
-            $this->log->error("{$logMsg} cURL Error", __METHOD__, array($incident, $contact), $err);
+            $this->log->error("{$logMsg} cURL Error", __METHOD__, array($incident, $contact), $err, $endTime - $startTime);
         }
 
         curl_close($soapCURL);
 
         return $result;
     }
-
+    
 }

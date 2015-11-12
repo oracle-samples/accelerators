@@ -5,13 +5,13 @@
  ***********************************************************************************************
  *  Accelerator Package: OSVC + EBS Enhancement
  *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
- *  OSvC release: 15.5 (May 2015)
+ *  OSvC release: 15.8 (August 2015)
  *  EBS release: 12.1.3
- *  reference: 150202-000157
- *  date: Wed Sep  2 23:11:32 PDT 2015
+ *  reference: 150505-000099, 150420-000127
+ *  date: Thu Nov 12 00:52:37 PST 2015
 
- *  revision: rnw-15-8-fixes-release-01
- *  SHA1: $Id: 9175b508dcc7af53e207166139a6daa13a4ec715 $
+ *  revision: rnw-15-11-fixes-release-1
+ *  SHA1: $Id: 07ff810c2ee400d53c19d227b1bf7f2f9d70621f $
  * *********************************************************************************************
  *  File: logic.js
  * ****************************************************************************************** */
@@ -708,7 +708,7 @@ Custom.Widgets.EbsServiceRequest.SerialNumberInput = RightNow.Field.extend({
         this._showSpinner();
 
         if (this.input.get('value') === '') {
-            this.displayVerifyResult(false, 'Please input serial number first');
+            this.displayVerifyResult(false, 'Please input serial number first', false);
             this._hideSpinner();
             return;
         }
@@ -729,10 +729,11 @@ Custom.Widgets.EbsServiceRequest.SerialNumberInput = RightNow.Field.extend({
         });
     },
     /**
-     * Failure handler for the Ajax request
+     * Failure handler for the AJAX request
      */
     ajaxFailureHandler: function() {
         this._hideSpinner();
+        this.displayVerifyResult(false, this.data.attrs.ajax_timeout_message, true);
     },
     /**
      * Callback function of the validation Ajax request.
@@ -743,17 +744,17 @@ Custom.Widgets.EbsServiceRequest.SerialNumberInput = RightNow.Field.extend({
         this._hideSpinner();
 
         if (typeof (result) === 'undefined' || result === null) {
-            this.displayVerifyResult(false, this.data.attrs.ajax_failure_message);
+            this.displayVerifyResult(false, this.data.attrs.ajax_failure_message, true);
             return false;
         }
 
         var eventObject = this.createEventObject();
         if (result.isValid === false) {
-            this.displayVerifyResult(false, result.message);
+            this.displayVerifyResult(false, result.message, result.isError);
             return false;
         }
 
-        this.displayVerifyResult(true, result.message);
+        this.displayVerifyResult(true, result.message, result.isError);
         RightNow.Event.fire('evt_formFieldValidatePass', eventObject);
         return eventObject;
     },
@@ -762,18 +763,21 @@ Custom.Widgets.EbsServiceRequest.SerialNumberInput = RightNow.Field.extend({
      * @param {boolean} Indicates if the serial number is valid
      * @param {String} Validation result message
      */
-    displayVerifyResult: function(status, message) {
+    displayVerifyResult: function(isValid, message, isError) {
         this.toggleErrorIndicator(false);
         this._validationResultDisplay.empty();
         this._validationResultDisplay.removeClass('rn_Hidden');
         this._validationResultDisplay.removeClass('rn_InvalidSerialNumberValidationHint');
         this._validationResultDisplay.removeClass('rn_ValidSerialNumberValidationResult');
 
-        if (status === false) {
+        if (isValid === false) {
             if (this.data.js.development_mode) {
-                this._validationResultDisplay.insert(message);
+               this._validationResultDisplay.insert(message);
             } else {
-                this._validationResultDisplay.insert(this.data.attrs.ajax_failure_message);
+                 if(isError)
+                    this._validationResultDisplay.insert(this.data.attrs.ajax_failure_message);
+                 else
+                    this._validationResultDisplay.insert(message);
             }
 
             this._validationResultDisplay.addClass('rn_InvalidSerialNumberValidationHint');

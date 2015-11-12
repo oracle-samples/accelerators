@@ -13,7 +13,7 @@ Custom.Widgets.SiebelServiceRequest.SrInteractionDisplay = RightNow.Widgets.exte
         this.getInteractionAjaxEndpoint();
     },
     /**
-     * Makes an AJAX request for `getInteraction_ajax_endpoint`.
+     * Makes an AJAX request for `get_interaction_ajax_endpoint`.
      */
     getInteractionAjaxEndpoint: function() {
         // Make AJAX request:
@@ -32,10 +32,10 @@ Custom.Widgets.SiebelServiceRequest.SrInteractionDisplay = RightNow.Widgets.exte
         });
     },
     /**
-     * Ajax request failure hander
+     * Failure handler for the AJAX request
      */
     ajaxFailureHandler: function() {
-        this._showErrorMessage(this.data.attrs.ajax_failure_message);
+        this._showErrorMessage(this.data.attrs.ajax_timeout_message);
     },
     /**
      * Display error message
@@ -49,16 +49,16 @@ Custom.Widgets.SiebelServiceRequest.SrInteractionDisplay = RightNow.Widgets.exte
         }
     },
     /**
-     * Handles the AJAX response for `default_ajax_endpoint`.
+     * Handles the AJAX response for `get_interaction_ajax_endpoint`.
      * @param {object} response JSON-parsed response from the server
-     * @param {object} originalEventObj `eventObj` from #getDefault_ajax_endpoint
+     * @param {object} originalEventObj `eventObj` from #get_interaction_ajax_endpoint
      */
     getInteractionAjaxEndpointCallback: function(response) {
         if (response.error !== null) {
             this._showErrorMessage(response.error);
             return;
         }
-        
+
         this.renderView(response.result);
         this._hideSpinner();
     },

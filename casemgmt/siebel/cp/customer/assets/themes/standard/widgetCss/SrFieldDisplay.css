@@ -1,0 +1,33 @@
+/* * *******************************************************************************************
+ *  This file is part of the Oracle Service Cloud Accelerator Reference Integration set published
+ *  by Oracle Service Cloud under the MIT license (MIT) included in the original distribution.
+ *  Copyright (c) 2014, 2015, Oracle and/or its affiliates. All rights reserved.
+ ***********************************************************************************************
+ *  Accelerator Package: OSVC Contact Center + Siebel Case Management Accelerator
+ *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
+ *  OSvC release: 15.8 (August 2015)
+ *  Siebel release: 8.1.1.15
+ *  reference: 150520-000047
+ *  date: Thu Nov 12 00:55:26 PST 2015
+
+ *  revision: rnw-15-11-fixes-release-1
+ *  SHA1: $Id: 7651680aab5318a94c65a0f89173444c7f7b2728 $
+ * *********************************************************************************************
+ *  File: SrFieldDisplay.css
+ * ****************************************************************************************** */
+
+.rn_SrFieldDisplay .rn_DataLabel {
+    float: left;
+    font-weight: bold;
+}
+
+.rn_SrFieldDisplay .rn_DataValue {
+    margin-left: 180px;
+    word-wrap: break-word;
+}
+
+.rn_SrFieldDisplay .rn_DataValue.rn_LeftJustify {
+    clear: left;
+    margin-left: 0;
+    padding-bottom: .5em;
+}

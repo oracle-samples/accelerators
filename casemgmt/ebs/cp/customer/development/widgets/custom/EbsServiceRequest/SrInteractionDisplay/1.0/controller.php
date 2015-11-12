@@ -7,13 +7,13 @@
  ***********************************************************************************************
  *  Accelerator Package: OSVC + EBS Enhancement
  *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
- *  OSvC release: 15.5 (May 2015)
+ *  OSvC release: 15.8 (August 2015)
  *  EBS release: 12.1.3
- *  reference: 150202-000157
- *  date: Wed Sep  2 23:11:33 PDT 2015
+ *  reference: 150505-000099, 150420-000127
+ *  date: Thu Nov 12 00:52:38 PST 2015
 
- *  revision: rnw-15-8-fixes-release-01
- *  SHA1: $Id: ed8c5f5ab8a56a8a33b882d7c04ffb8211640549 $
+ *  revision: rnw-15-11-fixes-release-1
+ *  SHA1: $Id: a6b1bcd9d7011921779fe1248511696c4bdc0e43 $
  * *********************************************************************************************
  *  File: controller.php
  * ****************************************************************************************** */
@@ -80,10 +80,6 @@ class SrInteractionDisplay extends \RightNow\Libraries\Widget\Base {
             if (!is_null($incident)) {
                 $srID = $incident->CustomFields->Accelerator->ebs_sr_id;
             }
-        }
-        if (!$srID) {
-            echo $this->reportError('Unable to get Service Request ID');
-            return;
         }
 
         // render data to javascript

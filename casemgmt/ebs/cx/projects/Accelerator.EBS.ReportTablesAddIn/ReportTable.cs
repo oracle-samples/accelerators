@@ -5,13 +5,13 @@
  ***********************************************************************************************
  *  Accelerator Package: OSVC + EBS Enhancement
  *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
- *  OSvC release: 15.5 (May 2015)
+ *  OSvC release: 15.8 (August 2015)
  *  EBS release: 12.1.3
- *  reference: 150202-000157
- *  date: Wed Sep  2 23:11:39 PDT 2015
+ *  reference: 150505-000099, 150420-000127
+ *  date: Thu Nov 12 00:52:46 PST 2015
 
- *  revision: rnw-15-8-fixes-release-01
- *  SHA1: $Id: 4bb5802d755d36d61591ddd7d3948ce11a233efd $
+ *  revision: rnw-15-11-fixes-release-1
+ *  SHA1: $Id: a309b990bc9f9fcdd91ae14271a079e522133a1b $
  * *********************************************************************************************
  *  File: ReportTable.cs
  * *********************************************************************************************/
@@ -22,6 +22,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using Accelerator.EBS.SharedServices;
 using RightNow.AddIns.AddInViews;
+using System.Reflection;
 
 /*    class ReportTable comes with the sample code
  *    It has the table Description, Label, Name, 
@@ -72,6 +73,54 @@ namespace Accelerator.EBS.ReportTablesAddin
                     return cusAttr.GenericField.DataValue.Value != null ? (int)cusAttr.GenericField.DataValue.Value : 0;
             }
             return 0;
+        }
+
+        // get the ebs_order_id custom attribute on Incident Workspace
+        protected int getEbsOrderIdCustomAttr(IIncident incidentRecord)
+        {
+            IList<ICustomAttribute> customAttributes = incidentRecord.CustomAttributes;
+            foreach (ICustomAttribute cusAttr in customAttributes)
+            {
+                if (cusAttr.PackageName == "Accelerator" && cusAttr.GenericField.Name == "Accelerator$ebs_order_id")
+                    return cusAttr.GenericField.DataValue.Value != null ? (int)cusAttr.GenericField.DataValue.Value : 0;
+            }
+            return 0;
+        }
+
+        // add the columns dynamically for order management tables (can be backported for other tables)
+        protected void addColumns(Type tableInfo)
+        {
+            foreach (PropertyInfo propertyInfo in tableInfo.GetProperties())
+            {
+                if (propertyInfo.PropertyType.Name == "Boolean" && propertyInfo.Name.EndsWith("Specified"))
+                    continue;
+                else
+                {
+                    ReportColumn reportCol = new ReportColumn();
+                    reportCol.Name = propertyInfo.Name;
+                    reportCol.Label = propertyInfo.Name;
+                    reportCol.CanDisplay = true;
+                    reportCol.CanFilter = true;
+
+                    switch (propertyInfo.PropertyType.Name)
+                    {
+                        case "Nullable`1": // because of System.Nullable<generic>
+                            string nullableType = propertyInfo.PropertyType.GetGenericArguments()[0].ToString();
+                            if (nullableType == "System.Decimal")
+                                reportCol.DataType = ReportColumnType.Integer;
+                            else if (nullableType == "System.DateTime")
+                                reportCol.DataType = ReportColumnType.DateTime;
+                            break;
+                        case "String":
+                            reportCol.DataType = ReportColumnType.String;
+                            break;
+                        case "Boolean":
+                            reportCol.DataType = ReportColumnType.Boolean;
+                            break;
+                    }
+                    this.Columns.Add(reportCol);
+                }
+            }
         }
 
         // add the columns dynamically

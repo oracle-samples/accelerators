@@ -6,12 +6,12 @@
   <aux xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
   <cdate_offset xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
   <co_version xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
-  <created xmlns="urn:obj.api.rightnow.com">2015-02-19T22:38:44Z</created>
+  <created xmlns="urn:obj.api.rightnow.com">2015-09-08T16:38:29Z</created>
   <file_id xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
   <filters xmlns="urn:obj.api.rightnow.com">
     <filter_item>
       <applies_to xsi:nil="true" />
-      <data_type>0</data_type>
+      <data_type>3</data_type>
       <fltr_id>1</fltr_id>
       <oper>1</oper>
       <optl_id xsi:nil="true" />
@@ -19,8 +19,8 @@
       <revision>1</revision>
       <type>1</type>
       <val1>SRData$ContactDetailTable.PERSON_PARTY_ID</val1>
-      <val1_attrs>0</val1_attrs>
-      <val1_col_refs xsi:nil="true" />
+      <val1_attrs>1</val1_attrs>
+      <val1_col_refs>SRData$ContactDetailTable.PERSON_PARTY_ID;32002</val1_col_refs>
       <val2 xsi:nil="true" />
       <val2_col_refs xsi:nil="true" />
       <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
@@ -58,11 +58,11 @@
           <col_id>1</col_id>
           <col_rf>1</col_rf>
           <comp_opts xsi:nil="true" />
-          <data_type>0</data_type>
+          <data_type>5</data_type>
           <display_order>1</display_order>
           <group_order xsi:nil="true" />
           <max_len xsi:nil="true" />
-          <min_vuse xsi:nil="true" />
+          <min_vuse>23</min_vuse>
           <opts xsi:nil="true" />
           <rpt_links />
           <sort_direction xsi:nil="true" />
@@ -70,8 +70,8 @@
           <trend_opts xsi:nil="true" />
           <type>1</type>
           <val>SRData$ContactDetailTable.ORG_NAME</val>
-          <val_attrs>0</val_attrs>
-          <val_col_refs xsi:nil="true" />
+          <val_attrs>1</val_attrs>
+          <val_col_refs>SRData$ContactDetailTable.ORG_NAME;32002</val_col_refs>
           <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;UnitType&gt;Auto&lt;/UnitType&gt;
@@ -91,11 +91,11 @@
           <col_id>2</col_id>
           <col_rf>2</col_rf>
           <comp_opts xsi:nil="true" />
-          <data_type>0</data_type>
+          <data_type>5</data_type>
           <display_order>2</display_order>
           <group_order xsi:nil="true" />
           <max_len xsi:nil="true" />
-          <min_vuse xsi:nil="true" />
+          <min_vuse>23</min_vuse>
           <opts xsi:nil="true" />
           <rpt_links />
           <sort_direction xsi:nil="true" />
@@ -103,8 +103,8 @@
           <trend_opts xsi:nil="true" />
           <type>1</type>
           <val>SRData$ContactDetailTable.DEPARTMENT</val>
-          <val_attrs>0</val_attrs>
-          <val_col_refs xsi:nil="true" />
+          <val_attrs>1</val_attrs>
+          <val_col_refs>SRData$ContactDetailTable.DEPARTMENT;32002</val_col_refs>
           <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;UnitType&gt;Auto&lt;/UnitType&gt;
@@ -124,11 +124,11 @@
           <col_id>3</col_id>
           <col_rf>3</col_rf>
           <comp_opts xsi:nil="true" />
-          <data_type>0</data_type>
+          <data_type>5</data_type>
           <display_order>3</display_order>
           <group_order xsi:nil="true" />
           <max_len xsi:nil="true" />
-          <min_vuse xsi:nil="true" />
+          <min_vuse>23</min_vuse>
           <opts xsi:nil="true" />
           <rpt_links />
           <sort_direction xsi:nil="true" />
@@ -136,8 +136,8 @@
           <trend_opts xsi:nil="true" />
           <type>1</type>
           <val>SRData$ContactDetailTable.PERSON_FIRST_NAME</val>
-          <val_attrs>0</val_attrs>
-          <val_col_refs xsi:nil="true" />
+          <val_attrs>1</val_attrs>
+          <val_col_refs>SRData$ContactDetailTable.PERSON_FIRST_NAME;32002</val_col_refs>
           <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;UnitType&gt;Auto&lt;/UnitType&gt;
@@ -157,11 +157,11 @@
           <col_id>4</col_id>
           <col_rf>4</col_rf>
           <comp_opts xsi:nil="true" />
-          <data_type>0</data_type>
+          <data_type>5</data_type>
           <display_order>4</display_order>
           <group_order xsi:nil="true" />
           <max_len xsi:nil="true" />
-          <min_vuse xsi:nil="true" />
+          <min_vuse>23</min_vuse>
           <opts xsi:nil="true" />
           <rpt_links />
           <sort_direction xsi:nil="true" />
@@ -169,8 +169,8 @@
           <trend_opts xsi:nil="true" />
           <type>1</type>
           <val>SRData$ContactDetailTable.PERSON_LAST_NAME</val>
-          <val_attrs>0</val_attrs>
-          <val_col_refs xsi:nil="true" />
+          <val_attrs>1</val_attrs>
+          <val_col_refs>SRData$ContactDetailTable.PERSON_LAST_NAME;32002</val_col_refs>
           <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;UnitType&gt;Auto&lt;/UnitType&gt;
@@ -179,8 +179,8 @@
   &lt;/Header&gt;
   &lt;HeaderAlignment&gt;Near&lt;/HeaderAlignment&gt;
   &lt;DataAlignment&gt;Near&lt;/DataAlignment&gt;
-  &lt;Row&gt;3&lt;/Row&gt;
-  &lt;RowSpan&gt;2&lt;/RowSpan&gt;
+  &lt;Row&gt;4&lt;/Row&gt;
+  &lt;RowSpan&gt;1&lt;/RowSpan&gt;
   &lt;Column&gt;0&lt;/Column&gt;
   &lt;ColSpan&gt;1&lt;/ColSpan&gt;
 &lt;/ColumnXmlData&gt;</xml_data>
@@ -190,11 +190,11 @@
           <col_id>5</col_id>
           <col_rf>5</col_rf>
           <comp_opts xsi:nil="true" />
-          <data_type>0</data_type>
+          <data_type>5</data_type>
           <display_order>5</display_order>
           <group_order xsi:nil="true" />
           <max_len xsi:nil="true" />
-          <min_vuse xsi:nil="true" />
+          <min_vuse>23</min_vuse>
           <opts xsi:nil="true" />
           <rpt_links />
           <sort_direction xsi:nil="true" />
@@ -202,8 +202,8 @@
           <trend_opts xsi:nil="true" />
           <type>1</type>
           <val>SRData$ContactDetailTable.JOB_TITLE</val>
-          <val_attrs>0</val_attrs>
-          <val_col_refs xsi:nil="true" />
+          <val_attrs>1</val_attrs>
+          <val_col_refs>SRData$ContactDetailTable.JOB_TITLE;32002</val_col_refs>
           <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;UnitType&gt;Auto&lt;/UnitType&gt;
@@ -223,11 +223,11 @@
           <col_id>6</col_id>
           <col_rf>6</col_rf>
           <comp_opts xsi:nil="true" />
-          <data_type>0</data_type>
+          <data_type>5</data_type>
           <display_order>6</display_order>
           <group_order xsi:nil="true" />
           <max_len xsi:nil="true" />
-          <min_vuse xsi:nil="true" />
+          <min_vuse>23</min_vuse>
           <opts xsi:nil="true" />
           <rpt_links />
           <sort_direction xsi:nil="true" />
@@ -235,8 +235,8 @@
           <trend_opts xsi:nil="true" />
           <type>1</type>
           <val>SRData$ContactDetailTable.PRIMARY_EMAIL</val>
-          <val_attrs>0</val_attrs>
-          <val_col_refs xsi:nil="true" />
+          <val_attrs>1</val_attrs>
+          <val_col_refs>SRData$ContactDetailTable.PRIMARY_EMAIL;32002</val_col_refs>
           <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;UnitType&gt;Auto&lt;/UnitType&gt;
@@ -256,11 +256,11 @@
           <col_id>7</col_id>
           <col_rf>7</col_rf>
           <comp_opts xsi:nil="true" />
-          <data_type>0</data_type>
+          <data_type>5</data_type>
           <display_order>7</display_order>
           <group_order xsi:nil="true" />
           <max_len xsi:nil="true" />
-          <min_vuse xsi:nil="true" />
+          <min_vuse>23</min_vuse>
           <opts xsi:nil="true" />
           <rpt_links />
           <sort_direction xsi:nil="true" />
@@ -268,8 +268,8 @@
           <trend_opts xsi:nil="true" />
           <type>1</type>
           <val>SRData$ContactDetailTable.PRIMARY_PHONE</val>
-          <val_attrs>0</val_attrs>
-          <val_col_refs xsi:nil="true" />
+          <val_attrs>1</val_attrs>
+          <val_col_refs>SRData$ContactDetailTable.PRIMARY_PHONE;32002</val_col_refs>
           <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;UnitType&gt;Auto&lt;/UnitType&gt;
@@ -289,11 +289,11 @@
           <col_id>8</col_id>
           <col_rf>8</col_rf>
           <comp_opts xsi:nil="true" />
-          <data_type>0</data_type>
+          <data_type>5</data_type>
           <display_order>8</display_order>
           <group_order xsi:nil="true" />
           <max_len xsi:nil="true" />
-          <min_vuse xsi:nil="true" />
+          <min_vuse>23</min_vuse>
           <opts xsi:nil="true" />
           <rpt_links />
           <sort_direction xsi:nil="true" />
@@ -301,8 +301,8 @@
           <trend_opts xsi:nil="true" />
           <type>1</type>
           <val>SRData$ContactDetailTable.RELATIONSHIP_TYPE</val>
-          <val_attrs>0</val_attrs>
-          <val_col_refs xsi:nil="true" />
+          <val_attrs>1</val_attrs>
+          <val_col_refs>SRData$ContactDetailTable.RELATIONSHIP_TYPE;32002</val_col_refs>
           <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;UnitType&gt;Auto&lt;/UnitType&gt;
@@ -322,11 +322,11 @@
           <col_id>9</col_id>
           <col_rf>9</col_rf>
           <comp_opts xsi:nil="true" />
-          <data_type>0</data_type>
+          <data_type>5</data_type>
           <display_order>9</display_order>
           <group_order xsi:nil="true" />
           <max_len xsi:nil="true" />
-          <min_vuse xsi:nil="true" />
+          <min_vuse>23</min_vuse>
           <opts xsi:nil="true" />
           <rpt_links />
           <sort_direction xsi:nil="true" />
@@ -334,8 +334,8 @@
           <trend_opts xsi:nil="true" />
           <type>1</type>
           <val>SRData$ContactDetailTable.PRIMARY_ADDRESS_LINE_1</val>
-          <val_attrs>0</val_attrs>
-          <val_col_refs xsi:nil="true" />
+          <val_attrs>1</val_attrs>
+          <val_col_refs>SRData$ContactDetailTable.PRIMARY_ADDRESS_LINE_1;32002</val_col_refs>
           <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;UnitType&gt;Auto&lt;/UnitType&gt;
@@ -355,11 +355,11 @@
           <col_id>10</col_id>
           <col_rf>10</col_rf>
           <comp_opts xsi:nil="true" />
-          <data_type>0</data_type>
+          <data_type>5</data_type>
           <display_order>10</display_order>
           <group_order xsi:nil="true" />
           <max_len xsi:nil="true" />
-          <min_vuse xsi:nil="true" />
+          <min_vuse>23</min_vuse>
           <opts xsi:nil="true" />
           <rpt_links />
           <sort_direction xsi:nil="true" />
@@ -367,8 +367,8 @@
           <trend_opts xsi:nil="true" />
           <type>1</type>
           <val>SRData$ContactDetailTable.PRIMARY_CITY</val>
-          <val_attrs>0</val_attrs>
-          <val_col_refs xsi:nil="true" />
+          <val_attrs>1</val_attrs>
+          <val_col_refs>SRData$ContactDetailTable.PRIMARY_CITY;32002</val_col_refs>
           <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;UnitType&gt;Auto&lt;/UnitType&gt;
@@ -388,11 +388,11 @@
           <col_id>11</col_id>
           <col_rf>11</col_rf>
           <comp_opts xsi:nil="true" />
-          <data_type>0</data_type>
+          <data_type>5</data_type>
           <display_order>11</display_order>
           <group_order xsi:nil="true" />
           <max_len xsi:nil="true" />
-          <min_vuse xsi:nil="true" />
+          <min_vuse>23</min_vuse>
           <opts xsi:nil="true" />
           <rpt_links />
           <sort_direction xsi:nil="true" />
@@ -400,8 +400,8 @@
           <trend_opts xsi:nil="true" />
           <type>1</type>
           <val>SRData$ContactDetailTable.PRIMARY_POSTAL_CODE</val>
-          <val_attrs>0</val_attrs>
-          <val_col_refs xsi:nil="true" />
+          <val_attrs>1</val_attrs>
+          <val_col_refs>SRData$ContactDetailTable.PRIMARY_POSTAL_CODE;32002</val_col_refs>
           <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;UnitType&gt;Auto&lt;/UnitType&gt;
@@ -421,11 +421,11 @@
           <col_id>12</col_id>
           <col_rf>12</col_rf>
           <comp_opts xsi:nil="true" />
-          <data_type>0</data_type>
+          <data_type>5</data_type>
           <display_order>12</display_order>
           <group_order xsi:nil="true" />
           <max_len xsi:nil="true" />
-          <min_vuse xsi:nil="true" />
+          <min_vuse>23</min_vuse>
           <opts xsi:nil="true" />
           <rpt_links />
           <sort_direction xsi:nil="true" />
@@ -433,8 +433,8 @@
           <trend_opts xsi:nil="true" />
           <type>1</type>
           <val>SRData$ContactDetailTable.PRIMARY_COUNTRY</val>
-          <val_attrs>0</val_attrs>
-          <val_col_refs xsi:nil="true" />
+          <val_attrs>1</val_attrs>
+          <val_col_refs>SRData$ContactDetailTable.PRIMARY_COUNTRY;32002</val_col_refs>
           <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;UnitType&gt;Auto&lt;/UnitType&gt;
@@ -454,11 +454,11 @@
           <col_id>13</col_id>
           <col_rf>13</col_rf>
           <comp_opts xsi:nil="true" />
-          <data_type>0</data_type>
+          <data_type>5</data_type>
           <display_order>13</display_order>
           <group_order xsi:nil="true" />
           <max_len xsi:nil="true" />
-          <min_vuse xsi:nil="true" />
+          <min_vuse>23</min_vuse>
           <opts xsi:nil="true" />
           <rpt_links />
           <sort_direction xsi:nil="true" />
@@ -466,8 +466,8 @@
           <trend_opts xsi:nil="true" />
           <type>1</type>
           <val>SRData$ContactDetailTable.RELATIONSHIP_TYPE_MEANING</val>
-          <val_attrs>0</val_attrs>
-          <val_col_refs xsi:nil="true" />
+          <val_attrs>1</val_attrs>
+          <val_col_refs>SRData$ContactDetailTable.RELATIONSHIP_TYPE_MEANING;32002</val_col_refs>
           <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;UnitType&gt;Auto&lt;/UnitType&gt;
@@ -479,6 +479,39 @@
   &lt;Row&gt;3&lt;/Row&gt;
   &lt;RowSpan&gt;1&lt;/RowSpan&gt;
   &lt;Column&gt;1&lt;/Column&gt;
+  &lt;ColSpan&gt;1&lt;/ColSpan&gt;
+&lt;/ColumnXmlData&gt;</xml_data>
+        </cols_item>
+        <cols_item>
+          <calc_units xsi:nil="true" />
+          <col_id>14</col_id>
+          <col_rf>14</col_rf>
+          <comp_opts xsi:nil="true" />
+          <data_type>5</data_type>
+          <display_order>14</display_order>
+          <group_order xsi:nil="true" />
+          <max_len xsi:nil="true" />
+          <min_vuse>23</min_vuse>
+          <opts xsi:nil="true" />
+          <rpt_links />
+          <sort_direction xsi:nil="true" />
+          <sort_order xsi:nil="true" />
+          <trend_opts xsi:nil="true" />
+          <type>1</type>
+          <val>SRData$ContactDetailTable.PERSON_MIDDLE_NAME</val>
+          <val_attrs>1</val_attrs>
+          <val_col_refs>SRData$ContactDetailTable.PERSON_MIDDLE_NAME;32002</val_col_refs>
+          <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;UnitType&gt;Auto&lt;/UnitType&gt;
+  &lt;Header&gt;
+    &lt;LabelStr&gt;PERSON_MIDDLE_NAME&lt;/LabelStr&gt;
+  &lt;/Header&gt;
+  &lt;HeaderAlignment&gt;Near&lt;/HeaderAlignment&gt;
+  &lt;DataAlignment&gt;Near&lt;/DataAlignment&gt;
+  &lt;Row&gt;3&lt;/Row&gt;
+  &lt;RowSpan&gt;1&lt;/RowSpan&gt;
+  &lt;Column&gt;0&lt;/Column&gt;
   &lt;ColSpan&gt;1&lt;/ColSpan&gt;
 &lt;/ColumnXmlData&gt;</xml_data>
         </cols_item>
@@ -652,7 +685,7 @@
   </nodes>
   <notes xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
   <opts xmlns="urn:obj.api.rightnow.com">4</opts>
-  <owner_acct_id xmlns="urn:obj.api.rightnow.com">2</owner_acct_id>
+  <owner_acct_id xmlns="urn:obj.api.rightnow.com">67</owner_acct_id>
   <params xmlns="urn:obj.api.rightnow.com" />
   <perms xmlns="urn:obj.api.rightnow.com" />
   <rpt xmlns="urn:obj.api.rightnow.com" />
@@ -673,10 +706,10 @@
     </table_item>
   </tables>
   <time_zone xmlns="urn:obj.api.rightnow.com">0</time_zone>
-  <updated xmlns="urn:obj.api.rightnow.com">2015-03-10T16:37:34Z</updated>
+  <updated xmlns="urn:obj.api.rightnow.com">2015-10-16T15:22:20Z</updated>
   <version xmlns="urn:obj.api.rightnow.com">0</version>
   <xml_data xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
   <xml_report xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
 </analytics_core>
 Version: 
-MeyA68roKhrY6qRT0a5w0LfG6YAUFFHGoxA=
+YlSgYnfrUaRMLIwjTirzH/DVtEauiRvC1A==

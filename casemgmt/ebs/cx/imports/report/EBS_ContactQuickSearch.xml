@@ -6,7 +6,7 @@
   <aux xmlns="urn:obj.api.rightnow.com">1.0.2,1.31.2,1.0.3,1.32.3,1.0.10002</aux>
   <cdate_offset xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
   <co_version xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
-  <created xmlns="urn:obj.api.rightnow.com">2015-02-19T22:39:15Z</created>
+  <created xmlns="urn:obj.api.rightnow.com">2015-09-08T16:38:50Z</created>
   <file_id xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
   <filters xmlns="urn:obj.api.rightnow.com">
     <filter_item>
@@ -541,7 +541,7 @@
   </nodes>
   <notes xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
   <opts xmlns="urn:obj.api.rightnow.com">32804</opts>
-  <owner_acct_id xmlns="urn:obj.api.rightnow.com">2</owner_acct_id>
+  <owner_acct_id xmlns="urn:obj.api.rightnow.com">67</owner_acct_id>
   <params xmlns="urn:obj.api.rightnow.com" />
   <perms xmlns="urn:obj.api.rightnow.com">
     <perm_item>
@@ -591,10 +591,10 @@
     </table_item>
   </tables>
   <time_zone xmlns="urn:obj.api.rightnow.com">2</time_zone>
-  <updated xmlns="urn:obj.api.rightnow.com">2015-02-19T22:39:15Z</updated>
+  <updated xmlns="urn:obj.api.rightnow.com">2015-09-08T16:38:50Z</updated>
   <version xmlns="urn:obj.api.rightnow.com">0</version>
   <xml_data xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
   <xml_report xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
 </analytics_core>
 Version: 
-SvkN4aHixOdh0Nskmdn8sWUeQVrhgguC
+H5sH1Sylu+m5nxN1Y7RUVC+gs89RsJo3sl1X

@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("$Id: f37bb7fb5c65d6e137aa4629a858c874044a85b5 $")]
+[assembly: AssemblyTitle("$Id: e24cdd129d2860762f1ba51f81d7ea2c6495f405 $")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Oracle Corp")]
-[assembly: AssemblyProduct("Accelerator.EBS.SharedServices")]
+[assembly: AssemblyProduct("Accelerator.EBS.ServiceStatusBarAddin")]
 [assembly: AssemblyCopyright("Copyright © Oracle Corp 2014, 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -32,4 +32,4 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("15.5.*")]
+[assembly: AssemblyVersion("15.11.*")]

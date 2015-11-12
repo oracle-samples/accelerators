@@ -5,13 +5,13 @@
  ***********************************************************************************************
  *  Accelerator Package: OSVC Contact Center + Siebel Case Management Accelerator
  *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
- *  OSvC release: 15.5 (May 2015)
+ *  OSvC release: 15.8 (August 2015)
  *  Siebel release: 8.1.1.15
- *  reference: 141216-000121
- *  date: Wed Sep  2 23:14:43 PDT 2015
+ *  reference: 150520-000047
+ *  date: Thu Nov 12 00:55:38 PST 2015
 
- *  revision: rnw-15-8-fixes-release-01
- *  SHA1: $Id: ff9b895d474b1f1139c77f69ef1d3e8d4e644124 $
+ *  revision: rnw-15-11-fixes-release-1
+ *  SHA1: $Id: 305a153c7afefa3f2feec45c714621420e54299b $
  * *********************************************************************************************
  *  File: ServiceStatusBarAddIn.cs
  * *********************************************************************************************/
@@ -70,16 +70,15 @@ namespace Accelerator.Siebel.SharedServices
                 ServiceRequest.ServiceUsername = ConfigurationSetting.username;
                 ServiceRequest.ServicePassword = ConfigurationSetting.password;
                 ServiceRequest.ServiceClientTimeout = ConfigurationSetting.SiebelServiceTimeout;
-
                 ServiceRequest.InitSiebelProvider();
 
-                Accelerator.Siebel.SharedServices.Contact.ServiceProvider = ConfigurationSetting.SiebelProvider;
-                Accelerator.Siebel.SharedServices.Contact.ListLookupURL = ConfigurationSetting.LookupSRbyContactPartyID_WSDL;
-                Accelerator.Siebel.SharedServices.Contact.ServiceUsername = ConfigurationSetting.username;
-                Accelerator.Siebel.SharedServices.Contact.ServicePassword = ConfigurationSetting.password;
-                Accelerator.Siebel.SharedServices.Contact.ServiceClientTimeout = ConfigurationSetting.SiebelServiceTimeout;
+                Accelerator.Siebel.SharedServices.ContactModel.ServiceProvider = ConfigurationSetting.SiebelProvider;
+                Accelerator.Siebel.SharedServices.ContactModel.ListLookupURL = ConfigurationSetting.LookupSRbyContactPartyID_WSDL;
+                Accelerator.Siebel.SharedServices.ContactModel.ServiceUsername = ConfigurationSetting.username;
+                Accelerator.Siebel.SharedServices.ContactModel.ServicePassword = ConfigurationSetting.password;
+                Accelerator.Siebel.SharedServices.ContactModel.ServiceClientTimeout = ConfigurationSetting.SiebelServiceTimeout;
 
-                Accelerator.Siebel.SharedServices.Contact.InitSiebelProvider();
+                Accelerator.Siebel.SharedServices.ContactModel.InitSiebelProvider();
 
                 Asset.ServiceProvider = ConfigurationSetting.SiebelProvider;
                 Asset.LookupURL = ConfigurationSetting.LookupSRbyContactPartyID_WSDL;

@@ -1,26 +1,27 @@
 <?php
 
-/* * *******************************************************************************************
+/** *******************************************************************************************
  *  This file is part of the Oracle Service Cloud Accelerator Reference Integration set published
  *  by Oracle Service Cloud under the MIT license (MIT) included in the original distribution.
  *  Copyright (c) 2014, 2015, Oracle and/or its affiliates. All rights reserved.
  ***********************************************************************************************
  *  Accelerator Package: OSVC + EBS Enhancement
  *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
- *  OSvC release: 15.5 (May 2015)
+ *  OSvC release: 15.8 (August 2015)
  *  EBS release: 12.1.3
- *  reference: 150202-000157
- *  date: Wed Sep  2 23:11:31 PDT 2015
+ *  reference: 150505-000099, 150420-000127
+ *  date: Thu Nov 12 00:52:35 PST 2015
 
- *  revision: rnw-15-8-fixes-release-01
- *  SHA1: $Id: c9a7cf59472c6315be0fef42899c5d8168c97d72 $
+ *  revision: rnw-15-11-fixes-release-1
+ *  SHA1: $Id: 36ff379ace25c3be3a1f99f08347bd7cbec983e0 $
  * *********************************************************************************************
  *  File: EbsApi.php
  * ****************************************************************************************** */
 
 namespace Custom\Models;
 
-use RightNow\Connect\v1_2 as RNCPHP;
+use RightNow\Connect\v1_2 as RNCPHP,
+    \RightNow\Libraries\ResponseError as ResponseError;
 
 class EbsApi extends \RightNow\Models\Base {
 
@@ -72,7 +73,7 @@ class EbsApi extends \RightNow\Models\Base {
         $endpoint = $extBaseUrl . $extServiceSetting['relative_path'];
         $logMsg = "{$extObj} :: {$extAction} :: ";
 
-        // prepare SOAP request payload and HTTP headers   
+        // prepare SOAP request payload and HTTP headers
         list($requestString, $httpHeaders) = $this->generateEbsSoapRequestPayload($username, $password, $extObj, $extAction, $soapAction, $extBaseUrl, $requestParams, $requestEntries);
 
         // send cURL request
@@ -80,10 +81,67 @@ class EbsApi extends \RightNow\Models\Base {
 
         // check the result
         if ($result['status'] === false) {
-            $this->log->error("{$extObj} :: {$extAction} :: Request failed", __METHOD__, array($incident, $contact), json_encode($result));
-            return $this->getResponseObject(null, null, $result['response']);
+            $this->log->error("{$extObj} :: {$extAction} :: Request failed", __METHOD__, array($incident, $contact), var_export($result, true));
+            return $this->getResponseObject(null, null, new ResponseError($result['response'], 1));
         } else if ($result['status'] === true) {
             return $this->parseEbsSoapResponse($extObj, $extAction, $result['response'], $responseEntries, $errorFields, $incident, $contact);
+        }
+    }
+
+    /**
+     * More like a regular HTTP request with some HTTP processing at the end.
+     * @param type $extUrl The URL to use for this request.
+     * @param array $requestParams Params; GET params for this address request.
+     * @param array $responseEntries Entries that we need from the response.
+     * @param array $errorFields  Error-indicative entries we might need from the response.
+     * @return type
+     */
+    function sendAddressRequest($extUrl, array $requestParams = null, array $responseEntries = null, array $errorFields = null) {
+        // check input params
+        if ($extUrl === null ) {
+            $errorMsg = ":: Unable to get ext_config_verb or extUrl";
+            $this->log->error($errorMsg, __METHOD__);
+            return $this->getResponseObject(null, null, $errorMsg);
+        }
+
+        $endpoint = $extUrl;
+        $logMsg = " :: :: HTTP ";
+
+        if (count($requestParams) > 0) {
+            $endpoint .= '?';
+            foreach ($requestParams as $key => $value) {
+                $endpoint .= $key.'='. urlencode($value) .'&';
+            }
+            $endpoint = rtrim($endpoint, "&");
+        }
+
+        // prepare  HTTP headers
+        $headers = array(
+            "HOST: ". parse_url($extUrl, PHP_URL_HOST),
+            "User-Agent:\"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:38.0) Gecko/20100101 Firefox/38.0\"",
+            "Accept: text/html,application/xhtml+xml,application/xml,text/xml",
+            "Cache-Control: no-cache",
+            "Pragma: no-cache",
+            "Connection: keep-alive"
+        );
+
+        // send cURL request-- not Soap but just HTTP
+        // you need the null postMessage parameter, to make it send a GET
+        $result = $this->CI->curlrequest->sendCurlSoapRequest(
+            $endpoint, $headers, null, $logMsg);
+
+        // used to display $result here: $this->log->debug("Result from sendCurlSoapRequest:",
+        // check the result - comes in an array from the Curl function
+        if ($result['status'] === false) {
+            $this->log->error("cURL HTTP Request failed", __METHOD__, null, var_export($result, true));
+            return $this->getResponseObject(null, null, new ResponseError($result['response'], 1));
+        } else if ($result['status'] === true) {
+            // $result is: ([status] => 1,[response] => < xml ... > )
+            return $this->parseAddressXmlResponse($result['response'], $responseEntries, $errorFields);
+        } else {
+            // should not happen
+            $this->log->debug("cURL Return in EbsApi", __METHOD__, null, 'Result:'.  var_export($result, true));
+            return $this->getResponseObject(null, null, new ResponseError($result['response'], 1));
         }
     }
 
@@ -143,7 +201,7 @@ class EbsApi extends \RightNow\Models\Base {
      * @param string $extAction Related external action, it could be read, update, create, or delete
      * @param String $response XML response from EBS Server
      * @param array $responseEntries List of fields that will be parsed from the response
-     * @param array $errorFields List of error fields that may contains the error message
+     * @param array $errorFields List of error fields that may contain the error message
      * @param RNCPHP\Incident $incident Incident related to this response
      * @param RNCPHP\Contact $contact Contact related to this response
      * @return RNCPHP\RNObject Parsing result
@@ -173,9 +231,9 @@ class EbsApi extends \RightNow\Models\Base {
 
         // check the parsing result
         if ($parsingResult->error) {
-            $this->log->error("{$extObj} :: {$extAction} :: failed", __METHOD__, array($incident, $contact), json_encode($parsingResult->error->externalMessage));
+            $this->log->error("{$extObj} :: {$extAction} :: failed", __METHOD__, array($incident, $contact), var_export($parsingResult->error->externalMessage, true));
         } else {
-            $this->log->debug("{$extObj} :: {$extAction} :: success", __METHOD__, array($incident, $contact), json_encode($parsingResult->result));
+            $this->log->debug("{$extObj} :: {$extAction} :: success", __METHOD__, array($incident, $contact), var_export($parsingResult->result, true));
         }
 
         return $parsingResult;
@@ -184,9 +242,9 @@ class EbsApi extends \RightNow\Models\Base {
     /**
      * Parse response contains a list of items, like SR list and Note list
      * @param string $responseString SOAP Response from EBS server
-     * @param string $itemOpenTag Open tag of a single item in the list 
+     * @param string $itemOpenTag Open tag of a single item in the list
      * @param array $responseEntries List of fields will be parsed from the response
-     * @param array $errorFields List of error fields that may contains the error message
+     * @param array $errorFields List of error fields that may contain the error message
      * @return RNCPHP\RNObject Parsing result
      */
     private function parseListFromSoapResponse($responseString, $itemOpenTag, array $responseEntries = null, array $errorFields = null) {
@@ -225,7 +283,7 @@ class EbsApi extends \RightNow\Models\Base {
      * Parse Response contains a single item, for example a single Service Request
      * @param array $responseString SOAP Response from EBS server
      * @param array $responseEntries List of fields will be parsed from the response
-     * @param array $errorFields List of error fields that may contains the error message
+     * @param array $errorFields List of error fields that may contain the error message
      * @param boolean $treatEmptyAsError Indicate if treat empty parsing result as an error
      * @return RNCPHP\RNObject Parsing result
      */
@@ -281,7 +339,7 @@ class EbsApi extends \RightNow\Models\Base {
 
     /**
      * Special parser for EBS udpateSR API.
-     * The reason that updateSR has a seperate parser is the API dosen't use 
+     * The reason that updateSR has a seperate parser is the API dosen't use
      * the common error field. It uses the field 'X_RETURN_STATUS' to indicate
      * if the update is successful or not.
      * @param string $responseString Response from EBS server
@@ -299,13 +357,85 @@ class EbsApi extends \RightNow\Models\Base {
         foreach ($responseStruct as $item) {
             if ($item['tag'] === 'X_RETURN_STATUS') {
                 if ($item['value'] === 'S') {
-                    return $this->getResponseObject('EBS Service Request update success');
+                    return $this->getResponseObject('EBS Service Request update success', null);
                 } else {
                     return $this->getResponseObject(null, null, 'EBS Service Request update failed');
                 }
             }
         }
         return $this->getResponseObject(null, null, 'EBS Service Request update failed');
+    }
+
+    /**
+     * Kind of like parse single item
+     * $errorFields shouldn't have empty elements inside if you wanna return the content.
+     *
+     * @param type $response The incoming response that needs to be parsed
+     * @param array $responseEntries  This shows which entries should contain needed data
+     * @param array $errorFields  This contains which fields are error fields.
+     * @return type
+     */
+    private function parseAddressXmlResponse($response, array $responseEntries = null, array $errorFields = null) {
+        if ($response === null) {
+            return $this->getResponseObject(null, null, 'Unable to parse Address Verify XML response :: itz empty');
+        }
+        if ($errorFields == null) {
+            $errorFields = array('ERROR'); // otherwise, in_array would crash.
+        }
+
+        $responseStruct = array();
+        $parser = xml_parser_create();
+        xml_parse_into_struct($parser, $response, $responseStruct);
+
+        /*
+        After XML parsing, Each item is:  (tag is in CAPS)
+            Array (
+                [tag] => ADDRESS2
+                [type] => complete
+                [level] => 3
+                [value] => 250 CALIFORNIA AVE
+            )
+         */
+
+        $response = array();
+        $hasErrorField = false;
+        foreach ($responseStruct as $item) {
+            // check if error returned; not used yet?
+            if (in_array($item['tag'], $errorFields) && $item['value'] !== null) {
+                // this will give any eventual ERROR message:
+                $hasErrorField = $item['value'];
+                break;
+            }
+
+            // only parse the tag in the required field list
+            if (in_array($item['tag'], $responseEntries)) {
+                $response[$item['tag']] = $item[value];
+            }
+
+            //$debugPrint .= var_export($item, true);
+        }
+
+        if ($hasErrorField) {
+            $this->log->notice("Parsed address, has Error:", __METHOD__, null, 'errorField:'.  var_export($hasErrorField, true));
+            return $this->getResponseObject(null, null, $hasErrorField);
+        } else if (IS_DEVELOPMENT === true) {
+            // it's an array of items with keys from the responseEntries.
+            $this->log->debug("Parsed address, in entries:", __METHOD__, null, 'Items:' . var_export($response, true));
+        }
+
+        if ($this->isResponseDataEmpty($response)) {
+            // always treating empty response as an error.
+            $parsingResult = $this->getResponseObject(null, null, 'Unable to parse response :: parsing result is empty');
+        } else {
+            $parsingResult = $this->getResponseObject($response, 'is_array');
+        }
+
+        // check the parsing result
+        if ($parsingResult->error) {
+            $this->log->error("parse :: failed ::: externalMessage", __METHOD__, null, json_encode($parsingResult->error->externalMessage));
+        }
+
+        return $parsingResult;
     }
 
 }

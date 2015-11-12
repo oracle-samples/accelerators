@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <analytics_core xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <ac_id xmlns="urn:obj.api.rightnow.com">101031</ac_id>
+  <ac_id xmlns="urn:obj.api.rightnow.com">101035</ac_id>
   <ac_public xmlns="urn:obj.api.rightnow.com">true</ac_public>
   <ac_type xmlns="urn:obj.api.rightnow.com">1</ac_type>
-  <aux xmlns="urn:obj.api.rightnow.com">1.0.1,1.42.1,1.43.1,1.0.2,1.31.2,1.0.3,1.32.3,1.0.53,1.0.126,1.0.10002,1.0.10004,1.0.24,1.0.630,1.0.236,1.0.237,1.0.238,1.0.32,1.0.93,1.0.10005,1.0.10012,1.0.10018</aux>
+  <aux xmlns="urn:obj.api.rightnow.com">1.0.1,1.42.1,1.43.1,1.0.2,1.31.2,1.0.3,1.32.3,1.0.53,1.0.126,1.0.10002,1.0.10004,1.0.24,1.0.236,1.0.237,1.0.238,1.0.32,1.0.93,1.0.10005,1.0.10012,1.0.10018</aux>
   <cdate_offset xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
   <co_version xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
-  <created xmlns="urn:obj.api.rightnow.com">2015-01-24T19:21:24Z</created>
+  <created xmlns="urn:obj.api.rightnow.com">2015-08-25T21:28:18Z</created>
   <file_id xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
   <filters xmlns="urn:obj.api.rightnow.com">
     <filter_item>
@@ -602,7 +602,7 @@
   </nodes>
   <notes xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
   <opts xmlns="urn:obj.api.rightnow.com">5</opts>
-  <owner_acct_id xmlns="urn:obj.api.rightnow.com">66</owner_acct_id>
+  <owner_acct_id xmlns="urn:obj.api.rightnow.com">67</owner_acct_id>
   <params xmlns="urn:obj.api.rightnow.com" />
   <perms xmlns="urn:obj.api.rightnow.com" />
   <rpt xmlns="urn:obj.api.rightnow.com" />
@@ -634,10 +634,10 @@
     </table_item>
   </tables>
   <time_zone xmlns="urn:obj.api.rightnow.com">2</time_zone>
-  <updated xmlns="urn:obj.api.rightnow.com">2015-02-24T01:13:06Z</updated>
+  <updated xmlns="urn:obj.api.rightnow.com">2015-08-25T21:28:18Z</updated>
   <version xmlns="urn:obj.api.rightnow.com">0</version>
   <xml_data xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
   <xml_report xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
 </analytics_core>
 Version: 
-R76xm8m2nj3fiZF1nDlhTenKt20Iskeco29m
+uyIGeZjDCZVcW8OMqVM8MOcExb81HkIZRUw=

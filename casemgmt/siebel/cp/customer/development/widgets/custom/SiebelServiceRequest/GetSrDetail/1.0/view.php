@@ -6,12 +6,12 @@
  ***********************************************************************************************
  *  Accelerator Package: OSVC Contact Center + Siebel Case Management Accelerator
  *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
- *  OSvC release: 15.5 (May 2015)
+ *  OSvC release: 15.8 (August 2015)
  *  Siebel release: 8.1.1.15
- *  reference: 141216-000121
- *  date: Wed Sep  2 23:14:34 PDT 2015
+ *  reference: 150520-000047
+ *  date: Thu Nov 12 00:55:28 PST 2015
 
- *  revision: rnw-15-8-fixes-release-01
+ *  revision: rnw-15-11-fixes-release-1
  *  SHA1: $Id: 0bdee61fbe5f21f4859c81caf07340d113c908e7 $
  * *********************************************************************************************
  *  File: view.php

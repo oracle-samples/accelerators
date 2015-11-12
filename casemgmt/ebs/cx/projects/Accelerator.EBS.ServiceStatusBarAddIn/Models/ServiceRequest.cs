@@ -5,13 +5,13 @@
  ***********************************************************************************************
  *  Accelerator Package: OSVC + EBS Enhancement
  *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
- *  OSvC release: 15.5 (May 2015)
+ *  OSvC release: 15.8 (August 2015)
  *  EBS release: 12.1.3
- *  reference: 150202-000157
- *  date: Wed Sep  2 23:11:41 PDT 2015
+ *  reference: 150505-000099, 150420-000127
+ *  date: Thu Nov 12 00:52:49 PST 2015
 
- *  revision: rnw-15-8-fixes-release-01
- *  SHA1: $Id: 85f32c8188e77639a25535f3f1a479c5074c3c4a $
+ *  revision: rnw-15-11-fixes-release-1
+ *  SHA1: $Id: 17bccbd71000a7188c20f54f1a6188ccb8bc8190 $
  * *********************************************************************************************
  *  File: ServiceRequest.cs
  * *********************************************************************************************/
@@ -136,7 +136,7 @@ namespace Accelerator.EBS.SharedServices
                 {
                     string logMessage = "Error in init Provider in Service Request Model. Error: " + ex.Message;
                     string logNote = "";
-                    ConfigurationSetting.logWrap.DebugLog(logMessage: logMessage, logNote: logNote);
+                    ConfigurationSetting.logWrap.ErrorLog(logMessage: logMessage, logNote: logNote);
                 }
 
                 throw;

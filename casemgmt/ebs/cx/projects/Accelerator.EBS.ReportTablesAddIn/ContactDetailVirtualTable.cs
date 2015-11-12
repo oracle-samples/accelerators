@@ -5,13 +5,13 @@
  ***********************************************************************************************
  *  Accelerator Package: OSVC + EBS Enhancement
  *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
- *  OSvC release: 15.5 (May 2015)
+ *  OSvC release: 15.8 (August 2015)
  *  EBS release: 12.1.3
- *  reference: 150202-000157
- *  date: Wed Sep  2 23:11:38 PDT 2015
+ *  reference: 150505-000099, 150420-000127
+ *  date: Thu Nov 12 00:52:44 PST 2015
 
- *  revision: rnw-15-8-fixes-release-01
- *  SHA1: $Id: 538befea3648a94c134ba808a743d26e1b368b8b $
+ *  revision: rnw-15-11-fixes-release-1
+ *  SHA1: $Id: 52bf0fe221e0f4b6b7282dd9e16c39eb28dd5847 $
  * *********************************************************************************************
  *  File: ContactDetailVirtualTable.cs
  * *********************************************************************************************/
@@ -39,7 +39,7 @@ namespace Accelerator.EBS.ReportTablesAddin
             this.Name = "ContactDetailTable";
             this.Label = "EBS Contact Detail Table";
             this.Description = "EBS Contact Detail Table";
-            Dictionary<string, string> dictDetail = Contact.getDetailSchema();
+            Dictionary<string, string> dictDetail = ContactModel.getDetailSchema();
 
             addColumns(dictDetail);       
         }
@@ -75,7 +75,7 @@ namespace Accelerator.EBS.ReportTablesAddin
                 if (partyID == "" || partyID == null)
                     return reportRows;
 
-                dictDetail = Contact.LookupDetail(Convert.ToInt32(partyID));
+                dictDetail = ContactModel.LookupDetail(Convert.ToInt32(partyID));
             }
             else
             {
@@ -92,9 +92,12 @@ namespace Accelerator.EBS.ReportTablesAddin
                 ConfigurationSetting.logWrap.DebugLog(0, contactRecord.ID, logMessage: logMessage);
 
                 // call EBS Contact.LookupDetail, which return <columnName, type+TYPE_VALUE_DELIMITER+value)
-                dictDetail = Contact.LookupDetail(contactPartyID, 0, contactRecord.ID);
+                dictDetail = ContactModel.LookupDetail(contactPartyID, 0, contactRecord.ID);
             }
-            
+
+            if (dictDetail.Count == 0)
+                return reportRows;
+
             ReportDataRow reportDataRow = new ReportDataRow(this.Columns.Count);
             addDetailRow(ref dictDetail, ref columns, ref reportDataRow, ref reportRows);
 

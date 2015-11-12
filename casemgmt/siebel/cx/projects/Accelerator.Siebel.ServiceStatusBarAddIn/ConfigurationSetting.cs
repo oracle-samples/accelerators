@@ -5,13 +5,13 @@
  ***********************************************************************************************
  *  Accelerator Package: OSVC Contact Center + Siebel Case Management Accelerator
  *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
- *  OSvC release: 15.5 (May 2015)
+ *  OSvC release: 15.8 (August 2015)
  *  Siebel release: 8.1.1.15
- *  reference: 141216-000121
- *  date: Wed Sep  2 23:14:40 PDT 2015
+ *  reference: 150520-000047
+ *  date: Thu Nov 12 00:55:35 PST 2015
 
- *  revision: rnw-15-8-fixes-release-01
- *  SHA1: $Id: 4bbde278399d7f47ac0b487b35f368d13e99afa4 $
+ *  revision: rnw-15-11-fixes-release-1
+ *  SHA1: $Id: 4b299135c3f0f88abb254ab5e4230626bd35fc3a $
  * *********************************************************************************************
  *  File: ConfigurationSetting.cs
  * *********************************************************************************************/
@@ -52,6 +52,7 @@ namespace Accelerator.Siebel.SharedServices
 
         //Information parsing from configuration
         public static LogWrapper logWrap;
+        //public static string logClass = "Accelerator.Siebel.SharedServices.Logs.Logger";  //SCLog
         public static string logClass = "Accelerator.Siebel.SharedServices.Logs.DefaultLog";
         public static String rnt_host;
         public static String username;
@@ -80,11 +81,14 @@ namespace Accelerator.Siebel.SharedServices
         public static String RepairOrderList_WSDL;
         public static String RepairLogisticsList_WSDL;
 
+        public static string ext_address_validate_url;
+        public static string uspsUsername;
+
         public static bool loginUserIsAdmin; 
         public enum LogLevelEnum { Error, Notice, Debug };
         public static LogLevelEnum logLevel;
 
-        public static int cwssApiEbsServiceUserId = 0;
+        public static int cwssApiSiebelServiceUserId = 0;
 
         public static string siebelServiceUserId;
         public static string siebelDefaultSrOwnerId;
@@ -94,6 +98,10 @@ namespace Accelerator.Siebel.SharedServices
         public static bool configVerbPerfect;
         public static IGlobalContext _gContext;
         public static string host;
+        public const string scLogProductExtSignature = "11acaed5cb6dc95783ea1d0b194347c542017bfc";
+        public const string scLogProductExtName = "ACC Extention";
+        public const string scLogBusinessFunction = "CX Addin";
+
 
         ConfigurationSetting(IGlobalContext gContext)
         {
@@ -271,6 +279,9 @@ namespace Accelerator.Siebel.SharedServices
                     incidentsByContactReportID = configVerb.integration.incidentsByContactReportID;
                     contactSearchReportID = configVerb.integration.contactSearchReportID;
 
+                    uspsUsername = configVerb.postalValidation.username;
+                    ext_address_validate_url = configVerb.postalValidation.ext_address_validate_url;
+
                     Dictionary<String, Service> extServices = configVerb.integration.ext_services;
                     foreach (KeyValuePair<String, Service> extService in extServices)
                     {
@@ -403,7 +414,7 @@ namespace Accelerator.Siebel.SharedServices
 
             try
             {
-                Log log = Activator.CreateInstance(t) as Log;
+                Log log = Activator.CreateInstance(t, scLogProductExtSignature, scLogProductExtName, scLogBusinessFunction) as Log;
 
                 logWrap = new LogWrapper(log);
 
@@ -475,12 +486,12 @@ namespace Accelerator.Siebel.SharedServices
             // Check whether account CWSS_API_Siebel_Service_User is set in Staff
             if (rowData.Length == 0)
             {
-                cwssApiEbsServiceUserId = 0;
+                cwssApiSiebelServiceUserId = 0;
                 return;
             }
             string jsonString = rowData[0];
 
-            cwssApiEbsServiceUserId = Convert.ToInt32(jsonString);
+            cwssApiSiebelServiceUserId = Convert.ToInt32(jsonString);
         }
 
         // timer event to reset the status bar
@@ -617,10 +628,17 @@ namespace Accelerator.Siebel.SharedServices
         public List<TypeMapping> request_type_mapping{ get; set; }
     }
 
+    public class PostalValidation
+    {
+        public string ext_address_validate_url { get; set; }
+        public string username { get; set; }
+    }
+
     public class ConfigurationVerb
     {
         public string rnt_host { get; set; }
         public Integration integration { get; set; }
+        public PostalValidation postalValidation { get; set; }
     }
 #endregion
 }

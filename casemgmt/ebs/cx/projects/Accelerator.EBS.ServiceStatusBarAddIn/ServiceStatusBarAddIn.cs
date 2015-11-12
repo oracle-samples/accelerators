@@ -5,13 +5,13 @@
  ***********************************************************************************************
  *  Accelerator Package: OSVC + EBS Enhancement
  *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
- *  OSvC release: 15.5 (May 2015)
+ *  OSvC release: 15.8 (August 2015)
  *  EBS release: 12.1.3
- *  reference: 150202-000157
- *  date: Wed Sep  2 23:11:43 PDT 2015
+ *  reference: 150505-000099, 150420-000127
+ *  date: Thu Nov 12 00:52:51 PST 2015
 
- *  revision: rnw-15-8-fixes-release-01
- *  SHA1: $Id: 59c04aefd4a62809ec12d9b4418105f394477373 $
+ *  revision: rnw-15-11-fixes-release-1
+ *  SHA1: $Id: c6355eaa0c5407dafa0125891bb8d755534baf7a $
  * *********************************************************************************************
  *  File: ServiceStatusBarAddIn.cs
  * *********************************************************************************************/
@@ -73,13 +73,13 @@ namespace Accelerator.EBS.SharedServices
 
                 ServiceRequest.InitEBSProvider();
 
-                Accelerator.EBS.SharedServices.Contact.ServiceProvider = ConfigurationSetting.EBSProvider;
-                Accelerator.EBS.SharedServices.Contact.ListLookupURL = ConfigurationSetting.LookupContactList_WSDL;
-                Accelerator.EBS.SharedServices.Contact.ServiceUsername = ConfigurationSetting.username;
-                Accelerator.EBS.SharedServices.Contact.ServicePassword = ConfigurationSetting.password;
-                Accelerator.EBS.SharedServices.Contact.ServiceClientTimeout = ConfigurationSetting.EBSServiceTimeout;
+                Accelerator.EBS.SharedServices.ContactModel.ServiceProvider = ConfigurationSetting.EBSProvider;
+                Accelerator.EBS.SharedServices.ContactModel.ListLookupURL = ConfigurationSetting.LookupContactList_WSDL;
+                Accelerator.EBS.SharedServices.ContactModel.ServiceUsername = ConfigurationSetting.username;
+                Accelerator.EBS.SharedServices.ContactModel.ServicePassword = ConfigurationSetting.password;
+                Accelerator.EBS.SharedServices.ContactModel.ServiceClientTimeout = ConfigurationSetting.EBSServiceTimeout;
 
-                Accelerator.EBS.SharedServices.Contact.InitEBSProvider();
+                Accelerator.EBS.SharedServices.ContactModel.InitEBSProvider();
 
                 Accelerator.EBS.SharedServices.Item.ServiceProvider = ConfigurationSetting.EBSProvider;
                 Accelerator.EBS.SharedServices.Item.ListURL = ConfigurationSetting.ItemList_WSDL;
@@ -112,6 +112,11 @@ namespace Accelerator.EBS.SharedServices
                 Accelerator.EBS.SharedServices.RepairLogistics.ServicePassword = ConfigurationSetting.password;
                 Accelerator.EBS.SharedServices.RepairLogistics.ServiceClientTimeout = ConfigurationSetting.EBSServiceTimeout;
                 Accelerator.EBS.SharedServices.RepairLogistics.InitEBSProvider();
+
+                Accelerator.EBS.SharedServices.Order.ServiceProvider = ConfigurationSetting.EBSProvider;
+                Accelerator.EBS.SharedServices.Order.GetOrderURL = ConfigurationSetting.GetOrder_WSDL;
+                Accelerator.EBS.SharedServices.Order.OrderInboundURL = ConfigurationSetting.OrderInboundURL_WSDL;
+                Accelerator.EBS.SharedServices.Order.InitEBSProvider();
             }
 
             if (!ConfigurationSetting.configVerbPerfect)

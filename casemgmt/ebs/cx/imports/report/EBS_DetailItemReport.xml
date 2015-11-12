@@ -6,7 +6,7 @@
   <aux xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
   <cdate_offset xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
   <co_version xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
-  <created xmlns="urn:obj.api.rightnow.com">2015-02-19T22:44:46Z</created>
+  <created xmlns="urn:obj.api.rightnow.com">2015-09-08T16:39:34Z</created>
   <file_id xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
   <filters xmlns="urn:obj.api.rightnow.com" />
   <fltr_expr xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
@@ -32,11 +32,11 @@
           <col_id>1</col_id>
           <col_rf>1</col_rf>
           <comp_opts xsi:nil="true" />
-          <data_type>0</data_type>
+          <data_type>3</data_type>
           <display_order>1</display_order>
           <group_order xsi:nil="true" />
           <max_len xsi:nil="true" />
-          <min_vuse xsi:nil="true" />
+          <min_vuse>5</min_vuse>
           <opts xsi:nil="true" />
           <rpt_links>
             <rpt_link_item>
@@ -67,14 +67,17 @@
           <trend_opts xsi:nil="true" />
           <type>1</type>
           <val>SRData$ItemTable.INSTANCE_ID</val>
-          <val_attrs>0</val_attrs>
-          <val_col_refs xsi:nil="true" />
+          <val_attrs>1</val_attrs>
+          <val_col_refs>SRData$ItemTable.INSTANCE_ID;32003</val_col_refs>
           <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;UnitType&gt;Auto&lt;/UnitType&gt;
   &lt;Header&gt;
     &lt;LabelStr&gt;INSTANCE_ID&lt;/LabelStr&gt;
   &lt;/Header&gt;
+  &lt;NumberFormat&gt;
+    &lt;NumberType&gt;Number&lt;/NumberType&gt;
+  &lt;/NumberFormat&gt;
   &lt;HeaderAlignment&gt;Far&lt;/HeaderAlignment&gt;
   &lt;DataAlignment&gt;Far&lt;/DataAlignment&gt;
 &lt;/ColumnXmlData&gt;</xml_data>
@@ -84,11 +87,11 @@
           <col_id>2</col_id>
           <col_rf>2</col_rf>
           <comp_opts xsi:nil="true" />
-          <data_type>0</data_type>
+          <data_type>5</data_type>
           <display_order>2</display_order>
           <group_order xsi:nil="true" />
           <max_len xsi:nil="true" />
-          <min_vuse xsi:nil="true" />
+          <min_vuse>5</min_vuse>
           <opts xsi:nil="true" />
           <rpt_links />
           <sort_direction xsi:nil="true" />
@@ -96,8 +99,8 @@
           <trend_opts xsi:nil="true" />
           <type>1</type>
           <val>SRData$ItemTable.INVENTORY_ITEM_NAME</val>
-          <val_attrs>0</val_attrs>
-          <val_col_refs xsi:nil="true" />
+          <val_attrs>1</val_attrs>
+          <val_col_refs>SRData$ItemTable.INVENTORY_ITEM_NAME;32003</val_col_refs>
           <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;UnitType&gt;Auto&lt;/UnitType&gt;
@@ -113,11 +116,11 @@
           <col_id>3</col_id>
           <col_rf>3</col_rf>
           <comp_opts xsi:nil="true" />
-          <data_type>0</data_type>
+          <data_type>3</data_type>
           <display_order>3</display_order>
           <group_order xsi:nil="true" />
           <max_len xsi:nil="true" />
-          <min_vuse xsi:nil="true" />
+          <min_vuse>5</min_vuse>
           <opts xsi:nil="true" />
           <rpt_links />
           <sort_direction xsi:nil="true" />
@@ -125,14 +128,17 @@
           <trend_opts xsi:nil="true" />
           <type>1</type>
           <val>SRData$ItemTable.INVENTORY_ITEM_ID</val>
-          <val_attrs>0</val_attrs>
-          <val_col_refs xsi:nil="true" />
+          <val_attrs>1</val_attrs>
+          <val_col_refs>SRData$ItemTable.INVENTORY_ITEM_ID;32003</val_col_refs>
           <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;UnitType&gt;Auto&lt;/UnitType&gt;
   &lt;Header&gt;
     &lt;LabelStr&gt;INVENTORY_ITEM_ID&lt;/LabelStr&gt;
   &lt;/Header&gt;
+  &lt;NumberFormat&gt;
+    &lt;NumberType&gt;Number&lt;/NumberType&gt;
+  &lt;/NumberFormat&gt;
   &lt;HeaderAlignment&gt;Far&lt;/HeaderAlignment&gt;
   &lt;DataAlignment&gt;Far&lt;/DataAlignment&gt;
 &lt;/ColumnXmlData&gt;</xml_data>
@@ -142,11 +148,11 @@
           <col_id>4</col_id>
           <col_rf>4</col_rf>
           <comp_opts xsi:nil="true" />
-          <data_type>0</data_type>
+          <data_type>5</data_type>
           <display_order>4</display_order>
           <group_order xsi:nil="true" />
           <max_len xsi:nil="true" />
-          <min_vuse xsi:nil="true" />
+          <min_vuse>5</min_vuse>
           <opts xsi:nil="true" />
           <rpt_links />
           <sort_direction xsi:nil="true" />
@@ -154,8 +160,8 @@
           <trend_opts xsi:nil="true" />
           <type>1</type>
           <val>SRData$ItemTable.CURRENT_PARTY_NAME</val>
-          <val_attrs>0</val_attrs>
-          <val_col_refs xsi:nil="true" />
+          <val_attrs>1</val_attrs>
+          <val_col_refs>SRData$ItemTable.CURRENT_PARTY_NAME;32003</val_col_refs>
           <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;UnitType&gt;Auto&lt;/UnitType&gt;
@@ -352,7 +358,7 @@
   </nodes>
   <notes xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
   <opts xmlns="urn:obj.api.rightnow.com">4</opts>
-  <owner_acct_id xmlns="urn:obj.api.rightnow.com">2</owner_acct_id>
+  <owner_acct_id xmlns="urn:obj.api.rightnow.com">67</owner_acct_id>
   <params xmlns="urn:obj.api.rightnow.com" />
   <perms xmlns="urn:obj.api.rightnow.com" />
   <rpt xmlns="urn:obj.api.rightnow.com" />
@@ -373,10 +379,10 @@
     </table_item>
   </tables>
   <time_zone xmlns="urn:obj.api.rightnow.com">0</time_zone>
-  <updated xmlns="urn:obj.api.rightnow.com">2015-02-19T23:22:29Z</updated>
+  <updated xmlns="urn:obj.api.rightnow.com">2015-09-08T16:39:34Z</updated>
   <version xmlns="urn:obj.api.rightnow.com">0</version>
   <xml_data xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
   <xml_report xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
 </analytics_core>
 Version: 
-eBCzLqnATXNv/JWqN8IeAPb4xb/fBNTKyybg
+w8A9ASBMbblCuDEAG8vSatNb62cT5BclK3U=

@@ -7,13 +7,13 @@
  ***********************************************************************************************
  *  Accelerator Package: OSVC Contact Center + Siebel Case Management Accelerator
  *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
- *  OSvC release: 15.5 (May 2015)
+ *  OSvC release: 15.8 (August 2015)
  *  Siebel release: 8.1.1.15
- *  reference: 141216-000121
- *  date: Wed Sep  2 23:14:35 PDT 2015
+ *  reference: 150520-000047
+ *  date: Thu Nov 12 00:55:30 PST 2015
 
- *  revision: rnw-15-8-fixes-release-01
- *  SHA1: $Id: 4db24ee605db9fd5f3d00264de5f30f9abe602ca $
+ *  revision: rnw-15-11-fixes-release-1
+ *  SHA1: $Id: 04ba18260b421bab4c9fe36e10c367a205eb6b14 $
  * *********************************************************************************************
  *  File: controller.php
  * ****************************************************************************************** */
@@ -234,7 +234,12 @@ class SrListGrid extends \RightNow\Libraries\Widget\Base {
 
                 // check if need to add link
                 if ($displayTemplate[$cpField]['link']) {
-                    $itemData[] = "<a href='//{$_SERVER['HTTP_HOST']}/app/account/questions/detail/sr_id/{$srItem['ID']}'>{$value}";
+                    $link = "<a href='//{$_SERVER['HTTP_HOST']}/app/account/questions/detail/sr_id/{$srItem['ID']}";
+                    if ($srItem['STATUS'] === "Closed") {
+                        $link .= '/readonly/1';
+                    }
+                    $link .= "'>";
+                    $itemData[] = $link. $value;
                 } else {
                     $itemData[] = $value;
                 }
