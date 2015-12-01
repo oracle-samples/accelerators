@@ -26,6 +26,11 @@ namespace Accelerator.EBS.SharedServices.Logs
 {
     internal class DefaultLog : Log
     {
+        public DefaultLog(string param1 = null, string param2 = null, string param3 = null)
+        {
+
+        }
+
         public void ErrorLog(Incident incident = null, RightNowServiceReference.Contact contact = null, string LogMessage = null, string LogNote = null, string source = null, int timeElapsed = 0)
         {
             
