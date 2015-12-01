@@ -8,9 +8,9 @@
  *  OSvC release: 15.8 (August 2015)
  *  Siebel release: 8.1.1.15
  *  reference: 150520-000047
- *  date: Thu Nov 12 00:55:30 PST 2015
+ *  date: Mon Nov 30 19:59:31 PST 2015
 
- *  revision: rnw-15-11-fixes-release-1
+ *  revision: rnw-15-11-fixes-release-2
  *  SHA1: $Id: 35d0202222aa8bffce6c5bc1d1437a3a7ac17aee $
  * *********************************************************************************************
  *  File: logic.js

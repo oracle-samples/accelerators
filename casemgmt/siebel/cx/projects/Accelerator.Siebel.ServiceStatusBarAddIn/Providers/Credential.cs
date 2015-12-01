@@ -8,9 +8,9 @@
  *  OSvC release: 15.8 (August 2015)
  *  Siebel release: 8.1.1.15
  *  reference: 150520-000047
- *  date: Thu Nov 12 00:55:37 PST 2015
+ *  date: Mon Nov 30 19:59:38 PST 2015
 
- *  revision: rnw-15-11-fixes-release-1
+ *  revision: rnw-15-11-fixes-release-2
  *  SHA1: $Id: 108789cfd309f41265635d4630e20181c953e187 $
  * *********************************************************************************************
  *  File: Credential.cs

@@ -10,9 +10,9 @@
  *  OSvC release: 15.8 (August 2015)
  *  Siebel release: 8.1.1.15
  *  reference: 150520-000047
- *  date: Thu Nov 12 00:55:29 PST 2015
+ *  date: Mon Nov 30 19:59:30 PST 2015
 
- *  revision: rnw-15-11-fixes-release-1
+ *  revision: rnw-15-11-fixes-release-2
  *  SHA1: $Id: 194208ca6ff04c55472fcff7906a25d58bfd1217 $
  * *********************************************************************************************
  *  File: controller.php
