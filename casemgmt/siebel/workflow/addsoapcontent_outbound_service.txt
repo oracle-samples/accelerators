@@ -1,0 +1,213 @@
+function Service_PreInvokeMethod (MethodName, Inputs, Outputs)
+{
+///////
+// This script can also be used to only add the header with user/pass
+//
+var soapHeader ;
+var soapEnv ;
+var soapHdr;
+var soapBody;
+var wsSecPropSet,weUserNameTokenPropSet,weUserNamePropSet,wePwdPropSet,updatePropSet;
+var nsClientInfoHeader, nsAppIDPropSet;
+
+// Integration values vars
+var IntegrationId = "";
+var IntegrationSite = "";
+var SiebelSRStatus = "";
+var SiebelSRNumber = ""
+
+///////////////////////////////////////////////////////////////
+// Modify values here for the Service Cloud:
+//  : User  ; Password ; ServiceCloud Hostname for integration!
+///////////////////////////////////////////////////////////////
+var Username = "CWSS_API_Siebel_Service_User";
+var Password = "Welcome1";
+var ServiceCloudHost = "acc01-15201-sql-122h--siebel.dv.lan"; 
+
+if(MethodName == "AddHeader")
+{
+
+// code for getting Input values;
+if(Inputs.GetChildCount() > 0)
+{
+	var oldSoapBody, oldSoapEnv;
+	// getting the SOAP envelope from the SOAP hierarchy
+	oldSoapEnv = Inputs.GetChild(0);
+	if (oldSoapEnv.GetChildCount()>0)
+	{
+		oldSoapBody = oldSoapEnv.GetChild(0);
+		// inserting from old to new just to test
+		try{
+			// first get the children of Update.. which might be the only child of Body.
+			if (oldSoapBody.GetChildCount() > 0 ) {
+				oldSoapBody = oldSoapBody.GetChild(0); 
+				// now 'oldSoapBody' contains the 'Update' element.
+			}
+			
+			for (var i = 0; i < oldSoapBody.GetChildCount(); i++) {
+				var oldChild = oldSoapBody.GetChild(i);
+				var oCType = oldChild.GetType();
+				
+				// soapBody.AddChild(oldChild); // this adds incorrect XML (for testing.) 
+				
+				// getting the values we need.
+				if (oCType == "ID") {
+					IntegrationId = oldChild.GetValue();
+					if (IntegrationId.indexOf(",") > 0) {
+						IntegrationId = IntegrationId.substring(0, IntegrationId.indexOf(","));
+					}
+				} else if (oCType == "Status") {
+					SiebelSRStatus = oldChild.GetValue();
+				} else if (oCType == "Threads") {  // TODO temporary name containing SRnum value
+					SiebelSRNumber = oldChild.GetValue();
+				} else if (oCType == "FOU4" || oCType == "IntegrationSite") {
+					IntegrationSite = oldChild.GetValue();
+				}
+			}
+		} catch (e) {
+			TheApplication().RaiseErrorText(e.errText); 
+		}
+	}
+}
+
+// quitting if the SR is not created by the same Service Cloud host. 
+if (IntegrationSite != ServiceCloudHost || IntegrationId == "")
+{
+	//TheApplication().RaiseErrorText("This SR is not configured for Service Cloud update");
+	TheApplication().RaiseErrorText("SR: incorrect host ("+IntegrationSite+") for Service Cloud update"); 
+	return (CancelOperation);
+}
+
+// doing SOAP
+soapHdr = TheApplication().NewPropertySet();
+soapEnv = TheApplication().NewPropertySet();
+soapBody= TheApplication().NewPropertySet();
+nsClientInfoHeader= TheApplication().NewPropertySet();
+wsSecPropSet= TheApplication().NewPropertySet();
+
+weUserNameTokenPropSet= TheApplication().NewPropertySet();
+weUserNamePropSet= TheApplication().NewPropertySet();
+wePwdPropSet= TheApplication().NewPropertySet();
+updatePropSet= TheApplication().NewPropertySet();
+nsAppIDPropSet= TheApplication().NewPropertySet();
+
+soapEnv.SetType("SOAP-ENV:Envelope");
+soapBody.SetType("SOAP-ENV:Body");
+soapHdr.SetType("soapEnv:Header");
+soapHdr.SetProperty("xmlns:soapEnv", "http://schemas.xmlsoap.org/soap/envelope/");
+soapEnv.SetProperty("xmlns:SOAP-ENV","http://schemas.xmlsoap.org/soap/envelope/");
+soapEnv.SetProperty("xmlns:i18n","http://www.w3.org/2005/09/ws-i18n");
+soapEnv.SetProperty("xmlns:wsu","http://docs.oasis-open.org/wss/2004/01/oasis-200401-wsswssecurity-utility-1.0.xsd");
+                                
+nsClientInfoHeader.SetType("ns7:ClientInfoHeader");
+nsClientInfoHeader.SetProperty("xmlns:ns7","urn:messages.ws.rightnow.com/v1_2");
+nsClientInfoHeader.SetProperty("SOAP-ENV:mustUnderstand","0");
+nsAppIDPropSet.SetType("ns7:AppID" );
+nsAppIDPropSet.SetValue("Siebel Script");
+nsClientInfoHeader.AddChild(nsAppIDPropSet);
+
+wsSecPropSet.SetType("wsse:Security");
+wsSecPropSet.SetProperty("xmlns:wsse","http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd");
+wsSecPropSet.SetProperty("mustUnderstand","1");
+
+weUserNameTokenPropSet.SetType("wsse:UsernameToken" );
+
+weUserNamePropSet.SetType("wsse:Username");
+weUserNamePropSet.SetValue( Username );
+
+wePwdPropSet.SetType("wsse:Password" );
+wePwdPropSet.SetProperty("Type","http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText");
+wePwdPropSet.SetValue( Password );
+         
+weUserNameTokenPropSet.AddChild(weUserNamePropSet);
+weUserNameTokenPropSet.AddChild(wePwdPropSet);
+wsSecPropSet.AddChild(weUserNameTokenPropSet);
+
+// body with ns7 for the RN (other time ns7 used is inside ClientInfoHeader
+soapBody.SetProperty("xmlns:ns7","urn:messages.ws.rightnow.com/v1_2");
+
+// XML vars
+var idPropSet, rnObjectsPropSet, status, statusId = 0;
+var threads, threadList, entryType, text, name;
+idPropSet= TheApplication().NewPropertySet();
+rnObjectsPropSet= TheApplication().NewPropertySet();
+threads			= TheApplication().NewPropertySet();
+entryType			= TheApplication().NewPropertySet();
+threadList			= TheApplication().NewPropertySet();
+text			= TheApplication().NewPropertySet();
+name 			= TheApplication().NewPropertySet();
+status			= TheApplication().NewPropertySet();
+
+// using ns4 for objects; ns1 for base
+rnObjectsPropSet.SetType("ns7:RNObjects");
+rnObjectsPropSet.SetProperty("xmlns:ns4", "urn:objects.ws.rightnow.com/v1_2");
+rnObjectsPropSet.SetProperty("xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance");
+rnObjectsPropSet.SetProperty("xsi:type",  "ns4:Incident");
+rnObjectsPropSet.SetProperty("xmlns:ns1", "urn:base.ws.rightnow.com/v1_2");
+
+idPropSet.SetType("ns1:ID");
+idPropSet.SetProperty("id", IntegrationId);  // inc ID
+
+threads.SetType("ns4:Threads");
+threadList.SetType("ns4:ThreadList");
+threadList.SetProperty("action", "add");
+entryType.SetType("ns4:EntryType");
+name.SetType("ns1:Name");
+name.SetValue("Note");
+text.SetType("ns4:Text");
+text.SetValue("Siebel SR "+SiebelSRNumber +" updated to status:" + SiebelSRStatus);
+
+entryType.AddChild(name);
+threadList.AddChild(entryType);
+threadList.AddChild(text);
+threads.AddChild(threadList);
+
+// deciding on what Status numeric value for RN
+if (SiebelSRStatus == 'Closed' || SiebelSRStatus == 'Completed') {
+	statusId = 2; // closed
+} else {
+	statusId = 1; // for everything else. 
+}
+var statusWithType = TheApplication().NewPropertySet();
+var statusIdPropSet = TheApplication().NewPropertySet();
+statusIdPropSet.SetType("ns1:ID");
+statusIdPropSet.SetProperty("id", ""+statusId);
+
+statusWithType.SetType("ns4:StatusWithType");
+status.SetType("ns4:Status");
+status.AddChild(statusIdPropSet);
+statusWithType.AddChild(status);
+
+rnObjectsPropSet.AddChild(idPropSet);
+rnObjectsPropSet.AddChild(statusWithType);
+rnObjectsPropSet.AddChild(threads);
+
+var procOptsPropSet, procOptSuppExtEv, procOptSuppRuls;
+procOptsPropSet= TheApplication().NewPropertySet();
+procOptSuppExtEv = TheApplication().NewPropertySet();
+procOptSuppRuls= TheApplication().NewPropertySet();
+
+procOptSuppExtEv.SetType("ns7:SuppressExternalEvents");
+procOptSuppExtEv.SetValue("false");
+procOptSuppRuls.SetType("ns7:SuppressRules");
+procOptSuppRuls.SetValue("false");
+
+procOptsPropSet.SetType("ns7:ProcessingOptions")
+procOptsPropSet.AddChild(procOptSuppExtEv);
+procOptsPropSet.AddChild(procOptSuppRuls);
+
+updatePropSet.SetType("ns7:Update");
+updatePropSet.AddChild(rnObjectsPropSet);
+updatePropSet.AddChild(procOptsPropSet);
+
+soapHdr.AddChild(nsClientInfoHeader);                                
+soapHdr.AddChild(wsSecPropSet);                                
+soapBody.AddChild(updatePropSet);                                
+
+soapEnv.AddChild(soapHdr);
+soapEnv.AddChild(soapBody);
+Outputs.AddChild(soapEnv);
+}
+
+return(CancelOperation);
+}

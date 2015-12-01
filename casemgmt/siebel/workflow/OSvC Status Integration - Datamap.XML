@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SiebelMessage
+ MessageId=""
+ IntObjectName="EAI Data Map"
+ MessageType="Integration Object"
+ IntObjectFormat="Siebel Hierarchical"
+>
+	<ListOfEaiDataMap
+>
+		<EaiObjectMap
+>
+			<Comments
+/>
+			<DestinationObjectName
+>Update</DestinationObjectName
+>
+			<Name
+>Rightnow</Name
+>
+			<SourceObjectName
+>WC_Service_Request_IO</SourceObjectName
+>
+			<ListOfEaiMapArgument
+/>
+			<ListOfEaiComponentMap
+>
+				<EaiComponentMap
+>
+					<Comments
+/>
+					<DestinationComponentName
+>Update</DestinationComponentName
+>
+					<DestinationValidation
+/>
+					<Name
+>Comp1</Name
+>
+					<ParentComponentMapName
+/>
+					<SourceComponentName
+>Service Request</SourceComponentName
+>
+					<SourceSearchSpecification
+/>
+					<SourceValidation
+/>
+					<ListOfEaiFieldMap
+>
+						<EaiFieldMap
+>
+							<Comments
+>test4</Comments
+>
+							<DestinationFieldName
+>FieldOfUpdate4</DestinationFieldName
+>
+							<SourceFieldExpression
+>[IntegrationSite]</SourceFieldExpression
+>
+						</EaiFieldMap
+>
+						<EaiFieldMap
+>
+							<Comments
+/>
+							<DestinationFieldName
+>ID</DestinationFieldName
+>
+							<SourceFieldExpression
+>[Integration Id]</SourceFieldExpression
+>
+						</EaiFieldMap
+>
+						<EaiFieldMap
+>
+							<Comments
+/>
+							<DestinationFieldName
+>Status</DestinationFieldName
+>
+							<SourceFieldExpression
+>[Status]</SourceFieldExpression
+>
+						</EaiFieldMap
+>
+						<EaiFieldMap
+>
+							<Comments
+>Siebel SR number test into the threads field.</Comments
+>
+							<DestinationFieldName
+>Threads</DestinationFieldName
+>
+							<SourceFieldExpression
+>[SR Number]</SourceFieldExpression
+>
+						</EaiFieldMap
+>
+					</ListOfEaiFieldMap
+>
+				</EaiComponentMap
+>
+				<EaiComponentMap
+>
+					<Comments
+/>
+					<DestinationComponentName
+>ID</DestinationComponentName
+>
+					<DestinationValidation
+/>
+					<Name
+>Comp2</Name
+>
+					<ParentComponentMapName
+>Comp3</ParentComponentMapName
+>
+					<SourceComponentName
+>Service Request</SourceComponentName
+>
+					<SourceSearchSpecification
+/>
+					<SourceValidation
+/>
+					<ListOfEaiFieldMap
+>
+						<EaiFieldMap
+>
+							<Comments
+/>
+							<DestinationFieldName
+>id</DestinationFieldName
+>
+							<SourceFieldExpression
+>[Integration Id]</SourceFieldExpression
+>
+						</EaiFieldMap
+>
+					</ListOfEaiFieldMap
+>
+				</EaiComponentMap
+>
+				<EaiComponentMap
+>
+					<Comments
+/>
+					<DestinationComponentName
+>RNObjects</DestinationComponentName
+>
+					<DestinationValidation
+/>
+					<Name
+>Comp3</Name
+>
+					<ParentComponentMapName
+>Comp1</ParentComponentMapName
+>
+					<SourceComponentName
+>Service Request</SourceComponentName
+>
+					<SourceSearchSpecification
+/>
+					<SourceValidation
+/>
+					<ListOfEaiFieldMap
+/>
+				</EaiComponentMap
+>
+			</ListOfEaiComponentMap
+>
+		</EaiObjectMap
+>
+	</ListOfEaiDataMap
+>
+</SiebelMessage
+>
