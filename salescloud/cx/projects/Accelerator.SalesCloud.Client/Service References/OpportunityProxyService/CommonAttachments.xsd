@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://xmlns.oracle.com/apps/crmCommon/objects/objectsService/" xmlns:sdoJava="commonj.sdo/java" xmlns:ns0="http://xmlns.oracle.com/adf/svc/types/" elementFormDefault="qualified" targetNamespace="http://xmlns.oracle.com/apps/crmCommon/objects/objectsService/" sdoJava:package="oracle.apps.crmCommon.objects.objectsService" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/META-INF/wsdl/BC4JService.xsd" namespace="http://xmlns.oracle.com/adf/svc/types/" />
+  <xsd:import schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/xml/sdoJava.xsd" namespace="commonj.sdo/java" />
+  <xsd:annotation>
+    <xsd:documentation xmlns:oer="http://xmlns.oracle.com/oer">
+      <name xmlns="http://xmlns.oracle.com/apps/crmCommon/objects/objectsService/">Common Attachment SDO</name>
+      <description xmlns="http://xmlns.oracle.com/apps/crmCommon/objects/objectsService/">An attachment data object that captures documents, files or web
+                site links associated with appointments, interactions or tasks.</description>
+      <oer:category name="lba" xmlns:oer="http://xmlns.oracle.com/oer">
+        <value xmlns="http://xmlns.oracle.com/apps/crmCommon/objects/objectsService/">CrmCommonComponent-CRM Common Components</value>
+        <value xmlns="http://xmlns.oracle.com/apps/crmCommon/objects/objectsService/">CrmCommonComponent-CRM Common Components :
+                    AppCmmnCompObjects-Objects</value>
+      </oer:category>
+      <oer:attributes xmlns:oer="http://xmlns.oracle.com/oer">
+        <oer:attribute description="Identifier of the document attachment" name="AttachedDocumentId" />
+        <oer:attribute description="Table name of attachment" name="TableName" />
+        <oer:attribute description="Name of the entity attachment" name="EntityName" />
+        <oer:attribute description="Value of primary key 1" name="Pk1Value" />
+        <oer:attribute description="Value of primary key 2" name="Pk2Value" />
+        <oer:attribute description="Value of primary key 3" name="Pk3Value" />
+        <oer:attribute description="Value of primary key 4" name="Pk4Value" />
+        <oer:attribute description="Value of primary key 5" name="Pk5Value" />
+        <oer:attribute description="Code value of the data type" name="DatatypeCode" />
+        <oer:attribute description="Attachment description" name="Description" />
+        <oer:attribute description="Name of file attachment" name="FileName" />
+        <oer:attribute description="Usage type of the attachment" name="UsageType" />
+        <oer:attribute description="Attachment node" name="DmNode" />
+        <oer:attribute description="Folder path of the attachment" name="DmFolderPath" />
+        <oer:attribute description="Attachment type" name="DmType" />
+        <oer:attribute description="Version number of the attachment" name="DmVersionNumber" />
+        <oer:attribute description="URL of the attachment" name="URL" />
+        <oer:attribute description="Attachment title" name="Title" />
+        <oer:attribute description="Title or name of attachment" name="Attachment" />
+        <oer:attribute description="Entity attributes of the attachment" name="EntityAttributes" />
+        <oer:attribute description="Attachment repository" name="DmRepository" />
+        <oer:attribute description="Attributes of the document attachment" name="DocumentAttributes" />
+        <oer:attribute description="Download status of attachment" name="DownloadStatus" />
+        <oer:attribute description="Identifier of document entity" name="DocumentEntityId" />
+        <oer:attribute description="Name of the attachment category" name="CategoryName" />
+        <oer:attribute description="Attachment version control" name="VersionControlIcon" />
+        <oer:attribute description="URL of the file attchmanet" name="FileURL" />
+        <oer:attribute description="Attachment text" name="UploadedText" />
+        <oer:attribute description="Content type of file attachment" name="UploadedFileContentType" />
+        <oer:attribute description="Length of file attachment" name="UploadedFileLength" />
+        <oer:attribute description="Name of the file attachment" name="UploadedFileName" />
+        <oer:attribute description="Attachment uploaded file" name="UploadedFile" />
+      </oer:attributes>
+    </xsd:documentation>
+  </xsd:annotation>
+  <xsd:complexType name="CommonAttachments">
+    <xsd:annotation>
+      <xsd:appinfo source="http://xmlns.oracle.com/adf/svc/metadata/">
+        <key xmlns="http://xmlns.oracle.com/adf/svc/metadata/" />
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="AttachedDocumentId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="TableName" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="EntityName" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="Pk1Value" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="Pk2Value" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="Pk3Value" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="Pk4Value" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="Pk5Value" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="DatatypeCode" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="Description" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="FileName" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="UsageType" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="DmNode" nillable="true" type="xsd:decimal" />
+      <xsd:element minOccurs="0" name="DmFolderPath" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="DmType" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="DmVersionNumber" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="URL" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="Title" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="Attachment" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="EntityAttributes" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="DmRepository" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="DocumentAttributes" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="DownloadStatus" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="DocumentEntityId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="CategoryName" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="VersionControlIcon" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="FileURL" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="UploadedText" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="UploadedFileContentType" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="UploadedFileLength" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="UploadedFileName" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="UploadedFile" nillable="true" type="ns0:base64Binary-DataHandler" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="commonAttachments" type="CommonAttachments" />
+</xsd:schema>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://xmlns.oracle.com/oracle/apps/sales/opptyMgmt/revenues/revenueService/" xmlns:sdoJava="commonj.sdo/java" xmlns:sdoXML="commonj.sdo/xml" xmlns:ns0="http://xmlns.oracle.com/adf/svc/types/" elementFormDefault="qualified" targetNamespace="http://xmlns.oracle.com/oracle/apps/sales/opptyMgmt/revenues/revenueService/" sdoJava:package="oracle.apps.sales.opptyMgmt.revenues.revenueService" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/META-INF/wsdl/BC4JService.xsd" namespace="http://xmlns.oracle.com/adf/svc/types/" />
+  <xsd:import schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/xml/sdoJava.xsd" namespace="commonj.sdo/java" />
+  <xsd:import schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/xml/sdoXML.xsd" namespace="commonj.sdo/xml" />
+  <xsd:annotation>
+    <xsd:documentation xmlns:oer="http://xmlns.oracle.com/oer">
+      <name xmlns="http://xmlns.oracle.com/oracle/apps/sales/opptyMgmt/revenues/revenueService/">Category Summary Revenue</name>
+      <description xmlns="http://xmlns.oracle.com/oracle/apps/sales/opptyMgmt/revenues/revenueService/">The summarized revenue amount for a given revenue category
+                within an opportunity revenue line set.</description>
+      <oer:category name="lba" xmlns:oer="http://xmlns.oracle.com/oer">
+        <value xmlns="http://xmlns.oracle.com/oracle/apps/sales/opptyMgmt/revenues/revenueService/">SalesTop-Sales</value>
+        <value xmlns="http://xmlns.oracle.com/oracle/apps/sales/opptyMgmt/revenues/revenueService/">SalesTop-Sales : OpptyMgmtTop-Sales Opportunity Top</value>
+        <value xmlns="http://xmlns.oracle.com/oracle/apps/sales/opptyMgmt/revenues/revenueService/">SalesTop-Sales : OpptyMgmtTop-Sales Opportunity Top :
+                    OpptyMgmtOpportunities-Opportunities</value>
+      </oer:category>
+      <oer:category name="lbo" xmlns:oer="http://xmlns.oracle.com/oer">
+        <value xmlns="http://xmlns.oracle.com/oracle/apps/sales/opptyMgmt/revenues/revenueService/">CRM-CRM : MOO-Opportunity Management :
+                    MOO_OPPORTUNITY-Opportunity</value>
+      </oer:category>
+      <oer:attributes xmlns:oer="http://xmlns.oracle.com/oer">
+        <oer:attribute description="Revenue Identifier." name="RevnId" />
+        <oer:attribute description="Revenue Number." name="RevnNumber" />
+        <oer:attribute description="Opportunity Identifier." name="OptyId" />
+        <oer:attribute description="Business Unit Identifier" name="BUOrgId" />
+        <oer:attribute description="Estimated close date for the category summary revenue line." name="EffectiveDate" />
+        <oer:attribute description="Revenue category used in Revenue Line Set functionality." name="RevnCategoryCode" />
+        <oer:attribute description="This denotes the type of revenue line like Opportunity Summary Revenue, Standard Revenue and so on." name="RevnLineTypeCode" />
+        <oer:attribute description="Revenue amount." name="RevnAmount" />
+        <oer:attribute description="The currency the amount on this revenue line is based on." name="RevnAmountCurcyCode" />
+        <oer:attribute description="Indicates whether the revenue record is a summary revenue line." name="PrimaryFlag" />
+        <oer:attribute description="CRM common currency code." name="CrmCurcyCode" />
+        <oer:attribute description="This rate type is used for the conversion of the revenue amount to the crm common currency for Revenue Forecast Metrics. if the currency of the revenue line is different. This is usually spot, user defined or corporate." name="CrmConversionRateType" />
+        <oer:attribute description="This rate is used for the conversion of the revenue amount to the CRM common currency to facilitate the computation of the revenue forecast metrics. This is the amount that one currency can be exchanged for, at a specific point of time." name="CrmConversionRate" />
+        <oer:attribute description="Who column: indicates the user who created the row." name="CreatedBy" />
+        <oer:attribute description="Who column: indicates the date and time of the creation of the row." name="CreationDate" />
+        <oer:attribute description="Disconnected Mobile: this value is used to guarantee the uniqueness of the row when duplicates are created in different databases (i.e. mobile databases or the server)." name="ConflictId" />
+        <oer:attribute description="Who column: indicates the user who last updated the row." name="LastUpdatedBy" />
+        <oer:attribute description="Who column: indicates the date and time of the last update of the row." name="LastUpdateDate" />
+        <oer:attribute description="Who column: indicates the session login associated to the user who last updated the row." name="LastUpdateLogin" />
+        <oer:attribute description="Used to implement optimistic locking. This number is incremented every time that the row is updated. The number is compared at the start and end of a transaction to detect whether another session has updated the row since it was queried." name="ObjectVersionNumber" />
+        <oer:attribute description="Disconnected Mobile: indicates the date and time of the last update of the row. This value is different from LAST_UPDATE_DATE if the update originally happened in a different database (i.e. a different mobile database or the server)." name="UserLastUpdateDate" />
+        <oer:attribute description="Category Summary Revenue in Corporate Currency" name="CrmCategorySummaryRevenue" />
+      </oer:attributes>
+    </xsd:documentation>
+  </xsd:annotation>
+  <xsd:complexType name="CategorySummaryRevenue">
+    <xsd:annotation>
+      <xsd:appinfo source="http://xmlns.oracle.com/adf/svc/metadata/">
+        <key xmlns="http://xmlns.oracle.com/adf/svc/metadata/">
+          <attribute>RevnId</attribute>
+        </key>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element sdoXML:dataType="sdoJava:LongObject" minOccurs="0" name="RevnId" type="xsd:long" />
+      <xsd:element minOccurs="0" name="RevnNumber" type="xsd:string" />
+      <xsd:element minOccurs="0" name="OptyId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="BUOrgId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="EffectiveDate" nillable="true" type="ns0:date-Date" />
+      <xsd:element minOccurs="0" name="RevnCategoryCode" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="RevnLineTypeCode" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="RevnAmount" nillable="true" type="ns0:AmountType" />
+      <xsd:element minOccurs="0" name="RevnAmountCurcyCode" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PrimaryFlag" nillable="true" type="xsd:boolean" />
+      <xsd:element minOccurs="0" name="CrmCurcyCode" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="CrmConversionRateType" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="CrmConversionRate" nillable="true" type="xsd:decimal" />
+      <xsd:element minOccurs="0" name="CreatedBy" type="xsd:string" />
+      <xsd:element minOccurs="0" name="CreationDate" type="ns0:dateTime-Timestamp" />
+      <xsd:element sdoXML:dataType="sdoJava:LongObject" minOccurs="0" name="ConflictId" type="xsd:long" />
+      <xsd:element minOccurs="0" name="LastUpdatedBy" type="xsd:string" />
+      <xsd:element minOccurs="0" name="LastUpdateDate" type="ns0:dateTime-Timestamp" />
+      <xsd:element minOccurs="0" name="LastUpdateLogin" nillable="true" type="xsd:string" />
+      <xsd:element sdoXML:dataType="sdoJava:IntObject" minOccurs="0" name="ObjectVersionNumber" type="xsd:int" />
+      <xsd:element minOccurs="0" name="UserLastUpdateDate" nillable="true" type="ns0:dateTime-Timestamp" />
+      <xsd:element minOccurs="0" name="CrmCategorySummaryRevenue" nillable="true" type="xsd:decimal" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="categorySummaryRevenue" type="CategorySummaryRevenue" />
+</xsd:schema>

@@ -1,0 +1,764 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:ns4="http://xmlns.oracle.com/apps/sales/opptyMgmt/revenues/revenueService/" xmlns:tns="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/types/" xmlns:ns2="http://xmlns.oracle.com/adf/svc/types/" xmlns:ns0="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/" xmlns:ns3="http://xmlns.oracle.com/apps/crmCommon/objects/objectsService/" xmlns:ns1="http://xmlns.oracle.com/apps/scm/productModel/deleteGroups/publicModel/" elementFormDefault="qualified" targetNamespace="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/types/" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/oracle/apps/sales/opptyMgmt/revenues/revenueService/Revenue.xsd" namespace="http://xmlns.oracle.com/apps/sales/opptyMgmt/revenues/revenueService/" />
+  <import schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/oracle/apps/sales/opptyMgmt/opportunities/opportunityService/OpportunityCompetitor.xsd" namespace="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/" />
+  <import schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/oracle/apps/sales/opptyMgmt/opportunities/opportunityService/OpportunityResource.xsd" namespace="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/" />
+  <import schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/oracle/apps/crmCommon/objects/objectsService/CommonAttachments.xsd" namespace="http://xmlns.oracle.com/apps/crmCommon/objects/objectsService/" />
+  <import schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/oracle/apps/sales/opptyMgmt/opportunities/opportunityService/OpportunityResponse.xsd" namespace="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/" />
+  <import schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/META-INF/wsdl/BC4JService.xsd" namespace="http://xmlns.oracle.com/adf/svc/types/" />
+  <import schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/META-INF/wsdl/BC4JServiceCS.xsd" namespace="http://xmlns.oracle.com/adf/svc/types/" />
+  <import schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/oracle/apps/scm/productModel/deleteGroups/publicModel/DeleteEntity.xsd" namespace="http://xmlns.oracle.com/apps/scm/productModel/deleteGroups/publicModel/" />
+  <import schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/oracle/apps/sales/opptyMgmt/opportunities/opportunityService/OpportunityContact.xsd" namespace="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/" />
+  <import schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/oracle/apps/sales/opptyMgmt/opportunities/opportunityService/OpportunityReference.xsd" namespace="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/" />
+  <import schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/oracle/apps/sales/opptyMgmt/opportunities/opportunityService/OpportunityLead.xsd" namespace="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/" />
+  <import schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/oracle/apps/sales/opptyMgmt/opportunities/opportunityService/OpportunitySource.xsd" namespace="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/" />
+  <import schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/oracle/apps/sales/opptyMgmt/opportunities/opportunityService/Opportunity.xsd" namespace="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/" />
+  <element name="getOpportunity">
+    <complexType>
+      <sequence>
+        <element name="optyId" type="long" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="getOpportunityResponse">
+    <complexType>
+      <sequence>
+        <element name="result" type="ns0:Opportunity" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="createOpportunity">
+    <complexType>
+      <sequence>
+        <element name="opportunity" type="ns0:Opportunity" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="createOpportunityResponse">
+    <complexType>
+      <sequence>
+        <element name="result" type="ns0:Opportunity" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="updateOpportunity">
+    <complexType>
+      <sequence>
+        <element name="opportunity" type="ns0:Opportunity" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="updateOpportunityResponse">
+    <complexType>
+      <sequence>
+        <element name="result" type="ns0:Opportunity" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="deleteOpportunity">
+    <complexType>
+      <sequence>
+        <element name="opportunity" type="ns0:Opportunity" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="deleteOpportunityResponse">
+    <complexType>
+      <sequence />
+    </complexType>
+  </element>
+  <element name="mergeOpportunity">
+    <complexType>
+      <sequence>
+        <element name="opportunity" type="ns0:Opportunity" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="mergeOpportunityResponse">
+    <complexType>
+      <sequence>
+        <element name="result" type="ns0:Opportunity" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="processOpportunity">
+    <complexType>
+      <sequence>
+        <element name="changeOperation" type="string" />
+        <element minOccurs="0" maxOccurs="unbounded" name="opportunity" type="ns0:Opportunity" />
+        <element name="processControl" type="ns2:ProcessControl" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="processOpportunityResponse">
+    <complexType>
+      <sequence>
+        <element minOccurs="0" maxOccurs="unbounded" name="result" type="ns0:Opportunity" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="processCSOpportunity">
+    <complexType>
+      <sequence>
+        <element name="processData" type="ns2:ProcessData" />
+        <element name="processControl" type="ns2:ProcessControl" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="processCSOpportunityResponse">
+    <complexType>
+      <sequence>
+        <element name="result" type="ns2:ProcessData" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="processCSOpportunityAsync">
+    <complexType>
+      <sequence>
+        <element name="processData" type="ns2:ProcessData" />
+        <element name="processControl" type="ns2:ProcessControl" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="processCSOpportunityAsyncResponse">
+    <complexType>
+      <sequence>
+        <element name="result" type="ns2:ProcessData" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="processOpportunityAsync">
+    <complexType>
+      <sequence>
+        <element name="changeOperation" type="string" />
+        <element minOccurs="0" maxOccurs="unbounded" name="opportunity" type="ns0:Opportunity" />
+        <element name="processControl" type="ns2:ProcessControl" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="processOpportunityAsyncResponse">
+    <complexType>
+      <sequence>
+        <element minOccurs="0" maxOccurs="unbounded" name="result" type="ns0:Opportunity" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="deleteOpportunityAsync">
+    <complexType>
+      <sequence>
+        <element name="opportunity" type="ns0:Opportunity" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="deleteOpportunityAsyncResponse">
+    <complexType>
+      <sequence />
+    </complexType>
+  </element>
+  <element name="getOpportunityAsync">
+    <complexType>
+      <sequence>
+        <element name="optyId" type="long" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="getOpportunityAsyncResponse">
+    <complexType>
+      <sequence>
+        <element name="result" type="ns0:Opportunity" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="createOpportunityAsync">
+    <complexType>
+      <sequence>
+        <element name="opportunity" type="ns0:Opportunity" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="createOpportunityAsyncResponse">
+    <complexType>
+      <sequence>
+        <element name="result" type="ns0:Opportunity" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="mergeOpportunityAsync">
+    <complexType>
+      <sequence>
+        <element name="opportunity" type="ns0:Opportunity" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="mergeOpportunityAsyncResponse">
+    <complexType>
+      <sequence>
+        <element name="result" type="ns0:Opportunity" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="updateOpportunityAsync">
+    <complexType>
+      <sequence>
+        <element name="opportunity" type="ns0:Opportunity" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="updateOpportunityAsyncResponse">
+    <complexType>
+      <sequence>
+        <element name="result" type="ns0:Opportunity" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="deleteOpportunityCompetitor">
+    <complexType>
+      <sequence>
+        <element name="opportunityCompetitorVO" type="ns0:OpportunityCompetitor" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="deleteOpportunityCompetitorResponse">
+    <complexType>
+      <sequence />
+    </complexType>
+  </element>
+  <element name="deleteOpportunityLead">
+    <complexType>
+      <sequence>
+        <element name="opportunityLeadVO" type="ns0:OpportunityLead" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="deleteOpportunityLeadResponse">
+    <complexType>
+      <sequence />
+    </complexType>
+  </element>
+  <element name="deleteOpportunityReference">
+    <complexType>
+      <sequence>
+        <element name="opportunityReferenceVO" type="ns0:OpportunityReference" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="deleteOpportunityReferenceResponse">
+    <complexType>
+      <sequence />
+    </complexType>
+  </element>
+  <element name="deleteOpportunityResource">
+    <complexType>
+      <sequence>
+        <element name="opportunityResourceVO" type="ns0:OpportunityResource" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="deleteOpportunityResourceResponse">
+    <complexType>
+      <sequence />
+    </complexType>
+  </element>
+  <element name="deleteOpportunityMktResponse">
+    <complexType>
+      <sequence>
+        <element name="opportunityResponseVO" type="ns0:OpportunityResponse" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="deleteOpportunityMktResponseResponse">
+    <complexType>
+      <sequence />
+    </complexType>
+  </element>
+  <element name="deleteOpportunityRevenue">
+    <complexType>
+      <sequence>
+        <element name="opportunityRevenueVO" type="ns4:Revenue" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="deleteOpportunityRevenueResponse">
+    <complexType>
+      <sequence />
+    </complexType>
+  </element>
+  <element name="deleteOpportunitySource">
+    <complexType>
+      <sequence>
+        <element name="opportunitySourceVO" type="ns0:OpportunitySource" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="deleteOpportunitySourceResponse">
+    <complexType>
+      <sequence />
+    </complexType>
+  </element>
+  <element name="deleteOpportunityCompetitorAsync">
+    <complexType>
+      <sequence>
+        <element name="opportunityCompetitorVO" type="ns0:OpportunityCompetitor" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="deleteOpportunityCompetitorAsyncResponse">
+    <complexType>
+      <sequence />
+    </complexType>
+  </element>
+  <element name="deleteOpportunityMktResponseAsync">
+    <complexType>
+      <sequence>
+        <element name="opportunityResponseVO" type="ns0:OpportunityResponse" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="deleteOpportunityMktResponseAsyncResponse">
+    <complexType>
+      <sequence />
+    </complexType>
+  </element>
+  <element name="deleteOpportunityRevenueAsync">
+    <complexType>
+      <sequence>
+        <element name="opportunityRevenueVO" type="ns4:Revenue" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="deleteOpportunityRevenueAsyncResponse">
+    <complexType>
+      <sequence />
+    </complexType>
+  </element>
+  <element name="deleteOpportunityResourceAsync">
+    <complexType>
+      <sequence>
+        <element name="opportunityResourceVO" type="ns0:OpportunityResource" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="deleteOpportunityResourceAsyncResponse">
+    <complexType>
+      <sequence />
+    </complexType>
+  </element>
+  <element name="deleteOpportunityLeadAsync">
+    <complexType>
+      <sequence>
+        <element name="opportunityLeadVO" type="ns0:OpportunityLead" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="deleteOpportunityLeadAsyncResponse">
+    <complexType>
+      <sequence />
+    </complexType>
+  </element>
+  <element name="deleteOpportunitySourceAsync">
+    <complexType>
+      <sequence>
+        <element name="opportunitySourceVO" type="ns0:OpportunitySource" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="deleteOpportunitySourceAsyncResponse">
+    <complexType>
+      <sequence />
+    </complexType>
+  </element>
+  <element name="deleteOpportunityReferenceAsync">
+    <complexType>
+      <sequence>
+        <element name="opportunityReferenceVO" type="ns0:OpportunityReference" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="deleteOpportunityReferenceAsyncResponse">
+    <complexType>
+      <sequence />
+    </complexType>
+  </element>
+  <element name="doAutoAssignmentAsynchronously">
+    <complexType>
+      <sequence>
+        <element name="optyId" type="string" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="doAutoAssignmentAsynchronouslyResponse">
+    <complexType>
+      <sequence />
+    </complexType>
+  </element>
+  <element name="doAutoAssignmentAsynchronouslyAsync">
+    <complexType>
+      <sequence>
+        <element name="optyId" type="string" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="doAutoAssignmentAsynchronouslyAsyncResponse">
+    <complexType>
+      <sequence />
+    </complexType>
+  </element>
+  <element name="deleteOpportunityContact">
+    <complexType>
+      <sequence>
+        <element name="opportunityContactVO" type="ns0:OpportunityContact" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="deleteOpportunityContactResponse">
+    <complexType>
+      <sequence />
+    </complexType>
+  </element>
+  <element name="deleteOpportunityContactAsync">
+    <complexType>
+      <sequence>
+        <element name="opportunityContactVO" type="ns0:OpportunityContact" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="deleteOpportunityContactAsyncResponse">
+    <complexType>
+      <sequence />
+    </complexType>
+  </element>
+  <element name="findOpportunity">
+    <complexType>
+      <sequence>
+        <element name="findCriteria" type="ns2:FindCriteria" />
+        <element name="findControl" type="ns2:FindControl" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="findOpportunityResponse">
+    <complexType>
+      <sequence>
+        <element minOccurs="0" maxOccurs="unbounded" name="result" type="ns0:Opportunity" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="findOpportunityAsync">
+    <complexType>
+      <sequence>
+        <element name="findCriteria" type="ns2:FindCriteria" />
+        <element name="findControl" type="ns2:FindControl" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="findOpportunityAsyncResponse">
+    <complexType>
+      <sequence>
+        <element minOccurs="0" maxOccurs="unbounded" name="result" type="ns0:Opportunity" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="isSalesAccountUsedInOpportunity">
+    <complexType>
+      <sequence>
+        <element name="salesAccountId" type="long" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="isSalesAccountUsedInOpportunityResponse">
+    <complexType>
+      <sequence>
+        <element name="result" type="boolean" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="isSalesAccountUsedInOpportunityAsync">
+    <complexType>
+      <sequence>
+        <element name="salesAccountId" type="long" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="isSalesAccountUsedInOpportunityAsyncResponse">
+    <complexType>
+      <sequence>
+        <element name="result" type="boolean" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="checkConstraint">
+    <complexType>
+      <sequence>
+        <element minOccurs="0" maxOccurs="unbounded" name="deleteEntities" type="ns1:DeleteEntity" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="checkConstraintResponse">
+    <complexType>
+      <sequence>
+        <element minOccurs="0" maxOccurs="unbounded" name="result" type="ns1:DeleteEntity" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="checkConstraintAsync">
+    <complexType>
+      <sequence>
+        <element minOccurs="0" maxOccurs="unbounded" name="deleteEntities" type="ns1:DeleteEntity" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="checkConstraintAsyncResponse">
+    <complexType>
+      <sequence>
+        <element minOccurs="0" maxOccurs="unbounded" name="result" type="ns1:DeleteEntity" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="getDfltObjAttrHints">
+    <complexType>
+      <sequence>
+        <element name="viewName" type="string" />
+        <element name="localeName" type="string" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="getDfltObjAttrHintsResponse">
+    <complexType>
+      <sequence>
+        <element name="result" type="ns2:ObjAttrHints" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="getServiceLastUpdateTime">
+    <complexType>
+      <sequence />
+    </complexType>
+  </element>
+  <element name="getServiceLastUpdateTimeResponse">
+    <complexType>
+      <sequence>
+        <element name="result" type="ns2:dateTime-Timestamp" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="getEntityList">
+    <complexType>
+      <sequence />
+    </complexType>
+  </element>
+  <element name="getEntityListResponse">
+    <complexType>
+      <sequence>
+        <element minOccurs="0" maxOccurs="unbounded" name="result" type="ns2:ServiceViewInfo" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="getEntityListAsync">
+    <complexType>
+      <sequence />
+    </complexType>
+  </element>
+  <element name="getEntityListAsyncResponse">
+    <complexType>
+      <sequence>
+        <element minOccurs="0" maxOccurs="unbounded" name="result" type="ns2:ServiceViewInfo" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="getDfltObjAttrHintsAsync">
+    <complexType>
+      <sequence>
+        <element name="viewName" type="string" />
+        <element name="localeName" type="string" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="getDfltObjAttrHintsAsyncResponse">
+    <complexType>
+      <sequence>
+        <element name="result" type="ns2:ObjAttrHints" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="getServiceLastUpdateTimeAsync">
+    <complexType>
+      <sequence />
+    </complexType>
+  </element>
+  <element name="getServiceLastUpdateTimeAsyncResponse">
+    <complexType>
+      <sequence>
+        <element name="result" type="ns2:dateTime-Timestamp" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="createAttachment">
+    <complexType>
+      <sequence>
+        <element minOccurs="0" maxOccurs="unbounded" name="attachmentRows" type="ns3:CommonAttachments" />
+        <element name="commitData" type="string" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="createAttachmentResponse">
+    <complexType>
+      <sequence>
+        <element name="result" type="string" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="createAttachmentAsync">
+    <complexType>
+      <sequence>
+        <element minOccurs="0" maxOccurs="unbounded" name="attachmentRows" type="ns3:CommonAttachments" />
+        <element name="commitData" type="string" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="createAttachmentAsyncResponse">
+    <complexType>
+      <sequence>
+        <element name="result" type="string" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="copyAttachment">
+    <complexType>
+      <sequence>
+        <element minOccurs="0" maxOccurs="unbounded" name="attachmentRows" type="ns3:CommonAttachments" />
+        <element name="commitData" type="string" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="copyAttachmentResponse">
+    <complexType>
+      <sequence>
+        <element name="result" type="string" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="copyAttachmentAsync">
+    <complexType>
+      <sequence>
+        <element minOccurs="0" maxOccurs="unbounded" name="attachmentRows" type="ns3:CommonAttachments" />
+        <element name="commitData" type="string" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="copyAttachmentAsyncResponse">
+    <complexType>
+      <sequence>
+        <element name="result" type="string" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="deleteAttachment">
+    <complexType>
+      <sequence>
+        <element minOccurs="0" maxOccurs="unbounded" name="deleteParams" type="ns3:CommonAttachments" />
+        <element name="commitData" type="string" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="deleteAttachmentResponse">
+    <complexType>
+      <sequence>
+        <element name="result" type="string" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="deleteAttachmentAsync">
+    <complexType>
+      <sequence>
+        <element minOccurs="0" maxOccurs="unbounded" name="deleteParams" type="ns3:CommonAttachments" />
+        <element name="commitData" type="string" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="deleteAttachmentAsyncResponse">
+    <complexType>
+      <sequence>
+        <element name="result" type="string" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="getAttachmentContent">
+    <complexType>
+      <sequence>
+        <element name="getParameters" type="ns3:CommonAttachments" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="getAttachmentContentResponse">
+    <complexType>
+      <sequence>
+        <element name="result" type="ns3:CommonAttachments" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="getAttachmentContentAsync">
+    <complexType>
+      <sequence>
+        <element name="getParameters" type="ns3:CommonAttachments" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="getAttachmentContentAsyncResponse">
+    <complexType>
+      <sequence>
+        <element name="result" type="ns3:CommonAttachments" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="getAttachmentsListWithoutContent">
+    <complexType>
+      <sequence>
+        <element minOccurs="0" maxOccurs="unbounded" name="getParameters" type="ns3:CommonAttachments" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="getAttachmentsListWithoutContentResponse">
+    <complexType>
+      <sequence>
+        <element minOccurs="0" maxOccurs="unbounded" name="result" type="ns3:CommonAttachments" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="getAttachmentsListWithoutContentAsync">
+    <complexType>
+      <sequence>
+        <element minOccurs="0" maxOccurs="unbounded" name="getParameters" type="ns3:CommonAttachments" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="getAttachmentsListWithoutContentAsyncResponse">
+    <complexType>
+      <sequence>
+        <element minOccurs="0" maxOccurs="unbounded" name="result" type="ns3:CommonAttachments" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="deleteAllRevenuesInOpportunity">
+    <complexType>
+      <sequence>
+        <element name="optyId" type="long" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="deleteAllRevenuesInOpportunityResponse">
+    <complexType>
+      <sequence />
+    </complexType>
+  </element>
+  <element name="deleteAllRevenuesInOpportunityAsync">
+    <complexType>
+      <sequence>
+        <element name="optyId" type="long" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="deleteAllRevenuesInOpportunityAsyncResponse">
+    <complexType>
+      <sequence />
+    </complexType>
+  </element>
+</schema>

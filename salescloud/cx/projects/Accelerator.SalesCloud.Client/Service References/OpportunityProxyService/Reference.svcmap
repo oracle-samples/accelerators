@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="7abb23ad-c007-44e4-afc1-a4b62a04895e" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="OpportunityLead.xsd" MetadataType="Schema" ID="844386e2-c16b-4022-acc8-f067635370c5" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/oracle/apps/sales/opptyMgmt/opportunities/opportunityService/OpportunityLead.xsd" />
+    <MetadataFile FileName="sdoJava.xsd" MetadataType="Schema" ID="e04d01d8-a277-4dc8-9e93-500b2142fbb1" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/xml/sdoJava.xsd" />
+    <MetadataFile FileName="OpportunityReference.xsd" MetadataType="Schema" ID="f802661f-572a-4718-8464-38ed944d07b8" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/oracle/apps/sales/opptyMgmt/opportunities/opportunityService/OpportunityReference.xsd" />
+    <MetadataFile FileName="RevenueTerritory.xsd" MetadataType="Schema" ID="492e166e-8e01-4a3c-95b7-81fdb3d437e9" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/oracle/apps/sales/opptyMgmt/revenues/revenueService/RevenueTerritory.xsd" />
+    <MetadataFile FileName="OpportunityResponse.xsd" MetadataType="Schema" ID="f15415a8-036a-4601-abc3-e5dce712569f" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/oracle/apps/sales/opptyMgmt/opportunities/opportunityService/OpportunityResponse.xsd" />
+    <MetadataFile FileName="OpportunityResource.xsd" MetadataType="Schema" ID="8d2f4096-f9ab-46e7-b7c3-065cb20d85ee" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/oracle/apps/sales/opptyMgmt/opportunities/opportunityService/OpportunityResource.xsd" />
+    <MetadataFile FileName="ServiceException.wsdl" MetadataType="Wsdl" ID="a17560f8-920e-4221-bb73-32f1a3013a6e" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?WSDL=/META-INF/wsdl/ServiceException.wsdl" />
+    <MetadataFile FileName="TransientCategory.xsd" MetadataType="Schema" ID="1425dd85-058e-4a84-b32e-50b95dbeade2" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/oracle/apps/crmCommon/activities/activitiesService/TransientCategory.xsd" />
+    <MetadataFile FileName="OpportunityContact.xsd" MetadataType="Schema" ID="d192849b-4275-464c-b50e-d0a5a5257979" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/oracle/apps/sales/opptyMgmt/opportunities/opportunityService/OpportunityContact.xsd" />
+    <MetadataFile FileName="CommonAttachments.xsd" MetadataType="Schema" ID="72924972-d6c5-4ee1-8f61-07fc96806563" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/oracle/apps/crmCommon/objects/objectsService/CommonAttachments.xsd" />
+    <MetadataFile FileName="Revenue.xsd" MetadataType="Schema" ID="9e804ce1-94cc-49c1-969f-20eb67568e7f" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/oracle/apps/sales/opptyMgmt/revenues/revenueService/Revenue.xsd" />
+    <MetadataFile FileName="OpportunitySource.xsd" MetadataType="Schema" ID="e644e8d2-d886-48c4-939a-e2f515b06703" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/oracle/apps/sales/opptyMgmt/opportunities/opportunityService/OpportunitySource.xsd" />
+    <MetadataFile FileName="sdoXML.xsd" MetadataType="Schema" ID="42c52329-9267-4ce5-ae67-99894aed3f4e" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/xml/sdoXML.xsd" />
+    <MetadataFile FileName="BC4JServiceCS.xsd" MetadataType="Schema" ID="0c774e20-2cee-410c-9562-683b0f9cf178" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/META-INF/wsdl/BC4JServiceCS.xsd" />
+    <MetadataFile FileName="sdoModel.xsd" MetadataType="Schema" ID="b8c28ea2-d105-4093-9586-e51350ecca86" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/xml/sdoModel.xsd" />
+    <MetadataFile FileName="SplitRevenue.xsd" MetadataType="Schema" ID="7fb1751e-ee27-4fa0-9269-1700919d9032" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/oracle/apps/sales/opptyMgmt/revenues/revenueService/SplitRevenue.xsd" />
+    <MetadataFile FileName="oracle-webservices-async-fault-11_0.xsd" MetadataType="Schema" ID="5007d740-5ade-4dcb-b9f0-48f7fc159075" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/META-INF/oracle-webservices-async-fault-11_0.xsd" />
+    <MetadataFile FileName="RecurringRevenue.xsd" MetadataType="Schema" ID="6d3face4-4a7c-44b5-8ece-db7252cf7463" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/oracle/apps/sales/opptyMgmt/revenues/revenueService/RecurringRevenue.xsd" />
+    <MetadataFile FileName="OpportunityService.xsd" MetadataType="Schema" ID="c9d64550-c316-43f6-8400-d6eb19d8ba27" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/oracle/apps/sales/opptyMgmt/opportunities/opportunityService/OpportunityService.xsd" />
+    <MetadataFile FileName="TransientNote.xsd" MetadataType="Schema" ID="2e040feb-6978-4051-822b-87c325e02809" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/oracle/apps/crmCommon/activities/activitiesService/TransientNote.xsd" />
+    <MetadataFile FileName="RevenueLineSet.xsd" MetadataType="Schema" ID="36e1fa78-f673-4470-9584-0f4bc1f5ff7d" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/oracle/apps/sales/opptyMgmt/revenues/revenueService/RevenueLineSet.xsd" />
+    <MetadataFile FileName="OpportunityService.wsdl" MetadataType="Wsdl" ID="f08fb1d6-1b69-4220-a09b-ad87c9a88556" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?wsdl" />
+    <MetadataFile FileName="RevenuePartner.xsd" MetadataType="Schema" ID="dfc8025e-70fc-4ae9-9b1d-d7963a965a77" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/oracle/apps/sales/opptyMgmt/revenues/revenueService/RevenuePartner.xsd" />
+    <MetadataFile FileName="TransientAssignee.xsd" MetadataType="Schema" ID="24591da3-5be1-413d-a0ea-7ae78dbdafa2" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/oracle/apps/crmCommon/activities/activitiesService/TransientAssignee.xsd" />
+    <MetadataFile FileName="Note.xsd" MetadataType="Schema" ID="f62a7ee4-b718-43e2-a932-5f889409550d" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/oracle/apps/crmCommon/notes/noteService/Note.xsd" />
+    <MetadataFile FileName="DeleteEntity.xsd" MetadataType="Schema" ID="7454c33b-26a8-4734-8282-fea1d0dc73fa" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/oracle/apps/scm/productModel/deleteGroups/publicModel/DeleteEntity.xsd" />
+    <MetadataFile FileName="NoteDFF.xsd" MetadataType="Schema" ID="87694077-487b-4baf-b701-61b4ce77639a" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/oracle/apps/crmCommon/notes/flex/noteDff/NoteDFF.xsd" />
+    <MetadataFile FileName="OpportunityCompetitor.xsd" MetadataType="Schema" ID="7ee80e68-d7c0-42b3-b08b-5c03d0cded10" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/oracle/apps/sales/opptyMgmt/opportunities/opportunityService/OpportunityCompetitor.xsd" />
+    <MetadataFile FileName="BC4JService.xsd" MetadataType="Schema" ID="034d1a45-7a18-46dc-965b-f693f3eac57e" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/META-INF/wsdl/BC4JService.xsd" />
+    <MetadataFile FileName="TransientContact.xsd" MetadataType="Schema" ID="6db25d2e-6862-4caa-b8c3-cf842aad14db" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/oracle/apps/crmCommon/activities/activitiesService/TransientContact.xsd" />
+    <MetadataFile FileName="datagraph.xsd" MetadataType="Schema" ID="e0ab9c49-21c3-4aa0-83d8-bc515f8d5c95" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/xml/datagraph.xsd" />
+    <MetadataFile FileName="Opportunity.xsd" MetadataType="Schema" ID="3d108faf-183d-40af-b98b-5be4506c3a36" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/oracle/apps/sales/opptyMgmt/opportunities/opportunityService/Opportunity.xsd" />
+    <MetadataFile FileName="OpportunityDeal.xsd" MetadataType="Schema" ID="4f344790-e44a-4cac-811a-d025456bdc51" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/oracle/apps/sales/opptyMgmt/opportunities/opportunityService/OpportunityDeal.xsd" />
+    <MetadataFile FileName="CategorySummaryRevenue.xsd" MetadataType="Schema" ID="45b13b31-8455-4486-9a45-cfad8943fab4" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/oracle/apps/sales/opptyMgmt/revenues/revenueService/CategorySummaryRevenue.xsd" />
+    <MetadataFile FileName="DeleteError.xsd" MetadataType="Schema" ID="d8aaff63-5107-4f64-8dc6-56722f8f5a80" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/oracle/apps/scm/productModel/deleteGroups/publicModel/DeleteError.xsd" />
+    <MetadataFile FileName="TransientAppointment.xsd" MetadataType="Schema" ID="b0fbd1c8-6ae7-4c29-afc5-4bcd22d24e7c" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/oracle/apps/crmCommon/activities/activitiesService/TransientAppointment.xsd" />
+    <MetadataFile FileName="ServiceException.xsd" MetadataType="Schema" ID="cdfec1a1-aea3-4347-a0d4-83cc4aa787e3" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/META-INF/wsdl/ServiceException.xsd" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

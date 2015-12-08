@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:sdo="commonj.sdo" xmlns:sdoJava="commonj.sdo/java" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="commonj.sdo/java" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/xml/sdoModel.xsd" namespace="commonj.sdo" />
+  <xsd:attribute name="package" type="xsd:string" />
+  <xsd:attribute name="instanceClass" type="xsd:string" />
+  <xsd:attribute name="extendedInstanceClass" type="xsd:string" />
+  <xsd:attribute name="nestedInterfaces" type="xsd:boolean" />
+  <xsd:attribute name="javaClass" type="sdo:String" />
+  <xsd:complexType name="JavaInfo">
+    <xsd:attribute name="javaClass" type="sdo:String" />
+  </xsd:complexType>
+  <xsd:simpleType sdoJava:instanceClass="java.lang.Boolean" name="BooleanObject">
+    <xsd:restriction base="xsd:boolean" />
+  </xsd:simpleType>
+  <xsd:simpleType sdoJava:instanceClass="java.lang.Byte" name="ByteObject">
+    <xsd:restriction base="xsd:byte" />
+  </xsd:simpleType>
+  <xsd:simpleType sdoJava:instanceClass="java.lang.Character" name="CharacterObject">
+    <xsd:restriction base="xsd:string" />
+  </xsd:simpleType>
+  <xsd:simpleType sdoJava:instanceClass="java.lang.Double" name="DoubleObject">
+    <xsd:restriction base="xsd:double" />
+  </xsd:simpleType>
+  <xsd:simpleType sdoJava:instanceClass="java.lang.Float" name="FloatObject">
+    <xsd:restriction base="xsd:float" />
+  </xsd:simpleType>
+  <xsd:simpleType sdoJava:instanceClass="java.lang.Integer" name="IntObject">
+    <xsd:restriction base="xsd:int" />
+  </xsd:simpleType>
+  <xsd:simpleType sdoJava:instanceClass="java.lang.Long" name="LongObject">
+    <xsd:restriction base="xsd:long" />
+  </xsd:simpleType>
+  <xsd:simpleType sdoJava:instanceClass="java.lang.Short" name="ShortObject">
+    <xsd:restriction base="xsd:short" />
+  </xsd:simpleType>
+</xsd:schema>

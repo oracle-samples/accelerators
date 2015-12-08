@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:sdoXML="commonj.sdo/xml" xmlns:sdoJava="commonj.sdo/java" xmlns:sdo="commonj.sdo" xmlns:ns0="http://xmlns.oracle.com/adf/svc/types/" xmlns="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadService/" elementFormDefault="qualified" targetNamespace="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadService/" sdoJava:package="oracle.apps.marketing.leadMgmt.leads.leadService" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="https://slcai761.us.oracle.com:10616/mklLeads/LeadPublicService?XSD=/META-INF/wsdl/BC4JService.xsd" namespace="http://xmlns.oracle.com/adf/svc/types/" />
+  <xsd:import schemaLocation="https://slcai761.us.oracle.com:10616/mklLeads/LeadPublicService?XSD=/xml/sdoJava.xsd" namespace="commonj.sdo/java" />
+  <xsd:import schemaLocation="https://slcai761.us.oracle.com:10616/mklLeads/LeadPublicService?XSD=/xml/sdoXML.xsd" namespace="commonj.sdo/xml" />
+  <xsd:import schemaLocation="https://slcai761.us.oracle.com:10616/mklLeads/LeadPublicService?XSD=/xml/sdoModel.xsd" namespace="commonj.sdo" />
+  <xsd:include schemaLocation="https://slcai761.us.oracle.com:10616/mklLeads/LeadPublicService?XSD=/oracle/apps/marketing/leadMgmt/leads/leadService/MklProdAssoc.xsd" />
+  <xsd:include schemaLocation="https://slcai761.us.oracle.com:10616/mklLeads/LeadPublicService?XSD=/oracle/apps/marketing/leadMgmt/leads/leadService/MklLeadTcMembers.xsd" />
+  <xsd:include schemaLocation="https://slcai761.us.oracle.com:10616/mklLeads/LeadPublicService?XSD=/oracle/apps/marketing/leadMgmt/leads/leadService/MklLeadResources.xsd" />
+  <xsd:annotation>
+    <xsd:documentation xmlns:oer="http://xmlns.oracle.com/oer">
+      <name xmlns="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadService/">Service Lead Service Data Object</name>
+      <description xmlns="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadService/">A lead is a transaction record created when a party has
+                expressed an interest in a product or service. It represents a
+                selling opportunity.</description>
+      <oer:category name="lba" xmlns:oer="http://xmlns.oracle.com/oer">
+        <value xmlns="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadService/">MarketingTop-Marketing Business Area</value>
+        <value xmlns="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadService/">MarketingTop-Marketing Business Area : LeadMgmtTop-Lead
+                    Management Business Area</value>
+        <value xmlns="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadService/">MarketingTop-Marketing Business Area : LeadMgmtTop-Lead
+                    Management Business Area : MklLeads-Sales Leads</value>
+      </oer:category>
+      <oer:attributes xmlns:oer="http://xmlns.oracle.com/oer">
+        <oer:attribute description="Primary identifier of this sales lead." name="LeadId" />
+        <oer:attribute description="Indicates the date and time when this record is created." name="CreationDate" />
+        <oer:attribute description="Indicates the user who created this record." name="CreatedBy" />
+        <oer:attribute description="System field that indicates the date and time of the last update of the row." name="LastUpdateDate" />
+        <oer:attribute description="System field that indicates the user who last updated the row." name="LastUpdatedBy" />
+        <oer:attribute description="Used to implement optimistic locking. This number is incremented every time that the row is updated. The number is compared at the start and end of a transaction to detect whether another session has updated the row since it was queried." name="ObjectVersionNumber" />
+        <oer:attribute description="Unique identifer of this sales lead. It also acts as a public surrogate key." name="LeadNumber" />
+        <oer:attribute description="Indicates whether this sales lead needs to be reassigned during the next batch assignment run." name="ToReassignFlag" />
+        <oer:attribute description="Indicates whether this sales lead needs to be rescored during the next batch assignment run." name="ToRescoreFlag" />
+        <oer:attribute description="Indicates when the lead was converted to an opportunity." name="ConvertedTimestamp" />
+        <oer:attribute description="Indicates when the sales lead needs to be followed up." name="FollowupTimestamp" />
+        <oer:attribute description="Indicated the numnber of times this sales lead has been rejected by sales representatives." name="RejectedCount" />
+        <oer:attribute description="Indicates the date and time of when this sales lead was rejected by a sales representative." name="RejectedTimestamp" />
+        <oer:attribute description="Date and time recorded when the sales lead is moved to a retired status." name="RetiredTimestamp" />
+        <oer:attribute description="The score associated with this sales lead. This score is computed based on the scoring rules." name="Score" />
+        <oer:attribute description="Party identifier associated with the customer associated with this sales lead." name="CustomerId" />
+        <oer:attribute description="campaign contact identifier associated with this sales lead." name="CampaignContactId" />
+        <oer:attribute description="Identifer of the sales lead contact marked as a primary lead contact." name="PrimaryContactId" />
+        <oer:attribute description="Attribute that captures the description of the Lead" name="Description" />
+        <oer:attribute description="Identifier of the import task associated with the lead. This is applicable to imported leads only." name="ImportTaskId" />
+        <oer:attribute description="Identifier of the sales representative who rejected this sales lead." name="RejectByUserId" />
+        <oer:attribute description="Comments provided by the sales representative who rejected this sales lead." name="RejectComment" />
+        <oer:attribute description="Indicates the rejection reason code provided by the sales representative who rejected this sales lead." name="RejectReasonCode" />
+        <oer:attribute description="Comments recorded when the sales lead is moved to a retired status." name="RetireComment" />
+        <oer:attribute description="The reason code recorded when the sales lead is moved to a retired status." name="RetireReasonCode" />
+        <oer:attribute description="Status of this sales lead." name="StatusCode" />
+        <oer:attribute description="Includes the current assignment related status for the lead, for example whether the lead is assigned or unassigned." name="AssignmentStatusCode" />
+        <oer:attribute description="Indicates the channel through which this lead contacted the company." name="ChannelType" />
+        <oer:attribute description="Name of this sales lead." name="Name" />
+        <oer:attribute description="Rank associated with this sales lead." name="Rank" />
+        <oer:attribute description="Marketing source code associated with this sales lead." name="SourceCode" />
+        <oer:attribute description="Inventory item identifier associated with the primary lead product." name="PrimaryInventoryItemId" />
+        <oer:attribute description="Inventory item organization identifier associated with primary lead product." name="PrimaryInventoryOrgId" />
+        <oer:attribute description="Currency code associated with the Deal Size associated with this sales lead." name="CurrencyCode" />
+        <oer:attribute description="City associated with the sell to address associated with the lead customer." name="County" />
+        <oer:attribute description="E-mail address" name="EmailAddress" />
+        <oer:attribute description="The country part of the Identifying address of the lead customer." name="Country" />
+        <oer:attribute description="Name associated with the customer associated with this sales lead." name="PartyName" />
+        <oer:attribute description="City associated with the sell to address associated with the lead customer." name="City" />
+        <oer:attribute description="Postal code associated with the identifiying address associated with the customer associated with this sales lead." name="PostalCode" />
+        <oer:attribute description="The state included in the sell to address on the lead customer." name="State" />
+        <oer:attribute description="Stores first line of identifying address associated with the sales lead customer." name="Address1" />
+        <oer:attribute description="Stores second line of identifying address associated with the sales lead customer." name="Address2" />
+        <oer:attribute description="Party identifier associated with the customer associated with this sales lead." name="PartyId" />
+        <oer:attribute description="Budget amount associated with this sales lead." name="BudgetAmount" />
+        <oer:attribute description="Budget status associated with the Budget Amount associated with this sales lead." name="BudgetStatus" />
+        <oer:attribute description="Indicates what need the lead product serves for the lead customer." name="CustomerNeed" />
+        <oer:attribute description="Indicates wheteher a decision maker has been identified for this sales lead." name="DecisionMakerIdentifiedFlag" />
+        <oer:attribute description="customer project identified for this sales lead." name="Project" />
+        <oer:attribute description="Timeframe associated with this sales lead." name="Timeframe" />
+        <oer:attribute description="Indicates the date when this sales lead was qualified." name="QualifiedDate" />
+        <oer:attribute description="Indicates the sales channel responsible for following up on this sales lead." name="SalesChannel" />
+        <oer:attribute description="Indicates the registration type of the sales lead. This is a deal specific attribute." name="RegistrationType" />
+        <oer:attribute description="Estimated close date of the deal . This is a deal specific attribute." name="EstimatedCloseDate" />
+        <oer:attribute description="Indicates the type of the primary partner associated with this sales lead. This is a deal specific attribute." name="PartnerType" />
+        <oer:attribute description="Indicates the meaning of the registration type of the sales lead. This is a deal specific attribute." name="RegistrationTypeMeaning" />
+        <oer:attribute description="Description of the primary lead product." name="PrimaryProductDescription" />
+        <oer:attribute description="Name associated with the primary lead product Group." name="ProductGroupName" />
+        <oer:attribute description="Description associated with this sales lead." name="PrimaryInventoryItemDescription" />
+        <oer:attribute description="Name associated with the primary partner of this sales lead. This is a deal specific attribute." name="PartnerPartyName" />
+        <oer:attribute description="Name associated with the primary lead contact." name="PrimaryContactPartyName" />
+        <oer:attribute description="Name associated with the owner of this sales lead." name="OwnerPartyName" />
+        <oer:attribute description="The meaning of the sales channel associated with this sales lead." name="SalesChannelMeaning" />
+        <oer:attribute description="Meaning of the type of primary partner associated with this sales lead. This is a deal specific attribute." name="PartnerTypeMeaning" />
+        <oer:attribute description="Registration number of the sales lead. This unique identifier is generated when the sales lead is approved. This is a deal specific attribute." name="RegistrationNumber" />
+        <oer:attribute description="Approval Status of the sales lead. This is a deal specific attribute." name="RegistrationStatus" />
+        <oer:attribute description="Party identifier associated with the approver of this Lead Registration record." name="ApproverId" />
+        <oer:attribute description="Deal size associated with this sales lead." name="DealAmount" />
+        <oer:attribute description="Unique name of the customer associated with this sales lead." name="UniqueName" />
+        <oer:attribute description="Expiration date associated with this sales lead." name="ExpirationDate" />
+        <oer:attribute description="Identifier associated with the primary partner associated with the lead." name="PartnerId" />
+        <oer:attribute description="Resource identifier for the lead owner resource." name="OwnerId" />
+        <oer:attribute description="A reference to the partner program in which the primary partner associated with this sales lead is enrolled. This is a deal specific attribute." name="PartnerProgramId" />
+        <oer:attribute description="Name of the partner program in which the primary partner associated with this sales lead is enrolled. This is a deal specific attribute." name="ProgramName" />
+        <oer:attribute description="Date the lead was accepted." name="AcceptedDate" />
+        <oer:attribute description="Identifier of the approval task associated with the approval process for the lead. This is applicable to deals only." name="ApprovalTaskId" />
+        <oer:attribute description="Identifier of the primary product group associated with the lead." name="PrimaryProductGroupId" />
+        <oer:attribute description="Reason code specified by the user when the lead was reassigned." name="ReassignReasonCode" />
+        <oer:attribute description="Comments added to the lead during reassign operation." name="ReassignCommentText" />
+        <oer:attribute description="Territory identifier associated with the territory to which the resources who rejected the lead belonged at the time of rejection." name="RejectByTerritoryId" />
+        <oer:attribute description="Territory version identifier associated with the territory to which the resources who rejected the lead belonged at the time of rejection." name="RejectByTerritoryVersionId" />
+        <oer:attribute description="Date the lead was approved. This is applicable to deals only." name="ApprovalDate" />
+        <oer:attribute description="Date the lead was last run through automated batch lead assignment process." name="LastAssignmentDate" />
+        <oer:attribute description="Qualification score associated with the lead. This score is computed by the assignment manager." name="QualificationScore" />
+        <oer:attribute description="Relationship identifier which denotes the relationship between the lead customer and lead contact." name="RelationshipId" />
+        <oer:attribute description="Indicates if the lead has been accepted." name="LeadAcceptedFlag" />
+        <oer:attribute description="Indicates the reference to Lead Products (child)" name="MklProdAssoc" />
+        <oer:attribute description="Indicates the reference to Lead Contacts (child)" name="MklLeadTcMembers" />
+        <oer:attribute description="Indicates the reference to Lead Resources (child)" name="MklLeadResources" />
+      </oer:attributes>
+    </xsd:documentation>
+  </xsd:annotation>
+  <xsd:complexType name="ServiceLead">
+    <xsd:annotation>
+      <xsd:appinfo source="http://xmlns.oracle.com/adf/svc/metadata/">
+        <key xmlns="http://xmlns.oracle.com/adf/svc/metadata/">
+          <attribute>LeadId</attribute>
+        </key>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element sdoXML:dataType="sdoJava:LongObject" minOccurs="0" name="LeadId" type="xsd:long" />
+      <xsd:element minOccurs="0" name="CreationDate" type="ns0:dateTime-Timestamp" />
+      <xsd:element minOccurs="0" name="CreatedBy" type="xsd:string" />
+      <xsd:element minOccurs="0" name="LastUpdateDate" type="ns0:dateTime-Timestamp" />
+      <xsd:element minOccurs="0" name="LastUpdatedBy" type="xsd:string" />
+      <xsd:element sdoXML:dataType="sdoJava:IntObject" minOccurs="0" name="ObjectVersionNumber" type="xsd:int" />
+      <xsd:element minOccurs="0" name="LeadNumber" nillable="true" type="xsd:string" />
+      <xsd:element sdoXML:dataType="sdoJava:BooleanObject" minOccurs="0" name="ToReassignFlag" type="xsd:boolean" />
+      <xsd:element sdoXML:dataType="sdoJava:BooleanObject" minOccurs="0" name="ToRescoreFlag" type="xsd:boolean" />
+      <xsd:element minOccurs="0" name="ConvertedTimestamp" nillable="true" type="ns0:date-Date" />
+      <xsd:element minOccurs="0" name="FollowupTimestamp" nillable="true" type="ns0:date-Date" />
+      <xsd:element minOccurs="0" name="RejectedCount" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="RejectedTimestamp" nillable="true" type="ns0:date-Date" />
+      <xsd:element minOccurs="0" name="RetiredTimestamp" nillable="true" type="ns0:date-Date" />
+      <xsd:element minOccurs="0" name="Score" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="CustomerId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="CampaignContactId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="PrimaryContactId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="Description" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="ImportTaskId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="RejectByUserId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="RejectComment" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="RejectReasonCode" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="RetireComment" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="RetireReasonCode" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="StatusCode" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="AssignmentStatusCode" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="ChannelType" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="Name" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="Rank" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="SourceCode" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PrimaryInventoryItemId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="PrimaryInventoryOrgId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="CurrencyCode" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="County" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="EmailAddress" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="Country" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PartyName" type="xsd:string" />
+      <xsd:element minOccurs="0" name="City" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PostalCode" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="State" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="Address1" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="Address2" nillable="true" type="xsd:string" />
+      <xsd:element sdoXML:dataType="sdoJava:LongObject" minOccurs="0" name="PartyId" type="xsd:long" />
+      <xsd:element minOccurs="0" name="BudgetAmount" nillable="true" type="ns0:AmountType" />
+      <xsd:element minOccurs="0" name="BudgetStatus" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="CustomerNeed" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="DecisionMakerIdentifiedFlag" nillable="true" type="xsd:boolean" />
+      <xsd:element minOccurs="0" name="Project" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="Timeframe" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="QualifiedDate" nillable="true" type="ns0:date-Date" />
+      <xsd:element minOccurs="0" name="SalesChannel" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="RegistrationType" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="EstimatedCloseDate" nillable="true" type="ns0:date-Date" />
+      <xsd:element minOccurs="0" name="PartnerType" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="RegistrationTypeMeaning" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PrimaryProductDescription" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="ProductGroupName" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PrimaryInventoryItemDescription" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PartnerPartyName" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PrimaryContactPartyName" type="xsd:string" />
+      <xsd:element minOccurs="0" name="OwnerPartyName" type="xsd:string" />
+      <xsd:element minOccurs="0" name="SalesChannelMeaning" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PartnerTypeMeaning" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="RegistrationNumber" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="RegistrationStatus" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="ApproverId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="DealAmount" nillable="true" type="ns0:AmountType" />
+      <xsd:element minOccurs="0" name="UniqueName" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="ExpirationDate" nillable="true" type="ns0:date-Date" />
+      <xsd:element minOccurs="0" name="PartnerId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="OwnerId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="PartnerProgramId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="ProgramName" type="xsd:string" />
+      <xsd:element minOccurs="0" name="AcceptedDate" nillable="true" type="ns0:date-Date" />
+      <xsd:element minOccurs="0" name="ApprovalTaskId" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PrimaryProductGroupId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="ReassignReasonCode" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="ReassignCommentText" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="RejectByTerritoryId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="RejectByTerritoryVersionId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="ApprovalDate" nillable="true" type="ns0:date-Date" />
+      <xsd:element minOccurs="0" name="LastAssignmentDate" nillable="true" type="ns0:dateTime-Timestamp" />
+      <xsd:element minOccurs="0" name="QualificationScore" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="RelationshipId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="LeadAcceptedFlag" nillable="true" type="xsd:boolean" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="MklProdAssoc" type="MklProdAssoc" />
+      <xsd:element sdoXML:dataType="sdo:DataObject" minOccurs="0" maxOccurs="unbounded" name="MklLeadTcMembers" type="MklLeadTcMembers" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="MklLeadResources" type="MklLeadResources" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="serviceLead" type="ServiceLead" />
+</xsd:schema>

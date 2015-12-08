@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://xmlns.oracle.com/apps/crmCommon/notes/flex/noteDff/" xmlns:sdoJava="commonj.sdo/java" xmlns:sdoXML="commonj.sdo/xml" elementFormDefault="qualified" targetNamespace="http://xmlns.oracle.com/apps/crmCommon/notes/flex/noteDff/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="https://slcai761.us.oracle.com:10616/crmCommonSalesParties/AccountService?XSD=/xml/sdoJava.xsd" namespace="commonj.sdo/java" />
+  <xsd:import schemaLocation="https://slcai761.us.oracle.com:10616/crmCommonSalesParties/AccountService?XSD=/xml/sdoXML.xsd" namespace="commonj.sdo/xml" />
+  <xsd:complexType name="NoteDFF">
+    <xsd:annotation>
+      <xsd:appinfo source="http://xmlns.oracle.com/adf/svc/metadata/">
+        <key xmlns="http://xmlns.oracle.com/adf/svc/metadata/">
+          <attribute>NoteId</attribute>
+        </key>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element sdoXML:dataType="sdoJava:LongObject" minOccurs="0" name="NoteId" type="xsd:long" />
+      <xsd:element minOccurs="0" name="__FLEX_Context" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="__FLEX_Context_AKA" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="_FLEX_NumOfSegments" nillable="true" type="xsd:int" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="noteDFF" type="NoteDFF" />
+</xsd:schema>

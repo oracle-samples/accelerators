@@ -1,0 +1,1049 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tns="http://xmlns.oracle.com/apps/crmCommon/salesParties/contactService/" xmlns:types="http://xmlns.oracle.com/apps/crmCommon/salesParties/contactService/types/" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:orafault="http://xmlns.oracle.com/oracleas/schema/oracle-fault-11_0" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:errors="http://xmlns.oracle.com/adf/svc/errors/" name="ContactService" targetNamespace="http://xmlns.oracle.com/apps/crmCommon/salesParties/contactService/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:oer="http://xmlns.oracle.com/oer">
+    <name>Sales Cloud Contact</name>
+    <description>A service for creating, updating, and retrieving contacts.</description>
+    <docCategories>
+      <category>Integration</category>
+    </docCategories>
+    <oer:lifecycle>Active</oer:lifecycle>
+    <oer:compatibility>Supported - Backward Compatibility Assured</oer:compatibility>
+    <oer:category name="lbo">
+      <value>CRM-CRM : HZ-Trading Community Model : ORA_BO_CONTACT-Contact</value>
+    </oer:category>
+    <oer:operation name="processCSContact">
+      <description>An operation to apply the changes back to the data source for
+                Contact</description>
+      <oer:parameters>
+        <oer:parameter name="processData" description="The object that is used to represent the changes that have been made." />
+        <oer:parameter name="processControl" description="Control your bulk upload behavior, such as whether the valid data will be committed if there are other invalid data in the same batch, and whether the outbound will contain the key attributes only or the full object." />
+        <oer:return description="Result of the operation including a list of created/updated data objects, and all warning and informational messages." />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="getDfltObjAttrHints">
+      <description>An operation to retrieve user interface hints, such as the
+                service data object label and object attribute labels, for the
+                specified service data object and locale.  As a prerequisite,
+                invoke the getEntityList operation defined on this service to
+                get the list of possible values for the viewName request payload
+                element.</description>
+      <oer:parameters>
+        <oer:parameter name="viewName" description="The service view usage name, an internal name for the service data object.  Specify the value of the &lt;name&gt; element from the getEntityList operation response payload." />
+        <oer:parameter name="localeName" description="The locale to use when evaluating locale-based user interface hints.  The localeName is in ISO 639-1 format." />
+        <oer:return description="The label and user interface hints for the specified service data object and its attributes in a name-value pair format" />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="getServiceLastUpdateTime">
+      <description>An operation that returns the date and time when the schema
+                files referenced in the service definition last changed.</description>
+      <oer:parameters>
+        <oer:return description="The date and time when the service definition last changed in ISO 8601 format." />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="getEntityList">
+      <description>An operation to get the list of service data objects defined on
+                this service.</description>
+      <oer:parameters>
+        <oer:return description="A list of service data objects defined on this service.  For each service data object, the result includes the QName, internal name, and Boolean values indicating whether create, update, merge, and delete operations can be performed on the object." />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="getContact">
+      <description>Get operation for Contact</description>
+      <oer:parameters>
+        <oer:parameter name="PartyId" description="Party identifier" />
+        <oer:return description="Contact that matches the inbound key attributes." />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="createContact">
+      <description>Create operation for Contact</description>
+      <oer:parameters>
+        <oer:parameter name="contact" description="Contact to be created" />
+        <oer:return description="Created Contact" />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="updateContact">
+      <description>Update operation for Contact</description>
+      <oer:parameters>
+        <oer:parameter name="contact" description="Contact to be updated" />
+        <oer:return description="Updated Contact" />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="deleteContact">
+      <description>Delete operation for Contact</description>
+      <oer:parameters>
+        <oer:parameter name="contact" description="Contact to be deleted" />
+        <oer:return description="Not applicable" />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="mergeContact">
+      <description>Merge operation for Contact . It will perform an update if the
+                object exists, or an insert if the object doesn't already exist.</description>
+      <oer:parameters>
+        <oer:parameter name="contact" description="Contact to be merged" />
+        <oer:return description="Merged Contact" />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="findContact">
+      <description>Find operation for Contact</description>
+      <oer:parameters>
+        <oer:parameter name="findCriteria" description="The criteria used to limit your query result, such as the filter (where clause), the fetch size, etc." />
+        <oer:parameter name="findControl" description="Find Control. Not currently used." />
+        <oer:return description="A list of Contact that satisfy the inbound criteria." />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="processContact">
+      <description>Bulk load operation for Contact</description>
+      <oer:parameters>
+        <oer:parameter name="changeOperation" description="Indicates what action shall be performed, such as Create, Update, Merge, or Delete" />
+        <oer:parameter name="contact" description="A list of Contact to be processed" />
+        <oer:parameter name="processControl" description="Control your bulk upload behavior, such as whether the valid data will be committed if there are other invalid data in the same batch, and whether the outbound will contain the key attributes only or the full object." />
+        <oer:return description="A list of Contact that are successfully processed." />
+      </oer:parameters>
+    </oer:operation>
+  </wsdl:documentation>
+  <plnk:partnerLinkType name="ContactService">
+    <plnk:role name="ContactServiceProvider">
+      <plnk:portType name="tns:ContactService" />
+    </plnk:role>
+    <plnk:role name="ContactServiceRequestor">
+      <plnk:portType name="tns:ContactServiceResponse" />
+    </plnk:role>
+  </plnk:partnerLinkType>
+  <wsp:Policy xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="ContactServiceResponse_Fault_Policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" />
+  <wsp:Policy xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="ContactServiceResponse_Input_Policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
+    <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+      <sp:Body />
+      <sp:Header Namespace="http://www.w3.org/2005/08/addressing" />
+      <sp:Header Namespace="http://schemas.xmlsoap.org/ws/2004/08/addressing" />
+      <sp:Header Name="fmw-context" Namespace="http://xmlns.oracle.com/fmw/context/1.0" />
+    </sp:SignedParts>
+    <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+      <sp:Body />
+      <sp:Header Name="fmw-context" Namespace="http://xmlns.oracle.com/fmw/context/1.0" />
+    </sp:EncryptedParts>
+  </wsp:Policy>
+  <wsp:Policy xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="ContactServiceResponse_Output_Policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
+    <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+      <sp:Body />
+    </sp:SignedParts>
+    <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+      <sp:Body />
+    </sp:EncryptedParts>
+  </wsp:Policy>
+  <wsp:Policy xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="ContactServiceSoapHttpPort_Fault_Policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
+    <wsp:ExactlyOne>
+      <wsp:All />
+      <wsp:All />
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="ContactServiceSoapHttpPort_Input_Policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Namespace="http://schemas.xmlsoap.org/ws/2004/08/addressing" />
+          <sp:Header Name="fmw-context" Namespace="http://xmlns.oracle.com/fmw/context/1.0" />
+          <sp:Header Name="SignatureConfirmation" Namespace="http://docs.oasis-open.org/wss/oasis-wss-wssecurity-secext-1.1.xsd" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="fmw-context" Namespace="http://xmlns.oracle.com/fmw/context/1.0" />
+        </sp:EncryptedParts>
+      </wsp:All>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Namespace="http://schemas.xmlsoap.org/ws/2004/08/addressing" />
+          <sp:Header Name="fmw-context" Namespace="http://xmlns.oracle.com/fmw/context/1.0" />
+          <sp:Header Name="SignatureConfirmation" Namespace="http://docs.oasis-open.org/wss/oasis-wss-wssecurity-secext-1.1.xsd" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="fmw-context" Namespace="http://xmlns.oracle.com/fmw/context/1.0" />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="ContactServiceSoapHttpPort_Output_Policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="wsaddr_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
+    <wsaw:UsingAddressing xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" />
+  </wsp:Policy>
+  <wsp:Policy xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="wss11_saml_or_username_token_with_message_protection_service_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SymmetricBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:ProtectionToken>
+              <wsp:Policy>
+                <sp:X509Token sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/Never">
+                  <wsp:Policy>
+                    <sp:RequireThumbprintReference />
+                    <sp:WssX509V3Token11 />
+                  </wsp:Policy>
+                </sp:X509Token>
+              </wsp:Policy>
+            </sp:ProtectionToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic128 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Lax />
+              </wsp:Policy>
+            </sp:Layout>
+            <sp:IncludeTimestamp />
+            <sp:ProtectTokens />
+            <sp:OnlySignEntireHeadersAndBody />
+          </wsp:Policy>
+        </sp:SymmetricBinding>
+        <sp:SignedSupportingTokens xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:SamlToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+              <wsp:Policy>
+                <sp:WssSamlV11Token11 />
+              </wsp:Policy>
+            </sp:SamlToken>
+          </wsp:Policy>
+        </sp:SignedSupportingTokens>
+        <sp:EndorsingSupportingTokens xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:X509Token sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+              <wsp:Policy>
+                <sp:WssX509V3Token11 />
+              </wsp:Policy>
+            </sp:X509Token>
+          </wsp:Policy>
+        </sp:EndorsingSupportingTokens>
+        <sp:Wss11 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:RequireSignatureConfirmation />
+            <sp:MustSupportRefEncryptedKey />
+          </wsp:Policy>
+        </sp:Wss11>
+      </wsp:All>
+      <wsp:All>
+        <sp:SymmetricBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:ProtectionToken>
+              <wsp:Policy>
+                <sp:X509Token sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/Never">
+                  <wsp:Policy>
+                    <sp:RequireThumbprintReference />
+                    <sp:WssX509V3Token11 />
+                  </wsp:Policy>
+                </sp:X509Token>
+              </wsp:Policy>
+            </sp:ProtectionToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic128 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Lax />
+              </wsp:Policy>
+            </sp:Layout>
+            <sp:IncludeTimestamp />
+            <sp:OnlySignEntireHeadersAndBody />
+          </wsp:Policy>
+        </sp:SymmetricBinding>
+        <sp:SignedSupportingTokens xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:UsernameToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+              <wsp:Policy>
+                <sp:WssUsernameToken10 />
+              </wsp:Policy>
+            </sp:UsernameToken>
+          </wsp:Policy>
+        </sp:SignedSupportingTokens>
+        <sp:Wss11 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:RequireSignatureConfirmation />
+            <sp:MustSupportRefEncryptedKey />
+          </wsp:Policy>
+        </sp:Wss11>
+      </wsp:All>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false">
+                  <wsp:Policy />
+                </sp:HttpsToken>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Lax />
+              </wsp:Policy>
+            </sp:Layout>
+            <sp:IncludeTimestamp />
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <sp:SupportingTokens xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:SamlToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+              <wsp:Policy>
+                <sp:WssSamlV11Token10 />
+              </wsp:Policy>
+            </sp:SamlToken>
+          </wsp:Policy>
+        </sp:SupportingTokens>
+      </wsp:All>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false">
+                  <wsp:Policy />
+                </sp:HttpsToken>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Lax />
+              </wsp:Policy>
+            </sp:Layout>
+            <sp:IncludeTimestamp />
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <sp:SupportingTokens xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:UsernameToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+              <wsp:Policy>
+                <sp:WssUsernameToken10 />
+              </wsp:Policy>
+            </sp:UsernameToken>
+          </wsp:Policy>
+        </sp:SupportingTokens>
+      </wsp:All>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false">
+                  <wsp:Policy />
+                </sp:HttpsToken>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Lax />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+      </wsp:All>
+      <wsp:All />
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="wss11_saml_token_with_message_protection_client_policy">
+    <sp:SymmetricBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+      <wsp:Policy>
+        <sp:ProtectionToken>
+          <wsp:Policy>
+            <sp:X509Token sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/Never">
+              <wsp:Policy>
+                <sp:RequireThumbprintReference />
+                <sp:WssX509V3Token11 />
+              </wsp:Policy>
+            </sp:X509Token>
+          </wsp:Policy>
+        </sp:ProtectionToken>
+        <sp:AlgorithmSuite>
+          <wsp:Policy>
+            <sp:Basic128 />
+          </wsp:Policy>
+        </sp:AlgorithmSuite>
+        <sp:Layout>
+          <wsp:Policy>
+            <sp:Lax />
+          </wsp:Policy>
+        </sp:Layout>
+        <sp:IncludeTimestamp />
+        <sp:ProtectTokens />
+        <sp:OnlySignEntireHeadersAndBody />
+      </wsp:Policy>
+    </sp:SymmetricBinding>
+    <sp:SignedSupportingTokens xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+      <wsp:Policy>
+        <sp:SamlToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+          <wsp:Policy>
+            <sp:WssSamlV11Token11 />
+          </wsp:Policy>
+        </sp:SamlToken>
+      </wsp:Policy>
+    </sp:SignedSupportingTokens>
+    <sp:EndorsingSupportingTokens xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+      <wsp:Policy>
+        <sp:X509Token sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+          <wsp:Policy>
+            <sp:WssX509V3Token11 />
+          </wsp:Policy>
+        </sp:X509Token>
+      </wsp:Policy>
+    </sp:EndorsingSupportingTokens>
+    <sp:Wss11 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+      <wsp:Policy>
+        <sp:RequireSignatureConfirmation />
+        <sp:MustSupportRefEncryptedKey />
+      </wsp:Policy>
+    </sp:Wss11>
+  </wsp:Policy>
+  <wsdl:import namespace="http://xmlns.oracle.com/adf/svc/errors/" location="https://slcai761.us.oracle.com:10616/crmCommonSalesParties/ContactService?WSDL=/META-INF/wsdl/ServiceException.wsdl" />
+  <wsdl:types>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema">
+      <import schemaLocation="https://slcai761.us.oracle.com:10616/crmCommonSalesParties/ContactService?XSD=/META-INF/oracle-webservices-async-fault-11_0.xsd" namespace="http://xmlns.oracle.com/oracleas/schema/oracle-fault-11_0" />
+      <import schemaLocation="https://slcai761.us.oracle.com:10616/crmCommonSalesParties/ContactService?XSD=/oracle/apps/crmCommon/salesParties/contactService/ContactService.xsd" namespace="http://xmlns.oracle.com/apps/crmCommon/salesParties/contactService/types/" />
+    </schema>
+  </wsdl:types>
+  <wsdl:message name="ContactService_processCSContact">
+    <wsdl:part name="parameters" element="types:processCSContact" />
+  </wsdl:message>
+  <wsdl:message name="ContactService_processCSContactResponse">
+    <wsdl:part name="parameters" element="types:processCSContactResponse" />
+  </wsdl:message>
+  <wsdl:message name="ContactService_processCSContactAsync">
+    <wsdl:part name="parameters" element="types:processCSContactAsync" />
+  </wsdl:message>
+  <wsdl:message name="ContactService_getDfltObjAttrHints">
+    <wsdl:part name="parameters" element="types:getDfltObjAttrHints" />
+  </wsdl:message>
+  <wsdl:message name="ContactService_getDfltObjAttrHintsResponse">
+    <wsdl:part name="parameters" element="types:getDfltObjAttrHintsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ContactService_getServiceLastUpdateTime">
+    <wsdl:part name="parameters" element="types:getServiceLastUpdateTime" />
+  </wsdl:message>
+  <wsdl:message name="ContactService_getServiceLastUpdateTimeResponse">
+    <wsdl:part name="parameters" element="types:getServiceLastUpdateTimeResponse" />
+  </wsdl:message>
+  <wsdl:message name="ContactService_getEntityList">
+    <wsdl:part name="parameters" element="types:getEntityList" />
+  </wsdl:message>
+  <wsdl:message name="ContactService_getEntityListResponse">
+    <wsdl:part name="parameters" element="types:getEntityListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ContactService_getEntityListAsync">
+    <wsdl:part name="parameters" element="types:getEntityListAsync" />
+  </wsdl:message>
+  <wsdl:message name="ContactService_getDfltObjAttrHintsAsync">
+    <wsdl:part name="parameters" element="types:getDfltObjAttrHintsAsync" />
+  </wsdl:message>
+  <wsdl:message name="ContactService_getServiceLastUpdateTimeAsync">
+    <wsdl:part name="parameters" element="types:getServiceLastUpdateTimeAsync" />
+  </wsdl:message>
+  <wsdl:message name="ContactService_getContact">
+    <wsdl:part name="parameters" element="types:getContact" />
+  </wsdl:message>
+  <wsdl:message name="ContactService_getContactResponse">
+    <wsdl:part name="parameters" element="types:getContactResponse" />
+  </wsdl:message>
+  <wsdl:message name="ContactService_createContact">
+    <wsdl:part name="parameters" element="types:createContact" />
+  </wsdl:message>
+  <wsdl:message name="ContactService_createContactResponse">
+    <wsdl:part name="parameters" element="types:createContactResponse" />
+  </wsdl:message>
+  <wsdl:message name="ContactService_updateContact">
+    <wsdl:part name="parameters" element="types:updateContact" />
+  </wsdl:message>
+  <wsdl:message name="ContactService_updateContactResponse">
+    <wsdl:part name="parameters" element="types:updateContactResponse" />
+  </wsdl:message>
+  <wsdl:message name="ContactService_deleteContact">
+    <wsdl:part name="parameters" element="types:deleteContact" />
+  </wsdl:message>
+  <wsdl:message name="ContactService_deleteContactResponse">
+    <wsdl:part name="parameters" element="types:deleteContactResponse" />
+  </wsdl:message>
+  <wsdl:message name="ContactService_mergeContact">
+    <wsdl:part name="parameters" element="types:mergeContact" />
+  </wsdl:message>
+  <wsdl:message name="ContactService_mergeContactResponse">
+    <wsdl:part name="parameters" element="types:mergeContactResponse" />
+  </wsdl:message>
+  <wsdl:message name="ContactService_findContact">
+    <wsdl:part name="parameters" element="types:findContact" />
+  </wsdl:message>
+  <wsdl:message name="ContactService_findContactResponse">
+    <wsdl:part name="parameters" element="types:findContactResponse" />
+  </wsdl:message>
+  <wsdl:message name="ContactService_processContact">
+    <wsdl:part name="parameters" element="types:processContact" />
+  </wsdl:message>
+  <wsdl:message name="ContactService_processContactResponse">
+    <wsdl:part name="parameters" element="types:processContactResponse" />
+  </wsdl:message>
+  <wsdl:message name="ContactService_findContactAsync">
+    <wsdl:part name="parameters" element="types:findContactAsync" />
+  </wsdl:message>
+  <wsdl:message name="ContactService_updateContactAsync">
+    <wsdl:part name="parameters" element="types:updateContactAsync" />
+  </wsdl:message>
+  <wsdl:message name="ContactService_processContactAsync">
+    <wsdl:part name="parameters" element="types:processContactAsync" />
+  </wsdl:message>
+  <wsdl:message name="ContactService_createContactAsync">
+    <wsdl:part name="parameters" element="types:createContactAsync" />
+  </wsdl:message>
+  <wsdl:message name="ContactService_getContactAsync">
+    <wsdl:part name="parameters" element="types:getContactAsync" />
+  </wsdl:message>
+  <wsdl:message name="ContactService_mergeContactAsync">
+    <wsdl:part name="parameters" element="types:mergeContactAsync" />
+  </wsdl:message>
+  <wsdl:message name="ContactService_deleteContactAsync">
+    <wsdl:part name="parameters" element="types:deleteContactAsync" />
+  </wsdl:message>
+  <wsdl:message name="ContactService_onFault">
+    <wsdl:part name="parameters" element="orafault:Fault" />
+  </wsdl:message>
+  <wsdl:message name="ContactService_processCSContactAsyncResponse">
+    <wsdl:part name="parameters" element="types:processCSContactAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="ContactService_getEntityListAsyncResponse">
+    <wsdl:part name="parameters" element="types:getEntityListAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="ContactService_getDfltObjAttrHintsAsyncResponse">
+    <wsdl:part name="parameters" element="types:getDfltObjAttrHintsAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="ContactService_getServiceLastUpdateTimeAsyncResponse">
+    <wsdl:part name="parameters" element="types:getServiceLastUpdateTimeAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="ContactService_findContactAsyncResponse">
+    <wsdl:part name="parameters" element="types:findContactAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="ContactService_updateContactAsyncResponse">
+    <wsdl:part name="parameters" element="types:updateContactAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="ContactService_processContactAsyncResponse">
+    <wsdl:part name="parameters" element="types:processContactAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="ContactService_createContactAsyncResponse">
+    <wsdl:part name="parameters" element="types:createContactAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="ContactService_getContactAsyncResponse">
+    <wsdl:part name="parameters" element="types:getContactAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="ContactService_mergeContactAsyncResponse">
+    <wsdl:part name="parameters" element="types:mergeContactAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="ContactService_deleteContactAsyncResponse">
+    <wsdl:part name="parameters" element="types:deleteContactAsyncResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ContactService">
+    <wsdl:documentation>
+      <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="Contact" SDOName="tns:Contact" CreateOpName="createContact" UpdateOpName="updateContact" DeleteOpName="deleteContact" MergeOpName="mergeContact" FindOpName="findContact" ProcessOpName="processContact" ProcessCSOpName="processCSContact" />
+    </wsdl:documentation>
+    <wsdl:operation name="processCSContact">
+      <wsdl:input message="tns:ContactService_processCSContact" />
+      <wsdl:output message="tns:ContactService_processCSContactResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="processCSContactAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/crmCommon/salesParties/contactService/processCSContactAsync" message="tns:ContactService_processCSContactAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="getDfltObjAttrHints">
+      <wsdl:input message="tns:ContactService_getDfltObjAttrHints" />
+      <wsdl:output message="tns:ContactService_getDfltObjAttrHintsResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="getServiceLastUpdateTime">
+      <wsdl:input message="tns:ContactService_getServiceLastUpdateTime" />
+      <wsdl:output message="tns:ContactService_getServiceLastUpdateTimeResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="getEntityList">
+      <wsdl:input message="tns:ContactService_getEntityList" />
+      <wsdl:output message="tns:ContactService_getEntityListResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="getEntityListAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/crmCommon/salesParties/contactService/getEntityListAsync" message="tns:ContactService_getEntityListAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="getDfltObjAttrHintsAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/crmCommon/salesParties/contactService/getDfltObjAttrHintsAsync" message="tns:ContactService_getDfltObjAttrHintsAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="getServiceLastUpdateTimeAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/crmCommon/salesParties/contactService/getServiceLastUpdateTimeAsync" message="tns:ContactService_getServiceLastUpdateTimeAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="getContact">
+      <wsdl:input message="tns:ContactService_getContact" />
+      <wsdl:output message="tns:ContactService_getContactResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="createContact">
+      <wsdl:input message="tns:ContactService_createContact" />
+      <wsdl:output message="tns:ContactService_createContactResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="updateContact">
+      <wsdl:input message="tns:ContactService_updateContact" />
+      <wsdl:output message="tns:ContactService_updateContactResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteContact">
+      <wsdl:input message="tns:ContactService_deleteContact" />
+      <wsdl:output message="tns:ContactService_deleteContactResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="mergeContact">
+      <wsdl:input message="tns:ContactService_mergeContact" />
+      <wsdl:output message="tns:ContactService_mergeContactResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="findContact">
+      <wsdl:input message="tns:ContactService_findContact" />
+      <wsdl:output message="tns:ContactService_findContactResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="processContact">
+      <wsdl:input message="tns:ContactService_processContact" />
+      <wsdl:output message="tns:ContactService_processContactResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="findContactAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/crmCommon/salesParties/contactService/findContactAsync" message="tns:ContactService_findContactAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="updateContactAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/crmCommon/salesParties/contactService/updateContactAsync" message="tns:ContactService_updateContactAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="processContactAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/crmCommon/salesParties/contactService/processContactAsync" message="tns:ContactService_processContactAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="createContactAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/crmCommon/salesParties/contactService/createContactAsync" message="tns:ContactService_createContactAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="getContactAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/crmCommon/salesParties/contactService/getContactAsync" message="tns:ContactService_getContactAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="mergeContactAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/crmCommon/salesParties/contactService/mergeContactAsync" message="tns:ContactService_mergeContactAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteContactAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/crmCommon/salesParties/contactService/deleteContactAsync" message="tns:ContactService_deleteContactAsync" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ContactServiceResponse">
+    <wsdl:operation name="onFault">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/oracleas/schema/oracle-fault-11_0/Fault" message="tns:ContactService_onFault" />
+    </wsdl:operation>
+    <wsdl:operation name="processCSContactAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/crmCommon/salesParties/contactService/processCSContactAsyncResponse" message="tns:ContactService_processCSContactAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getEntityListAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/crmCommon/salesParties/contactService/getEntityListAsyncResponse" message="tns:ContactService_getEntityListAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getDfltObjAttrHintsAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/crmCommon/salesParties/contactService/getDfltObjAttrHintsAsyncResponse" message="tns:ContactService_getDfltObjAttrHintsAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getServiceLastUpdateTimeAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/crmCommon/salesParties/contactService/getServiceLastUpdateTimeAsyncResponse" message="tns:ContactService_getServiceLastUpdateTimeAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="findContactAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/crmCommon/salesParties/contactService/findContactAsyncResponse" message="tns:ContactService_findContactAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="updateContactAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/crmCommon/salesParties/contactService/updateContactAsyncResponse" message="tns:ContactService_updateContactAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="processContactAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/crmCommon/salesParties/contactService/processContactAsyncResponse" message="tns:ContactService_processContactAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="createContactAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/crmCommon/salesParties/contactService/createContactAsyncResponse" message="tns:ContactService_createContactAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getContactAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/crmCommon/salesParties/contactService/getContactAsyncResponse" message="tns:ContactService_getContactAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="mergeContactAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/crmCommon/salesParties/contactService/mergeContactAsyncResponse" message="tns:ContactService_mergeContactAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteContactAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/crmCommon/salesParties/contactService/deleteContactAsyncResponse" message="tns:ContactService_deleteContactAsyncResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ContactServiceSoapHttp" type="tns:ContactService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#wss11_saml_or_username_token_with_message_protection_service_policy" wsdl:required="false" />
+    <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#wsaddr_policy" wsdl:required="false" />
+    <wsdl:operation name="processCSContact">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/crmCommon/salesParties/contactService/processCSContact" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#ContactServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#ContactServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#ContactServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="processCSContactAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/crmCommon/salesParties/contactService/processCSContactAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#ContactServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="getDfltObjAttrHints">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/crmCommon/salesParties/contactService/getDfltObjAttrHints" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#ContactServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#ContactServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#ContactServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getServiceLastUpdateTime">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/crmCommon/salesParties/contactService/getServiceLastUpdateTime" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#ContactServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#ContactServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#ContactServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getEntityList">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/crmCommon/salesParties/contactService/getEntityList" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#ContactServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#ContactServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#ContactServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getEntityListAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/crmCommon/salesParties/contactService/getEntityListAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#ContactServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="getDfltObjAttrHintsAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/crmCommon/salesParties/contactService/getDfltObjAttrHintsAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#ContactServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="getServiceLastUpdateTimeAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/crmCommon/salesParties/contactService/getServiceLastUpdateTimeAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#ContactServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="getContact">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/crmCommon/salesParties/contactService/getContact" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#ContactServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#ContactServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#ContactServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createContact">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/crmCommon/salesParties/contactService/createContact" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#ContactServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#ContactServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#ContactServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateContact">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/crmCommon/salesParties/contactService/updateContact" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#ContactServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#ContactServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#ContactServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteContact">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/crmCommon/salesParties/contactService/deleteContact" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#ContactServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#ContactServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#ContactServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="mergeContact">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/crmCommon/salesParties/contactService/mergeContact" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#ContactServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#ContactServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#ContactServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findContact">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/crmCommon/salesParties/contactService/findContact" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#ContactServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#ContactServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#ContactServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="processContact">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/crmCommon/salesParties/contactService/processContact" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#ContactServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#ContactServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#ContactServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findContactAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/crmCommon/salesParties/contactService/findContactAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#ContactServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="updateContactAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/crmCommon/salesParties/contactService/updateContactAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#ContactServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="processContactAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/crmCommon/salesParties/contactService/processContactAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#ContactServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="createContactAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/crmCommon/salesParties/contactService/createContactAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#ContactServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="getContactAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/crmCommon/salesParties/contactService/getContactAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#ContactServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="mergeContactAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/crmCommon/salesParties/contactService/mergeContactAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#ContactServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="deleteContactAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/crmCommon/salesParties/contactService/deleteContactAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#ContactServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ContactServiceResponseBinding" type="tns:ContactServiceResponse">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#wss11_saml_token_with_message_protection_client_policy" wsdl:required="false" />
+    <wsdl:operation name="onFault">
+      <soap:operation soapAction="http://xmlns.oracle.com/oracleas/schema/oracle-fault-11_0/Fault" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#ContactServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="processCSContactAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/crmCommon/salesParties/contactService/processCSContactAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#ContactServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="getEntityListAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/crmCommon/salesParties/contactService/getEntityListAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#ContactServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="getDfltObjAttrHintsAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/crmCommon/salesParties/contactService/getDfltObjAttrHintsAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#ContactServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="getServiceLastUpdateTimeAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/crmCommon/salesParties/contactService/getServiceLastUpdateTimeAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#ContactServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="findContactAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/crmCommon/salesParties/contactService/findContactAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#ContactServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="updateContactAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/crmCommon/salesParties/contactService/updateContactAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#ContactServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="processContactAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/crmCommon/salesParties/contactService/processContactAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#ContactServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="createContactAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/crmCommon/salesParties/contactService/createContactAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#ContactServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="getContactAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/crmCommon/salesParties/contactService/getContactAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#ContactServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="mergeContactAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/crmCommon/salesParties/contactService/mergeContactAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#ContactServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="deleteContactAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/crmCommon/salesParties/contactService/deleteContactAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#ContactServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ContactService">
+    <wsdl:port name="ContactServiceSoapHttpPort" binding="tns:ContactServiceSoapHttp">
+      <soap:address location="https://slcai761.us.oracle.com:10616/crmCommonSalesParties/ContactService" />
+      <wsa:EndpointReference xmlns:wsa="http://www.w3.org/2005/08/addressing">
+        <wsa:Address xmlns:wsa="http://www.w3.org/2005/08/addressing">https://slcai761.us.oracle.com:10616/crmCommonSalesParties/ContactService</wsa:Address>
+        <wsid:Identity xmlns:wsid="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <dsig:KeyInfo xmlns:dsig="http://www.w3.org/2000/09/xmldsig#">
+            <dsig:X509Data>
+              <dsig:X509Certificate>MIICJzCCAdGgAwIBAgIGAUuanrFwMA0GCSqGSIb3DQEBCwUAMHkxCzAJBgNVBAYTAlVTMRAwDgYDVQQIEwdNeVN0YXRlMQ8wDQYDVQQHEwZNeVRvd24xFzAVBgNVBAoTDk15T3JnYW5pemF0aW9uMRkwFwYDVQQLExBGT1IgVEVTVElORyBPTkxZMRMwEQYDVQQDEwpDZXJ0R2VuQ0FCMB4XDTE1MDIxODAyNTc0NloXDTIwMDIxNzAyNTc0NlowUzETMBEGCgmSJomT8ixkARkWA2NvbTEWMBQGCgmSJomT8ixkARkWBm9yYWNsZTESMBAGCgmSJomT8ixkARkWAnVzMRAwDgYDVQQDEwdzZXJ2aWNlMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCXWHV8oZn+2e9iOIwq9nO5eDLVcQ1B0Ne06J3jy7Nlx4zc1Sd0akbBdxTRxvgPdk8laTNjSCc8zoGY+rnkGkHl0E6v/LifM1il2LMLR0JlOoOjWoBp95eNjnEiWjsQ4URIkCJ/zqH0I7x21IpqH31qzATFopyfML+WA40PKJepkwIDAQABoyEwHzAdBgNVHQ4EFgQUvwVQ6EcCoGgVyS0nScrlMd1OzwgwDQYJKoZIhvcNAQELBQADQQAF72kWyiOm9rLUt+nfrLF2OEBwbm0JJ8DbaXzfzw7WXC7bwuOSsilj7xZjNh/fIQG1JcEsfLBBeKx8FlWBWflL</dsig:X509Certificate>
+              <dsig:X509IssuerSerial>
+                <dsig:X509IssuerName>CN=CertGenCAB, OU=FOR TESTING ONLY, O=MyOrganization, L=MyTown, ST=MyState, C=US</dsig:X509IssuerName>
+                <dsig:X509SerialNumber>1424228266352</dsig:X509SerialNumber>
+              </dsig:X509IssuerSerial>
+              <dsig:X509SubjectName>CN=service, DC=us, DC=oracle, DC=com</dsig:X509SubjectName>
+              <dsig:X509SKI>vwVQ6EcCoGgVyS0nScrlMd1Ozwg=</dsig:X509SKI>
+            </dsig:X509Data>
+          </dsig:KeyInfo>
+        </wsid:Identity>
+      </wsa:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

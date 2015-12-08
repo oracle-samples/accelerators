@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:ns4="http://xmlns.oracle.com/apps/crmCommon/activities/activitiesService/" xmlns:sdoXML="commonj.sdo/xml" xmlns:sdoJava="commonj.sdo/java" xmlns:ns2="http://xmlns.oracle.com/apps/crmCommon/notes/noteService" xmlns:sdo="commonj.sdo" xmlns:ns0="http://xmlns.oracle.com/adf/svc/types/" xmlns="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/" xmlns:ns3="http://xmlns.oracle.com/oracle/apps/sales/opptyMgmt/revenues/revenueService/" xmlns:ns1="http://xmlns.oracle.com/apps/sales/opptyMgmt/revenues/revenueService/" elementFormDefault="qualified" targetNamespace="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/" sdoJava:package="oracle.apps.sales.opptyMgmt.opportunities.opportunityService" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/META-INF/wsdl/BC4JService.xsd" namespace="http://xmlns.oracle.com/adf/svc/types/" />
+  <xsd:import schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/oracle/apps/sales/opptyMgmt/revenues/revenueService/Revenue.xsd" namespace="http://xmlns.oracle.com/apps/sales/opptyMgmt/revenues/revenueService/" />
+  <xsd:import schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/oracle/apps/crmCommon/notes/noteService/Note.xsd" namespace="http://xmlns.oracle.com/apps/crmCommon/notes/noteService" />
+  <xsd:import schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/oracle/apps/sales/opptyMgmt/revenues/revenueService/RevenueTerritory.xsd" namespace="http://xmlns.oracle.com/apps/sales/opptyMgmt/revenues/revenueService/" />
+  <xsd:import schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/oracle/apps/sales/opptyMgmt/revenues/revenueService/RevenuePartner.xsd" namespace="http://xmlns.oracle.com/apps/sales/opptyMgmt/revenues/revenueService/" />
+  <xsd:import schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/oracle/apps/sales/opptyMgmt/revenues/revenueService/RevenueLineSet.xsd" namespace="http://xmlns.oracle.com/oracle/apps/sales/opptyMgmt/revenues/revenueService/" />
+  <xsd:import schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/oracle/apps/sales/opptyMgmt/revenues/revenueService/CategorySummaryRevenue.xsd" namespace="http://xmlns.oracle.com/oracle/apps/sales/opptyMgmt/revenues/revenueService/" />
+  <xsd:import schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/oracle/apps/crmCommon/activities/activitiesService/TransientAppointment.xsd" namespace="http://xmlns.oracle.com/apps/crmCommon/activities/activitiesService/" />
+  <xsd:import schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/oracle/apps/sales/opptyMgmt/revenues/revenueService/SplitRevenue.xsd" namespace="http://xmlns.oracle.com/apps/sales/opptyMgmt/revenues/revenueService/" />
+  <xsd:import schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/oracle/apps/sales/opptyMgmt/revenues/revenueService/RecurringRevenue.xsd" namespace="http://xmlns.oracle.com/apps/sales/opptyMgmt/revenues/revenueService/" />
+  <xsd:import schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/xml/sdoJava.xsd" namespace="commonj.sdo/java" />
+  <xsd:import schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/xml/sdoXML.xsd" namespace="commonj.sdo/xml" />
+  <xsd:import schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/xml/sdoModel.xsd" namespace="commonj.sdo" />
+  <xsd:include schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/oracle/apps/sales/opptyMgmt/opportunities/opportunityService/OpportunityContact.xsd" />
+  <xsd:include schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/oracle/apps/sales/opptyMgmt/opportunities/opportunityService/OpportunityReference.xsd" />
+  <xsd:include schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/oracle/apps/sales/opptyMgmt/opportunities/opportunityService/OpportunityCompetitor.xsd" />
+  <xsd:include schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/oracle/apps/sales/opptyMgmt/opportunities/opportunityService/OpportunityResource.xsd" />
+  <xsd:include schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/oracle/apps/sales/opptyMgmt/opportunities/opportunityService/OpportunitySource.xsd" />
+  <xsd:include schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/oracle/apps/sales/opptyMgmt/opportunities/opportunityService/OpportunityLead.xsd" />
+  <xsd:include schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/oracle/apps/sales/opptyMgmt/opportunities/opportunityService/OpportunityResponse.xsd" />
+  <xsd:include schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/oracle/apps/sales/opptyMgmt/opportunities/opportunityService/OpportunityDeal.xsd" />
+  <xsd:annotation>
+    <xsd:documentation xmlns:oer="http://xmlns.oracle.com/oer">
+      <name xmlns="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/">Opportunity</name>
+      <description xmlns="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/">An opportunity is used by a sales organization to track information about a potential sale such as the sales account, key contacts, product interests, and potential revenues.</description>
+      <oer:attributes xmlns:oer="http://xmlns.oracle.com/oer">
+        <oer:attribute description="Date when the budget will be available." name="BudgetAvailableDate" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Indicates if the opportunity sales account has its budget approved for the potential purchase." name="BudgetedFlag" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Identifier of the business unit to which this opportunity belongs." name="PrimaryOrganizationId" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Indicates if this opportunity has a key internal sponsor." name="ChampionFlag" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Disconnected Mobile: this value is used to guarantee the uniqueness of the row when duplicates are created in different databases (i.e. mobile databases or the server)." name="ConflictId" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Who column: indicates the user who created the row." name="CreatedBy" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Who column: indicates the date and time of the creation of the row." name="CreationDate" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="The currency the opportunity amount is based on." name="CurrencyCode" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Sales method identifier for this opportunity. This indicates the sales process used." name="SalesMethodId" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Identifier of the sales stage of the opportunity." name="SalesStageId" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Customer account associated with the opportunity." name="CustomerAccountId" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Indicates how long it may take to close the deal. This field refers to the lookup type MOO_SETID_DEAL_HORIZION." name="DealHorizonCode" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Set Id for the Deal Horizon of this Opportunity" name="DealHorizonCodeSetId" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Indicates the decision level at the opportunity sales account to commit. This field refers to the lookup type MOO_SETID_DECISION_LEVEL." name="DecisionLevelCode" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Set Id for the Decision Level of this Opportunity" name="DecisionLevelCodeSetId" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Description of the opportunity." name="Description" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Who column: indicates the date and time of the last update of the row." name="LastUpdateDate" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Who column: indicates the user who last updated the row." name="LastUpdatedBy" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Who column: indicates the session login associated to the user who last updated the row." name="LastUpdateLogin" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Name of the opportunity." name="Name" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Used to implement optimistic locking. This number is incremented every time that the row is updated. The number is compared at the start and end of a transaction to detect whether another session has updated the row since it was queried." name="ObjectVersionNumber" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Opportunity identifier." name="OptyId" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Opportunity number." name="OptyNumber" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Identifier of the opportunity owner." name="OwnerResourcePartyId" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Identifier of the primary competitor of this opportunity." name="PrimaryCompetitorId" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Identifier of the primary contact." name="KeyContactId" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Win/Loss reason of the opportunity. Valid values from the MOO_SETID_WIN_LOSS_REASON lookup type." name="ReasonWonLostCode" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Set Id for the Win/Loss Reason of this Opportunity" name="ReasonWonLostCodeSetId" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Indicates the risk level for this opportunity. This field refers to the lookup type MOO_SETID_RISK_LEVEL." name="RiskLevelCode" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Set Id for Risk Level of this Opportunity" name="RiskLevelCodeSetId" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Status of the opportunity. Valid values from the MOO_OPTY_STATUS lookup type." name="StatusCode" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Set Id for the Status of this Opportunity." name="StatusCodeSetId" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Indicates the level of the strategic value to work with the opportunity sales account. This field refers to the lookup type MOO_SETID_STRATEGIC_VALUE." name="StrategicLevelCode" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Set Id for Strategic Value of this Opportunity" name="StrategicLevelCodeSetId" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Identifier for the summary revenue line for the opportunity. The summary revenue line stores the total revenue amount of an opportunity." name="PrimaryRevenueId" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Party identifier of the opportunity sales account." name="TargetPartyId" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Disconnected Mobile: indicates the date and time of the last update of the row. This value is different from LAST_UPDATE_DATE if the update originally happened in a different database (i.e. a different mobile database or the server)." name="UserLastUpdateDate" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Name of the sales account." name="TargetPartyName" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="D-U-N-S number of the sales account." name="DUNSNumber" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Sales method of the opportunity." name="SalesMethod" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Object version number of the sales method associated to the opportunity." name="SalesMethodEOObjVerNumber" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Sales stage of the opportunity." name="SalesStage" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Sales objective of the opportunity." name="DescriptionText" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Average days an opportunity remains in the current sales stage." name="AverageDaysAtStage" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Maximum days the opportunity can be in the sales stage prior to considering it stalled." name="MaximumDaysInStage" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Phase of the opportunity sales stage." name="PhaseCd" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Quota factor of the opportunity sales stage." name="QuotaFactor" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Recommended win probability for an opportunity in the sales stage" name="RcmndWinProb" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Default status for the opportunity sales stage." name="StageStatusCd" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Order of the opportunity's sales stage within the sales method." name="StgOrder" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Object version number of the sales stage associated to the opportunity." name="SalesStageEOObjVerNumber" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Estimated close date for the opportunity." name="EffectiveDate" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Revenue amount." name="Revenue" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="descoped attribute, do not use." name="RevenueType" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Revenue identifier." name="RevnId" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="descoped attribute, do not use." name="EmployeesTotal" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="descoped attribute, do not use." name="CurrentFyPotentialRevenue" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Win probability percent." name="WinProb" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Used to implement optimistic locking. This number is incremented every time that the row is updated. The number is compared at the start and end of a transaction to detect whether another session has updated the row since it was queried." name="ObjectVersionNumber1" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Name of the primary contact." name="PrimaryContactPartyName" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Party identifier of the primary contact." name="PrimaryContactPartyId" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Formatted phone number for the primary contact on the opportunity." name="PrimaryContactFormattedPhoneNumber" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="E-mail address of the primary contact." name="PrimaryContactEmailAddress" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Account number of the opportunity sales account." name="AccountNumber" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Name of the primary competitor." name="PartyName" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="descoped attribute, do not use." name="LocationId" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="descoped attribute, do not use." name="FormattedAddress" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="descoped attribute, do not use." name="City" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="descoped attribute, do not use." name="Country" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="descoped attribute, do not use." name="PostalCode" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="descoped attribute, do not use." name="State" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Budget amount from the sales account." name="BdgtAmount" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Comments about this opportunity." name="Comments" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Name of the opportunity owner." name="PartyName1" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Primary marketing source or campaign that generated this opportunity." name="PrSrcNumber" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Worst case amount." name="DownsideAmount" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Best case amount." name="UpsideAmount" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="E-mail address of the opportunity owner." name="EmailAddress" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="The date when the opportunity is last assigned." name="LastAssignedDate" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Status category of the opportunity." name="LookupCategory" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Lookup value identifier for the opportunity status." name="LookupValuesId" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Replicates WHO column creation_date for functional use." name="OptyCreationDate" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Expected revenue amount." name="ExpectAmount" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Preferred functional currency of the opportunity sales account." name="PreferredFunctionalCurrency" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="This is a derived column. For Organization party, it is the concatenation of unique_name_alias and the suffix. For Person party, this is the concatenation of person_name and suffix." name="PartyUniqueName" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Relationship identifier of the primary contact on the opportunity." name="PrConRelationshipId" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Replicates WHO column CREATED_BY for functional use." name="OptyCreatedBy" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="This rate is used for the conversion of the revenue amount to the CRM common currency to facilitate the computation of the revenue forecast metrics. This is the amount that one currency can be exchanged for, at a specific point of time." name="CrmConversionRate" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Opportunity revenue amount converted to the corporate currency." name="CrmRevenue" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Indicates whether the sales method on the opportunity is revenue line set enabled." name="RevnLineSetEnabledFlag" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="The party type can only be Person, Organization, or Group." name="PartyType" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Replicates WHO column last_update_date for functional use." name="OptyLastUpdateDate" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Replicates WHO column last_updated_by for functional use." name="OptyLastUpdatedBy" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Indicates the sales channel for the opportunity." name="SalesChannelCd" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="The line of business that is responsible for the opportunity." name="LineOfBusinessCode" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Indicates if the contact has specified a phone preference." name="PhonePreferenceExistsFlag" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Unique name of the primary opportunity competitor" name="PartyUniqueName1" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Name of the business unit to which this opportunity belongs." name="PrimaryOrganizationName" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Identifier of the opportunity sales account." name="SalesAccountId" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Name of the sales account." name="SalesAccountUniqueName" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="The First Name of the Target Party for the Opportunity." name="ConsumerFirstName" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="The Last Name of the Target Party for the Opportunity." name="ConsumerLastName" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="The First Name of the Primary Contact for the Opportunity." name="PrimaryContactFirstName" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="The Last Name of the Primary Contact for the Opportunity." name="PrimaryContactLastName" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Name of Primary Partner assigned to this Opportunity." name="PrimaryPartnerOrgPartyName" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="PartyId of Primary Partner" name="PrimaryPartnerId" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="The timestamp when the opportunity is last assigned." name="LastAssignedTimestamp" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Registration Status of the Partner Created Opportunity/Deal" name="RegistrationStatus" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Registration Type Used for this Partner Create Opportunity/Deal" name="RegistrationType" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Indicates deal registration status." name="Registered" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Contacts associated with the opportunity." name="OpportunityContact" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Revenue items on the opportunity." name="ChildRevenue" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Notes associated with the opportunity." name="Note" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="References associated with the opportunity." name="OpportunityReference" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="All competitors associated with the opportunity, including both primary and non-primary competitors." name="OpportunityCompetitor2" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Non-primary competitors associated with the opportunity." name="OpportunityCompetitor3" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Resources on the opportunity team." name="OpportunityResource" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Marketing sources associated to the opportunity." name="OpportunitySource1" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Leads associated to the opportunity." name="OpportunityLead" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Marketing responses associated with the opportunity." name="OpportunityResponse" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Territories assigned to the opportunity." name="RevenueTerritory" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Partners associated to the opportunity." name="RevenuePartnerPrimary" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Revenue line set associated with the opportunity." name="RevenueLineSet" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Category summary revenue for revenue line set enabled opportunity" name="CategorySummaryRevenue" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Appointments associated with the opportunity." name="Appointment" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="The revenue or nonrevenue credit allocated to resources who have contributed to the selling effort for the opportunity." name="SplitRevenue" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="The revenues that span over a period of time sourced from the same product on the opportunity." name="RecurringRevenue" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Deal registrations associated to the opportunity." name="OpportunityDeal" xmlns:oer="http://xmlns.oracle.com/oer" />
+      </oer:attributes>
+    </xsd:documentation>
+  </xsd:annotation>
+  <xsd:complexType name="Opportunity">
+    <xsd:annotation>
+      <xsd:appinfo source="http://xmlns.oracle.com/adf/svc/metadata/">
+        <key xmlns="http://xmlns.oracle.com/adf/svc/metadata/">
+          <attribute>OptyId</attribute>
+        </key>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="BudgetAvailableDate" nillable="true" type="ns0:date-Date" />
+      <xsd:element minOccurs="0" name="BudgetedFlag" nillable="true" type="xsd:boolean" />
+      <xsd:element sdoXML:dataType="sdoJava:LongObject" minOccurs="0" name="PrimaryOrganizationId" type="xsd:long" />
+      <xsd:element sdoXML:dataType="sdoJava:BooleanObject" minOccurs="0" name="ChampionFlag" type="xsd:boolean" />
+      <xsd:element sdoXML:dataType="sdoJava:LongObject" minOccurs="0" name="ConflictId" type="xsd:long" />
+      <xsd:element minOccurs="0" name="CreatedBy" type="xsd:string" />
+      <xsd:element minOccurs="0" name="CreationDate" type="ns0:dateTime-Timestamp" />
+      <xsd:element minOccurs="0" name="CurrencyCode" type="xsd:string" />
+      <xsd:element minOccurs="0" name="SalesMethodId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="SalesStageId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="CustomerAccountId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="DealHorizonCode" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="DealHorizonCodeSetId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="DecisionLevelCode" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="DecisionLevelCodeSetId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="Description" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="LastUpdateDate" type="ns0:dateTime-Timestamp" />
+      <xsd:element minOccurs="0" name="LastUpdatedBy" type="xsd:string" />
+      <xsd:element minOccurs="0" name="LastUpdateLogin" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="Name" type="xsd:string" />
+      <xsd:element sdoXML:dataType="sdoJava:IntObject" minOccurs="0" name="ObjectVersionNumber" type="xsd:int" />
+      <xsd:element sdoXML:dataType="sdoJava:LongObject" minOccurs="0" name="OptyId" type="xsd:long" />
+      <xsd:element minOccurs="0" name="OptyNumber" type="xsd:string" />
+      <xsd:element sdoXML:dataType="sdoJava:LongObject" minOccurs="0" name="OwnerResourcePartyId" type="xsd:long" />
+      <xsd:element minOccurs="0" name="PrimaryCompetitorId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="KeyContactId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="ReasonWonLostCode" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="ReasonWonLostCodeSetId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="RiskLevelCode" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="RiskLevelCodeSetId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="StatusCode" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="StatusCodeSetId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="StrategicLevelCode" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="StrategicLevelCodeSetId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="PrimaryRevenueId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="TargetPartyId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="UserLastUpdateDate" nillable="true" type="ns0:dateTime-Timestamp" />
+      <xsd:element minOccurs="0" name="TargetPartyName" type="xsd:string" />
+      <xsd:element minOccurs="0" name="DUNSNumber" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="SalesMethod" nillable="true" type="xsd:string" />
+      <xsd:element sdoXML:dataType="sdoJava:IntObject" minOccurs="0" name="SalesMethodEOObjVerNumber" type="xsd:int" />
+      <xsd:element minOccurs="0" name="SalesStage" type="xsd:string" />
+      <xsd:element minOccurs="0" name="DescriptionText" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="AverageDaysAtStage" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="MaximumDaysInStage" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="PhaseCd" type="xsd:string" />
+      <xsd:element minOccurs="0" name="QuotaFactor" type="xsd:decimal" />
+      <xsd:element minOccurs="0" name="RcmndWinProb" nillable="true" type="xsd:decimal" />
+      <xsd:element minOccurs="0" name="StageStatusCd" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="StgOrder" type="xsd:decimal" />
+      <xsd:element sdoXML:dataType="sdoJava:IntObject" minOccurs="0" name="SalesStageEOObjVerNumber" type="xsd:int" />
+      <xsd:element minOccurs="0" name="EffectiveDate" nillable="true" type="ns0:date-Date" />
+      <xsd:element minOccurs="0" name="Revenue" nillable="true" type="xsd:decimal" />
+      <xsd:element minOccurs="0" name="RevenueType" nillable="true" type="xsd:string" />
+      <xsd:element sdoXML:dataType="sdoJava:LongObject" minOccurs="0" name="RevnId" type="xsd:long" />
+      <xsd:element minOccurs="0" name="EmployeesTotal" nillable="true" type="xsd:decimal" />
+      <xsd:element minOccurs="0" name="CurrentFyPotentialRevenue" nillable="true" type="xsd:decimal" />
+      <xsd:element minOccurs="0" name="WinProb" nillable="true" type="xsd:decimal" />
+      <xsd:element sdoXML:dataType="sdoJava:IntObject" minOccurs="0" name="ObjectVersionNumber1" type="xsd:int" />
+      <xsd:element minOccurs="0" name="PrimaryContactPartyName" type="xsd:string" />
+      <xsd:element sdoXML:dataType="sdoJava:LongObject" minOccurs="0" name="PrimaryContactPartyId" type="xsd:long" />
+      <xsd:element minOccurs="0" name="PrimaryContactFormattedPhoneNumber" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PrimaryContactEmailAddress" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="AccountNumber" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PartyName" type="xsd:string" />
+      <xsd:element sdoXML:dataType="sdoJava:LongObject" minOccurs="0" name="LocationId" type="xsd:long" />
+      <xsd:element minOccurs="0" name="FormattedAddress" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="City" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="Country" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PostalCode" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="State" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="BdgtAmount" nillable="true" type="ns0:AmountType" />
+      <xsd:element minOccurs="0" name="Comments" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PartyName1" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PrSrcNumber" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="DownsideAmount" nillable="true" type="ns0:AmountType" />
+      <xsd:element minOccurs="0" name="UpsideAmount" nillable="true" type="ns0:AmountType" />
+      <xsd:element minOccurs="0" name="EmailAddress" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="LastAssignedDate" nillable="true" type="ns0:date-Date" />
+      <xsd:element minOccurs="0" name="LookupCategory" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="LookupValuesId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="OptyCreationDate" nillable="true" type="ns0:dateTime-Timestamp" />
+      <xsd:element minOccurs="0" name="ExpectAmount" nillable="true" type="ns0:AmountType" />
+      <xsd:element minOccurs="0" name="PreferredFunctionalCurrency" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PartyUniqueName" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PrConRelationshipId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="OptyCreatedBy" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="CrmConversionRate" nillable="true" type="xsd:decimal" />
+      <xsd:element minOccurs="0" name="CrmRevenue" nillable="true" type="xsd:decimal" />
+      <xsd:element minOccurs="0" name="RevnLineSetEnabledFlag" nillable="true" type="xsd:boolean" />
+      <xsd:element minOccurs="0" name="PartyType" type="xsd:string" />
+      <xsd:element minOccurs="0" name="OptyLastUpdateDate" nillable="true" type="ns0:dateTime-Timestamp" />
+      <xsd:element minOccurs="0" name="OptyLastUpdatedBy" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="SalesChannelCd" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="LineOfBusinessCode" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PhonePreferenceExistsFlag" nillable="true" type="xsd:boolean" />
+      <xsd:element minOccurs="0" name="PartyUniqueName1" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PrimaryOrganizationName" type="xsd:string" />
+      <xsd:element minOccurs="0" name="SalesAccountId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="SalesAccountUniqueName" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="ConsumerFirstName" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="ConsumerLastName" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PrimaryContactFirstName" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PrimaryContactLastName" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PrimaryPartnerOrgPartyName" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PrimaryPartnerId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="LastAssignedTimestamp" nillable="true" type="ns0:dateTime-Timestamp" />
+      <xsd:element minOccurs="0" name="RegistrationStatus" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="RegistrationType" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="Registered" nillable="true" type="xsd:string" />
+      <xsd:element sdoXML:dataType="sdo:DataObject" minOccurs="0" maxOccurs="unbounded" name="OpportunityContact" type="OpportunityContact" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="ChildRevenue" type="ns1:Revenue" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="Note" type="ns2:Note" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="OpportunityReference" type="OpportunityReference" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="OpportunityCompetitor2" type="OpportunityCompetitor" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="OpportunityCompetitor3" type="OpportunityCompetitor" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="OpportunityResource" type="OpportunityResource" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="OpportunitySource1" type="OpportunitySource" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="OpportunityLead" type="OpportunityLead" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="OpportunityResponse" type="OpportunityResponse" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="RevenueTerritory" type="ns1:RevenueTerritory" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="RevenuePartnerPrimary" type="ns1:RevenuePartner" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="RevenueLineSet" type="ns3:RevenueLineSet" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="CategorySummaryRevenue" type="ns3:CategorySummaryRevenue" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="Appointment" type="ns4:TransientAppointment" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="SplitRevenue" type="ns1:SplitRevenue" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="RecurringRevenue" type="ns1:RecurringRevenue" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="OpportunityDeal" type="OpportunityDeal" />
+      <xsd:element minOccurs="0" name="O_INT_SalesDocumentStatus_c" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="O_INT_OptyDocumentStatus_c" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="O_INT_OptySyncTimestamp_c" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="O_INT_LatestSiebelQuoteID_c" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="O_INT_LatestSiebelQuoteNumber_c" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="O_INT_SiebelOpptyName_c" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="ContractName_c" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="EndDate_c" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PriceDiscount_c" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="Term_c" nillable="true" type="xsd:string" />
+      <xsd:element sdoXML:dataType="sdoJava:BooleanObject" minOccurs="0" name="ContractRenewal_c" type="xsd:boolean" />
+      <xsd:element minOccurs="0" name="O_INT_SBL_OptyNum_c" nillable="true" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="opportunity" type="Opportunity" />
+</xsd:schema>

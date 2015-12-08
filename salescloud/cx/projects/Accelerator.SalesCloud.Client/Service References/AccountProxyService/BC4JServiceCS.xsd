@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://xmlns.oracle.com/adf/svc/types/" xmlns:sdo="commonj.sdo" xmlns:sdoJava="commonj.sdo/java" elementFormDefault="qualified" targetNamespace="http://xmlns.oracle.com/adf/svc/types/" sdoJava:package="oracle.jbo.common.service.types" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="https://slcai761.us.oracle.com:10616/crmCommonSalesParties/AccountService?XSD=/xml/sdoModel.xsd" namespace="commonj.sdo" />
+  <xsd:import schemaLocation="https://slcai761.us.oracle.com:10616/crmCommonSalesParties/AccountService?XSD=/xml/sdoJava.xsd" namespace="commonj.sdo/java" />
+  <xsd:include schemaLocation="https://slcai761.us.oracle.com:10616/crmCommonSalesParties/AccountService?XSD=/META-INF/wsdl/BC4JService.xsd" />
+  <xsd:element name="processData" type="ProcessData" />
+  <xsd:complexType name="ProcessData">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="MethodResult">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Value" type="xsd:anyType" />
+          <xsd:element minOccurs="0" name="ChangeSummary" type="sdo:ChangeSummaryType" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

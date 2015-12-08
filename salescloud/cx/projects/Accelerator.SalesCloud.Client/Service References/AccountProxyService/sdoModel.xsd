@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:sdo="commonj.sdo" xmlns:sdoJava="commonj.sdo/java" xmlns:sdoXML="commonj.sdo/xml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified" targetNamespace="commonj.sdo" xsi:schemaLocation="commonj.sdo/xml sdoXML.xsd                   commonj.sdo/java sdoJava.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:include schemaLocation="https://slcai761.us.oracle.com:10616/crmCommonSalesParties/AccountService?XSD=/xml/datagraph.xsd" />
+  <xsd:element name="types" type="sdo:Types" />
+  <xsd:complexType name="Types">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="type" type="sdo:Type" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="dataObject" type="xsd:anyType" />
+  <xsd:element name="type" type="sdo:Type" />
+  <xsd:complexType name="Type">
+    <xsd:sequence>
+      <xsd:element sdoXML:propertyType="sdo:Type" minOccurs="0" maxOccurs="unbounded" name="baseType" type="sdo:URI" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="property" type="sdo:Property" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="aliasName" type="sdo:String" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+    <xsd:attribute sdoXML:dataType="sdo:String" name="name" type="xsd:ID" />
+    <xsd:attribute name="uri" type="sdo:URI" />
+    <xsd:attribute name="dataType" type="sdo:Boolean" />
+    <xsd:attribute name="open" type="sdo:Boolean" />
+    <xsd:attribute name="sequenced" type="sdo:Boolean" />
+    <xsd:attribute name="abstract" type="sdo:Boolean" />
+    <xsd:anyAttribute namespace="##any" processContents="lax" />
+  </xsd:complexType>
+  <xsd:complexType name="Property">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="aliasName" type="sdo:String" />
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+    </xsd:sequence>
+    <xsd:attribute name="name" type="sdo:String" />
+    <xsd:attribute name="many" type="sdo:Boolean" />
+    <xsd:attribute name="containment" type="sdo:Boolean" />
+    <xsd:attribute name="default" type="sdo:String" />
+    <xsd:attribute name="readOnly" type="sdo:Boolean" />
+    <xsd:attribute sdoXML:propertyType="sdo:Type" name="type" type="sdo:URI" />
+    <xsd:attribute sdoXML:propertyType="sdo:Property" name="opposite" type="sdo:URI" />
+    <xsd:attribute name="nullable" type="sdo:Boolean" />
+    <xsd:anyAttribute namespace="##any" processContents="lax" />
+  </xsd:complexType>
+  <xsd:complexType name="DataObject" abstract="true" />
+  <xsd:complexType name="TextType" abstract="true">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="text" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType sdoJava:instanceClass="boolean" name="Boolean">
+    <xsd:restriction base="xsd:boolean" />
+  </xsd:simpleType>
+  <xsd:simpleType sdoJava:instanceClass="byte" name="Byte">
+    <xsd:restriction base="xsd:byte" />
+  </xsd:simpleType>
+  <xsd:simpleType sdoJava:instanceClass="byte[]" name="Bytes">
+    <xsd:restriction base="xsd:hexBinary" />
+  </xsd:simpleType>
+  <xsd:simpleType sdoJava:instanceClass="char" name="Character">
+    <xsd:restriction base="xsd:string" />
+  </xsd:simpleType>
+  <xsd:simpleType sdoJava:instanceClass="java.util.Date" name="Date">
+    <xsd:restriction base="xsd:dateTime" />
+  </xsd:simpleType>
+  <xsd:simpleType sdoJava:instanceClass="java.lang.String" name="DateTime">
+    <xsd:restriction base="xsd:dateTime" />
+  </xsd:simpleType>
+  <xsd:simpleType sdoJava:instanceClass="java.lang.String" name="Day">
+    <xsd:restriction base="xsd:gDay" />
+  </xsd:simpleType>
+  <xsd:simpleType sdoJava:instanceClass="java.math.BigDecimal" name="Decimal">
+    <xsd:restriction base="xsd:decimal" />
+  </xsd:simpleType>
+  <xsd:simpleType sdoJava:instanceClass="double" name="Double">
+    <xsd:restriction base="xsd:double" />
+  </xsd:simpleType>
+  <xsd:simpleType sdoJava:instanceClass="java.lang.String" name="Duration">
+    <xsd:restriction base="xsd:duration" />
+  </xsd:simpleType>
+  <xsd:simpleType sdoJava:instanceClass="float" name="Float">
+    <xsd:restriction base="xsd:float" />
+  </xsd:simpleType>
+  <xsd:simpleType sdoJava:instanceClass="int" name="Int">
+    <xsd:restriction base="xsd:int" />
+  </xsd:simpleType>
+  <xsd:simpleType sdoJava:instanceClass="java.math.BigInteger" name="Integer">
+    <xsd:restriction base="xsd:integer" />
+  </xsd:simpleType>
+  <xsd:simpleType sdoJava:instanceClass="long" name="Long">
+    <xsd:restriction base="xsd:long" />
+  </xsd:simpleType>
+  <xsd:simpleType sdoJava:instanceClass="java.lang.String" name="Month">
+    <xsd:restriction base="xsd:gMonth" />
+  </xsd:simpleType>
+  <xsd:simpleType sdoJava:instanceClass="java.lang.String" name="MonthDay">
+    <xsd:restriction base="xsd:gMonthDay" />
+  </xsd:simpleType>
+  <xsd:simpleType sdoJava:instanceClass="java.lang.Object" name="Object">
+    <xsd:union memberTypes="xsd:anyURI xsd:base64Binary xsd:boolean xsd:byte xsd:date xsd:dateTime xsd:decimal xsd:double xsd:duration xsd:ENTITIES xsd:ENTITY xsd:float xsd:gDay xsd:gMonth xsd:gMonthDay xsd:gYear xsd:gYearMonth xsd:hexBinary xsd:ID xsd:IDREF xsd:IDREFS xsd:int xsd:integer xsd:language xsd:long xsd:Name xsd:NCName xsd:negativeInteger xsd:NMTOKEN xsd:NMTOKENS xsd:nonNegativeInteger xsd:nonPositiveInteger xsd:normalizedString xsd:NOTATION xsd:positiveInteger xsd:QName xsd:short xsd:string xsd:time xsd:token xsd:unsignedByte xsd:unsignedInt xsd:unsignedLong xsd:unsignedShort" />
+  </xsd:simpleType>
+  <xsd:simpleType sdoJava:instanceClass="short" name="Short">
+    <xsd:restriction base="xsd:short" />
+  </xsd:simpleType>
+  <xsd:simpleType sdoJava:instanceClass="java.lang.String" name="String">
+    <xsd:restriction base="xsd:string" />
+  </xsd:simpleType>
+  <xsd:simpleType sdoJava:instanceClass="java.util.List" name="Strings">
+    <xsd:restriction base="xsd:string" />
+  </xsd:simpleType>
+  <xsd:simpleType sdoJava:instanceClass="java.lang.String" name="Time">
+    <xsd:restriction base="xsd:time" />
+  </xsd:simpleType>
+  <xsd:simpleType sdoJava:instanceClass="java.lang.String" name="Year">
+    <xsd:restriction base="xsd:gYear" />
+  </xsd:simpleType>
+  <xsd:simpleType sdoJava:instanceClass="java.lang.String" name="YearMonth">
+    <xsd:restriction base="xsd:gYearMonth" />
+  </xsd:simpleType>
+  <xsd:simpleType sdoJava:instanceClass="java.lang.String" name="YearMonthDay">
+    <xsd:restriction base="xsd:date" />
+  </xsd:simpleType>
+  <xsd:simpleType sdoJava:instanceClass="java.lang.String" name="URI">
+    <xsd:restriction base="xsd:anyURI" />
+  </xsd:simpleType>
+</xsd:schema>

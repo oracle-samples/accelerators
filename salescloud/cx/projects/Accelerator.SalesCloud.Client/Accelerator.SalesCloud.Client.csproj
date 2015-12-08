@@ -1,0 +1,552 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3AB7FADD-71A5-4A37-B03D-675EC074F5F8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Accelerator.SalesCloud.Client</RootNamespace>
+    <AssemblyName>Accelerator.SalesCloud.Client</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="RightNow.AddIns.AddInViews">
+      <HintPath>..\lib\RightNow.AddIns.AddInViews.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.AddIn" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\OSCBackgroundServiceUtil.cs" />
+    <Compile Include="Common\OSCCommonUtil.cs" />
+    <Compile Include="Common\OSCConfigVerb.cs" />
+    <Compile Include="Common\OSCStringConstants.cs" />
+    <Compile Include="Interceptors\EmptyElementInspector.cs" />
+    <Compile Include="Logs\IOSCLog.cs" />
+    <Compile Include="Logs\OSCDefaultLog.cs" />
+    <Compile Include="Logs\OSCLogService.cs" />
+    <Compile Include="Model\AccountModel.cs" />
+    <Compile Include="Model\ContactModel.cs" />
+    <Compile Include="Model\LeadModel.cs" />
+    <Compile Include="Model\MklLeadResourcesModel.cs" />
+    <Compile Include="Model\OpportunityModel.cs" />
+    <Compile Include="Model\OpportunityResourceModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RightNow\IRightNowConfigService.cs" />
+    <Compile Include="RightNow\IRightNowConnectService.cs" />
+    <Compile Include="RightNow\RightNowConfigService.cs" />
+    <Compile Include="RightNow\RightNowConnectService.cs" />
+    <Compile Include="Service References\AccountProxyService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ContactProxyService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\LeadProxyService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\OpportunityProxyService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\RightNowProxyService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Services\AccountService.cs" />
+    <Compile Include="Services\ContactService.cs" />
+    <Compile Include="Services\IAccountService.cs" />
+    <Compile Include="Services\IContactService.cs" />
+    <Compile Include="Services\ILeadService.cs" />
+    <Compile Include="Services\IOpportunityService.cs" />
+    <Compile Include="Services\LeadService.cs" />
+    <Compile Include="Services\OpportunityService.cs" />
+    <Compile Include="SalesCloudAutoClientAddIn.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Exceptions\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AccountProxyService\Account.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AccountProxyService\AccountService.wsdl" />
+    <None Include="Service References\AccountProxyService\AccountService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AccountProxyService\BC4JService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AccountProxyService\BC4JServiceCS.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AccountProxyService\datagraph.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AccountProxyService\ICS_CRM1_c.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AccountProxyService\Note.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AccountProxyService\NoteDFF.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AccountProxyService\oracle-webservices-async-fault-11_0.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AccountProxyService\Oracle.RightNow.OSC.Client.AccountProxyService.DataObjectResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AccountProxyService\Oracle.RightNow.OSC.Client.AccountProxyService.ObjAttrHints.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AccountProxyService\Oracle.RightNow.OSC.Client.AccountProxyService.ProcessData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AccountProxyService\Oracle.RightNow.OSC.Client.AccountProxyService.ServiceMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AccountProxyService\Oracle.RightNow.OSC.Client.AccountProxyService.ServiceViewInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AccountProxyService\O_INT_SBL_Match_c.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AccountProxyService\PrimaryAddress.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AccountProxyService\SalesTeamMember.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AccountProxyService\sdoJava.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AccountProxyService\sdoModel.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AccountProxyService\sdoXML.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AccountProxyService\ServiceException.wsdl" />
+    <None Include="Service References\AccountProxyService\ServiceException.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ContactProxyService\Accelerator.SalesCloud.Client.ContactProxyService.DataObjectResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ContactProxyService\Accelerator.SalesCloud.Client.ContactProxyService.ObjAttrHints.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ContactProxyService\Accelerator.SalesCloud.Client.ContactProxyService.ProcessData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ContactProxyService\Accelerator.SalesCloud.Client.ContactProxyService.ServiceMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ContactProxyService\Accelerator.SalesCloud.Client.ContactProxyService.ServiceViewInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ContactProxyService\BC4JService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ContactProxyService\BC4JServiceCS.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ContactProxyService\Contact.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ContactProxyService\ContactService.wsdl" />
+    <None Include="Service References\ContactProxyService\ContactService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ContactProxyService\datagraph.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ContactProxyService\Note.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ContactProxyService\NoteDFF.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ContactProxyService\oracle-webservices-async-fault-11_0.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ContactProxyService\PrimaryAddress.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ContactProxyService\SalesTeamMember.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ContactProxyService\sdoJava.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ContactProxyService\sdoModel.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ContactProxyService\sdoXML.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ContactProxyService\ServiceException.wsdl" />
+    <None Include="Service References\ContactProxyService\ServiceException.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\LeadProxyService\BC4JService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\LeadProxyService\datagraph.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\LeadProxyService\LeadPublicService.wsdl" />
+    <None Include="Service References\LeadProxyService\LeadPublicService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\LeadProxyService\MklLeadResources.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\LeadProxyService\MklLeadTcMembers.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\LeadProxyService\MklProdAssoc.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\LeadProxyService\oracle-webservices-async-fault-11_0.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\LeadProxyService\Oracle.RightNow.OSC.Client.LeadProxyService.MklLeadResources.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LeadProxyService\Oracle.RightNow.OSC.Client.LeadProxyService.MklLeadTcMembers.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LeadProxyService\Oracle.RightNow.OSC.Client.LeadProxyService.MklProdAssoc.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LeadProxyService\Oracle.RightNow.OSC.Client.LeadProxyService.ObjAttrHints.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LeadProxyService\Oracle.RightNow.OSC.Client.LeadProxyService.ServiceLead.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LeadProxyService\Oracle.RightNow.OSC.Client.LeadProxyService.ServiceViewInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LeadProxyService\sdoJava.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\LeadProxyService\sdoModel.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\LeadProxyService\sdoXML.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\LeadProxyService\ServiceException.wsdl" />
+    <None Include="Service References\LeadProxyService\ServiceException.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\LeadProxyService\ServiceLead.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OpportunityProxyService\BC4JService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OpportunityProxyService\BC4JServiceCS.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OpportunityProxyService\CategorySummaryRevenue.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OpportunityProxyService\CommonAttachments.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OpportunityProxyService\datagraph.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OpportunityProxyService\DeleteEntity.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OpportunityProxyService\DeleteError.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OpportunityProxyService\Note.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OpportunityProxyService\NoteDFF.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OpportunityProxyService\Opportunity.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OpportunityProxyService\OpportunityCompetitor.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OpportunityProxyService\OpportunityContact.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OpportunityProxyService\OpportunityDeal.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OpportunityProxyService\OpportunityLead.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OpportunityProxyService\OpportunityReference.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OpportunityProxyService\OpportunityResource.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OpportunityProxyService\OpportunityResponse.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OpportunityProxyService\OpportunityService.wsdl" />
+    <None Include="Service References\OpportunityProxyService\OpportunityService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OpportunityProxyService\OpportunitySource.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OpportunityProxyService\oracle-webservices-async-fault-11_0.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OpportunityProxyService\Oracle.RightNow.OSC.Client.OpportunityProxyService.CommonAttachments.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\OpportunityProxyService\Oracle.RightNow.OSC.Client.OpportunityProxyService.DeleteEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\OpportunityProxyService\Oracle.RightNow.OSC.Client.OpportunityProxyService.ObjAttrHints.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\OpportunityProxyService\Oracle.RightNow.OSC.Client.OpportunityProxyService.Opportunity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\OpportunityProxyService\Oracle.RightNow.OSC.Client.OpportunityProxyService.ProcessData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\OpportunityProxyService\Oracle.RightNow.OSC.Client.OpportunityProxyService.ServiceViewInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\OpportunityProxyService\RecurringRevenue.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OpportunityProxyService\Revenue.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OpportunityProxyService\RevenueLineSet.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OpportunityProxyService\RevenuePartner.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OpportunityProxyService\RevenueTerritory.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OpportunityProxyService\sdoJava.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OpportunityProxyService\sdoModel.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OpportunityProxyService\sdoXML.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OpportunityProxyService\ServiceException.wsdl" />
+    <None Include="Service References\OpportunityProxyService\ServiceException.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OpportunityProxyService\SplitRevenue.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OpportunityProxyService\TransientAppointment.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OpportunityProxyService\TransientAssignee.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OpportunityProxyService\TransientCategory.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OpportunityProxyService\TransientContact.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OpportunityProxyService\TransientNote.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RightNowProxyService\Oracle.RightNow.OSC.Client.RightNowProxyService.BatchResponseItem.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RightNowProxyService\Oracle.RightNow.OSC.Client.RightNowProxyService.CSVTableSet.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RightNowProxyService\Oracle.RightNow.OSC.Client.RightNowProxyService.MetaDataClass.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RightNowProxyService\Oracle.RightNow.OSC.Client.RightNowProxyService.MetaDataClassOperation.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RightNowProxyService\Oracle.RightNow.OSC.Client.RightNowProxyService.NamedID.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RightNowProxyService\Oracle.RightNow.OSC.Client.RightNowProxyService.NamedIDWithParent.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RightNowProxyService\Oracle.RightNow.OSC.Client.RightNowProxyService.QueryResultData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RightNowProxyService\Oracle.RightNow.OSC.Client.RightNowProxyService.RNObject.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RightNowProxyService\Oracle.RightNow.OSC.Client.RightNowProxyService.RNObjectType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RightNowProxyService\Oracle.RightNow.OSC.Client.RightNowProxyService.SubscribableObject.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RightNowProxyService\RightNow.wsdl" />
+    <None Include="Service References\RightNowProxyService\soap.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RightNowProxyService\soap1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RightNowProxyService\soap2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RightNowProxyService\soap3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RightNowProxyService\soap4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RightNowProxyService\soap5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RightNowProxyService\soap6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\AccountProxyService\" />
+    <WCFMetadataStorage Include="Service References\ContactProxyService\" />
+    <WCFMetadataStorage Include="Service References\LeadProxyService\" />
+    <WCFMetadataStorage Include="Service References\OpportunityProxyService\" />
+    <WCFMetadataStorage Include="Service References\RightNowProxyService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\OpportunityProxyService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\OpportunityProxyService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\OpportunityProxyService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AccountProxyService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AccountProxyService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AccountProxyService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\LeadProxyService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\LeadProxyService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\LeadProxyService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\RightNowProxyService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\RightNowProxyService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\RightNowProxyService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ContactProxyService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ContactProxyService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ContactProxyService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

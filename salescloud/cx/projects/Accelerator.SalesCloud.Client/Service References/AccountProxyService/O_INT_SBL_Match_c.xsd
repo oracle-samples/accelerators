@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://xmlns.oracle.com/apps/cdm/foundation/parties/organizationService/" xmlns:sdoJava="commonj.sdo/java" xmlns:sdoXML="commonj.sdo/xml" xmlns:ns0="http://xmlns.oracle.com/adf/svc/types/" elementFormDefault="qualified" targetNamespace="http://xmlns.oracle.com/apps/cdm/foundation/parties/organizationService/" sdoJava:package="sessiondef.extensibility.app.crmCommon.views.common" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="https://slcai761.us.oracle.com:10616/crmCommonSalesParties/AccountService?XSD=/META-INF/wsdl/BC4JService.xsd" namespace="http://xmlns.oracle.com/adf/svc/types/" />
+  <xsd:import schemaLocation="https://slcai761.us.oracle.com:10616/crmCommonSalesParties/AccountService?XSD=/xml/sdoJava.xsd" namespace="commonj.sdo/java" />
+  <xsd:import schemaLocation="https://slcai761.us.oracle.com:10616/crmCommonSalesParties/AccountService?XSD=/xml/sdoXML.xsd" namespace="commonj.sdo/xml" />
+  <xsd:annotation>
+    <xsd:documentation>
+      <name xmlns="http://xmlns.oracle.com/apps/cdm/foundation/parties/organizationService/">Siebel Customer Match</name>
+    </xsd:documentation>
+  </xsd:annotation>
+  <xsd:complexType name="O_INT_SBL_Match_c">
+    <xsd:annotation>
+      <xsd:appinfo source="http://xmlns.oracle.com/adf/svc/metadata/">
+        <key xmlns="http://xmlns.oracle.com/adf/svc/metadata/">
+          <attribute>Id</attribute>
+        </key>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="Id" type="xsd:decimal" />
+      <xsd:element minOccurs="0" name="RecordName" type="xsd:string" />
+      <xsd:element minOccurs="0" name="CreatedBy" type="xsd:string" />
+      <xsd:element minOccurs="0" name="CreationDate" type="ns0:dateTime-Timestamp" />
+      <xsd:element minOccurs="0" name="LastUpdatedBy" type="xsd:string" />
+      <xsd:element minOccurs="0" name="LastUpdateDate" type="ns0:dateTime-Timestamp" />
+      <xsd:element minOccurs="0" name="ObjectVersionNumber" nillable="true" type="xsd:decimal" />
+      <xsd:element minOccurs="0" name="OrganizationProfile_Id_c" nillable="true" type="xsd:decimal" />
+      <xsd:element minOccurs="0" name="LastUpdateLogin" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="CpdrfVerSor" nillable="true" type="xsd:int" />
+      <xsd:element minOccurs="0" name="UserLastUpdateDate" nillable="true" type="ns0:dateTime-Timestamp" />
+      <xsd:element minOccurs="0" name="CpdrfLastUpd" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="CpdrfVerPillar" nillable="true" type="xsd:int" />
+      <xsd:element minOccurs="0" name="JobDefinitionPackage" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="RequestId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="JobDefinitionName" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="CurrencyCode" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="CurcyConvRateType" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="CorpCurrencyCode" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="IsOwner" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="Address1_c" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="City_c" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="State_c" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="Province_c" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="Country_c" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="MatchScore_c" nillable="true" type="xsd:string" />
+      <xsd:element sdoXML:dataType="sdoJava:BooleanObject" minOccurs="0" name="Selected_c" type="xsd:boolean" />
+      <xsd:element minOccurs="0" name="PartyName_c" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PartyID_c" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PartyNumber_c" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PartyType_c" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PrimaryPhoneCountryCode_c" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PrimaryPhoneAreaCode_c" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PrimaryPhoneNumber_c" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PrimaryEmail_c" nillable="true" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="o_INT_SBL_Match_c" type="O_INT_SBL_Match_c" />
+</xsd:schema>

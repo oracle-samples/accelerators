@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://xmlns.oracle.com/apps/scm/productModel/deleteGroups/publicModel/" xmlns:sdoJava="commonj.sdo/java" xmlns:sdoXML="commonj.sdo/xml" xmlns:ns0="http://xmlns.oracle.com/adf/svc/types/" elementFormDefault="qualified" targetNamespace="http://xmlns.oracle.com/apps/scm/productModel/deleteGroups/publicModel/" sdoJava:package="oracle.apps.scm.productModel.deleteGroups.publicModel" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/META-INF/wsdl/BC4JService.xsd" namespace="http://xmlns.oracle.com/adf/svc/types/" />
+  <xsd:import schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/xml/sdoJava.xsd" namespace="commonj.sdo/java" />
+  <xsd:import schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/xml/sdoXML.xsd" namespace="commonj.sdo/xml" />
+  <xsd:include schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/oracle/apps/scm/productModel/deleteGroups/publicModel/DeleteError.xsd" />
+  <xsd:annotation>
+    <xsd:documentation xmlns:oer="http://xmlns.oracle.com/oer">
+      <name xmlns="http://xmlns.oracle.com/apps/scm/productModel/deleteGroups/publicModel/">Item External Reference</name>
+      <description xmlns="http://xmlns.oracle.com/apps/scm/productModel/deleteGroups/publicModel/">A reference to an item from an external transaction, such as a
+                sales order or an inventory transaction.</description>
+      <oer:category name="lba" xmlns:oer="http://xmlns.oracle.com/oer">
+        <value xmlns="http://xmlns.oracle.com/apps/scm/productModel/deleteGroups/publicModel/">ScmTop-SCM : EgpTop-Product Model : EgpDeleteGroups-Item
+                    Delete Groups</value>
+      </oer:category>
+      <oer:category name="lbo" xmlns:oer="http://xmlns.oracle.com/oer">
+        <value xmlns="http://xmlns.oracle.com/apps/scm/productModel/deleteGroups/publicModel/">SCM-SCM : EGP-Product Model : EGP_DELETE_GROUP-Item Delete
+                    Group</value>
+      </oer:category>
+      <oer:attributes xmlns:oer="http://xmlns.oracle.com/oer">
+        <oer:attribute description="Unique id for the table Delete Entities" name="DeleteEntitySequenceId" />
+        <oer:attribute description="Unique id of a Delete Group to which an entity to be deleted has been added" name="DeleteGroupSequenceId" />
+        <oer:attribute description="The sequence number of an entity within a delete group. This may be used to group similar entities together for processing" name="EntitySequenceNumber" />
+        <oer:attribute description="A numeric value which indicates the type of delete entity e.g. an item , a structure or a change order" name="DeleteEntityType" />
+        <oer:attribute description="A numeric value which , with the combination of Pk2Value, Pk3Value , Pk4Value and Pk5Value may form a unique key for an entity.e.g for an Item Type delete entity ,this is the inventory item id" name="Pk1Value" />
+        <oer:attribute description="A numeric value which , with the combination of Pk1Value, Pk3Value , Pk4Value and Pk5Value may form a unique key for an entity.e.g for an Item Type delete entity ,this is the organization id" name="Pk2Value" />
+        <oer:attribute description="A numeric value which  , with the combination of Pk1Value, Pk2Value , Pk4Value and Pk5Value may form a unique key for an entity.e.g for an Item Supplier Type delete entity ,this is the supplier id" name="Pk3Value" />
+        <oer:attribute description="A numeric value which , with the combination of Pk1Value, Pk2Value , Pk3Value and Pk5Value may form a unique key for an entity.e.g for an Item Supplier Site Type delete entity ,this is the supplier site id" name="Pk4Value" />
+        <oer:attribute description="A numeric value which , with the combination of Pk1Value, Pk2Value , Pk3Value and Pk5Value may form a unique key for an entity.e.g for a Structure type delete entity ,this is the inventory item id." name="Pk5Value" />
+        <oer:attribute description="A numeric value which indicates the status of a delete entity e.g 1 - indicates unprocessed, 4 indicates successfully deleted etc." name="DeleteStatusType" />
+        <oer:attribute description="The date in which the entity was submitted for deletion" name="DeleteDate" />
+        <oer:attribute description="The SDO object used to populate errors pertaining to a delete entity" name="DeleteErrorVO" />
+      </oer:attributes>
+    </xsd:documentation>
+  </xsd:annotation>
+  <xsd:complexType name="DeleteEntity">
+    <xsd:annotation>
+      <xsd:appinfo source="http://xmlns.oracle.com/adf/svc/metadata/">
+        <key xmlns="http://xmlns.oracle.com/adf/svc/metadata/">
+          <attribute>DeleteEntitySequenceId</attribute>
+        </key>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element sdoXML:dataType="sdoJava:LongObject" minOccurs="0" name="DeleteEntitySequenceId" type="xsd:long" />
+      <xsd:element sdoXML:dataType="sdoJava:LongObject" minOccurs="0" name="DeleteGroupSequenceId" type="xsd:long" />
+      <xsd:element minOccurs="0" name="EntitySequenceNumber" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="DeleteEntityType" nillable="true" type="xsd:int" />
+      <xsd:element minOccurs="0" name="Pk1Value" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="Pk2Value" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="Pk3Value" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="Pk4Value" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="Pk5Value" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="DeleteStatusType" nillable="true" type="xsd:int" />
+      <xsd:element minOccurs="0" name="DeleteDate" nillable="true" type="ns0:dateTime-Timestamp" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="DeleteErrorVO" type="DeleteError" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="deleteEntity" type="DeleteEntity" />
+</xsd:schema>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="b36c4057-b8c8-4446-b40d-2c1a219c4638" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://slcai761.us.oracle.com:10616/crmCommonSalesParties/AccountService?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="BC4JService.xsd" MetadataType="Schema" ID="18d3e987-9bed-4f12-8cae-6275eb75981c" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/crmCommonSalesParties/AccountService?XSD=/META-INF/wsdl/BC4JService.xsd" />
+    <MetadataFile FileName="ICS_CRM1_c.xsd" MetadataType="Schema" ID="b9563222-49e6-482c-8ede-fc68187a8934" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/crmCommonSalesParties/AccountService?XSD=/sessiondef/extensibility/app/crmCommon/views/common/ICS_CRM1_c.xsd" />
+    <MetadataFile FileName="ServiceException.xsd" MetadataType="Schema" ID="646ac7cb-588f-44e9-9d83-d68273ceca22" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/crmCommonSalesParties/AccountService?XSD=/META-INF/wsdl/ServiceException.xsd" />
+    <MetadataFile FileName="AccountService.xsd" MetadataType="Schema" ID="b3324cf0-50ef-4938-a035-0bd4b09ef8d1" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/crmCommonSalesParties/AccountService?XSD=/oracle/apps/crmCommon/salesParties/accountService/AccountService.xsd" />
+    <MetadataFile FileName="Note.xsd" MetadataType="Schema" ID="b66eca8a-7575-4f54-973d-8d02becae994" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/crmCommonSalesParties/AccountService?XSD=/oracle/apps/crmCommon/notes/noteService/Note.xsd" />
+    <MetadataFile FileName="sdoJava.xsd" MetadataType="Schema" ID="c4bf4838-c639-481b-86ef-e1fe661eba10" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/crmCommonSalesParties/AccountService?XSD=/xml/sdoJava.xsd" />
+    <MetadataFile FileName="ServiceException.wsdl" MetadataType="Wsdl" ID="ab2e6c78-9708-4585-bb22-2a919eb4475f" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/crmCommonSalesParties/AccountService?WSDL=/META-INF/wsdl/ServiceException.wsdl" />
+    <MetadataFile FileName="NoteDFF.xsd" MetadataType="Schema" ID="281c7517-0bdf-477c-9501-fa7170e4bc2f" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/crmCommonSalesParties/AccountService?XSD=/oracle/apps/crmCommon/notes/flex/noteDff/NoteDFF.xsd" />
+    <MetadataFile FileName="datagraph.xsd" MetadataType="Schema" ID="eaa3343f-cc2f-455c-af0f-3389e602e18a" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/crmCommonSalesParties/AccountService?XSD=/xml/datagraph.xsd" />
+    <MetadataFile FileName="Account.xsd" MetadataType="Schema" ID="2e51ba39-81c0-4d6f-a26e-1a1e850b0df1" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/crmCommonSalesParties/AccountService?XSD=/oracle/apps/crmCommon/salesParties/accountService/Account.xsd" />
+    <MetadataFile FileName="sdoXML.xsd" MetadataType="Schema" ID="1431ed27-b84b-45fd-869d-ffaddecdfa42" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/crmCommonSalesParties/AccountService?XSD=/xml/sdoXML.xsd" />
+    <MetadataFile FileName="AccountService.wsdl" MetadataType="Wsdl" ID="da26d66d-83b2-474f-be4d-e4b05d1aca6c" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/crmCommonSalesParties/AccountService?wsdl" />
+    <MetadataFile FileName="sdoModel.xsd" MetadataType="Schema" ID="3a880c03-fbd7-4ac7-ac2e-1b6bca089aa1" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/crmCommonSalesParties/AccountService?XSD=/xml/sdoModel.xsd" />
+    <MetadataFile FileName="O_INT_SBL_Match_c.xsd" MetadataType="Schema" ID="c0de51fa-7a0a-4a54-8221-9a9ecc81a332" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/crmCommonSalesParties/AccountService?XSD=/sessiondef/extensibility/app/crmCommon/views/common/O_INT_SBL_Match_c.xsd" />
+    <MetadataFile FileName="oracle-webservices-async-fault-11_0.xsd" MetadataType="Schema" ID="d33d61de-db71-4fbd-92c8-4425e61cc4e5" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/crmCommonSalesParties/AccountService?XSD=/META-INF/oracle-webservices-async-fault-11_0.xsd" />
+    <MetadataFile FileName="BC4JServiceCS.xsd" MetadataType="Schema" ID="530ea927-9074-4b5b-937f-4b9e6c0c4091" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/crmCommonSalesParties/AccountService?XSD=/META-INF/wsdl/BC4JServiceCS.xsd" />
+    <MetadataFile FileName="SalesTeamMember.xsd" MetadataType="Schema" ID="98c74024-d80a-4e65-aa4d-a418444132a4" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/crmCommonSalesParties/AccountService?XSD=/oracle/apps/crmCommon/salesParties/commonService/SalesTeamMember.xsd" />
+    <MetadataFile FileName="PrimaryAddress.xsd" MetadataType="Schema" ID="6666bb21-8ac0-4078-9dc8-b042b9b00b43" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/crmCommonSalesParties/AccountService?XSD=/oracle/apps/crmCommon/salesParties/commonService/PrimaryAddress.xsd" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

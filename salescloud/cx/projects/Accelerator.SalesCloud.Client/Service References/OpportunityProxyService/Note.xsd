@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:sdoXML="commonj.sdo/xml" xmlns:sdoJava="commonj.sdo/java" xmlns:sdo="commonj.sdo" xmlns:ns0="http://xmlns.oracle.com/adf/svc/types/" xmlns="http://xmlns.oracle.com/apps/crmCommon/notes/noteService" xmlns:ns1="http://xmlns.oracle.com/apps/crmCommon/notes/flex/noteDff/" elementFormDefault="qualified" targetNamespace="http://xmlns.oracle.com/apps/crmCommon/notes/noteService" sdoJava:package="oracle.apps.crmCommon.notes.noteService" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/META-INF/wsdl/BC4JService.xsd" namespace="http://xmlns.oracle.com/adf/svc/types/" />
+  <xsd:import schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/oracle/apps/crmCommon/notes/flex/noteDff/NoteDFF.xsd" namespace="http://xmlns.oracle.com/apps/crmCommon/notes/flex/noteDff/" />
+  <xsd:import schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/xml/sdoJava.xsd" namespace="commonj.sdo/java" />
+  <xsd:import schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/xml/sdoXML.xsd" namespace="commonj.sdo/xml" />
+  <xsd:import schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/xml/sdoModel.xsd" namespace="commonj.sdo" />
+  <xsd:annotation>
+    <xsd:documentation xmlns:oer="http://xmlns.oracle.com/oer">
+      <name xmlns="http://xmlns.oracle.com/apps/crmCommon/notes/noteService">Note</name>
+      <description xmlns="http://xmlns.oracle.com/apps/crmCommon/notes/noteService">A note data object that captures comments, information or instructions for an Oracle Fusion Applications business object.</description>
+      <oer:category name="lba" xmlns:oer="http://xmlns.oracle.com/oer">
+        <value xmlns="http://xmlns.oracle.com/apps/crmCommon/notes/noteService">CrmCommonComponent-CRM Common Components</value>
+        <value xmlns="http://xmlns.oracle.com/apps/crmCommon/notes/noteService">CrmCommonComponent-CRM Common Components : AppCmmnCompNotes-Notes</value>
+      </oer:category>
+      <oer:attributes xmlns:oer="http://xmlns.oracle.com/oer">
+        <oer:attribute description="Unique Note Identifier. This is the primary key of the notes table." name="NoteId" />
+        <oer:attribute description="This is the source_object_code for the source object as defined in OBJECTS Metadata." name="SourceObjectCode" />
+        <oer:attribute description="This is the source_object_Uid for the source object (such as Activities, Opportunities etc) as defined in OBJECTS Metadata." name="SourceObjectId" />
+        <oer:attribute description="Name of this party" name="PartyName" />
+        <oer:attribute description="This is the column which will store the actual note text." name="NoteTxt" />
+        <oer:attribute description="This is the note type code for categorization of note." name="NoteTypeCode" />
+        <oer:attribute description="This is the attribute to specify the visibility level of the note." name="VisibilityCode" />
+        <oer:attribute description="This is Party Id for the Note Creator" name="CreatorPartyId" />
+        <oer:attribute description="Contextual flexfield for developement usage." name="NoteAttributeCategory" />
+        <oer:attribute description="Flexfield for developement usage." name="NoteAttributeUid1" />
+        <oer:attribute description="Flexfield for developement usage." name="NoteAttributeUid2" />
+        <oer:attribute description="Flexfield for developement usage." name="NoteAttributeUid3" />
+        <oer:attribute description="Flexfield for developement usage." name="NoteAttributeUid4" />
+        <oer:attribute description="Flexfield for developement usage." name="NoteAttributeUid5" />
+        <oer:attribute description="Who column: indicates the user who created the row." name="CreatedBy" />
+        <oer:attribute description="Who column: indicates the date and time of the creation of the row." name="CreationDate" />
+        <oer:attribute description="Who column: indicates the date and time of the last update of the row." name="LastUpdateDate" />
+        <oer:attribute description="Party identifier" name="PartyId" />
+        <oer:attribute description="Holds Corporate Currency Code from profile" name="CorpCurrencyCode" />
+        <oer:attribute description="Holds Currency Conversion Rate Type from profile" name="CurcyConvRateType" />
+        <oer:attribute description="Holds currency code of a record" name="CurrencyCode" />
+        <oer:attribute description="Descriptive Flexfield segment" name="Dff" />
+      </oer:attributes>
+    </xsd:documentation>
+  </xsd:annotation>
+  <xsd:complexType name="Note">
+    <xsd:annotation>
+      <xsd:appinfo source="http://xmlns.oracle.com/adf/svc/metadata/">
+        <key xmlns="http://xmlns.oracle.com/adf/svc/metadata/">
+          <attribute>NoteId</attribute>
+        </key>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element sdoXML:dataType="sdoJava:LongObject" minOccurs="0" name="NoteId" type="xsd:long" />
+      <xsd:element minOccurs="0" name="SourceObjectCode" type="xsd:string" />
+      <xsd:element minOccurs="0" name="SourceObjectId" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PartyName" type="xsd:string" />
+      <xsd:element minOccurs="0" name="NoteTxt" type="ns0:base64Binary-DataHandler" />
+      <xsd:element minOccurs="0" name="NoteTypeCode" type="xsd:string" />
+      <xsd:element minOccurs="0" name="VisibilityCode" type="xsd:string" />
+      <xsd:element sdoXML:dataType="sdoJava:LongObject" minOccurs="0" name="CreatorPartyId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="NoteAttributeCategory" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="NoteAttributeUid1" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="NoteAttributeUid2" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="NoteAttributeUid3" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="NoteAttributeUid4" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="NoteAttributeUid5" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="CreatedBy" type="xsd:string" />
+      <xsd:element minOccurs="0" name="CreationDate" type="ns0:dateTime-Timestamp" />
+      <xsd:element minOccurs="0" name="LastUpdateDate" type="ns0:dateTime-Timestamp" />
+      <xsd:element sdoXML:dataType="sdoJava:LongObject" minOccurs="0" name="PartyId" type="xsd:long" />
+      <xsd:element minOccurs="0" name="CorpCurrencyCode" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="CurcyConvRateType" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="CurrencyCode" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="ContactRelationshipId" nillable="true" type="xsd:long" />
+      <xsd:element sdoXML:dataType="sdo:DataObject" minOccurs="0" name="Dff" type="ns1:NoteDFF" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="note" type="Note" />
+</xsd:schema>

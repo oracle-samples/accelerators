@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/" xmlns:sdoJava="commonj.sdo/java" xmlns:sdoXML="commonj.sdo/xml" xmlns:ns0="http://xmlns.oracle.com/adf/svc/types/" elementFormDefault="qualified" targetNamespace="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/" sdoJava:package="oracle.apps.sales.opptyMgmt.opportunities.opportunityService" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/META-INF/wsdl/BC4JService.xsd" namespace="http://xmlns.oracle.com/adf/svc/types/" />
+  <xsd:import schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/xml/sdoJava.xsd" namespace="commonj.sdo/java" />
+  <xsd:import schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/xml/sdoXML.xsd" namespace="commonj.sdo/xml" />
+  <xsd:annotation>
+    <xsd:documentation xmlns:oer="http://xmlns.oracle.com/oer">
+      <name xmlns="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/">Opportunity Contact</name>
+      <description xmlns="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/">A contact associated with the opportunity who is involved in the
+                purchase.</description>
+      <oer:category name="lba" xmlns:oer="http://xmlns.oracle.com/oer">
+        <value xmlns="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/">SalesTop-Sales</value>
+        <value xmlns="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/">SalesTop-Sales : OpptyMgmtTop-Sales Opportunity Top</value>
+        <value xmlns="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/">SalesTop-Sales : OpptyMgmtTop-Sales Opportunity Top :
+                    OpptyMgmtOpportunities-Opportunities</value>
+      </oer:category>
+      <oer:category name="lbo" xmlns:oer="http://xmlns.oracle.com/oer">
+        <value xmlns="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/">CRM-CRM : MOO-Opportunity Management :
+                    MOO_OPPORTUNITY-Opportunity</value>
+      </oer:category>
+      <oer:attributes xmlns:oer="http://xmlns.oracle.com/oer">
+        <oer:attribute description="Affinity level for an opportunity contact. Valid values from the HZ_SLS_CNTCT_AFFINITY_CODE lookup type." name="AffinityLvlCd" />
+        <oer:attribute description="Comments specific to this Contact on the current opportunity." name="Comments" />
+        <oer:attribute description="Disconnected Mobile: this value is used to guarantee the uniqueness of the row when duplicates are created in different databases (i.e. mobile databases or the server)." name="ConflictId" />
+        <oer:attribute description="Flag indicating if there has been previous communication with the contact regarding this opportunity." name="ContactedFlg" />
+        <oer:attribute description="Who column: indicates the user who created the row." name="CreatedBy" />
+        <oer:attribute description="Who column: indicates the date and time of the creation of the row." name="CreationDate" />
+        <oer:attribute description="Influence level of the opportunity contact. Valid values from the HZ_SLS_CNTCT_INFLUENCE_LVL_CD lookup type.." name="InfluenceLvlCd" />
+        <oer:attribute description="Who column: indicates the date and time of the last update of the row." name="LastUpdateDate" />
+        <oer:attribute description="Who column: indicates the user who last updated the row." name="LastUpdatedBy" />
+        <oer:attribute description="Who column: indicates the session login associated to the user who last updated the row." name="LastUpdateLogin" />
+        <oer:attribute description="Used to implement optimistic locking. This number is incremented every time that the row is updated. The number is compared at the start and end of a transaction to detect whether another session has updated the row since it was queried." name="ObjectVersionNumber" />
+        <oer:attribute description="Opportunity contact identifier." name="OptyConId" />
+        <oer:attribute description="Opportunity identifier." name="OptyId" />
+        <oer:attribute description="Party identifier of the opportunity contact." name="PERPartyId" />
+        <oer:attribute description="Relationship identifier of the opportunity contact." name="RelationshipId" />
+        <oer:attribute description="Role played by contact on the opportunity. Valid values from the HZ_SLS_CNTCT_BUY_ROLE_CODE lookup type." name="RoleCd" />
+        <oer:attribute description="Disconnected Mobile: indicates the date and time of the last update of the row. This value is different from LAST_UPDATE_DATE if the update originally happened in a different database (i.e. a different mobile database or the server)." name="UserLastUpdateDate" />
+        <oer:attribute description="Flag indicating whether the contact is the primary contact for the opportunity." name="PrimaryFlg" />
+        <oer:attribute description="Forward or a backward relationship code that describes the contact's relationship record." name="RelationshipCode" />
+        <oer:attribute description="Job title of the opportunity contact." name="JobTitle" />
+        <oer:attribute description="Identifier of the organization contact." name="OrgContactId" />
+        <oer:attribute description="Name of the contact's organization." name="OrganizationPartyName" />
+        <oer:attribute description="Party identifier of the contact's organization." name="OrganizationPartyId" />
+        <oer:attribute description="Identifier of the contact's relationship record." name="RelationshipRecId" />
+        <oer:attribute description="Contact's affinity towards the deploying organization." name="SalesAffinityCode" />
+        <oer:attribute description="Contact's role in the buying process." name="SalesBuyingRoleCode" />
+        <oer:attribute description="Contact's level of influence in the buying process." name="SalesInfluenceLevelCode" />
+        <oer:attribute description="This is a derived column. For Organization party, it is the concatenation of unique_name_alias and suffix. For Person party, this is concatenation of the person_name and suffix." name="PartyUniqueName" />
+        <oer:attribute description="Name of the opportunity contact." name="PartyName" />
+        <oer:attribute description="Party identifier of the opportunity contact." name="PartyId" />
+        <oer:attribute description="How the contact prefers to be contacted. Validated against lookup HZ_PREFERRED_CONTACT_METHOD." name="PreferredContactMethod" />
+        <oer:attribute description="E-mail address of the contact." name="EmailAddress" />
+        <oer:attribute description="Identifier for the contact's contact point." name="ContactPointId" />
+        <oer:attribute description="Contact point type, such as phone or e-mail. Valid values from HZ_COMMUNICATION_TYPE lookup type." name="ContactPointType" />
+        <oer:attribute description="Unformatted telephone number" name="RawPhoneNumber" />
+        <oer:attribute description="Formatted phone number for the opportunity contact" name="FormattedPhoneNumber" />
+        <oer:attribute description="Unique identifier for a contact point." name="ContactPointId1" />
+        <oer:attribute description="Contact point type, such as phone or e-mail. Valid values from HZ_COMMUNICATION_TYPE lookup type." name="ContactPointType1" />
+        <oer:attribute description="Formatted address of the opportunity contact." name="FormattedAddress" />
+        <oer:attribute description="Unique identifier for the contact's location." name="LocationId" />
+        <oer:attribute description="Formatted multi-line address for the opportunity contact" name="FormattedMultilineAddress" />
+        <oer:attribute description="Party identifier of the opportunity sales account." name="TargetPartyId" />
+        <oer:attribute description="Used to implement optimistic locking. This number is incremented every time that the row is updated. The number is compared at the start and end of a transaction to detect whether another session has updated the row since it was queried." name="ObjectVersionNumber1" />
+        <oer:attribute description="The identifier of the subject in the contact's relationship record." name="SubjectId" />
+        <oer:attribute description="The identifier of the object in the contact's relationship record." name="ObjectId" />
+        <oer:attribute description="Indicates if the contact has specified a phone preference." name="PhonePreferenceExistsFlag" />
+        <oer:attribute description="Indicates if the contact has specified an email preference." name="EmailPreferenceExistsFlag" />
+        <oer:attribute description="Job title of the contact person." name="PersonCentricJobTitle" />
+        <oer:attribute description="Indicates whether the contact can be contacted through phone, e-mail, and mail" name="DoNotContactFlag" />
+      </oer:attributes>
+    </xsd:documentation>
+  </xsd:annotation>
+  <xsd:complexType name="OpportunityContact">
+    <xsd:annotation>
+      <xsd:appinfo source="http://xmlns.oracle.com/adf/svc/metadata/">
+        <key xmlns="http://xmlns.oracle.com/adf/svc/metadata/">
+          <attribute>OptyConId</attribute>
+        </key>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="AffinityLvlCd" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="Comments" nillable="true" type="xsd:string" />
+      <xsd:element sdoXML:dataType="sdoJava:LongObject" minOccurs="0" name="ConflictId" type="xsd:long" />
+      <xsd:element minOccurs="0" name="ContactedFlg" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="CreatedBy" type="xsd:string" />
+      <xsd:element minOccurs="0" name="CreationDate" type="ns0:dateTime-Timestamp" />
+      <xsd:element minOccurs="0" name="InfluenceLvlCd" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="LastUpdateDate" type="ns0:dateTime-Timestamp" />
+      <xsd:element minOccurs="0" name="LastUpdatedBy" type="xsd:string" />
+      <xsd:element minOccurs="0" name="LastUpdateLogin" nillable="true" type="xsd:string" />
+      <xsd:element sdoXML:dataType="sdoJava:IntObject" minOccurs="0" name="ObjectVersionNumber" type="xsd:int" />
+      <xsd:element sdoXML:dataType="sdoJava:LongObject" minOccurs="0" name="OptyConId" type="xsd:long" />
+      <xsd:element sdoXML:dataType="sdoJava:LongObject" minOccurs="0" name="OptyId" type="xsd:long" />
+      <xsd:element sdoXML:dataType="sdoJava:LongObject" minOccurs="0" name="PERPartyId" type="xsd:long" />
+      <xsd:element minOccurs="0" name="RelationshipId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="RoleCd" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="UserLastUpdateDate" nillable="true" type="ns0:dateTime-Timestamp" />
+      <xsd:element minOccurs="0" name="PrimaryFlg" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="RelationshipCode" type="xsd:string" />
+      <xsd:element minOccurs="0" name="JobTitle" nillable="true" type="xsd:string" />
+      <xsd:element sdoXML:dataType="sdoJava:LongObject" minOccurs="0" name="OrgContactId" type="xsd:long" />
+      <xsd:element minOccurs="0" name="OrganizationPartyName" type="xsd:string" />
+      <xsd:element sdoXML:dataType="sdoJava:LongObject" minOccurs="0" name="OrganizationPartyId" type="xsd:long" />
+      <xsd:element sdoXML:dataType="sdoJava:LongObject" minOccurs="0" name="RelationshipRecId" type="xsd:long" />
+      <xsd:element minOccurs="0" name="SalesAffinityCode" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="SalesBuyingRoleCode" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="SalesInfluenceLevelCode" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PartyUniqueName" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PartyName" type="xsd:string" />
+      <xsd:element sdoXML:dataType="sdoJava:LongObject" minOccurs="0" name="PartyId" type="xsd:long" />
+      <xsd:element minOccurs="0" name="PreferredContactMethod" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="EmailAddress" nillable="true" type="xsd:string" />
+      <xsd:element sdoXML:dataType="sdoJava:LongObject" minOccurs="0" name="ContactPointId" type="xsd:long" />
+      <xsd:element minOccurs="0" default="EMAIL" name="ContactPointType" type="xsd:string" />
+      <xsd:element minOccurs="0" name="RawPhoneNumber" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="FormattedPhoneNumber" nillable="true" type="xsd:string" />
+      <xsd:element sdoXML:dataType="sdoJava:LongObject" minOccurs="0" name="ContactPointId1" type="xsd:long" />
+      <xsd:element minOccurs="0" default="PHONE" name="ContactPointType1" type="xsd:string" />
+      <xsd:element minOccurs="0" name="FormattedAddress" nillable="true" type="xsd:string" />
+      <xsd:element sdoXML:dataType="sdoJava:LongObject" minOccurs="0" name="LocationId" type="xsd:long" />
+      <xsd:element minOccurs="0" name="FormattedMultilineAddress" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="TargetPartyId" nillable="true" type="xsd:long" />
+      <xsd:element sdoXML:dataType="sdoJava:IntObject" minOccurs="0" name="ObjectVersionNumber1" type="xsd:int" />
+      <xsd:element sdoXML:dataType="sdoJava:LongObject" minOccurs="0" name="SubjectId" type="xsd:long" />
+      <xsd:element sdoXML:dataType="sdoJava:LongObject" minOccurs="0" name="ObjectId" type="xsd:long" />
+      <xsd:element minOccurs="0" name="PhonePreferenceExistsFlag" nillable="true" type="xsd:boolean" />
+      <xsd:element minOccurs="0" name="EmailPreferenceExistsFlag" nillable="true" type="xsd:boolean" />
+      <xsd:element minOccurs="0" name="PersonCentricJobTitle" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="DoNotContactFlag" nillable="true" type="xsd:boolean" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="opportunityContact" type="OpportunityContact" />
+</xsd:schema>

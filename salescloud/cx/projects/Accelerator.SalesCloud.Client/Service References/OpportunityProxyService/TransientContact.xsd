@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://xmlns.oracle.com/apps/crmCommon/activities/activitiesService/" xmlns:sdoJava="commonj.sdo/java" xmlns:sdoXML="commonj.sdo/xml" elementFormDefault="qualified" targetNamespace="http://xmlns.oracle.com/apps/crmCommon/activities/activitiesService/" sdoJava:package="oracle.apps.crmCommon.activities.activitiesService" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/xml/sdoXML.xsd" namespace="commonj.sdo/xml" />
+  <xsd:import schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/xml/sdoJava.xsd" namespace="commonj.sdo/java" />
+  <xsd:annotation>
+    <xsd:documentation xmlns:oer="http://xmlns.oracle.com/oer">
+      <name xmlns="http://xmlns.oracle.com/apps/crmCommon/activities/activitiesService/">Appointment Transient Contact SDO</name>
+      <description xmlns="http://xmlns.oracle.com/apps/crmCommon/activities/activitiesService/">A contact participant such as Steve Smith or Jane Doe, for an
+                individual appointment and each instance of a recurring
+                appointment.</description>
+      <oer:category name="lba" xmlns:oer="http://xmlns.oracle.com/oer">
+        <value xmlns="http://xmlns.oracle.com/apps/crmCommon/activities/activitiesService/">CrmCommonComponent-CRM Common Components</value>
+        <value xmlns="http://xmlns.oracle.com/apps/crmCommon/activities/activitiesService/">CrmCommonComponent-CRM Common Components :
+                    AppCmmnCompActivities-Activities</value>
+      </oer:category>
+      <oer:attributes xmlns:oer="http://xmlns.oracle.com/oer">
+        <oer:attribute description="Row id in the intersection table between Appointment and Contact" name="ActivityContactId" />
+        <oer:attribute description="Contact Party id" name="ContactId" />
+        <oer:attribute description="Appointment for which the Contact participates at" name="ActivityId" />
+        <oer:attribute description="Relationship that describes the person and the organization that the person is related to. Note: For contacts, a user may choose either a person or a person who is related to an org (i.e. Jo Cassidy @ Oracle). The person who is related to an org scenario is represented as a relationship." name="ContactRelationshipId" />
+        <oer:attribute description="Party id of the contact participating at the appointment" name="PartyId" />
+        <oer:attribute description="Contact Name" name="PartyName" />
+        <oer:attribute description="Party type of the contact participating at the appointment" name="PartyType" />
+        <oer:attribute description="Contact First Name" name="PersonFirstName" />
+        <oer:attribute description="Contact Middle Name" name="PersonMiddleName" />
+        <oer:attribute description="Contact Last Name" name="PersonLastName" />
+        <oer:attribute description="Contact Title such as Mr., Ms." name="PersonTitle" />
+      </oer:attributes>
+    </xsd:documentation>
+  </xsd:annotation>
+  <xsd:complexType name="TransientContact">
+    <xsd:annotation>
+      <xsd:appinfo source="http://xmlns.oracle.com/adf/svc/metadata/">
+        <key xmlns="http://xmlns.oracle.com/adf/svc/metadata/">
+          <attribute>ActivityContactId</attribute>
+        </key>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element sdoXML:dataType="sdoJava:LongObject" minOccurs="0" name="ActivityContactId" nillable="true" type="xsd:long" />
+      <xsd:element sdoXML:dataType="sdoJava:LongObject" minOccurs="0" name="ContactId" nillable="true" type="xsd:long" />
+      <xsd:element sdoXML:dataType="sdoJava:LongObject" minOccurs="0" name="ActivityId" nillable="true" type="xsd:long" />
+      <xsd:element sdoXML:dataType="sdoJava:LongObject" minOccurs="0" name="ContactRelationshipId" nillable="true" type="xsd:long" />
+      <xsd:element sdoXML:dataType="sdoJava:LongObject" minOccurs="0" name="PartyId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="PartyName" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PartyType" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PersonFirstName" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PersonMiddleName" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PersonLastName" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PersonTitle" nillable="true" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="transientContact" type="TransientContact" />
+</xsd:schema>

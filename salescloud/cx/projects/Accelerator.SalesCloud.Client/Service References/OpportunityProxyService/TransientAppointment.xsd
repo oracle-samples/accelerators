@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://xmlns.oracle.com/apps/crmCommon/activities/activitiesService/" xmlns:sdoJava="commonj.sdo/java" xmlns:ns0="http://xmlns.oracle.com/adf/svc/types/" elementFormDefault="qualified" targetNamespace="http://xmlns.oracle.com/apps/crmCommon/activities/activitiesService/" sdoJava:package="oracle.apps.crmCommon.activities.activitiesService" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/META-INF/wsdl/BC4JService.xsd" namespace="http://xmlns.oracle.com/adf/svc/types/" />
+  <xsd:import schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/xml/sdoJava.xsd" namespace="commonj.sdo/java" />
+  <xsd:include schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/oracle/apps/crmCommon/activities/activitiesService/TransientAssignee.xsd" />
+  <xsd:include schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/oracle/apps/crmCommon/activities/activitiesService/TransientContact.xsd" />
+  <xsd:include schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/oracle/apps/crmCommon/activities/activitiesService/TransientNote.xsd" />
+  <xsd:include schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/oracle/apps/crmCommon/activities/activitiesService/TransientCategory.xsd" />
+  <xsd:annotation>
+    <xsd:documentation xmlns:oer="http://xmlns.oracle.com/oer">
+      <name xmlns="http://xmlns.oracle.com/apps/crmCommon/activities/activitiesService/">Appointment Transient SDO</name>
+      <description xmlns="http://xmlns.oracle.com/apps/crmCommon/activities/activitiesService/">An individual appointment or each instance of a recurring
+                appointment. For example, monthly lunchtime sales meetings or a
+                client visit today.</description>
+      <oer:category name="lba" xmlns:oer="http://xmlns.oracle.com/oer">
+        <value xmlns="http://xmlns.oracle.com/apps/crmCommon/activities/activitiesService/">CrmCommonComponent-CRM Common Components</value>
+        <value xmlns="http://xmlns.oracle.com/apps/crmCommon/activities/activitiesService/">CrmCommonComponent-CRM Common Components :
+                    AppCmmnCompActivities-Activities</value>
+      </oer:category>
+      <oer:attributes xmlns:oer="http://xmlns.oracle.com/oer">
+        <oer:attribute description="Unique appointment identifier for the appointment" name="ActivityId" />
+        <oer:attribute description="Appointment subject" name="ActivityName" />
+        <oer:attribute description="Appointment Description" name="ActivityDescription" />
+        <oer:attribute description="not used in V1.0 for appointment." name="AsgnDenormFlag" />
+        <oer:attribute description="not used in V1.0 for appointment." name="AsgnManualFlag" />
+        <oer:attribute description="not used in V1.0 for appointment." name="AsgnSystemFlag" />
+        <oer:attribute description="not used in V1.0 for appointment." name="LockAsgnFlag" />
+        <oer:attribute description="not used in V1.0 for appointment." name="DoNotRouteFlag" />
+        <oer:attribute description="Party Id of the appointment owner" name="OwnerId" />
+        <oer:attribute description="Id corresponding to the organization the appointment owner belongs to" name="OwnerRsrcOrgId" />
+        <oer:attribute description="Indicates the object type the appointment is related to" name="SourceObjectCd" />
+        <oer:attribute description="Stores the object id the appointment is related to" name="SourceObjectId" />
+        <oer:attribute description="not used in V1.0 for appointment." name="TemplateId" />
+        <oer:attribute description="not used in V1.0 for appointment." name="TemplateFlag" />
+        <oer:attribute description="Specifies the appointment start date and time" name="PlannedStartDt" />
+        <oer:attribute description="Specifies the appointment end date and time" name="PlannedEndDt" />
+        <oer:attribute description="not used in V1.0 for appointment." name="PlannedDurationNumber" />
+        <oer:attribute description="not used in V1.0 for appointment." name="PlannedDurationUOMCd" />
+        <oer:attribute description="Specifies how long the Alarm Notice Time should be in minutes" name="ApptAlarmTmMinimumNumber" />
+        <oer:attribute description="Indicates whether a reminder alarm should go off prior to the appointment" name="AlarmFlag" />
+        <oer:attribute description="Points to the customer populated on the appointment using its party id" name="CustomerId" />
+        <oer:attribute description="Id corresponding to the reference customer set on the appointment" name="ReferenceCustomerId" />
+        <oer:attribute description="not used in V1.0 for appointment." name="VisibilityCd" />
+        <oer:attribute description="Indicates the type of recurrence such as Daily, Weekly, Monthly, Yearly" name="RecurTypeCd" />
+        <oer:attribute description="Shows week days the appointment can be recurring on" name="RecurDay" />
+        <oer:attribute description="In Yearly recurrence, indicates the month appointments occur in" name="RecurMonth" />
+        <oer:attribute description="Indicates recurrence patterns such as Third Week of Every Month" name="RecurPattern" />
+        <oer:attribute description="Indicates that this is an exception in a recurrence series." name="RecurExceptionFlag" />
+        <oer:attribute description="Indicates if the appointment should occur every day including weekends or just on week days, applicable for daily recurring appointments." name="RecurWeekDayCd" />
+        <oer:attribute description="Indicates in weekly recurrence patterns that appointments occur on Wednesday" name="RecurWedFlag" />
+        <oer:attribute description="Indicates in weekly recurrence patterns that appointments occur on Tuesday" name="RecurTueFlag" />
+        <oer:attribute description="Indicates in weekly recurrence patterns that appointments occur on Thursday" name="RecurThuFlag" />
+        <oer:attribute description="Indicates in weekly recurrence patterns that appointments occur on Sunday" name="RecurSunFlag" />
+        <oer:attribute description="Indicates in weekly recurrence patterns that appointments occur on Saturday" name="RecurSatFlag" />
+        <oer:attribute description="not used in V1.0 for appointment." name="RecurReplaceCd" />
+        <oer:attribute description="Indicates in weekly recurrence patterns that appointments occur on Monday" name="RecurMonFlag" />
+        <oer:attribute description="Indicates in weekly recurrence patterns that appointments occur on Friday" name="RecurFriFlag" />
+        <oer:attribute description="Shows that the appointment is recurring" name="RecurFlag" />
+        <oer:attribute description="Stores the first date-time an appointment occurs in a recurring series" name="RecurOrigInstDt" />
+        <oer:attribute description="Number of recurrence instances" name="RecurOccursNumber" />
+        <oer:attribute description="Recurrence frequency, such as Every x Days, Every x Weeks, Every x Months, Every x Years" name="RecurFreqNumber" />
+        <oer:attribute description="Specifies a specific date when recurrence stops" name="RecurEndDt" />
+        <oer:attribute description="Id of the appointment record describing recurrence" name="RecurApptId" />
+        <oer:attribute description="Stores the response of the participant, such as Accepted, Rejected, Tentatively Accepted." name="Response" />
+        <oer:attribute description="Indicates how the time between the appointment start and end date-time shows on a participant's calendar, such as Busy" name="ShowTimeAs" />
+        <oer:attribute description="Lookup code corresponding to the category set on the appointment" name="CategoryCodeTransient" />
+        <oer:attribute description="Indicates the appointment is an all-day appointment" name="AllDayFlag" />
+        <oer:attribute description="Appointment Location" name="ActivityLocationTxt" />
+        <oer:attribute description="Name of the user who created the appointment" name="PartyName" />
+        <oer:attribute description="Party id of the user who created the appointment" name="PartyId" />
+        <oer:attribute description="not used in V1.0 for appointment." name="PartyName1" />
+        <oer:attribute description="not used in V1.0 for appointment." name="PartyId1" />
+        <oer:attribute description="Indicates the name of the customer populated on the appointment" name="CustomerName" />
+        <oer:attribute description="Name of the appointment owner" name="Owner" />
+        <oer:attribute description="not used in V1.0 for appointment." name="ConflictId" />
+        <oer:attribute description="Who column: indicates the id of the user who created the appointment" name="CreatedBy" />
+        <oer:attribute description="The appointment creation date" name="CreationDate" />
+        <oer:attribute description="Who column: indicates the date and time of the last update of the row." name="LastUpdateDate" />
+        <oer:attribute description="Who column: indicates the login id of the user who last updated the appointment" name="LastUpdateLogin" />
+        <oer:attribute description="Who column: indicates the user who last updated the row." name="LastUpdatedBy" />
+        <oer:attribute description="Used to implement optimistic locking. This number is incremented every time that the row is updated. The number is compared at the start and end of a transaction to detect whether another session has updated the row since it was queried." name="ObjectVersionNumber" />
+        <oer:attribute description="not used in V1.0 for appointment." name="EditMode" />
+        <oer:attribute description="The reference customer name set on the appointment" name="ReferenceCustomerName" />
+        <oer:attribute description="not used in V1.0 for appointment." name="AppointmentAssignee" />
+        <oer:attribute description="Points to the contact populated on the appointment using its party id" name="AppointmentContact" />
+        <oer:attribute description="Points to the appointment note" name="AppointmentNote" />
+        <oer:attribute description="Stores category of an appointment. Usually user selects value from list of categories." name="TransientCategory" />
+      </oer:attributes>
+    </xsd:documentation>
+  </xsd:annotation>
+  <xsd:complexType name="TransientAppointment">
+    <xsd:annotation>
+      <xsd:appinfo source="http://xmlns.oracle.com/adf/svc/metadata/">
+        <key xmlns="http://xmlns.oracle.com/adf/svc/metadata/">
+          <attribute>ActivityId</attribute>
+        </key>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="ActivityId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="ActivityName" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="ActivityDescription" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="AsgnDenormFlag" nillable="true" type="xsd:boolean" />
+      <xsd:element minOccurs="0" name="AsgnManualFlag" nillable="true" type="xsd:boolean" />
+      <xsd:element minOccurs="0" name="AsgnSystemFlag" nillable="true" type="xsd:boolean" />
+      <xsd:element minOccurs="0" name="LockAsgnFlag" nillable="true" type="xsd:boolean" />
+      <xsd:element minOccurs="0" name="DoNotRouteFlag" nillable="true" type="xsd:boolean" />
+      <xsd:element minOccurs="0" name="OwnerId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="OwnerRsrcOrgId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="SourceObjectCd" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="SourceObjectId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="TemplateId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="TemplateFlag" nillable="true" type="xsd:boolean" />
+      <xsd:element minOccurs="0" name="PlannedStartDt" nillable="true" type="ns0:dateTime-Timestamp" />
+      <xsd:element minOccurs="0" name="PlannedEndDt" nillable="true" type="ns0:dateTime-Timestamp" />
+      <xsd:element minOccurs="0" name="PlannedDurationNumber" nillable="true" type="xsd:decimal" />
+      <xsd:element minOccurs="0" name="PlannedDurationUOMCd" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="ApptAlarmTmMinimumNumber" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="AlarmFlag" nillable="true" type="xsd:boolean" />
+      <xsd:element minOccurs="0" name="CustomerId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="ReferenceCustomerId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" default="INTERNAL PARTICIPANT ONLY" name="VisibilityCd" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="RecurTypeCd" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="RecurDay" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="RecurMonth" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="RecurPattern" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="RecurExceptionFlag" nillable="true" type="xsd:boolean" />
+      <xsd:element minOccurs="0" name="RecurWeekDayCd" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="RecurWedFlag" nillable="true" type="xsd:boolean" />
+      <xsd:element minOccurs="0" name="RecurTueFlag" nillable="true" type="xsd:boolean" />
+      <xsd:element minOccurs="0" name="RecurThuFlag" nillable="true" type="xsd:boolean" />
+      <xsd:element minOccurs="0" name="RecurSunFlag" nillable="true" type="xsd:boolean" />
+      <xsd:element minOccurs="0" name="RecurSatFlag" nillable="true" type="xsd:boolean" />
+      <xsd:element minOccurs="0" name="RecurReplaceCd" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="RecurMonFlag" nillable="true" type="xsd:boolean" />
+      <xsd:element minOccurs="0" name="RecurFriFlag" nillable="true" type="xsd:boolean" />
+      <xsd:element minOccurs="0" name="RecurFlag" nillable="true" type="xsd:boolean" />
+      <xsd:element minOccurs="0" name="RecurOrigInstDt" nillable="true" type="ns0:dateTime-Timestamp" />
+      <xsd:element minOccurs="0" name="RecurOccursNumber" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="RecurFreqNumber" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="RecurEndDt" nillable="true" type="ns0:dateTime-Timestamp" />
+      <xsd:element minOccurs="0" name="RecurApptId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="Response" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="ShowTimeAs" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="CategoryCodeTransient" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="AllDayFlag" nillable="true" type="xsd:boolean" />
+      <xsd:element minOccurs="0" name="ActivityLocationTxt" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PartyName" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PartyId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="PartyName1" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PartyId1" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="CustomerName" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="Owner" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="ConflictId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="CreatedBy" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="CreationDate" nillable="true" type="ns0:dateTime-Timestamp" />
+      <xsd:element minOccurs="0" name="LastUpdateDate" nillable="true" type="ns0:dateTime-Timestamp" />
+      <xsd:element minOccurs="0" name="LastUpdateLogin" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="LastUpdatedBy" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="ObjectVersionNumber" nillable="true" type="xsd:int" />
+      <xsd:element minOccurs="0" name="EditMode" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="ReferenceCustomerName" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="CategoryCd" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="AppointmentAssignee" type="TransientAssignee" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="AppointmentContact" type="TransientContact" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="AppointmentNote" type="TransientNote" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="TransientCategory" type="TransientCategory" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="transientAppointment" type="TransientAppointment" />
+</xsd:schema>

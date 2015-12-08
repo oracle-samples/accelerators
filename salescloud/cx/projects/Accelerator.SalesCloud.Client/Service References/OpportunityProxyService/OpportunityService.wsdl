@@ -1,0 +1,2049 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tns="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/" xmlns:types="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/types/" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:orafault="http://xmlns.oracle.com/oracleas/schema/oracle-fault-11_0" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:errors="http://xmlns.oracle.com/adf/svc/errors/" name="OpportunityService" targetNamespace="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:oer="http://xmlns.oracle.com/oer">
+    <name>Opportunity Service</name>
+    <description>A service to create, update, get, find, or delete opportunities. An
+            opportunity is used by a sales organization to track information
+            about a potential sale such as the sales account, key contacts,
+            product interests, and potential revenues.</description>
+    <docCategories>
+      <category>Integration</category>
+    </docCategories>
+    <oer:lifecycle>Active</oer:lifecycle>
+    <oer:compatibility>Supported - Backward Compatibility Assured</oer:compatibility>
+    <keywords>
+      <value>Opportunity Service</value>
+    </keywords>
+    <oer:category name="lba">
+      <value>SalesTop-Sales</value>
+      <value>SalesTop-Sales : OpptyMgmtTop-Sales Opportunity Top</value>
+      <value>SalesTop-Sales : OpptyMgmtTop-Sales Opportunity Top :
+                OpptyMgmtOpportunities-Opportunities</value>
+    </oer:category>
+    <oer:category name="lbo">
+      <value>CRM-CRM : MOO-Opportunity Management :
+                MOO_OPPORTUNITY-Opportunity</value>
+    </oer:category>
+    <oer:operation name="getOpportunity">
+      <description>Queries a single Opportunity record by primary key.</description>
+      <oer:parameters>
+        <oer:parameter name="optyId" description="System generated identifier for this Opportunity." />
+        <oer:return description="Opportunity that matches the inbound key attributes." />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="createOpportunity">
+      <description>Creates a single Opportunity record.</description>
+      <oer:parameters>
+        <oer:parameter name="opportunity" description="Opportunity to be created." />
+        <oer:return description="Created opportunity." />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="updateOpportunity">
+      <description>Updates a single Opportunity record.</description>
+      <oer:parameters>
+        <oer:parameter name="opportunity" description="Opportunity to be updated." />
+        <oer:return description="Updated opportunity." />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="deleteOpportunity">
+      <description>Delete a single Opportunity record.</description>
+      <oer:parameters>
+        <oer:parameter name="opportunity" description="Opportunity to be deleted." />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="mergeOpportunity">
+      <description>Updates a single Opportunity record if one exists; otherwise,
+                create a new one.</description>
+      <oer:parameters>
+        <oer:parameter name="opportunity" description="Opportunity to be merged." />
+        <oer:return description="Merged opportunity." />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="processOpportunity">
+      <description>Performs a Create, Update, Delete, or Merge operation on a list
+                of Opportunity rows. The specified operation is applied to all
+                objects in the given list.</description>
+      <oer:parameters>
+        <oer:parameter name="changeOperation" description="Indicates what action shall be performed, such as Create, Update, Merge, or Delete." />
+        <oer:parameter name="opportunity" description="A list of opportunities to be processed." />
+        <oer:parameter name="processControl" description="Controls the bulk upload behavior, such as whether the valid data will be committed if there are other invalid data in the same batch, and whether the outbound will contain the key attributes only or the full object." />
+        <oer:return description="A list of opportunities that are successfully processed." />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="processCSOpportunity">
+      <description>Performs a Create, Update, or Delete operation on a list of
+                Opportunity rows. Different operations may be applied to
+                different objects, depending on what is specified in the
+                ChangeSummary object.</description>
+      <oer:parameters>
+        <oer:parameter name="processData" description="The object that is used to represent the changes that have been made." />
+        <oer:parameter name="processControl" description="Control the bulk upload behavior, such as whether the valid data will be committed if there are other invalid data in the same batch, and whether the outbound will contain the key attributes only or the full object." />
+        <oer:return description="Result of the operation including a list of created/updated data objects, and all warning and informational messages." />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="deleteOpportunityCompetitor">
+      <description>Deletes an Opportunity Competitor.</description>
+      <oer:parameters>
+        <oer:parameter name="opportunityCompetitorVO" description="Opportunity competitor to be deleted." />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="deleteOpportunityLead">
+      <description>Deletes an Opportunity Lead.</description>
+      <oer:parameters>
+        <oer:parameter name="opportunityLeadVO" description="Opportunity lead to be deleted." />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="deleteOpportunityReference">
+      <description>Deletes an Opportunity Reference.</description>
+      <oer:parameters>
+        <oer:parameter name="opportunityReferenceVO" description="Opportunity reference to be deleted." />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="deleteOpportunityResource">
+      <description>Deletes an Opportunity Resource.</description>
+      <oer:parameters>
+        <oer:parameter name="opportunityResourceVO" description="Opportunity resource to be deleted." />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="deleteOpportunityMktResponse">
+      <description>Deletes an Opportunity Response.</description>
+      <oer:parameters>
+        <oer:parameter name="opportunityResponseVO" description="Opportunity response to be deleted." />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="deleteOpportunityRevenue">
+      <description>Deletes an Opportunity Revenue.</description>
+      <oer:parameters>
+        <oer:parameter name="opportunityRevenueVO" description="Opportunity revenue to be deleted." />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="deleteOpportunitySource">
+      <description>Deletes an Opportunity Source.</description>
+      <oer:parameters>
+        <oer:parameter name="opportunitySourceVO" description="Opportunity source to be deleted." />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="doAutoAssignmentAsynchronously">
+      <description>Method which is called from auto assignment composite to assign
+                a specific opportunity automatically when the opportunity is
+                created or updated. WARNING: The operation will be renamed in
+                the newer version of this service planned in the upcoming
+                release.</description>
+      <oer:parameters>
+        <oer:parameter name="optyId" description="Opportunity identifier." />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="deleteOpportunityContact">
+      <description>Deletes an Opportunity Contact.</description>
+      <oer:parameters>
+        <oer:parameter name="opportunityContactVO" description="Opportunity contact to be deleted." />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="findOpportunity">
+      <description>Queries a group of Opportunities based on filter criteria.</description>
+      <oer:parameters>
+        <oer:parameter name="findCriteria" description="The criteria used to limit the query result, such as the filter (where clause), the fetch size, etc." />
+        <oer:parameter name="findControl" description="Not currently used." />
+        <oer:return description="A list of opportunities that satisfy the inbound criteria." />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="isSalesAccountUsedInOpportunity">
+      <description>Method to determine if a given sales account has any
+                opportunties.</description>
+      <oer:parameters>
+        <oer:parameter name="salesAccountId" description="Sales account party identifier." />
+        <oer:return description="Whether the sales account is associated with any opportunities" />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="checkConstraint">
+      <description>This operation is an internal operation and is not superseded by
+                another operation.</description>
+      <oer:lifecycle>Deprecated</oer:lifecycle>
+      <oer:parameters>
+        <oer:parameter name="deleteEntities" description="This operation is an internal operation and is not superseded by another operation." />
+        <oer:return description="This operation is an internal operation and is not superseded by another operation." />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="createAttachment">
+      <description>Operation to create attachment(s) associated to an opportunity.</description>
+      <oer:parameters>
+        <oer:parameter name="attachmentRows" description="List of attachments to be created." />
+        <oer:parameter name="commitData" description="Flag to indicate whether or not to commit transaction for this operation." />
+        <oer:return description="Success or failure status of the operation." />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="copyAttachment">
+      <description>Operation to copy attachments associated to an opportunity.</description>
+      <oer:parameters>
+        <oer:parameter name="attachmentRows" description="List of attachments to be copied." />
+        <oer:parameter name="commitData" description="Flag to indicate whether or not to commit transaction for this operation." />
+        <oer:return description="Success or failure status of the operation." />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="deleteAttachment">
+      <description>Operation to delete attachment(s) associated to an opportunity.</description>
+      <oer:parameters>
+        <oer:parameter name="deleteParams" description="Parameter based on which deletion of attachment(s) should trigger." />
+        <oer:parameter name="commitData" description="Flag to indicate whether or not to commit transaction for this operation." />
+        <oer:return description="Success or failure status of the operation." />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="getAttachmentContent">
+      <description>Operation to get attachment associated with an opportunity with
+                file content if applicable.</description>
+      <oer:parameters>
+        <oer:parameter name="getParameters" description="Parameters based on which attachment to be fetched." />
+        <oer:return description="Attachment with file content, if applicable." />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="getAttachmentsListWithoutContent">
+      <description>Operation to get list of all the attachment associated with an
+                opportunity without any file content.</description>
+      <oer:parameters>
+        <oer:parameter name="getParameters" description="Parameters based on which list of attachments to be fetched." />
+        <oer:return description="List of all the attachments without any file content." />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="deleteAllRevenuesInOpportunity">
+      <description>Deletes all revenue lines of an opportunity.</description>
+      <oer:parameters>
+        <oer:parameter name="optyId" description="Opportunity identifier." />
+      </oer:parameters>
+    </oer:operation>
+  </wsdl:documentation>
+  <plnk:partnerLinkType name="OpportunityService">
+    <plnk:role name="OpportunityServiceProvider">
+      <plnk:portType name="tns:OpportunityService" />
+    </plnk:role>
+    <plnk:role name="OpportunityServiceRequestor">
+      <plnk:portType name="tns:OpportunityServiceResponse" />
+    </plnk:role>
+  </plnk:partnerLinkType>
+  <wsp:Policy xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="OpportunityServiceResponse_Fault_Policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" />
+  <wsp:Policy xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="OpportunityServiceResponse_Input_Policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
+    <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+      <sp:Body />
+      <sp:Header Namespace="http://www.w3.org/2005/08/addressing" />
+      <sp:Header Namespace="http://schemas.xmlsoap.org/ws/2004/08/addressing" />
+      <sp:Header Name="fmw-context" Namespace="http://xmlns.oracle.com/fmw/context/1.0" />
+    </sp:SignedParts>
+    <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+      <sp:Body />
+      <sp:Header Name="fmw-context" Namespace="http://xmlns.oracle.com/fmw/context/1.0" />
+    </sp:EncryptedParts>
+  </wsp:Policy>
+  <wsp:Policy xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="OpportunityServiceResponse_Output_Policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
+    <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+      <sp:Body />
+    </sp:SignedParts>
+    <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+      <sp:Body />
+    </sp:EncryptedParts>
+  </wsp:Policy>
+  <wsp:Policy xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="OpportunityServiceSoapHttpPort_Fault_Policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
+    <wsp:ExactlyOne>
+      <wsp:All />
+      <wsp:All />
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="OpportunityServiceSoapHttpPort_Input_Policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Namespace="http://schemas.xmlsoap.org/ws/2004/08/addressing" />
+          <sp:Header Name="fmw-context" Namespace="http://xmlns.oracle.com/fmw/context/1.0" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="fmw-context" Namespace="http://xmlns.oracle.com/fmw/context/1.0" />
+        </sp:EncryptedParts>
+      </wsp:All>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Namespace="http://schemas.xmlsoap.org/ws/2004/08/addressing" />
+          <sp:Header Name="fmw-context" Namespace="http://xmlns.oracle.com/fmw/context/1.0" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="fmw-context" Namespace="http://xmlns.oracle.com/fmw/context/1.0" />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="OpportunityServiceSoapHttpPort_Output_Policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="wsaddr_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
+    <wsaw:UsingAddressing xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" />
+  </wsp:Policy>
+  <wsp:Policy xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="wss11_saml_or_username_token_with_message_protection_service_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SymmetricBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:ProtectionToken>
+              <wsp:Policy>
+                <sp:X509Token sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/Never">
+                  <wsp:Policy>
+                    <sp:RequireThumbprintReference />
+                    <sp:WssX509V3Token11 />
+                  </wsp:Policy>
+                </sp:X509Token>
+              </wsp:Policy>
+            </sp:ProtectionToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic128 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Lax />
+              </wsp:Policy>
+            </sp:Layout>
+            <sp:IncludeTimestamp />
+            <sp:ProtectTokens />
+            <sp:OnlySignEntireHeadersAndBody />
+          </wsp:Policy>
+        </sp:SymmetricBinding>
+        <sp:SignedSupportingTokens xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:SamlToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+              <wsp:Policy>
+                <sp:WssSamlV11Token11 />
+              </wsp:Policy>
+            </sp:SamlToken>
+          </wsp:Policy>
+        </sp:SignedSupportingTokens>
+        <sp:EndorsingSupportingTokens xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:X509Token sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+              <wsp:Policy>
+                <sp:WssX509V3Token11 />
+              </wsp:Policy>
+            </sp:X509Token>
+          </wsp:Policy>
+        </sp:EndorsingSupportingTokens>
+        <sp:Wss11 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:RequireSignatureConfirmation />
+            <sp:MustSupportRefEncryptedKey />
+          </wsp:Policy>
+        </sp:Wss11>
+      </wsp:All>
+      <wsp:All>
+        <sp:SymmetricBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:ProtectionToken>
+              <wsp:Policy>
+                <sp:X509Token sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/Never">
+                  <wsp:Policy>
+                    <sp:RequireThumbprintReference />
+                    <sp:WssX509V3Token11 />
+                  </wsp:Policy>
+                </sp:X509Token>
+              </wsp:Policy>
+            </sp:ProtectionToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic128 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Lax />
+              </wsp:Policy>
+            </sp:Layout>
+            <sp:IncludeTimestamp />
+            <sp:OnlySignEntireHeadersAndBody />
+          </wsp:Policy>
+        </sp:SymmetricBinding>
+        <sp:SignedSupportingTokens xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:UsernameToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+              <wsp:Policy>
+                <sp:WssUsernameToken10 />
+              </wsp:Policy>
+            </sp:UsernameToken>
+          </wsp:Policy>
+        </sp:SignedSupportingTokens>
+        <sp:Wss11 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:RequireSignatureConfirmation />
+            <sp:MustSupportRefEncryptedKey />
+          </wsp:Policy>
+        </sp:Wss11>
+      </wsp:All>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false">
+                  <wsp:Policy />
+                </sp:HttpsToken>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Lax />
+              </wsp:Policy>
+            </sp:Layout>
+            <sp:IncludeTimestamp />
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <sp:SupportingTokens xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:SamlToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+              <wsp:Policy>
+                <sp:WssSamlV11Token10 />
+              </wsp:Policy>
+            </sp:SamlToken>
+          </wsp:Policy>
+        </sp:SupportingTokens>
+      </wsp:All>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false">
+                  <wsp:Policy />
+                </sp:HttpsToken>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Lax />
+              </wsp:Policy>
+            </sp:Layout>
+            <sp:IncludeTimestamp />
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <sp:SupportingTokens xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:UsernameToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+              <wsp:Policy>
+                <sp:WssUsernameToken10 />
+              </wsp:Policy>
+            </sp:UsernameToken>
+          </wsp:Policy>
+        </sp:SupportingTokens>
+      </wsp:All>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false">
+                  <wsp:Policy />
+                </sp:HttpsToken>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Lax />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+      </wsp:All>
+      <wsp:All />
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="wss11_saml_token_with_message_protection_client_policy">
+    <sp:SymmetricBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+      <wsp:Policy>
+        <sp:ProtectionToken>
+          <wsp:Policy>
+            <sp:X509Token sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/Never">
+              <wsp:Policy>
+                <sp:RequireThumbprintReference />
+                <sp:WssX509V3Token11 />
+              </wsp:Policy>
+            </sp:X509Token>
+          </wsp:Policy>
+        </sp:ProtectionToken>
+        <sp:AlgorithmSuite>
+          <wsp:Policy>
+            <sp:Basic128 />
+          </wsp:Policy>
+        </sp:AlgorithmSuite>
+        <sp:Layout>
+          <wsp:Policy>
+            <sp:Lax />
+          </wsp:Policy>
+        </sp:Layout>
+        <sp:IncludeTimestamp />
+        <sp:ProtectTokens />
+        <sp:OnlySignEntireHeadersAndBody />
+      </wsp:Policy>
+    </sp:SymmetricBinding>
+    <sp:SignedSupportingTokens xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+      <wsp:Policy>
+        <sp:SamlToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+          <wsp:Policy>
+            <sp:WssSamlV11Token11 />
+          </wsp:Policy>
+        </sp:SamlToken>
+      </wsp:Policy>
+    </sp:SignedSupportingTokens>
+    <sp:EndorsingSupportingTokens xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+      <wsp:Policy>
+        <sp:X509Token sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+          <wsp:Policy>
+            <sp:WssX509V3Token11 />
+          </wsp:Policy>
+        </sp:X509Token>
+      </wsp:Policy>
+    </sp:EndorsingSupportingTokens>
+    <sp:Wss11 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+      <wsp:Policy>
+        <sp:RequireSignatureConfirmation />
+        <sp:MustSupportRefEncryptedKey />
+      </wsp:Policy>
+    </sp:Wss11>
+  </wsp:Policy>
+  <wsdl:import namespace="http://xmlns.oracle.com/adf/svc/errors/" location="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?WSDL=/META-INF/wsdl/ServiceException.wsdl" />
+  <wsdl:types>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema">
+      <import schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/META-INF/oracle-webservices-async-fault-11_0.xsd" namespace="http://xmlns.oracle.com/oracleas/schema/oracle-fault-11_0" />
+      <import schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/oracle/apps/sales/opptyMgmt/opportunities/opportunityService/OpportunityService.xsd" namespace="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/types/" />
+    </schema>
+  </wsdl:types>
+  <wsdl:message name="OpportunityService_getOpportunity">
+    <wsdl:part name="parameters" element="types:getOpportunity" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_getOpportunityResponse">
+    <wsdl:part name="parameters" element="types:getOpportunityResponse" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_createOpportunity">
+    <wsdl:part name="parameters" element="types:createOpportunity" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_createOpportunityResponse">
+    <wsdl:part name="parameters" element="types:createOpportunityResponse" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_updateOpportunity">
+    <wsdl:part name="parameters" element="types:updateOpportunity" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_updateOpportunityResponse">
+    <wsdl:part name="parameters" element="types:updateOpportunityResponse" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_deleteOpportunity">
+    <wsdl:part name="parameters" element="types:deleteOpportunity" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_deleteOpportunityResponse">
+    <wsdl:part name="parameters" element="types:deleteOpportunityResponse" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_mergeOpportunity">
+    <wsdl:part name="parameters" element="types:mergeOpportunity" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_mergeOpportunityResponse">
+    <wsdl:part name="parameters" element="types:mergeOpportunityResponse" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_processOpportunity">
+    <wsdl:part name="parameters" element="types:processOpportunity" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_processOpportunityResponse">
+    <wsdl:part name="parameters" element="types:processOpportunityResponse" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_processCSOpportunity">
+    <wsdl:part name="parameters" element="types:processCSOpportunity" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_processCSOpportunityResponse">
+    <wsdl:part name="parameters" element="types:processCSOpportunityResponse" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_processCSOpportunityAsync">
+    <wsdl:part name="parameters" element="types:processCSOpportunityAsync" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_processOpportunityAsync">
+    <wsdl:part name="parameters" element="types:processOpportunityAsync" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_deleteOpportunityAsync">
+    <wsdl:part name="parameters" element="types:deleteOpportunityAsync" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_getOpportunityAsync">
+    <wsdl:part name="parameters" element="types:getOpportunityAsync" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_createOpportunityAsync">
+    <wsdl:part name="parameters" element="types:createOpportunityAsync" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_mergeOpportunityAsync">
+    <wsdl:part name="parameters" element="types:mergeOpportunityAsync" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_updateOpportunityAsync">
+    <wsdl:part name="parameters" element="types:updateOpportunityAsync" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_deleteOpportunityCompetitor">
+    <wsdl:part name="parameters" element="types:deleteOpportunityCompetitor" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_deleteOpportunityCompetitorResponse">
+    <wsdl:part name="parameters" element="types:deleteOpportunityCompetitorResponse" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_deleteOpportunityLead">
+    <wsdl:part name="parameters" element="types:deleteOpportunityLead" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_deleteOpportunityLeadResponse">
+    <wsdl:part name="parameters" element="types:deleteOpportunityLeadResponse" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_deleteOpportunityReference">
+    <wsdl:part name="parameters" element="types:deleteOpportunityReference" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_deleteOpportunityReferenceResponse">
+    <wsdl:part name="parameters" element="types:deleteOpportunityReferenceResponse" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_deleteOpportunityResource">
+    <wsdl:part name="parameters" element="types:deleteOpportunityResource" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_deleteOpportunityResourceResponse">
+    <wsdl:part name="parameters" element="types:deleteOpportunityResourceResponse" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_deleteOpportunityMktResponse">
+    <wsdl:part name="parameters" element="types:deleteOpportunityMktResponse" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_deleteOpportunityMktResponseResponse">
+    <wsdl:part name="parameters" element="types:deleteOpportunityMktResponseResponse" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_deleteOpportunityRevenue">
+    <wsdl:part name="parameters" element="types:deleteOpportunityRevenue" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_deleteOpportunityRevenueResponse">
+    <wsdl:part name="parameters" element="types:deleteOpportunityRevenueResponse" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_deleteOpportunitySource">
+    <wsdl:part name="parameters" element="types:deleteOpportunitySource" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_deleteOpportunitySourceResponse">
+    <wsdl:part name="parameters" element="types:deleteOpportunitySourceResponse" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_deleteOpportunityCompetitorAsync">
+    <wsdl:part name="parameters" element="types:deleteOpportunityCompetitorAsync" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_deleteOpportunityMktResponseAsync">
+    <wsdl:part name="parameters" element="types:deleteOpportunityMktResponseAsync" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_deleteOpportunityRevenueAsync">
+    <wsdl:part name="parameters" element="types:deleteOpportunityRevenueAsync" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_deleteOpportunityResourceAsync">
+    <wsdl:part name="parameters" element="types:deleteOpportunityResourceAsync" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_deleteOpportunityLeadAsync">
+    <wsdl:part name="parameters" element="types:deleteOpportunityLeadAsync" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_deleteOpportunitySourceAsync">
+    <wsdl:part name="parameters" element="types:deleteOpportunitySourceAsync" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_deleteOpportunityReferenceAsync">
+    <wsdl:part name="parameters" element="types:deleteOpportunityReferenceAsync" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_doAutoAssignmentAsynchronously">
+    <wsdl:part name="parameters" element="types:doAutoAssignmentAsynchronously" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_doAutoAssignmentAsynchronouslyResponse">
+    <wsdl:part name="parameters" element="types:doAutoAssignmentAsynchronouslyResponse" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_doAutoAssignmentAsynchronouslyAsync">
+    <wsdl:part name="parameters" element="types:doAutoAssignmentAsynchronouslyAsync" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_deleteOpportunityContact">
+    <wsdl:part name="parameters" element="types:deleteOpportunityContact" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_deleteOpportunityContactResponse">
+    <wsdl:part name="parameters" element="types:deleteOpportunityContactResponse" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_deleteOpportunityContactAsync">
+    <wsdl:part name="parameters" element="types:deleteOpportunityContactAsync" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_findOpportunity">
+    <wsdl:part name="parameters" element="types:findOpportunity" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_findOpportunityResponse">
+    <wsdl:part name="parameters" element="types:findOpportunityResponse" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_findOpportunityAsync">
+    <wsdl:part name="parameters" element="types:findOpportunityAsync" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_isSalesAccountUsedInOpportunity">
+    <wsdl:part name="parameters" element="types:isSalesAccountUsedInOpportunity" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_isSalesAccountUsedInOpportunityResponse">
+    <wsdl:part name="parameters" element="types:isSalesAccountUsedInOpportunityResponse" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_isSalesAccountUsedInOpportunityAsync">
+    <wsdl:part name="parameters" element="types:isSalesAccountUsedInOpportunityAsync" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_checkConstraint">
+    <wsdl:part name="parameters" element="types:checkConstraint" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_checkConstraintResponse">
+    <wsdl:part name="parameters" element="types:checkConstraintResponse" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_checkConstraintAsync">
+    <wsdl:part name="parameters" element="types:checkConstraintAsync" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_getDfltObjAttrHints">
+    <wsdl:part name="parameters" element="types:getDfltObjAttrHints" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_getDfltObjAttrHintsResponse">
+    <wsdl:part name="parameters" element="types:getDfltObjAttrHintsResponse" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_getServiceLastUpdateTime">
+    <wsdl:part name="parameters" element="types:getServiceLastUpdateTime" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_getServiceLastUpdateTimeResponse">
+    <wsdl:part name="parameters" element="types:getServiceLastUpdateTimeResponse" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_getEntityList">
+    <wsdl:part name="parameters" element="types:getEntityList" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_getEntityListResponse">
+    <wsdl:part name="parameters" element="types:getEntityListResponse" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_getEntityListAsync">
+    <wsdl:part name="parameters" element="types:getEntityListAsync" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_getDfltObjAttrHintsAsync">
+    <wsdl:part name="parameters" element="types:getDfltObjAttrHintsAsync" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_getServiceLastUpdateTimeAsync">
+    <wsdl:part name="parameters" element="types:getServiceLastUpdateTimeAsync" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_createAttachment">
+    <wsdl:part name="parameters" element="types:createAttachment" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_createAttachmentResponse">
+    <wsdl:part name="parameters" element="types:createAttachmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_createAttachmentAsync">
+    <wsdl:part name="parameters" element="types:createAttachmentAsync" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_copyAttachment">
+    <wsdl:part name="parameters" element="types:copyAttachment" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_copyAttachmentResponse">
+    <wsdl:part name="parameters" element="types:copyAttachmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_copyAttachmentAsync">
+    <wsdl:part name="parameters" element="types:copyAttachmentAsync" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_deleteAttachment">
+    <wsdl:part name="parameters" element="types:deleteAttachment" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_deleteAttachmentResponse">
+    <wsdl:part name="parameters" element="types:deleteAttachmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_deleteAttachmentAsync">
+    <wsdl:part name="parameters" element="types:deleteAttachmentAsync" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_getAttachmentContent">
+    <wsdl:part name="parameters" element="types:getAttachmentContent" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_getAttachmentContentResponse">
+    <wsdl:part name="parameters" element="types:getAttachmentContentResponse" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_getAttachmentContentAsync">
+    <wsdl:part name="parameters" element="types:getAttachmentContentAsync" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_getAttachmentsListWithoutContent">
+    <wsdl:part name="parameters" element="types:getAttachmentsListWithoutContent" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_getAttachmentsListWithoutContentResponse">
+    <wsdl:part name="parameters" element="types:getAttachmentsListWithoutContentResponse" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_getAttachmentsListWithoutContentAsync">
+    <wsdl:part name="parameters" element="types:getAttachmentsListWithoutContentAsync" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_deleteAllRevenuesInOpportunity">
+    <wsdl:part name="parameters" element="types:deleteAllRevenuesInOpportunity" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_deleteAllRevenuesInOpportunityResponse">
+    <wsdl:part name="parameters" element="types:deleteAllRevenuesInOpportunityResponse" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_deleteAllRevenuesInOpportunityAsync">
+    <wsdl:part name="parameters" element="types:deleteAllRevenuesInOpportunityAsync" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_onFault">
+    <wsdl:part name="parameters" element="orafault:Fault" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_processCSOpportunityAsyncResponse">
+    <wsdl:part name="parameters" element="types:processCSOpportunityAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_processOpportunityAsyncResponse">
+    <wsdl:part name="parameters" element="types:processOpportunityAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_deleteOpportunityAsyncResponse">
+    <wsdl:part name="parameters" element="types:deleteOpportunityAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_getOpportunityAsyncResponse">
+    <wsdl:part name="parameters" element="types:getOpportunityAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_createOpportunityAsyncResponse">
+    <wsdl:part name="parameters" element="types:createOpportunityAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_mergeOpportunityAsyncResponse">
+    <wsdl:part name="parameters" element="types:mergeOpportunityAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_updateOpportunityAsyncResponse">
+    <wsdl:part name="parameters" element="types:updateOpportunityAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_deleteOpportunityCompetitorAsyncResponse">
+    <wsdl:part name="parameters" element="types:deleteOpportunityCompetitorAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_deleteOpportunityMktResponseAsyncResponse">
+    <wsdl:part name="parameters" element="types:deleteOpportunityMktResponseAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_deleteOpportunityRevenueAsyncResponse">
+    <wsdl:part name="parameters" element="types:deleteOpportunityRevenueAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_deleteOpportunityResourceAsyncResponse">
+    <wsdl:part name="parameters" element="types:deleteOpportunityResourceAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_deleteOpportunityLeadAsyncResponse">
+    <wsdl:part name="parameters" element="types:deleteOpportunityLeadAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_deleteOpportunitySourceAsyncResponse">
+    <wsdl:part name="parameters" element="types:deleteOpportunitySourceAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_deleteOpportunityReferenceAsyncResponse">
+    <wsdl:part name="parameters" element="types:deleteOpportunityReferenceAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_doAutoAssignmentAsynchronouslyAsyncResponse">
+    <wsdl:part name="parameters" element="types:doAutoAssignmentAsynchronouslyAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_deleteOpportunityContactAsyncResponse">
+    <wsdl:part name="parameters" element="types:deleteOpportunityContactAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_findOpportunityAsyncResponse">
+    <wsdl:part name="parameters" element="types:findOpportunityAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_isSalesAccountUsedInOpportunityAsyncResponse">
+    <wsdl:part name="parameters" element="types:isSalesAccountUsedInOpportunityAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_checkConstraintAsyncResponse">
+    <wsdl:part name="parameters" element="types:checkConstraintAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_getEntityListAsyncResponse">
+    <wsdl:part name="parameters" element="types:getEntityListAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_getDfltObjAttrHintsAsyncResponse">
+    <wsdl:part name="parameters" element="types:getDfltObjAttrHintsAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_getServiceLastUpdateTimeAsyncResponse">
+    <wsdl:part name="parameters" element="types:getServiceLastUpdateTimeAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_createAttachmentAsyncResponse">
+    <wsdl:part name="parameters" element="types:createAttachmentAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_copyAttachmentAsyncResponse">
+    <wsdl:part name="parameters" element="types:copyAttachmentAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_deleteAttachmentAsyncResponse">
+    <wsdl:part name="parameters" element="types:deleteAttachmentAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_getAttachmentContentAsyncResponse">
+    <wsdl:part name="parameters" element="types:getAttachmentContentAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_getAttachmentsListWithoutContentAsyncResponse">
+    <wsdl:part name="parameters" element="types:getAttachmentsListWithoutContentAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="OpportunityService_deleteAllRevenuesInOpportunityAsyncResponse">
+    <wsdl:part name="parameters" element="types:deleteAllRevenuesInOpportunityAsyncResponse" />
+  </wsdl:message>
+  <wsdl:portType name="OpportunityService">
+    <wsdl:documentation>
+      <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="Opportunity" SDOName="tns:Opportunity" CreateOpName="createOpportunity" UpdateOpName="updateOpportunity" DeleteOpName="deleteOpportunity" MergeOpName="mergeOpportunity" GetOpName="getOpportunity" FindOpName="findOpportunity" ProcessOpName="processOpportunity" ProcessCSOpName="processCSOpportunity" />
+      <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="OpportunityCompetitorVO" SDOName="tns:OpportunityCompetitor" DeleteOpName="deleteOpportunityCompetitor" />
+      <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="OpportunityContactVO" SDOName="tns:OpportunityContact" DeleteOpName="deleteOpportunityContact" />
+      <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="OpportunityLeadVO" SDOName="tns:OpportunityLead" DeleteOpName="deleteOpportunityLead" />
+      <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="OpportunityReferenceVO" SDOName="tns:OpportunityReference" DeleteOpName="deleteOpportunityReference" />
+      <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="OpportunityResourceVO" SDOName="tns:OpportunityResource" DeleteOpName="deleteOpportunityResource" />
+      <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="OpportunityResponseVO" SDOName="tns:OpportunityResponse" DeleteOpName="deleteOpportunityMktResponse" />
+      <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="OpportunityRevenueVO" xmlns:ns0="http://xmlns.oracle.com/apps/sales/opptyMgmt/revenues/revenueService/" SDOName="ns0:Revenue" DeleteOpName="deleteOpportunityRevenue" />
+      <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="OpportunitySourceVO" SDOName="tns:OpportunitySource" DeleteOpName="deleteOpportunitySource" />
+    </wsdl:documentation>
+    <wsdl:operation name="getOpportunity">
+      <wsdl:input message="tns:OpportunityService_getOpportunity" />
+      <wsdl:output message="tns:OpportunityService_getOpportunityResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="createOpportunity">
+      <wsdl:input message="tns:OpportunityService_createOpportunity" />
+      <wsdl:output message="tns:OpportunityService_createOpportunityResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="updateOpportunity">
+      <wsdl:input message="tns:OpportunityService_updateOpportunity" />
+      <wsdl:output message="tns:OpportunityService_updateOpportunityResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteOpportunity">
+      <wsdl:input message="tns:OpportunityService_deleteOpportunity" />
+      <wsdl:output message="tns:OpportunityService_deleteOpportunityResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="mergeOpportunity">
+      <wsdl:input message="tns:OpportunityService_mergeOpportunity" />
+      <wsdl:output message="tns:OpportunityService_mergeOpportunityResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="processOpportunity">
+      <wsdl:input message="tns:OpportunityService_processOpportunity" />
+      <wsdl:output message="tns:OpportunityService_processOpportunityResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="processCSOpportunity">
+      <wsdl:input message="tns:OpportunityService_processCSOpportunity" />
+      <wsdl:output message="tns:OpportunityService_processCSOpportunityResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="processCSOpportunityAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/processCSOpportunityAsync" message="tns:OpportunityService_processCSOpportunityAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="processOpportunityAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/processOpportunityAsync" message="tns:OpportunityService_processOpportunityAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteOpportunityAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/deleteOpportunityAsync" message="tns:OpportunityService_deleteOpportunityAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="getOpportunityAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/getOpportunityAsync" message="tns:OpportunityService_getOpportunityAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="createOpportunityAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/createOpportunityAsync" message="tns:OpportunityService_createOpportunityAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="mergeOpportunityAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/mergeOpportunityAsync" message="tns:OpportunityService_mergeOpportunityAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="updateOpportunityAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/updateOpportunityAsync" message="tns:OpportunityService_updateOpportunityAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteOpportunityCompetitor">
+      <wsdl:input message="tns:OpportunityService_deleteOpportunityCompetitor" />
+      <wsdl:output message="tns:OpportunityService_deleteOpportunityCompetitorResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteOpportunityLead">
+      <wsdl:input message="tns:OpportunityService_deleteOpportunityLead" />
+      <wsdl:output message="tns:OpportunityService_deleteOpportunityLeadResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteOpportunityReference">
+      <wsdl:input message="tns:OpportunityService_deleteOpportunityReference" />
+      <wsdl:output message="tns:OpportunityService_deleteOpportunityReferenceResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteOpportunityResource">
+      <wsdl:input message="tns:OpportunityService_deleteOpportunityResource" />
+      <wsdl:output message="tns:OpportunityService_deleteOpportunityResourceResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteOpportunityMktResponse">
+      <wsdl:input message="tns:OpportunityService_deleteOpportunityMktResponse" />
+      <wsdl:output message="tns:OpportunityService_deleteOpportunityMktResponseResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteOpportunityRevenue">
+      <wsdl:input message="tns:OpportunityService_deleteOpportunityRevenue" />
+      <wsdl:output message="tns:OpportunityService_deleteOpportunityRevenueResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteOpportunitySource">
+      <wsdl:input message="tns:OpportunityService_deleteOpportunitySource" />
+      <wsdl:output message="tns:OpportunityService_deleteOpportunitySourceResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteOpportunityCompetitorAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/deleteOpportunityCompetitorAsync" message="tns:OpportunityService_deleteOpportunityCompetitorAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteOpportunityMktResponseAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/deleteOpportunityMktResponseAsync" message="tns:OpportunityService_deleteOpportunityMktResponseAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteOpportunityRevenueAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/deleteOpportunityRevenueAsync" message="tns:OpportunityService_deleteOpportunityRevenueAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteOpportunityResourceAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/deleteOpportunityResourceAsync" message="tns:OpportunityService_deleteOpportunityResourceAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteOpportunityLeadAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/deleteOpportunityLeadAsync" message="tns:OpportunityService_deleteOpportunityLeadAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteOpportunitySourceAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/deleteOpportunitySourceAsync" message="tns:OpportunityService_deleteOpportunitySourceAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteOpportunityReferenceAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/deleteOpportunityReferenceAsync" message="tns:OpportunityService_deleteOpportunityReferenceAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="doAutoAssignmentAsynchronously">
+      <wsdl:input message="tns:OpportunityService_doAutoAssignmentAsynchronously" />
+      <wsdl:output message="tns:OpportunityService_doAutoAssignmentAsynchronouslyResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="doAutoAssignmentAsynchronouslyAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/doAutoAssignmentAsynchronouslyAsync" message="tns:OpportunityService_doAutoAssignmentAsynchronouslyAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteOpportunityContact">
+      <wsdl:input message="tns:OpportunityService_deleteOpportunityContact" />
+      <wsdl:output message="tns:OpportunityService_deleteOpportunityContactResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteOpportunityContactAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/deleteOpportunityContactAsync" message="tns:OpportunityService_deleteOpportunityContactAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="findOpportunity">
+      <wsdl:input message="tns:OpportunityService_findOpportunity" />
+      <wsdl:output message="tns:OpportunityService_findOpportunityResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="findOpportunityAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/findOpportunityAsync" message="tns:OpportunityService_findOpportunityAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="isSalesAccountUsedInOpportunity">
+      <wsdl:input message="tns:OpportunityService_isSalesAccountUsedInOpportunity" />
+      <wsdl:output message="tns:OpportunityService_isSalesAccountUsedInOpportunityResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="isSalesAccountUsedInOpportunityAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/isSalesAccountUsedInOpportunityAsync" message="tns:OpportunityService_isSalesAccountUsedInOpportunityAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="checkConstraint">
+      <wsdl:input message="tns:OpportunityService_checkConstraint" />
+      <wsdl:output message="tns:OpportunityService_checkConstraintResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="checkConstraintAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/checkConstraintAsync" message="tns:OpportunityService_checkConstraintAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="getDfltObjAttrHints">
+      <wsdl:input message="tns:OpportunityService_getDfltObjAttrHints" />
+      <wsdl:output message="tns:OpportunityService_getDfltObjAttrHintsResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="getServiceLastUpdateTime">
+      <wsdl:input message="tns:OpportunityService_getServiceLastUpdateTime" />
+      <wsdl:output message="tns:OpportunityService_getServiceLastUpdateTimeResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="getEntityList">
+      <wsdl:input message="tns:OpportunityService_getEntityList" />
+      <wsdl:output message="tns:OpportunityService_getEntityListResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="getEntityListAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/getEntityListAsync" message="tns:OpportunityService_getEntityListAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="getDfltObjAttrHintsAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/getDfltObjAttrHintsAsync" message="tns:OpportunityService_getDfltObjAttrHintsAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="getServiceLastUpdateTimeAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/getServiceLastUpdateTimeAsync" message="tns:OpportunityService_getServiceLastUpdateTimeAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="createAttachment">
+      <wsdl:input message="tns:OpportunityService_createAttachment" />
+      <wsdl:output message="tns:OpportunityService_createAttachmentResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="createAttachmentAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/createAttachmentAsync" message="tns:OpportunityService_createAttachmentAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="copyAttachment">
+      <wsdl:input message="tns:OpportunityService_copyAttachment" />
+      <wsdl:output message="tns:OpportunityService_copyAttachmentResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="copyAttachmentAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/copyAttachmentAsync" message="tns:OpportunityService_copyAttachmentAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteAttachment">
+      <wsdl:input message="tns:OpportunityService_deleteAttachment" />
+      <wsdl:output message="tns:OpportunityService_deleteAttachmentResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteAttachmentAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/deleteAttachmentAsync" message="tns:OpportunityService_deleteAttachmentAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="getAttachmentContent">
+      <wsdl:input message="tns:OpportunityService_getAttachmentContent" />
+      <wsdl:output message="tns:OpportunityService_getAttachmentContentResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="getAttachmentContentAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/getAttachmentContentAsync" message="tns:OpportunityService_getAttachmentContentAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="getAttachmentsListWithoutContent">
+      <wsdl:input message="tns:OpportunityService_getAttachmentsListWithoutContent" />
+      <wsdl:output message="tns:OpportunityService_getAttachmentsListWithoutContentResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="getAttachmentsListWithoutContentAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/getAttachmentsListWithoutContentAsync" message="tns:OpportunityService_getAttachmentsListWithoutContentAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteAllRevenuesInOpportunity">
+      <wsdl:input message="tns:OpportunityService_deleteAllRevenuesInOpportunity" />
+      <wsdl:output message="tns:OpportunityService_deleteAllRevenuesInOpportunityResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteAllRevenuesInOpportunityAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/deleteAllRevenuesInOpportunityAsync" message="tns:OpportunityService_deleteAllRevenuesInOpportunityAsync" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="OpportunityServiceResponse">
+    <wsdl:operation name="onFault">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/oracleas/schema/oracle-fault-11_0/Fault" message="tns:OpportunityService_onFault" />
+    </wsdl:operation>
+    <wsdl:operation name="processCSOpportunityAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/processCSOpportunityAsyncResponse" message="tns:OpportunityService_processCSOpportunityAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="processOpportunityAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/processOpportunityAsyncResponse" message="tns:OpportunityService_processOpportunityAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteOpportunityAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/deleteOpportunityAsyncResponse" message="tns:OpportunityService_deleteOpportunityAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getOpportunityAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/getOpportunityAsyncResponse" message="tns:OpportunityService_getOpportunityAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="createOpportunityAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/createOpportunityAsyncResponse" message="tns:OpportunityService_createOpportunityAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="mergeOpportunityAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/mergeOpportunityAsyncResponse" message="tns:OpportunityService_mergeOpportunityAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="updateOpportunityAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/updateOpportunityAsyncResponse" message="tns:OpportunityService_updateOpportunityAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteOpportunityCompetitorAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/deleteOpportunityCompetitorAsyncResponse" message="tns:OpportunityService_deleteOpportunityCompetitorAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteOpportunityMktResponseAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/deleteOpportunityMktResponseAsyncResponse" message="tns:OpportunityService_deleteOpportunityMktResponseAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteOpportunityRevenueAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/deleteOpportunityRevenueAsyncResponse" message="tns:OpportunityService_deleteOpportunityRevenueAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteOpportunityResourceAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/deleteOpportunityResourceAsyncResponse" message="tns:OpportunityService_deleteOpportunityResourceAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteOpportunityLeadAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/deleteOpportunityLeadAsyncResponse" message="tns:OpportunityService_deleteOpportunityLeadAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteOpportunitySourceAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/deleteOpportunitySourceAsyncResponse" message="tns:OpportunityService_deleteOpportunitySourceAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteOpportunityReferenceAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/deleteOpportunityReferenceAsyncResponse" message="tns:OpportunityService_deleteOpportunityReferenceAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="doAutoAssignmentAsynchronouslyAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/doAutoAssignmentAsynchronouslyAsyncResponse" message="tns:OpportunityService_doAutoAssignmentAsynchronouslyAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteOpportunityContactAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/deleteOpportunityContactAsyncResponse" message="tns:OpportunityService_deleteOpportunityContactAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="findOpportunityAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/findOpportunityAsyncResponse" message="tns:OpportunityService_findOpportunityAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="isSalesAccountUsedInOpportunityAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/isSalesAccountUsedInOpportunityAsyncResponse" message="tns:OpportunityService_isSalesAccountUsedInOpportunityAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="checkConstraintAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/checkConstraintAsyncResponse" message="tns:OpportunityService_checkConstraintAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getEntityListAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/getEntityListAsyncResponse" message="tns:OpportunityService_getEntityListAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getDfltObjAttrHintsAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/getDfltObjAttrHintsAsyncResponse" message="tns:OpportunityService_getDfltObjAttrHintsAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getServiceLastUpdateTimeAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/getServiceLastUpdateTimeAsyncResponse" message="tns:OpportunityService_getServiceLastUpdateTimeAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="createAttachmentAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/createAttachmentAsyncResponse" message="tns:OpportunityService_createAttachmentAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="copyAttachmentAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/copyAttachmentAsyncResponse" message="tns:OpportunityService_copyAttachmentAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteAttachmentAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/deleteAttachmentAsyncResponse" message="tns:OpportunityService_deleteAttachmentAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getAttachmentContentAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/getAttachmentContentAsyncResponse" message="tns:OpportunityService_getAttachmentContentAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getAttachmentsListWithoutContentAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/getAttachmentsListWithoutContentAsyncResponse" message="tns:OpportunityService_getAttachmentsListWithoutContentAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteAllRevenuesInOpportunityAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/deleteAllRevenuesInOpportunityAsyncResponse" message="tns:OpportunityService_deleteAllRevenuesInOpportunityAsyncResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="OpportunityServiceSoapHttp" type="tns:OpportunityService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#wss11_saml_or_username_token_with_message_protection_service_policy" wsdl:required="false" />
+    <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#wsaddr_policy" wsdl:required="false" />
+    <wsdl:operation name="getOpportunity">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/getOpportunity" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createOpportunity">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/createOpportunity" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateOpportunity">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/updateOpportunity" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteOpportunity">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/deleteOpportunity" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="mergeOpportunity">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/mergeOpportunity" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="processOpportunity">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/processOpportunity" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="processCSOpportunity">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/processCSOpportunity" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="processCSOpportunityAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/processCSOpportunityAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="processOpportunityAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/processOpportunityAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="deleteOpportunityAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/deleteOpportunityAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="getOpportunityAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/getOpportunityAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="createOpportunityAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/createOpportunityAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="mergeOpportunityAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/mergeOpportunityAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="updateOpportunityAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/updateOpportunityAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="deleteOpportunityCompetitor">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/deleteOpportunityCompetitor" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteOpportunityLead">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/deleteOpportunityLead" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteOpportunityReference">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/deleteOpportunityReference" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteOpportunityResource">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/deleteOpportunityResource" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteOpportunityMktResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/deleteOpportunityMktResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteOpportunityRevenue">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/deleteOpportunityRevenue" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteOpportunitySource">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/deleteOpportunitySource" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteOpportunityCompetitorAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/deleteOpportunityCompetitorAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="deleteOpportunityMktResponseAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/deleteOpportunityMktResponseAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="deleteOpportunityRevenueAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/deleteOpportunityRevenueAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="deleteOpportunityResourceAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/deleteOpportunityResourceAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="deleteOpportunityLeadAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/deleteOpportunityLeadAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="deleteOpportunitySourceAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/deleteOpportunitySourceAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="deleteOpportunityReferenceAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/deleteOpportunityReferenceAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="doAutoAssignmentAsynchronously">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/doAutoAssignmentAsynchronously" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="doAutoAssignmentAsynchronouslyAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/doAutoAssignmentAsynchronouslyAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="deleteOpportunityContact">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/deleteOpportunityContact" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteOpportunityContactAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/deleteOpportunityContactAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="findOpportunity">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/findOpportunity" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findOpportunityAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/findOpportunityAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="isSalesAccountUsedInOpportunity">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/isSalesAccountUsedInOpportunity" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="isSalesAccountUsedInOpportunityAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/isSalesAccountUsedInOpportunityAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="checkConstraint">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/checkConstraint" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="checkConstraintAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/checkConstraintAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="getDfltObjAttrHints">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/getDfltObjAttrHints" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getServiceLastUpdateTime">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/getServiceLastUpdateTime" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getEntityList">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/getEntityList" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getEntityListAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/getEntityListAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="getDfltObjAttrHintsAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/getDfltObjAttrHintsAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="getServiceLastUpdateTimeAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/getServiceLastUpdateTimeAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="createAttachment">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/createAttachment" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createAttachmentAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/createAttachmentAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="copyAttachment">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/copyAttachment" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="copyAttachmentAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/copyAttachmentAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="deleteAttachment">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/deleteAttachment" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteAttachmentAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/deleteAttachmentAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="getAttachmentContent">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/getAttachmentContent" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAttachmentContentAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/getAttachmentContentAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="getAttachmentsListWithoutContent">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/getAttachmentsListWithoutContent" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAttachmentsListWithoutContentAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/getAttachmentsListWithoutContentAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="deleteAllRevenuesInOpportunity">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/deleteAllRevenuesInOpportunity" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteAllRevenuesInOpportunityAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/deleteAllRevenuesInOpportunityAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="OpportunityServiceResponseBinding" type="tns:OpportunityServiceResponse">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#wss11_saml_token_with_message_protection_client_policy" wsdl:required="false" />
+    <wsdl:operation name="onFault">
+      <soap:operation soapAction="http://xmlns.oracle.com/oracleas/schema/oracle-fault-11_0/Fault" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="processCSOpportunityAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/processCSOpportunityAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="processOpportunityAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/processOpportunityAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="deleteOpportunityAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/deleteOpportunityAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="getOpportunityAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/getOpportunityAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="createOpportunityAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/createOpportunityAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="mergeOpportunityAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/mergeOpportunityAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="updateOpportunityAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/updateOpportunityAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="deleteOpportunityCompetitorAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/deleteOpportunityCompetitorAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="deleteOpportunityMktResponseAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/deleteOpportunityMktResponseAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="deleteOpportunityRevenueAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/deleteOpportunityRevenueAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="deleteOpportunityResourceAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/deleteOpportunityResourceAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="deleteOpportunityLeadAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/deleteOpportunityLeadAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="deleteOpportunitySourceAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/deleteOpportunitySourceAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="deleteOpportunityReferenceAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/deleteOpportunityReferenceAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="doAutoAssignmentAsynchronouslyAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/doAutoAssignmentAsynchronouslyAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="deleteOpportunityContactAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/deleteOpportunityContactAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="findOpportunityAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/findOpportunityAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="isSalesAccountUsedInOpportunityAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/isSalesAccountUsedInOpportunityAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="checkConstraintAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/checkConstraintAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="getEntityListAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/getEntityListAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="getDfltObjAttrHintsAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/getDfltObjAttrHintsAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="getServiceLastUpdateTimeAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/getServiceLastUpdateTimeAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="createAttachmentAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/createAttachmentAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="copyAttachmentAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/copyAttachmentAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="deleteAttachmentAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/deleteAttachmentAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="getAttachmentContentAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/getAttachmentContentAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="getAttachmentsListWithoutContentAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/getAttachmentsListWithoutContentAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="deleteAllRevenuesInOpportunityAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/deleteAllRevenuesInOpportunityAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#OpportunityServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="OpportunityService">
+    <wsdl:port name="OpportunityServiceSoapHttpPort" binding="tns:OpportunityServiceSoapHttp">
+      <soap:address location="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService" />
+      <wsa:EndpointReference xmlns:wsa="http://www.w3.org/2005/08/addressing">
+        <wsa:Address xmlns:wsa="http://www.w3.org/2005/08/addressing">https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService</wsa:Address>
+        <wsid:Identity xmlns:wsid="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <dsig:KeyInfo xmlns:dsig="http://www.w3.org/2000/09/xmldsig#">
+            <dsig:X509Data>
+              <dsig:X509Certificate>MIICJzCCAdGgAwIBAgIGAUuanrFwMA0GCSqGSIb3DQEBCwUAMHkxCzAJBgNVBAYTAlVTMRAwDgYDVQQIEwdNeVN0YXRlMQ8wDQYDVQQHEwZNeVRvd24xFzAVBgNVBAoTDk15T3JnYW5pemF0aW9uMRkwFwYDVQQLExBGT1IgVEVTVElORyBPTkxZMRMwEQYDVQQDEwpDZXJ0R2VuQ0FCMB4XDTE1MDIxODAyNTc0NloXDTIwMDIxNzAyNTc0NlowUzETMBEGCgmSJomT8ixkARkWA2NvbTEWMBQGCgmSJomT8ixkARkWBm9yYWNsZTESMBAGCgmSJomT8ixkARkWAnVzMRAwDgYDVQQDEwdzZXJ2aWNlMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCXWHV8oZn+2e9iOIwq9nO5eDLVcQ1B0Ne06J3jy7Nlx4zc1Sd0akbBdxTRxvgPdk8laTNjSCc8zoGY+rnkGkHl0E6v/LifM1il2LMLR0JlOoOjWoBp95eNjnEiWjsQ4URIkCJ/zqH0I7x21IpqH31qzATFopyfML+WA40PKJepkwIDAQABoyEwHzAdBgNVHQ4EFgQUvwVQ6EcCoGgVyS0nScrlMd1OzwgwDQYJKoZIhvcNAQELBQADQQAF72kWyiOm9rLUt+nfrLF2OEBwbm0JJ8DbaXzfzw7WXC7bwuOSsilj7xZjNh/fIQG1JcEsfLBBeKx8FlWBWflL</dsig:X509Certificate>
+              <dsig:X509IssuerSerial>
+                <dsig:X509IssuerName>CN=CertGenCAB, OU=FOR TESTING ONLY, O=MyOrganization, L=MyTown, ST=MyState, C=US</dsig:X509IssuerName>
+                <dsig:X509SerialNumber>1424228266352</dsig:X509SerialNumber>
+              </dsig:X509IssuerSerial>
+              <dsig:X509SubjectName>CN=service, DC=us, DC=oracle, DC=com</dsig:X509SubjectName>
+              <dsig:X509SKI>vwVQ6EcCoGgVyS0nScrlMd1Ozwg=</dsig:X509SKI>
+            </dsig:X509Data>
+          </dsig:KeyInfo>
+        </wsid:Identity>
+      </wsa:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/" xmlns:sdoJava="commonj.sdo/java" xmlns:sdoXML="commonj.sdo/xml" xmlns:ns0="http://xmlns.oracle.com/adf/svc/types/" elementFormDefault="qualified" targetNamespace="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/" sdoJava:package="oracle.apps.sales.opptyMgmt.opportunities.opportunityService" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/META-INF/wsdl/BC4JService.xsd" namespace="http://xmlns.oracle.com/adf/svc/types/" />
+  <xsd:import schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/xml/sdoJava.xsd" namespace="commonj.sdo/java" />
+  <xsd:import schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/xml/sdoXML.xsd" namespace="commonj.sdo/xml" />
+  <xsd:annotation>
+    <xsd:documentation xmlns:oer="http://xmlns.oracle.com/oer">
+      <name xmlns="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/">Opportunity Reference</name>
+      <description xmlns="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/">A past customer who is being used as a reference on the
+                opportunity.</description>
+      <oer:category name="lba" xmlns:oer="http://xmlns.oracle.com/oer">
+        <value xmlns="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/">SalesTop-Sales</value>
+        <value xmlns="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/">SalesTop-Sales : OpptyMgmtTop-Sales Opportunity Top</value>
+        <value xmlns="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/">SalesTop-Sales : OpptyMgmtTop-Sales Opportunity Top :
+                    OpptyMgmtOpportunities-Opportunities</value>
+      </oer:category>
+      <oer:category name="lbo" xmlns:oer="http://xmlns.oracle.com/oer">
+        <value xmlns="http://xmlns.oracle.com/apps/sales/opptyMgmt/opportunities/opportunityService/">CRM-CRM : MOO-Opportunity Management :
+                    MOO_OPPORTUNITY-Opportunity</value>
+      </oer:category>
+      <oer:attributes xmlns:oer="http://xmlns.oracle.com/oer">
+        <oer:attribute description="System generated Identifier for References of Opportunity." name="OptyReferenceId" />
+        <oer:attribute description="Opportunity Id" name="OptyId" />
+        <oer:attribute description="Party ID with reference party usage." name="ReferencePartyId" />
+        <oer:attribute description="Comments about Opportunity Reference" name="Comments" />
+        <oer:attribute description="Disconnected Mobile: this value is used to guarantee the uniqueness of the row when duplicates are created in different databases (i.e. mobile databases or the server)." name="ConflictId" />
+        <oer:attribute description="Who column: indicates the user who created the row." name="CreatedBy" />
+        <oer:attribute description="Who column: indicates the date and time of the creation of the row." name="CreationDate" />
+        <oer:attribute description="Who column: indicates the user who last updated the row." name="LastUpdatedBy" />
+        <oer:attribute description="Who column: indicates the date and time of the last update of the row." name="LastUpdateDate" />
+        <oer:attribute description="Who column: indicates the session login associated to the user who last updated the row." name="LastUpdateLogin" />
+        <oer:attribute description="Used to implement optimistic locking. This number is incremented every time that the row is updated. The number is compared at the start and end of a transaction to detect whether another session has updated the row since it was queried." name="ObjectVersionNumber" />
+        <oer:attribute description="Disconnected Mobile: indicates the date and time of the last update of the row. This value is different from LAST_UPDATE_DATE if the update originally happened in a different database (i.e. a different mobile database or the server)." name="UserLastUpdateDate" />
+        <oer:attribute description="REFERENCE STATUS - ACTIVE OR INACTIVE" name="StatusCode" />
+        <oer:attribute description="Ranking for this reference" name="ReferenceRankNumber" />
+        <oer:attribute description="Contact name for the opportunity reference." name="PartyName1" />
+        <oer:attribute description="Sales stage of the opportunity." name="StgId" />
+        <oer:attribute description="Sales stage of the opportunity." name="Name" />
+        <oer:attribute description="Revenue amount." name="RevnAmount" />
+        <oer:attribute description="Opportunity Name" name="Name1" />
+        <oer:attribute description="Win probability percent." name="WinProb" />
+        <oer:attribute description="The currency the amount on this revenue line is based on." name="RevnAmountCurcyCode" />
+        <oer:attribute description="Estimated close date for the opportunity." name="EffectiveDate" />
+        <oer:attribute description="Name of the opportunity sales account." name="TargetPartyName" />
+        <oer:attribute description="Party identifier of the opportunity sales account." name="TargetPartyId" />
+        <oer:attribute description="Unique identification number for the reference." name="PartyNumber" />
+        <oer:attribute description="Name of this party" name="PartyName" />
+        <oer:attribute description="The party type can only be Person, Organization, Group." name="PartyType" />
+        <oer:attribute description="E-mail address of the reference." name="EmailAddress" />
+        <oer:attribute description="DUNS_NUMBER in VARCHAR format. Column value not restricted to nine digit DUNS Number." name="DUNSNumberC" />
+        <oer:attribute description="Comments regarding the opportunity reference." name="Comments1" />
+        <oer:attribute description="This is the derived column. For Organization, it is concatenation of unique_name_alias and suffix. For Person, this is concatenation of person_name and suffix." name="PartyUniqueName" />
+        <oer:attribute description="This is the derived column. For Organization, it is concatenation of unique_name_alias and suffix. For Person, this is concatenation of person_name and suffix." name="PartyUniqueName1" />
+        <oer:attribute description="Party identifier of the internal contact for the opportunity reference." name="IntContactPartyId" />
+        <oer:attribute description="Internal Contact Party Name for the Reference Customer" name="PartyName2" />
+        <oer:attribute description="Identifier of the opportunity sales account." name="SalesAccountId" />
+        <oer:attribute description="The customer contact relationship identifier." name="CustomerContactRelationId" />
+        <oer:attribute description="Name of the sales account." name="SalesAccountUniqueName" />
+      </oer:attributes>
+    </xsd:documentation>
+  </xsd:annotation>
+  <xsd:complexType name="OpportunityReference">
+    <xsd:annotation>
+      <xsd:appinfo source="http://xmlns.oracle.com/adf/svc/metadata/">
+        <key xmlns="http://xmlns.oracle.com/adf/svc/metadata/">
+          <attribute>OptyReferenceId</attribute>
+        </key>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element sdoXML:dataType="sdoJava:LongObject" minOccurs="0" name="OptyReferenceId" type="xsd:long" />
+      <xsd:element sdoXML:dataType="sdoJava:LongObject" minOccurs="0" name="OptyId" type="xsd:long" />
+      <xsd:element sdoXML:dataType="sdoJava:LongObject" minOccurs="0" name="ReferencePartyId" type="xsd:long" />
+      <xsd:element minOccurs="0" name="Comments" nillable="true" type="xsd:string" />
+      <xsd:element sdoXML:dataType="sdoJava:LongObject" minOccurs="0" name="ConflictId" type="xsd:long" />
+      <xsd:element minOccurs="0" name="CreatedBy" type="xsd:string" />
+      <xsd:element minOccurs="0" name="CreationDate" type="ns0:dateTime-Timestamp" />
+      <xsd:element minOccurs="0" name="LastUpdatedBy" type="xsd:string" />
+      <xsd:element minOccurs="0" name="LastUpdateDate" type="ns0:dateTime-Timestamp" />
+      <xsd:element minOccurs="0" name="LastUpdateLogin" nillable="true" type="xsd:string" />
+      <xsd:element sdoXML:dataType="sdoJava:IntObject" minOccurs="0" name="ObjectVersionNumber" type="xsd:int" />
+      <xsd:element minOccurs="0" name="UserLastUpdateDate" nillable="true" type="ns0:dateTime-Timestamp" />
+      <xsd:element minOccurs="0" name="StatusCode" type="xsd:string" />
+      <xsd:element minOccurs="0" name="ReferenceRankNumber" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PartyName1" type="xsd:string" />
+      <xsd:element sdoXML:dataType="sdoJava:LongObject" minOccurs="0" name="StgId" type="xsd:long" />
+      <xsd:element minOccurs="0" name="Name" type="xsd:string" />
+      <xsd:element minOccurs="0" name="RevnAmount" nillable="true" type="ns0:AmountType" />
+      <xsd:element minOccurs="0" name="Name1" type="xsd:string" />
+      <xsd:element minOccurs="0" name="WinProb" nillable="true" type="xsd:decimal" />
+      <xsd:element minOccurs="0" name="RevnAmountCurcyCode" type="xsd:string" />
+      <xsd:element minOccurs="0" name="EffectiveDate" nillable="true" type="ns0:date-Date" />
+      <xsd:element minOccurs="0" name="TargetPartyName" type="xsd:string" />
+      <xsd:element sdoXML:dataType="sdoJava:LongObject" minOccurs="0" name="TargetPartyId" type="xsd:long" />
+      <xsd:element minOccurs="0" name="PartyNumber" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PartyName" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PartyType" type="xsd:string" />
+      <xsd:element minOccurs="0" name="EmailAddress" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="DUNSNumberC" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="Comments1" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PartyUniqueName" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PartyUniqueName1" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="IntContactPartyId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="PartyName2" type="xsd:string" />
+      <xsd:element minOccurs="0" name="CustomerContactRelationId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="SalesAccountId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="SalesAccountUniqueName" nillable="true" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="opportunityReference" type="OpportunityReference" />
+</xsd:schema>

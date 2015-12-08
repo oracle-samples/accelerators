@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:orafault="http://xmlns.oracle.com/oracleas/schema/oracle-fault-11_0" xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xmlns.oracle.com/oracleas/schema/oracle-fault-11_0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:complexType name="FaultType">
+    <xsd:sequence>
+      <xsd:element name="faultcode" type="xsd:QName" />
+      <xsd:element name="faultstring" type="xsd:string" />
+      <xsd:element minOccurs="0" name="faultactor" type="xsd:anyURI" />
+      <xsd:element minOccurs="0" name="detail" type="orafault:detail" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="detail">
+    <xsd:sequence>
+      <xsd:any minOccurs="0" maxOccurs="unbounded" namespace="##any" processContents="lax" />
+    </xsd:sequence>
+    <xsd:anyAttribute namespace="##any" processContents="lax" />
+  </xsd:complexType>
+  <xsd:element name="Fault" type="orafault:FaultType" />
+</xsd:schema>

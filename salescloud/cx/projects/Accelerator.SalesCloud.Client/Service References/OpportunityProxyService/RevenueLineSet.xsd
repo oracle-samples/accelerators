@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:sdoXML="commonj.sdo/xml" xmlns:sdoJava="commonj.sdo/java" xmlns:ns0="http://xmlns.oracle.com/adf/svc/types/" xmlns="http://xmlns.oracle.com/oracle/apps/sales/opptyMgmt/revenues/revenueService/" xmlns:ns1="http://xmlns.oracle.com/apps/sales/opptyMgmt/revenues/revenueService/" elementFormDefault="qualified" targetNamespace="http://xmlns.oracle.com/oracle/apps/sales/opptyMgmt/revenues/revenueService/" sdoJava:package="oracle.apps.sales.opptyMgmt.revenues.revenueService" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/META-INF/wsdl/BC4JService.xsd" namespace="http://xmlns.oracle.com/adf/svc/types/" />
+  <xsd:import schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/oracle/apps/sales/opptyMgmt/revenues/revenueService/Revenue.xsd" namespace="http://xmlns.oracle.com/apps/sales/opptyMgmt/revenues/revenueService/" />
+  <xsd:import schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/xml/sdoJava.xsd" namespace="commonj.sdo/java" />
+  <xsd:import schemaLocation="https://slcai761.us.oracle.com:10616/opptyMgmtOpportunities/OpportunityService?XSD=/xml/sdoXML.xsd" namespace="commonj.sdo/xml" />
+  <xsd:annotation>
+    <xsd:documentation xmlns:oer="http://xmlns.oracle.com/oer">
+      <name xmlns="http://xmlns.oracle.com/oracle/apps/sales/opptyMgmt/revenues/revenueService/">Revenue Line Set</name>
+      <description xmlns="http://xmlns.oracle.com/oracle/apps/sales/opptyMgmt/revenues/revenueService/">A collection of revenue lines representing a product offering on
+                an opportunity.</description>
+      <oer:category name="lba" xmlns:oer="http://xmlns.oracle.com/oer">
+        <value xmlns="http://xmlns.oracle.com/oracle/apps/sales/opptyMgmt/revenues/revenueService/">SalesTop-Sales</value>
+        <value xmlns="http://xmlns.oracle.com/oracle/apps/sales/opptyMgmt/revenues/revenueService/">SalesTop-Sales : OpptyMgmtTop-Sales Opportunity Top</value>
+        <value xmlns="http://xmlns.oracle.com/oracle/apps/sales/opptyMgmt/revenues/revenueService/">SalesTop-Sales : OpptyMgmtTop-Sales Opportunity Top :
+                    OpptyMgmtOpportunities-Opportunities</value>
+      </oer:category>
+      <oer:category name="lbo" xmlns:oer="http://xmlns.oracle.com/oer">
+        <value xmlns="http://xmlns.oracle.com/oracle/apps/sales/opptyMgmt/revenues/revenueService/">CRM-CRM : MOO-Opportunity Management : MOO_REVENUE-Sales
+                    Revenue</value>
+      </oer:category>
+      <oer:attributes xmlns:oer="http://xmlns.oracle.com/oer">
+        <oer:attribute description="Revenue line set identifier." name="RevnId" />
+        <oer:attribute description="This denotes the type of revenue line such as Summary Revenue or Standard Revenue." name="RevnLineTypeCode" />
+        <oer:attribute description="Revenue sequence number." name="RevnSequenceNumber" />
+        <oer:attribute description="Opportunity identifier." name="OptyId" />
+        <oer:attribute description="Business Unit identifier." name="BUOrgId" />
+        <oer:attribute description="Party identifier of the sales account." name="CustomerPartyId" />
+        <oer:attribute description="Customer's billing account identifier." name="CustomerAccountId" />
+        <oer:attribute description="Resource party identifier of the revenue line set owner." name="OwnerResourceId" />
+        <oer:attribute description="Resource organization identifier of the revenue line set owner." name="OwnerResourceOrgId" />
+        <oer:attribute description="Resource organization tree structure code for the revenue line set owner." name="OwnerOrgTreeStructCode" />
+        <oer:attribute description="Resource organization tree code for the revenue line set owner." name="OwnerOrgTreeCode" />
+        <oer:attribute description="Estimated close date for the revenue line set." name="EffectiveDate" />
+        <oer:attribute description="Product group identifier." name="ProdGroupId" />
+        <oer:attribute description="The currency the amount on this revenue line set is based on." name="RevnAmountCurcyCode" />
+        <oer:attribute description="Revenue amount." name="RevnAmount" />
+        <oer:attribute description="Revenue line set status." name="StatusCode" />
+        <oer:attribute description="Who column: indicates the user who created the row." name="CreatedBy" />
+        <oer:attribute description="Who column: indicates the date and time of the creation of the row." name="CreationDate" />
+        <oer:attribute description="Disconnected Mobile: this value is used to guarantee the uniqueness of the row when duplicates are created in different databases (i.e. mobile databases or the server)." name="ConflictId" />
+        <oer:attribute description="Who column: indicates the user who last updated the row." name="LastUpdatedBy" />
+        <oer:attribute description="Who column: indicates the date and time of the last update of the row." name="LastUpdateDate" />
+        <oer:attribute description="Who column: indicates the session login associated to the user who last updated the row." name="LastUpdateLogin" />
+        <oer:attribute description="Used to implement optimistic locking. This number is incremented every time that the row is updated. The number is compared at the start and end of a transaction to detect whether another session has updated the row since it was queried." name="ObjectVersionNumber" />
+        <oer:attribute description="Disconnected Mobile: indicates the date and time of the last update of the row. This value is different from LAST_UPDATE_DATE if the update originally happened in a different database (i.e. a different mobile database or the server)." name="UserLastUpdateDate" />
+        <oer:attribute description="Name of the product group associated with the revenue." name="ProdGroupName" />
+        <oer:attribute description="Identifier of the opportunity sales account." name="SalesAccountId" />
+        <oer:attribute description="Revenue line set members associated with the revenue line set." name="Revenue" />
+      </oer:attributes>
+    </xsd:documentation>
+  </xsd:annotation>
+  <xsd:complexType name="RevenueLineSet">
+    <xsd:annotation>
+      <xsd:appinfo source="http://xmlns.oracle.com/adf/svc/metadata/">
+        <key xmlns="http://xmlns.oracle.com/adf/svc/metadata/">
+          <attribute>RevnId</attribute>
+        </key>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element sdoXML:dataType="sdoJava:LongObject" minOccurs="0" name="RevnId" type="xsd:long" />
+      <xsd:element minOccurs="0" default="LINE_SET_REVN" name="RevnLineTypeCode" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="RevnSequenceNumber" nillable="true" type="xsd:int" />
+      <xsd:element minOccurs="0" name="OptyId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="BUOrgId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="CustomerPartyId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="CustomerAccountId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="OwnerResourceId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="OwnerResourceOrgId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="OwnerOrgTreeStructCode" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="OwnerOrgTreeCode" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="EffectiveDate" nillable="true" type="ns0:date-Date" />
+      <xsd:element minOccurs="0" name="ProdGroupId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="RevnAmountCurcyCode" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="RevnAmount" nillable="true" type="ns0:AmountType" />
+      <xsd:element minOccurs="0" name="StatusCode" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="CreatedBy" type="xsd:string" />
+      <xsd:element minOccurs="0" name="CreationDate" type="ns0:dateTime-Timestamp" />
+      <xsd:element sdoXML:dataType="sdoJava:LongObject" minOccurs="0" name="ConflictId" type="xsd:long" />
+      <xsd:element minOccurs="0" name="LastUpdatedBy" type="xsd:string" />
+      <xsd:element minOccurs="0" name="LastUpdateDate" type="ns0:dateTime-Timestamp" />
+      <xsd:element minOccurs="0" name="LastUpdateLogin" nillable="true" type="xsd:string" />
+      <xsd:element sdoXML:dataType="sdoJava:IntObject" minOccurs="0" name="ObjectVersionNumber" type="xsd:int" />
+      <xsd:element minOccurs="0" name="UserLastUpdateDate" nillable="true" type="ns0:dateTime-Timestamp" />
+      <xsd:element minOccurs="0" name="ProdGroupName" type="xsd:string" />
+      <xsd:element minOccurs="0" name="SalesAccountId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="Revenue" type="ns1:Revenue" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="revenueLineSet" type="RevenueLineSet" />
+</xsd:schema>

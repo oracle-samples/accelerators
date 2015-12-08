@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:tns="http://xmlns.oracle.com/apps/crmCommon/salesParties/contactService/types/" xmlns:ns1="http://xmlns.oracle.com/adf/svc/types/" xmlns:ns0="http://xmlns.oracle.com/apps/crmCommon/salesParties/contactService/" elementFormDefault="qualified" targetNamespace="http://xmlns.oracle.com/apps/crmCommon/salesParties/contactService/types/" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://slcai761.us.oracle.com:10616/crmCommonSalesParties/ContactService?XSD=/META-INF/wsdl/BC4JService.xsd" namespace="http://xmlns.oracle.com/adf/svc/types/" />
+  <import schemaLocation="https://slcai761.us.oracle.com:10616/crmCommonSalesParties/ContactService?XSD=/META-INF/wsdl/BC4JServiceCS.xsd" namespace="http://xmlns.oracle.com/adf/svc/types/" />
+  <import schemaLocation="https://slcai761.us.oracle.com:10616/crmCommonSalesParties/ContactService?XSD=/oracle/apps/crmCommon/salesParties/contactService/Contact.xsd" namespace="http://xmlns.oracle.com/apps/crmCommon/salesParties/contactService/" />
+  <element name="processCSContact">
+    <complexType>
+      <sequence>
+        <element name="processData" type="ns1:ProcessData" />
+        <element name="processControl" type="ns1:ProcessControl" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="processCSContactResponse">
+    <complexType>
+      <sequence>
+        <element name="result" type="ns1:ProcessData" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="processCSContactAsync">
+    <complexType>
+      <sequence>
+        <element name="processData" type="ns1:ProcessData" />
+        <element name="processControl" type="ns1:ProcessControl" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="processCSContactAsyncResponse">
+    <complexType>
+      <sequence>
+        <element name="result" type="ns1:ProcessData" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="getDfltObjAttrHints">
+    <complexType>
+      <sequence>
+        <element name="viewName" type="string" />
+        <element name="localeName" type="string" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="getDfltObjAttrHintsResponse">
+    <complexType>
+      <sequence>
+        <element name="result" type="ns1:ObjAttrHints" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="getServiceLastUpdateTime">
+    <complexType>
+      <sequence />
+    </complexType>
+  </element>
+  <element name="getServiceLastUpdateTimeResponse">
+    <complexType>
+      <sequence>
+        <element name="result" type="ns1:dateTime-Timestamp" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="getEntityList">
+    <complexType>
+      <sequence />
+    </complexType>
+  </element>
+  <element name="getEntityListResponse">
+    <complexType>
+      <sequence>
+        <element minOccurs="0" maxOccurs="unbounded" name="result" type="ns1:ServiceViewInfo" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="getEntityListAsync">
+    <complexType>
+      <sequence />
+    </complexType>
+  </element>
+  <element name="getEntityListAsyncResponse">
+    <complexType>
+      <sequence>
+        <element minOccurs="0" maxOccurs="unbounded" name="result" type="ns1:ServiceViewInfo" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="getDfltObjAttrHintsAsync">
+    <complexType>
+      <sequence>
+        <element name="viewName" type="string" />
+        <element name="localeName" type="string" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="getDfltObjAttrHintsAsyncResponse">
+    <complexType>
+      <sequence>
+        <element name="result" type="ns1:ObjAttrHints" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="getServiceLastUpdateTimeAsync">
+    <complexType>
+      <sequence />
+    </complexType>
+  </element>
+  <element name="getServiceLastUpdateTimeAsyncResponse">
+    <complexType>
+      <sequence>
+        <element name="result" type="ns1:dateTime-Timestamp" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="getContact">
+    <complexType>
+      <sequence>
+        <element name="PartyId" type="long" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="getContactResponse">
+    <complexType>
+      <sequence>
+        <element name="result" type="ns1:DataObjectResult" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="createContact">
+    <complexType>
+      <sequence>
+        <element name="contact" type="ns0:Contact" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="createContactResponse">
+    <complexType>
+      <sequence>
+        <element name="result" type="ns1:DataObjectResult" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="updateContact">
+    <complexType>
+      <sequence>
+        <element name="contact" type="ns0:Contact" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="updateContactResponse">
+    <complexType>
+      <sequence>
+        <element name="result" type="ns1:DataObjectResult" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="deleteContact">
+    <complexType>
+      <sequence>
+        <element name="contact" type="ns0:Contact" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="deleteContactResponse">
+    <complexType>
+      <sequence>
+        <element name="result" type="ns1:MethodResult" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="mergeContact">
+    <complexType>
+      <sequence>
+        <element name="contact" type="ns0:Contact" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="mergeContactResponse">
+    <complexType>
+      <sequence>
+        <element name="result" type="ns1:DataObjectResult" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="findContact">
+    <complexType>
+      <sequence>
+        <element name="findCriteria" type="ns1:FindCriteria" />
+        <element name="findControl" type="ns1:FindControl" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="findContactResponse">
+    <complexType>
+      <sequence>
+        <element name="result" type="ns1:DataObjectResult" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="processContact">
+    <complexType>
+      <sequence>
+        <element name="changeOperation" type="string" />
+        <element minOccurs="0" maxOccurs="unbounded" name="contact" type="ns0:Contact" />
+        <element name="processControl" type="ns1:ProcessControl" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="processContactResponse">
+    <complexType>
+      <sequence>
+        <element name="result" type="ns1:DataObjectResult" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="findContactAsync">
+    <complexType>
+      <sequence>
+        <element name="findCriteria" type="ns1:FindCriteria" />
+        <element name="findControl" type="ns1:FindControl" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="findContactAsyncResponse">
+    <complexType>
+      <sequence>
+        <element name="result" type="ns1:DataObjectResult" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="updateContactAsync">
+    <complexType>
+      <sequence>
+        <element name="contact" type="ns0:Contact" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="updateContactAsyncResponse">
+    <complexType>
+      <sequence>
+        <element name="result" type="ns1:DataObjectResult" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="processContactAsync">
+    <complexType>
+      <sequence>
+        <element name="changeOperation" type="string" />
+        <element minOccurs="0" maxOccurs="unbounded" name="contact" type="ns0:Contact" />
+        <element name="processControl" type="ns1:ProcessControl" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="processContactAsyncResponse">
+    <complexType>
+      <sequence>
+        <element name="result" type="ns1:DataObjectResult" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="createContactAsync">
+    <complexType>
+      <sequence>
+        <element name="contact" type="ns0:Contact" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="createContactAsyncResponse">
+    <complexType>
+      <sequence>
+        <element name="result" type="ns1:DataObjectResult" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="getContactAsync">
+    <complexType>
+      <sequence>
+        <element name="PartyId" type="long" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="getContactAsyncResponse">
+    <complexType>
+      <sequence>
+        <element name="result" type="ns1:DataObjectResult" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="mergeContactAsync">
+    <complexType>
+      <sequence>
+        <element name="contact" type="ns0:Contact" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="mergeContactAsyncResponse">
+    <complexType>
+      <sequence>
+        <element name="result" type="ns1:DataObjectResult" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="deleteContactAsync">
+    <complexType>
+      <sequence>
+        <element name="contact" type="ns0:Contact" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="deleteContactAsyncResponse">
+    <complexType>
+      <sequence>
+        <element name="result" type="ns1:MethodResult" />
+      </sequence>
+    </complexType>
+  </element>
+</schema>
