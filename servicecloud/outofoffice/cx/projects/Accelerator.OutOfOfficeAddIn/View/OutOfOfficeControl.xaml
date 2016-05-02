@@ -1,0 +1,32 @@
+﻿<UserControl x:Name="OutOfOfficeUserControl" x:Class="Accelerator.OutOfOffice.View.OutOfOfficeControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d" Height="363" Width="574.112">
+    <Grid x:Name="MainGrid" Margin="0" HorizontalAlignment="Left" Width="573">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                <GradientStop Color="White" Offset="0.156"/>
+                <GradientStop Color="#FFBEE7FF" Offset="0.053"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Label x:Name="OptionsLabel" Content="Options" Height="17" Margin="17,64,23,0" VerticalAlignment="Top" IsEnabled="False" FontWeight="Bold" Background="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" FontSize="13" VerticalContentAlignment="Center" Padding="5,0,5,2"/>
+        <CheckBox x:Name="OutOfOfficeCheckbox" Checked="OutOfOfficeCheckbox_OnChecked" Unchecked="OutOfOfficeCheckbox_OnUnchecked" Content="Out Of Office" HorizontalAlignment="Left" Height="21" Margin="17,96,0,0" VerticalAlignment="Top" Width="164" IsChecked="{Binding OutOfOfficeFlag}"/>
+        <DatePicker x:Name="FromDateTime" SelectedDate="{Binding FromDateTime}" HorizontalAlignment="Left" Height="25" Margin="73,113,0,0" VerticalAlignment="Top" Width="100" SelectedDateFormat="Short" Text="asc" DisplayDate="2015-11-10"/>
+        <Label x:Name="FromLabel" Content="From" HorizontalAlignment="Left" Height="25" Margin="30,113,0,0" VerticalAlignment="Top" Width="41" VerticalContentAlignment="Center"/>
+        <DatePicker x:Name="ToDateTime" SelectedDateChanged="ToDateTime_OnSelectedDateChanged" SelectedDate="{Binding ToDateTime}" HorizontalAlignment="Left" Height="25" Margin="73,143,0,0" VerticalAlignment="Top" Width="100" SelectedDateFormat="Short" DisplayDate="2015-11-10"/>
+        <Label x:Name="ToLabel" Content="To" HorizontalAlignment="Left" Height="25" Margin="30,143,0,0" VerticalAlignment="Top" Width="32"/>
+        <Label x:Name="TimezoneLabel" Content="Timezone" HorizontalAlignment="Left" Height="27" Margin="304,113,0,0" VerticalAlignment="Top" Width="66" VerticalContentAlignment="Center"/>
+        <Label x:Name="PersonalMsgLabel" Content="Personal Message" HorizontalAlignment="Left" Height="28" Margin="50,187,0,0" VerticalAlignment="Top" Width="153" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="PersonalMsgTextbox" Text="{Binding PersonalMsg}" HorizontalAlignment="Left" Height="73" Margin="50,231,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="500" VerticalScrollBarVisibility="Auto" AcceptsReturn="True"/>
+        <Button x:Name="OkButton" Click ="OkClick" Content="OK" HorizontalAlignment="Left" Height="25" Margin="310,319,0,0" VerticalAlignment="Top" Width="111" BorderThickness="1" Foreground="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" TextOptions.TextFormattingMode="Display"/>
+        <Button x:Name="CancelButton" Click="CancelClick" Content="Cancel" HorizontalAlignment="Left" Height="25" Margin="438,319,0,0" VerticalAlignment="Top" Width="111" Foreground="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" BorderThickness="1" TextOptions.TextFormattingMode="Display"/>
+        <Image x:Name="TitleImage" HorizontalAlignment="Left" Height="44" Margin="17,15,0,0" VerticalAlignment="Top" Width="45" Source="../Resources/PersonalSettings32.png"/>
+        <Label x:Name="TitleLabel" Content="Out Of Office" HorizontalAlignment="Left" Height="26" Margin="68,27,0,0" VerticalAlignment="Top" Width="257" FontSize="14" FontWeight="Bold"/>
+        <ComboBox x:Name="TimezoneDropdown" SelectionChanged="TimezoneDropdown_OnSelectionChanged" ItemsSource="{Binding TimezonesCollection}" SelectedValue="{Binding Timezone}" HorizontalAlignment="Left" Margin="375,115,0,0" VerticalAlignment="Top" Width="175" Height="25" BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" VerticalContentAlignment="Center"/>
+        <ComboBox x:Name="PersonalMsgOptionsDropdown" ItemsSource="{Binding PersonalMsgOptions}" SelectedValue="{Binding PersonalMsgOption}" HorizontalAlignment="Left" Margin="203,188,0,0" VerticalAlignment="Top" Width="347" Height="25" BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" VerticalContentAlignment="Center"/>
+        <ComboBox x:Name="FromTimeDropdown" ItemsSource="{Binding TimeOptions}" SelectedValue="{Binding FromTime}" HorizontalAlignment="Left" Margin="180,113,0,0" VerticalAlignment="Top" Width="102" Height="25" BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" SelectedIndex="0" VerticalContentAlignment="Center"/>
+        <ComboBox x:Name="ToTimeDropdown" SelectionChanged="ToTimeDropdown_OnSelectionChanged"  ItemsSource="{Binding TimeOptions}" SelectedValue="{Binding ToTime}" HorizontalAlignment="Left" Margin="180,143,0,0" VerticalAlignment="Top" Width="102" Height="25" BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" SelectedIndex="0" VerticalContentAlignment="Center"/>
+    </Grid>
+</UserControl>

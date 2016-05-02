@@ -1,0 +1,7 @@
+C:\Users\lliu\.jenkins\jobs\OOO-Accel-Rel\workspace\servicecloud\outofoffice\cx\projects\Accelerator.OutOfOffice.Client\bin\Release\Accelerator.OutOfOffice.Client.dll.config
+C:\Users\lliu\.jenkins\jobs\OOO-Accel-Rel\workspace\servicecloud\outofoffice\cx\projects\Accelerator.OutOfOffice.Client\bin\Release\Accelerator.OutOfOffice.Client.dll
+C:\Users\lliu\.jenkins\jobs\OOO-Accel-Rel\workspace\servicecloud\outofoffice\cx\projects\Accelerator.OutOfOffice.Client\bin\Release\Accelerator.OutOfOffice.Client.pdb
+C:\Users\lliu\.jenkins\jobs\OOO-Accel-Rel\workspace\servicecloud\outofoffice\cx\projects\Accelerator.OutOfOffice.Client\bin\Release\RightNow.AddIns.AddInViews.dll
+C:\Users\lliu\.jenkins\jobs\OOO-Accel-Rel\workspace\servicecloud\outofoffice\cx\projects\Accelerator.OutOfOffice.Client\obj\Release\Accelerator.OutOfOffice.Client.csprojResolveAssemblyReference.cache
+C:\Users\lliu\.jenkins\jobs\OOO-Accel-Rel\workspace\servicecloud\outofoffice\cx\projects\Accelerator.OutOfOffice.Client\obj\Release\Accelerator.OutOfOffice.Client.dll
+C:\Users\lliu\.jenkins\jobs\OOO-Accel-Rel\workspace\servicecloud\outofoffice\cx\projects\Accelerator.OutOfOffice.Client\obj\Release\Accelerator.OutOfOffice.Client.pdb

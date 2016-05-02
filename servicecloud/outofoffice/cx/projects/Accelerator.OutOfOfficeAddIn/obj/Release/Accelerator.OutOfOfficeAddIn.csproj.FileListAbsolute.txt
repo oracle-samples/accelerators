@@ -1,0 +1,15 @@
+C:\Users\lliu\.jenkins\jobs\OOO-Accel-Rel\workspace\servicecloud\outofoffice\cx\projects\Accelerator.OutOfOfficeAddIn\bin\Release\Accelerator.OutOfOfficeAddIn.dll
+C:\Users\lliu\.jenkins\jobs\OOO-Accel-Rel\workspace\servicecloud\outofoffice\cx\projects\Accelerator.OutOfOfficeAddIn\bin\Release\Accelerator.OutOfOfficeAddIn.pdb
+C:\Users\lliu\.jenkins\jobs\OOO-Accel-Rel\workspace\servicecloud\outofoffice\cx\projects\Accelerator.OutOfOfficeAddIn\bin\Release\Accelerator.OutOfOffice.Client.dll
+C:\Users\lliu\.jenkins\jobs\OOO-Accel-Rel\workspace\servicecloud\outofoffice\cx\projects\Accelerator.OutOfOfficeAddIn\bin\Release\RightNow.AddIns.AddInViews.dll
+C:\Users\lliu\.jenkins\jobs\OOO-Accel-Rel\workspace\servicecloud\outofoffice\cx\projects\Accelerator.OutOfOfficeAddIn\bin\Release\Accelerator.OutOfOffice.Client.pdb
+C:\Users\lliu\.jenkins\jobs\OOO-Accel-Rel\workspace\servicecloud\outofoffice\cx\projects\Accelerator.OutOfOfficeAddIn\obj\Release\Accelerator.OutOfOfficeAddIn.csprojResolveAssemblyReference.cache
+C:\Users\lliu\.jenkins\jobs\OOO-Accel-Rel\workspace\servicecloud\outofoffice\cx\projects\Accelerator.OutOfOfficeAddIn\obj\Release\View\OutOfOfficeControl.baml
+C:\Users\lliu\.jenkins\jobs\OOO-Accel-Rel\workspace\servicecloud\outofoffice\cx\projects\Accelerator.OutOfOfficeAddIn\obj\Release\View\OutOfOfficeControl.g.cs
+C:\Users\lliu\.jenkins\jobs\OOO-Accel-Rel\workspace\servicecloud\outofoffice\cx\projects\Accelerator.OutOfOfficeAddIn\obj\Release\Accelerator.OutOfOfficeAddIn_MarkupCompile.cache
+C:\Users\lliu\.jenkins\jobs\OOO-Accel-Rel\workspace\servicecloud\outofoffice\cx\projects\Accelerator.OutOfOfficeAddIn\obj\Release\Accelerator.OutOfOfficeAddIn.g.resources
+C:\Users\lliu\.jenkins\jobs\OOO-Accel-Rel\workspace\servicecloud\outofoffice\cx\projects\Accelerator.OutOfOfficeAddIn\obj\Release\Accelerator.OutOfOffice.StatusBarControl.resources
+C:\Users\lliu\.jenkins\jobs\OOO-Accel-Rel\workspace\servicecloud\outofoffice\cx\projects\Accelerator.OutOfOfficeAddIn\obj\Release\Accelerator.OutOfOffice.Properties.Resources.resources
+C:\Users\lliu\.jenkins\jobs\OOO-Accel-Rel\workspace\servicecloud\outofoffice\cx\projects\Accelerator.OutOfOfficeAddIn\obj\Release\Accelerator.OutOfOfficeAddIn.csproj.GenerateResource.Cache
+C:\Users\lliu\.jenkins\jobs\OOO-Accel-Rel\workspace\servicecloud\outofoffice\cx\projects\Accelerator.OutOfOfficeAddIn\obj\Release\Accelerator.OutOfOfficeAddIn.dll
+C:\Users\lliu\.jenkins\jobs\OOO-Accel-Rel\workspace\servicecloud\outofoffice\cx\projects\Accelerator.OutOfOfficeAddIn\obj\Release\Accelerator.OutOfOfficeAddIn.pdb

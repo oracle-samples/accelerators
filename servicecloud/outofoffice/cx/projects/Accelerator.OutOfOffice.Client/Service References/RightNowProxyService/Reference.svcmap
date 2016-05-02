@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="dc30338a-cb9a-4f82-a2ed-8a4afdb581c9" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://15-8-release-build-tussinha.qb.lan/cgi-bin/15-8-release-build-tussinha.cfg/services/soap?wsdl=typed_v1.2" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="soap.xsd" MetadataType="Schema" ID="b40d80c9-1e06-4668-af31-b27389af2b72" SourceId="1" SourceUrl="https://15-8-release-build-tussinha.qb.lan/cgi-bin/15-8-release-build-tussinha.cfg/services/soap?xsd=metadata_v1.2" />
+    <MetadataFile FileName="soap1.xsd" MetadataType="Schema" ID="e34d36dd-b60a-4a64-8c80-631077fa3f6c" SourceId="1" SourceUrl="https://15-8-release-build-tussinha.qb.lan/cgi-bin/15-8-release-build-tussinha.cfg/services/soap?xsd=base_v1.2" />
+    <MetadataFile FileName="soap2.xsd" MetadataType="Schema" ID="1fa07980-2cf1-451f-9afe-7262433297ba" SourceId="1" SourceUrl="https://15-8-release-build-tussinha.qb.lan/cgi-bin/15-8-release-build-tussinha.cfg/services/soap?xsd=messagestyped_v1.2" />
+    <MetadataFile FileName="soap3.xsd" MetadataType="Schema" ID="7ff279af-4a8c-4109-ae6e-d1edae815003" SourceId="1" SourceUrl="https://15-8-release-build-tussinha.qb.lan/cgi-bin/15-8-release-build-tussinha.cfg/services/soap?xsd=nullfields_v1.2" />
+    <MetadataFile FileName="soap4.xsd" MetadataType="Schema" ID="2a015ebd-1ac1-417a-8e5b-d09afb4030f5" SourceId="1" SourceUrl="https://15-8-release-build-tussinha.qb.lan/cgi-bin/15-8-release-build-tussinha.cfg/services/soap?xsd=objects_v1.2" />
+    <MetadataFile FileName="RightNow.wsdl" MetadataType="Wsdl" ID="00663c63-8a5f-4257-b1ec-b8cd51020428" SourceId="1" SourceUrl="https://15-8-release-build-tussinha.qb.lan/cgi-bin/15-8-release-build-tussinha.cfg/services/soap?wsdl=typed_v1.2" />
+    <MetadataFile FileName="soap5.xsd" MetadataType="Schema" ID="7910a6ab-24c1-44ee-af93-aca3e710a305" SourceId="1" SourceUrl="https://15-8-release-build-tussinha.qb.lan/cgi-bin/15-8-release-build-tussinha.cfg/services/soap?xsd=faults_v1.2" />
+    <MetadataFile FileName="soap6.xsd" MetadataType="Schema" ID="5fe1e563-4cf7-452f-9984-e1f37727aa2c" SourceId="1" SourceUrl="https://15-8-release-build-tussinha.qb.lan/cgi-bin/15-8-release-build-tussinha.cfg/services/soap?xsd=generic_v1.2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
