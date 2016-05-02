@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Accelerator.OutOfOfficeAddIn", "Accelerator.OutOfOfficeAddIn\Accelerator.OutOfOfficeAddIn.csproj", "{7BF7AEFE-6C6D-47A6-8616-01248666C9AA}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3AB7FADD-71A5-4A37-B03D-675EC074F5F8} = {3AB7FADD-71A5-4A37-B03D-675EC074F5F8}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Accelerator.OutOfOffice.Client", "Accelerator.OutOfOffice.Client\Accelerator.OutOfOffice.Client.csproj", "{3AB7FADD-71A5-4A37-B03D-675EC074F5F8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7BF7AEFE-6C6D-47A6-8616-01248666C9AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BF7AEFE-6C6D-47A6-8616-01248666C9AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BF7AEFE-6C6D-47A6-8616-01248666C9AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BF7AEFE-6C6D-47A6-8616-01248666C9AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3AB7FADD-71A5-4A37-B03D-675EC074F5F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AB7FADD-71A5-4A37-B03D-675EC074F5F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AB7FADD-71A5-4A37-B03D-675EC074F5F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AB7FADD-71A5-4A37-B03D-675EC074F5F8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
