@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/* *********************************************************************************************
+ *  This file is part of the Oracle Service Cloud Accelerator Reference Integration set published
+ *  by Oracle Service Cloud under the MIT license (MIT) included in the original distribution.
+ *  Copyright (c) 2014, 2015, 2016 Oracle and/or its affiliates. All rights reserved.
+ ***********************************************************************************************
+ *  Accelerator Package: Mobile Agent App Accelerator
+ *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
+ *  OSvC release: 16.8 (August 2016)
+ *  MAF release: 2.3
+ *  reference: 151217-000185
+ *  date: Tue Aug 23 16:35:52 PDT 2016
+
+ *  revision: rnw-16-8-fixes-release-01
+ *  SHA1: $Id: 1db40cd5f23369cdc58ad47526c2b92e6141c30f $
+ * *********************************************************************************************
+ *  File: AssetDetail.amx
+ * *********************************************************************************************/
+-->
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+  <amx:panelPage id="pp1">
+    <amx:facet name="header">
+      <amx:outputText value="#{bindings.name.inputValue}" id="ot1" truncateAt="20"/>
+    </amx:facet>
+    <amx:facet name="primary">
+        <amx:commandButton id="cb1" action="__back" shortDesc="Back Button"/>
+    </amx:facet>
+    <amx:facet name="secondary">
+       <amx:commandLink id="cl5" action="goToEdit" shortDesc="edit asset"
+                             rendered="#{pageFlowScope.summaryView eq 'summary' ? 'true' : 'false'}">
+                <amx:image id="i3" source="/images/func_pencil01_32@2x.png" shortDesc="edit asset"
+                           styleClass="actionIcon"/>
+            </amx:commandLink>
+    </amx:facet>
+        <amx:deck id="d1" displayedChild="#{pageFlowScope.summaryView}" styleClass="fullSize" shortDesc="Detail Deck">
+            <amx:panelStretchLayout id="summary" scrollPolicy="scroll">
+                <amx:facet name="center">
+                    <amx:panelGroupLayout id="pgl1">
+                        <amx:spacer id="s1"/>
+                            <amx:outputText value="Asset Summary" id="ot20"
+                                inlineStyle="margin-left:2%; font-weight:bold;"/>
+                            <amx:spacer id="s2"/>
+                      <amx:panelFormLayout id="pfl1" labelWidth="35%" fieldHalign="start" fieldWidth="65%">
+                        <amx:panelLabelAndMessage label="Name" id="plam5">
+                          <amx:outputText value="#{bindings.name.inputValue}" id="ot6"/>
+                        </amx:panelLabelAndMessage>
+                        <amx:panelLabelAndMessage label="Description" id="plam7">
+                          <amx:outputText value="#{bindings.description.inputValue}" id="ot8"/>
+                        </amx:panelLabelAndMessage>
+                        <amx:panelLabelAndMessage label="Serial Number" id="plam9">
+                          <amx:outputText value="#{bindings.assetSerialNumber.inputValue}" id="ot10"/>
+                        </amx:panelLabelAndMessage>
+                        <amx:panelLabelAndMessage label="Status" id="plam8">
+                          <amx:outputText value="#{bindings.status.inputValue}" id="ot9"/>
+                        </amx:panelLabelAndMessage>
+                        <amx:panelLabelAndMessage label="Contact" id="plam12">
+                        <amx:commandLink id= "cl58" shortDesc="Go to contact"
+                                                action="goContact"
+                                                text="#{bindings.contact.inputValue}"
+                                                inlineStyle="overflow-wrap:break-word;">
+                                                <amx:setPropertyListener id="spl58" from="#{bindings.contactId.inputValue}"
+                                                    to="#{pageFlowScope.contactId}"/>
+                                            </amx:commandLink>
+                        </amx:panelLabelAndMessage>
+                        <amx:panelLabelAndMessage label="Organization" id="plam2">
+                          <amx:commandLink id= "cl59" shortDesc="Go to org"
+                                                action="goOrg"
+                                                text="#{bindings.organization.inputValue}"
+                                                inlineStyle="overflow-wrap:break-word;">
+                                                <amx:setPropertyListener id="spl59" from="#{bindings.organizationId.inputValue}"
+                                                    to="#{pageFlowScope.organizationId}"/>
+                                            </amx:commandLink>
+                        </amx:panelLabelAndMessage>
+                        <amx:panelLabelAndMessage label="Product" id="plam1">
+                          <amx:outputText value="#{bindings.product.inputValue}" id="ot2"/>
+                        </amx:panelLabelAndMessage>
+                        <amx:panelLabelAndMessage label="Price Currency" id="plam11">
+                          <amx:outputText value="#{bindings.priceCurrency.inputValue}" id="ot21"/>
+                        </amx:panelLabelAndMessage>
+                        <amx:panelLabelAndMessage label="Price" id="plam18">
+                          <amx:outputText value="#{bindings.priceValue.inputValue}" id="ot22">
+                            <amx:convertNumber id="cn1" type="currency"
+                                    minFractionDigits="2" maxFractionDigits="2"
+                                               currencySymbol="#{pageFlowScope.currencySymbol}"/>
+                          </amx:outputText>                         
+                        </amx:panelLabelAndMessage>
+                        <amx:panelLabelAndMessage label="Date Purchased" id="plam10">
+                          <amx:outputText value="#{bindings.purchasedDateString.inputValue}" id="ot23"/>
+                        </amx:panelLabelAndMessage>
+                        <amx:panelLabelAndMessage label="Date Installed" id="plam19">
+                          <amx:outputText value="#{bindings.installedDateString.inputValue}" id="ot24"/>
+                        </amx:panelLabelAndMessage>
+                        <amx:panelLabelAndMessage label="Date Retired" id="plam20">
+                          <amx:outputText value="#{bindings.retiredDateString.inputValue}" id="ot25"/>
+                        </amx:panelLabelAndMessage>
+                      </amx:panelFormLayout>
+                    </amx:panelGroupLayout>
+                </amx:facet>
+            </amx:panelStretchLayout>
+            <amx:panelStretchLayout id="incidents" scrollPolicy="scroll">
+                <amx:facet name="center">
+                    <amx:listView var="row" value="#{bindings.report1.collectionModel}"
+                              fetchSize="#{bindings.report1.rangeSize}"
+                              selectedRowKeys="#{bindings.report1.collectionModel.selectedRow}"
+                              selectionListener="#{bindings.report1.collectionModel.makeCurrent}"
+                              bufferStrategy="viewport" id="lv42">
+                        <amx:listItem id="li41" action="goToIncident">
+                            <amx:tableLayout width="100%" id="tl41">
+                                <amx:rowLayout id="rl31">
+                                    <amx:cellFormat width="10px" rowSpan="2" id="cf41"/>
+                                    <amx:cellFormat width="60%" height="#{deviceScope.device.os=='Android'?'36':'32'}px"
+                                            id="cf42">
+                                        <amx:outputText value="#{row.attr1}" id="ot42"/>
+                                    </amx:cellFormat>
+                                    <amx:cellFormat width="10px" rowSpan="2" id="cf43"/>
+                                    <amx:cellFormat width="40%" halign="end" id="cf47">
+                                        <amx:outputText value="#{row.attr2}" styleClass="adfmf-listItem-highlightText"
+                                                id="ot43"/>
+                                    </amx:cellFormat>
+                                </amx:rowLayout>
+                                <amx:rowLayout id="rl41">
+                                    <amx:cellFormat width="60%" height="#{deviceScope.device.os=='Android'?'22':'19'}px"
+                                            id="cfl42">
+                                        <amx:outputText value="#{row.attr3}" styleClass="adfmf-listItem-captionText"
+                                            id="ot44"/>
+                                    </amx:cellFormat>
+                                    <amx:cellFormat width="40%" halign="end" id="cf44">
+                                        <amx:outputText value="#{row.attr4}" styleClass="adfmf-listItem-captionText"
+                                                id="ot45"/>
+                                    </amx:cellFormat>
+                                </amx:rowLayout>
+                            </amx:tableLayout>
+                            <amx:setPropertyListener id="spl51" from="#{row.id}" to="#{pageFlowScope.incidentId}"/>
+                        </amx:listItem>
+                    </amx:listView>
+                    <amx:fragment src="/fragments/NoItemFragment.amxf" id="f41" styleClass="fullSize"
+                          rendered="#{pageFlowScope.isNoDataFoundAssetIncidentsReportController}"></amx:fragment>
+                </amx:facet>
+            </amx:panelStretchLayout>
+        </amx:deck>
+        <amx:facet name="footer">
+            <amx:tableLayout id="tl21" shortDesc="table" width="#{deviceScope.hardware.screen.width-20}"
+                             halign="center">
+                <amx:rowLayout id="rl15">
+                    <amx:cellFormat id="cf19" shortDesc="cell" width="33%">
+                        <amx:commandLink id="cl2"
+                                         styleClass="fullSize phoneToolbarItem#{pageFlowScope.summaryView eq 'summary' ? 'Selected' : 'Enabled'}"
+                                         shortDesc="Summary Toolbar Link">
+                            <amx:panelGroupLayout id="pgl10" halign="center">
+                                <amx:image id="i9"
+                                           source="/images/summary_#{pageFlowScope.summaryView eq 'summary' ? 'selected' : 'enabled'}_nav_bar_icon.png"
+                                           shortDesc="Summary Toolbar Image"/>
+                                <amx:outputText value="Summary" id="ot4"/>
+                            </amx:panelGroupLayout>
+                            <amx:setPropertyListener id="spl2" from="summary" to="#{pageFlowScope.summaryView}"/>
+                        </amx:commandLink>
+                    </amx:cellFormat>
+                    <amx:cellFormat id="cf48" shortDesc="cell" width="33%">
+                        <amx:commandLink id="cl41"
+                                 styleClass="fullSize phoneToolbarItem#{pageFlowScope.summaryView eq 'incidents' ? 'Selected' : 'Enabled'}"
+                                 shortDesc="Incidents Toolbar Link">
+                            <amx:panelGroupLayout id="pgl41" halign="center">
+                                <amx:image id="i40"
+                                       source="/images/func_document_32#{pageFlowScope.summaryView eq 'incidents' ? '' : '_edited'}.png"
+                                       shortDesc="Incidents Toolbar Image"/>
+                                <amx:outputText value="Incidents" id="ot40"/>
+                            </amx:panelGroupLayout>
+                            <amx:setPropertyListener id="spl40" from="incidents" to="#{pageFlowScope.summaryView}"/>
+                            <amx:actionListener id="al41" binding="#{bindings.initReport1.execute}"/>
+                        </amx:commandLink>
+                    </amx:cellFormat>
+                </amx:rowLayout>
+            </amx:tableLayout>
+        </amx:facet>
+  </amx:panelPage>
+</amx:view>

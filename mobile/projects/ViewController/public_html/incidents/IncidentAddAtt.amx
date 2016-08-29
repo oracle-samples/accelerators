@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/* *********************************************************************************************
+ *  This file is part of the Oracle Service Cloud Accelerator Reference Integration set published
+ *  by Oracle Service Cloud under the MIT license (MIT) included in the original distribution.
+ *  Copyright (c) 2014, 2015, 2016 Oracle and/or its affiliates. All rights reserved.
+ ***********************************************************************************************
+ *  Accelerator Package: Mobile Agent App Accelerator
+ *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
+ *  OSvC release: 16.8 (August 2016)
+ *  MAF release: 2.3
+ *  reference: 151217-000185
+ *  date: Tue Aug 23 16:35:53 PDT 2016
+
+ *  revision: rnw-16-8-fixes-release-01
+ *  SHA1: $Id: 2d929382d8153d29918d14c56a5e7a9f464861db $
+ * *********************************************************************************************
+ *  File: IncidentAddAtt.amx
+ * *********************************************************************************************/
+-->
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+  <amx:panelPage id="pp1">
+    <amx:facet name="header">
+      <amx:outputText value="Add Attachment" id="ot1"/>
+    </amx:facet>
+    <amx:facet name="primary">
+      <amx:commandButton id="cb1" action="__back" shortDesc="back">
+        <amx:setPropertyListener id="spl1" from="attachmentsPanel" to="#{pageFlowScope.panelID}"/>
+      </amx:commandButton>
+    </amx:facet>
+    <!--<amx:facet name="secondary">
+      <amx:commandButton id="cb2"/>
+    </amx:facet>-->
+
+    <amx:outputText value="Incident:" id="ot20"
+                    inlineStyle="margin-left:2%; font-weight:bold;"/>
+    <amx:panelFormLayout id="pfl1">
+      <amx:panelLabelAndMessage label="Subject" id="plam1">
+        <amx:outputText value="#{bindings.subject.inputValue}" id="ot4" inlineStyle="overflow-wrap:break-word;"/>
+      </amx:panelLabelAndMessage>
+    </amx:panelFormLayout>
+
+    <amx:panelGroupLayout id="pgl4">
+      <!-- select the size of the image -->
+      <amx:selectOneChoice value="#{bindings.sizeSlider.inputValue}" label="First, pick size to upload:"
+                           readOnly="#{bindings.isPictureDataSet.inputValue == '1'}" id="soc1">
+        <amx:selectItem id="selectItem1" label="Small" value="0"/>
+        <amx:selectItem id="selectItem2" label="Medium" value="1"/>
+        <amx:selectItem id="selectItem3" label="Large" value="2"/>
+      </amx:selectOneChoice>
+      
+        <amx:tableLayout id="tl1-buttons" width="100%" shortDesc="buttonstable">
+          <amx:rowLayout id="rl1">
+            <amx:cellFormat id="cf1" shortDesc="button-left" width="50%" inlineStyle="padding-right:5px;">
+              <!-- invokes the picture picker -->
+              <amx:commandButton actionListener="#{bindings.GetPicture.execute}"
+                                 text="#{pageFlowScope.attachmentSourceType == 'snapPhoto' ? 'Take Photo' : 'Select Photo'}"
+                                 shortDesc="add" inlineStyle="margin-left:2%; font-weight:bold;" id="cb3"
+                                 disabled="#{!bindings.GetPicture.enabled}"/>
+            </amx:cellFormat>
+            <amx:cellFormat id="cf2" shortDesc="button-right" width="50%" inlineStyle="padding-left:5px;">
+              <!-- upload button (formerly last button) -->
+              <amx:commandButton actionListener="#{bindings.uploadAttachment.execute}" text="Upload Attachment"
+                                 inlineStyle="margin-left:2%; font-weight:bold; "
+                                 disabled="#{!bindings.uploadAttachment.enabled}" id="cb2" shortDesc="uploadOne">
+                <!-- PFL is set from the select record -->
+                <amx:actionListener id="al1" binding="#{bindings.initAttachmentsListWithPFLId.execute}"/>
+              </amx:commandButton>
+            </amx:cellFormat>
+          </amx:rowLayout>
+        </amx:tableLayout>
+        
+      <!-- this one displays the filename: DISABLED -->
+      <amx:outputText id="ot2" rendered="#{bindings.isPictureDataSet.inputValue=='0definitelyRender-filename'}"
+                      value="#{bindings.pictureData.inputValue}"/>
+      <!-- image displayed -->
+      <amx:panelGroupLayout id="pgl5" rendered="#{bindings.isPictureDataSet.inputValue!='0'}">
+        <amx:image id="file" rendered="#{bindings.destination.inputValue=='1'}"
+                   source="#{bindings.pictureData.inputValue}" shortDesc="img in file"/>
+        <amx:image id="data" rendered="#{bindings.destination.inputValue=='0'}"
+                   source="data:image/png;base64,#{bindings.pictureData.inputValue}" shortDesc="img in data"/>
+      </amx:panelGroupLayout>
+      
+    <!--<amx:panelFormLayout id="pfl3">
+      <amx:selectOneChoice label="Select File" id="soc7" value="#{bindings.attachmentName.inputValue}">
+        <amx:selectItem id="si29" label="file1.txt" value="file1.txt"/>
+      </amx:selectOneChoice>
+    </amx:panelFormLayout>-->
+      <!--<amx:panelGroupLayout id="pgl3" layout="horizontal">
+        <amx:commandButton actionListener="#{bindings.addFileNameToList.execute}" text="Add File"
+                           disabled="#{!bindings.addFileNameToList.enabled}" id="cb3" shortDesc="forFilenames"/>
+        <amx:outputText value="#{bindings.attNameFileDisplayed.inputValue}" id="ot3"/>
+      </amx:panelGroupLayout>-->
+      
+    </amx:panelGroupLayout>
+
+  </amx:panelPage>
+</amx:view>

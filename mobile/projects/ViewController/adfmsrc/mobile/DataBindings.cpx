@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/* *********************************************************************************************
+ *  $ACCELERATOR_HEADER_PLACE_HOLDER$
+ *  SHA1: $Id: $
+ * *********************************************************************************************
+ *  File: $ACCELERATOR_HEADER_FILE_NAME_PLACE_HOLDER$
+ * *********************************************************************************************/
+-->
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.1.3.13.26" id="DataBindings"
+             SeparateXMLFiles="false" Package="mobile" ClientType="Generic">
+  <definitionFactories>
+    <factory nameSpace="http://xmlns.oracle.com/adfm/dvt"
+             className="oracle.adfinternal.view.faces.dvt.model.binding.FacesBindingFactory"/>
+  </definitionFactories>
+  <pageMap>
+    <page path="/springboard/Springboard.amx" usageId="mobile_SpringboardPageDef"/>
+    <page path="/contacts/Contacts.amx" usageId="mobile_ContactsPageDef"/>
+    <page path="/organizations/Organizations.amx" usageId="mobile_OrganizationsPageDef"/>
+    <page path="/settings/Settings.amx" usageId="mobile_SettingsPageDef"/>
+    <page path="/tasks/Tasks.amx" usageId="mobile_TasksPageDef"/>
+    <page path="/incidents/Incidents.amx" usageId="mobile_IncidentsPageDef"/>
+    <page path="/incidents/IncidentEdit.amx" usageId="mobile_IncidentEditPageDef"/>
+    <page path="/incidents/IncidentDetail.amx" usageId="mobile_IncidentDetailPageDef"/>
+    <page path="/organizations/OrganizationDetail.amx" usageId="mobile_OrganizationDetailPageDef"/>
+    <page path="/incidents/NewIncident.amx" usageId="mobile_NewIncidentPageDef"/>
+    <page path="/contacts/ContactDetail.amx" usageId="mobile_ContactDetailPageDef"/>
+    <page path="/incidents/IncidentAttView.amx" usageId="mobile_IncidentAttViewPageDef"/>
+    <page path="/incidents/IncidentAddAtt.amx" usageId="mobile_IncidentAddAttPageDef"/>
+    <page path="/products/SearchProduct.amx" usageId="mobile_SearchProductPageDef"/>
+    <page path="/contacts/NewContact.amx" usageId="mobile_NewContactPageDef"/>
+    <page path="/contacts/SearchContactForSelect.amx" usageId="mobile_SearchContactForSelectPageDef"/>
+    <page path="/about/About.amx" usageId="mobile_AboutPageDef"/>
+    <page path="/logout/Logout.amx" usageId="mobile_LogoutPageDef"/>
+    <page path="/organizations/OrganizationEdit.amx" usageId="mobile_OrganizationEditPageDef"/>
+    <page path="/incidents/SearchCategory.amx" usageId="mobile_SearchCategoryPageDef"/>
+    <page path="/tasks/TaskDetail.amx" usageId="mobile_TaskDetailPageDef"/>
+    <page path="/threads/NewThread.amx" usageId="mobile_NewThreadPageDef"/>
+    <page path="/threads/ThreadDetail.amx" usageId="mobile_ThreadDetailPageDef"/>
+    <page path="/contacts/ContactEdit.amx" usageId="mobile_ContactEditPageDef"/>
+    <page path="/incidents/SPenAttView.amx" usageId="mobile_SPenAttViewPageDef"/>
+    <page path="/dashboard/Dashboard.amx" usageId="mobile_DashboardPageDef"/>
+    <page path="/login/Login.amx" usageId="mobile_LoginPageDef"/>
+    <page path="/assets/Assets.amx" usageId="mobile_AssetsPageDef"/>
+    <page path="/assets/AssetDetail.amx" usageId="mobile_AssetDetailPageDef"/>
+    <page path="/assets/SearchAsset.amx" usageId="mobile_SearchAssetPageDef"/>
+    <page path="/tasks/NewTask.amx" usageId="mobile_NewTaskPageDef"/>
+    <page path="/incidents/SearchIncidentForSelect.amx" usageId="mobile_SearchIncidentForSelectPageDef"/>
+    <page path="/answers/Answers.amx" usageId="mobile_AnswersPageDef"/>
+    <page path="/notes/NewNote.amx" usageId="mobile_NewNotePageDef"/>
+    <page path="/answers/AnswerDetail.amx" usageId="mobile_AnswerDetailPageDef"/>
+    <page path="/tasks/TaskEdit.amx" usageId="mobile_TaskEditPageDef"/>
+    <page path="/assets/NewAsset.amx" usageId="mobile_NewAssetPageDef"/>
+    <page path="/assets/AssetEdit.amx" usageId="mobile_AssetEditPageDef"/>
+    <page path="/assets/SearchProducCatalogueForSelect.amx" usageId="mobile_SearchProducCatalogueForSelectPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="mobile_SpringboardPageDef" path="springboard.SpringboardPageDef"/>
+    <page id="mobile_ContactsPageDef" path="contacts.ContactsPageDef"/>
+    <page id="mobile_OrganizationsPageDef" path="organizations.OrganizationsPageDef"/>
+    <page id="mobile_SettingsPageDef" path="settings.SettingsPageDef"/>
+    <page id="mobile_TasksPageDef" path="tasks.TasksPageDef"/>
+    <page id="mobile_IncidentsPageDef" path="incidents.IncidentsPageDef"/>
+    <page id="mobile_IncidentEditPageDef" path="incidents.IncidentEditPageDef"/>
+    <page id="mobile_IncidentDetailPageDef" path="incidents.IncidentDetailPageDef"/>
+    <page id="mobile_OrganizationDetailPageDef" path="organizations.OrganizationDetailPageDef"/>
+    <page id="mobile_NewIncidentPageDef" path="incidents.NewIncidentPageDef"/>
+    <page id="mobile_ContactDetailPageDef" path="contacts.ContactDetailPageDef"/>
+    <page id="mobile_IncidentAttViewPageDef" path="incidents.IncidentAttViewPageDef"/>
+    <page id="mobile_IncidentAddAttPageDef" path="incidents.IncidentAddAttPageDef"/>
+    <page id="mobile_SearchProductPageDef" path="products.SearchProductPageDef"/>
+    <page id="mobile_NewContactPageDef" path="contacts.NewContactPageDef"/>
+    <page id="mobile_SearchContactForSelectPageDef" path="contacts.SearchContactForSelectPageDef"/>
+    <page id="mobile_AboutPageDef" path="about.AboutPageDef"/>
+    <page id="mobile_LogoutPageDef" path="logout.LogoutPageDef"/>
+    <page id="mobile_OrganizationEditPageDef" path="organizations.OrganizationEditPageDef"/>
+    <page id="mobile_SearchCategoryPageDef" path="incidents.SearchCategoryPageDef"/>
+    <page id="mobile_TaskDetailPageDef" path="tasks.TaskDetailPageDef"/>
+    <page id="mobile_NewThreadPageDef" path="threads.NewThreadPageDef"/>
+    <page id="mobile_ThreadDetailPageDef" path="threads.ThreadDetailPageDef"/>
+    <page id="mobile_ContactEditPageDef" path="contacts.ContactEditPageDef"/>
+    <page id="mobile_SPenAttViewPageDef" path="incidents.SPenAttViewPageDef"/>
+    <page id="mobile_DashboardPageDef" path="dashboard.DashboardPageDef"/>
+    <page id="mobile_LoginPageDef" path="login.LoginPageDef"/>
+    <page id="mobile_AssetsPageDef" path="assets.AssetsPageDef"/>
+    <page id="mobile_AssetDetailPageDef" path="assets.AssetDetailPageDef"/>
+    <page id="mobile_SearchAssetPageDef" path="assets.SearchAssetPageDef"/>
+    <page id="mobile_NewTaskPageDef" path="tasks.NewTaskPageDef"/>
+    <page id="mobile_SearchIncidentForSelectPageDef" path="incidents.SearchIncidentForSelectPageDef"/>
+    <page id="mobile_AnswersPageDef" path="answers.AnswersPageDef"/>
+    <page id="mobile_NewNotePageDef" path="notes.NewNotePageDef"/>
+    <page id="mobile_AnswerDetailPageDef" path="answers.AnswerDetailPageDef"/>
+    <page id="mobile_TaskEditPageDef" path="tasks.TaskEditPageDef"/>
+    <page id="mobile_NewAssetPageDef" path="assets.NewAssetPageDef"/>
+    <page id="mobile_AssetEditPageDef" path="assets.AssetEditPageDef"/>
+    <page id="mobile_SearchProducCatalogueForSelectPageDef" path="assets.SearchProducCatalogueForSelectPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <dc id="ProductCatalogueSelectionReportController" path="mobile.ProductCatalogueSelectionReportController"/>
+    <dc id="AssetSearchFiltersController" path="mobile.AssetSearchFiltersController"/>
+    <dc id="AnswerSearchFiltersController" path="mobile.AnswerSearchFiltersController"/>
+    <dc id="AnswerController" path="mobile.AnswerController"/>
+    <dc id="AnswerReportController" path="mobile.AnswerReportController"/>
+    <dc id="TaskSearchFiltersController" path="mobile.TaskSearchFiltersController"/>
+    <dc id="IncidentAttachmentReportController" path="mobile.IncidentAttachmentReportController"/>
+    <dc id="TaskNoteReportController" path="mobile.TaskNoteReportController"/>
+    <dc id="AssetSelectionReportController" path="mobile.AssetSelectionReportController"/>
+    <dc id="AssetController" path="mobile.AssetController"/>
+    <dc id="AssetReportController" path="mobile.AssetReportController"/>
+    <dc id="TaskReportController" path="mobile.TaskReportController"/>
+    <dc id="OrganizationContactReportController" path="mobile.OrganizationContactReportController"/>
+    <dc id="OrganizationSearchFiltersController" path="mobile.OrganizationSearchFiltersController"/>
+    <dc id="ContactSearchFiltersController" path="mobile.ContactSearchFiltersController"/>
+    <dc id="IncidentSearchFiltersController" path="mobile.IncidentSearchFiltersController"/>
+    <dc id="ListOfValueBean" path="mobile.ListOfValueBean"/>
+    <dc id="BarcodeScannerBean" path="mobile.BarcodeScannerBean"/>
+    <dc id="DashboardReportController" path="mobile.DashboardReportController"/>
+    <dc id="ThreadController" path="mobile.ThreadController"/>
+    <dc id="OrganizationSearchReportController" path="mobile.OrganizationSearchReportController"/>
+    <dc id="ContactSearchReportController" path="mobile.ContactSearchReportController"/>
+    <dc id="IncidentSearchReportController" path="mobile.IncidentSearchReportController"/>
+    <dc id="TaskController" path="mobile.TaskController"/>
+    <dc id="SearchOrganizationController" path="mobile.SearchOrganizationController"/>
+    <dc id="SearchContactController" path="mobile.SearchContactController"/>
+    <dc id="SearchIncidentController" path="mobile.SearchIncidentController"/>
+    <dc id="LogoutController" path="mobile.LogoutController"/>
+    <dc id="ConfigurationHandler" path="mobile.ConfigurationHandler"/>
+    <dc id="ContactSelectionReportController" path="mobile.ContactSelectionReportController"/>
+    <dc id="ProductSelectionReportController" path="mobile.ProductSelectionReportController"/>
+    <dc id="CategorySelectionReportController" path="mobile.CategorySelectionReportController"/>
+    <dc id="IncidentAttachmentsController" path="mobile.IncidentAttachmentsController"/>
+    <dc id="ContactController" path="mobile.ContactController"/>
+    <dc id="AdderBean" path="mobile.AdderBean"/>
+    <dc id="OrganizationController" path="mobile.OrganizationController"/>
+    <dc id="IncidentTaskReportController" path="mobile.IncidentTaskReportController"/>
+    <dc id="IncidentThreadReportController" path="mobile.IncidentThreadReportController"/>
+    <dc id="OrganizationReportController" path="mobile.OrganizationReportController"/>
+    <dc id="ContactReportController" path="mobile.ContactReportController"/>
+    <dc id="InboxReportController" path="mobile.InboxReportController"/>
+    <dc id="IncidentController" path="mobile.IncidentController"/>
+    <dc id="ApplicationFeatures" path="application.ApplicationFeatures"/>
+    <dc id="ContactIncidentsReportController" path="mobile.ContactIncidentsReportController"/>
+    <dc id="OrganizationIncidentsReportController" path="mobile.OrganizationIncidentsReportController"/>
+    <dc id="AssetIncidentsReportController" path="mobile.AssetIncidentsReportController"/>
+  </dataControlUsages>
+</Application>

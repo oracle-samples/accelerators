@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/* *********************************************************************************************
+ *  This file is part of the Oracle Service Cloud Accelerator Reference Integration set published
+ *  by Oracle Service Cloud under the MIT license (MIT) included in the original distribution.
+ *  Copyright (c) 2014, 2015, 2016 Oracle and/or its affiliates. All rights reserved.
+ ***********************************************************************************************
+ *  Accelerator Package: Mobile Agent App Accelerator
+ *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
+ *  OSvC release: 16.8 (August 2016)
+ *  MAF release: 2.3
+ *  reference: 151217-000185
+ *  date: Tue Aug 23 16:35:52 PDT 2016
+
+ *  revision: rnw-16-8-fixes-release-01
+ *  SHA1: $Id: c3cd6c2ddd41a1ffee98375be81f0ff7b7cb246f $
+ * *********************************************************************************************
+ *  File: SearchProducCatalogueForSelect.amx
+ * *********************************************************************************************/
+-->
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+  <amx:panelPage id="pp1">
+    <amx:facet name="header">
+      <amx:outputText value="Search Product Catalogue" id="ot1"/>
+    </amx:facet>
+    <amx:facet name="primary">
+      <amx:commandButton id="cb1" action="__back"/>
+    </amx:facet>
+    <amx:panelStretchLayout id="psl1">
+      <amx:facet name="top">
+        <amx:inputText value="#{bindings.searchValue.inputValue}" simple="true" id="it1" hintText="Search Text"
+                       keyboardDismiss="search" valueChangeListener="#{bindings.searchSelectionFromDB.execute}"/>
+      </amx:facet>
+      <amx:facet name="center">
+        <amx:listView var="row" value="#{bindings.ReportItem.collectionModel}"
+                      fetchSize="#{bindings.ReportItem.rangeSize}"
+                      initialScrollRowKeys="#{bindings.ReportItem.collectionModel.selectedRow}"
+                      showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1" rendered="#{!pageFlowScope.isNoDataFound}">
+          <amx:listItem id="li1" showLinkIcon="false" action="__back">
+            <amx:outputText value="#{row.attr1}" id="ot2"/>
+            <amx:setPropertyListener id="spl1" from="#{row.id}" to="#{pageFlowScope.productCatalogueId}"/>
+            <amx:setPropertyListener id="spl2" from="#{row.attr1}" to="#{pageFlowScope.productCatalogueName}"/>
+          </amx:listItem>
+        </amx:listView>
+        <amx:listView var="row" showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv2" rendered="#{pageFlowScope.isNoDataFound}">
+            <amx:listItem id="li2" showLinkIcon="false" shortDesc="No Data Found">
+                <amx:outputText value="No Data Found" id="ot8"
+                        inlineStyle="color:GrayText; text-align:center; font-weight:bold;"/>
+            </amx:listItem>
+        </amx:listView>
+      </amx:facet>
+    </amx:panelStretchLayout>
+  </amx:panelPage>
+</amx:view>

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/* *********************************************************************************************
+ *  This file is part of the Oracle Service Cloud Accelerator Reference Integration set published
+ *  by Oracle Service Cloud under the MIT license (MIT) included in the original distribution.
+ *  Copyright (c) 2014, 2015, 2016 Oracle and/or its affiliates. All rights reserved.
+ ***********************************************************************************************
+ *  Accelerator Package: Mobile Agent App Accelerator
+ *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
+ *  OSvC release: 16.8 (August 2016)
+ *  MAF release: 2.3
+ *  reference: 151217-000185
+ *  date: Tue Aug 23 16:35:56 PDT 2016
+
+ *  revision: rnw-16-8-fixes-release-01
+ *  SHA1: $Id: 9bafb2ce6814998f7bfce856e22a30d4d93960b1 $
+ * *********************************************************************************************
+ *  File: Tasks.amx
+ * *********************************************************************************************/
+-->
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+    <amx:panelPage id="pp1">
+        <amx:facet name="header">
+            <amx:outputText value="My Tasks" id="ot1"/>
+        </amx:facet>
+        <amx:facet name="primary">
+            <amx:commandButton id="cb1" action="__back" rendered="#{pageFlowScope.showBackButton eq 'true'}"
+                               shortDesc="Back Button"/>
+            <amx:commandLink id="cl1" actionListener="#{bindings.toggleSpringboard.execute}"
+                             styleClass="springboard-icon" shortDesc="Springboard Link"
+                             rendered="#{pageFlowScope.showBackButton ne 'true'}">
+                <amx:image id="i1" source="/images/func_springboard_32@2x.png" shortDesc="Springboard Image"
+                           styleClass="actionIcon"/>
+            </amx:commandLink>
+        </amx:facet>
+        <amx:facet name="secondary">
+            <amx:commandLink id="cl2" action="goToCreate" shortDesc="Go to create">
+                <amx:image id="i2" source="/images/func_plus_32@2x.png" shortDesc="Add icon" styleClass="actionIcon"/>
+            </amx:commandLink>
+            <amx:commandLink id="cl5" shortDesc="go to search">
+                <amx:showPopupBehavior id="spb1" popupId="p1" type="action" align="overlapMiddleCenter" alignId="pp1"/>
+                <amx:image id="im3" source="/images/func_search_32@2x.png" shortDesc="search icon"
+                           styleClass="actionIcon"/>
+            </amx:commandLink>
+        </amx:facet>
+        <amx:listView var="row" value="#{bindings.report.collectionModel}" fetchSize="#{bindings.report.rangeSize}"
+                      selectedRowKeys="#{bindings.report.collectionModel.selectedRow}"
+                      selectionListener="#{bindings.report.collectionModel.makeCurrent}"
+                      bufferStrategy="viewport" id="lv1">
+            <amx:listItem id="li1" action="goToTaskDetail" shortDesc="a task item">
+                <amx:tableLayout width="100%" id="tl1" shortDesc="table inside the list item">
+                    <amx:rowLayout id="rl2">
+                        <amx:cellFormat width="10px" rowSpan="2" id="cf5" shortDesc="cell"/>
+                        <amx:cellFormat width="60%" height="#{deviceScope.device.os=='Android'?'36':'32'}px" id="cf4" shortDesc="cell">
+                            <amx:outputText value="#{row.attr1}" id="ot4"/>
+                        </amx:cellFormat>
+                        <amx:cellFormat width="10px" rowSpan="2" id="cf3" shortDesc="cell"/>
+                        <amx:cellFormat width="40%" halign="end" id="cf6" shortDesc="cell">
+                            <amx:outputText value="#{row.attr2}" styleClass="adfmf-listItem-highlightText" id="ot5"/>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                    <amx:rowLayout id="rl1">
+                        <amx:cellFormat width="60%" height="#{deviceScope.device.os=='Android'?'22':'19'}px" id="cf2" shortDesc="cell">
+                            <amx:outputText value="#{row.attr3}" styleClass="adfmf-listItem-captionText" id="ot3"/>
+                        </amx:cellFormat>
+                        <amx:cellFormat width="40%" halign="end" id="cf1" shortDesc="cell">
+                            <amx:outputText value="#{row.attr4}" styleClass="adfmf-listItem-captionText" id="ot2"/>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                </amx:tableLayout>
+                <amx:setPropertyListener id="spl1" from="#{row.id}" to="#{pageFlowScope.taskId}"/>
+                <amx:setPropertyListener id="spl2" to="#{pageFlowScope.summaryView}" from="summary"/>
+            </amx:listItem>
+        </amx:listView>
+        <amx:fragment src="/fragments/NoItemFragment.amxf" id="f1" styleClass="fullSize"
+                      rendered="#{pageFlowScope.isNoDataFoundTaskReportController}"></amx:fragment>
+    </amx:panelPage>
+    <amx:popup id="p1" animation="slideDown" autoDismiss="true" backgroundDimming="on"
+               inlineStyle="width:98%;height:80%" shortDesc="popop to search tasks ">
+        <amx:panelStretchLayout id="psl1">
+            <amx:facet name="top">
+                <amx:panelGroupLayout id="pgl1">
+                    <amx:tableLayout id="tl2" cellSpacing="5" width="100%">
+                        <amx:rowLayout id="rl3">                            
+                            <amx:cellFormat id="cf12" width="100%"/>
+                            <amx:cellFormat id="cf13" height="25px" width="30px" halign="end">
+                                <amx:panelGroupLayout id="pgl4" halign="end" valign="middle">
+                                    <amx:commandLink id="cl6" actionListener="#{bindings.doCancel.execute}"
+                                                     shortDesc="Cancel Searching">
+                                        <amx:image id="i3" source="/images/func_remove_16_ena@2x.png"
+                                                   inlineStyle="height:25px; width:25px;" shortDesc="cancel"/>
+                                        <amx:closePopupBehavior id="cpb1" popupId="p1"/>
+                                    </amx:commandLink>
+                                </amx:panelGroupLayout>
+                            </amx:cellFormat>
+                        </amx:rowLayout>
+                    </amx:tableLayout>
+                    <amx:tableLayout id="tl3" cellSpacing="5" width="100%">
+                        <amx:rowLayout id="rl4">
+                            <amx:cellFormat id="cf7" height="35px" width="20%">
+                                <amx:panelGroupLayout id="pgl3" halign="center">
+                                    <amx:commandLink actionListener="#{bindings.doReset.execute}" text="Reset"
+                                                     id="cl3" shortDesc="Clear Search Criteria"
+                                                     styleClass="adfmf-commandLink-noUnderline"
+                                                     inlineStyle="font-weight:bold;"/>
+                                </amx:panelGroupLayout>
+                            </amx:cellFormat>
+                            <amx:cellFormat id="cf9" inlineStyle="width:60%;"/>
+                            <amx:cellFormat id="cf8" halign="end" width="20%" height="45px">
+                                <amx:panelGroupLayout id="pgl5">
+                                    <amx:commandLink actionListener="#{bindings.doSearch.execute}" text="Search"
+                                                     disabled="#{!bindings.doSearch.enabled}" id="cl4"
+                                                     shortDesc="Submit Searching"
+                                                     styleClass="adfmf-commandLink-noUnderline"
+                                                     inlineStyle="font-weight:bold;">
+                                        <amx:closePopupBehavior id="cpb2" popupId="p1"/>
+                                    </amx:commandLink>
+                                </amx:panelGroupLayout>
+                            </amx:cellFormat>
+                        </amx:rowLayout>
+                    </amx:tableLayout>
+                </amx:panelGroupLayout>
+            </amx:facet>
+            <amx:facet name="center">
+                <amx:panelGroupLayout id="pgl2">
+                    <amx:inputText value="#{bindings.name.inputValue}" label="Name" id="it1" hintText="task name to search for"/>
+                    <amx:inputText value="#{bindings.assigneeFirstName.inputValue}"
+                                   label="Assignee First Name" id="it2"/>
+                    <amx:inputText value="#{bindings.assigneeLastName.inputValue}"
+                                   label="Assignee Last Name" id="it3"/>
+                    <amx:selectOneChoice value="#{bindings.statusId.inputValue}" label="Status"
+                                         id="soc1">
+                        <amx:selectItem label="[No Value]" id="si1"/>
+                        <amx:selectItems value="#{bindings.statusId.items}" id="si2"/>
+                    </amx:selectOneChoice>
+                    <amx:inputDate value="#{bindings.dueDate.inputValue}" label="Due Date"
+                                   id="id1"/>
+                </amx:panelGroupLayout>
+            </amx:facet>
+        </amx:panelStretchLayout>
+    </amx:popup>
+</amx:view>

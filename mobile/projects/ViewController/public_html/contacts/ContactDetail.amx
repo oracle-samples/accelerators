@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/* *********************************************************************************************
+ *  This file is part of the Oracle Service Cloud Accelerator Reference Integration set published
+ *  by Oracle Service Cloud under the MIT license (MIT) included in the original distribution.
+ *  Copyright (c) 2014, 2015, 2016 Oracle and/or its affiliates. All rights reserved.
+ ***********************************************************************************************
+ *  Accelerator Package: Mobile Agent App Accelerator
+ *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
+ *  OSvC release: 16.8 (August 2016)
+ *  MAF release: 2.3
+ *  reference: 151217-000185
+ *  date: Tue Aug 23 16:35:52 PDT 2016
+
+ *  revision: rnw-16-8-fixes-release-01
+ *  SHA1: $Id: bd44c2b44f8671275a83bdc9dbbb6e5a0f652a1d $
+ * *********************************************************************************************
+ *  File: ContactDetail.amx
+ * *********************************************************************************************/
+-->
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+    <amx:panelPage id="pp1">
+        <amx:facet name="header">
+            <amx:outputText value="#{bindings.name.inputValue}" id="ot1" truncateAt="20"/>
+        </amx:facet>
+        <amx:facet name="primary">
+            <amx:commandButton id="cb1" action="__back" shortDesc="Back"/>
+        </amx:facet>
+        <amx:facet name="secondary">
+            <amx:commandLink id="cl4" action="goToEdit" shortDesc="edit incident"
+                             rendered="#{pageFlowScope.summaryView eq 'summary' ? 'true' : 'false'}">
+                <amx:image id="i3" source="/images/func_pencil01_32@2x.png" shortDesc="edit incident"
+                           styleClass="actionIcon"/>
+            </amx:commandLink>
+        </amx:facet>
+        <amx:deck id="d1" displayedChild="#{pageFlowScope.summaryView}" styleClass="fullSize" shortDesc="Detail Deck">
+            <amx:panelStretchLayout id="summary" scrollPolicy="scroll">
+                <amx:facet name="center">
+                    <amx:tableLayout width="100%" id="ctl2" shortDesc="Table">
+                        <amx:rowLayout id="crl2">
+                            <amx:cellFormat shortDesc="Cell" width="120px" halign="center" rowSpan="3" id="ccf3"
+                                            height="44">
+                                <amx:image source="/images/nopic.png" id="ci1" shortDesc="Person Image"
+                                           styleClass="tabletProfileImage"/>
+                            </amx:cellFormat>
+                            <amx:cellFormat shortDesc="Cell" id="ccf6" width="100%" height="38" valign="bottom">
+                                <amx:outputText value="#{bindings.name.inputValue}" id="cot2"
+                                                inlineStyle="margin:0;font-size:22px"/>
+                            </amx:cellFormat>
+                        </amx:rowLayout>
+                        <amx:rowLayout id="crl3">
+                            <amx:cellFormat shortDesc="Cell" height="32" id="ccf4">
+                                <amx:outputText value="#{bindings.title.inputValue}" id="cot3"
+                                                inlineStyle="margin:0;font-size:18px;color:#595960;"/>
+                            </amx:cellFormat>
+                        </amx:rowLayout>
+                        <amx:rowLayout id="crl4">
+                            <amx:cellFormat shortDesc="Cell" height="38" id="ccf5" valign="top">
+                                <amx:commandLink text="#{bindings.orgName.inputValue}" id="cl7"
+                                                 inlineStyle="margin:0;font-size:18px"
+                                                 styleClass="adfmf-commandLink-noUnderline"
+                                                 shortDesc="Organization Link" action="gotoOrganization">
+                                    <amx:setPropertyListener id="spl5" from="#{bindings.orgId.inputValue}"
+                                                             to="#{pageFlowScope.organizationId}"/>
+                                </amx:commandLink>
+                            </amx:cellFormat>
+                        </amx:rowLayout>
+                    </amx:tableLayout>
+                    <amx:panelGroupLayout id="pgl1">
+                        <amx:spacer id="s1"/>
+                        <amx:tableLayout id="tl1" width="100%" shortDesc="table">
+                            <amx:rowLayout id="rl1">
+                                <amx:cellFormat id="cf1" width="50" halign="center" height="38" shortDesc="cell">
+                                    <amx:panelGroupLayout id="pgl2" styleClass="phoneProfileCircleContainer phoneCircle"
+                                                          halign="center" valign="middle">
+                                        <amx:image id="i2" source="/images/work_phone_02b.svg" shortDesc="Work Phone"/>
+                                    </amx:panelGroupLayout>
+                                </amx:cellFormat>
+                                <amx:cellFormat id="cf2" width="100%" shortDesc="cell">
+                                    <amx:outputText value="Phones" id="ot2"
+                                                    inlineStyle="color:Orange; font-weight:bold;"/>
+                                </amx:cellFormat>
+                            </amx:rowLayout>
+                        </amx:tableLayout>
+                        <amx:panelFormLayout id="pfl1" labelWidth="35%" fieldHalign="start" fieldWidth="65%">
+                            <?audit suppress oracle.ide.xml.validation-error?>
+                            <amx:panelLabelAndMessage label="Office" id="plam1">
+                                <amx:goLink text="#{bindings.officePhone.inputValue}" id="gl5"
+                                            url="tel:#{bindings.officePhone.inputValue}"
+                                            styleClass="adfmf-goLink-noUnderline" shortDesc="Office Phone Link"/>
+                            </amx:panelLabelAndMessage>
+                            <amx:panelLabelAndMessage label="Mobile" id="plam2">
+                                <amx:goLink text="#{bindings.mobilePhone.inputValue}" id="gl4"
+                                            url="sms:#{bindings.mobilePhone.inputValue}"
+                                            styleClass="adfmf-goLink-noUnderline" shortDesc="Mobile Phone Link"/>
+                            </amx:panelLabelAndMessage>
+                            <amx:panelLabelAndMessage label="Home" id="plam3">
+                                <amx:goLink text="#{bindings.homePhone.inputValue}" id="gl2"
+                                            url="tel:#{bindings.homePhone.inputValue}"
+                                            styleClass="adfmf-goLink-noUnderline" shortDesc="Home Phone Link"/>
+                            </amx:panelLabelAndMessage>
+                        </amx:panelFormLayout>
+                        <amx:spacer id="s2"/>
+                        <amx:spacer id="s3"/>
+                        <amx:tableLayout id="tl2" width="100%" shortDesc="table">
+                            <amx:rowLayout id="rl3">
+                                <amx:cellFormat id="cf5" width="50" halign="center" height="38" shortDesc="cell">
+                                    <amx:panelGroupLayout id="pgl3" styleClass="phoneProfileCircleContainer emailCircle"
+                                                          halign="center" valign="middle">
+                                        <amx:image id="i4" source="/images/email_icon_02b.svg" shortDesc="Email Image"/>
+                                    </amx:panelGroupLayout>
+                                </amx:cellFormat>
+                                <amx:cellFormat id="cf3" width="100%" shortDesc="cell">
+                                    <amx:outputText value="Emails" id="ot3"
+                                                    inlineStyle="color:Green; font-weight:bold;"/>
+                                </amx:cellFormat>
+                            </amx:rowLayout>
+                        </amx:tableLayout>
+                        <amx:panelFormLayout id="pfl2" labelWidth="35%" fieldHalign="start" fieldWidth="65%">
+                            <?audit suppress oracle.ide.xml.validation-error?>
+                            <amx:panelLabelAndMessage label="Email" id="plam4">
+                                <amx:goLink text="#{bindings.email.inputValue}" id="gl3"
+                                            url="mailto:#{bindings.email.inputValue}"
+                                            styleClass="adfmf-goLink-noUnderline" shortDesc="Email Link"/>
+                            </amx:panelLabelAndMessage>
+                            <amx:panelLabelAndMessage label="Alt Email" id="plam5">
+                                <amx:goLink text="#{bindings.alternateEmail.inputValue}" id="gl1"
+                                            url="mailto:#{bindings.alternateEmail.inputValue}"
+                                            styleClass="adfmf-goLink-noUnderline" shortDesc="Email Link"/>
+                            </amx:panelLabelAndMessage>
+                        </amx:panelFormLayout>
+                        <amx:spacer id="s4"/>
+                        <amx:spacer id="s5"/>
+                        <amx:tableLayout id="tl3" width="100%" shortDesc="table">
+                            <amx:rowLayout id="rl7">
+                                <amx:cellFormat id="cf13" width="50" halign="center" height="38" shortDesc="cell">
+                                    <amx:panelGroupLayout id="pgl7"
+                                                          styleClass="phoneProfileCircleContainer locationCircle"
+                                                          halign="center" valign="middle">
+                                        <amx:image id="i8" source="/images/location_pin_icon.svg"
+                                                   shortDesc="Location Image"/>
+                                    </amx:panelGroupLayout>
+                                </amx:cellFormat>
+                                <amx:cellFormat id="cf14" width="100%" shortDesc="cell">
+                                    <amx:outputText value="Address" id="ot4"
+                                                    inlineStyle="color:Purple; font-weight:bold;"/>
+                                </amx:cellFormat>
+                            </amx:rowLayout>
+                        </amx:tableLayout>
+                        <amx:panelFormLayout id="pfl3" labelWidth="50px" fieldHalign="start" fieldWidth="65%">
+                            <?audit suppress oracle.ide.xml.validation-error?>
+                            <amx:panelLabelAndMessage label="" id="plam6">
+                                <amx:goLink text="#{bindings.address.inputValue}" id="gl6"
+                                            url="map:#{bindings.address.inputValue}"
+                                            styleClass="adfmf-goLink-noUnderline" shortDesc="Address Map Link"/>
+                            </amx:panelLabelAndMessage>
+                        </amx:panelFormLayout>
+                        <amx:spacer id="s6"/>
+                    </amx:panelGroupLayout>
+                </amx:facet>
+            </amx:panelStretchLayout>
+            <amx:panelStretchLayout id="incidents" scrollPolicy="scroll">
+                <amx:facet name="center">
+                    <amx:listView var="row" value="#{bindings.report.collectionModel}"
+                              fetchSize="#{bindings.report.rangeSize}"
+                              selectedRowKeys="#{bindings.report.collectionModel.selectedRow}"
+                              selectionListener="#{bindings.report.collectionModel.makeCurrent}"
+                              bufferStrategy="viewport" id="lv2">
+                        <amx:listItem id="li4" action="goToIncident">
+                            <amx:tableLayout width="100%" id="tl21">
+                                <amx:rowLayout id="rl31">
+                                    <amx:cellFormat width="10px" rowSpan="2" id="cf9"/>
+                                    <amx:cellFormat width="60%" height="#{deviceScope.device.os=='Android'?'36':'32'}px"
+                                            id="cf8">
+                                        <amx:outputText value="#{row.attr1}" id="ot12"/>
+                                    </amx:cellFormat>
+                                    <amx:cellFormat width="10px" rowSpan="2" id="cf10"/>
+                                    <amx:cellFormat width="40%" halign="end" id="cf7">
+                                        <amx:outputText value="#{row.attr2}" styleClass="adfmf-listItem-highlightText"
+                                                id="ot11"/>
+                                    </amx:cellFormat>
+                                </amx:rowLayout>
+                                <amx:rowLayout id="rl4">
+                                    <amx:cellFormat width="60%" height="#{deviceScope.device.os=='Android'?'22':'19'}px"
+                                            id="cf12">
+                                        <amx:outputText value="#{row.attr3}" styleClass="adfmf-listItem-captionText"
+                                            id="ot14"/>
+                                    </amx:cellFormat>
+                                    <amx:cellFormat width="40%" halign="end" id="cf11">
+                                        <amx:outputText value="#{row.attr4}" styleClass="adfmf-listItem-captionText"
+                                                id="ot13"/>
+                                    </amx:cellFormat>
+                                </amx:rowLayout>
+                            </amx:tableLayout>
+                            <amx:setPropertyListener id="spl51" from="#{row.id}" to="#{pageFlowScope.incidentId}"/>
+                        </amx:listItem>
+                    </amx:listView>
+                    <amx:fragment src="/fragments/NoItemFragment.amxf" id="f1" styleClass="fullSize"
+                          rendered="#{pageFlowScope.isNoDataFoundContactIncidentsReportController}"></amx:fragment>
+                </amx:facet>
+            </amx:panelStretchLayout>
+        </amx:deck>
+        <amx:facet name="footer">
+            <amx:tableLayout id="tl31" shortDesc="table" width="#{deviceScope.hardware.screen.width-20}"
+                             halign="center">
+                <amx:rowLayout id="rl15">
+                    <amx:cellFormat id="cf19" shortDesc="cell" width="50%">
+                        <amx:commandLink id="cl2"
+                                         styleClass="fullSize phoneToolbarItem#{pageFlowScope.summaryView eq 'summary' ? 'Selected' : 'Enabled'}"
+                                         shortDesc="Summary Toolbar Link">
+                            <amx:panelGroupLayout id="pgl10" halign="center">
+                                <amx:image id="i9"
+                                           source="/images/summary_#{pageFlowScope.summaryView eq 'summary' ? 'selected' : 'enabled'}_nav_bar_icon.png"
+                                           shortDesc="Summary Toolbar Image"/>
+                                <amx:outputText value="Summary" id="ot15"/>
+                            </amx:panelGroupLayout>
+                            <amx:setPropertyListener id="spl2" from="summary" to="#{pageFlowScope.summaryView}"/>
+                        </amx:commandLink>
+                    </amx:cellFormat>
+                    <amx:cellFormat id="cf27" shortDesc="cell" width="50%">
+                        <amx:commandLink id="cl3"
+                                 styleClass="fullSize phoneToolbarItem#{pageFlowScope.summaryView eq 'incidents' ? 'Selected' : 'Enabled'}"
+                                 shortDesc="Contact Toolbar Link">
+                            <amx:panelGroupLayout id="pgl11" halign="center">
+                                <amx:image id="i10"
+                                       source="/images/func_document_32#{pageFlowScope.summaryView eq 'incidents' ? '' : '_edited'}.png"
+                                       shortDesc="Incidents Toolbar Image"/>
+                                <amx:outputText value="Incidents" id="ot5"/>
+                            </amx:panelGroupLayout>
+                            <amx:setPropertyListener id="spl3" from="incidents" to="#{pageFlowScope.summaryView}"/>
+                            <amx:actionListener id="al1" binding="#{bindings.initReport.execute}"/>
+                        </amx:commandLink>
+                    </amx:cellFormat>
+                </amx:rowLayout>
+            </amx:tableLayout>
+        </amx:facet>
+    </amx:panelPage>
+</amx:view>

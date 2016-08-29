@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/* *********************************************************************************************
+ *  This file is part of the Oracle Service Cloud Accelerator Reference Integration set published
+ *  by Oracle Service Cloud under the MIT license (MIT) included in the original distribution.
+ *  Copyright (c) 2014, 2015, 2016 Oracle and/or its affiliates. All rights reserved.
+ ***********************************************************************************************
+ *  Accelerator Package: Mobile Agent App Accelerator
+ *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
+ *  OSvC release: 16.8 (August 2016)
+ *  MAF release: 2.3
+ *  reference: 151217-000185
+ *  date: Tue Aug 23 16:35:46 PDT 2016
+
+ *  revision: rnw-16-8-fixes-release-01
+ *  SHA1: $Id: 539b359a948e06fbe58167559c8d55817b0adfaa $
+ * *********************************************************************************************
+ *  File: maf-plugins.xml
+ * *********************************************************************************************/
+-->
+<maf-plugins xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.oracle.com/adf/mf">
+  <cordova-plugins>
+    <core-cordova-plugin id="c1" pluginId="cordova-plugin-camera"/>
+    <core-cordova-plugin id="c3" pluginId="cordova-plugin-network-information"/>
+    <cordova-plugin id="c6" pluginId="cordova-plugin-dialogs" path="../../src/org.apache.cordova.dialogs/">
+      <platform id="p4" name="android" enabled="true"/>
+      <platform id="p5" name="ios" enabled="true"/>
+      <platform id="p6" name="windows" enabled="true"/>
+    </cordova-plugin>
+  </cordova-plugins>
+</maf-plugins>

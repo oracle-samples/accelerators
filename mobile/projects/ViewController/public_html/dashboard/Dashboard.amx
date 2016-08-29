@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/* *********************************************************************************************
+ *  This file is part of the Oracle Service Cloud Accelerator Reference Integration set published
+ *  by Oracle Service Cloud under the MIT license (MIT) included in the original distribution.
+ *  Copyright (c) 2014, 2015, 2016 Oracle and/or its affiliates. All rights reserved.
+ ***********************************************************************************************
+ *  Accelerator Package: Mobile Agent App Accelerator
+ *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
+ *  OSvC release: 16.8 (August 2016)
+ *  MAF release: 2.3
+ *  reference: 151217-000185
+ *  date: Tue Aug 23 16:35:53 PDT 2016
+
+ *  revision: rnw-16-8-fixes-release-01
+ *  SHA1: $Id: 56e206333ec06e9b674af6df5854aa740d4c8ff4 $
+ * *********************************************************************************************
+ *  File: Dashboard.amx
+ * *********************************************************************************************/
+-->
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+    <amx:panelPage id="pp1">
+        <amx:facet name="header">
+            <amx:outputText value="My Dashboard" id="ot1"/>
+        </amx:facet>
+        <amx:facet name="primary">
+            <amx:commandLink id="cl1" actionListener="#{bindings.toggleSpringboard.execute}"
+                             styleClass="springboard-icon"
+                             shortDesc="Springboard Link">
+                <amx:image id="i1" source="/images/func_springboard_32@2x.png" shortDesc="Springboard Image"
+                           styleClass="actionIcon"/>
+            </amx:commandLink>
+        </amx:facet>
+        <amx:spacer id="sp1" height="20"/>
+        <amx:tableLayout width="100%" id="tl2" shortDesc="table for pie">
+            <amx:rowLayout id="rl3">
+                <amx:cellFormat height="35px" id="cf1" shortDesc="cell">
+                    <amx:panelGroupLayout id="pgl1" styleClass="dash-sectiontitle-pglheading">
+                        <amx:outputText value="Incidents Status" id="ot3" styleClass="dash-sectiontitle-text"/>
+                    </amx:panelGroupLayout>
+                </amx:cellFormat>
+            </amx:rowLayout>
+            <amx:rowLayout id="rl4">
+                <amx:cellFormat height="202px" width="100%" halign="center" id="cf2" shortDesc="piech_cell">
+                    <dvtm:pieChart value="#{bindings.PieSlice.collectionModel}" var="row" shortDesc="chart" id="pc1"
+                                   centerLabel="#{bindings.totalNumber.inputValue}"
+                                   styleClass="fullSize dash-section-pie1" dataSelection="single" innerRadius="0.55">
+                        <amx:facet name="dataStamp">
+                            <dvtm:pieDataItem label="#{row.name}" value="#{row.number}" id="pdi1" shortDesc="#{row.name}"
+                                              action="goToIncidentsFlow">
+                                <amx:setPropertyListener id="spl1" from="#{row.id}"
+                                                         to="#{applicationScope.pieItemFilter}"/>
+                            </dvtm:pieDataItem>
+                        </amx:facet>
+                        <dvtm:legend position="end" id="l1"/>
+                    </dvtm:pieChart>
+                </amx:cellFormat>
+            </amx:rowLayout>
+        </amx:tableLayout>
+        
+        <amx:spacer id="sp2" height="30"/>
+        
+        <amx:tableLayout id="tl1" shortDesc="table2for performance title" width="100%">
+            <amx:rowLayout id="rl1">
+                <amx:cellFormat id="cf3" shortDesc="cell" width="100%">
+                    <amx:panelGroupLayout id="pgl2" styleClass="dash-sectiontitle-pglheading">
+                        <amx:outputText value="Performance" id="ot2" styleClass="dash-sectiontitle-text"/>
+                    </amx:panelGroupLayout>
+                </amx:cellFormat>
+            </amx:rowLayout>
+        </amx:tableLayout>
+        
+        <amx:tableLayout id="tl3" shortDesc="table3 for performance data" width="100%">
+            <amx:rowLayout id="rl6">
+                <amx:cellFormat id="cf20" height="124px" width="33%" halign="center" shortDesc="cell">
+                
+                    <amx:panelGroupLayout styleClass="dashCircleYellow" halign="center" id="pgl3">
+                        <amx:outputText value="45s" styleClass="dashCircleText" id="ot4"/>
+                    </amx:panelGroupLayout>
+                </amx:cellFormat>
+                <amx:cellFormat id="cf21" height="124px" width="33%" halign="center" shortDesc="cell">
+                    
+                    <amx:panelGroupLayout styleClass="dashCircleGreen" halign="center" id="pgl4">
+                        <amx:outputText value="12s" styleClass="dashCircleText" id="ot5"/>
+                    </amx:panelGroupLayout>
+                    
+                </amx:cellFormat>
+                <amx:cellFormat id="cf5" height="124px" width="34%" halign="center" shortDesc="cell">
+                    <dvtm:statusMeterGauge id="statusMeterGauge1" orientation="circular" value="67" 
+                        thresholdDisplay="currentOnly" minValue="0" maxValue="100" 
+                        animationOnDisplay="auto" animationOnDataChange="auto" animationDuration="1000" 
+                        styleClass="dashGauge">
+                        <?audit suppress oracle.maf.warning-missing-shortDesc?>
+                        <!-- The Filling . #6BC387 v.green #EBEBF2 needed dk. gray -->
+                        <!--<dvtm:threshold  id="t1" maxValue="00" color="#6BC387"/>
+                        <dvtm:threshold  id="t2" maxValue="100" color="#EBEBF2"/>-->
+                        <dvtm:gaugeLabelFormat id="glf1" scaling="none"/>
+                    </dvtm:statusMeterGauge>
+                </amx:cellFormat>
+            </amx:rowLayout>
+        
+            <amx:rowLayout id="rl7">
+                <amx:cellFormat id="cf10"  shortDesc="cell" width="33%" halign="center">
+                    <amx:outputText value="Average Handle Time (sec)" id="ot7" styleClass="dash-cell-subtitle"/>
+                </amx:cellFormat>
+                <amx:cellFormat id="cf11" shortDesc="cell" width="33%" halign="center"><!-- or text-align-center -->
+                    <amx:outputText value="Response Time (sec)" id="ot8" styleClass="dash-cell-subtitle"/>
+                </amx:cellFormat>
+                <amx:cellFormat id="cf12" shortDesc="cell" width="34%" halign="center">
+                    <amx:outputText value="1st Time Resolution (%)" id="ot9" styleClass="dash-cell-subtitle"/>
+                </amx:cellFormat>
+            </amx:rowLayout>
+        </amx:tableLayout>
+        
+        <amx:spacer id="sp3" height="30"/>
+        <amx:tableLayout id="tl4" shortDesc="table4for tasks title" width="100%">
+            <amx:rowLayout id="rl2">
+                <amx:cellFormat id="cf4" shortDesc="cell" width="100%">
+                    <amx:panelGroupLayout id="pgl5" styleClass="dash-sectiontitle-pglheading">
+                        <amx:outputText value="Tasks (top 3)" id="ot6" styleClass="dash-sectiontitle-text"/>
+                    </amx:panelGroupLayout>
+                </amx:cellFormat>
+            </amx:rowLayout>
+        </amx:tableLayout>
+        
+        
+        <amx:listView var="row" value="#{bindings.reportDashTasks.collectionModel}"
+                      fetchSize="#{bindings.reportDashTasks.rangeSize}"  styleClass="listView-insetListCopy"
+                      selectedRowKeys="#{bindings.reportDashTasks.collectionModel.selectedRow}"
+                      initialScrollRowKeys="#{bindings.reportDashTasks.collectionModel.selectedRow}"
+                      selectionListener="#{bindings.reportDashTasks.collectionModel.makeCurrent}"
+                      showMoreStrategy="off" id="lv1">
+            <amx:listItem id="li1" showLinkIcon="false" shortDesc="list item" action="goToTasksDetail">
+                <amx:tableLayout width="100%" id="tlTasks1" shortDesc="table for listitem"
+                                 styleClass="listView-insetListCopy-tableRow1" inlineStyle="margin-right: 0px;">
+                                 <!-- mg 10 is ins by TL in LI nocaret -->
+                    <amx:rowLayout id="rl5">
+                        <amx:cellFormat id="cf8" width="100%" shortDesc="task list row with name"
+                                        inlineStyle="background-color:#EBEBF2; border-width:thin; border-bottom-color:#EBEBF2;">
+                            <amx:outputText value="#{row.attr1}" id="ot11" styleClass="dash-tasks-namevalue"/>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                </amx:tableLayout>
+                <amx:tableLayout width="100%" id="tlTasks2" shortDesc="table for listitem with circles"
+                                styleClass="listView-insetListCopy-tableRow2" inlineStyle="margin-right: 0px;">
+                    <amx:rowLayout id="rlTasksTop">
+                        <amx:cellFormat id="cf14" width="10" halign="center" rowSpan="2" height="47"
+                                        shortDesc="cell empty start"/>
+                        <amx:cellFormat id="cf18" shortDesc="cell without accessory " width="22%">
+                            <amx:outputText value="Status:" id="ot16" styleClass="dash-tasks-label"/>
+                        </amx:cellFormat>
+                        <amx:cellFormat id="cf6" width="6" halign="center" rowSpan="2" height="47"
+                                        shortDesc="cell empty"/>
+                        <amx:cellFormat id="cf16" shortDesc="cell with status value">
+                            <amx:outputText value="#{row.attr3}" id="ot10" styleClass="dash-tasks-textvalue"/>
+                        </amx:cellFormat>
+                        <amx:cellFormat id="cf17" width="65" rowSpan="2" halign="center" valign="middle"
+                                        shortDesc="cell with meter gauge">
+                            <!-- row 7 in the report needs to be Percent Complete -->
+                            <dvtm:statusMeterGauge id="smg1" orientation="circular" minValue="0" maxValue="100"
+                                                   value="#{row.attr7}" thresholdDisplay="onIndicator"
+                                                   plotArea="on" inlineStyle="height:56px;width:56px;"
+                                                   indicatorSize="1">
+                                <?audit suppress oracle.maf.warning-missing-shortDesc?>
+                                <dvtm:threshold id="t1" maxValue="20" color="#ED6647" text="Low Completion"/>
+                                <dvtm:threshold id="t2" maxValue="5" color="#47BDEF" text="Complete"/>
+                                <dvtm:metricLabel id="ml2">
+                                    <amx:convertNumber id="cn2" integerOnly="true"/>
+                                </dvtm:metricLabel>
+                            </dvtm:statusMeterGauge>
+                        </amx:cellFormat>
+                        <amx:cellFormat id="cf7" width="10" halign="center" rowSpan="2" height="47"
+                                        shortDesc="cell empty end"/><!-- inst of margin -->
+                    </amx:rowLayout>
+                    <amx:rowLayout id="rlTasksBottom">
+                        <amx:cellFormat id="cf19" shortDesc="cell without accessory " width="22%">
+                            <amx:outputText value="Priority:" id="ot17" styleClass="dash-tasks-label"/>
+                        </amx:cellFormat>
+                        <amx:cellFormat id="cf22" shortDesc="cell with priority value">
+                            <amx:outputText value="#{row.attr5}" id="ot18" styleClass="dash-tasks-textvalue"/>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                </amx:tableLayout>
+                <amx:setPropertyListener id="spl2" from="#{row.id}" to="#{pageFlowScope.taskId}" type="action"/>
+                <amx:setPropertyListener id="spl3" to="#{pageFlowScope.summaryView}" from="summary" type="action"/>
+            </amx:listItem>
+        </amx:listView>
+        
+        <amx:tableLayout width="100%" id="tl6" styleClass="listViewBottom-table" shortDesc="table for show more tasks">
+            <amx:rowLayout id="rl10">
+                <amx:cellFormat id="cf15" styleClass="listViewBottom-cell" width="100%" 
+                                shortDesc="title of link to task list">
+                    <amx:commandLink id="cl3" action="goToTasksList" inlineStyle="text-decoration: none;" 
+                            shortDesc="link to task list another page">
+                        <amx:outputText value="Show More..." id="ot15" styleClass="listViewBottom-cell-text"/>
+                    </amx:commandLink>
+                </amx:cellFormat>
+            </amx:rowLayout>
+        </amx:tableLayout>
+        
+    </amx:panelPage>
+</amx:view>

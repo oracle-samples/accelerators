@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/* *********************************************************************************************
+ *  This file is part of the Oracle Service Cloud Accelerator Reference Integration set published
+ *  by Oracle Service Cloud under the MIT license (MIT) included in the original distribution.
+ *  Copyright (c) 2014, 2015, 2016 Oracle and/or its affiliates. All rights reserved.
+ ***********************************************************************************************
+ *  Accelerator Package: Mobile Agent App Accelerator
+ *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
+ *  OSvC release: 16.8 (August 2016)
+ *  MAF release: 2.3
+ *  reference: 151217-000185
+ *  date: Tue Aug 23 16:35:54 PDT 2016
+
+ *  revision: rnw-16-8-fixes-release-01
+ *  SHA1: $Id: 748bfa4bc69a077fcf61e1537b118fa07b48305d $
+ * *********************************************************************************************
+ *  File: NewIncident.amx
+ * *********************************************************************************************/
+-->
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+    <amx:panelPage id="pp1">
+        <amx:facet name="header">
+            <amx:outputText value="New Incident" id="ot1"/>
+        </amx:facet>
+        <amx:facet name="primary">
+            <amx:commandLink id="cl4" text="Cancel" action="__back" shortDesc="Cancel Editing"
+                             styleClass="adfmf-commandLink-noUnderline"
+                             inlineStyle="font-weight:bold; margin-left:2%; "/>
+        </amx:facet>
+        <amx:facet name="secondary">
+            <amx:commandLink id="cl3" actionListener="#{bindings.submitNewIncident.execute}" text="Save"
+                             disabled="#{!bindings.submitNewIncident.enabled}" shortDesc="Submit Editing"
+                             styleClass="adfmf-commandLink-noUnderline" inlineStyle="font-weight:bold;"/>
+        </amx:facet>
+        <amx:panelGroupLayout id="pgl1" scrollPolicy="scroll">
+            <amx:spacer id="s1"/>
+            <amx:outputText value="Incident Summary" id="ot20" inlineStyle="margin-left:2%; font-weight:bold;"/>
+            <amx:spacer id="s2"/>
+            <amx:panelFormLayout id="pfl1" labelWidth="35%" fieldHalign="start" fieldWidth="65%">
+                <amx:inputText value="#{bindings.subject.inputValue}" label="Subject" id="it3" rows="3" required="true"
+                               showRequired="true" hintText="Subject" maximumLength="240"/>
+                <amx:selectOneChoice value="#{bindings.statusId.inputValue}" label="Status" id="soc1"
+                                     showRequired="true" required="true">
+                    <amx:selectItem label="[No Value]" id="si2"/>
+                    <amx:selectItems value="#{bindings.statusId.items}" id="si1"/>
+                </amx:selectOneChoice>
+                <amx:panelLabelAndMessage label="Contact" id="plam1" showRequired="true">
+                    <amx:tableLayout id="tl2" width="100%">
+                        <amx:rowLayout id="rl2">
+                            <amx:cellFormat id="cf3" width="100%">
+                                <amx:outputText value="#{bindings.contact.inputValue}" id="ot11"
+                                                inlineStyle="overflow-wrap:break-word;"/>
+                            </amx:cellFormat>
+                            <amx:cellFormat id="cf4" width="30px" halign="end">
+                                <amx:commandLink id="cl2" shortDesc="go to contact search" action="goToSearchForSelect"
+                                                 actionListener="#{bindings.cacheEditedIncident.execute}">
+                                    <amx:image id="im4" source="/images/func_search_32@2x.png" shortDesc="search icon"
+                                               styleClass="actionIcon"/>
+                                    <amx:setPropertyListener id="spl1" type="action" from='Contact'
+                                                             to="#{pageFlowScope.searchObject}"/>
+                                </amx:commandLink>
+                            </amx:cellFormat>
+                        </amx:rowLayout>
+                    </amx:tableLayout>
+                </amx:panelLabelAndMessage>
+            </amx:panelFormLayout>
+            <amx:spacer id="s3"/>
+            <amx:spacer id="s4"/>
+            <amx:outputText value="Additional Information" id="ot21" inlineStyle="margin-left:2%; font-weight:bold;"/>
+            <amx:spacer id="s5"/>
+            <amx:panelFormLayout id="pfl2" labelWidth="35%" fieldHalign="start" fieldWidth="65%">
+                <amx:panelLabelAndMessage label="Product" id="plam2">
+                    <amx:tableLayout id="tl3" width="100%">
+                        <amx:rowLayout id="rl3">
+                            <amx:cellFormat id="cf5" width="100%">
+                                <amx:outputText value="#{bindings.product.inputValue}" id="ot2"
+                                                inlineStyle="overflow-wrap:break-word;"/>
+                            </amx:cellFormat>
+                            <amx:cellFormat id="cf6" width="30px" halign="end">
+                                <amx:commandLink id="cl5" shortDesc="go to product search"
+                                                 actionListener="#{bindings.cacheEditedIncident.execute}"
+                                                 action="goToProductSearch">
+                                    <amx:image id="i2" source="/images/func_search_32@2x.png" shortDesc="search icon"
+                                               styleClass="actionIcon"/>
+                                </amx:commandLink>
+                            </amx:cellFormat>
+                        </amx:rowLayout>
+                    </amx:tableLayout>
+                </amx:panelLabelAndMessage>
+                <amx:panelLabelAndMessage label="Category" id="plam21">
+                    <amx:tableLayout id="tl31" width="100%" shortDesc="Category">
+                        <amx:rowLayout id="rl31">
+                            <amx:cellFormat id="cf511" width="100%" shortDesc="Category">
+                                <amx:outputText value="#{bindings.category.inputValue}" id="ot211"
+                                                inlineStyle="overflow-wrap:break-word;"/>
+                            </amx:cellFormat>
+                            <amx:cellFormat id="cf61" width="30px" shortDesc="Category" halign="end">
+                                <amx:commandLink id="cl51" shortDesc="go to category search"
+                                                 actionListener="#{bindings.cacheEditedIncident.execute}"
+                                                 action="goToCategorySearch">
+                                    <amx:image id="i3" source="/images/func_search_32@2x.png"
+                                               shortDesc="category search icon" styleClass="actionIcon"/>
+                                </amx:commandLink>
+                            </amx:cellFormat>
+                        </amx:rowLayout>
+                    </amx:tableLayout>
+                </amx:panelLabelAndMessage>
+                <amx:panelLabelAndMessage label="Assigned To" id="plam3">
+                    <amx:tableLayout id="tl4" width="100%">
+                        <amx:rowLayout id="rl4">
+                            <amx:cellFormat id="cf7" width="100%">
+                                <amx:outputText value="#{bindings.assigned.inputValue}" id="ot3"
+                                                inlineStyle="overflow-wrap:break-word;"/>
+                            </amx:cellFormat>
+                            <amx:cellFormat id="cf8" width="30px" halign="end">
+                                <amx:commandLink id="cl6" shortDesc="go to assignee search" action="goToSearchForSelect"
+                                                 actionListener="#{bindings.cacheEditedIncident.execute}">
+                                    <amx:image id="i1" source="/images/func_search_32@2x.png"
+                                               shortDesc="category search icon" styleClass="actionIcon"/>
+                                    <amx:setPropertyListener id="spl2" type="action" from='Account'
+                                                             to="#{pageFlowScope.searchObject}"/>
+                                </amx:commandLink>
+                            </amx:cellFormat>
+                        </amx:rowLayout>
+                    </amx:tableLayout>
+                </amx:panelLabelAndMessage>
+                <amx:panelLabelAndMessage label="Asset Serial Number" id="plam22">
+                    <amx:tableLayout id="tl32" width="100%" shortDesc="Asset">
+                        <amx:rowLayout id="rl32">
+                            <amx:cellFormat id="cf512" width="100%" shortDesc="Asset">
+                                <amx:outputText value="#{bindings.assetSerialNumber.inputValue}" id="ot212"
+                                                inlineStyle="overflow-wrap:break-word;"/>
+                            </amx:cellFormat>
+                            <amx:cellFormat id="cf62" width="30px" shortDesc="Asset" halign="end">
+                                <amx:commandLink id="cl52" shortDesc="go to asset search"
+                                                 actionListener="#{bindings.cacheEditedIncident.execute}"
+                                                 action="goToAssetSearch">
+                                    <amx:image id="i4" source="/images/func_search_32@2x.png"
+                                               shortDesc="asset search icon" styleClass="actionIcon"/>
+                                </amx:commandLink>
+                            </amx:cellFormat>
+                        </amx:rowLayout>
+                    </amx:tableLayout>
+                </amx:panelLabelAndMessage>
+            </amx:panelFormLayout>
+            <amx:spacer id="s6"/>
+        </amx:panelGroupLayout>
+    </amx:panelPage>
+</amx:view>

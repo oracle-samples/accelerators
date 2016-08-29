@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="US-ASCII" ?>
+<!--
+/* *********************************************************************************************
+ *  This file is part of the Oracle Service Cloud Accelerator Reference Integration set published
+ *  by Oracle Service Cloud under the MIT license (MIT) included in the original distribution.
+ *  Copyright (c) 2014, 2015, 2016 Oracle and/or its affiliates. All rights reserved.
+ ***********************************************************************************************
+ *  Accelerator Package: Mobile Agent App Accelerator
+ *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
+ *  OSvC release: 16.8 (August 2016)
+ *  MAF release: 2.3
+ *  reference: 151217-000185
+ *  date: Tue Aug 23 16:35:56 PDT 2016
+
+ *  revision: rnw-16-8-fixes-release-01
+ *  SHA1: $Id: 522ae84be8cfbeae765dfb167f27bc7582de2443 $
+ * *********************************************************************************************
+ *  File: Tasks-task-flow.xml
+ * *********************************************************************************************/
+-->
+<adfc-mobile-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.0">
+  <task-flow-definition id="Tasks-task-flow">
+    <default-activity>MyRouter</default-activity>
+    <input-parameter-definition id="__3">
+      <name>taskId</name>
+      <value>#{pageFlowScope.taskId}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__4">
+      <name>activity</name>
+      <value>#{pageFlowScope.activity}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__22">
+      <name>summaryView</name>
+      <value>#{pageFlowScope.summaryView}</value>
+    </input-parameter-definition>
+    <input-parameter-definition id="__23">
+      <name>showBackButton</name>
+      <value>#{pageFlowScope.showBackButton}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <managed-bean id="__28">
+      <managed-bean-name>TaskController</managed-bean-name>
+      <managed-bean-class>tasks.TaskController</managed-bean-class>
+      <managed-bean-scope>application</managed-bean-scope>
+    </managed-bean>
+    <view id="Tasks">
+      <page>/tasks/Tasks.amx</page>
+    </view>
+    <view id="TaskDetail">
+      <page>/tasks/TaskDetail.amx</page>
+    </view>
+    <router id="MyRouter">
+      <case id="__5">
+        <expression>#{pageFlowScope.activity == "detail"}</expression>
+        <outcome>detail</outcome>
+      </case>
+      <default-outcome>master</default-outcome>
+    </router>
+    <task-flow-call id="Organizations-task-flow">
+      <task-flow-reference>
+        <document>/organizations/Organizations-task-flow.xml</document>
+        <id>Organizations-task-flow</id>
+      </task-flow-reference>
+      <input-parameter id="__9">
+        <name>activity</name>
+        <value>detail</value>
+      </input-parameter>
+      <input-parameter id="__10">
+        <name>organizationId</name>
+        <value>#{pageFlowScope.organizationId}</value>
+      </input-parameter>
+      <input-parameter id="__11">
+        <name>summaryView</name>
+        <value>summary</value>
+      </input-parameter>
+    </task-flow-call>
+    <task-flow-call id="Incidents-task-flow">
+      <task-flow-reference>
+        <document>/incidents/Incidents-task-flow.xml</document>
+        <id>Incidents-task-flow</id>
+      </task-flow-reference>
+      <input-parameter id="__19">
+        <name>activity</name>
+        <value>detail</value>
+      </input-parameter>
+      <input-parameter id="__20">
+        <name>incidentId</name>
+        <value>#{pageFlowScope.incidentId}</value>
+      </input-parameter>
+      <input-parameter id="__21">
+        <name>summaryView</name>
+        <value>summary</value>
+      </input-parameter>
+    </task-flow-call>
+    <task-flow-call id="Contacts-task-flow">
+      <task-flow-reference>
+        <document>/contacts/Contacts-task-flow.xml</document>
+        <id>Contacts-task-flow</id>
+      </task-flow-reference>
+      <input-parameter id="__14">
+        <name>activity</name>
+        <value>detail</value>
+      </input-parameter>
+      <input-parameter id="__15">
+        <name>contactId</name>
+        <value>#{pageFlowScope.contactId}</value>
+      </input-parameter>
+      <input-parameter id="__16">
+        <name>summaryView</name>
+        <value>summary</value>
+      </input-parameter>
+    </task-flow-call>
+    <view id="NewTask">
+      <page>/tasks/NewTask.amx</page>
+    </view>
+    <view id="SearchOrganization">
+      <page>/contacts/SearchContactForSelect.amx</page>
+    </view>
+    <view id="SearchContact">
+      <page>/contacts/SearchContactForSelect.amx</page>
+    </view>
+    <view id="SearchAsignee">
+      <page>/contacts/SearchContactForSelect.amx</page>
+    </view>
+    <view id="SearchIncident">
+      <page>/incidents/SearchIncidentForSelect.amx</page>
+    </view>   
+    <view id="NoteDetail">
+      <page>/notes/NoteDetail.amx</page>
+    </view>
+    <view id="NewNote">
+      <page>/notes/NewNote.amx</page>
+    </view>
+    <view id="TaskEdit">
+      <page>/tasks/TaskEdit.amx</page>
+    </view>
+    <control-flow-rule id="__1">
+      <from-activity-id>Tasks</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>goToTaskDetail</from-outcome>
+        <to-activity-id>TaskDetail</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__24">
+        <from-outcome>goToCreate</from-outcome>
+        <to-activity-id>NewTask</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__6">
+      <from-activity-id>MyRouter</from-activity-id>
+      <control-flow-case id="__7">
+        <from-outcome>master</from-outcome>
+        <to-activity-id>Tasks</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__8">
+        <from-outcome>detail</from-outcome>
+        <to-activity-id>TaskDetail</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__12">
+      <from-activity-id>TaskDetail</from-activity-id>
+      <control-flow-case id="__13">
+        <from-outcome>goToOrg</from-outcome>
+        <to-activity-id>Organizations-task-flow</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__17">
+        <from-outcome>goToContact</from-outcome>
+        <to-activity-id>Contacts-task-flow</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__18">
+        <from-outcome>goToIncident</from-outcome>
+        <to-activity-id>Incidents-task-flow</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__32">
+        <from-outcome>goToNoteDetail</from-outcome>
+        <to-activity-id>NoteDetail</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__331">
+        <from-outcome>goToNewNote</from-outcome>
+        <to-activity-id>NewNote</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__33">
+        <from-outcome>goToEdit</from-outcome>
+        <to-activity-id>TaskEdit</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__25">
+      <from-activity-id>NewTask</from-activity-id>
+      <control-flow-case id="__26">
+        <from-outcome>__back</from-outcome>
+        <to-activity-id>Tasks</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__27">
+        <from-outcome>goToSearchAsignee</from-outcome>
+        <to-activity-id>SearchAsignee</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__29">
+        <from-outcome>goToSearchOrganiztion</from-outcome>
+        <to-activity-id>SearchOrganization</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__31">
+        <from-outcome>goToSearchContact</from-outcome>
+        <to-activity-id>SearchContact</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__30">
+        <from-outcome>goToSearchIncident</from-outcome>
+        <to-activity-id>SearchIncident</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__34">
+      <from-activity-id>TaskEdit</from-activity-id>
+      <control-flow-case id="__35">
+        <from-outcome>goToSearchAssignee</from-outcome>
+        <to-activity-id>SearchAsignee</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__36">
+        <from-outcome>editToSearchIncident</from-outcome>
+        <to-activity-id>SearchIncident</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__37">
+        <from-outcome>editToSearchOrg</from-outcome>
+        <to-activity-id>SearchOrganization</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__38">
+        <from-outcome>editToSearchContact</from-outcome>
+        <to-activity-id>SearchContact</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <page-flow-scope-behavior>
+      <push-new/>
+    </page-flow-scope-behavior>
+  </task-flow-definition>
+</adfc-mobile-config>

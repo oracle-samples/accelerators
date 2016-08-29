@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/* *********************************************************************************************
+ *  This file is part of the Oracle Service Cloud Accelerator Reference Integration set published
+ *  by Oracle Service Cloud under the MIT license (MIT) included in the original distribution.
+ *  Copyright (c) 2014, 2015, 2016 Oracle and/or its affiliates. All rights reserved.
+ ***********************************************************************************************
+ *  Accelerator Package: Mobile Agent App Accelerator
+ *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
+ *  OSvC release: 16.8 (August 2016)
+ *  MAF release: 2.3
+ *  reference: 151217-000185
+ *  date: Tue Aug 23 16:35:51 PDT 2016
+
+ *  revision: rnw-16-8-fixes-release-01
+ *  SHA1: $Id: a1541895c5ab6b5b420a1eb6dea4372d1dd937ec $
+ * *********************************************************************************************
+ *  File: About.amx
+ * *********************************************************************************************/
+-->
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+  <amx:panelPage id="pp1">
+    <amx:facet name="header">
+      <amx:outputText value="About" id="ot1"/>
+    </amx:facet>
+    <amx:facet name="primary">
+      <amx:commandLink id="cl1" actionListener="#{bindings.toggleSpringboard.execute}" styleClass="springboard-icon"
+                       shortDesc="Springboard Link">
+        <amx:image id="i1" source="/images/func_springboard_32@2x.png" shortDesc="Springboard Image"
+                   styleClass="actionIcon"/>
+      </amx:commandLink>
+    </amx:facet>
+    <amx:filmStrip id="fs1" pageControlPosition="bottom" halign="center" valign="middle" styleClass="fullSize"
+                   inlineStyle="width:95%;">
+      <amx:filmStripItem text="" id="fsi1" styleClass="fullSize">
+        <amx:panelGroupLayout id="pgl1" scrollPolicy="scroll" styleClass="fullSize">
+          <amx:spacer id="s1"/>
+          <amx:outputText value="Mobile Agent Accelerator for Oracle Service Cloud™, August 2016 " id="ot2"
+                          inlineStyle="font-weight:bolder;"/>
+          <amx:spacer id="s2"/>
+          <amx:outputText value="Copyright © 1997, 2016, Oracle. All rights reserved. Oracle is a registered trademark of Oracle Corporation and/or its affiliates."
+                          id="ot8"/>
+          <amx:outputText value="Certain components of the software that are provided under license from Oracle belong to third parties that have authorized Oracle to sub-license the components. In accordance with license requirements, a list of the open source components used by oracle, their copyrights, and their licenses are available for inspection at:"
+                          id="ot9"/>
+          <amx:goLink text="http://www.oracle.com/technetwork/opensource/rightnow/thirdparty/index.html" id="gl1"
+                      url="http://www.oracle.com/technetwork/opensource/rightnow/thirdparty/index.html"
+                      inlineStyle="overflow-wrap:break-word;"/>
+          <amx:spacer id="s3"/>
+          <amx:outputText value="MIT License" id="ot10"/>
+          <amx:spacer id="s4"/>
+          <amx:outputText value='Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:'
+                          id="ot11" inlineStyle="font-size:smaller;"/>
+          <amx:outputText value="The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software."
+                          id="ot12" inlineStyle="font-size:smaller;"/>
+          <amx:spacer id="s5"/>
+          <amx:outputText value='THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE'
+                          id="ot13" inlineStyle="font-size:smaller;"/>
+        </amx:panelGroupLayout>
+      </amx:filmStripItem>
+      <amx:filmStripItem text="Mobile Accelerator Features" inlineStyle="font-size:smaller; font-weight:bold;" id="fsi2"
+                         styleClass="fullSize">
+        <amx:panelGroupLayout id="pgl2" scrollPolicy="scroll" styleClass="fullSize">
+          <amx:spacer id="s6"/>
+          <amx:tableLayout id="tl1">
+            <amx:rowLayout id="rl1">
+              <amx:cellFormat id="cf1" inlineStyle="padding:3px 3px 3px 3px;">
+                <amx:outputText value="- View, create, and update incidents" id="ot3"/>
+              </amx:cellFormat>
+            </amx:rowLayout>
+            <amx:rowLayout id="rl2">
+              <amx:cellFormat id="cf2" inlineStyle="padding:3px 3px 3px 3px;">
+                <amx:outputText value="- View contacts and organizations" id="ot4"/>
+              </amx:cellFormat>
+            </amx:rowLayout>
+            <amx:rowLayout id="rl3">
+              <amx:cellFormat id="cf3" inlineStyle="padding:3px 3px 3px 3px;">
+                <amx:outputText value="- Attach files to incidents, including pictures taken with the device’s camera"
+                                id="ot14"/>
+              </amx:cellFormat>
+            </amx:rowLayout>
+          </amx:tableLayout>
+          <amx:spacer id="s7"/>
+          <amx:image id="i2" source="/images/About1.jpg" inlineStyle="width:100%;"/>
+          <amx:spacer id="s8"/>
+          <amx:spacer id="s9"/>
+        </amx:panelGroupLayout>
+      </amx:filmStripItem>
+      <amx:filmStripItem id="fsi3" styleClass="fullSize"
+                         inlineStyle="font-size:smaller; font-weight:bold;">
+        <amx:panelGroupLayout id="pgl3" scrollPolicy="scroll" styleClass="fullSize">
+          <amx:spacer id="s11"/>
+          <amx:tableLayout id="tl2" width="100%">
+            <amx:rowLayout id="rl5">
+              <amx:cellFormat id="cf7" halign="start" width="12px"/>
+              <amx:cellFormat id="cf5" halign="start" width="50%">
+                <amx:outputText value="Platform" id="ot17"
+                                inlineStyle="text-decoration: underline;font-weight:bolder;"/>
+              </amx:cellFormat>
+              <amx:cellFormat id="cf8" width="12px"/>
+              <amx:cellFormat id="cf6" width="50%">
+                <amx:outputText value="Version" id="ot18" inlineStyle="text-decoration: underline;font-weight:bolder;"/>
+              </amx:cellFormat>
+            </amx:rowLayout>
+          </amx:tableLayout>
+          <amx:spacer id="s10"/>
+          <amx:panelFormLayout id="pfl2" fieldWidth="50%" labelWidth="50%" labelPosition="start" fieldHalign="start">
+            <amx:panelLabelAndMessage label="Oracle Mobile Application Framework" id="plam4">
+              <amx:outputText value="2.3.0" id="ot16"/>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="Apple iOS" id="plam2">
+              <amx:outputText value="8.0 - 9.0" id="ot6"/>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="Google Android" id="plam3">
+              <amx:outputText value="5.0+" id="ot7"/>
+            </amx:panelLabelAndMessage>
+          </amx:panelFormLayout>
+        </amx:panelGroupLayout>
+        <amx:spacer id="s12"/>
+        <amx:spacer id="s13"/>
+      </amx:filmStripItem>
+    </amx:filmStrip>
+  </amx:panelPage>
+</amx:view>

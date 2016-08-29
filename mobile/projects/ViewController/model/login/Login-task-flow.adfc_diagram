@@ -1,0 +1,53 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <View
+      id="View3">
+      <property
+         name="activityId">login</property>
+      <property
+         name="page">/login/Login.amx</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>login&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">174.36719</property>
+      <property
+         name="x">55.5</property>
+   </View>
+   <TaskFlowCall
+      id="TaskFlowCall11">
+      <property
+         name="taskFlowId">Settings-task-flow</property>
+      <property
+         name="activityId">Settings-task-flow</property>
+      <property
+         name="documentReference">/settings/Settings-task-flow.xml</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>Settings-task-flow&lt;/b>&lt;/p>&lt;p>Activity Type:  Task Flow Call&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">173.36719</property>
+      <property
+         name="x">315.63574</property>
+   </TaskFlowCall>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase13"
+      from="View3"
+      to="TaskFlowCall11">
+      <property
+         name="fromOutcome">goToSettings</property>
+      <property
+         name="tosrcid">__2</property>
+      <property
+         name="fromsrcid">__1</property>
+      <property
+         name="sdm:polyPoints">R50,97.01266,174.30078,274.12308,173.36719,L50</property>
+   </ControlFlowCase>
+</SDM>

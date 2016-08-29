@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/* *********************************************************************************************
+ *  This file is part of the Oracle Service Cloud Accelerator Reference Integration set published
+ *  by Oracle Service Cloud under the MIT license (MIT) included in the original distribution.
+ *  Copyright (c) 2014, 2015, 2016 Oracle and/or its affiliates. All rights reserved.
+ ***********************************************************************************************
+ *  Accelerator Package: Mobile Agent App Accelerator
+ *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
+ *  OSvC release: 16.8 (August 2016)
+ *  MAF release: 2.3
+ *  reference: 151217-000185
+ *  date: Tue Aug 23 16:35:49 PDT 2016
+
+ *  revision: rnw-16-8-fixes-release-01
+ *  SHA1: $Id: 8bae769140bb606f8671a8330647af90b5b92166 $
+ * *********************************************************************************************
+ *  File: SPenAttViewPageDef.xml
+ * *********************************************************************************************/
+-->
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.2.1" id="SPenAttViewPageDef"
+                Package="Incident">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="AdderBean" id="AdderBeanIterator"/>
+    <iterator Binds="root" RangeSize="25" DataControl="IncidentController" id="IncidentControllerIterator"/>
+    <accessorIterator MasterBinding="IncidentControllerIterator" Binds="incident" RangeSize="25"
+                      DataControl="IncidentController" BeanClass="incidents.Incident" id="incidentIterator"/>
+    <invokeAction id="PublishImageData" Binds="PublishSPenImage" Refresh="always"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="AdderBeanIterator" id="isPictureDataSet">
+      <AttrNames>
+        <Item Value="isPictureDataSet"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AdderBeanIterator" id="pictureData">
+      <AttrNames>
+        <Item Value="pictureData"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AdderBeanIterator" id="destination">
+      <AttrNames>
+        <Item Value="destination"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="incidentIterator" id="subject">
+      <AttrNames>
+        <Item Value="subject"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="uploadAttachment" RequiresUpdateModel="true" Action="invokeMethod" MethodName="uploadAttachment"
+                  IsViewObjectMethod="false" DataControl="AdderBean" InstanceName="data.AdderBean.dataProvider">
+      <NamedData NDName="incident" NDValue="#{bindings.incidentIterator.currentRow.dataProvider}"
+                 NDType="incidents.Incident"/>
+      <NamedData NDName="isPictureDataSet" NDValue="true" NDType="boolean"/>
+      <NamedData NDName="pictureData" NDValue="#{bindings.pictureData.inputValue}" NDType="java.lang.String"/>
+      <NamedData NDName="attachmentName" NDValue="#{bindings.attachmentFileName.inputValue}" NDType="java.lang.String"/>
+    </methodAction>
+    <attributeValues IterBinding="AdderBeanIterator" id="attachmentFileName">
+      <AttrNames>
+        <Item Value="attachmentName"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="initAttachmentsListWithPFLId" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="initReport" IsViewObjectMethod="false"
+                  DataControl="IncidentAttachmentReportController"
+                  InstanceName="data.IncidentAttachmentReportController.dataProvider">
+            <NamedData NDName="reportName" NDValue="AcceleratorIncidentAttachmentList" NDType="java.lang.String"/>
+            <NamedData NDName="dataControl" NDValue="IncidentAttachmentReportController" NDType="java.lang.String"/>
+            <NamedData NDName="filterName" NDValue="incidentId" NDType="java.lang.String"/>
+            <NamedData NDName="filterValue" NDValue="#{pageFlowScope.incidentId}" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="PublishSPenImage" RequiresUpdateModel="true" Action="invokeMethod" MethodName="PublishSPenImage"
+                  IsViewObjectMethod="false" DataControl="AdderBean" InstanceName="data.AdderBean.dataProvider"/>
+    <methodAction id="uploadSPenAttachment" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="uploadSPenAttachment" IsViewObjectMethod="false" DataControl="AdderBean"
+                  InstanceName="data.AdderBean.dataProvider">
+      <NamedData NDName="incident" NDValue="#{bindings.incidentIterator.currentRow.dataProvider}"
+                 NDType="incidents.Incident"/>
+      <NamedData NDName="isPictureDataSet" NDValue="true" NDType="boolean"/>
+      <NamedData NDName="pictureData" NDValue="#{bindings.pictureData.inputValue}" NDType="java.lang.String"/>
+      <NamedData NDName="attachmentName" NDValue="#{bindings.attachmentFileName.inputValue}" NDType="java.lang.String"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

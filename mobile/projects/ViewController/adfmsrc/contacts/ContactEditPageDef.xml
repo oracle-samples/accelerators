@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/* *********************************************************************************************
+ *  This file is part of the Oracle Service Cloud Accelerator Reference Integration set published
+ *  by Oracle Service Cloud under the MIT license (MIT) included in the original distribution.
+ *  Copyright (c) 2014, 2015, 2016 Oracle and/or its affiliates. All rights reserved.
+ ***********************************************************************************************
+ *  Accelerator Package: Mobile Agent App Accelerator
+ *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
+ *  OSvC release: 16.8 (August 2016)
+ *  MAF release: 2.3
+ *  reference: 151217-000185
+ *  date: Tue Aug 23 16:35:48 PDT 2016
+
+ *  revision: rnw-16-8-fixes-release-01
+ *  SHA1: $Id: 31ccff21a23b9754d59ec4c5188cc0914825e74e $
+ * *********************************************************************************************
+ *  File: ContactEditPageDef.xml
+ * *********************************************************************************************/
+-->
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.23.11" id="ContactEditPageDef"
+                Package="Contacts">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <accessorIterator id="contactIterator" MasterBinding="ContactControllerIterator" Binds="contact" RangeSize="-1"
+                      DataControl="ContactController" BeanClass="contacts.Contact"/>
+    <iterator Binds="root" RangeSize="25" DataControl="ContactController" id="ContactControllerIterator"/>
+    <accessorIterator id="statesIterator" MasterBinding="ContactControllerIterator" Binds="states" RangeSize="-1"
+                      DataControl="ContactController" BeanClass="lov.ListOfValue"/>
+  </executables>
+  <bindings>
+    <methodAction id="updateContact" RequiresUpdateModel="true" Action="invokeMethod" MethodName="updateContact"
+                  IsViewObjectMethod="false" DataControl="ContactController"
+                  InstanceName="data.ContactController.dataProvider">
+      <NamedData NDName="contact" NDValue="#{bindings.contactIterator.currentRow.dataProvider}"
+                 NDType="contacts.Contact"/>
+    </methodAction>
+    <methodAction id="cancelWithConfirmation" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="cancelWithConfirmation" IsViewObjectMethod="false" DataControl="ContactController"
+                  InstanceName="data.ContactController.dataProvider"/>
+
+    <methodAction id="cacheEditedContact" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="cacheEditedContact" IsViewObjectMethod="false" DataControl="ContactController"
+                  InstanceName="data.ContactController.dataProvider">
+      <NamedData NDName="contact" NDValue="#{bindings.contactIterator.currentRow.dataProvider}"
+                 NDType="contacts.Contact"/>
+    </methodAction>
+    <list IterBinding="contactIterator" id="stateId" DTSupportsMRU="true" SelectItemValueMode="ListObject"
+          StaticList="false" ListIter="statesIterator">
+      <AttrNames>
+        <Item Value="stateId"/>
+        <Item Value="state"/>
+      </AttrNames>
+      <ListAttrNames>
+        <Item Value="id"/>
+        <Item Value="label"/>
+      </ListAttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="label"/>
+      </ListDisplayAttrNames>
+    </list>
+    <attributeValues IterBinding="contactIterator" id="firstName">
+      <AttrNames>
+        <Item Value="firstName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="contactIterator" id="lastName">
+      <AttrNames>
+        <Item Value="lastName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="contactIterator" id="title">
+      <AttrNames>
+        <Item Value="title"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="contactIterator" id="street">
+      <AttrNames>
+        <Item Value="street"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="contactIterator" id="city">
+      <AttrNames>
+        <Item Value="city"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="contactIterator" id="zip">
+      <AttrNames>
+        <Item Value="zip"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="contactIterator" id="country">
+      <AttrNames>
+        <Item Value="country"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="contactIterator" id="countryId">
+      <AttrNames>
+        <Item Value="countryId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="contactIterator" id="email">
+      <AttrNames>
+        <Item Value="email"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="contactIterator" id="alternateEmail">
+      <AttrNames>
+        <Item Value="alternateEmail"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="contactIterator" id="homePhone">
+      <AttrNames>
+        <Item Value="homePhone"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="contactIterator" id="officePhone">
+      <AttrNames>
+        <Item Value="officePhone"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="contactIterator" id="mobilePhone">
+      <AttrNames>
+        <Item Value="mobilePhone"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="contactIterator" id="orgName">
+      <AttrNames>
+        <Item Value="orgName"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

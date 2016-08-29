@@ -1,0 +1,174 @@
+@charset "UTF-8";
+
+/* * *******************************************************************************************
+ *  This file is part of the Oracle Service Cloud Accelerator Reference Integration set published
+ *  by Oracle Service Cloud under the MIT license (MIT) included in the original distribution.
+ *  Copyright (c) 2014, 2015, 2016 Oracle and/or its affiliates. All rights reserved.
+ ***********************************************************************************************
+ *  Accelerator Package: Mobile Agent App Accelerator
+ *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
+ *  OSvC release: 16.8 (August 2016)
+ *  MAF release: 2.3
+ *  reference: 151217-000185
+ *  date: Tue Aug 23 16:35:53 PDT 2016
+
+ *  revision: rnw-16-8-fixes-release-01
+ *  SHA1: $Id: ccfb4e09506e0c72b7f76eea1da8732b910b2bd4 $
+ * *********************************************************************************************
+ *  File: dashboard.css
+ * ****************************************************************************************** */
+.dash-sectiontitle-pglheading {
+    border-bottom-style: solid;
+    border-bottom-width: thin;
+    border-bottom-color: rgb(211, 211, 211); /* lightgray; */
+    width: 90%;
+    margin-left: 5%;
+    margin-bottom: 5px;  /* remove 5pm margins and put in upper cell if this does not work */
+    margin-top: 5px;
+}
+
+.dash-sectiontitle-text {
+    color:Black;
+    font-weight:bold;
+    margin-left:0px;
+    margin-right:10px;
+}
+
+.dash-cell-subtitle {
+    overflow-wrap:break-word; 
+    text-align:center;
+    font-size: 14px;   /* ormedium?;*/
+    font-style: normal;
+    font-weight: bold;
+}
+
+.dash-section-pie1 {
+    /*
+    margin-left:10px; margin-right:10px; background-color:#d3d3d3; background-origin:padding-box;
+    border-style:solid; border-width:medium; border-color:Black;
+    */
+}
+
+.dashCircleGreen {
+    height: 110px;
+    width: 110px;
+    background-color: #68c182;
+    border-radius: 50%;
+}
+
+.dashCircleYellow {
+    height: 110px;
+    width: 110px;
+    background-color: #fad55c;
+    border-radius: 50%;
+}
+
+.dashCircleRed {
+    height: 110px;
+    width: 110px;
+    background-color: #ed6647;
+    border-radius: 50%;
+}
+
+.dashCircleText {
+    color: #000;
+    position: relative;
+    top: 42px;
+    font-size: 19px;
+    font-weight: 200;
+}
+
+.dashGauge {
+    /* width="34%";  ?*/
+    width: 110px;
+    height: 110px;
+    font-size: 19px;
+}
+
+/* still not working */
+.dashGauge .dvtm-gaugePlotArea {
+    background-color: #c5c5c5; /* #c5c5c5; is dark gray; #EBEBF2 is v. light gray */
+}
+
+.dashGauge text {
+    font-size: 19px;  /* helps for the text in the middle */
+}
+
+.listView-insetListCopy {
+    margin: 10px 10px 0px 10px;
+    border: 1px solid #D5DFE5;
+    border-bottom: 0px;
+}
+
+.listView-insetListCopy-tableRow1 {
+    margin-right: 0px;    
+}
+.listView-insetListCopy-tableRow2 {
+    margin-right: 0px; 
+}
+.listView-insetListCopy-tableRow2 tr {
+    height: 28px;    
+}
+
+.listViewBottom-table {
+    margin-bottom:10px; 
+    margin-left:10px; 
+    margin-right:10px;
+    /*border-bottom-width: 1px solid #D5DFE5;*/
+    border-image-repeat: stretch;
+    border-image-slice: 100%;
+    border-image-source: none;
+    border-image-width: 1;
+    border-bottom-color: rgb(213, 223, 229);
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-left-color: rgb(213, 223, 229);
+    border-left-style: solid;
+    border-left-width: 1px;
+    border-right-color: rgb(213, 223, 229);
+    border-right-style: solid;
+    border-right-width: 1px;
+}
+
+.listViewBottom-cell {
+    background-color:#EBEBF2;
+    border-width:thin;
+    text-align:right;
+}
+
+.listViewBottom-cell-text {
+    font-size: 14px;
+    color: rgb(5, 114, 206);
+    margin-right: 10px;
+    margin-left: 10px;  /* makes for a nice click */
+    text-decoration: none;
+}
+
+.dash-tasks-namevalue {
+    margin-left: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: left;
+}
+
+.dash-tasks-label {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: bold;
+    text-align: right;
+}
+
+.dash-tasks-textvalue {
+    font-size: 14px;
+    font-style: normal;
+    text-align: left;
+}
+
+/*
+#pp1 #rlTasksTop .tr {
+    height: 28px;
+}
+
+#pp1 #rlTasksBottom .tr {
+}
+*/

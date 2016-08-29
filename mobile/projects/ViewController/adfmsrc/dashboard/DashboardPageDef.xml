@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/* *********************************************************************************************
+ *  This file is part of the Oracle Service Cloud Accelerator Reference Integration set published
+ *  by Oracle Service Cloud under the MIT license (MIT) included in the original distribution.
+ *  Copyright (c) 2014, 2015, 2016 Oracle and/or its affiliates. All rights reserved.
+ ***********************************************************************************************
+ *  Accelerator Package: Mobile Agent App Accelerator
+ *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
+ *  OSvC release: 16.8 (August 2016)
+ *  MAF release: 2.3
+ *  reference: 151217-000185
+ *  date: Tue Aug 23 16:35:49 PDT 2016
+
+ *  revision: rnw-16-8-fixes-release-01
+ *  SHA1: $Id: 4646146167b4a0eda68cc125602d78b097abdab7 $
+ * *********************************************************************************************
+ *  File: DashboardPageDef.xml
+ * *********************************************************************************************/
+-->
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.2.1" id="DashboardPageDef"
+                Package="dashboard">
+  <executables>
+    <variableIterator id="variables"/>
+    <invokeAction id="resetSpringboard" Binds="resetFeature"/>
+    <invokeAction id="storeNotificationToken" Binds="storeNotificationRegisterId"/>
+    <invokeAction Binds="initTasksReport" id="initDashTasksReport"/>
+    <methodIterator Binds="pieChartFromRepor.result" DataControl="DashboardReportController" RangeSize="-1"
+                    BeanClass="springboard.DashboardReportController.PieSlice" id="pieChartFromReporIterator"
+                    Refresh="always" CacheResults="false"/>
+    <iterator Binds="root" RangeSize="25" DataControl="DashboardReportController"
+              id="DashboardReportControllerIterator" Refresh="always" CacheResults="false"/>
+    <iterator Binds="root" RangeSize="10" DataControl="TaskReportController" id="TaskReportControllerIterator"/>
+    <accessorIterator MasterBinding="TaskReportControllerIterator" Binds="report" RangeSize="3"
+                      DataControl="TaskReportController" BeanClass="report.ReportItem" id="reportDashTasksIterator"/>
+    <methodIterator Binds="incidentPerformanceReport.result" DataControl="DashboardReportController" RangeSize="1"
+                    BeanClass="springboard.DashboardReportController.PerfData" id="incidentPerformanceReportIterator"/>
+  </executables>
+  <bindings>
+    <methodAction id="initTasksReport" RequiresUpdateModel="true" Action="invokeMethod" MethodName="initReport"
+                  IsViewObjectMethod="false" DataControl="TaskReportController"
+                  InstanceName="data.TaskReportController.dataProvider">
+      <NamedData NDName="reportName" NDValue="AcceleratorTaskList" NDType="java.lang.String"/>
+      <NamedData NDName="dataControl" NDValue="TaskReportController" NDType="java.lang.String"/>
+      <NamedData NDName="filterName" NDValue="Assigned" NDType="java.lang.String"/>
+      <NamedData NDName="filterValue" NDValue="#{securityContext.userName}" NDType="java.lang.String"/>
+    </methodAction>
+    <tree IterBinding="reportDashTasksIterator" id="reportDashTasks">
+      <nodeDefinition DefName="report.ReportItem" Name="report0">
+        <AttrNames>
+          <Item Value="id"/>
+          <Item Value="attr1"/>
+          <Item Value="attr3"/>
+          <Item Value="attr5"/>
+          <Item Value="attr7"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="pieChartFromRepor" RequiresUpdateModel="true" Action="invokeMethod" MethodName="pieChartFromReport"
+                  IsViewObjectMethod="false" DataControl="DashboardReportController"
+                  InstanceName="data.DashboardReportController.dataProvider"
+                  ReturnName="data.DashboardReportController.methodResults.pieChartFromRepor_DashboardReportController_dataProvider_pieChartFromRepor_result">
+      <NamedData NDName="objectName" NDValue="pie" NDType="java.lang.String"/>
+      <NamedData NDName="arg2" NDValue="" NDType="java.lang.String"/>
+    </methodAction>
+    <tree IterBinding="pieChartFromReporIterator" id="PieSlice">
+      <nodeDefinition DefName="springboard.DashboardReportController.PieSlice" Name="PieSlice0">
+        <AttrNames>
+          <Item Value="name"/>
+          <Item Value="number"/>
+          <Item Value="id"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="DashboardReportControllerIterator" id="totalNumber">
+      <AttrNames>
+        <Item Value="totalNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="storeNotificationRegisterId" RequiresUpdateModel="true" Action="invokeMethod" MethodName="storeNotificationRegisterId"
+                  IsViewObjectMethod="false" DataControl="ConfigurationHandler"
+                  InstanceName="data.ConfigurationHandler.dataProvider">
+      <NamedData NDName="token" NDValue="#{applicationScope.deviceToken}" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="toggleSpringboard" RequiresUpdateModel="true" Action="invokeMethod" MethodName="toggleSpringboard"
+                  IsViewObjectMethod="false" DataControl="ApplicationFeatures"
+                  InstanceName="data.ApplicationFeatures.dataProvider"/>
+    <methodAction id="pieChartSelectionListener" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="pieChartSelectionListener" IsViewObjectMethod="false"
+                  DataControl="DashboardReportController" InstanceName="data.DashboardReportController.dataProvider">
+      <NamedData NDName="selectionEvent" NDValue="null" NDType="oracle.adfmf.amx.event.SelectionEvent"/>
+    </methodAction>
+    <methodAction id="incidentPerformanceReport" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="incidentPerformanceReport" IsViewObjectMethod="false"
+                  DataControl="DashboardReportController" InstanceName="data.DashboardReportController.dataProvider"
+                  ReturnName="data.DashboardReportController.methodResults.incidentPerformanceReport_DashboardReportController_dataProvider_incidentPerformanceReport_result">
+      <NamedData NDName="objectName" NDType="java.lang.String"/>
+    </methodAction>
+    <attributeValues IterBinding="incidentPerformanceReportIterator" id="perfTime1">
+      <AttrNames>
+        <Item Value="time1"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="incidentPerformanceReportIterator" id="perfTime2">
+      <AttrNames>
+        <Item Value="time2"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="incidentPerformanceReportIterator" id="perfPercent">
+      <AttrNames>
+        <Item Value="percent"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="resetFeature" RequiresUpdateModel="true" Action="invokeMethod" MethodName="resetFeature"
+                  IsViewObjectMethod="false" DataControl="ApplicationFeatures"
+                  InstanceName="data.ApplicationFeatures.dataProvider">
+      <NamedData NDName="fid" NDValue="Springboard" NDType="java.lang.String"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

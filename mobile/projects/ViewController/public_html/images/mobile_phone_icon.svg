@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="mobile_x5F_phone_x5F_icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+	 x="0px" y="0px" width="30px" height="30px" viewBox="0 0 30 30" enable-background="new 0 0 30 30" xml:space="preserve">
+<rect x="0" y="0" fill="#84B96C" width="30" height="30"/>
+<g id="Layer_2">
+	<g>
+		<g>
+			<path fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M19.03,5.01h-8.09c-0.53,0-0.96,0.43-0.96,0.96v18.08
+				c0,0.53,0.43,0.96,0.96,0.96h8.09c0.53,0,0.96-0.43,0.96-0.96V5.97C19.99,5.44,19.56,5.01,19.03,5.01z M16.9,23.29
+				c0,0.53-0.38,0.61-0.91,0.61h-2.21c-0.53,0-0.85-0.08-0.85-0.61V21.6c0-0.53,0.32-0.65,0.85-0.65h2.21
+				c0.53,0,0.91,0.12,0.91,0.65V23.29z M18.97,19c0,0.53-0.43,0.96-0.96,0.96h-6.13c-0.53,0-0.96-0.43-0.96-0.96V6.99
+				c0-0.53,0.43-0.96,0.96-0.96h6.13c0.53,0,0.96,0.43,0.96,0.96V19z"/>
+		</g>
+	</g>
+</g>
+</svg>

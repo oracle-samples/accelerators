@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/* *********************************************************************************************
+ *  This file is part of the Oracle Service Cloud Accelerator Reference Integration set published
+ *  by Oracle Service Cloud under the MIT license (MIT) included in the original distribution.
+ *  Copyright (c) 2014, 2015, 2016 Oracle and/or its affiliates. All rights reserved.
+ ***********************************************************************************************
+ *  Accelerator Package: Mobile Agent App Accelerator
+ *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
+ *  OSvC release: 16.8 (August 2016)
+ *  MAF release: 2.3
+ *  reference: 151217-000185
+ *  date: Tue Aug 23 16:35:50 PDT 2016
+
+ *  revision: rnw-16-8-fixes-release-01
+ *  SHA1: $Id: 57c41dd79a1f9bb76cbfbff8ef520d8b2afcd102 $
+ * *********************************************************************************************
+ *  File: SpringboardPageDef.xml
+ * *********************************************************************************************/
+-->
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.23.11" id="SpringboardPageDef"
+                Package="Springboard">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="ApplicationFeatures" id="ApplicationFeaturesIterator"/>
+    <accessorIterator MasterBinding="ApplicationFeaturesIterator" Binds="features" RangeSize="25"
+                      DataControl="ApplicationFeatures" BeanClass="oracle.adfmf.framework.FeatureInformation"
+                      id="featuresIterator"/>
+    <iterator Binds="root" RangeSize="25" DataControl="ConfigurationHandler" id="ConfigurationHandlerIterator"
+              Refresh="always" CacheResults="false"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="featuresIterator" id="features">
+      <nodeDefinition DefName="oracle.adfmf.framework.FeatureInformation" Name="features0">
+        <AttrNames>
+          <Item Value="credentialType"/>
+          <Item Value="farDirectory"/>
+          <Item Value="farRootDirectory"/>
+          <Item Value="icon"/>
+          <Item Value="id"/>
+          <Item Value="image"/>
+          <Item Value="index"/>
+          <Item Value="listenerClass"/>
+          <Item Value="name"/>
+          <Item Value="publicHtmlDir"/>
+          <Item Value="vendor"/>
+          <Item Value="version"/>
+          <Item Value="available"/>
+          <Item Value="deviceAccess"/>
+          <Item Value="frameworkFeature"/>
+          <Item Value="showOnNavigationBar"/>
+          <Item Value="showOnSpringBoard"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="featureContent"/>
+          <!--Item Value="securityConstraintDefinition"/-->
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="oracle.adfmf.container.FeatureContent">
+        <AttrNames>
+          <Item Value="location"/>
+          <Item Value="showNavigationButtons"/>
+        </AttrNames>
+      </nodeDefinition>
+      <!--nodeDefinition DefName="oracle.adfmf.util.SecurityConstraintDefinition">
+        <AttrNames>
+          <Item Value="appId"/>
+          <Item Value="authenticationMode"/>
+          <Item Value="authServerType"/>
+          <Item Value="credentialStoreKey"/>
+          <Item Value="customKnowledgeBasedAuthenticationPagePath"/>
+          <Item Value="customLoginPagePath"/>
+          <Item Value="dst"/>
+          <Item Value="idleTimeout"/>
+          <Item Value="loginFailureURL"/>
+          <Item Value="loginSuccessURL"/>
+          <Item Value="loginURL"/>
+          <Item Value="logoutURL"/>
+          <Item Value="maxFailuresBeforeCredentialClear"/>
+          <Item Value="maxRetries"/>
+          <Item Value="name"/>
+          <Item Value="realm"/>
+          <Item Value="sessionTimeOut"/>
+          <Item Value="acsCalledAutomatically"/>
+          <Item Value="appLogin"/>
+          <Item Value="enableRememberPassword"/>
+          <Item Value="enableRememberUsername"/>
+          <Item Value="enableStayLoggedIn"/>
+          <Item Value="injectBasicAuthHeader"/>
+          <Item Value="multiTenantAware"/>
+          <Item Value="rememberPasswordDefault"/>
+          <Item Value="rememberUsernameDefault"/>
+          <Item Value="showContent"/>
+          <Item Value="stayLoggedInDefault"/>
+          <Item Value="oammsUrl"/>
+          <Item Value="oammsServiceDomain"/>
+          <Item Value="oauthClientId"/>
+          <Item Value="oauthClientSecret"/>
+          <Item Value="oauthAuthorizationGrant"/>
+          <Item Value="oauthAuthorizationEndpoint"/>
+          <Item Value="oauthTokenEndpoint"/>
+          <Item Value="oauthBrowserMode"/>
+          <Item Value="oauthRedirectEndpoint"/>
+          <Item Value="embeddedBrowser"/>
+          <Item Value="customAuthHeadersString"/>
+          <Item Value="multiTenantScheme"/>
+          <Item Value="multiTenantHeaderName"/>
+        </AttrNames>
+      </nodeDefinition-->
+    </tree>
+    <methodAction id="gotoFeature" RequiresUpdateModel="true" Action="invokeMethod" MethodName="gotoFeature"
+                  IsViewObjectMethod="false" DataControl="ApplicationFeatures"
+                  InstanceName="data.ApplicationFeatures.dataProvider">
+      <NamedData NDName="featureId" NDValue="#{viewScope.featureid}" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="logout" RequiresUpdateModel="true" Action="invokeMethod" MethodName="logout"
+                  IsViewObjectMethod="false" DataControl="LogoutController"
+                  InstanceName="data.LogoutController.dataProvider"/>
+    <attributeValues IterBinding="ConfigurationHandlerIterator" id="loginUser">
+      <AttrNames>
+        <Item Value="loginUser"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

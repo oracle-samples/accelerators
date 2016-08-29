@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="location_pin" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+	 y="0px" width="30px" height="30px" viewBox="0 0 30 30" enable-background="new 0 0 30 30" xml:space="preserve">
+<path fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M10.219,11.474c0-2.203,2.013-4.146,4.237-4.146
+	c2.226,0,4.237,1.943,4.237,4.146s-2.012,4.353-4.237,4.353C12.231,15.827,10.219,13.677,10.219,11.474z M7.013,11.786
+	c0,1.669,2.44,4.005,3.45,5.187c1.256,1.47,3.993,8.031,3.993,8.031s2.721-6.53,3.977-8.031c0.982-1.175,3.581-3.543,3.581-5.187
+	c0-3.746-3.776-6.782-7.558-6.782C10.673,5.003,7.013,8.04,7.013,11.786z"/>
+</svg>

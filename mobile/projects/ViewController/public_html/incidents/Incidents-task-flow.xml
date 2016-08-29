@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="US-ASCII" ?>
+<!--
+/* *********************************************************************************************
+ *  This file is part of the Oracle Service Cloud Accelerator Reference Integration set published
+ *  by Oracle Service Cloud under the MIT license (MIT) included in the original distribution.
+ *  Copyright (c) 2014, 2015, 2016 Oracle and/or its affiliates. All rights reserved.
+ ***********************************************************************************************
+ *  Accelerator Package: Mobile Agent App Accelerator
+ *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
+ *  OSvC release: 16.8 (August 2016)
+ *  MAF release: 2.3
+ *  reference: 151217-000185
+ *  date: Tue Aug 23 16:35:54 PDT 2016
+
+ *  revision: rnw-16-8-fixes-release-01
+ *  SHA1: $Id: b907564eb1cd16e8e5665cf118e334b8a842e114 $
+ * *********************************************************************************************
+ *  File: Incidents-task-flow.xml
+ * *********************************************************************************************/
+-->
+<adfc-mobile-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.0">
+    <task-flow-definition id="Incidents-task-flow">
+        <default-activity>Navigator</default-activity>
+        <input-parameter-definition id="__8">
+            <name>showBackButton</name>
+            <value>#{pageFlowScope.showBackButton}</value>
+            <class>java.lang.String</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__46">
+            <name>activity</name>
+            <value>#{pageFlowScope.activity}</value>
+        </input-parameter-definition>
+        <input-parameter-definition id="__47">
+            <name>incidentId</name>
+            <value>#{pageFlowScope.incidentId}</value>
+        </input-parameter-definition>
+        <input-parameter-definition id="__48">
+            <name>summaryView</name>
+            <value>#{pageFlowScope.summaryView}</value>
+        </input-parameter-definition>
+        <view id="Incidents">
+            <page>/incidents/Incidents.amx</page>
+        </view>
+        <view id="IncidentEditTemp">
+            <page>/incidents/IncidentEdit.amx</page>
+        </view>
+        <view id="IncidentDetail">
+            <page>/incidents/IncidentDetail.amx</page>
+        </view>
+        <view id="NewIncident">
+            <page>/incidents/NewIncident.amx</page>
+        </view>
+        <view id="IncidentAttView">
+            <page>/incidents/IncidentAttView.amx</page>
+        </view>
+        <view id="IncidentAddAtt">
+            <page>/incidents/IncidentAddAtt.amx</page>
+        </view>
+        <view id="SearchProduct">
+            <page>/products/SearchProduct.amx</page>
+        </view>
+        <task-flow-call id="gotoOrganization">
+            <task-flow-reference>
+                <document>/organizations/Organizations-task-flow.xml</document>
+                <id>Organizations-task-flow</id>
+            </task-flow-reference>
+            <input-parameter id="__21">
+                <name>activity</name>
+                <value>detail</value>
+            </input-parameter>
+            <input-parameter id="__22">
+                <name>organizationId</name>
+                <value>#{pageFlowScope.organizationId}</value>
+            </input-parameter>
+            <input-parameter id="__5">
+                <name>summaryView</name>
+                <value>summary</value>
+            </input-parameter>
+        </task-flow-call>
+        <task-flow-call id="gotoContact">
+            <task-flow-reference>
+                <document>/contacts/Contacts-task-flow.xml</document>
+                <id>Contacts-task-flow</id>
+            </task-flow-reference>
+            <input-parameter id="__24">
+                <name>activity</name>
+                <value>detail</value>
+            </input-parameter>
+            <input-parameter id="__25">
+                <name>contactId</name>
+                <value>#{pageFlowScope.contactId}</value>
+            </input-parameter>
+            <input-parameter id="__4">
+                <name>summaryView</name>
+                <value>summary</value>
+            </input-parameter>
+        </task-flow-call>
+        <view id="SearchForSelect">
+            <page>/contacts/SearchContactForSelect.amx</page>
+        </view>
+        <view id="SearchCategory">
+            <page>/incidents/SearchCategory.amx</page>
+        </view>
+        <view id="NewThread">
+            <page>/threads/NewThread.amx</page>
+        </view>
+        <view id="SPenAttView">
+            <page>/incidents/SPenAttView.amx</page>
+        </view>
+        <view id="ThreadDetail">
+            <page>/threads/ThreadDetail.amx</page>
+        </view>
+        <task-flow-call id="Assets-task-flow">
+            <task-flow-reference>
+                <document>/assets/Assets-task-flow.xml</document>
+                <id>Assets-task-flow</id>
+            </task-flow-reference>
+            <input-parameter id="__29">
+                <name>activity</name>
+                <value>detail</value>
+            </input-parameter>
+            <input-parameter id="__30">
+                <name>assetId</name>
+                <value>#{pageFlowScope.assetId}</value>
+            </input-parameter>
+            <input-parameter id="__50">
+                <name>summaryView</name>
+                <value>summary</value>
+            </input-parameter>
+        </task-flow-call>
+        <view id="SearchAsset">
+            <page>/assets/SearchAsset.amx</page>
+        </view>
+        <router id="Navigator">
+            <case id="__35">
+                <expression>#{pageFlowScope.activity == "detail"}</expression>
+                <outcome>detail</outcome>
+            </case>
+            <default-outcome>master</default-outcome>
+        </router>
+        <task-flow-call id="Tasks-task-flow">
+            <task-flow-reference>
+                <document>/tasks/Tasks-task-flow.xml</document>
+                <id>Tasks-task-flow</id>
+            </task-flow-reference>
+            <input-parameter id="__33">
+                <name>taskId</name>
+                <value>#{pageFlowScope.taskId}</value>
+            </input-parameter>
+            <input-parameter id="__34">
+                <name>activity</name>
+                <value>detail</value>
+            </input-parameter>
+            <input-parameter id="__49">
+                <name>summaryView</name>
+                <value>summary</value>
+            </input-parameter>
+        </task-flow-call>
+        <control-flow-rule id="__1">
+            <from-activity-id>Incidents</from-activity-id>
+            <control-flow-case id="__9">
+                <from-outcome>goToDetail</from-outcome>
+                <to-activity-id>IncidentDetail</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__6">
+                <from-outcome>goToCreate</from-outcome>
+                <to-activity-id>NewIncident</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__10">
+            <from-activity-id>IncidentDetail</from-activity-id>
+            <control-flow-case id="__11">
+                <from-outcome>goToEdit</from-outcome>
+                <to-activity-id>IncidentEditTemp</to-activity-id>
+                <transition>flipRight</transition>
+            </control-flow-case>
+            <control-flow-case id="__3">
+                <from-outcome>__back</from-outcome>
+                <to-activity-id>Incidents</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__12">
+                <from-outcome>goToAttView</from-outcome>
+                <to-activity-id>IncidentAttView</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__15">
+                <from-outcome>goToAddAtt</from-outcome>
+                <to-activity-id>IncidentAddAtt</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__16">
+                <from-outcome>refreshDetail</from-outcome>
+                <to-activity-id>IncidentDetail</to-activity-id>
+                <transition>fade</transition>
+            </control-flow-case>
+            <control-flow-case id="__17">
+                <from-outcome>goToIncidents</from-outcome>
+                <to-activity-id>Incidents</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__20">
+                <from-outcome>gotoOrganization</from-outcome>
+                <to-activity-id>gotoOrganization</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__26">
+                <from-outcome>gotoContact</from-outcome>
+                <to-activity-id>gotoContact</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__36">
+                <from-outcome>goToAddThread</from-outcome>
+                <to-activity-id>NewThread</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__44">
+                <from-outcome>goToAddSPenImage</from-outcome>
+                <to-activity-id>SPenAttView</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__2">
+                <from-outcome>goToThreadDetail</from-outcome>
+                <to-activity-id>ThreadDetail</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__28">
+                <from-outcome>gotoAsset</from-outcome>
+                <to-activity-id>Assets-task-flow</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__31">
+                <from-outcome>goToTaskDetail</from-outcome>
+                <to-activity-id>Tasks-task-flow</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__14">
+            <from-activity-id>NewIncident</from-activity-id>
+            <control-flow-case id="__19">
+                <from-outcome>goToProductSearch</from-outcome>
+                <to-activity-id>SearchProduct</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__23">
+                <from-outcome>goToSearchForSelect</from-outcome>
+                <to-activity-id>SearchForSelect</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__43">
+                <from-outcome>goToCategorySearch</from-outcome>
+                <to-activity-id>SearchCategory</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__38">
+                <from-outcome>__back</from-outcome>
+                <to-activity-id>Incidents</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__13">
+                <from-outcome>goToAssetSearch</from-outcome>
+                <to-activity-id>SearchAsset</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__7">
+            <from-activity-id>IncidentEditTemp</from-activity-id>
+            <control-flow-case id="__18">
+                <from-outcome>goToProductSearch</from-outcome>
+                <to-activity-id>SearchProduct</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__27">
+                <from-outcome>goToSearchForSelect</from-outcome>
+                <to-activity-id>SearchForSelect</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__42">
+                <from-outcome>goToCategorySearch</from-outcome>
+                <to-activity-id>SearchCategory</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__39">
+                <from-outcome>__back</from-outcome>
+                <to-activity-id>IncidentDetail</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__32">
+                <from-outcome>goToAssetSearch</from-outcome>
+                <to-activity-id>SearchAsset</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__40">
+            <from-activity-id>Navigator</from-activity-id>
+            <control-flow-case id="__41">
+                <from-outcome>master</from-outcome>
+                <to-activity-id>Incidents</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__45">
+                <from-outcome>detail</from-outcome>
+                <to-activity-id>IncidentDetail</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <page-flow-scope-behavior>
+            <push-new/>
+        </page-flow-scope-behavior>
+    </task-flow-definition>
+</adfc-mobile-config>

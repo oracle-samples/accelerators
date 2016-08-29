@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/* *********************************************************************************************
+ *  This file is part of the Oracle Service Cloud Accelerator Reference Integration set published
+ *  by Oracle Service Cloud under the MIT license (MIT) included in the original distribution.
+ *  Copyright (c) 2014, 2015, 2016 Oracle and/or its affiliates. All rights reserved.
+ ***********************************************************************************************
+ *  Accelerator Package: Mobile Agent App Accelerator
+ *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
+ *  OSvC release: 16.8 (August 2016)
+ *  MAF release: 2.3
+ *  reference: 151217-000185
+ *  date: Tue Aug 23 16:35:54 PDT 2016
+
+ *  revision: rnw-16-8-fixes-release-01
+ *  SHA1: $Id: e47ea856b1b528b3eaf9eb7cd36dcc2d21e6ba90 $
+ * *********************************************************************************************
+ *  File: IncidentAttView.amx
+ * *********************************************************************************************/
+-->
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+  <amx:panelPage id="pp1">
+    <amx:facet name="header">
+      <amx:outputText value="#{pageFlowScope.attachmentFileName}" id="ot1"/>
+    </amx:facet>
+    <amx:facet name="primary">
+      <amx:commandButton id="cb1" action="__back" shortDesc="back">
+        <amx:setPropertyListener id="spl1" from="attachmentsPanel" to="#{pageFlowScope.panelID}"/>
+      </amx:commandButton>
+    </amx:facet>
+    <!--<amx:facet name="secondary">
+      <amx:commandButton id="cb2"/>
+    </amx:facet>-->
+
+	<!-- TODO questionable -->
+    <amx:image id="data_png"
+         source="data:image/jpg;base64,#{bindings.Return.inputValue}" shortDesc="img in data"
+         inlineStyle="max-height:100%; max-width:100%;"/>
+  </amx:panelPage>
+</amx:view>

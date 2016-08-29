@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/* *********************************************************************************************
+ *  This file is part of the Oracle Service Cloud Accelerator Reference Integration set published
+ *  by Oracle Service Cloud under the MIT license (MIT) included in the original distribution.
+ *  Copyright (c) 2014, 2015, 2016 Oracle and/or its affiliates. All rights reserved.
+ ***********************************************************************************************
+ *  Accelerator Package: Mobile Agent App Accelerator
+ *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
+ *  OSvC release: 16.8 (August 2016)
+ *  MAF release: 2.3
+ *  reference: 151217-000185
+ *  date: Tue Aug 23 16:35:47 PDT 2016
+
+ *  revision: rnw-16-8-fixes-release-01
+ *  SHA1: $Id: 2476ce4a74f62d55030f1aad38889ad785f486bf $
+ * *********************************************************************************************
+ *  File: AssetEditPageDef.xml
+ * *********************************************************************************************/
+-->
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.8.41" id="AssetEditPageDef"
+                Package="assets">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="AssetController" id="AssetControllerIterator"/>
+    <accessorIterator MasterBinding="AssetControllerIterator" Binds="asset" RangeSize="25" DataControl="AssetController"
+                      BeanClass="assets.Asset" id="assetIterator"/>
+    <iterator Binds="root" RangeSize="25" DataControl="ListOfValueBean" id="ListOfValueBeanIterator"/>
+    <accessorIterator id="assetStatusesIterator" MasterBinding="ListOfValueBeanIterator" Binds="assetStatuses"
+                      RangeSize="-1" DataControl="ListOfValueBean" BeanClass="lov.ListOfValue"/>
+    <accessorIterator id="assetProductLovIterator" MasterBinding="ListOfValueBeanIterator" Binds="assetProductLov"
+                      RangeSize="-1" DataControl="ListOfValueBean" BeanClass="lov.ListOfValue"/>
+    <accessorIterator id="assetCurrencyLovIterator" MasterBinding="ListOfValueBeanIterator" Binds="assetCurrencyLov"
+                      RangeSize="-1" DataControl="ListOfValueBean" BeanClass="lov.ListOfValue"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="assetIterator" id="id">
+      <AttrNames>
+        <Item Value="id"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="assetIterator" id="name">
+      <AttrNames>
+        <Item Value="name"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="assetIterator" id="description">
+      <AttrNames>
+        <Item Value="description"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="assetIterator" id="contact">
+      <AttrNames>
+        <Item Value="contact"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="assetIterator" id="organization">
+      <AttrNames>
+        <Item Value="organization"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="assetIterator" id="purchasedDate">
+      <AttrNames>
+        <Item Value="purchasedDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="assetIterator" id="installedDate">
+      <AttrNames>
+        <Item Value="installedDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="assetIterator" id="retiredDate">
+      <AttrNames>
+        <Item Value="retiredDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="assetIterator" id="priceValue">
+      <AttrNames>
+        <Item Value="priceValue"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="submitEditedAsset" RequiresUpdateModel="true" Action="invokeMethod" MethodName="submitEditedAsset"
+                  IsViewObjectMethod="false" DataControl="AssetController"
+                  InstanceName="data.AssetController.dataProvider">
+      <NamedData NDName="p0" NDValue="#{bindings.assetIterator.currentRow.dataProvider}" NDType="assets.Asset"/>
+    </methodAction>
+    <list StaticList="false" IterBinding="assetIterator" ListIter="assetStatusesIterator" id="statusId">
+      <AttrNames>
+        <Item Value="statusId"/>
+        <Item Value="status"/>
+      </AttrNames>
+      <ListAttrNames>
+        <Item Value="id"/>
+        <Item Value="label"/>
+      </ListAttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="label"/>
+      </ListDisplayAttrNames>
+    </list>
+    <list StaticList="false" IterBinding="assetIterator" ListIter="assetCurrencyLovIterator" id="priceCurrencyId">
+      <AttrNames>
+        <Item Value="priceCurrencyId"/>
+        <Item Value="priceCurrency"/>
+      </AttrNames>
+      <ListAttrNames>
+        <Item Value="id"/>
+        <Item Value="label"/>
+      </ListAttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="label"/>
+      </ListDisplayAttrNames>
+    </list>
+    <methodAction id="cacheEditedAsset" RequiresUpdateModel="true" Action="invokeMethod" MethodName="cacheEditedAsset"
+                  IsViewObjectMethod="false" DataControl="AssetController"
+                  InstanceName="data.AssetController.dataProvider">
+      <NamedData NDName="p0" NDValue="#{bindings.assetIterator.currentRow.dataProvider}" NDType="assets.Asset"/>
+    </methodAction>
+    <attributeValues IterBinding="assetIterator" id="assetSerialNumber">
+      <AttrNames>
+        <Item Value="assetSerialNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="assetIterator" id="product">
+      <AttrNames>
+        <Item Value="product"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

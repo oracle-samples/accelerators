@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/* *********************************************************************************************
+ *  This file is part of the Oracle Service Cloud Accelerator Reference Integration set published
+ *  by Oracle Service Cloud under the MIT license (MIT) included in the original distribution.
+ *  Copyright (c) 2014, 2015, 2016 Oracle and/or its affiliates. All rights reserved.
+ ***********************************************************************************************
+ *  Accelerator Package: Mobile Agent App Accelerator
+ *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
+ *  OSvC release: 16.8 (August 2016)
+ *  MAF release: 2.3
+ *  reference: 151217-000185
+ *  date: Tue Aug 23 16:35:54 PDT 2016
+
+ *  revision: rnw-16-8-fixes-release-01
+ *  SHA1: $Id: e0f2219ca6027fe11c43bbd2ce09932bdb9085c2 $
+ * *********************************************************************************************
+ *  File: SearchIncidentForSelect.amx
+ * *********************************************************************************************/
+-->
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+  <amx:panelPage id="pp1">
+    <amx:facet name="header">
+      <amx:outputText value="Search Incidents" id="ot1"/>
+    </amx:facet>
+    <amx:facet name="primary">
+      <amx:commandButton id="cb1" action="__back" shortDesc="go back"/>
+    </amx:facet>
+    <amx:facet name="secondary">
+    </amx:facet>
+    <amx:panelStretchLayout id="psl1">
+      <amx:facet name="top">
+          <amx:inputText value="#{bindings.searchValue.inputValue}"
+                         id="it1" valueChangeListener="#{bindings.searchIncidentWithReport.execute}" simple="true"
+                         hintText="Search by Ref ID" keyboardDismiss="search"/>
+      </amx:facet>
+      <amx:facet name="center">
+         <amx:listView var="row"
+                      rendered="#{ pageFlowScope.searchLinkItem == 'Nodata' }" id="lv2">
+            <amx:listItem id="li3" showLinkIcon="false" shortDesc="no data found">
+            <amx:outputText value="No Data Found" inlineStyle="color:GrayText; text-align:center; font-weight:bold;"
+                            id="ot2"/>
+          </amx:listItem>
+        </amx:listView>
+        <amx:listView fetchSize="#{bindings.ReportItem.rangeSize}" showMoreStrategy="autoScroll"
+                      bufferStrategy="viewport" value="#{bindings.ReportItem.collectionModel}" var="row" id="lv1"
+                      initialScrollRowKeys="#{bindings.ReportItem.collectionModel.selectedRow}"
+                      rendered="#{pageFlowScope.searchLinkItem != 'Nodata'}">        
+          <amx:listItem id="li1" action="__back"
+                        rendered="#{pageFlowScope.searchObject=='Incident'}" shortDesc="linkItem for Incident"
+                        showLinkIcon="false">
+                 <amx:outputText value="#{row.attr1 + ' ' + row.attr2}" id="ot3"/>
+                <amx:setPropertyListener id="spl1" from="#{row.id}" to="#{pageFlowScope.incidentId}"/>
+                <amx:setPropertyListener id="spl2" from="#{row.attr1}" to="#{pageFlowScope.incidentRefNo}"/>
+          </amx:listItem>
+        </amx:listView>
+      </amx:facet>
+      <amx:facet name="bottom"/>
+    </amx:panelStretchLayout>
+  </amx:panelPage>
+</amx:view>

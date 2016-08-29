@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/* *********************************************************************************************
+ *  This file is part of the Oracle Service Cloud Accelerator Reference Integration set published
+ *  by Oracle Service Cloud under the MIT license (MIT) included in the original distribution.
+ *  Copyright (c) 2014, 2015, 2016 Oracle and/or its affiliates. All rights reserved.
+ ***********************************************************************************************
+ *  Accelerator Package: Mobile Agent App Accelerator
+ *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
+ *  OSvC release: 16.8 (August 2016)
+ *  MAF release: 2.3
+ *  reference: 151217-000185
+ *  date: Tue Aug 23 16:35:50 PDT 2016
+
+ *  revision: rnw-16-8-fixes-release-01
+ *  SHA1: $Id: d1c88fbdaff45292ee3a4080877029f6c52d9d1d $
+ * *********************************************************************************************
+ *  File: NewNotePageDef.xml
+ * *********************************************************************************************/
+-->
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.8.41" id="NewNotePageDef" Package="notes">
+  <parameters/>
+  <executables>
+    <invokeAction id="reload" Binds="initNote" Refresh="always"/>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="TaskController" id="TaskControllerIterator"/>
+    <accessorIterator MasterBinding="TaskControllerIterator" Binds="channels" RangeSize="25"
+                      DataControl="TaskController" BeanClass="tasks.Task" id="taskIterator"/>
+    <iterator Binds="root" RangeSize="25" DataControl="ListOfValueBean" id="ListOfValueBeanIterator"/>
+    <accessorIterator MasterBinding="ListOfValueBeanIterator" Binds="tasksNotesChannels" RangeSize="-1"
+                      DataControl="ListOfValueBean" BeanClass="lov.ListOfValue" id="tasksNotesChannelsIterator"/>
+  </executables>
+  <bindings>
+    <methodAction id="submitNewNote" RequiresUpdateModel="true" Action="invokeMethod" MethodName="submitNewNote"
+                  IsViewObjectMethod="false" DataControl="TaskController"
+                  InstanceName="data.TaskController.dataProvider"/>
+    <list IterBinding="tasksNotesChannelsIterator" ListIter="tasksNotesChannelsIterator" id="tasksNotesChannels"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject">
+      <ListAttrNames>
+        <Item Value="id"/>
+        <Item Value="label"/>
+      </ListAttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="label"/>
+      </ListDisplayAttrNames>
+    </list>
+    <methodAction id="initNote" RequiresUpdateModel="true" Action="invokeMethod" MethodName="initNote"
+                  IsViewObjectMethod="false" DataControl="TaskController"
+                  InstanceName="data.TaskController.dataProvider"/>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/* *********************************************************************************************
+ *  This file is part of the Oracle Service Cloud Accelerator Reference Integration set published
+ *  by Oracle Service Cloud under the MIT license (MIT) included in the original distribution.
+ *  Copyright (c) 2014, 2015, 2016 Oracle and/or its affiliates. All rights reserved.
+ ***********************************************************************************************
+ *  Accelerator Package: Mobile Agent App Accelerator
+ *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
+ *  OSvC release: 16.8 (August 2016)
+ *  MAF release: 2.3
+ *  reference: 151217-000185
+ *  date: Tue Aug 23 16:35:53 PDT 2016
+
+ *  revision: rnw-16-8-fixes-release-01
+ *  SHA1: $Id: 7a9286602b0484f2e0c0ed84af56123ce6c935d2 $
+ * *********************************************************************************************
+ *  File: Dashboard-task-flow.xml
+ * *********************************************************************************************/
+-->
+<adfc-mobile-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.0">
+  <task-flow-definition id="Dashboard-task-flow">
+    <default-activity>Dashboard</default-activity>
+    <view id="Dashboard">
+      <page>/dashboard/Dashboard.amx</page>
+    </view>
+    <task-flow-call id="Tasks-task-flow">
+      <task-flow-reference>
+        <document>/tasks/Tasks-task-flow.xml</document>
+        <id>Tasks-task-flow</id>
+      </task-flow-reference>
+      <input-parameter id="__3">
+        <name>taskId</name>
+        <value>0</value>
+      </input-parameter>
+      <input-parameter id="__6">
+        <name>activity</name>
+        <value>master</value>
+      </input-parameter>
+      <input-parameter id="__12">
+        <name>showBackButton</name>
+        <value>true</value>
+      </input-parameter>
+    </task-flow-call>
+    <task-flow-call id="Incidents-task-flow">
+      <task-flow-reference>
+        <document>/incidents/Incidents-task-flow.xml</document>
+        <id>Incidents-task-flow</id>
+      </task-flow-reference>
+      <input-parameter id="__2">
+        <name>showBackButton</name>
+        <value>true</value>
+      </input-parameter>
+      <input-parameter id="__11">
+        <name>activity</name>
+        <value>master</value>
+      </input-parameter>
+    </task-flow-call>
+    <task-flow-call id="Tasks-task-flow1">
+      <task-flow-reference>
+        <document>/tasks/Tasks-task-flow.xml</document>
+        <id>Tasks-task-flow</id>
+      </task-flow-reference>
+      <input-parameter id="__8">
+        <name>taskId</name>
+        <value>#{pageFlowScope.taskId}</value>
+      </input-parameter>
+      <input-parameter id="__9">
+        <name>activity</name>
+        <value>detail</value>
+      </input-parameter>
+      <input-parameter id="__10">
+        <name>summaryView</name>
+        <value>summary</value>
+      </input-parameter>
+      <input-parameter id="__13">
+        <name>showBackButton</name>
+        <value>true</value>
+      </input-parameter>
+    </task-flow-call>
+    <control-flow-rule id="__1">
+      <from-activity-id>Dashboard</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome>goToTasksList</from-outcome>
+        <to-activity-id>Tasks-task-flow</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__5">
+        <from-outcome>goToIncidentsFlow</from-outcome>
+        <to-activity-id>Incidents-task-flow</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__7">
+        <from-outcome>goToTasksDetail</from-outcome>
+        <to-activity-id>Tasks-task-flow1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <page-flow-scope-behavior>
+      <push-new/>
+    </page-flow-scope-behavior>
+  </task-flow-definition>
+</adfc-mobile-config>

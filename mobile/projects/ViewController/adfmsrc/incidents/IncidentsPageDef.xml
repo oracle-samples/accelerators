@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/* *********************************************************************************************
+ *  This file is part of the Oracle Service Cloud Accelerator Reference Integration set published
+ *  by Oracle Service Cloud under the MIT license (MIT) included in the original distribution.
+ *  Copyright (c) 2014, 2015, 2016 Oracle and/or its affiliates. All rights reserved.
+ ***********************************************************************************************
+ *  Accelerator Package: Mobile Agent App Accelerator
+ *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
+ *  OSvC release: 16.8 (August 2016)
+ *  MAF release: 2.3
+ *  reference: 151217-000185
+ *  date: Tue Aug 23 16:35:49 PDT 2016
+
+ *  revision: rnw-16-8-fixes-release-01
+ *  SHA1: $Id: ea9ffae3485ccad88572da4209d44398267e0900 $
+ * *********************************************************************************************
+ *  File: IncidentsPageDef.xml
+ * *********************************************************************************************/
+-->
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.13.26" id="IncidentsPageDef"
+                Package="incidents">
+  <parameters/>
+  <executables>
+    <invokeAction id="initReport" Binds="initInboxReport" Refresh="always"/>
+    <invokeAction id="initFilters" Binds="initSearchCriteria" Refresh="always"/>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="15" DataControl="InboxReportController" id="ReportControllerIterator"
+              CacheResults="false" Refresh="always"/>
+    <accessorIterator MasterBinding="ReportControllerIterator" Binds="report" RangeSize="15"
+                      DataControl="InboxReportController" BeanClass="report.ReportItem" id="reportIterator"
+                      CacheResults="false" Refresh="always"/>
+    <iterator Binds="root" RangeSize="25" DataControl="ListOfValueBean" id="ListOfValueBeanIterator"/>
+    <accessorIterator id="incidentStatusesIterator" MasterBinding="ListOfValueBeanIterator" Binds="incidentStatuses"
+                      RangeSize="25" DataControl="ListOfValueBean" BeanClass="lov.ListOfValue"/>
+    <iterator Binds="root" RangeSize="25" DataControl="IncidentSearchFiltersController"
+              id="IncidentSearchFiltersControllerIterator"/>
+    <accessorIterator MasterBinding="IncidentSearchFiltersControllerIterator" Binds="filters" RangeSize="25"
+                      DataControl="IncidentSearchFiltersController" BeanClass="incidents.IncidentSearchFilters"
+                      id="filtersIterator"/>
+    <accessorIterator id="taskStatusesIterator" MasterBinding="ListOfValueBeanIterator" Binds="taskStatuses"
+                      RangeSize="25" DataControl="ListOfValueBean" BeanClass="lov.ListOfValue"/>
+  </executables>
+  <bindings>
+    <methodAction id="gotoSpringboard" RequiresUpdateModel="true" Action="invokeMethod" MethodName="gotoSpringboard"
+                  IsViewObjectMethod="false" DataControl="ApplicationFeatures"
+                  InstanceName="data.ApplicationFeatures.dataProvider"/>
+    <tree IterBinding="reportIterator" id="report">
+      <nodeDefinition DefName="report.ReportItem" Name="report0">
+        <AttrNames>
+          <Item Value="attr1"/>
+          <Item Value="attr2"/>
+          <Item Value="attr3"/>
+          <Item Value="attr4"/>
+          <Item Value="id"/>
+          <Item Value="attr5"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="reportIterator" id="id">
+      <AttrNames>
+        <Item Value="id"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="initInboxReport" RequiresUpdateModel="true" Action="invokeMethod" MethodName="initReport"
+                  IsViewObjectMethod="false" DataControl="InboxReportController"
+                  InstanceName="data.InboxReportController.dataProvider">
+      <NamedData NDName="reportName" NDValue="AcceleratorIncidentList" NDType="java.lang.String"/>
+      <NamedData NDName="dataControl" NDValue="InboxReportController" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="toggleSpringboard" RequiresUpdateModel="true" Action="invokeMethod" MethodName="toggleSpringboard"
+                  IsViewObjectMethod="false" DataControl="ApplicationFeatures"
+                  InstanceName="data.ApplicationFeatures.dataProvider"/>
+    
+    <methodAction id="doSearch" RequiresUpdateModel="true" Action="invokeMethod" MethodName="doSearch"
+                  IsViewObjectMethod="false" DataControl="InboxReportController"
+                  InstanceName="data.InboxReportController.dataProvider">
+      <NamedData NDName="filters" NDValue="#{bindings.IncidentSearchFiltersControllerIterator.currentRow.dataProvider}"
+                 NDType="java.lang.Object"/>
+    </methodAction>
+    <methodAction id="doReset" RequiresUpdateModel="true" Action="invokeMethod" MethodName="doReset"
+                  IsViewObjectMethod="false" DataControl="InboxReportController"
+                  InstanceName="data.InboxReportController.dataProvider">
+      <NamedData NDName="filters" NDValue="#{bindings.IncidentSearchFiltersControllerIterator.currentRow.dataProvider}"
+                 NDType="java.lang.Object"/>
+    </methodAction>
+    <attributeValues IterBinding="filtersIterator" id="refNo">
+      <AttrNames>
+        <Item Value="refNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="filtersIterator" id="subject">
+      <AttrNames>
+        <Item Value="subject"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="filtersIterator" id="statusId" DTSupportsMRU="true" SelectItemValueMode="ListObject"
+          StaticList="false" ListIter="incidentStatusesIterator">
+      <AttrNames>
+        <Item Value="statusId"/>
+        <Item Value="status"/>
+      </AttrNames>
+      <ListAttrNames>
+        <Item Value="id"/>
+        <Item Value="label"/>
+      </ListAttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="label"/>
+      </ListDisplayAttrNames>
+    </list>
+    <attributeValues IterBinding="filtersIterator" id="updatedSince">
+      <AttrNames>
+        <Item Value="updatedSince"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="filtersIterator" id="createdSince">
+      <AttrNames>
+        <Item Value="createdSince"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="filtersIterator" id="contactFirstName">
+      <AttrNames>
+        <Item Value="contactFirstName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="filtersIterator" id="contactLastName">
+      <AttrNames>
+        <Item Value="contactLastName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="filtersIterator" id="assetSerialNumber">
+      <AttrNames>
+        <Item Value="assetSerialNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="initSearchCriteria" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="initSearchCriteria" IsViewObjectMethod="false" DataControl="InboxReportController"
+                  InstanceName="data.InboxReportController.dataProvider">
+      <NamedData NDName="filters" NDValue="#{bindings.IncidentSearchFiltersControllerIterator.currentRow.dataProvider}"
+                 NDType="java.lang.Object"/>
+    </methodAction>
+    <methodAction id="doCancel" RequiresUpdateModel="true" Action="invokeMethod" MethodName="doCancel"
+                  IsViewObjectMethod="false" DataControl="InboxReportController"
+                  InstanceName="data.InboxReportController.dataProvider">
+      <NamedData NDName="filters" NDValue="#{bindings.IncidentSearchFiltersControllerIterator.currentRow.dataProvider}"
+                 NDType="java.lang.Object"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

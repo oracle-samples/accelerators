@@ -1,0 +1,634 @@
+@charset "UTF-8";
+
+/* * *******************************************************************************************
+ *  This file is part of the Oracle Service Cloud Accelerator Reference Integration set published
+ *  by Oracle Service Cloud under the MIT license (MIT) included in the original distribution.
+ *  Copyright (c) 2014, 2015, 2016 Oracle and/or its affiliates. All rights reserved.
+ ***********************************************************************************************
+ *  Accelerator Package: Mobile Agent App Accelerator
+ *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
+ *  OSvC release: 16.8 (August 2016)
+ *  MAF release: 2.3
+ *  reference: 151217-000185
+ *  date: Tue Aug 23 16:35:46 PDT 2016
+
+ *  revision: rnw-16-8-fixes-release-01
+ *  SHA1: $Id: da916b35eebd74b10a1fc51ee69ecf9529e347c0 $
+ * *********************************************************************************************
+ *  File: osc.css
+ * ****************************************************************************************** */
+
+.myorg-background {
+    background-image: url("../images/org_image.png");
+}
+
+.amx-panelPage-facet-primary > .amx-commandLink.springboard-icon {
+    margin: 10px 6px 0 6px;
+}
+
+.amx-masonryLayout {
+    margin: 5px;
+}
+
+.amx-masonryLayoutItem-size-1x1 {
+    width: 242px;
+    height: 242px;
+}
+
+.amx-masonryLayoutItem-size-2x1 {
+    width: 494px;
+    height: 242px;
+}
+
+.amx-masonryLayoutItem-size-1x2 {
+    width: 242px;
+    height: 494px;
+}
+
+.amx-masonryLayoutItem-size-2x2 {
+    width: 494px;
+    height: 494px;
+}
+
+.profile-color-Steven {
+    background-color: #84b86e;
+}
+
+.profile-color-Gerald {
+    background-color: #db621c;
+}
+
+.profile-color-Karen {
+    background-color: #21a5cd;
+}
+
+.tile-title {
+    font-size: 18px;
+    font-weight: lighter;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 100%;
+}
+
+.title-white {
+    color: white;
+}
+
+.circle-container {
+    height: 90px;
+    width: 90px;
+    border-radius: 50px;
+}
+
+.bluecolor {
+    background-color: rgba(39, 118, 161, .95);
+}
+
+.ltgreencolor {
+    background-color: rgba(32, 163, 137, .95);
+}
+
+.dkgraycolor {
+    background-color: #afbac5;
+}
+
+.mdgraycolor {
+    background-color: #bcc8d4;
+}
+
+.ltgraycolor {
+    background-color: #cfdce9;
+}
+
+.yellowcolor {
+    background-color: #ffb644;
+}
+
+.solidbluecolor {
+    background-color: #40bdf2;
+}
+
+.solidgreencolor {
+    background-color: #66c383;
+}
+
+.transcolor {
+    background-color: transparent;
+}
+
+.circle-metrictext {
+    position: relative;
+    top: 10px;
+    font-size: 48px;
+    font-weight: 200;
+}
+
+.circle-metrictext2 {
+    position: relative;
+    top: 10px;
+    font-size: 52px;
+    font-weight: 200;
+}
+
+.circle-metrictext3 {
+    position: relative;
+    top: 6px;
+    font-size: 48px;
+    font-weight: 200;
+}
+
+.metrictext-yellow {
+    color: #e1e381;
+}
+
+.metrictext-blue {
+    color: #267db3;
+}
+
+.metrictext-red {
+    color: #c95a42;
+}
+
+.metrictext-ltgreen {
+    color: #68c182;
+}
+
+.metrictext-peagreen {
+    color: #a2bf39;
+}
+
+.metrictext {
+    font-size: 37px;
+    font-weight: 300;
+}
+
+.metriclabel {
+    font-size: 14px;
+    color: #fff;
+}
+
+.deptmetriclabel {
+    font-size: 14px;
+    color: #000;
+    position: relative;
+    top: -6px;
+}
+
+.metriclabelsmall {
+    font-size: 13px;
+    color: #fff;
+}
+
+.metriclabelblack {
+    font-size: 14px;
+    color: #000;
+    font-weight: 300;
+}
+
+.metriclabelyellow {
+    font-size: 18px;
+    color: #e1e381;
+    font-weight: 400;
+}
+
+.expandcollapsearrow {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 100;
+}
+
+.dvtm-chartPieCenterLabel {
+    font-size: 40px;
+    font-weight: 200;
+}
+
+.amx-image.login-avatar {
+    border: 2px solid #FFF;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.4);
+    border-radius: 50%;
+    margin: 4px;
+    width: 144px;
+    height: 144px;
+}
+
+.amx-tableLayout.custom-table-with-lines > TABLE[border="0"] > TR > .amx-cellFormat.custom-divider {
+    border-top: 1px solid #D5DFE5;
+    height: 0;
+    line-height: 0;
+    padding: 0;
+}
+
+.custom-table-with-lines.compratiosummary {
+    background-color: #2776a1;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.amx-tableLayout.orgavgrating {
+    background-color: #c6e8f5;
+    background-image: url("../images/average_org_graphic.png");
+}
+
+.amx-image.contactListIcon {
+    width: 40px;
+    height: 40px;
+}
+
+.amx-image.contactCardIcon {
+    width: 32px;
+    height: 32px;
+}
+
+.amx-commandLink.revealLink, .amx-goLink.revealLink {
+    width: 80px;
+    background-color: #0572ce;
+}
+
+.amx-outputText.orgMetricText {
+    font-size: 40px;
+    font-weight: lighter;
+}
+
+.amx-outputText.orgMetricLabel {
+    font-size: 12px;
+    top: -5px;
+    position: relative;
+}
+
+.amx-image.springlistimage {
+    width: 32px;
+    height: 32px;
+}
+
+.amx-image.tabletListImage {
+    border: 2px solid #FFF;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.4);
+    border-radius: 50%;
+    margin: 4px;
+    vertical-align: middle;
+    width: 60px;
+    height: 60px;
+}
+
+.amx-image.tabletProfileImage {
+    width: 90px;
+    height: 90px;
+    border: 3px solid #FFF;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.4);
+    border-radius: 50%;
+    margin: 4px;
+}
+
+.amx-image.mgrProfileImage {
+    width: 70px;
+    height: 70px;
+    border: 3px solid #FFF;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.4);
+    border-radius: 50%;
+    margin: 4px;
+}
+
+.mgrName {
+    font-size: 21px;
+    font-weight: 400;
+    color: #005db6;
+}
+
+.mgrTitle {
+    font-size: 16px;
+    font-weight: 300;
+    color: #000;
+}
+
+.amx-image.phoneListImage {
+    border: 2px solid #FFF;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.4);
+    border-radius: 50%;
+    margin: 4px;
+    vertical-align: middle;
+    width: 36px;
+    height: 36px;
+}
+
+.amx-image.springboard-avatar {
+    border: 2px solid #FFF;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.4);
+    border-radius: 50%;
+    margin: 4px;
+    width: 144px;
+    height: 144px;
+}
+
+.amx-image.springboard-avatar-phone {
+    border: 2px solid #FFF;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.4);
+    border-radius: 50%;
+    margin: 4px;
+    width: 100px;
+    height: 100px;
+}
+
+.amx-outputText.springboard-header {
+    font-size: 20px;
+    color: white;
+}
+
+.amx-outputText.springboard-user {
+    font-size: 28px;
+    color: white;
+}
+
+.amx-outputText.springboard-title {
+    font-size: 18px;
+    color: white;
+}
+
+.cardList {
+    text-align: center;
+}
+
+.amx-listItem.cardItem {
+    padding: 0;
+    width: 310px;
+    margin-left: 22px;
+    margin-bottom: 12px;
+}
+
+.amx-listItem.cardItemPhone {
+    padding: 0;
+    width: 302px;
+    margin-left: 10px;
+    margin-bottom: 0;
+}
+
+.amx-tableLayout.cardfront {
+    background-color: #f6f6f7;
+    padding: 10px;
+}
+
+.amx-tableLayout.cardback {
+    background-color: #ea6860;
+    padding: 10px;
+}
+
+.toggleButton {
+    display: inline-block;
+    line-height: 1px;
+    top: 2px;
+    position: relative;
+}
+
+.profileHeaderText {
+    font-size: 22px;
+    font-weight: 300;
+    color: #3a3a3a;
+}
+
+.profileMetricText {
+    color: #fff;
+    position: relative;
+    top: 12px;
+    font-size: 19px;
+}
+
+.profileCircleContainer {
+    height: 50px;
+    width: 50px;
+    background-color: #b1b1b1;
+    border-radius: 50%;
+}
+
+.profileSkill {
+    border-radius: 20px;
+    margin: 5px 5px 0 0;
+    padding: 8px 12px 8px 12px;
+    display: inline-block;
+    background-color: #b1b1b1;
+    color: #FFF;
+    font-size: 16px;
+}
+
+.profileText {
+    color: #3a3a3a;
+    font-size: 16px;
+}
+
+.profileSelector {
+    margin-top: 0;
+}
+
+.profileSelector.field.amx-simple > .field-value {
+    padding-top: 0;
+}
+
+.profileLink.amx-commandLink:active {
+    background-color: transparent;
+}
+
+.profileGauge {
+    width: 145px;
+    height: 145px;
+}
+
+.profileGauge .dvtm-gaugePlotArea {
+    background-color: #c5c5c5;
+}
+
+.profileRetentionCircleGreen {
+    height: 75px;
+    width: 75px;
+    background-color: #68c182;
+    border-radius: 50%;
+}
+
+.profileRetentionCircleYellow {
+    height: 75px;
+    width: 75px;
+    background-color: #fad55c;
+    border-radius: 50%;
+}
+
+.profileRetentionCircleRed {
+    height: 75px;
+    width: 75px;
+    background-color: #ed6647;
+    border-radius: 50%;
+}
+
+.profileRetentionText {
+    color: #000;
+    position: relative;
+    top: 25px;
+    font-size: 19px;
+    font-weight: 200;
+}
+
+.amx-panelGroupLayout.amx-vertical > div > .amx-outputText, .amx-panelGroupLayout.amx-vertical > div > .amx-goLink, .amx-panelGroupLayout.amx-vertical > div > .amx-commandLink {
+    padding: 0;
+}
+
+.profileAvatar {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #FFF;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.4);
+    border-radius: 50%;
+}
+
+.teamCardList .amx-listItem {
+    padding: 0;
+    width: 145px;
+}
+
+.amx-outputText.teamCardText {
+    color: #000;
+    white-space: initial;
+    text-overflow: initial;
+    overflow: hidden;
+    display: block;
+    font-weight: 300;
+}
+
+.amx-outputText.teamCardTitle {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.phoneProfileCircleContainer {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+}
+
+.phoneProfileCircleContainer .amx-image {
+    width: 28px;
+    height: 28px;
+    margin-top: 1px;
+}
+
+.phoneProfileCircleContainer .amx-outputText {
+    font-size: 16px;
+    top: 4px;
+}
+
+.phoneCircle {
+    background-color: #f1bf7e;
+}
+
+.mobileCircle {
+    background-color: #81bb5f;
+}
+
+.emailCircle {
+    background-color: #84cbdf;
+}
+
+.linkedinCircle {
+    background-color: #006bb3;
+}
+
+.facebookCircle {
+    background-color: #1079d2;
+}
+
+.twitterCircle {
+    background-color: #66b1f6;
+}
+
+.locationCircle {
+    background-color: #ca589d;
+}
+
+.grayCircle {
+    background-color: #b3b3b3;
+}
+
+.phoneProfileMetricText {
+    color: #fff;
+    position: relative;
+    top: 2px;
+    font-size: 19px;
+}
+
+.fullSize {
+    height: 100%;
+    width: 100%;
+}
+
+.amx-filmStrip {
+    margin-top: 0;
+    /* TODO: test after 21814447 fix */
+
+    margin-bottom: 0;
+    /* TODO: test after 21814447 fix */
+}
+
+.amx-filmStrip > div.amx-filmStrip_pageControl {
+    margin-top: 0;
+}
+
+.amx-filmStrip-item-content {
+    border: 0;
+}
+
+.amx-filmStrip > div > .amx-filmStrip_page-container {
+    padding: 0;
+}
+
+.phoneToolbarItemEnabled .amx-image, .phoneToolbarItemSelected .amx-image {
+    height: 32px;
+    width: 32px;
+}
+
+.phoneToolbarItemEnabled, .phoneToolbarItemSelected {
+    display: inline-block;
+    text-decoration: none;
+    line-height: 1px;
+    height: 45px;
+}
+
+.phoneToolbarItemEnabled .amx-outputText {
+    font-size: 10px;
+    color: #929292;
+}
+
+.phoneToolbarItemSelected .amx-outputText {
+    font-size: 10px;
+    color: #0572ce;
+}
+
+.amx-panelPage-footer .amx-outputText {
+    display: inline;
+}
+
+.amx-android-generic .sortpopup, .amx-android-chrome .sortpopup {
+    height: 380px;
+    width: 250px;
+}
+
+.amx-ios .sortpopup {
+    height: 340px;
+    width: 250px;
+}
+
+.amx-image.actionIcon {
+    width: 30px;
+    height: 30px;
+}
+
+.amx-panelGroupLayout .amx-spacer {
+    height: 10px;
+}
+
+.amx-panelGroupLayout.contactListInitialText {
+    border: 2px solid #FFF;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.4);
+    border-radius: 50%;
+    margin: 4px;
+    width: 60px;
+    height: 60px;
+}
+
+

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/* *********************************************************************************************
+ *  This file is part of the Oracle Service Cloud Accelerator Reference Integration set published
+ *  by Oracle Service Cloud under the MIT license (MIT) included in the original distribution.
+ *  Copyright (c) 2014, 2015, 2016 Oracle and/or its affiliates. All rights reserved.
+ ***********************************************************************************************
+ *  Accelerator Package: Mobile Agent App Accelerator
+ *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
+ *  OSvC release: 16.8 (August 2016)
+ *  MAF release: 2.3
+ *  reference: 151217-000185
+ *  date: Tue Aug 23 16:35:56 PDT 2016
+
+ *  revision: rnw-16-8-fixes-release-01
+ *  SHA1: $Id: 3b58798f8dd1d1c4f6ccab6a2375c8ce447c2a26 $
+ * *********************************************************************************************
+ *  File: NewThread.amx
+ * *********************************************************************************************/
+-->
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+    <amx:panelPage id="pp1">
+        <amx:facet name="header">
+            <amx:outputText value="New Message" id="ot1"/>
+        </amx:facet>
+        <amx:facet name="primary">
+            <amx:commandLink text="Cancel" id="cl1" action="__back" styleClass="adfmf-commandLink-noUnderline"
+                             inlineStyle="margin-left:2%; font-weight:bold;"/>
+        </amx:facet>
+        <amx:facet name="secondary">
+            <amx:commandLink actionListener="#{bindings.submitNewThread.execute}" text="Save"
+                             disabled="#{!bindings.submitNewThread.enabled}" id="cl2"
+                             styleClass="adfmf-commandLink-noUnderline"
+                             inlineStyle="margin-left:2%; font-weight:bold;"/>
+        </amx:facet>
+        <amx:panelGroupLayout id="pgl1">
+            <amx:spacer id="s1"/>
+            <amx:panelFormLayout id="pfl1">
+                <amx:selectOneChoice value="#{bindings.entryTypeId.inputValue}" label="Entry Type" id="soc2">
+                    <amx:selectItems value="#{bindings.entryTypeId.items}" id="si3"/>
+                </amx:selectOneChoice>
+                <amx:selectOneChoice value="#{bindings.channelId.inputValue}" label="Channel" id="soc4">
+                    <amx:selectItem label="No Channel" id="si2"/>
+                    <amx:selectItems value="#{bindings.channelId.items}" id="si6"/>
+                </amx:selectOneChoice>
+            </amx:panelFormLayout>
+            <amx:spacer id="s2"/>
+        </amx:panelGroupLayout>
+        <amx:panelFormLayout id="pfl3" rows="10" maxColumns="1" showHorizontalDividers="false" fieldHalign="start"
+                             labelPosition="topStart" fieldWidth="100" labelWidth="0">
+            <amx:inputText value="#{bindings.text.inputValue}" id="it3" rows="10" hintText="Message text "
+                           inlineStyle="overflow-wrap:break-word; text-align:left; text-justify:inter-word; inline-box-align:initial; border-color:Black;"
+                           label="Message" maximumLength="349525"/>
+        </amx:panelFormLayout>
+        <amx:spacer id="s3"/>
+    </amx:panelPage>
+</amx:view>
