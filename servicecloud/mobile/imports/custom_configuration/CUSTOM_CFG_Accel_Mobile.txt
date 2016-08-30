@@ -1,0 +1,26 @@
+Custom Configuration: CUSTOM_CFG_Accel_Mobile 
+ 
+{ 
+  "hosts":[ 
+      { 
+        "rnt_host":"",
+        "server_timezone":"",
+        "push_notification":{ 
+            "gcm":{ 
+              "senderId":"",
+              "appKey":""
+            },
+            "apns":{ 
+              "isDev":false,
+              "pemFile":""
+            },
+            "mcs":{ 
+              "username":"",
+              "password":"",
+              "basedURL":"",
+              "mobileBackendId":"",
+              "basicAuthKey":""
+            }
+        }
+      }
+  ]

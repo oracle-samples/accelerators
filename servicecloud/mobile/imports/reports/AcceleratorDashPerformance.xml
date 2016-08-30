@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="utf-8"?>
+<analytics_core xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ac_id xmlns="urn:obj.api.rightnow.com">101363</ac_id>
+  <ac_public xmlns="urn:obj.api.rightnow.com">true</ac_public>
+  <ac_type xmlns="urn:obj.api.rightnow.com">1</ac_type>
+  <aux xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
+  <cdate_offset xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
+  <co_version xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
+  <created xmlns="urn:obj.api.rightnow.com">2016-07-12T22:12:35Z</created>
+  <file_id xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
+  <filters xmlns="urn:obj.api.rightnow.com" />
+  <fltr_expr xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
+  <folder_id xmlns="urn:obj.api.rightnow.com">109453</folder_id>
+  <image xmlns="urn:obj.api.rightnow.com">6</image>
+  <interface_id xmlns="urn:obj.api.rightnow.com">1</interface_id>
+  <items xmlns="urn:obj.api.rightnow.com" />
+  <label xmlns="urn:obj.api.rightnow.com">
+    <lbl_item>
+      <label>AcceleratorDashPerformance</label>
+      <lang_id>1</lang_id>
+    </lbl_item>
+  </label>
+  <nodes xmlns="urn:obj.api.rightnow.com">
+    <node_item>
+      <branch_col_link_idx xsi:nil="true" />
+      <branch_tbl_idx xsi:nil="true" />
+      <branch_type xsi:nil="true" />
+      <charts />
+      <cols>
+        <cols_item>
+          <calc_units xsi:nil="true" />
+          <col_id>1</col_id>
+          <col_rf>1</col_rf>
+          <comp_opts xsi:nil="true" />
+          <data_type>3</data_type>
+          <display_order>1</display_order>
+          <group_order xsi:nil="true" />
+          <max_len xsi:nil="true" />
+          <min_vuse>189</min_vuse>
+          <opts xsi:nil="true" />
+          <rpt_links />
+          <sort_direction xsi:nil="true" />
+          <sort_order xsi:nil="true" />
+          <trend_opts xsi:nil="true" />
+          <type>1</type>
+          <val>to_number( to_char( sum( if( inc_performance.intv_type = 4, inc_performance.rel_time ) ) / sum( if( inc_performance.intv_type = 4, 1 ) ) ) )</val>
+          <val_attrs>6</val_attrs>
+          <val_col_refs>inc_performance.intv_type.10;76:inc_performance.rel_time;76</val_col_refs>
+          <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;UnitType&gt;Auto&lt;/UnitType&gt;
+  &lt;Header&gt;
+    &lt;LabelStr&gt;Handle Time&lt;/LabelStr&gt;
+  &lt;/Header&gt;
+  &lt;NumberFormat&gt;
+    &lt;NumberType&gt;Number&lt;/NumberType&gt;
+  &lt;/NumberFormat&gt;
+  &lt;HeaderAlignment&gt;Far&lt;/HeaderAlignment&gt;
+  &lt;DataAlignment&gt;Far&lt;/DataAlignment&gt;
+  &lt;Description&gt;
+    &lt;LabelStr&gt;Handle Time&lt;/LabelStr&gt;
+  &lt;/Description&gt;
+  &lt;URLText /&gt;
+  &lt;URLTarget /&gt;
+&lt;/ColumnXmlData&gt;</xml_data>
+        </cols_item>
+        <cols_item>
+          <calc_units xsi:nil="true" />
+          <col_id>2</col_id>
+          <col_rf>2</col_rf>
+          <comp_opts xsi:nil="true" />
+          <data_type>3</data_type>
+          <display_order>2</display_order>
+          <group_order xsi:nil="true" />
+          <max_len xsi:nil="true" />
+          <min_vuse>189</min_vuse>
+          <opts xsi:nil="true" />
+          <rpt_links />
+          <sort_direction xsi:nil="true" />
+          <sort_order xsi:nil="true" />
+          <trend_opts xsi:nil="true" />
+          <type>1</type>
+          <val>to_number( to_char( sum( if( inc_performance.intv_type = 17, inc_performance.rel_time ) ) / sum( if( inc_performance.intv_type = 17, 1 ) ) ) )</val>
+          <val_attrs>6</val_attrs>
+          <val_col_refs>inc_performance.intv_type.10;76:inc_performance.rel_time;76</val_col_refs>
+          <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;UnitType&gt;Auto&lt;/UnitType&gt;
+  &lt;Header&gt;
+    &lt;LabelStr&gt;Response Time&lt;/LabelStr&gt;
+  &lt;/Header&gt;
+  &lt;NumberFormat&gt;
+    &lt;NumberType&gt;Number&lt;/NumberType&gt;
+  &lt;/NumberFormat&gt;
+  &lt;HeaderAlignment&gt;Far&lt;/HeaderAlignment&gt;
+  &lt;DataAlignment&gt;Far&lt;/DataAlignment&gt;
+&lt;/ColumnXmlData&gt;</xml_data>
+        </cols_item>
+        <cols_item>
+          <calc_units xsi:nil="true" />
+          <col_id>3</col_id>
+          <col_rf>3</col_rf>
+          <comp_opts xsi:nil="true" />
+          <data_type>9</data_type>
+          <display_order>3</display_order>
+          <group_order xsi:nil="true" />
+          <max_len xsi:nil="true" />
+          <min_vuse>189</min_vuse>
+          <opts xsi:nil="true" />
+          <rpt_links />
+          <sort_direction xsi:nil="true" />
+          <sort_order xsi:nil="true" />
+          <trend_opts xsi:nil="true" />
+          <type>1</type>
+          <val>100*to_number( to_char( sum( if( inc_performance.intv_type = 7, inc_performance.rel_time ) ) / sum( if( inc_performance.intv_type = 7, 1 ) ) ) )/to_number( to_char( sum( if( inc_performance.intv_type = 4, inc_performance.rel_time ) ) / sum( if( inc_performance.intv_type = 4, 1 ) ) ) )</val>
+          <val_attrs>6</val_attrs>
+          <val_col_refs>inc_performance.intv_type.10;76:inc_performance.rel_time;76</val_col_refs>
+          <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;UnitType&gt;Auto&lt;/UnitType&gt;
+  &lt;Header&gt;
+    &lt;LabelStr&gt;Percent %&lt;/LabelStr&gt;
+  &lt;/Header&gt;
+  &lt;NumberFormat&gt;
+    &lt;NumberType&gt;Decimal&lt;/NumberType&gt;
+    &lt;DecimalDigits&gt;2&lt;/DecimalDigits&gt;
+  &lt;/NumberFormat&gt;
+  &lt;HeaderAlignment&gt;Far&lt;/HeaderAlignment&gt;
+  &lt;DataAlignment&gt;Far&lt;/DataAlignment&gt;
+  &lt;Description&gt;
+    &lt;LabelStr&gt;Percent&lt;/LabelStr&gt;
+  &lt;/Description&gt;
+&lt;/ColumnXmlData&gt;</xml_data>
+        </cols_item>
+        <cols_item>
+          <calc_units xsi:nil="true" />
+          <col_id>4</col_id>
+          <col_rf>4</col_rf>
+          <comp_opts xsi:nil="true" />
+          <data_type>3</data_type>
+          <display_order>4</display_order>
+          <group_order xsi:nil="true" />
+          <max_len xsi:nil="true" />
+          <min_vuse>189</min_vuse>
+          <opts xsi:nil="true" />
+          <rpt_links />
+          <sort_direction xsi:nil="true" />
+          <sort_order xsi:nil="true" />
+          <trend_opts xsi:nil="true" />
+          <type>1</type>
+          <val>to_number( to_char( sum( if( inc_performance.intv_type = 7, inc_performance.rel_time ) ) / sum( if( inc_performance.intv_type = 7, 1 ) ) ) )</val>
+          <val_attrs>6</val_attrs>
+          <val_col_refs>inc_performance.intv_type.10;76:inc_performance.rel_time;76</val_col_refs>
+          <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;UnitType&gt;Auto&lt;/UnitType&gt;
+  &lt;Header&gt;
+    &lt;LabelStr&gt;1st Resolution Time&lt;/LabelStr&gt;
+  &lt;/Header&gt;
+  &lt;NumberFormat&gt;
+    &lt;NumberType&gt;Number&lt;/NumberType&gt;
+  &lt;/NumberFormat&gt;
+  &lt;HeaderAlignment&gt;Far&lt;/HeaderAlignment&gt;
+  &lt;DataAlignment&gt;Far&lt;/DataAlignment&gt;
+  &lt;Description&gt;
+    &lt;LabelStr&gt;1st Resolution Time&lt;/LabelStr&gt;
+  &lt;/Description&gt;
+&lt;/ColumnXmlData&gt;</xml_data>
+        </cols_item>
+      </cols>
+      <excepts />
+      <filters />
+      <fltr_expr xsi:nil="true" />
+      <group_by_col_idx xsi:nil="true" />
+      <group_type>2</group_type>
+      <having_expr xsi:nil="true" />
+      <having_filters />
+      <n_id>1</n_id>
+      <opts>0</opts>
+      <parent_node_idx xsi:nil="true" />
+      <row_limit xsi:nil="true" />
+      <scripts />
+      <starting_level xsi:nil="true" />
+      <style_id>12</style_id>
+      <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;NodeXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;Sections&gt;
+    &lt;ReportSection&gt;
+      &lt;Height&gt;75&lt;/Height&gt;
+      &lt;SectionType&gt;DockedFilters&lt;/SectionType&gt;
+      &lt;StyleType&gt;DockedFiltersArea&lt;/StyleType&gt;
+      &lt;LayoutType&gt;Fixed&lt;/LayoutType&gt;
+      &lt;AutoHeight&gt;false&lt;/AutoHeight&gt;
+      &lt;Visible&gt;true&lt;/Visible&gt;
+    &lt;/ReportSection&gt;
+    &lt;ReportSection&gt;
+      &lt;Fields&gt;
+        &lt;ReportField xsi:type="ReportTextField"&gt;
+          &lt;Padding&gt;
+            &lt;Bottom&gt;1&lt;/Bottom&gt;
+            &lt;Left&gt;1&lt;/Left&gt;
+            &lt;Right&gt;1&lt;/Right&gt;
+            &lt;Top&gt;0&lt;/Top&gt;
+          &lt;/Padding&gt;
+          &lt;StyleType&gt;CurrentDate&lt;/StyleType&gt;
+          &lt;AnchorStyles&gt;Top Right&lt;/AnchorStyles&gt;
+          &lt;AutoSize&gt;true&lt;/AutoSize&gt;
+          &lt;TextAlign&gt;Far&lt;/TextAlign&gt;
+          &lt;LineAlign&gt;Center&lt;/LineAlign&gt;
+          &lt;TextType&gt;CurrentDate&lt;/TextType&gt;
+        &lt;/ReportField&gt;
+      &lt;/Fields&gt;
+      &lt;Height&gt;25&lt;/Height&gt;
+      &lt;SectionType&gt;PageHeader&lt;/SectionType&gt;
+      &lt;StyleType&gt;PageHeader&lt;/StyleType&gt;
+      &lt;LayoutType&gt;Fixed&lt;/LayoutType&gt;
+      &lt;AutoHeight&gt;false&lt;/AutoHeight&gt;
+      &lt;Visible&gt;true&lt;/Visible&gt;
+    &lt;/ReportSection&gt;
+    &lt;ReportSection&gt;
+      &lt;Height&gt;80&lt;/Height&gt;
+      &lt;SectionType&gt;ReportHeader&lt;/SectionType&gt;
+      &lt;StyleType&gt;ReportHeader&lt;/StyleType&gt;
+      &lt;LayoutType&gt;Fixed&lt;/LayoutType&gt;
+      &lt;AutoHeight&gt;false&lt;/AutoHeight&gt;
+      &lt;Visible&gt;false&lt;/Visible&gt;
+    &lt;/ReportSection&gt;
+    &lt;ReportSection&gt;
+      &lt;Height&gt;-1&lt;/Height&gt;
+      &lt;SectionType&gt;Descriptions&lt;/SectionType&gt;
+      &lt;StyleType&gt;DefinitionArea&lt;/StyleType&gt;
+      &lt;LayoutType&gt;Fixed&lt;/LayoutType&gt;
+      &lt;AutoHeight&gt;false&lt;/AutoHeight&gt;
+      &lt;Visible&gt;true&lt;/Visible&gt;
+    &lt;/ReportSection&gt;
+    &lt;ReportSection&gt;
+      &lt;Height&gt;-1&lt;/Height&gt;
+      &lt;SectionType&gt;SearchCriteria&lt;/SectionType&gt;
+      &lt;StyleType&gt;SearchCriteriaArea&lt;/StyleType&gt;
+      &lt;LayoutType&gt;Fixed&lt;/LayoutType&gt;
+      &lt;AutoHeight&gt;false&lt;/AutoHeight&gt;
+      &lt;Visible&gt;false&lt;/Visible&gt;
+    &lt;/ReportSection&gt;
+    &lt;ReportSection&gt;
+      &lt;Height&gt;250&lt;/Height&gt;
+      &lt;SectionType&gt;Charts&lt;/SectionType&gt;
+      &lt;StyleType&gt;ChartArea&lt;/StyleType&gt;
+      &lt;LayoutType&gt;Fixed&lt;/LayoutType&gt;
+      &lt;AutoHeight&gt;false&lt;/AutoHeight&gt;
+      &lt;Visible&gt;false&lt;/Visible&gt;
+    &lt;/ReportSection&gt;
+    &lt;ReportSection&gt;
+      &lt;Height&gt;-1&lt;/Height&gt;
+      &lt;SectionType&gt;DataArea&lt;/SectionType&gt;
+      &lt;StyleType&gt;DataArea&lt;/StyleType&gt;
+      &lt;LayoutType&gt;Fixed&lt;/LayoutType&gt;
+      &lt;AutoHeight&gt;false&lt;/AutoHeight&gt;
+      &lt;Visible&gt;true&lt;/Visible&gt;
+    &lt;/ReportSection&gt;
+    &lt;ReportSection&gt;
+      &lt;Height&gt;40&lt;/Height&gt;
+      &lt;SectionType&gt;ReportFooter&lt;/SectionType&gt;
+      &lt;StyleType&gt;ReportFooter&lt;/StyleType&gt;
+      &lt;LayoutType&gt;Fixed&lt;/LayoutType&gt;
+      &lt;AutoHeight&gt;false&lt;/AutoHeight&gt;
+      &lt;Visible&gt;false&lt;/Visible&gt;
+    &lt;/ReportSection&gt;
+    &lt;ReportSection&gt;
+      &lt;Height&gt;-1&lt;/Height&gt;
+      &lt;SectionType&gt;Exceptions&lt;/SectionType&gt;
+      &lt;StyleType&gt;ExceptionsArea&lt;/StyleType&gt;
+      &lt;LayoutType&gt;Fixed&lt;/LayoutType&gt;
+      &lt;AutoHeight&gt;false&lt;/AutoHeight&gt;
+      &lt;Visible&gt;false&lt;/Visible&gt;
+    &lt;/ReportSection&gt;
+    &lt;ReportSection&gt;
+      &lt;Fields&gt;
+        &lt;ReportField xsi:type="ReportTextField"&gt;
+          &lt;Padding&gt;
+            &lt;Bottom&gt;1&lt;/Bottom&gt;
+            &lt;Left&gt;1&lt;/Left&gt;
+            &lt;Right&gt;1&lt;/Right&gt;
+            &lt;Top&gt;0&lt;/Top&gt;
+          &lt;/Padding&gt;
+          &lt;StyleType&gt;PageNumber&lt;/StyleType&gt;
+          &lt;AnchorStyles&gt;Top Right&lt;/AnchorStyles&gt;
+          &lt;AutoSize&gt;true&lt;/AutoSize&gt;
+          &lt;TextAlign&gt;Far&lt;/TextAlign&gt;
+          &lt;LineAlign&gt;Center&lt;/LineAlign&gt;
+          &lt;TextType&gt;PageNumber&lt;/TextType&gt;
+        &lt;/ReportField&gt;
+      &lt;/Fields&gt;
+      &lt;Height&gt;29&lt;/Height&gt;
+      &lt;SectionType&gt;PageFooter&lt;/SectionType&gt;
+      &lt;StyleType&gt;PageFooter&lt;/StyleType&gt;
+      &lt;LayoutType&gt;Fixed&lt;/LayoutType&gt;
+      &lt;AutoHeight&gt;false&lt;/AutoHeight&gt;
+      &lt;Visible&gt;true&lt;/Visible&gt;
+    &lt;/ReportSection&gt;
+  &lt;/Sections&gt;
+  &lt;PageWidthOptions&gt;
+    &lt;WidthType&gt;FitInWindow&lt;/WidthType&gt;
+  &lt;/PageWidthOptions&gt;
+  &lt;PageReport&gt;false&lt;/PageReport&gt;
+  &lt;Name&gt;
+    &lt;LabelStr&gt;Grid Report&lt;/LabelStr&gt;
+  &lt;/Name&gt;
+  &lt;SearchCriteriaStyle&gt;None&lt;/SearchCriteriaStyle&gt;
+  &lt;OutputDescriptionStyle&gt;Rollover&lt;/OutputDescriptionStyle&gt;
+  &lt;DisplayOptions&gt;ShowDataAreaAsGrid&lt;/DisplayOptions&gt;
+  &lt;PageSettings&gt;
+    &lt;PrintMargin&gt;Normal&lt;/PrintMargin&gt;
+    &lt;Landscape&gt;false&lt;/Landscape&gt;
+    &lt;PrintToFit&gt;false&lt;/PrintToFit&gt;
+  &lt;/PageSettings&gt;
+&lt;/NodeXmlData&gt;</xml_data>
+    </node_item>
+  </nodes>
+  <notes xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
+  <opts xmlns="urn:obj.api.rightnow.com">4</opts>
+  <owner_acct_id xmlns="urn:obj.api.rightnow.com">2045</owner_acct_id>
+  <params xmlns="urn:obj.api.rightnow.com" />
+  <perms xmlns="urn:obj.api.rightnow.com" />
+  <rpt xmlns="urn:obj.api.rightnow.com" />
+  <run_vals xmlns="urn:obj.api.rightnow.com" />
+  <schedules xmlns="urn:obj.api.rightnow.com" />
+  <style_id xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
+  <tables xmlns="urn:obj.api.rightnow.com">
+    <table_item>
+      <alias>inc_performance</alias>
+      <join_def_enum xsi:nil="true" />
+      <join_def_idx xsi:nil="true" />
+      <join_filters />
+      <join_fltr_expr xsi:nil="true" />
+      <join_to_tbl_idx xsi:nil="true" />
+      <join_type xsi:nil="true" />
+      <tbl>76</tbl>
+      <tbl_id>1</tbl_id>
+    </table_item>
+    <table_item>
+      <alias>incidents</alias>
+      <join_def_enum>inc_performance$76$i_id$$incidents$1$i_id</join_def_enum>
+      <join_def_idx>0</join_def_idx>
+      <join_filters />
+      <join_fltr_expr xsi:nil="true" />
+      <join_to_tbl_idx>0</join_to_tbl_idx>
+      <join_type>1</join_type>
+      <tbl>1</tbl>
+      <tbl_id>2</tbl_id>
+    </table_item>
+  </tables>
+  <time_zone xmlns="urn:obj.api.rightnow.com">0</time_zone>
+  <updated xmlns="urn:obj.api.rightnow.com">2016-07-12T22:33:34Z</updated>
+  <version xmlns="urn:obj.api.rightnow.com">0</version>
+  <xml_data xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
+  <xml_report xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
+</analytics_core>
+Version: 
+R0USnXTmHbro/cH4Y9FZjH1Hw24sVsf4
