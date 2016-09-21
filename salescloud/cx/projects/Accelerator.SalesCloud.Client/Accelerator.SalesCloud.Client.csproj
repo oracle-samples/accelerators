@@ -116,6 +116,7 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="Service References\AccountProxyService\Account.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -240,14 +241,50 @@
     <None Include="Service References\ContactProxyService\ServiceException.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\LeadProxyService\Accelerator.SalesCloud.Client.LeadProxyService.ObjAttrHints.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LeadProxyService\Accelerator.SalesCloud.Client.LeadProxyService.SalesLead.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LeadProxyService\Accelerator.SalesCloud.Client.LeadProxyService.SalesLeadContact.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LeadProxyService\Accelerator.SalesCloud.Client.LeadProxyService.SalesLeadContactResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LeadProxyService\Accelerator.SalesCloud.Client.LeadProxyService.SalesLeadProduct.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LeadProxyService\Accelerator.SalesCloud.Client.LeadProxyService.SalesLeadProductResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LeadProxyService\Accelerator.SalesCloud.Client.LeadProxyService.SalesLeadResource.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LeadProxyService\Accelerator.SalesCloud.Client.LeadProxyService.SalesLeadResourceResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LeadProxyService\Accelerator.SalesCloud.Client.LeadProxyService.SalesLeadResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LeadProxyService\Accelerator.SalesCloud.Client.LeadProxyService.ServiceMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LeadProxyService\Accelerator.SalesCloud.Client.LeadProxyService.ServiceViewInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\LeadProxyService\BC4JService.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\LeadProxyService\datagraph.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\LeadProxyService\LeadPublicService.wsdl" />
-    <None Include="Service References\LeadProxyService\LeadPublicService.xsd">
+    <None Include="Service References\LeadProxyService\LeadIntegrationService.wsdl" />
+    <None Include="Service References\LeadProxyService\LeadIntegrationService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\LeadProxyService\MklLead.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\LeadProxyService\MklLeadResources.xsd">
@@ -259,26 +296,26 @@
     <None Include="Service References\LeadProxyService\MklProdAssoc.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\LeadProxyService\Note.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\LeadProxyService\NoteDFF.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\LeadProxyService\oracle-webservices-async-fault-11_0.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\LeadProxyService\Oracle.RightNow.OSC.Client.LeadProxyService.MklLeadResources.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
+    <None Include="Service References\LeadProxyService\SalesLead.xsd">
+      <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\LeadProxyService\Oracle.RightNow.OSC.Client.LeadProxyService.MklLeadTcMembers.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
+    <None Include="Service References\LeadProxyService\SalesLeadContact.xsd">
+      <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\LeadProxyService\Oracle.RightNow.OSC.Client.LeadProxyService.MklProdAssoc.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
+    <None Include="Service References\LeadProxyService\SalesLeadProduct.xsd">
+      <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\LeadProxyService\Oracle.RightNow.OSC.Client.LeadProxyService.ObjAttrHints.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\LeadProxyService\Oracle.RightNow.OSC.Client.LeadProxyService.ServiceLead.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\LeadProxyService\Oracle.RightNow.OSC.Client.LeadProxyService.ServiceViewInfo.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
+    <None Include="Service References\LeadProxyService\SalesLeadResource.xsd">
+      <SubType>Designer</SubType>
     </None>
     <None Include="Service References\LeadProxyService\sdoJava.xsd">
       <SubType>Designer</SubType>
@@ -291,9 +328,6 @@
     </None>
     <None Include="Service References\LeadProxyService\ServiceException.wsdl" />
     <None Include="Service References\LeadProxyService\ServiceException.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\LeadProxyService\ServiceLead.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\OpportunityProxyService\BC4JService.xsd">
@@ -506,18 +540,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\LeadProxyService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\LeadProxyService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\LeadProxyService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\RightNowProxyService\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -537,6 +559,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\ContactProxyService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\LeadProxyService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\LeadProxyService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\LeadProxyService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

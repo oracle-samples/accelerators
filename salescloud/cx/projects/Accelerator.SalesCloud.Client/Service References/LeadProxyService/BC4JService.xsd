@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xsd:schema xmlns:sdoXML="commonj.sdo/xml" xmlns:sdoJava="commonj.sdo/java" xmlns:sdo="commonj.sdo" xmlns="http://xmlns.oracle.com/adf/svc/types/" xmlns:errors="http://xmlns.oracle.com/adf/svc/errors/" elementFormDefault="qualified" targetNamespace="http://xmlns.oracle.com/adf/svc/types/" sdoJava:package="oracle.jbo.common.service.types" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <xsd:import schemaLocation="https://slcai761.us.oracle.com:10616/mklLeads/LeadPublicService?XSD=/META-INF/wsdl/ServiceException.xsd" namespace="http://xmlns.oracle.com/adf/svc/errors/" />
-  <xsd:import schemaLocation="https://slcai761.us.oracle.com:10616/mklLeads/LeadPublicService?XSD=/xml/sdoModel.xsd" namespace="commonj.sdo" />
-  <xsd:import schemaLocation="https://slcai761.us.oracle.com:10616/mklLeads/LeadPublicService?XSD=/xml/sdoJava.xsd" namespace="commonj.sdo/java" />
-  <xsd:import schemaLocation="https://slcai761.us.oracle.com:10616/mklLeads/LeadPublicService?XSD=/xml/sdoXML.xsd" namespace="commonj.sdo/xml" />
+  <xsd:import schemaLocation="https://ucf3-fap0579-crm.oracledemos.com:443/mklLeads/LeadIntegrationService?XSD=/META-INF/wsdl/ServiceException.xsd" namespace="http://xmlns.oracle.com/adf/svc/errors/" />
+  <xsd:import schemaLocation="https://ucf3-fap0579-crm.oracledemos.com:443/mklLeads/LeadIntegrationService?XSD=/xml/sdoModel.xsd" namespace="commonj.sdo" />
+  <xsd:import schemaLocation="https://ucf3-fap0579-crm.oracledemos.com:443/mklLeads/LeadIntegrationService?XSD=/xml/sdoJava.xsd" namespace="commonj.sdo/java" />
+  <xsd:import schemaLocation="https://ucf3-fap0579-crm.oracledemos.com:443/mklLeads/LeadIntegrationService?XSD=/xml/sdoXML.xsd" namespace="commonj.sdo/xml" />
   <xsd:element name="findCriteria" type="FindCriteria" />
   <xsd:complexType name="FindCriteria">
     <xsd:sequence>

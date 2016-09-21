@@ -2,7 +2,7 @@
 <definitions xmlns:tns="http://xmlns.oracle.com/adf/svc/errors/" targetNamespace="http://xmlns.oracle.com/adf/svc/errors/" xmlns="http://schemas.xmlsoap.org/wsdl/">
   <types>
     <schema xmlns="http://www.w3.org/2001/XMLSchema">
-      <import schemaLocation="https://slcai761.us.oracle.com:10616/mklLeads/LeadPublicService?XSD=/META-INF/wsdl/ServiceException.xsd" namespace="http://xmlns.oracle.com/adf/svc/errors/" />
+      <import schemaLocation="https://ucf3-fap0579-crm.oracledemos.com:443/mklLeads/LeadIntegrationService?XSD=/META-INF/wsdl/ServiceException.xsd" namespace="http://xmlns.oracle.com/adf/svc/errors/" />
     </schema>
   </types>
   <message name="ServiceException">

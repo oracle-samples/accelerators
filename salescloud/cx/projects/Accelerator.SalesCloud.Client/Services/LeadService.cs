@@ -1,17 +1,17 @@
 ﻿/* * *******************************************************************************************
 *  This file is part of the Oracle Service Cloud Accelerator Reference Integration set published
  *  by Oracle Service Cloud under the MIT license (MIT) included in the original distribution.
- *  Copyright (c) 2014, 2015, Oracle and/or its affiliates. All rights reserved.
+ *  Copyright (c) 2014, 2015,2016 Oracle and/or its affiliates. All rights reserved.
  ***********************************************************************************************
  *  Accelerator Package: OSVC + OSC Lead Management Accelerator
  *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
  *  OSvC release: 15.11 (November 2015)
  *  OSC release: Release 10
- *  reference: 150505-000122
- *  date: Tue Dec  1 21:42:21 PST 2015
+ *  reference: 150505-000122, 160620-000160
+ *  date: Mon Sep 19 02:05:29 PDT 2016
 
- *  revision: rnw-15-11-fixes-release-2
-*  SHA1: $Id: aadc4ecd34bed2a092f3b37e6c663ed7cfe52d0a $
+ *  revision: rnw-15-11-fixes-release-3
+*  SHA1: $Id: 3febd36f930923d4725acd7adbd014fa0f46f33d $
 * *********************************************************************************************
 *  File: LeadService.cs
 * ****************************************************************************************** */
@@ -36,7 +36,7 @@ namespace Accelerator.SalesCloud.Client.Services
     {
         private static LeadService _leadService;
         private static object _sync = new object();
-        private LeadPublicServiceClient _leadClient;
+        private LeadIntegrationServiceClient _leadClient;
         private IOSCLog _logger;
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace Accelerator.SalesCloud.Client.Services
                         binding.Security.Transport.ClientCredentialType = HttpClientCredentialType.Basic;
 
                         _leadService = new LeadService();
-                        _leadService._leadClient = new LeadPublicServiceClient(binding, endpoint);
+                        _leadService._leadClient = new LeadIntegrationServiceClient(binding, endpoint);
                         _leadService._leadClient.ClientCredentials.UserName.UserName = RightNowConfigService.GetConfigValue(RightNowConfigKeyNames.UserName);
                         _leadService._leadClient.ClientCredentials.UserName.Password = RightNowConfigService.GetConfigValue(RightNowConfigKeyNames.Password);
                         _leadService._leadClient.Endpoint.Behaviors.Add(new EmptyElementBehavior());
@@ -104,7 +104,7 @@ namespace Accelerator.SalesCloud.Client.Services
             {
                 if (leadModel != null)
                 {
-                    ServiceLead lead = new ServiceLead();
+                    SalesLead lead = new SalesLead();
                     lead.Name = leadModel.Name;
                     lead.CustomerId = leadModel.CustomerId;
                     lead.CustomerIdSpecified = leadModel.CustomerIdSpecified;
@@ -119,9 +119,15 @@ namespace Accelerator.SalesCloud.Client.Services
                         resultModel.LeadId = OSCOpportunitiesCommon.DefaultOpportunitySalesLeadID;
                         return resultModel;
                     }
-                    ServiceLead result = _leadService._leadClient.createLead(lead);
-                    resultModel = new LeadModel();
-                    resultModel.LeadId = result.LeadId;
+
+                    SalesLeadResult leadResult = _leadService._leadClient.createSalesLead(lead);
+                    var result = leadResult.Value.FirstOrDefault();
+
+                    if (result != null)
+                    {
+                        resultModel = new LeadModel();
+                        resultModel.LeadId = result.LeadId;
+                    }
                 }
             }
             catch (Exception exception)

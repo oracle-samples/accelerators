@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xsd:schema xmlns:sdo="commonj.sdo" xmlns:sdoJava="commonj.sdo/java" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="commonj.sdo/java" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <xsd:import schemaLocation="https://slcai761.us.oracle.com:10616/mklLeads/LeadPublicService?XSD=/xml/sdoModel.xsd" namespace="commonj.sdo" />
+  <xsd:import schemaLocation="https://ucf3-fap0579-crm.oracledemos.com:443/mklLeads/LeadIntegrationService?XSD=/xml/sdoModel.xsd" namespace="commonj.sdo" />
   <xsd:attribute name="package" type="xsd:string" />
   <xsd:attribute name="instanceClass" type="xsd:string" />
   <xsd:attribute name="extendedInstanceClass" type="xsd:string" />

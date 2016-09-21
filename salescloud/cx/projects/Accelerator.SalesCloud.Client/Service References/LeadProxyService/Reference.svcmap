@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="4a1fe9bd-4369-4ac4-aef8-47550d6ce303" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="8e500067-a7bf-475c-bce6-889cd6bf2b29" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <EnableDataBinding>true</EnableDataBinding>
@@ -18,23 +18,29 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="https://slcai761.us.oracle.com:10616/mklLeads/LeadPublicService?wsdl" Protocol="http" SourceId="1" />
+    <MetadataSource Address="https://ucf3-fap0579-crm.oracledemos.com/mklLeads/LeadIntegrationService?wsdl" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="LeadPublicService.xsd" MetadataType="Schema" ID="c30e2df0-cccc-4e35-ac35-7a44ec3251c4" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/mklLeads/LeadPublicService?XSD=/oracle/apps/marketing/leadMgmt/leads/leadService/LeadPublicService.xsd" />
-    <MetadataFile FileName="ServiceLead.xsd" MetadataType="Schema" ID="48685124-aa90-4e0c-a6ef-b879e24e9ccb" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/mklLeads/LeadPublicService?XSD=/oracle/apps/marketing/leadMgmt/leads/leadService/ServiceLead.xsd" />
-    <MetadataFile FileName="datagraph.xsd" MetadataType="Schema" ID="a081bb9d-5b41-4aaf-a974-a217dfdaf6a1" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/mklLeads/LeadPublicService?XSD=/xml/datagraph.xsd" />
-    <MetadataFile FileName="BC4JService.xsd" MetadataType="Schema" ID="4c930589-66c2-40a5-bb4e-b643485ed319" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/mklLeads/LeadPublicService?XSD=/META-INF/wsdl/BC4JService.xsd" />
-    <MetadataFile FileName="MklLeadTcMembers.xsd" MetadataType="Schema" ID="9b7cc69b-37b9-49f8-99d5-a668df9f642f" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/mklLeads/LeadPublicService?XSD=/oracle/apps/marketing/leadMgmt/leads/leadService/MklLeadTcMembers.xsd" />
-    <MetadataFile FileName="sdoModel.xsd" MetadataType="Schema" ID="24972e93-3a44-4495-8da2-66fbbad588eb" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/mklLeads/LeadPublicService?XSD=/xml/sdoModel.xsd" />
-    <MetadataFile FileName="LeadPublicService.wsdl" MetadataType="Wsdl" ID="b1655335-5ea4-4c00-b7a8-107cb9930910" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/mklLeads/LeadPublicService?wsdl" />
-    <MetadataFile FileName="oracle-webservices-async-fault-11_0.xsd" MetadataType="Schema" ID="d3f3ca54-2cdb-4b3a-b990-30800ec94f53" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/mklLeads/LeadPublicService?XSD=/META-INF/oracle-webservices-async-fault-11_0.xsd" />
-    <MetadataFile FileName="MklLeadResources.xsd" MetadataType="Schema" ID="7146ce18-756f-40cc-8e9c-dba9e6eed875" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/mklLeads/LeadPublicService?XSD=/oracle/apps/marketing/leadMgmt/leads/leadService/MklLeadResources.xsd" />
-    <MetadataFile FileName="sdoXML.xsd" MetadataType="Schema" ID="3da043eb-8a5b-4279-b3f8-618cfc616619" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/mklLeads/LeadPublicService?XSD=/xml/sdoXML.xsd" />
-    <MetadataFile FileName="ServiceException.wsdl" MetadataType="Wsdl" ID="33cefe84-7c08-443b-b695-3743b8f7304e" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/mklLeads/LeadPublicService?WSDL=/META-INF/wsdl/ServiceException.wsdl" />
-    <MetadataFile FileName="MklProdAssoc.xsd" MetadataType="Schema" ID="1e48dd61-8939-4aca-895f-a9b0df2fab08" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/mklLeads/LeadPublicService?XSD=/oracle/apps/marketing/leadMgmt/leads/leadService/MklProdAssoc.xsd" />
-    <MetadataFile FileName="ServiceException.xsd" MetadataType="Schema" ID="384f76d8-cb48-453b-90f8-c4f1621157dc" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/mklLeads/LeadPublicService?XSD=/META-INF/wsdl/ServiceException.xsd" />
-    <MetadataFile FileName="sdoJava.xsd" MetadataType="Schema" ID="77cb407e-a155-4466-9013-468f18313f19" SourceId="1" SourceUrl="https://slcai761.us.oracle.com:10616/mklLeads/LeadPublicService?XSD=/xml/sdoJava.xsd" />
+    <MetadataFile FileName="LeadIntegrationService.xsd" MetadataType="Schema" ID="0ae60754-c59e-46bd-bc57-1cbbbfc4c6a0" SourceId="1" SourceUrl="https://ucf3-fap0579-crm.oracledemos.com/mklLeads/LeadIntegrationService?XSD=/oracle/apps/marketing/leadMgmt/leads/leadServiceV3/LeadIntegrationService.xsd" />
+    <MetadataFile FileName="SalesLeadContact.xsd" MetadataType="Schema" ID="596db76d-f196-45e7-9018-6745517b9efa" SourceId="1" SourceUrl="https://ucf3-fap0579-crm.oracledemos.com/mklLeads/LeadIntegrationService?XSD=/oracle/apps/marketing/leadMgmt/leads/leadServiceV3/SalesLeadContact.xsd" />
+    <MetadataFile FileName="sdoXML.xsd" MetadataType="Schema" ID="a361525d-70d7-42b2-8f54-01de4eb0d0a6" SourceId="1" SourceUrl="https://ucf3-fap0579-crm.oracledemos.com/mklLeads/LeadIntegrationService?XSD=/xml/sdoXML.xsd" />
+    <MetadataFile FileName="SalesLeadResource.xsd" MetadataType="Schema" ID="f864a11e-2627-4f29-962f-4dbab09a3aa3" SourceId="1" SourceUrl="https://ucf3-fap0579-crm.oracledemos.com/mklLeads/LeadIntegrationService?XSD=/oracle/apps/marketing/leadMgmt/leads/leadServiceV3/SalesLeadResource.xsd" />
+    <MetadataFile FileName="SalesLeadProduct.xsd" MetadataType="Schema" ID="1abfb059-1680-49de-9f8f-327c1c284185" SourceId="1" SourceUrl="https://ucf3-fap0579-crm.oracledemos.com/mklLeads/LeadIntegrationService?XSD=/oracle/apps/marketing/leadMgmt/leads/leadServiceV3/SalesLeadProduct.xsd" />
+    <MetadataFile FileName="BC4JService.xsd" MetadataType="Schema" ID="57aa9003-4a6b-49d6-ba1a-5eaf5e973a5b" SourceId="1" SourceUrl="https://ucf3-fap0579-crm.oracledemos.com/mklLeads/LeadIntegrationService?XSD=/META-INF/wsdl/BC4JService.xsd" />
+    <MetadataFile FileName="SalesLead.xsd" MetadataType="Schema" ID="17cf728c-b7fa-487f-85a3-5f21c3809d11" SourceId="1" SourceUrl="https://ucf3-fap0579-crm.oracledemos.com/mklLeads/LeadIntegrationService?XSD=/oracle/apps/marketing/leadMgmt/leads/leadServiceV3/SalesLead.xsd" />
+    <MetadataFile FileName="NoteDFF.xsd" MetadataType="Schema" ID="c6b0d835-bec0-4239-9080-d06874614b32" SourceId="1" SourceUrl="https://ucf3-fap0579-crm.oracledemos.com/mklLeads/LeadIntegrationService?XSD=/oracle/apps/crmCommon/notes/flex/noteDff/NoteDFF.xsd" />
+    <MetadataFile FileName="LeadIntegrationService.wsdl" MetadataType="Wsdl" ID="29dc979c-4662-429a-947e-3f25bae8154b" SourceId="1" SourceUrl="https://ucf3-fap0579-crm.oracledemos.com/mklLeads/LeadIntegrationService?wsdl" />
+    <MetadataFile FileName="MklLeadResources.xsd" MetadataType="Schema" ID="abb1950d-ce68-4080-bf40-e6b68f852da0" SourceId="1" SourceUrl="https://ucf3-fap0579-crm.oracledemos.com/mklLeads/LeadIntegrationService?XSD=/oracle/apps/marketing/leadMgmt/leads/leadService/MklLeadResources.xsd" />
+    <MetadataFile FileName="oracle-webservices-async-fault-11_0.xsd" MetadataType="Schema" ID="7c44b986-7abd-4980-a647-df46c91451b9" SourceId="1" SourceUrl="https://ucf3-fap0579-crm.oracledemos.com/mklLeads/LeadIntegrationService?XSD=/META-INF/oracle-webservices-async-fault-11_0.xsd" />
+    <MetadataFile FileName="MklProdAssoc.xsd" MetadataType="Schema" ID="61d5f36e-32cb-4257-ae8e-545af9f66589" SourceId="1" SourceUrl="https://ucf3-fap0579-crm.oracledemos.com/mklLeads/LeadIntegrationService?XSD=/oracle/apps/marketing/leadMgmt/leads/leadService/MklProdAssoc.xsd" />
+    <MetadataFile FileName="Note.xsd" MetadataType="Schema" ID="1d7ecdbc-3e71-4b12-843d-93666e93a60a" SourceId="1" SourceUrl="https://ucf3-fap0579-crm.oracledemos.com/mklLeads/LeadIntegrationService?XSD=/oracle/apps/crmCommon/notes/noteService/Note.xsd" />
+    <MetadataFile FileName="ServiceException.wsdl" MetadataType="Wsdl" ID="61cc4cbb-7558-4ffe-94bc-a856bf947eb8" SourceId="1" SourceUrl="https://ucf3-fap0579-crm.oracledemos.com/mklLeads/LeadIntegrationService?WSDL=/META-INF/wsdl/ServiceException.wsdl" />
+    <MetadataFile FileName="sdoJava.xsd" MetadataType="Schema" ID="642bd660-1b5b-4106-95a6-91f6993caede" SourceId="1" SourceUrl="https://ucf3-fap0579-crm.oracledemos.com/mklLeads/LeadIntegrationService?XSD=/xml/sdoJava.xsd" />
+    <MetadataFile FileName="ServiceException.xsd" MetadataType="Schema" ID="d07ba88f-bb01-4f00-b260-165b158124ca" SourceId="1" SourceUrl="https://ucf3-fap0579-crm.oracledemos.com/mklLeads/LeadIntegrationService?XSD=/META-INF/wsdl/ServiceException.xsd" />
+    <MetadataFile FileName="MklLead.xsd" MetadataType="Schema" ID="7fecd123-3958-4760-a9ea-e3813336303d" SourceId="1" SourceUrl="https://ucf3-fap0579-crm.oracledemos.com/mklLeads/LeadIntegrationService?XSD=/oracle/apps/marketing/leadMgmt/leads/leadService/MklLead.xsd" />
+    <MetadataFile FileName="MklLeadTcMembers.xsd" MetadataType="Schema" ID="1582406b-965e-4084-b3f4-2f471b97aca9" SourceId="1" SourceUrl="https://ucf3-fap0579-crm.oracledemos.com/mklLeads/LeadIntegrationService?XSD=/oracle/apps/marketing/leadMgmt/leads/leadService/MklLeadTcMembers.xsd" />
+    <MetadataFile FileName="datagraph.xsd" MetadataType="Schema" ID="5614bff7-b4cb-412d-8661-f95c1bd8c679" SourceId="1" SourceUrl="https://ucf3-fap0579-crm.oracledemos.com/mklLeads/LeadIntegrationService?XSD=/xml/datagraph.xsd" />
+    <MetadataFile FileName="sdoModel.xsd" MetadataType="Schema" ID="6d36c0eb-2588-424e-985a-192da610d66b" SourceId="1" SourceUrl="https://ucf3-fap0579-crm.oracledemos.com/mklLeads/LeadIntegrationService?XSD=/xml/sdoModel.xsd" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

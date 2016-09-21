@@ -1,0 +1,2705 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tns="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/" xmlns:types="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/types/" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:orafault="http://xmlns.oracle.com/oracleas/schema/oracle-fault-11_0" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:errors="http://xmlns.oracle.com/adf/svc/errors/" name="LeadIntegrationService" targetNamespace="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:oer="http://xmlns.oracle.com/oer">
+    <name>Sales Lead Service Version 3</name>
+    <description>A service that enables convert, reject, accept actions in addition
+            to create, update, delete, and search operations for leads.</description>
+    <docCategories>
+      <category>External</category>
+    </docCategories>
+    <oer:lifecycle>Active</oer:lifecycle>
+    <oer:compatibility>Supported - Backward Compatibility Assured</oer:compatibility>
+    <oer:category name="lba">
+      <value>MarketingTop-Marketing Business Area</value>
+      <value>MarketingTop-Marketing Business Area : LeadMgmtTop-Lead
+                Management Business Area</value>
+      <value>MarketingTop-Marketing Business Area : LeadMgmtTop-Lead
+                Management Business Area : MklLeads-Sales Leads</value>
+    </oer:category>
+    <oer:category name="lbo">
+      <value>CRM-CRM : MKL-Lead Management : MKL_SALES_LEAD-Sales Lead</value>
+    </oer:category>
+    <oer:relationship target="{http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadService/}SalesLeadService" type="Previous version is" />
+    <oer:operation name="assignLead">
+      <description>A Web service method that assigns Sales Team to the Lead</description>
+      <oer:lifecycle>Active</oer:lifecycle>
+      <oer:parameters>
+        <oer:parameter name="leadId" description="An input parameter of the assignLead Web service method that identifies the lead record by ID" />
+        <oer:return description="The return value of the assignLead Web service method." />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="convertLeadToOpportunity">
+      <description>A Web service method that converts a Lead record to an
+                Opportunity</description>
+      <oer:lifecycle>Active</oer:lifecycle>
+      <oer:parameters>
+        <oer:parameter name="leadId" description="A required parameter of the convertLeadToOpportunity Web service method. The lead record matching the ID input is used as source for the opportunity" />
+        <oer:return description="The return value of the convertLeadToOppportunity Web service method. It includes the full set of attribiutes of the opportunity record" />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="qualifyLead">
+      <description>A Web service method that qualifies a lead based on
+                qualification rules</description>
+      <oer:lifecycle>Active</oer:lifecycle>
+      <oer:parameters>
+        <oer:parameter name="leadId" description="An input parameter of the qualifyLead Web service method that identifies the lead record by ID" />
+        <oer:return description="The return value of the qualifyLead Web service method." />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="rankLead">
+      <description>A Web service method that assigns a pre-defined rank on the lead
+                based on ranking rules</description>
+      <oer:lifecycle>Active</oer:lifecycle>
+      <oer:parameters>
+        <oer:parameter name="leadId" description="An input parameter of the rankLead Web service method that identifies the lead record by ID" />
+        <oer:return description="The return value of the rankLead Web service method." />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="reassignLead">
+      <description>A Web service method that reassignes a record of Oracle Fusion
+                Lead Object</description>
+      <oer:lifecycle>Active</oer:lifecycle>
+      <oer:parameters>
+        <oer:parameter name="mode" description="A required input parameter of the reassignLead Web service method. Values: IMDT_AUTO_ASSGMNT: Reassigns the lead immediately, AUTO_ASSGMNT: Flags the lead for reassignment to be picked-up next time assignment runs, MAN_ASSGMNT: only reassign the owners with the parameter value passed" />
+        <oer:parameter name="leadId" description="A required input parameter of the reassignLead Web service method. It is the ID of the lead record that would need to be reassigned" />
+        <oer:parameter name="ownerId" description="An optional input parameter of the reassignLead Web service method. It is required when the mode is MAN_ASSGMNT. It is the ID of the resource record to be set as the owner for the lead" />
+        <oer:parameter name="organizationId" description="An optional input parameter of the reassignLead Web service method. It is used when the mode is MAN_ASSGMNT. It is the organization ID of the resource record to be set as the owner for the lead" />
+        <oer:parameter name="reason" description="An optional input parameter of the reassignLead Web service method. It is the reason for reassignment." />
+        <oer:parameter name="comment" description="An optional input parameter of the reassignLead Web service method. It is the comment recorded for the lead while being reassigned." />
+        <oer:return description="The return value of the reassignLead Web service method" />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="scoreLead">
+      <description>A Web service method that scores a record of Oracle Fusion Lead
+                Object</description>
+      <oer:lifecycle>Active</oer:lifecycle>
+      <oer:parameters>
+        <oer:parameter name="leadId" description="A required input parameter of the scoreLead Web service method. It is the ID of the lead record that would need to be scored" />
+        <oer:return description="The return value of the scoreLead Web service method" />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="submitDeal">
+      <description>A Web service method that submits a record of Oracle Fusion Lead
+                Object for registration.</description>
+      <oer:lifecycle>Active</oer:lifecycle>
+      <oer:parameters>
+        <oer:parameter name="leadId" description="A required input parameter of the submitDeal Web service method. It is the ID of the lead record to be registered" />
+        <oer:return description="The return value of the submitDeal Web service method" />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="acceptLead">
+      <description>A Web service method that accepts a record of Oracle Fusion Lead
+                Object</description>
+      <oer:lifecycle>Active</oer:lifecycle>
+      <oer:parameters>
+        <oer:parameter name="leadId" description="A required input parameter of the acceptLead Web service method. It is the ID of the lead record that would need to be accepted" />
+        <oer:return description="The return value of the reassignLead Web service method" />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="rejectLead">
+      <description>A Web service method that rejects a record of Oracle Fusion Lead
+                Object</description>
+      <oer:lifecycle>Active</oer:lifecycle>
+      <oer:parameters>
+        <oer:parameter name="leadId" description="A required input parameter of the rejectLead Web service method. It is the ID of the lead record that would need to be rejected" />
+        <oer:parameter name="rejectReason" description="An optional input parameter of the rejectLead Web service method. It is the reason for rejecting the lead." />
+        <oer:parameter name="rejectComments" description="An optional input parameter of the rejectLead Web service method. It is the comment recorded for the lead while being rejected." />
+        <oer:return description="The return value of the rejectLead Web service method" />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="retireLead">
+      <description>A Web service method that retires a lead</description>
+      <oer:lifecycle>Active</oer:lifecycle>
+      <oer:parameters>
+        <oer:parameter name="leadId" description="An input parameter of the retireLead Web service method that identifies the lead record by ID" />
+        <oer:parameter name="retireReason" description="An optional input parameter of the retireLead Web service method. It is the reason for retiring a lead." />
+        <oer:parameter name="retireComments" description="An optional input parameter of the retireLead Web service method. It is the comment recorded for the lead while being retired." />
+        <oer:return description="The return value of the retireLead Web service method" />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="getSalesLead">
+      <description>"A Web service method that queries by ID, a single record of
+                Oracle Fusion Lead Object</description>
+      <oer:lifecycle>Active</oer:lifecycle>
+      <oer:parameters>
+        <oer:parameter name="leadId" description="A required input parameter of the getLead Web service method. It is the row ID of the record you want to query for." />
+        <oer:return description="The return value of the getLead Web service method. Includes the full set of attributes of record" />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="createSalesLead">
+      <description>A Web service method that creates records of Oracle Fusion Lead
+                Object</description>
+      <oer:lifecycle>Active</oer:lifecycle>
+      <oer:parameters>
+        <oer:parameter name="salesLead" description="A required input parameter of the createLead Web service method. The input object Includes the attribute values that the lead record will be created with." />
+        <oer:return description="The return value of the createLead Web service method. Includes the full set of attributes of the record." />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="updateSalesLead">
+      <description>A Web service method that updates a record of Oracle Fusion Lead
+                Object</description>
+      <oer:lifecycle>Active</oer:lifecycle>
+      <oer:parameters>
+        <oer:parameter name="salesLead" description="A required parameter of the updateLead Web service method. The record matching the ID specified in this input lead contact is updated with the corresponding input attribute values also" />
+        <oer:return description="The return value of the updateLead Web service method. Includes the full set of attributes of the record" />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="deleteSalesLead">
+      <description>A Web service method that deletes a record Oracle Fusion Lead
+                Object</description>
+      <oer:lifecycle>Active</oer:lifecycle>
+      <oer:parameters>
+        <oer:parameter name="salesLead" description="A required input parameter of the deleteLead Web service method. The record matching the input attribute values specified in the Lead is deleted." />
+        <oer:return description="Not applicable" />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="mergeSalesLead">
+      <description>A Web service method that either creates a single record of
+                Oracle Fusion Lead Object or updates a record given the ID.</description>
+      <oer:lifecycle>Active</oer:lifecycle>
+      <oer:parameters>
+        <oer:parameter name="salesLead" description="A required parameter of the mergeSalesLead Web service method. The record matching the ID specified in this input is updated. If No ID is specified, the record is created instead." />
+        <oer:return description="The return value of the mergeLead Web service method. Includes the full set of attributes of the record." />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="findSalesLead">
+      <description>A Web service method that queries by criteria, a single record
+                or set of records of Oracle Fusion Lead Object</description>
+      <oer:lifecycle>Active</oer:lifecycle>
+      <oer:parameters>
+        <oer:parameter name="findCriteria" description="A required input parameter of the findLead Web service method.The filter criteria is the cumulative set of attribute criteria that will identify records queried for." />
+        <oer:parameter name="findControl" description="NOT USED" />
+        <oer:return description="The return value of the findLead Web service method. Includes the full set of attributes of records queried" />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="processSalesLead">
+      <description>A Web service method that creates or updates  records of Oracle
+                Fusion Lead Object in bulk.</description>
+      <oer:lifecycle>Active</oer:lifecycle>
+      <oer:parameters>
+        <oer:parameter name="changeOperation" description="Either of Create,Merge or Update need to be passed as input parameter value." />
+        <oer:parameter name="salesLead" description="A required parameter of the processLead Web service method. The List of Lead input records to be created or merged or updated." />
+        <oer:parameter name="processControl" description="It has 3 parts.     For the 1st parameter, value can be Full which means Full set of Lead attributes to be returned, vaue of Key means only     Lead ID values to be returned,value of None means no value returned.     For the 2nd parameter, similar to 1st parameter but related to Exceptions.     For the 3rd mandatory parameter, indicates True or False for partial failure allowed or not." />
+        <oer:return description="The return value of the processLead Web service method. It can be None or a List of only the Lead IDs or a List of full set of Lead records." />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="getSalesLeadContact">
+      <description>A Web service method that queries by ID, a single record of
+                Oracle Fusion Lead Contact Object</description>
+      <oer:lifecycle>Active</oer:lifecycle>
+      <oer:parameters>
+        <oer:parameter name="leadMemberId" description="A required input parameter of the getLeadContact Web service method. It is the row ID of the record you want to query for." />
+        <oer:return description="The return value of the getLeadContact Web service method. Includes the full set of attributes of record" />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="createSalesLeadContact">
+      <description>A Web service method that creates records of Oracle Fusion Lead
+                Contact Object</description>
+      <oer:lifecycle>Active</oer:lifecycle>
+      <oer:parameters>
+        <oer:parameter name="salesLeadContact" description="A required input parameter of the createLeadContact Web service method. Includes the attribute values that the record will be created with." />
+        <oer:return description="The return value of the createLeadContact Web service method. Includes the full set of attributes of the record." />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="updateSalesLeadContact">
+      <description>A Web service method that updates a record of Oracle Fusion Lead
+                Contact Object</description>
+      <oer:lifecycle>Active</oer:lifecycle>
+      <oer:parameters>
+        <oer:parameter name="salesLeadContact" description="A required parameter of the updateLeadContact Web service method. The record matching the ID specified in this input lead contact is updated with the corresponding input attribute values also" />
+        <oer:return description="The return value of the updateLeadContact Web service method. Includes the full set of attributes of the record" />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="deleteSalesLeadContact">
+      <description>A Web service method that deletes a record Oracle Fusion Lead
+                Contact Object</description>
+      <oer:lifecycle>Active</oer:lifecycle>
+      <oer:parameters>
+        <oer:parameter name="salesLeadContact" description="A required input parameter of the deleteLeadContact Web service method. The lead contact record matching the input attribute values specified are deleted." />
+        <oer:return description="Not applicable" />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="findSalesLeadContact">
+      <description>A Web service method that queries by criteria, a single record
+                or set of records of Oracle Fusion Lead Contact Object</description>
+      <oer:lifecycle>Active</oer:lifecycle>
+      <oer:parameters>
+        <oer:parameter name="findCriteria" description="A required input parameter of the findLeadContact Web service method. The filter criteria is the cumulative set of attribute criteria that will identify records queried for." />
+        <oer:parameter name="findControl" description="NOT USED" />
+        <oer:return description="The return value of the findLeadContact Web service method. Includes the full set of attributes of records queried" />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="getSalesLeadProduct">
+      <description>A Web service method that queries by ID, a single record of
+                Oracle Fusion Lead Product Object</description>
+      <oer:lifecycle>Active</oer:lifecycle>
+      <oer:parameters>
+        <oer:parameter name="leadProductId" description="A required input parameter of the getLeadProduct Web service method. It is the row ID of the record you want to query for." />
+        <oer:return description="The return value of the getLeadProduct Web service method. Includes the full set of attributes of record" />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="createSalesLeadProduct">
+      <description>A Web service method that creates records of Oracle Fusion Lead
+                Product Object</description>
+      <oer:lifecycle>Active</oer:lifecycle>
+      <oer:parameters>
+        <oer:parameter name="salesLeadProduct" description="The return value of the createLeadProduct Web service method. Includes the full set of attributes of the record." />
+        <oer:return description="A required input parameter of the createLeadProduct Web service method. The input object includes the attribute values that the record will be created with." />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="updateSalesLeadProduct">
+      <description>A Web service method that updates a record of Oracle Fusion Lead
+                Product Object</description>
+      <oer:lifecycle>Active</oer:lifecycle>
+      <oer:parameters>
+        <oer:parameter name="salesLeadProduct" description="A required parameter of the updateLeadProduct Web service method. The record matching the ID specified in this input lead product is updated with the corresponding input attribute values also" />
+        <oer:return description="The return value of the updateLeadProduct Web service method. Includes the full set of attributes of the record" />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="deleteSalesLeadProduct">
+      <description>A Web service method that deletes a record Oracle Fusion Lead
+                Product Object</description>
+      <oer:lifecycle>Active</oer:lifecycle>
+      <oer:parameters>
+        <oer:parameter name="salesLeadProduct" description="A required input parameter of the deleteLeadProduct Web service method. The record matching the input attribute values specified in the lead product are deleted." />
+        <oer:return description="Not applicable" />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="findSalesLeadProduct">
+      <description>A Web service method that queries by criteria, a single record
+                or set of records of Oracle Fusion Lead Product Object</description>
+      <oer:lifecycle>Active</oer:lifecycle>
+      <oer:parameters>
+        <oer:parameter name="findCriteria" description="A required input parameter of the findLeadResource Web service method. The filter criteria is a cumulative set of attribute criteria that will identify records queried for." />
+        <oer:parameter name="findControl" description="NOT USED" />
+        <oer:return description="The return value of the findLeadProduct Web service method. Includes the full set of attributes of records queried" />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="getSalesLeadResource">
+      <description>A Web service method that queries by ID, a single record of
+                Oracle Fusion Lead Resource Object</description>
+      <oer:lifecycle>Active</oer:lifecycle>
+      <oer:parameters>
+        <oer:parameter name="leadResourceId" description="A required input parameter of the getLeadResource Web service method. It is the row ID of the record you want to query for." />
+        <oer:return description="The return value of the getLeadResource Web service method. Includes the full set of attributes of record" />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="createSalesLeadResource">
+      <description>A Web service method that creates records of Oracle Fusion Lead
+                Resource Object</description>
+      <oer:lifecycle>Active</oer:lifecycle>
+      <oer:parameters>
+        <oer:parameter name="salesLeadResource" description="A required input parameter of the createLeadResource Web service method. The input object Includes the attribute values that the record will be created with." />
+        <oer:return description="The return value of the createLeadResource Web service method. Includes the full set of attributes of the record." />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="updateSalesLeadResource">
+      <description>A Web service method that updates a record of Oracle Fusion Lead
+                Resource Object</description>
+      <oer:lifecycle>Active</oer:lifecycle>
+      <oer:parameters>
+        <oer:parameter name="salesLeadResource" description="A required parameter of the updateLeadResource Web service method. The record matching the ID specified in this input lead resource is updated with the corresponding input attribute values also" />
+        <oer:return description="The return value of the updateLeadResource Web service method. Includes the full set of attributes of the record" />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="deleteSalesLeadResource">
+      <description>A Web service method that deletes a record Oracle Fusion Lead
+                Resource Object</description>
+      <oer:lifecycle>Active</oer:lifecycle>
+      <oer:parameters>
+        <oer:parameter name="salesLeadResource" description="A required input parameter of the deleteLeadResource Web service method. The record matching the input attribute values specified in the Lead Resource is deleted." />
+        <oer:return description="Not applicable" />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="findSalesLeadResource">
+      <description>A Web service method that queries by criteria, a single record
+                or set of records of Oracle Fusion Lead Resource Object</description>
+      <oer:lifecycle>Active</oer:lifecycle>
+      <oer:parameters>
+        <oer:parameter name="findCriteria" description="A required input parameter of the findLeadResource Web service method. The filter criteria is a cumlative set of attribute criteria that will identify records queried for." />
+        <oer:parameter name="findControl" description="Not USED" />
+        <oer:return description="The return value of the findLeadResource Web service method. Includes the full set of attributes of records queried" />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="getDfltObjAttrHints">
+      <description>An operation to retrieve user interface hints, such as the
+                service data object label and object attribute labels, for the
+                specified service data object and locale.  As a prerequisite,
+                invoke the getEntityList operation defined on this service to
+                get the list of possible values for the viewName request payload
+                element.</description>
+      <oer:parameters>
+        <oer:parameter name="viewName" description="The service view usage name, an internal name for the service data object.  Specify the value of the &lt;name&gt; element from the getEntityList operation response payload." />
+        <oer:parameter name="localeName" description="The locale to use when evaluating locale-based user interface hints.  The localeName is in ISO 639-1 format." />
+        <oer:return description="The label and user interface hints for the specified service data object and its attributes in a name-value pair format" />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="getServiceLastUpdateTime">
+      <description>An operation that returns the date and time when the schema
+                files referenced in the service definition last changed.</description>
+      <oer:parameters>
+        <oer:return description="The date and time when the service definition last changed in ISO 8601 format." />
+      </oer:parameters>
+    </oer:operation>
+    <oer:operation name="getEntityList">
+      <description>An operation to get the list of service data objects defined on
+                this service.</description>
+      <oer:parameters>
+        <oer:return description="A list of service data objects defined on this service.  For each service data object, the result includes the QName, internal name, and Boolean values indicating whether create, update, merge, and delete operations can be performed on the object." />
+      </oer:parameters>
+    </oer:operation>
+  </wsdl:documentation>
+  <plnk:partnerLinkType name="LeadIntegrationService">
+    <plnk:role name="LeadIntegrationServiceProvider">
+      <plnk:portType name="tns:LeadIntegrationService" />
+    </plnk:role>
+    <plnk:role name="LeadIntegrationServiceRequestor">
+      <plnk:portType name="tns:LeadIntegrationServiceResponse" />
+    </plnk:role>
+  </plnk:partnerLinkType>
+  <wsp:Policy xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="LeadIntegrationServiceResponse_Fault_Policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" />
+  <wsp:Policy xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="LeadIntegrationServiceResponse_Input_Policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
+    <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+      <sp:Body />
+      <sp:Header Namespace="http://www.w3.org/2005/08/addressing" />
+      <sp:Header Namespace="http://schemas.xmlsoap.org/ws/2004/08/addressing" />
+      <sp:Header Name="fmw-context" Namespace="http://xmlns.oracle.com/fmw/context/1.0" />
+    </sp:SignedParts>
+    <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+      <sp:Body />
+      <sp:Header Name="fmw-context" Namespace="http://xmlns.oracle.com/fmw/context/1.0" />
+    </sp:EncryptedParts>
+  </wsp:Policy>
+  <wsp:Policy xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="LeadIntegrationServiceResponse_Output_Policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
+    <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+      <sp:Body />
+    </sp:SignedParts>
+    <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+      <sp:Body />
+    </sp:EncryptedParts>
+  </wsp:Policy>
+  <wsp:Policy xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="LeadIntegrationServiceSoapHttpPort_Fault_Policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
+    <wsp:ExactlyOne>
+      <wsp:All />
+      <wsp:All />
+      <wsp:All />
+      <wsp:All />
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="LeadIntegrationServiceSoapHttpPort_Input_Policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Namespace="http://schemas.xmlsoap.org/ws/2004/08/addressing" />
+          <sp:Header Name="fmw-context" Namespace="http://xmlns.oracle.com/fmw/context/1.0" />
+          <sp:Header Name="SignatureConfirmation" Namespace="http://docs.oasis-open.org/wss/oasis-wss-wssecurity-secext-1.1.xsd" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="fmw-context" Namespace="http://xmlns.oracle.com/fmw/context/1.0" />
+        </sp:EncryptedParts>
+      </wsp:All>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Namespace="http://schemas.xmlsoap.org/ws/2004/08/addressing" />
+          <sp:Header Name="fmw-context" Namespace="http://xmlns.oracle.com/fmw/context/1.0" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="fmw-context" Namespace="http://xmlns.oracle.com/fmw/context/1.0" />
+        </sp:EncryptedParts>
+      </wsp:All>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Namespace="http://schemas.xmlsoap.org/ws/2004/08/addressing" />
+          <sp:Header Name="fmw-context" Namespace="http://xmlns.oracle.com/fmw/context/1.0" />
+          <sp:Header Name="SignatureConfirmation" Namespace="http://docs.oasis-open.org/wss/oasis-wss-wssecurity-secext-1.1.xsd" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="fmw-context" Namespace="http://xmlns.oracle.com/fmw/context/1.0" />
+        </sp:EncryptedParts>
+      </wsp:All>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Namespace="http://schemas.xmlsoap.org/ws/2004/08/addressing" />
+          <sp:Header Name="fmw-context" Namespace="http://xmlns.oracle.com/fmw/context/1.0" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="fmw-context" Namespace="http://xmlns.oracle.com/fmw/context/1.0" />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="LeadIntegrationServiceSoapHttpPort_Output_Policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="wsaddr_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
+    <wsaw:UsingAddressing xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" />
+  </wsp:Policy>
+  <wsp:Policy xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="wss11_saml_or_username_token_with_message_protection_service_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SymmetricBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:ProtectionToken>
+              <wsp:Policy>
+                <sp:X509Token sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/Never">
+                  <wsp:Policy>
+                    <sp:RequireThumbprintReference />
+                    <sp:WssX509V3Token11 />
+                  </wsp:Policy>
+                </sp:X509Token>
+              </wsp:Policy>
+            </sp:ProtectionToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic128 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Lax />
+              </wsp:Policy>
+            </sp:Layout>
+            <sp:IncludeTimestamp />
+            <sp:ProtectTokens />
+            <sp:OnlySignEntireHeadersAndBody />
+          </wsp:Policy>
+        </sp:SymmetricBinding>
+        <sp:SignedSupportingTokens xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:SamlToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+              <wsp:Policy>
+                <sp:WssSamlV11Token11 />
+              </wsp:Policy>
+            </sp:SamlToken>
+          </wsp:Policy>
+        </sp:SignedSupportingTokens>
+        <sp:EndorsingSupportingTokens xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:X509Token sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+              <wsp:Policy>
+                <sp:WssX509V3Token11 />
+              </wsp:Policy>
+            </sp:X509Token>
+          </wsp:Policy>
+        </sp:EndorsingSupportingTokens>
+        <sp:Wss11 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:RequireSignatureConfirmation />
+            <sp:MustSupportRefEncryptedKey />
+          </wsp:Policy>
+        </sp:Wss11>
+      </wsp:All>
+      <wsp:All>
+        <sp:SymmetricBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:ProtectionToken>
+              <wsp:Policy>
+                <sp:X509Token sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/Never">
+                  <wsp:Policy>
+                    <sp:RequireThumbprintReference />
+                    <sp:WssX509V3Token11 />
+                  </wsp:Policy>
+                </sp:X509Token>
+              </wsp:Policy>
+            </sp:ProtectionToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic128Exn256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Lax />
+              </wsp:Policy>
+            </sp:Layout>
+            <sp:IncludeTimestamp />
+            <sp:ProtectTokens />
+            <sp:OnlySignEntireHeadersAndBody />
+          </wsp:Policy>
+        </sp:SymmetricBinding>
+        <sp:SignedSupportingTokens xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:SamlToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+              <wsp:Policy>
+                <sp:WssSamlV11Token11 />
+              </wsp:Policy>
+            </sp:SamlToken>
+          </wsp:Policy>
+        </sp:SignedSupportingTokens>
+        <sp:EndorsingSupportingTokens xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:X509Token sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+              <wsp:Policy>
+                <sp:WssX509V3Token11 />
+              </wsp:Policy>
+            </sp:X509Token>
+          </wsp:Policy>
+        </sp:EndorsingSupportingTokens>
+        <sp:Wss11 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:RequireSignatureConfirmation />
+            <sp:MustSupportRefEncryptedKey />
+          </wsp:Policy>
+        </sp:Wss11>
+      </wsp:All>
+      <wsp:All>
+        <sp:SymmetricBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:ProtectionToken>
+              <wsp:Policy>
+                <sp:X509Token sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/Never">
+                  <wsp:Policy>
+                    <sp:RequireThumbprintReference />
+                    <sp:WssX509V3Token11 />
+                  </wsp:Policy>
+                </sp:X509Token>
+              </wsp:Policy>
+            </sp:ProtectionToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic128 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Lax />
+              </wsp:Policy>
+            </sp:Layout>
+            <sp:IncludeTimestamp />
+            <sp:OnlySignEntireHeadersAndBody />
+          </wsp:Policy>
+        </sp:SymmetricBinding>
+        <sp:SignedSupportingTokens xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:UsernameToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+              <wsp:Policy>
+                <sp:WssUsernameToken10 />
+              </wsp:Policy>
+            </sp:UsernameToken>
+          </wsp:Policy>
+        </sp:SignedSupportingTokens>
+        <sp:Wss11 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:RequireSignatureConfirmation />
+            <sp:MustSupportRefEncryptedKey />
+          </wsp:Policy>
+        </sp:Wss11>
+      </wsp:All>
+      <wsp:All>
+        <sp:SymmetricBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:ProtectionToken>
+              <wsp:Policy>
+                <sp:X509Token sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/Never">
+                  <wsp:Policy>
+                    <sp:RequireThumbprintReference />
+                    <sp:WssX509V3Token11 />
+                  </wsp:Policy>
+                </sp:X509Token>
+              </wsp:Policy>
+            </sp:ProtectionToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic128Exn256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Lax />
+              </wsp:Policy>
+            </sp:Layout>
+            <sp:IncludeTimestamp />
+            <sp:OnlySignEntireHeadersAndBody />
+          </wsp:Policy>
+        </sp:SymmetricBinding>
+        <sp:SignedSupportingTokens xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:UsernameToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+              <wsp:Policy>
+                <sp:WssUsernameToken10 />
+              </wsp:Policy>
+            </sp:UsernameToken>
+          </wsp:Policy>
+        </sp:SignedSupportingTokens>
+        <sp:Wss11 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:RequireSignatureConfirmation />
+            <sp:MustSupportRefEncryptedKey />
+          </wsp:Policy>
+        </sp:Wss11>
+      </wsp:All>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false">
+                  <wsp:Policy />
+                </sp:HttpsToken>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Lax />
+              </wsp:Policy>
+            </sp:Layout>
+            <sp:IncludeTimestamp />
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <sp:SupportingTokens xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:SamlToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+              <wsp:Policy>
+                <sp:WssSamlV11Token10 />
+              </wsp:Policy>
+            </sp:SamlToken>
+          </wsp:Policy>
+        </sp:SupportingTokens>
+      </wsp:All>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false">
+                  <wsp:Policy />
+                </sp:HttpsToken>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Lax />
+              </wsp:Policy>
+            </sp:Layout>
+            <sp:IncludeTimestamp />
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <sp:SupportingTokens xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:UsernameToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+              <wsp:Policy>
+                <sp:WssUsernameToken10 />
+              </wsp:Policy>
+            </sp:UsernameToken>
+          </wsp:Policy>
+        </sp:SupportingTokens>
+      </wsp:All>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false">
+                  <wsp:Policy />
+                </sp:HttpsToken>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Lax />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+      </wsp:All>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false">
+                  <wsp:Policy>
+                    <osp:HttpJwtAuthentication xmlns:osp="http://schemas.oracle.com/ws/2012/01/wssecuritypolicy" />
+                  </wsp:Policy>
+                </sp:HttpsToken>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Lax />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="wss11_saml_token_with_message_protection_client_policy">
+    <sp:SymmetricBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+      <wsp:Policy>
+        <sp:ProtectionToken>
+          <wsp:Policy>
+            <sp:X509Token sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/Never">
+              <wsp:Policy>
+                <sp:RequireThumbprintReference />
+                <sp:WssX509V3Token11 />
+              </wsp:Policy>
+            </sp:X509Token>
+          </wsp:Policy>
+        </sp:ProtectionToken>
+        <sp:AlgorithmSuite>
+          <wsp:Policy>
+            <sp:Basic128 />
+          </wsp:Policy>
+        </sp:AlgorithmSuite>
+        <sp:Layout>
+          <wsp:Policy>
+            <sp:Lax />
+          </wsp:Policy>
+        </sp:Layout>
+        <sp:IncludeTimestamp />
+        <sp:ProtectTokens />
+        <sp:OnlySignEntireHeadersAndBody />
+      </wsp:Policy>
+    </sp:SymmetricBinding>
+    <sp:SignedSupportingTokens xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+      <wsp:Policy>
+        <sp:SamlToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+          <wsp:Policy>
+            <sp:WssSamlV11Token11 />
+          </wsp:Policy>
+        </sp:SamlToken>
+      </wsp:Policy>
+    </sp:SignedSupportingTokens>
+    <sp:EndorsingSupportingTokens xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+      <wsp:Policy>
+        <sp:X509Token sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+          <wsp:Policy>
+            <sp:WssX509V3Token11 />
+          </wsp:Policy>
+        </sp:X509Token>
+      </wsp:Policy>
+    </sp:EndorsingSupportingTokens>
+    <sp:Wss11 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+      <wsp:Policy>
+        <sp:RequireSignatureConfirmation />
+        <sp:MustSupportRefEncryptedKey />
+      </wsp:Policy>
+    </sp:Wss11>
+  </wsp:Policy>
+  <wsdl:import namespace="http://xmlns.oracle.com/adf/svc/errors/" location="https://ucf3-fap0579-crm.oracledemos.com:443/mklLeads/LeadIntegrationService?WSDL=/META-INF/wsdl/ServiceException.wsdl" />
+  <wsdl:types>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema">
+      <import schemaLocation="https://ucf3-fap0579-crm.oracledemos.com:443/mklLeads/LeadIntegrationService?XSD=/META-INF/oracle-webservices-async-fault-11_0.xsd" namespace="http://xmlns.oracle.com/oracleas/schema/oracle-fault-11_0" />
+      <import schemaLocation="https://ucf3-fap0579-crm.oracledemos.com:443/mklLeads/LeadIntegrationService?XSD=/oracle/apps/marketing/leadMgmt/leads/leadServiceV3/LeadIntegrationService.xsd" namespace="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/types/" />
+    </schema>
+  </wsdl:types>
+  <wsdl:message name="LeadIntegrationService_onFault">
+    <wsdl:part name="parameters" element="orafault:Fault" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_getSalesLeadProductAsyncResponse">
+    <wsdl:part name="parameters" element="types:getSalesLeadProductAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_retireLeadAsyncResponse">
+    <wsdl:part name="parameters" element="types:retireLeadAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_reassignLeadAsyncResponse">
+    <wsdl:part name="parameters" element="types:reassignLeadAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_deleteSalesLeadAsyncResponse">
+    <wsdl:part name="parameters" element="types:deleteSalesLeadAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_getSalesLeadContactAsyncResponse">
+    <wsdl:part name="parameters" element="types:getSalesLeadContactAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_updateSalesLeadContactAsyncResponse">
+    <wsdl:part name="parameters" element="types:updateSalesLeadContactAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_createSalesLeadProductAsyncResponse">
+    <wsdl:part name="parameters" element="types:createSalesLeadProductAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_createSalesLeadContactAsyncResponse">
+    <wsdl:part name="parameters" element="types:createSalesLeadContactAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_updateSalesLeadProductAsyncResponse">
+    <wsdl:part name="parameters" element="types:updateSalesLeadProductAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_mergeSalesLeadAsyncResponse">
+    <wsdl:part name="parameters" element="types:mergeSalesLeadAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_deleteSalesLeadProductAsyncResponse">
+    <wsdl:part name="parameters" element="types:deleteSalesLeadProductAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_scoreLeadAsyncResponse">
+    <wsdl:part name="parameters" element="types:scoreLeadAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_deleteSalesLeadContactAsyncResponse">
+    <wsdl:part name="parameters" element="types:deleteSalesLeadContactAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_getDfltObjAttrHintsAsyncResponse">
+    <wsdl:part name="parameters" element="types:getDfltObjAttrHintsAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_getSalesLeadAsyncResponse">
+    <wsdl:part name="parameters" element="types:getSalesLeadAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_convertLeadToOpportunityAsyncResponse">
+    <wsdl:part name="parameters" element="types:convertLeadToOpportunityAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_rejectLeadAsyncResponse">
+    <wsdl:part name="parameters" element="types:rejectLeadAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_updateSalesLeadAsyncResponse">
+    <wsdl:part name="parameters" element="types:updateSalesLeadAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_findSalesLeadResourceAsyncResponse">
+    <wsdl:part name="parameters" element="types:findSalesLeadResourceAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_acceptLeadAsyncResponse">
+    <wsdl:part name="parameters" element="types:acceptLeadAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_findSalesLeadProductAsyncResponse">
+    <wsdl:part name="parameters" element="types:findSalesLeadProductAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_getEntityListAsyncResponse">
+    <wsdl:part name="parameters" element="types:getEntityListAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_assignLeadAsyncResponse">
+    <wsdl:part name="parameters" element="types:assignLeadAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_createSalesLeadResourceAsyncResponse">
+    <wsdl:part name="parameters" element="types:createSalesLeadResourceAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_findSalesLeadAsyncResponse">
+    <wsdl:part name="parameters" element="types:findSalesLeadAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_rankLeadAsyncResponse">
+    <wsdl:part name="parameters" element="types:rankLeadAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_submitDealAsyncResponse">
+    <wsdl:part name="parameters" element="types:submitDealAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_updateSalesLeadResourceAsyncResponse">
+    <wsdl:part name="parameters" element="types:updateSalesLeadResourceAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_getSalesLeadResourceAsyncResponse">
+    <wsdl:part name="parameters" element="types:getSalesLeadResourceAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_createSalesLeadAsyncResponse">
+    <wsdl:part name="parameters" element="types:createSalesLeadAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_qualifyLeadAsyncResponse">
+    <wsdl:part name="parameters" element="types:qualifyLeadAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_processSalesLeadAsyncResponse">
+    <wsdl:part name="parameters" element="types:processSalesLeadAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_findSalesLeadContactAsyncResponse">
+    <wsdl:part name="parameters" element="types:findSalesLeadContactAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_getServiceLastUpdateTimeAsyncResponse">
+    <wsdl:part name="parameters" element="types:getServiceLastUpdateTimeAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_deleteSalesLeadResourceAsyncResponse">
+    <wsdl:part name="parameters" element="types:deleteSalesLeadResourceAsyncResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_assignLead">
+    <wsdl:part name="parameters" element="types:assignLead" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_assignLeadResponse">
+    <wsdl:part name="parameters" element="types:assignLeadResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_convertLeadToOpportunity">
+    <wsdl:part name="parameters" element="types:convertLeadToOpportunity" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_convertLeadToOpportunityResponse">
+    <wsdl:part name="parameters" element="types:convertLeadToOpportunityResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_qualifyLead">
+    <wsdl:part name="parameters" element="types:qualifyLead" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_qualifyLeadResponse">
+    <wsdl:part name="parameters" element="types:qualifyLeadResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_rankLead">
+    <wsdl:part name="parameters" element="types:rankLead" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_rankLeadResponse">
+    <wsdl:part name="parameters" element="types:rankLeadResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_reassignLead">
+    <wsdl:part name="parameters" element="types:reassignLead" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_reassignLeadResponse">
+    <wsdl:part name="parameters" element="types:reassignLeadResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_scoreLead">
+    <wsdl:part name="parameters" element="types:scoreLead" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_scoreLeadResponse">
+    <wsdl:part name="parameters" element="types:scoreLeadResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_submitDeal">
+    <wsdl:part name="parameters" element="types:submitDeal" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_submitDealResponse">
+    <wsdl:part name="parameters" element="types:submitDealResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_acceptLead">
+    <wsdl:part name="parameters" element="types:acceptLead" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_acceptLeadResponse">
+    <wsdl:part name="parameters" element="types:acceptLeadResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_rejectLead">
+    <wsdl:part name="parameters" element="types:rejectLead" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_rejectLeadResponse">
+    <wsdl:part name="parameters" element="types:rejectLeadResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_retireLead">
+    <wsdl:part name="parameters" element="types:retireLead" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_retireLeadResponse">
+    <wsdl:part name="parameters" element="types:retireLeadResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_getSalesLead">
+    <wsdl:part name="parameters" element="types:getSalesLead" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_getSalesLeadResponse">
+    <wsdl:part name="parameters" element="types:getSalesLeadResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_createSalesLead">
+    <wsdl:part name="parameters" element="types:createSalesLead" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_createSalesLeadResponse">
+    <wsdl:part name="parameters" element="types:createSalesLeadResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_updateSalesLead">
+    <wsdl:part name="parameters" element="types:updateSalesLead" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_updateSalesLeadResponse">
+    <wsdl:part name="parameters" element="types:updateSalesLeadResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_deleteSalesLead">
+    <wsdl:part name="parameters" element="types:deleteSalesLead" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_deleteSalesLeadResponse">
+    <wsdl:part name="parameters" element="types:deleteSalesLeadResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_mergeSalesLead">
+    <wsdl:part name="parameters" element="types:mergeSalesLead" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_mergeSalesLeadResponse">
+    <wsdl:part name="parameters" element="types:mergeSalesLeadResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_findSalesLead">
+    <wsdl:part name="parameters" element="types:findSalesLead" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_findSalesLeadResponse">
+    <wsdl:part name="parameters" element="types:findSalesLeadResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_processSalesLead">
+    <wsdl:part name="parameters" element="types:processSalesLead" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_processSalesLeadResponse">
+    <wsdl:part name="parameters" element="types:processSalesLeadResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_getSalesLeadContact">
+    <wsdl:part name="parameters" element="types:getSalesLeadContact" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_getSalesLeadContactResponse">
+    <wsdl:part name="parameters" element="types:getSalesLeadContactResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_createSalesLeadContact">
+    <wsdl:part name="parameters" element="types:createSalesLeadContact" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_createSalesLeadContactResponse">
+    <wsdl:part name="parameters" element="types:createSalesLeadContactResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_updateSalesLeadContact">
+    <wsdl:part name="parameters" element="types:updateSalesLeadContact" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_updateSalesLeadContactResponse">
+    <wsdl:part name="parameters" element="types:updateSalesLeadContactResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_deleteSalesLeadContact">
+    <wsdl:part name="parameters" element="types:deleteSalesLeadContact" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_deleteSalesLeadContactResponse">
+    <wsdl:part name="parameters" element="types:deleteSalesLeadContactResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_findSalesLeadContact">
+    <wsdl:part name="parameters" element="types:findSalesLeadContact" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_findSalesLeadContactResponse">
+    <wsdl:part name="parameters" element="types:findSalesLeadContactResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_getSalesLeadProduct">
+    <wsdl:part name="parameters" element="types:getSalesLeadProduct" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_getSalesLeadProductResponse">
+    <wsdl:part name="parameters" element="types:getSalesLeadProductResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_createSalesLeadProduct">
+    <wsdl:part name="parameters" element="types:createSalesLeadProduct" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_createSalesLeadProductResponse">
+    <wsdl:part name="parameters" element="types:createSalesLeadProductResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_updateSalesLeadProduct">
+    <wsdl:part name="parameters" element="types:updateSalesLeadProduct" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_updateSalesLeadProductResponse">
+    <wsdl:part name="parameters" element="types:updateSalesLeadProductResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_deleteSalesLeadProduct">
+    <wsdl:part name="parameters" element="types:deleteSalesLeadProduct" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_deleteSalesLeadProductResponse">
+    <wsdl:part name="parameters" element="types:deleteSalesLeadProductResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_findSalesLeadProduct">
+    <wsdl:part name="parameters" element="types:findSalesLeadProduct" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_findSalesLeadProductResponse">
+    <wsdl:part name="parameters" element="types:findSalesLeadProductResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_getSalesLeadResource">
+    <wsdl:part name="parameters" element="types:getSalesLeadResource" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_getSalesLeadResourceResponse">
+    <wsdl:part name="parameters" element="types:getSalesLeadResourceResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_createSalesLeadResource">
+    <wsdl:part name="parameters" element="types:createSalesLeadResource" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_createSalesLeadResourceResponse">
+    <wsdl:part name="parameters" element="types:createSalesLeadResourceResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_updateSalesLeadResource">
+    <wsdl:part name="parameters" element="types:updateSalesLeadResource" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_updateSalesLeadResourceResponse">
+    <wsdl:part name="parameters" element="types:updateSalesLeadResourceResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_deleteSalesLeadResource">
+    <wsdl:part name="parameters" element="types:deleteSalesLeadResource" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_deleteSalesLeadResourceResponse">
+    <wsdl:part name="parameters" element="types:deleteSalesLeadResourceResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_findSalesLeadResource">
+    <wsdl:part name="parameters" element="types:findSalesLeadResource" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_findSalesLeadResourceResponse">
+    <wsdl:part name="parameters" element="types:findSalesLeadResourceResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_getDfltObjAttrHints">
+    <wsdl:part name="parameters" element="types:getDfltObjAttrHints" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_getDfltObjAttrHintsResponse">
+    <wsdl:part name="parameters" element="types:getDfltObjAttrHintsResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_getServiceLastUpdateTime">
+    <wsdl:part name="parameters" element="types:getServiceLastUpdateTime" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_getServiceLastUpdateTimeResponse">
+    <wsdl:part name="parameters" element="types:getServiceLastUpdateTimeResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_getEntityList">
+    <wsdl:part name="parameters" element="types:getEntityList" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_getEntityListResponse">
+    <wsdl:part name="parameters" element="types:getEntityListResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_getSalesLeadProductAsync">
+    <wsdl:part name="parameters" element="types:getSalesLeadProductAsync" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_retireLeadAsync">
+    <wsdl:part name="parameters" element="types:retireLeadAsync" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_reassignLeadAsync">
+    <wsdl:part name="parameters" element="types:reassignLeadAsync" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_deleteSalesLeadAsync">
+    <wsdl:part name="parameters" element="types:deleteSalesLeadAsync" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_getSalesLeadContactAsync">
+    <wsdl:part name="parameters" element="types:getSalesLeadContactAsync" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_updateSalesLeadContactAsync">
+    <wsdl:part name="parameters" element="types:updateSalesLeadContactAsync" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_createSalesLeadProductAsync">
+    <wsdl:part name="parameters" element="types:createSalesLeadProductAsync" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_createSalesLeadContactAsync">
+    <wsdl:part name="parameters" element="types:createSalesLeadContactAsync" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_updateSalesLeadProductAsync">
+    <wsdl:part name="parameters" element="types:updateSalesLeadProductAsync" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_mergeSalesLeadAsync">
+    <wsdl:part name="parameters" element="types:mergeSalesLeadAsync" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_deleteSalesLeadProductAsync">
+    <wsdl:part name="parameters" element="types:deleteSalesLeadProductAsync" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_scoreLeadAsync">
+    <wsdl:part name="parameters" element="types:scoreLeadAsync" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_deleteSalesLeadContactAsync">
+    <wsdl:part name="parameters" element="types:deleteSalesLeadContactAsync" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_getDfltObjAttrHintsAsync">
+    <wsdl:part name="parameters" element="types:getDfltObjAttrHintsAsync" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_getSalesLeadAsync">
+    <wsdl:part name="parameters" element="types:getSalesLeadAsync" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_convertLeadToOpportunityAsync">
+    <wsdl:part name="parameters" element="types:convertLeadToOpportunityAsync" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_rejectLeadAsync">
+    <wsdl:part name="parameters" element="types:rejectLeadAsync" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_updateSalesLeadAsync">
+    <wsdl:part name="parameters" element="types:updateSalesLeadAsync" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_findSalesLeadResourceAsync">
+    <wsdl:part name="parameters" element="types:findSalesLeadResourceAsync" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_acceptLeadAsync">
+    <wsdl:part name="parameters" element="types:acceptLeadAsync" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_findSalesLeadProductAsync">
+    <wsdl:part name="parameters" element="types:findSalesLeadProductAsync" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_getEntityListAsync">
+    <wsdl:part name="parameters" element="types:getEntityListAsync" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_assignLeadAsync">
+    <wsdl:part name="parameters" element="types:assignLeadAsync" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_createSalesLeadResourceAsync">
+    <wsdl:part name="parameters" element="types:createSalesLeadResourceAsync" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_findSalesLeadAsync">
+    <wsdl:part name="parameters" element="types:findSalesLeadAsync" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_rankLeadAsync">
+    <wsdl:part name="parameters" element="types:rankLeadAsync" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_submitDealAsync">
+    <wsdl:part name="parameters" element="types:submitDealAsync" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_updateSalesLeadResourceAsync">
+    <wsdl:part name="parameters" element="types:updateSalesLeadResourceAsync" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_getSalesLeadResourceAsync">
+    <wsdl:part name="parameters" element="types:getSalesLeadResourceAsync" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_createSalesLeadAsync">
+    <wsdl:part name="parameters" element="types:createSalesLeadAsync" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_qualifyLeadAsync">
+    <wsdl:part name="parameters" element="types:qualifyLeadAsync" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_processSalesLeadAsync">
+    <wsdl:part name="parameters" element="types:processSalesLeadAsync" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_findSalesLeadContactAsync">
+    <wsdl:part name="parameters" element="types:findSalesLeadContactAsync" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_getServiceLastUpdateTimeAsync">
+    <wsdl:part name="parameters" element="types:getServiceLastUpdateTimeAsync" />
+  </wsdl:message>
+  <wsdl:message name="LeadIntegrationService_deleteSalesLeadResourceAsync">
+    <wsdl:part name="parameters" element="types:deleteSalesLeadResourceAsync" />
+  </wsdl:message>
+  <wsdl:portType name="LeadIntegrationServiceResponse">
+    <wsdl:operation name="onFault">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/oracleas/schema/oracle-fault-11_0/Fault" message="tns:LeadIntegrationService_onFault" />
+    </wsdl:operation>
+    <wsdl:operation name="getSalesLeadProductAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/getSalesLeadProductAsyncResponse" message="tns:LeadIntegrationService_getSalesLeadProductAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="retireLeadAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/retireLeadAsyncResponse" message="tns:LeadIntegrationService_retireLeadAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="reassignLeadAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/reassignLeadAsyncResponse" message="tns:LeadIntegrationService_reassignLeadAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteSalesLeadAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/deleteSalesLeadAsyncResponse" message="tns:LeadIntegrationService_deleteSalesLeadAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getSalesLeadContactAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/getSalesLeadContactAsyncResponse" message="tns:LeadIntegrationService_getSalesLeadContactAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="updateSalesLeadContactAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/updateSalesLeadContactAsyncResponse" message="tns:LeadIntegrationService_updateSalesLeadContactAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="createSalesLeadProductAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/createSalesLeadProductAsyncResponse" message="tns:LeadIntegrationService_createSalesLeadProductAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="createSalesLeadContactAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/createSalesLeadContactAsyncResponse" message="tns:LeadIntegrationService_createSalesLeadContactAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="updateSalesLeadProductAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/updateSalesLeadProductAsyncResponse" message="tns:LeadIntegrationService_updateSalesLeadProductAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="mergeSalesLeadAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/mergeSalesLeadAsyncResponse" message="tns:LeadIntegrationService_mergeSalesLeadAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteSalesLeadProductAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/deleteSalesLeadProductAsyncResponse" message="tns:LeadIntegrationService_deleteSalesLeadProductAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="scoreLeadAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/scoreLeadAsyncResponse" message="tns:LeadIntegrationService_scoreLeadAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteSalesLeadContactAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/deleteSalesLeadContactAsyncResponse" message="tns:LeadIntegrationService_deleteSalesLeadContactAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getDfltObjAttrHintsAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/getDfltObjAttrHintsAsyncResponse" message="tns:LeadIntegrationService_getDfltObjAttrHintsAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getSalesLeadAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/getSalesLeadAsyncResponse" message="tns:LeadIntegrationService_getSalesLeadAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="convertLeadToOpportunityAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/convertLeadToOpportunityAsyncResponse" message="tns:LeadIntegrationService_convertLeadToOpportunityAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="rejectLeadAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/rejectLeadAsyncResponse" message="tns:LeadIntegrationService_rejectLeadAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="updateSalesLeadAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/updateSalesLeadAsyncResponse" message="tns:LeadIntegrationService_updateSalesLeadAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="findSalesLeadResourceAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/findSalesLeadResourceAsyncResponse" message="tns:LeadIntegrationService_findSalesLeadResourceAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="acceptLeadAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/acceptLeadAsyncResponse" message="tns:LeadIntegrationService_acceptLeadAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="findSalesLeadProductAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/findSalesLeadProductAsyncResponse" message="tns:LeadIntegrationService_findSalesLeadProductAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getEntityListAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/getEntityListAsyncResponse" message="tns:LeadIntegrationService_getEntityListAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="assignLeadAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/assignLeadAsyncResponse" message="tns:LeadIntegrationService_assignLeadAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="createSalesLeadResourceAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/createSalesLeadResourceAsyncResponse" message="tns:LeadIntegrationService_createSalesLeadResourceAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="findSalesLeadAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/findSalesLeadAsyncResponse" message="tns:LeadIntegrationService_findSalesLeadAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="rankLeadAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/rankLeadAsyncResponse" message="tns:LeadIntegrationService_rankLeadAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="submitDealAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/submitDealAsyncResponse" message="tns:LeadIntegrationService_submitDealAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="updateSalesLeadResourceAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/updateSalesLeadResourceAsyncResponse" message="tns:LeadIntegrationService_updateSalesLeadResourceAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getSalesLeadResourceAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/getSalesLeadResourceAsyncResponse" message="tns:LeadIntegrationService_getSalesLeadResourceAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="createSalesLeadAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/createSalesLeadAsyncResponse" message="tns:LeadIntegrationService_createSalesLeadAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="qualifyLeadAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/qualifyLeadAsyncResponse" message="tns:LeadIntegrationService_qualifyLeadAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="processSalesLeadAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/processSalesLeadAsyncResponse" message="tns:LeadIntegrationService_processSalesLeadAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="findSalesLeadContactAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/findSalesLeadContactAsyncResponse" message="tns:LeadIntegrationService_findSalesLeadContactAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getServiceLastUpdateTimeAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/getServiceLastUpdateTimeAsyncResponse" message="tns:LeadIntegrationService_getServiceLastUpdateTimeAsyncResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteSalesLeadResourceAsyncResponse">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/deleteSalesLeadResourceAsyncResponse" message="tns:LeadIntegrationService_deleteSalesLeadResourceAsyncResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="LeadIntegrationService">
+    <wsdl:documentation>
+      <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="SalesLead" SDOName="tns:SalesLead" CreateOpName="createSalesLead" UpdateOpName="updateSalesLead" DeleteOpName="deleteSalesLead" MergeOpName="mergeSalesLead" GetOpName="getSalesLead" FindOpName="findSalesLead" ProcessOpName="processSalesLead" />
+      <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="SalesLeadContact" SDOName="tns:SalesLeadContact" CreateOpName="createSalesLeadContact" UpdateOpName="updateSalesLeadContact" DeleteOpName="deleteSalesLeadContact" GetOpName="getSalesLeadContact" FindOpName="findSalesLeadContact" />
+      <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="SalesLeadProduct" SDOName="tns:SalesLeadProduct" CreateOpName="createSalesLeadProduct" UpdateOpName="updateSalesLeadProduct" DeleteOpName="deleteSalesLeadProduct" GetOpName="getSalesLeadProduct" FindOpName="findSalesLeadProduct" />
+      <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="SalesLeadResource" SDOName="tns:SalesLeadResource" CreateOpName="createSalesLeadResource" UpdateOpName="updateSalesLeadResource" DeleteOpName="deleteSalesLeadResource" GetOpName="getSalesLeadResource" FindOpName="findSalesLeadResource" />
+    </wsdl:documentation>
+    <wsdl:operation name="assignLead">
+      <wsdl:input message="tns:LeadIntegrationService_assignLead" />
+      <wsdl:output message="tns:LeadIntegrationService_assignLeadResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="convertLeadToOpportunity">
+      <wsdl:input message="tns:LeadIntegrationService_convertLeadToOpportunity" />
+      <wsdl:output message="tns:LeadIntegrationService_convertLeadToOpportunityResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="qualifyLead">
+      <wsdl:input message="tns:LeadIntegrationService_qualifyLead" />
+      <wsdl:output message="tns:LeadIntegrationService_qualifyLeadResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="rankLead">
+      <wsdl:input message="tns:LeadIntegrationService_rankLead" />
+      <wsdl:output message="tns:LeadIntegrationService_rankLeadResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="reassignLead">
+      <wsdl:input message="tns:LeadIntegrationService_reassignLead" />
+      <wsdl:output message="tns:LeadIntegrationService_reassignLeadResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="scoreLead">
+      <wsdl:input message="tns:LeadIntegrationService_scoreLead" />
+      <wsdl:output message="tns:LeadIntegrationService_scoreLeadResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="submitDeal">
+      <wsdl:input message="tns:LeadIntegrationService_submitDeal" />
+      <wsdl:output message="tns:LeadIntegrationService_submitDealResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="acceptLead">
+      <wsdl:input message="tns:LeadIntegrationService_acceptLead" />
+      <wsdl:output message="tns:LeadIntegrationService_acceptLeadResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="rejectLead">
+      <wsdl:input message="tns:LeadIntegrationService_rejectLead" />
+      <wsdl:output message="tns:LeadIntegrationService_rejectLeadResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="retireLead">
+      <wsdl:input message="tns:LeadIntegrationService_retireLead" />
+      <wsdl:output message="tns:LeadIntegrationService_retireLeadResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="getSalesLead">
+      <wsdl:input message="tns:LeadIntegrationService_getSalesLead" />
+      <wsdl:output message="tns:LeadIntegrationService_getSalesLeadResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="createSalesLead">
+      <wsdl:input message="tns:LeadIntegrationService_createSalesLead" />
+      <wsdl:output message="tns:LeadIntegrationService_createSalesLeadResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="updateSalesLead">
+      <wsdl:input message="tns:LeadIntegrationService_updateSalesLead" />
+      <wsdl:output message="tns:LeadIntegrationService_updateSalesLeadResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteSalesLead">
+      <wsdl:input message="tns:LeadIntegrationService_deleteSalesLead" />
+      <wsdl:output message="tns:LeadIntegrationService_deleteSalesLeadResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="mergeSalesLead">
+      <wsdl:input message="tns:LeadIntegrationService_mergeSalesLead" />
+      <wsdl:output message="tns:LeadIntegrationService_mergeSalesLeadResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="findSalesLead">
+      <wsdl:input message="tns:LeadIntegrationService_findSalesLead" />
+      <wsdl:output message="tns:LeadIntegrationService_findSalesLeadResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="processSalesLead">
+      <wsdl:input message="tns:LeadIntegrationService_processSalesLead" />
+      <wsdl:output message="tns:LeadIntegrationService_processSalesLeadResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="getSalesLeadContact">
+      <wsdl:input message="tns:LeadIntegrationService_getSalesLeadContact" />
+      <wsdl:output message="tns:LeadIntegrationService_getSalesLeadContactResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="createSalesLeadContact">
+      <wsdl:input message="tns:LeadIntegrationService_createSalesLeadContact" />
+      <wsdl:output message="tns:LeadIntegrationService_createSalesLeadContactResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="updateSalesLeadContact">
+      <wsdl:input message="tns:LeadIntegrationService_updateSalesLeadContact" />
+      <wsdl:output message="tns:LeadIntegrationService_updateSalesLeadContactResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteSalesLeadContact">
+      <wsdl:input message="tns:LeadIntegrationService_deleteSalesLeadContact" />
+      <wsdl:output message="tns:LeadIntegrationService_deleteSalesLeadContactResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="findSalesLeadContact">
+      <wsdl:input message="tns:LeadIntegrationService_findSalesLeadContact" />
+      <wsdl:output message="tns:LeadIntegrationService_findSalesLeadContactResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="getSalesLeadProduct">
+      <wsdl:input message="tns:LeadIntegrationService_getSalesLeadProduct" />
+      <wsdl:output message="tns:LeadIntegrationService_getSalesLeadProductResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="createSalesLeadProduct">
+      <wsdl:input message="tns:LeadIntegrationService_createSalesLeadProduct" />
+      <wsdl:output message="tns:LeadIntegrationService_createSalesLeadProductResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="updateSalesLeadProduct">
+      <wsdl:input message="tns:LeadIntegrationService_updateSalesLeadProduct" />
+      <wsdl:output message="tns:LeadIntegrationService_updateSalesLeadProductResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteSalesLeadProduct">
+      <wsdl:input message="tns:LeadIntegrationService_deleteSalesLeadProduct" />
+      <wsdl:output message="tns:LeadIntegrationService_deleteSalesLeadProductResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="findSalesLeadProduct">
+      <wsdl:input message="tns:LeadIntegrationService_findSalesLeadProduct" />
+      <wsdl:output message="tns:LeadIntegrationService_findSalesLeadProductResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="getSalesLeadResource">
+      <wsdl:input message="tns:LeadIntegrationService_getSalesLeadResource" />
+      <wsdl:output message="tns:LeadIntegrationService_getSalesLeadResourceResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="createSalesLeadResource">
+      <wsdl:input message="tns:LeadIntegrationService_createSalesLeadResource" />
+      <wsdl:output message="tns:LeadIntegrationService_createSalesLeadResourceResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="updateSalesLeadResource">
+      <wsdl:input message="tns:LeadIntegrationService_updateSalesLeadResource" />
+      <wsdl:output message="tns:LeadIntegrationService_updateSalesLeadResourceResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteSalesLeadResource">
+      <wsdl:input message="tns:LeadIntegrationService_deleteSalesLeadResource" />
+      <wsdl:output message="tns:LeadIntegrationService_deleteSalesLeadResourceResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="findSalesLeadResource">
+      <wsdl:input message="tns:LeadIntegrationService_findSalesLeadResource" />
+      <wsdl:output message="tns:LeadIntegrationService_findSalesLeadResourceResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="getDfltObjAttrHints">
+      <wsdl:input message="tns:LeadIntegrationService_getDfltObjAttrHints" />
+      <wsdl:output message="tns:LeadIntegrationService_getDfltObjAttrHintsResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="getServiceLastUpdateTime">
+      <wsdl:input message="tns:LeadIntegrationService_getServiceLastUpdateTime" />
+      <wsdl:output message="tns:LeadIntegrationService_getServiceLastUpdateTimeResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="getEntityList">
+      <wsdl:input message="tns:LeadIntegrationService_getEntityList" />
+      <wsdl:output message="tns:LeadIntegrationService_getEntityListResponse" />
+      <wsdl:fault name="ServiceException" message="errors:ServiceException" />
+    </wsdl:operation>
+    <wsdl:operation name="getSalesLeadProductAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/getSalesLeadProductAsync" message="tns:LeadIntegrationService_getSalesLeadProductAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="retireLeadAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/retireLeadAsync" message="tns:LeadIntegrationService_retireLeadAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="reassignLeadAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/reassignLeadAsync" message="tns:LeadIntegrationService_reassignLeadAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteSalesLeadAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/deleteSalesLeadAsync" message="tns:LeadIntegrationService_deleteSalesLeadAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="getSalesLeadContactAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/getSalesLeadContactAsync" message="tns:LeadIntegrationService_getSalesLeadContactAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="updateSalesLeadContactAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/updateSalesLeadContactAsync" message="tns:LeadIntegrationService_updateSalesLeadContactAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="createSalesLeadProductAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/createSalesLeadProductAsync" message="tns:LeadIntegrationService_createSalesLeadProductAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="createSalesLeadContactAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/createSalesLeadContactAsync" message="tns:LeadIntegrationService_createSalesLeadContactAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="updateSalesLeadProductAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/updateSalesLeadProductAsync" message="tns:LeadIntegrationService_updateSalesLeadProductAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="mergeSalesLeadAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/mergeSalesLeadAsync" message="tns:LeadIntegrationService_mergeSalesLeadAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteSalesLeadProductAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/deleteSalesLeadProductAsync" message="tns:LeadIntegrationService_deleteSalesLeadProductAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="scoreLeadAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/scoreLeadAsync" message="tns:LeadIntegrationService_scoreLeadAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteSalesLeadContactAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/deleteSalesLeadContactAsync" message="tns:LeadIntegrationService_deleteSalesLeadContactAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="getDfltObjAttrHintsAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/getDfltObjAttrHintsAsync" message="tns:LeadIntegrationService_getDfltObjAttrHintsAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="getSalesLeadAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/getSalesLeadAsync" message="tns:LeadIntegrationService_getSalesLeadAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="convertLeadToOpportunityAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/convertLeadToOpportunityAsync" message="tns:LeadIntegrationService_convertLeadToOpportunityAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="rejectLeadAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/rejectLeadAsync" message="tns:LeadIntegrationService_rejectLeadAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="updateSalesLeadAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/updateSalesLeadAsync" message="tns:LeadIntegrationService_updateSalesLeadAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="findSalesLeadResourceAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/findSalesLeadResourceAsync" message="tns:LeadIntegrationService_findSalesLeadResourceAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="acceptLeadAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/acceptLeadAsync" message="tns:LeadIntegrationService_acceptLeadAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="findSalesLeadProductAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/findSalesLeadProductAsync" message="tns:LeadIntegrationService_findSalesLeadProductAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="getEntityListAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/getEntityListAsync" message="tns:LeadIntegrationService_getEntityListAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="assignLeadAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/assignLeadAsync" message="tns:LeadIntegrationService_assignLeadAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="createSalesLeadResourceAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/createSalesLeadResourceAsync" message="tns:LeadIntegrationService_createSalesLeadResourceAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="findSalesLeadAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/findSalesLeadAsync" message="tns:LeadIntegrationService_findSalesLeadAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="rankLeadAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/rankLeadAsync" message="tns:LeadIntegrationService_rankLeadAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="submitDealAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/submitDealAsync" message="tns:LeadIntegrationService_submitDealAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="updateSalesLeadResourceAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/updateSalesLeadResourceAsync" message="tns:LeadIntegrationService_updateSalesLeadResourceAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="getSalesLeadResourceAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/getSalesLeadResourceAsync" message="tns:LeadIntegrationService_getSalesLeadResourceAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="createSalesLeadAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/createSalesLeadAsync" message="tns:LeadIntegrationService_createSalesLeadAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="qualifyLeadAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/qualifyLeadAsync" message="tns:LeadIntegrationService_qualifyLeadAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="processSalesLeadAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/processSalesLeadAsync" message="tns:LeadIntegrationService_processSalesLeadAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="findSalesLeadContactAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/findSalesLeadContactAsync" message="tns:LeadIntegrationService_findSalesLeadContactAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="getServiceLastUpdateTimeAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/getServiceLastUpdateTimeAsync" message="tns:LeadIntegrationService_getServiceLastUpdateTimeAsync" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteSalesLeadResourceAsync">
+      <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" ns1:Action="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/deleteSalesLeadResourceAsync" message="tns:LeadIntegrationService_deleteSalesLeadResourceAsync" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="LeadIntegrationServiceResponseBinding" type="tns:LeadIntegrationServiceResponse">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#wss11_saml_token_with_message_protection_client_policy" wsdl:required="false" />
+    <wsdl:operation name="onFault">
+      <soap:operation soapAction="http://xmlns.oracle.com/oracleas/schema/oracle-fault-11_0/Fault" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="getSalesLeadProductAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/getSalesLeadProductAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="retireLeadAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/retireLeadAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="reassignLeadAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/reassignLeadAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="deleteSalesLeadAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/deleteSalesLeadAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="getSalesLeadContactAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/getSalesLeadContactAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="updateSalesLeadContactAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/updateSalesLeadContactAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="createSalesLeadProductAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/createSalesLeadProductAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="createSalesLeadContactAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/createSalesLeadContactAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="updateSalesLeadProductAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/updateSalesLeadProductAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="mergeSalesLeadAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/mergeSalesLeadAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="deleteSalesLeadProductAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/deleteSalesLeadProductAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="scoreLeadAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/scoreLeadAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="deleteSalesLeadContactAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/deleteSalesLeadContactAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="getDfltObjAttrHintsAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/getDfltObjAttrHintsAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="getSalesLeadAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/getSalesLeadAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="convertLeadToOpportunityAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/convertLeadToOpportunityAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="rejectLeadAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/rejectLeadAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="updateSalesLeadAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/updateSalesLeadAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="findSalesLeadResourceAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/findSalesLeadResourceAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="acceptLeadAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/acceptLeadAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="findSalesLeadProductAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/findSalesLeadProductAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="getEntityListAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/getEntityListAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="assignLeadAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/assignLeadAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="createSalesLeadResourceAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/createSalesLeadResourceAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="findSalesLeadAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/findSalesLeadAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="rankLeadAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/rankLeadAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="submitDealAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/submitDealAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="updateSalesLeadResourceAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/updateSalesLeadResourceAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="getSalesLeadResourceAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/getSalesLeadResourceAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="createSalesLeadAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/createSalesLeadAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="qualifyLeadAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/qualifyLeadAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="processSalesLeadAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/processSalesLeadAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="findSalesLeadContactAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/findSalesLeadContactAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="getServiceLastUpdateTimeAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/getServiceLastUpdateTimeAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="deleteSalesLeadResourceAsyncResponse">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/deleteSalesLeadResourceAsyncResponse" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceResponse_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="LeadIntegrationServiceSoapHttp" type="tns:LeadIntegrationService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#wss11_saml_or_username_token_with_message_protection_service_policy" wsdl:required="false" />
+    <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#wsaddr_policy" wsdl:required="false" />
+    <wsdl:operation name="assignLead">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/assignLead" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="convertLeadToOpportunity">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/convertLeadToOpportunity" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="qualifyLead">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/qualifyLead" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="rankLead">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/rankLead" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="reassignLead">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/reassignLead" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="scoreLead">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/scoreLead" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="submitDeal">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/submitDeal" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="acceptLead">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/acceptLead" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="rejectLead">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/rejectLead" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="retireLead">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/retireLead" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getSalesLead">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/getSalesLead" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createSalesLead">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/createSalesLead" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateSalesLead">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/updateSalesLead" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteSalesLead">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/deleteSalesLead" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="mergeSalesLead">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/mergeSalesLead" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findSalesLead">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/findSalesLead" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="processSalesLead">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/processSalesLead" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getSalesLeadContact">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/getSalesLeadContact" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createSalesLeadContact">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/createSalesLeadContact" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateSalesLeadContact">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/updateSalesLeadContact" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteSalesLeadContact">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/deleteSalesLeadContact" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findSalesLeadContact">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/findSalesLeadContact" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getSalesLeadProduct">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/getSalesLeadProduct" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createSalesLeadProduct">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/createSalesLeadProduct" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateSalesLeadProduct">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/updateSalesLeadProduct" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteSalesLeadProduct">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/deleteSalesLeadProduct" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findSalesLeadProduct">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/findSalesLeadProduct" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getSalesLeadResource">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/getSalesLeadResource" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createSalesLeadResource">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/createSalesLeadResource" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateSalesLeadResource">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/updateSalesLeadResource" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteSalesLeadResource">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/deleteSalesLeadResource" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findSalesLeadResource">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/findSalesLeadResource" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getDfltObjAttrHints">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/getDfltObjAttrHints" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getServiceLastUpdateTime">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/getServiceLastUpdateTime" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getEntityList">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/getEntityList" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault use="literal" name="ServiceException" namespace="" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Fault_Policy" wsdl:required="false" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getSalesLeadProductAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/getSalesLeadProductAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="retireLeadAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/retireLeadAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="reassignLeadAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/reassignLeadAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="deleteSalesLeadAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/deleteSalesLeadAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="getSalesLeadContactAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/getSalesLeadContactAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="updateSalesLeadContactAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/updateSalesLeadContactAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="createSalesLeadProductAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/createSalesLeadProductAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="createSalesLeadContactAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/createSalesLeadContactAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="updateSalesLeadProductAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/updateSalesLeadProductAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="mergeSalesLeadAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/mergeSalesLeadAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="deleteSalesLeadProductAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/deleteSalesLeadProductAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="scoreLeadAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/scoreLeadAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="deleteSalesLeadContactAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/deleteSalesLeadContactAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="getDfltObjAttrHintsAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/getDfltObjAttrHintsAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="getSalesLeadAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/getSalesLeadAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="convertLeadToOpportunityAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/convertLeadToOpportunityAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="rejectLeadAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/rejectLeadAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="updateSalesLeadAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/updateSalesLeadAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="findSalesLeadResourceAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/findSalesLeadResourceAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="acceptLeadAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/acceptLeadAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="findSalesLeadProductAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/findSalesLeadProductAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="getEntityListAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/getEntityListAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="assignLeadAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/assignLeadAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="createSalesLeadResourceAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/createSalesLeadResourceAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="findSalesLeadAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/findSalesLeadAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="rankLeadAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/rankLeadAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="submitDealAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/submitDealAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="updateSalesLeadResourceAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/updateSalesLeadResourceAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="getSalesLeadResourceAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/getSalesLeadResourceAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="createSalesLeadAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/createSalesLeadAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="qualifyLeadAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/qualifyLeadAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="processSalesLeadAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/processSalesLeadAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="findSalesLeadContactAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/findSalesLeadContactAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="getServiceLastUpdateTimeAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/getServiceLastUpdateTimeAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="deleteSalesLeadResourceAsync">
+      <soap:operation soapAction="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/deleteSalesLeadResourceAsync" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#LeadIntegrationServiceSoapHttpPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="LeadIntegrationService">
+    <wsdl:port name="LeadIntegrationServiceSoapHttpPort" binding="tns:LeadIntegrationServiceSoapHttp">
+      <soap:address location="https://ucf3-fap0579-crm.oracledemos.com:443/mklLeads/LeadIntegrationService" />
+      <wsa:EndpointReference xmlns:wsa="http://www.w3.org/2005/08/addressing">
+        <wsa:Address xmlns:wsa="http://www.w3.org/2005/08/addressing">https://ucf3-fap0579-crm.oracledemos.com:443/mklLeads/LeadIntegrationService</wsa:Address>
+        <wsid:Identity xmlns:wsid="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <dsig:KeyInfo xmlns:dsig="http://www.w3.org/2000/09/xmldsig#">
+            <dsig:X509Data>
+              <dsig:X509Certificate>MIIDbDCCAlSgAwIBAgIGAVMkh+/kMA0GCSqGSIb3DQEBCwUAMHgxCzAJBgNVBAYTAlVTMRAwDgYDVQQIEwdNeVN0YXRlMQ8wDQYDVQQHEwZNeVRvd24xFzAVBgNVBAoTDk15T3JnYW5pemF0aW9uMRkwFwYDVQQLExBGT1IgVEVTVElORyBPTkxZMRIwEAYDVQQDEwlDZXJ0R2VuQ0EwHhcNMTYwMjI3MjEwMDAxWhcNMjEwMjI1MjEwMDAxWjBTMRMwEQYKCZImiZPyLGQBGRYDY29tMRYwFAYKCZImiZPyLGQBGRYGb3JhY2xlMRIwEAYKCZImiZPyLGQBGRYCdXMxEDAOBgNVBAMTB3NlcnZpY2UwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCUXJX+MR0yM7jCR3MZdc6T/yrgo+NzchuEhqG17jbkM19kj7/DHZ77nmxk7CoT6yr4a6ggUtLQJ/TiVhb5f0fQe3GAX+bTlBuwsTrdAwhtqClSB4mnbwPyfGebrCI/urpw8oCYIHlnwkYc9veJQzMwLmrGiNwRSt3iiHoTgdXub1TGiHjS/a//aUQFHpyqohTwmEzeQ4LX+u/EqHUXf8mxmD4GT0TMwZn0TQWrxgvqowE6wtoHBzGWPh00WE5l0lQZa+UVoyELSoaSYTKrEg9X3AJFrWdhpB4qIe4vWAmt8kmUfnVYimJsC8aIfdlf7bpqcH2+FjlDqgppWkmGtoplAgMBAAGjITAfMB0GA1UdDgQWBBSb1ibMbas9I5SxaKsg3FiWaDirwjANBgkqhkiG9w0BAQsFAAOCAQEAR+mRkpQLvCbU1x45OnZ0ykZD6AIamL5h1ggWksXDPUHLL92wlzndXOzrkpQyjB6plOY6jIZbQaxsHN0RyAJvvDX1uoV/iuDZ7yZdRGAHN+H5bpPKLPhBMzDCFlsnhX1BKydklQ+4TKPcIciE3Fk3VJY4JPR7hCA4zKcr34frHRo9iqZTXzC1Td7XTXpRx95hYfL8Jr+Yxo0oub2GDpq8vbJZvrbs5F6Y6WGEPDbnX7UBquvwNXVxdqLPGSd5QapBpn2z2aa66ivuG8dCVZVt7CkVa1N8Jtf5fFKTBQui+ydKK1yeiOscEhFCvCWqOEjRH1MSJXyPEbYbYbi/+uC0hA==</dsig:X509Certificate>
+              <dsig:X509IssuerSerial>
+                <dsig:X509IssuerName>CN=CertGenCA, OU=FOR TESTING ONLY, O=MyOrganization, L=MyTown, ST=MyState, C=US</dsig:X509IssuerName>
+                <dsig:X509SerialNumber>1456606801892</dsig:X509SerialNumber>
+              </dsig:X509IssuerSerial>
+              <dsig:X509SubjectName>CN=service, DC=us, DC=oracle, DC=com</dsig:X509SubjectName>
+              <dsig:X509SKI>m9YmzG2rPSOUsWirINxYlmg4q8I=</dsig:X509SKI>
+            </dsig:X509Data>
+          </dsig:KeyInfo>
+        </wsid:Identity>
+      </wsa:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

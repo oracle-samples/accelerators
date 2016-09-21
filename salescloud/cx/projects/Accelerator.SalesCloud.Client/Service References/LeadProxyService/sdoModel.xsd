@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xsd:schema xmlns:sdo="commonj.sdo" xmlns:sdoJava="commonj.sdo/java" xmlns:sdoXML="commonj.sdo/xml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified" targetNamespace="commonj.sdo" xsi:schemaLocation="commonj.sdo/xml sdoXML.xsd                   commonj.sdo/java sdoJava.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <xsd:include schemaLocation="https://slcai761.us.oracle.com:10616/mklLeads/LeadPublicService?XSD=/xml/datagraph.xsd" />
+  <xsd:include schemaLocation="https://ucf3-fap0579-crm.oracledemos.com:443/mklLeads/LeadIntegrationService?XSD=/xml/datagraph.xsd" />
   <xsd:element name="types" type="sdo:Types" />
   <xsd:complexType name="Types">
     <xsd:sequence>

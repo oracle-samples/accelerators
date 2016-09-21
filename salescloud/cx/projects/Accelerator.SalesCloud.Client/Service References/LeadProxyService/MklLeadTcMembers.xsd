@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xsd:schema xmlns="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadService/" xmlns:sdoJava="commonj.sdo/java" xmlns:sdoXML="commonj.sdo/xml" xmlns:ns0="http://xmlns.oracle.com/adf/svc/types/" elementFormDefault="qualified" targetNamespace="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadService/" sdoJava:package="oracle.apps.marketing.leadMgmt.leads.leadService" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <xsd:import schemaLocation="https://slcai761.us.oracle.com:10616/mklLeads/LeadPublicService?XSD=/META-INF/wsdl/BC4JService.xsd" namespace="http://xmlns.oracle.com/adf/svc/types/" />
-  <xsd:import schemaLocation="https://slcai761.us.oracle.com:10616/mklLeads/LeadPublicService?XSD=/xml/sdoJava.xsd" namespace="commonj.sdo/java" />
-  <xsd:import schemaLocation="https://slcai761.us.oracle.com:10616/mklLeads/LeadPublicService?XSD=/xml/sdoXML.xsd" namespace="commonj.sdo/xml" />
+  <xsd:import schemaLocation="https://ucf3-fap0579-crm.oracledemos.com:443/mklLeads/LeadIntegrationService?XSD=/META-INF/wsdl/BC4JService.xsd" namespace="http://xmlns.oracle.com/adf/svc/types/" />
+  <xsd:import schemaLocation="https://ucf3-fap0579-crm.oracledemos.com:443/mklLeads/LeadIntegrationService?XSD=/xml/sdoJava.xsd" namespace="commonj.sdo/java" />
+  <xsd:import schemaLocation="https://ucf3-fap0579-crm.oracledemos.com:443/mklLeads/LeadIntegrationService?XSD=/xml/sdoXML.xsd" namespace="commonj.sdo/xml" />
   <xsd:annotation>
     <xsd:documentation xmlns:oer="http://xmlns.oracle.com/oer">
       <name xmlns="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadService/">Sales Lead Contacts</name>

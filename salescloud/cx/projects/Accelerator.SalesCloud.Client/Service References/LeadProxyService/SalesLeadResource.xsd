@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/" xmlns:sdoJava="commonj.sdo/java" xmlns:ns1="http://xmlns.oracle.com/adf/svc/types/" xmlns:ns0="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadService/" elementFormDefault="qualified" targetNamespace="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/" sdoJava:package="oracle.apps.marketing.leadMgmt.leads.leadServiceV3" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="https://ucf3-fap0579-crm.oracledemos.com:443/mklLeads/LeadIntegrationService?XSD=/oracle/apps/marketing/leadMgmt/leads/leadService/MklLeadResources.xsd" namespace="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadService/" />
+  <xsd:import schemaLocation="https://ucf3-fap0579-crm.oracledemos.com:443/mklLeads/LeadIntegrationService?XSD=/META-INF/wsdl/BC4JService.xsd" namespace="http://xmlns.oracle.com/adf/svc/types/" />
+  <xsd:import schemaLocation="https://ucf3-fap0579-crm.oracledemos.com:443/mklLeads/LeadIntegrationService?XSD=/xml/sdoJava.xsd" namespace="commonj.sdo/java" />
+  <xsd:annotation>
+    <xsd:documentation xmlns:oer="http://xmlns.oracle.com/oer">
+      <name xmlns="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/">Sales Lead Resources</name>
+      <description xmlns="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/">Sales Lead Resources Service Data Object</description>
+      <oer:category name="lba" xmlns:oer="http://xmlns.oracle.com/oer">
+        <value xmlns="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/">MarketingTop-Marketing Business Area</value>
+        <value xmlns="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/">MarketingTop-Marketing Business Area : LeadMgmtTop-Lead
+                    Management Business Area</value>
+        <value xmlns="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/">MarketingTop-Marketing Business Area : LeadMgmtTop-Lead
+                    Management Business Area : MklLeads-Sales Leads</value>
+      </oer:category>
+      <oer:category name="lbo" xmlns:oer="http://xmlns.oracle.com/oer">
+        <value xmlns="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/">CRM-CRM</value>
+        <value xmlns="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/">CRM-CRM : MKL-Lead Management</value>
+        <value xmlns="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadServiceV3/">CRM-CRM : MKL-Lead Management : MKL_SALES_LEAD-Sales Lead</value>
+      </oer:category>
+    </xsd:documentation>
+  </xsd:annotation>
+  <xsd:complexType name="SalesLeadResourceResult">
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="ns1:MethodResult">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Value" type="SalesLeadResource" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="SalesLeadResource">
+    <xsd:annotation>
+      <xsd:appinfo source="http://xmlns.oracle.com/adf/svc/metadata/">
+        <key xmlns="http://xmlns.oracle.com/adf/svc/metadata/">
+          <attribute>LeadResourceId</attribute>
+        </key>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:complexContent mixed="false">
+      <xsd:extension base="ns0:MklLeadResources" />
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="salesLeadResource" type="SalesLeadResource" />
+  <xsd:element name="salesLeadResourceResult" type="SalesLeadResourceResult" />
+</xsd:schema>

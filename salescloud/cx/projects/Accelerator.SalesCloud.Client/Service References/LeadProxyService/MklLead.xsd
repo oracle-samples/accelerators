@@ -1,0 +1,500 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:ns2="http://xmlns.oracle.com/apps/crmCommon/notes/noteService" xmlns:sdoXML="commonj.sdo/xml" xmlns:sdoJava="commonj.sdo/java" xmlns:ns0="http://xmlns.oracle.com/adf/svc/types/" xmlns="http://xmlns.oracle.com/oracle/apps/marketing/leadMgmt/leads/leadService/" xmlns:ns1="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadService/" elementFormDefault="qualified" targetNamespace="http://xmlns.oracle.com/oracle/apps/marketing/leadMgmt/leads/leadService/" sdoJava:package="oracle.apps.marketing.leadMgmt.leads.leadService" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="https://ucf3-fap0579-crm.oracledemos.com:443/mklLeads/LeadIntegrationService?XSD=/META-INF/wsdl/BC4JService.xsd" namespace="http://xmlns.oracle.com/adf/svc/types/" />
+  <xsd:import schemaLocation="https://ucf3-fap0579-crm.oracledemos.com:443/mklLeads/LeadIntegrationService?XSD=/oracle/apps/marketing/leadMgmt/leads/leadService/MklLeadResources.xsd" namespace="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadService/" />
+  <xsd:import schemaLocation="https://ucf3-fap0579-crm.oracledemos.com:443/mklLeads/LeadIntegrationService?XSD=/oracle/apps/marketing/leadMgmt/leads/leadService/MklLeadTcMembers.xsd" namespace="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadService/" />
+  <xsd:import schemaLocation="https://ucf3-fap0579-crm.oracledemos.com:443/mklLeads/LeadIntegrationService?XSD=/oracle/apps/marketing/leadMgmt/leads/leadService/MklProdAssoc.xsd" namespace="http://xmlns.oracle.com/apps/marketing/leadMgmt/leads/leadService/" />
+  <xsd:import schemaLocation="https://ucf3-fap0579-crm.oracledemos.com:443/mklLeads/LeadIntegrationService?XSD=/oracle/apps/crmCommon/notes/noteService/Note.xsd" namespace="http://xmlns.oracle.com/apps/crmCommon/notes/noteService" />
+  <xsd:import schemaLocation="https://ucf3-fap0579-crm.oracledemos.com:443/mklLeads/LeadIntegrationService?XSD=/xml/sdoJava.xsd" namespace="commonj.sdo/java" />
+  <xsd:import schemaLocation="https://ucf3-fap0579-crm.oracledemos.com:443/mklLeads/LeadIntegrationService?XSD=/xml/sdoXML.xsd" namespace="commonj.sdo/xml" />
+  <xsd:annotation>
+    <xsd:documentation xmlns:oer="http://xmlns.oracle.com/oer">
+      <name xmlns="http://xmlns.oracle.com/oracle/apps/marketing/leadMgmt/leads/leadService/">Sales Lead</name>
+      <description xmlns="http://xmlns.oracle.com/oracle/apps/marketing/leadMgmt/leads/leadService/">A lead is a transaction record created when a party has expressed an interest in a product or service. It represents a selling opportunity.</description>
+      <oer:category name="lba" xmlns:oer="http://xmlns.oracle.com/oer">
+        <value xmlns="http://xmlns.oracle.com/oracle/apps/marketing/leadMgmt/leads/leadService/">MarketingTop-Marketing Business Area</value>
+        <value xmlns="http://xmlns.oracle.com/oracle/apps/marketing/leadMgmt/leads/leadService/">MarketingTop-Marketing Business Area : LeadMgmtTop-Lead Management Business Area</value>
+        <value xmlns="http://xmlns.oracle.com/oracle/apps/marketing/leadMgmt/leads/leadService/">MarketingTop-Marketing Business Area : LeadMgmtTop-Lead Management Business Area : MklLeads-Sales Leads</value>
+      </oer:category>
+      <oer:attributes xmlns:oer="http://xmlns.oracle.com/oer">
+        <oer:attribute description="Lead Name used for identifying the lead." name="Name" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="User friendly unique identifier for a lead." name="LeadNumber" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Name associated with the owner of this sales lead." name="OwnerPartyName" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Pre-defined code used to indicate the status of a lead." name="StatusCode" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Rank associated with this sales lead." name="Rank" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Marketing source code associated with this sales lead." name="SourceCode" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Name of the customer." name="CustomerPartyName" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Concatenation of customer name with zip code to make it unique." name="CustomerPartyUniqueName" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Customer Registry Identifier" name="CustomerRegistryId" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Name of the product group associated with a lead." name="ProductGroupName" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="The description of the product added to a lead." name="InventoryItemDescription" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Indicates the date and time when this record is created." name="CreationDate" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Registration number of the sales lead. This unique identifier is generated when the sales lead is approved. This is a deal specific attribute." name="RegistrationNumber" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Name associated with the primary partner of this sales lead. This is a deal specific attribute." name="PartnerPartyName" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Indicates the registration type of the sales lead. This is a deal specific attribute." name="RegistrationType" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Approval Status of the sales lead. This is a deal specific attribute." name="RegistrationStatus" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Who column: indicates the date and time of the last update of the row." name="LastUpdateDateFormatted" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Name associated with the primary lead contact." name="PrimaryContactPartyName" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Timeframe associated with this sales lead." name="Timeframe" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Name of the product associated with a lead." name="ProdNameOrGroupName" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Who column: indicates the date and time of the last update of the row." name="LastUpdateDate" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Partner Type. Indicates the type of partner stamped on the lead." name="LeadId" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Indicates the user who created this record." name="CreatedBy" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Who column: indicates the user who last updated the row." name="LastUpdatedBy" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Delete this row from this spreadsheet. Not needed in SDO." name="ObjectVersionNumber" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Who column: indicates the login of the user who last updated the row." name="LastUpdateLogin" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Identifies leads that are marked for reassignment." name="ToReassignFlag" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Identifies leads that are marked for scoring." name="ToRescoreFlag" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Indicates when the sales lead needs to be followed up." name="FollowupTimestamp" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="The date and time when a lead was rejected." name="RejectedTimestamp" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="The date and time when a lead was retired." name="RetiredTimestamp" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="The score associated with this sales lead. This score is computed based on the scoring rules." name="Score" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Customer Id. It is a reference to the customer record in the TCA schema." name="CustomerId" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Business Unit Identifier associated with the business unit of the sales lead creator." name="BusinessUnitId" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Identifer of the sales lead contact marked as a primary lead contact." name="PrimaryContactId" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Description associated with this sales lead." name="Description" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="The unique identifier of the import activity which resulted in this lead being created." name="ImportTaskId" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Identifier of the sales representative who rejected this sales lead." name="RejectByUserId" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Comments provided by the sales representative who rejected this sales lead." name="RejectComment" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Pre-defined code used to indicate the reason for rejecting a lead." name="RejectReasonCode" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Comments recorded when the sales lead is moved to a retired status." name="RetireComment" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Pre-defined code used to indicate the reason for retiring a lead." name="RetireReasonCode" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Comment provided by a user while requesting the lead reassignment." name="ReassignComment" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Pre-defined code used to indicate the reason for lead reassignment." name="ReassignReasonCode" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Includes the current assignment related status for the lead, for example whether the lead is assigned or unassigned." name="AssignmentStatusCode" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Indicates the channel through which this lead contacted the company." name="ChannelType" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Party identifier associated with the owner of this sales lead." name="OwnerId" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Last name of the primary contact for a lead." name="PrimaryContactPersonLastName" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="The address location ID pertaining to a customer." name="CustomerIdenAddrLocationId" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Category code for a customer." name="CustomerCategoryCode" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Zip code in which customer is located." name="CustomerPostalCode" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Country in which customer is located." name="CustomerCountry" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Total number of employees at a customer site." name="CustomerEmployeesTotal" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Industry code pertaining to the customer." name="CustomerSICCode" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="The country where the primary contact of the lead is located." name="PrimaryContactCountry" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="The title of the primary contact for a lead." name="PrimaryContactTitle" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Unique identifier of the primary product associated with a lead." name="PrimaryInventoryItemId" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Unique identifier of the organization to which the primary product associated with a lead belongs." name="PrimaryInventoryOrgId" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Currency code for the lead." name="CurrencyCode" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Indicates if the lead has been accepted." name="LeadAcceptedFlag" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Type of customer." name="CustomerPartyType" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="The relationship type for the primary contact of the lead." name="PrimaryContactPartyType" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Unique identifier of the primary product group associated with a lead." name="PrimaryProductGroupId" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Unique identifier of the relationship primary contact has with its parent organization." name="PrimaryContactRelationshipId" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="The number of days elapsed since the lead was created." name="LeadAging" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="First line of the Identifying address" name="CustomerAddress1" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Second line of the Identifying address" name="CustomerAddress2" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Third line of the Identifying address" name="CustomerAddress3" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Fourth line of the Identifying address" name="CustomerAddress4" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="City associated with the sell to address associated with the lead customer." name="CustomerCity" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="State in which customer is located." name="CustomerState" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="The URL address pertaining to the customer." name="CustomerURL" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Description of the product or product group associated with a lead." name="ProductGroupDescription" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Budget amount associated with this sales lead." name="BudgetAmount" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Currency code associated with the Budget Amount associated with this sales lead." name="BudgetCurrencyCode" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Budget status associated with the Budget Amount associated with this sales lead." name="BudgetStatus" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Indicates what need the lead product serves for the lead customer." name="CustomerNeed" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Indicates if the decision maker at customer site has been identified." name="DecisionMakerIdentifiedFlag" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="customer project identified for this sales lead." name="Project" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Indicates the date when this sales lead was qualified." name="QualifiedDate" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Estimated close date for a deal once registered" name="EstimatedCloseDate" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Expiration date associated with this sales lead." name="ExpirationDate" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="The date on which a partner registered lead is approved by internal channel manager." name="ApprovalDate" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Unique identifier for the primary partner associated with the lead." name="PartnerId" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Indicates the type of the primary partner associated with this sales lead. This is a deal specific attribute." name="PartnerType" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Indicates the sales channel responsible for following up on this sales lead." name="SalesChannel" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="A reference to the partner program in which the primary partner associated with this sales lead is enrolled. This is a deal specific attribute." name="PartnerProgramId" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Number of days prior to expiration of the partner registered lead." name="DaysUntilExpiration" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Indicates the date and time when this record is created." name="CreationDateFormatted" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Meaning associated with the codes defined to indicate lead status." name="StatusCdMeaning" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Status of the approval request for the partner registered lead." name="RegistrationStatusMeaning" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Indicates the meaning of the registration type of the sales lead. This is a deal specific attribute." name="RegistrationTypeMeaning" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Meaning associated with specific lead rank." name="RankMeaning" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Meaning of the type of primary partner associated with this sales lead. This is a deal specific attribute." name="PartnerTypeMeaning" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="The meaning of the sales channel associated with this sales lead." name="SalesChannelMeaning" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Currency code for the lead." name="CurrencyMeaning" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="The unique identifier of the approval task pertaining to a partner registered lead." name="ApprovalTaskId" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Party identifier associated with the approver of this Lead Registration record." name="ApproverId" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="The date on which lead was accepted by a resource assigned to it." name="AcceptedDate" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Meaning associated with the codes for lead retirement reason." name="RetireReasonCdMeaning" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Meaning associated with the codes for lead rejection reason." name="RejectReasonCdMeaning" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Defines the current assignment related status for the lead e.g whether the lead is assigned or unassigned etc." name="AssignmentStatusCdMeaning" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Identifer of the territory of the sales representative who rejected this sales lead" name="RejectByTerritoryId" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Version identifier of the territory of the sales representative who rejected this sales lead" name="RejectByTerritoryVersionId" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Name of the partner program in which the primary partner associated with this sales lead is enrolled. This is a deal specific attribute." name="ProgramName" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Name of the partner program in which the primary partner associated with this sales lead is enrolled. This is a deal specific attribute." name="PartnerProgramName" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="The total amount attributed to a lead." name="DealAmount" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="The date on which the lead was last reassigned." name="LastAssignmentDate" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Indicates the channel through which this lead contacted the company." name="ChannelTypeMeaning" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="The auxilliary dimension for the Account." name="ClassCode1" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="The auxilliary dimension for the Account." name="ClassCode2" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="The auxilliary dimension for the Account." name="ClassCode3" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="The auxilliary dimension for the Account." name="ClassCode4" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Organization Type" name="OrganizationType" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Organization Size" name="OrganizationSize" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="The first line of address associated with the primary contact of the lead." name="PrimaryContactAddress1" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="The second line of address associated with the primary contact of the lead." name="PrimaryContactAddress2" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="The third line of address associated with the primary contact of the lead." name="PrimaryContactAddress3" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="The city where the primary contact of the lead is located." name="PrimaryContactCity" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="The county where the primary contact of the lead is located." name="PrimaryContactCounty" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="First name of the primary contact for a lead." name="PrimaryContactPersonFirstName" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Middle name of the primary contact for a lead." name="PrimaryContactPersonMiddleName" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="The zip code where the primary contact of the lead is located." name="PrimaryContactPostalCode" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="The province where the primary contact of the lead is located." name="PrimaryContactProvince" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="The state where the primary contact of the lead is located." name="PrimaryContactState" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="The URL address pertaining to the primary contact for a lead." name="PrimaryContactURL" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Currency code used to convert the lead currency. This is typically the corporate currency." name="ConvCurrencyCode" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Exchange rate used to convert the lead currency to the corporate currency." name="ConvExchangeRate" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Rate type used to convert the lead currency to the corporate currency." name="ConvRateType" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Unique identifier for the organization to which the lead owner belongs." name="OwnerResourceOrgId" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Tree code of the resource hierarchy to which the lead owner belongs" name="OwnerTreeCode" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Tree structure code of the resource hierarchy to which the lead owner belongs" name="OwnerTreeStructureCode" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Tree version identifer of the resource hierarchy to which the lead owner belongs" name="OwnerTreeVersionId" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Indicates when the lead was converted to an opportunity." name="ConvertedTimestamp" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Number of times a lead has been rejected by various users." name="RejectedCount" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Qualification score for a lead." name="QualificationScore" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Description of a item." name="LongDescription" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Potential annual revenues for a customer." name="CustomerCurrencyFyPotentialRevenue" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Branch code pertaining to an organization." name="BranchCode" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Lead name is concatenated with th conversion time stamp to generate a unique name for the opportunity" name="UniqueName" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Email address for the primary sales lead contact on the lead" name="PrimaryContactEmailAddress" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Formatted version of the phone number for the primary contact on the sales lead." name="PrimaryContactFormattedPhoneNumber" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Date and time when the sales lead is accepted by a resource assigned to it." name="AcceptedDateTime" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Date and time when the sales lead is approved. This is only applicable to deal registrations." name="ApprovalDateTime" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Date and time when the sales lead is converted to an opportunity." name="ConvertedDateTime" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Date and time when the sales lead is qualified." name="QualifiedDateTime" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Date and time when the sales lead is rejected." name="RejectedDateTime" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Date and time when the sales lead is moved to a retired status." name="RetiredDateTime" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Job title of the primary contact on the sales lead." name="JobTitle" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Unique identifier for the primary sales lead contact oo the sales lead." name="OrgContactId" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Name of the campaign associated with the sales lead." name="CampaignName" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Unique identifier for the campaign associated with the sales lead." name="CampaignId" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Sell-to address of the customer associated with the sales lead." name="CustomerSellToAddress" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Primary address of the customer associated with the sales lead." name="CustomerPrimaryAddress" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Name of the Business Unit associated with the sales lead." name="BusinessUnitName" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Primary address of the primary contact associated with the sales lead." name="PrimaryContactPrimaryAddress" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Sell-to address of the primary contact associated with the sales lead." name="PrimaryContactSellToAddress" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Primary formatted phone number of the customer associated with the sales lead." name="CustomerPrimaryPhoneNumber" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Primary email address of the customer associated with the sales lead." name="CustomerPrimaryEmailAddress" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Do not call flag set at person level for primary contact associated with sales lead." name="PrimaryContactDoNotCallFlag" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Unique identifier for the sales lead primary contact person row to get dnc flags." name="PrimaryContactPersonProfileId" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Do not contact flag set at person level for primary contact associated with sales lead." name="PrimaryContactDoNotContactFlag" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Do not email flag set at person level for primary contact associated with sales lead." name="PrimaryContactDoNotEmailFlag" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Do not mail flag set at person level for primary contact associated with sales lead." name="PrimaryContactDoNotMailFlag" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Do not call flag set for sales lead customer when he is a person." name="CustomerDoNotCallFlag" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Unique identifier for the sales lead customer when he is person to get the dnc flags." name="CustomerPersonProfileId" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Do not contact flag set for sales lead customer when he is a person." name="CustomerDoNotContactFlag" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Do not email flag set for sales lead customer when he is a person." name="CustomerDoNotEmailFlag" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Do not mail flag set for sales lead customer when he is a person." name="CustomerDoNotMailFlag" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Status of the customer associated with the sales lead." name="CustomerStatus" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Status of the primary contact associated with the sales lead." name="PrimaryContactPartyStatus" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Currency conversion date column is updated with anyone of these RETIRED_TM, CONVERTED_TM, LAST_UPDATE_DATE column value based on the lead status." name="CurrencyConversionDate" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Channel Type  List Set Identifier." name="ChannelTypeSetId" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Budget Status List Set Identifier." name="BudgetStatusSetId" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Deal Type List Set  Identifier." name="DealTypeSetId" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Rank  List Set Identifier." name="RankSetId" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Reject Reason  List Set Identifier." name="RejectReasonCodeSetId" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Retire Reason  List Set Identifier." name="RetireReasonCodeSetId" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Reassign Reason  List Set Identifier." name="ReassignReasonCodeSetId" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="TimeFrame List Set Identifier." name="TimeframeSetId" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Primary phone area code for the sales lead contact." name="PrimaryPhoneAreaCode" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Primary phone country code for the sales lead contact." name="PrimaryPhoneCountryCode" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Primary phone number for the sales lead contact." name="PrimaryPhoneNumber" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Work phone area code for the sales lead contact." name="WorkPhoneAreaCode" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Work phone country code for the sales lead contact." name="WorkPhoneCountryCode" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Work phone number for the sales lead contact." name="WorkPhoneNumber" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Additional address element to support flexible address format." name="AddrElementAttribute1" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Additional address element to support flexible address format." name="AddrElementAttribute2" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Additional address element to support flexible address format." name="AddrElementAttribute3" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Additional address element to support flexible address format." name="AddrElementAttribute4" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Additional address element to support flexible address format." name="AddrElementAttribute5" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Specific building name or number at a given address." name="Building" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Phonetic or Kana representation of the Kanji address lines (used in Japan)." name="AddressLinesPhonetic" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Specific floor number at a given address or in a particular building when building number is provided." name="FloorNumber" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Four digit extension to the United States Postal ZIP code." name="PostalPlus4Code" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="The fourth line of address associated with the primary contact of the lead." name="PrimaryContactAddress4" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Full name associated with primary contact country code" name="PrimaryContactCountryName" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Lead Resource for sales lead" name="MklLeadResources" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Lead contacts for sales lead" name="MklLeadTcMembers1" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Lead Products for sales lead" name="MklProdAssoc1" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Notes added to the sales lead." name="Note" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Demo. GSE. Lead Score" name="GSEEloquaScore_c" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Demo. GSE. Nurture flag used by Smart Sales flows" name="GSENurture_c" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Demo. GSE. Customer Social Identification" name="GSESocialId_c" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="Demo. GSE. Lead Source" name="GSESource_c" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="E&amp;C" name="Region_c" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="E&amp;C" name="Country_c" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="E&amp;C" name="BusinessGroup_c" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="E&amp;C" name="Practice_c" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="E&amp;C" name="TargetBidDate_c" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="E&amp;C" name="TargetContractDate_c" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="E&amp;C" name="TargetStartDate_c" xmlns:oer="http://xmlns.oracle.com/oer" />
+        <oer:attribute description="E&amp;C" name="ProjectDescription_c" xmlns:oer="http://xmlns.oracle.com/oer" />
+      </oer:attributes>
+    </xsd:documentation>
+  </xsd:annotation>
+  <xsd:complexType name="MklLead">
+    <xsd:annotation>
+      <xsd:appinfo source="http://xmlns.oracle.com/adf/svc/metadata/">
+        <key xmlns="http://xmlns.oracle.com/adf/svc/metadata/">
+          <attribute>LeadId</attribute>
+        </key>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="Name" type="xsd:string" />
+      <xsd:element minOccurs="0" name="LeadNumber" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="OwnerPartyName" type="xsd:string" />
+      <xsd:element minOccurs="0" name="StatusCode" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="Rank" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="SourceCode" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="CustomerPartyName" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="CustomerPartyUniqueName" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="CustomerRegistryId" type="xsd:string" />
+      <xsd:element minOccurs="0" name="ProductGroupName" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="InventoryItemDescription" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="CreationDate" type="ns0:dateTime-Timestamp" />
+      <xsd:element minOccurs="0" name="RegistrationNumber" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PartnerPartyName" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="RegistrationType" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="RegistrationStatus" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="LastUpdateDateFormatted" nillable="true" type="ns0:date-Date" />
+      <xsd:element minOccurs="0" name="PrimaryContactPartyName" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="Timeframe" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="ProdNameOrGroupName" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="LastUpdateDate" type="ns0:dateTime-Timestamp" />
+      <xsd:element sdoXML:dataType="sdoJava:LongObject" minOccurs="0" name="LeadId" type="xsd:long" />
+      <xsd:element minOccurs="0" name="CreatedBy" type="xsd:string" />
+      <xsd:element minOccurs="0" name="LastUpdatedBy" type="xsd:string" />
+      <xsd:element sdoXML:dataType="sdoJava:IntObject" minOccurs="0" name="ObjectVersionNumber" type="xsd:int" />
+      <xsd:element minOccurs="0" name="LastUpdateLogin" nillable="true" type="xsd:string" />
+      <xsd:element sdoXML:dataType="sdoJava:BooleanObject" minOccurs="0" name="ToReassignFlag" type="xsd:boolean" />
+      <xsd:element sdoXML:dataType="sdoJava:BooleanObject" minOccurs="0" name="ToRescoreFlag" type="xsd:boolean" />
+      <xsd:element minOccurs="0" name="FollowupTimestamp" nillable="true" type="ns0:date-Date" />
+      <xsd:element minOccurs="0" name="RejectedTimestamp" nillable="true" type="ns0:date-Date" />
+      <xsd:element minOccurs="0" name="RetiredTimestamp" nillable="true" type="ns0:date-Date" />
+      <xsd:element minOccurs="0" name="Score" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="CustomerId" nillable="true" type="xsd:long" />
+      <xsd:element sdoXML:dataType="sdoJava:LongObject" minOccurs="0" name="BusinessUnitId" type="xsd:long" />
+      <xsd:element minOccurs="0" name="PrimaryContactId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="Description" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="ImportTaskId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="RejectByUserId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="RejectComment" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="RejectReasonCode" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="RetireComment" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="RetireReasonCode" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="ReassignComment" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="ReassignReasonCode" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="AssignmentStatusCode" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="ChannelType" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="OwnerId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="PrimaryContactPersonLastName" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="CustomerIdenAddrLocationId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="CustomerCategoryCode" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="CustomerPostalCode" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="CustomerCountry" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="CustomerEmployeesTotal" nillable="true" type="xsd:decimal" />
+      <xsd:element minOccurs="0" name="CustomerSICCode" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PrimaryContactCountry" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PrimaryContactTitle" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PrimaryInventoryItemId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="PrimaryInventoryOrgId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="CurrencyCode" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="LeadAcceptedFlag" nillable="true" type="xsd:boolean" />
+      <xsd:element minOccurs="0" name="CustomerPartyType" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PrimaryContactPartyType" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PrimaryProductGroupId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="PrimaryContactRelationshipId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="LeadAging" nillable="true" type="xsd:decimal" />
+      <xsd:element minOccurs="0" name="CustomerAddress1" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="CustomerAddress2" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="CustomerAddress3" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="CustomerAddress4" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="CustomerCity" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="CustomerState" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="CustomerURL" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="ProductGroupDescription" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="BudgetAmount" nillable="true" type="ns0:AmountType" />
+      <xsd:element minOccurs="0" name="BudgetCurrencyCode" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="BudgetStatus" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="CustomerNeed" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="DecisionMakerIdentifiedFlag" nillable="true" type="xsd:boolean" />
+      <xsd:element minOccurs="0" name="Project" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="QualifiedDate" nillable="true" type="ns0:date-Date" />
+      <xsd:element minOccurs="0" name="EstimatedCloseDate" nillable="true" type="ns0:date-Date" />
+      <xsd:element minOccurs="0" name="ExpirationDate" nillable="true" type="ns0:date-Date" />
+      <xsd:element minOccurs="0" name="ApprovalDate" nillable="true" type="ns0:date-Date" />
+      <xsd:element minOccurs="0" name="PartnerId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="PartnerType" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="SalesChannel" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PartnerProgramId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="DaysUntilExpiration" nillable="true" type="xsd:int" />
+      <xsd:element minOccurs="0" name="CreationDateFormatted" nillable="true" type="ns0:date-Date" />
+      <xsd:element minOccurs="0" name="StatusCdMeaning" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="RegistrationStatusMeaning" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="RegistrationTypeMeaning" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="RankMeaning" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PartnerTypeMeaning" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="SalesChannelMeaning" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="CurrencyMeaning" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="ApprovalTaskId" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="ApproverId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="AcceptedDate" nillable="true" type="ns0:date-Date" />
+      <xsd:element minOccurs="0" name="RetireReasonCdMeaning" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="RejectReasonCdMeaning" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="AssignmentStatusCdMeaning" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="RejectByTerritoryId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="RejectByTerritoryVersionId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="ProgramName" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PartnerProgramName" type="xsd:string" />
+      <xsd:element minOccurs="0" name="DealAmount" nillable="true" type="ns0:AmountType" />
+      <xsd:element minOccurs="0" name="LastAssignmentDate" nillable="true" type="ns0:dateTime-Timestamp" />
+      <xsd:element minOccurs="0" name="ChannelTypeMeaning" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="ClassCode1" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="ClassCode2" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="ClassCode3" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="ClassCode4" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="OrganizationType" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="OrganizationSize" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PrimaryContactAddress1" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PrimaryContactAddress2" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PrimaryContactAddress3" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PrimaryContactCity" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PrimaryContactCounty" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PrimaryContactPersonFirstName" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PrimaryContactPersonMiddleName" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PrimaryContactPostalCode" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PrimaryContactProvince" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PrimaryContactState" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PrimaryContactURL" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="ConvCurrencyCode" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="ConvExchangeRate" nillable="true" type="xsd:decimal" />
+      <xsd:element minOccurs="0" name="ConvRateType" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="OwnerResourceOrgId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="OwnerTreeCode" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="OwnerTreeStructureCode" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="OwnerTreeVersionId" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="ConvertedTimestamp" nillable="true" type="ns0:date-Date" />
+      <xsd:element minOccurs="0" name="RejectedCount" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="QualificationScore" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="LongDescription" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="CustomerCurrencyFyPotentialRevenue" nillable="true" type="xsd:decimal" />
+      <xsd:element minOccurs="0" name="BranchCode" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="UniqueName" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PrimaryContactEmailAddress" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PrimaryContactFormattedPhoneNumber" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="AcceptedDateTime" nillable="true" type="ns0:dateTime-Timestamp" />
+      <xsd:element minOccurs="0" name="ApprovalDateTime" nillable="true" type="ns0:dateTime-Timestamp" />
+      <xsd:element minOccurs="0" name="ConvertedDateTime" nillable="true" type="ns0:dateTime-Timestamp" />
+      <xsd:element minOccurs="0" name="QualifiedDateTime" nillable="true" type="ns0:dateTime-Timestamp" />
+      <xsd:element minOccurs="0" name="RejectedDateTime" nillable="true" type="ns0:dateTime-Timestamp" />
+      <xsd:element minOccurs="0" name="RetiredDateTime" nillable="true" type="ns0:dateTime-Timestamp" />
+      <xsd:element minOccurs="0" name="JobTitle" nillable="true" type="xsd:string" />
+      <xsd:element sdoXML:dataType="sdoJava:LongObject" minOccurs="0" name="OrgContactId" type="xsd:long" />
+      <xsd:element minOccurs="0" name="CampaignName" nillable="true" type="xsd:string" />
+      <xsd:element sdoXML:dataType="sdoJava:LongObject" minOccurs="0" name="CampaignId" type="xsd:long" />
+      <xsd:element minOccurs="0" name="CustomerSellToAddress" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="CustomerPrimaryAddress" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="BusinessUnitName" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PrimaryContactPrimaryAddress" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PrimaryContactSellToAddress" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="CustomerPrimaryPhoneNumber" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="CustomerPrimaryEmailAddress" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PrimaryContactDoNotCallFlag" nillable="true" type="xsd:boolean" />
+      <xsd:element sdoXML:dataType="sdoJava:LongObject" minOccurs="0" name="PrimaryContactPersonProfileId" type="xsd:long" />
+      <xsd:element minOccurs="0" name="PrimaryContactDoNotContactFlag" nillable="true" type="xsd:boolean" />
+      <xsd:element minOccurs="0" name="PrimaryContactDoNotEmailFlag" nillable="true" type="xsd:boolean" />
+      <xsd:element minOccurs="0" name="PrimaryContactDoNotMailFlag" nillable="true" type="xsd:boolean" />
+      <xsd:element minOccurs="0" name="CustomerDoNotCallFlag" nillable="true" type="xsd:boolean" />
+      <xsd:element sdoXML:dataType="sdoJava:LongObject" minOccurs="0" name="CustomerPersonProfileId" type="xsd:long" />
+      <xsd:element minOccurs="0" name="CustomerDoNotContactFlag" nillable="true" type="xsd:boolean" />
+      <xsd:element minOccurs="0" name="CustomerDoNotEmailFlag" nillable="true" type="xsd:boolean" />
+      <xsd:element minOccurs="0" name="CustomerDoNotMailFlag" nillable="true" type="xsd:boolean" />
+      <xsd:element minOccurs="0" name="CustomerStatus" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PrimaryContactPartyStatus" type="xsd:string" />
+      <xsd:element minOccurs="0" name="CurrencyConversionDate" nillable="true" type="ns0:date-Date" />
+      <xsd:element minOccurs="0" name="ChannelTypeSetId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="BudgetStatusSetId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="DealTypeSetId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="RankSetId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="RejectReasonCodeSetId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="RetireReasonCodeSetId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="ReassignReasonCodeSetId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="TimeframeSetId" nillable="true" type="xsd:long" />
+      <xsd:element minOccurs="0" name="PrimaryPhoneAreaCode" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PrimaryPhoneCountryCode" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PrimaryPhoneNumber" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="WorkPhoneAreaCode" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="WorkPhoneCountryCode" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="WorkPhoneNumber" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="AddrElementAttribute1" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="AddrElementAttribute2" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="AddrElementAttribute3" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="AddrElementAttribute4" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="AddrElementAttribute5" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="Building" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="AddressLinesPhonetic" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="FloorNumber" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PostalPlus4Code" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PrimaryContactAddress4" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="PrimaryContactCountryName" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="MklLeadResources" type="ns1:MklLeadResources" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="MklLeadTcMembers1" type="ns1:MklLeadTcMembers" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="MklProdAssoc1" type="ns1:MklProdAssoc" />
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="Note" type="ns2:Note" />
+      <xsd:element minOccurs="0" name="GSEEloquaScore_c" nillable="true" type="xsd:string" />
+      <xsd:element sdoXML:dataType="sdoJava:BooleanObject" minOccurs="0" name="GSENurture_c" type="xsd:boolean" />
+      <xsd:element minOccurs="0" name="GSESocialId_c" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="GSESource_c" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="ACTScore_c" nillable="true" type="xsd:decimal" />
+      <xsd:element sdoXML:dataType="sdoJava:BooleanObject" minOccurs="0" name="Alumnus_c" type="xsd:boolean" />
+      <xsd:element minOccurs="0" name="CampusRole_c" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="CampusRole_cMeaning" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="CurrentAcademicYear_c" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="CurrentAcademicYear_cMeaning" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="CurrentGPA_c" nillable="true" type="xsd:decimal" />
+      <xsd:element minOccurs="0" name="DesignationInterest_c" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="DesignationInterest_cMeaning" nillable="true" type="xsd:string" />
+      <xsd:element sdoXML:dataType="sdoJava:BooleanObject" minOccurs="0" name="EarlyAdmissions_c" type="xsd:boolean" />
+      <xsd:element minOccurs="0" name="EntryTerm_c" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="EntryTerm_cMeaning" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="GREScore_c" nillable="true" type="xsd:decimal" />
+      <xsd:element minOccurs="0" name="GMATScore_c" nillable="true" type="xsd:decimal" />
+      <xsd:element minOccurs="0" name="LeadRank_c" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="LeadRank_cMeaning" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="InquiryScore_c" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="InquirySource_c" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="InquirySource_cMeaning" nillable="true" type="xsd:string" />
+      <xsd:element sdoXML:dataType="sdoJava:BooleanObject" minOccurs="0" name="InternationalStudent_c" type="xsd:boolean" />
+      <xsd:element sdoXML:dataType="sdoJava:BooleanObject" minOccurs="0" name="I20Form_c" type="xsd:boolean" />
+      <xsd:element minOccurs="0" name="Major_c" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="Major_cMeaning" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="ProgramInterest_c" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="ProgramInterest_cMeaning" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="Minor_c" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="Minor_cMeaning" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="SATScore_c" nillable="true" type="xsd:decimal" />
+      <xsd:element sdoXML:dataType="sdoJava:BooleanObject" minOccurs="0" name="TransferStudent_c" type="xsd:boolean" />
+      <xsd:element minOccurs="0" name="GiftPotential_c" nillable="true" type="ns0:AmountType" />
+      <xsd:element minOccurs="0" name="GiftPotential_cCurrencyCode" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="GiftPotential_cCurcyConvRate" nillable="true" type="xsd:decimal" />
+      <xsd:element minOccurs="0" name="LSPrimaryCompetitor_Id_c" nillable="true" type="xsd:decimal" />
+      <xsd:element minOccurs="0" name="LSPrimaryCompetitor_c" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="ProgramType_c" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="ProgramType_cMeaning" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="HELeadType_c" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="HELeadType_cMeaning" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="SATScoreText_c" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="Region_c" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="Country_c" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="BusinessGroup_c" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="Practice_c" nillable="true" type="xsd:string" />
+      <xsd:element minOccurs="0" name="TargetBidDate_c" nillable="true" type="ns0:date-Date" />
+      <xsd:element minOccurs="0" name="TargetContractDate_c" nillable="true" type="ns0:date-Date" />
+      <xsd:element minOccurs="0" name="TargetStartDate_c" nillable="true" type="ns0:date-Date" />
+      <xsd:element minOccurs="0" name="ProjectDescription_c" nillable="true" type="ns0:base64Binary-DataHandler" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="mklLead" type="MklLead" />
+</xsd:schema>
