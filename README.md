@@ -1,35 +1,19 @@
----Getting Started---
+Getting Started
+-----
 
 This repo is designed for customers of the Oracle Service Cloud software who want to enhance functionality of their platform with the provided accelerators
 
----Software prerequisites---
+* Software prerequisites: Oracle Service Cloud
+* Necessary services: No necessary services required
 
-Oracle Service Cloud
+For information on how to install and use the accelerator, check this [OTN page](http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html).
 
----Necessary services---
+## How to contribute
 
-No necessary services required
+See file [CONTRIBUTING](./CONTRIBUTING.md)
 
----Instructions for compiling/testing/deploying/running---
+## Other links
+ - [RightNow Resource Finder about Accelerator](http://communities.rightnow.com/search?find=accelerators&daysBack=365&type=)
 
-Follow the intstructions provided in the documentation on the OTN page
-
----Installation instructions---
-
-OTN Page: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
-
----Short documentation---
-
-OTN Page: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
-
----Usage examples---
-
-OTN Page: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
-
----How to contribute section---
-
-https://github.com/oracle/Accelerators/CONTRIBUTING.md
-
----Links to OTN Community Platform related topics---
-
-http://communities.rightnow.com/search?find=accelerators&daysBack=365&type= 
+## Copyright
+Copyright (c) 2014-2016 Oracle and/or its affiliates. All rights reserved.
