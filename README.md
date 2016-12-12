@@ -12,7 +12,7 @@ No necessary services required
 
 ---Instructions for compiling/testing/deploying/running---
 
-Follow the intstructions provided in the documentation on the OTN page
+Follow the instructions provided in the documentation on the OTN page
 
 ---Installation instructions---
 
