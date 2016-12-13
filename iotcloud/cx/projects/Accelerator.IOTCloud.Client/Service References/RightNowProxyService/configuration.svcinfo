@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configurationSnapshot xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:schemas-microsoft-com:xml-wcfconfigurationsnapshot">
+  <behaviors />
+  <bindings>
+    <binding digest="System.ServiceModel.Configuration.CustomBindingElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089:&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&lt;Data name=&quot;RightNowSyncBinding&quot;&gt;&lt;httpsTransport /&gt;&lt;security authenticationMode=&quot;UserNameOverTransport&quot; defaultAlgorithmSuite=&quot;Default&quot; includeTimestamp=&quot;false&quot; requireDerivedKeys=&quot;true&quot; securityHeaderLayout=&quot;Lax&quot;&gt;&lt;localClientSettings detectReplays=&quot;false&quot; /&gt;&lt;localServiceSettings detectReplays=&quot;false&quot; /&gt;&lt;/security&gt;&lt;textMessageEncoding messageVersion=&quot;Soap11&quot; /&gt;&lt;/Data&gt;" bindingType="customBinding" name="RightNowSyncBinding" />
+  </bindings>
+  <endpoints>
+    <endpoint normalizedDigest="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&lt;Data address=&quot;https://osc-integration-qb1.qb.lan/cgi-bin/osc_integration_qb1.cfg/services/soap&quot; binding=&quot;customBinding&quot; bindingConfiguration=&quot;RightNowSyncBinding&quot; contract=&quot;RightNowProxyService.RightNowSyncPort&quot; name=&quot;RightNowSyncPort&quot; /&gt;" digest="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&lt;Data address=&quot;https://osc-integration-qb1.qb.lan/cgi-bin/osc_integration_qb1.cfg/services/soap&quot; binding=&quot;customBinding&quot; bindingConfiguration=&quot;RightNowSyncBinding&quot; contract=&quot;RightNowProxyService.RightNowSyncPort&quot; name=&quot;RightNowSyncPort&quot; /&gt;" contractName="RightNowProxyService.RightNowSyncPort" name="RightNowSyncPort" />
+  </endpoints>
+</configurationSnapshot>

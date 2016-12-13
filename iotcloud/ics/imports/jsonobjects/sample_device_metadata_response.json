@@ -1,0 +1,13 @@
+{
+   "value": "1",
+   "links":    [
+            {
+         "href": "https://iottrial6681-inoraclecorpotrial43530.iot.us.oraclecloud.com:443/iot/api/v2/devices/AAAAAAPKSG0A-5YDQ/metadata/osvc_incident_reference",
+         "rel": "self"
+      },
+            {
+         "href": "https://iottrial6681-inoraclecorpotrial43530.iot.us.oraclecloud.com:443/iot/api/v2/devices/AAAAAAPKSG0A-5YDQ/metadata/osvc_incident_reference",
+         "rel": "canonical"
+      }
+   ]
+}

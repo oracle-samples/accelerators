@@ -1,0 +1,66 @@
+{
+	"items" : [{
+			"id" : "5c2a81be-8a62-47de-9829-0646d9df543a",
+			"clientId" : "316b06bb-8de0-40e8-9f6a-2d24335bb22a",
+			"source" : "AAAAAAPKSG0A-B4EA",
+			"destination" : "",
+			"priority" : "MEDIUM",
+			"reliability" : "BEST_EFFORT",
+			"eventTime" : 1467189555554,
+			"eventTimeAsString" : "2016-06-29T08:39:15Z",
+			"sender" : "",
+			"type" : "DATA",
+			"properties" : {},
+			"direction" : "FROM_DEVICE",
+			"receivedTime" : 1467189555153,
+			"receivedTimeAsString" : "2016-06-29T08:39:15Z",
+			"payload" : {
+				"format" : "urn:com:oracle:iot:device:hvac:attributes",
+				"data" : {
+					"outputTemp" : 30.02660244097933,
+					"vibration" : 1.0070139372441917,
+					"motorAmperage" : 50.00489654671401,
+					"oilViscosity" : 0.014087215443141758,
+					"time" : 1.467189555553E12
+				}
+			}
+		}, {
+			"id" : "e1a0a4dd-e03f-4572-8246-28d068eb6eaf",
+			"clientId" : "cc55ebef-3c02-4f0e-9fcc-70a94a34e624",
+			"source" : "AAAAAAPKSG0A-B4EA",
+			"destination" : "",
+			"priority" : "MEDIUM",
+			"reliability" : "BEST_EFFORT",
+			"eventTime" : 1467189540540,
+			"eventTimeAsString" : "2016-06-29T08:39:00Z",
+			"sender" : "",
+			"type" : "DATA",
+			"properties" : {},
+			"direction" : "FROM_DEVICE",
+			"receivedTime" : 1467189540085,
+			"receivedTimeAsString" : "2016-06-29T08:39:00Z",
+			"payload" : {
+				"format" : "urn:com:oracle:iot:device:hvac:attributes",
+				"data" : {
+					"outputTemp" : 29.963259837590158,
+					"vibration" : 1.0077563032880426,
+					"motorAmperage" : 49.052085211500525,
+					"oilViscosity" : 0.02077506566885859,
+					"time" : 1.467189540539E12
+				}
+			}
+		}
+	],
+	"hasMore" : true,
+	"links" : [{
+			"href" : "https://iottrial6681-inoraclecorpotrial43530.iot.us.oraclecloud.com/iot/api/v2/messages?device=AAAAAAPKSG0A-B4EA&limit=2",
+			"rel" : "self"
+		}, {
+			"href" : "https://iottrial6681-inoraclecorpotrial43530.iot.us.oraclecloud.com/iot/api/v2/messages?device=AAAAAAPKSG0A-B4EA&limit=2",
+			"rel" : "canonical"
+		}, {
+			"href" : "https://iottrial6681-inoraclecorpotrial43530.iot.us.oraclecloud.com/iot/api/v2/messages?offset=2&limit=2&device=AAAAAAPKSG0A-B4EA&expand=true",
+			"rel" : "next"
+		}
+	]
+}

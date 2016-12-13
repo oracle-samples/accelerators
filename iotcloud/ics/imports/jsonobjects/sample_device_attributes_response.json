@@ -1,0 +1,161 @@
+{
+   "id": "AAAAAAPKSG0A-5YDQ",
+   "deviceUID": "AAAAAAPKSG0A-5YDQ-node-manufacturer1465288607306-node-modelNumber1465288607306-node-serialNumbere621c602-d9d9-45bb-9bec-b3d77859e37c",
+   "type": "DIRECTLY_CONNECTED_DEVICE",
+   "description": "node-description1465288607306",
+   "created": 1465288608445,
+   "createdAsString": "2016-06-07T08:36:48Z",
+   "activationTime": 1465288609712,
+   "activationTimeAsString": "2016-06-07T08:36:49Z",
+   "state": "ACTIVATED",
+   "name": "JS-HVAC-SIMULATOR",
+   "manufacturer": "node-manufacturer1465288607306",
+   "modelNumber": "node-modelNumber1465288607306",
+   "serialNumber": "node-serialNumbere621c602-d9d9-45bb-9bec-b3d77859e37c",
+   "hardwareRevision": "",
+   "softwareRevision": "",
+   "softwareVersion": "",
+   "enabled": true,
+   "connectivityStatus": "OFFLINE",
+   "lastHeardTime": 1465465436411,
+   "deviceModels":    [
+            {
+         "urn": "urn:com:oracle:hvac",
+         "name": "HVAC device model",
+         "system": false,
+         "draft": false,
+         "created": 1464770333659,
+         "createdAsString": "2016-06-01T08:38:53Z",
+         "lastModified": 1464770333659,
+         "lastModifiedAsString": "2016-06-01T08:38:53Z",
+         "userLastModified": "sivakumar.narayan@oracle.com",
+         "attributes":          [
+                        {
+               "name": "outputTemp",
+               "description": "Output temperature ([-20 .. +80] Celsius degrees)",
+               "type": "NUMBER",
+               "range": "-20.0,80.0",
+               "alias": "temperature",
+               "writable": false
+            },
+                        {
+               "name": "vibration",
+               "description": "Vibration (KHz) - normal 1 kHz",
+               "type": "NUMBER",
+               "range": "0.0,100.0",
+               "alias": "",
+               "writable": false
+            },
+                        {
+               "name": "oilViscosity",
+               "description": "The oil viscosity (%)",
+               "type": "NUMBER",
+               "range": "0.0,1.0",
+               "alias": "",
+               "writable": false
+            },
+                        {
+               "name": "motorAmperage",
+               "description": "Motor Amperage (normal: 50A)",
+               "type": "NUMBER",
+               "range": "0.0,100.0",
+               "alias": "",
+               "writable": false
+            },
+                        {
+               "name": "targetTemp",
+               "description": "Target temperature ([-20 .. +80] Celcius degrees)",
+               "type": "NUMBER",
+               "range": "-20.0,80.0",
+               "alias": "",
+               "writable": true
+            },
+                        {
+               "name": "time",
+               "description": "Current time",
+               "type": "DATETIME",
+               "alias": "",
+               "writable": false
+            }
+         ],
+         "actions":          [
+                        {
+               "name": "power",
+               "alias": "",
+               "description": "Turns system ON or OFF",
+               "argType": "BOOLEAN"
+            },
+                        {
+               "name": "reset",
+               "alias": "",
+               "description": "",
+               "argType": "BOOLEAN"
+            }
+         ],
+         "formats":          [
+                        {
+               "urn": "urn:com:oracle:hvac:alert:unabletoconnect",
+               "name": "unabletoconnect",
+               "description": "Unable to connect alert",
+               "type": "ALERT",
+               "deviceModel": "urn:com:oracle:hvac",
+               "value": {"fields": [               {
+                  "name": "unable_to_connect",
+                  "type": "BOOLEAN",
+                  "optional": false
+               }]}
+            },
+                        {
+               "urn": "urn:com:oracle:hvac:alert:dooropened",
+               "name": "dooropened",
+               "description": "Security breach: door opened",
+               "type": "ALERT",
+               "deviceModel": "urn:com:oracle:hvac",
+               "value": {"fields": [               {
+                  "name": "breach_door_opened",
+                  "type": "BOOLEAN",
+                  "optional": false
+               }]}
+            }
+         ]
+      },
+            {
+         "urn": "urn:oracle:iot:dcd:capability:direct_activation",
+         "name": "Direct Activation Capability",
+         "description": "Oracle IoT capability definition for direct device activation",
+         "system": true,
+         "draft": false,
+         "created": 1460666638000,
+         "createdAsString": "2016-04-14T20:43:58Z",
+         "lastModified": 1460666638000,
+         "lastModifiedAsString": "2016-04-14T20:43:58Z",
+         "userLastModified": "iot",
+         "attributes": [],
+         "actions": [],
+         "formats": []
+      }
+   ],
+   "lastHeardTimeAsString": "2016-06-09T09:43:56Z",
+   "links":    [
+            {
+         "href": "https://iottrial6681-inoraclecorpotrial43530.iot.us.oraclecloud.com:443/iot/api/v2/devices/AAAAAAPKSG0A-5YDQ",
+         "rel": "self"
+      },
+            {
+         "href": "https://iottrial6681-inoraclecorpotrial43530.iot.us.oraclecloud.com:443/iot/api/v2/devices/AAAAAAPKSG0A-5YDQ",
+         "rel": "canonical"
+      }
+   ],
+   "software": {"links": [   {
+      "href": "https://iottrial6681-inoraclecorpotrial43530.iot.us.oraclecloud.com:443/iot/api/v2/devices/AAAAAAPKSG0A-5YDQ/software",
+      "rel": "self"
+   }]},
+   "devices": {"links": [   {
+      "href": "https://iottrial6681-inoraclecorpotrial43530.iot.us.oraclecloud.com:443/iot/api/v2/devices/AAAAAAPKSG0A-5YDQ/devices",
+      "rel": "self"
+   }]},
+   "metadata": {"links": [   {
+      "href": "https://iottrial6681-inoraclecorpotrial43530.iot.us.oraclecloud.com:443/iot/api/v2/devices/AAAAAAPKSG0A-5YDQ/metadata",
+      "rel": "self"
+   }]}
+}

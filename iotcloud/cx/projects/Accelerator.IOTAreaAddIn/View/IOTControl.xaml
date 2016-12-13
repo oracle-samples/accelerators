@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="Accelerator.IOTArea.View.IOTControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="668.323" Width="1005.745">
+    <Grid HorizontalAlignment="Left" Width="996">
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="72" Stroke="Black" VerticalAlignment="Top" Width="428"/>
+        <Label Content="Properties" HorizontalAlignment="Left" Margin="71,3,0,0" VerticalAlignment="Top" Height="25" Width="70" RenderTransformOrigin="0.5,0.5"/>
+        <Label Content="New Value" HorizontalAlignment="Left" Margin="218,3,0,0" VerticalAlignment="Top" Height="25" Width="70" RenderTransformOrigin="0.5,0.5"/>
+        <ComboBox x:Name="PropertiesCombobox" ItemsSource="{Binding DeviceProperties, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="9,30,0,0" VerticalAlignment="Top" Width="195" RenderTransformOrigin="0.133,0.045" BorderBrush="Black" SelectedIndex="0"/>
+        <TextBox x:Name="NewValueTextBox" Text="{Binding PropertyValue, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="23" Margin="218,29,0,0" VerticalAlignment="Top" Width="70" RenderTransformOrigin="-1.714,0"/>
+        <Button x:Name="SetButton" Click="SetButton_OnClick" Content="Set" HorizontalAlignment="Left" Margin="304,30,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.04,-0.364" Foreground="Black" TextOptions.TextFormattingMode="Display"/>
+        <Image x:Name="ResultImage" HorizontalAlignment="Left" Height="22" Margin="387,30,0,0" VerticalAlignment="Top" Width="28" Source="{Binding ResultImg, UpdateSourceTrigger=PropertyChanged}"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="397" Margin="0,77,-9,0" Stroke="Black" VerticalAlignment="Top" Width="1005"/>
+        <Label Content="Messages : " HorizontalAlignment="Left" Margin="0,82,0,0" VerticalAlignment="Top" Width="91"/>
+        <Label x:Name="FilterCriteriaLabel" Content="limit" HorizontalAlignment="Left" Margin="69,82,0,0" VerticalAlignment="Top" Width="57"/>
+        <Label Content=" upto " HorizontalAlignment="Left" Margin="94,82,0,0" VerticalAlignment="Top" Width="57"/>
+        <ComboBox x:Name="FilterValueComboBox" Height="21"  HorizontalAlignment="Left" Margin="138,81,0,0" VerticalAlignment="Top" Width="86" BorderBrush="Black">
+            <!-- WARNING : Do not increase the max limit as it might have performance issues while fetching messages from target system and might bring the system down-->
+            <ComboBoxItem Content="5" IsSelected="true"/>
+            <ComboBoxItem Content="10"/>
+            <ComboBoxItem Content="20"/>
+            <ComboBoxItem Content="30"/>
+            <ComboBoxItem Content="40"/>
+            <ComboBoxItem Content="50"/>
+            <ComboBoxItem Content="75"/>
+            <ComboBoxItem Content="100"/>
+        </ComboBox>
+        <Button x:Name="GetDetailsButton" Click="GetDetailsButton_OnClick" Content="Get Details" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Foreground="Black" BorderThickness="1" TextOptions.TextFormattingMode="Display" Margin="242,81,0,0"/>
+        <TextBox x:Name ="DetailsTextBox" Text="{Binding DetailsText, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="355" Margin="9,113,0,0" VerticalAlignment="Top" Width="985" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" AcceptsReturn="True"/>
+    </Grid>
+</UserControl>

@@ -1,0 +1,8 @@
+[{
+		"msg_id" : "230a02c2-f46e-4828-99e3-7170d1a",
+		"status" : "Incident Updated"
+	}, {
+		"msg_id" : "230a02c2-f46e-4828-99e3-7170d1a",
+		"status" : "Asset doesn't exist hence Incident cannot be created or updated"
+	}
+]
