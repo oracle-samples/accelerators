@@ -1,17 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <analytics_core xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <ac_id xmlns="urn:obj.api.rightnow.com">101363</ac_id>
+  <ac_id xmlns="urn:obj.api.rightnow.com">101487</ac_id>
   <ac_public xmlns="urn:obj.api.rightnow.com">true</ac_public>
   <ac_type xmlns="urn:obj.api.rightnow.com">1</ac_type>
   <aux xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
   <cdate_offset xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
   <co_version xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
-  <created xmlns="urn:obj.api.rightnow.com">2016-07-12T22:12:35Z</created>
+  <created xmlns="urn:obj.api.rightnow.com">2016-08-26T15:16:40Z</created>
   <file_id xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
-  <filters xmlns="urn:obj.api.rightnow.com" />
-  <fltr_expr xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
-  <folder_id xmlns="urn:obj.api.rightnow.com">109453</folder_id>
-  <image xmlns="urn:obj.api.rightnow.com">6</image>
+  <filters xmlns="urn:obj.api.rightnow.com">
+    <filter_item>
+      <applies_to xsi:nil="true" />
+      <data_type>1</data_type>
+      <fltr_id>1</fltr_id>
+      <oper>1</oper>
+      <optl_id>4</optl_id>
+      <opts>0</opts>
+      <revision>-1</revision>
+      <type>1</type>
+      <val1>inc_performance.acct_id</val1>
+      <val1_attrs>131073</val1_attrs>
+      <val1_col_refs>inc_performance.acct_id;76</val1_col_refs>
+      <val2>~logged_in~</val2>
+      <val2_col_refs xsi:nil="true" />
+      <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;FilterXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;Prompt&gt;
+    &lt;LabelStr&gt;PerformanceIDAccount&lt;/LabelStr&gt;
+  &lt;/Prompt&gt;
+  &lt;Name&gt;
+    &lt;LabelStr&gt;PerformanceIDAccount&lt;/LabelStr&gt;
+  &lt;/Name&gt;
+  &lt;DisplayInSearchCriteria&gt;true&lt;/DisplayInSearchCriteria&gt;
+&lt;/FilterXmlData&gt;</xml_data>
+    </filter_item>
+    <filter_item>
+      <applies_to xsi:nil="true" />
+      <data_type>5</data_type>
+      <fltr_id>2</fltr_id>
+      <oper>1</oper>
+      <optl_id xsi:nil="true" />
+      <opts>1</opts>
+      <revision>3</revision>
+      <type>1</type>
+      <val1>accounts.login</val1>
+      <val1_attrs>1</val1_attrs>
+      <val1_col_refs>accounts.login;24</val1_col_refs>
+      <val2 xsi:nil="true" />
+      <val2_col_refs xsi:nil="true" />
+      <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;FilterXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;Prompt&gt;
+    &lt;LabelStr&gt;Account&lt;/LabelStr&gt;
+  &lt;/Prompt&gt;
+  &lt;Name&gt;
+    &lt;LabelStr&gt;Account&lt;/LabelStr&gt;
+  &lt;/Name&gt;
+  &lt;DisplayInSearchCriteria&gt;true&lt;/DisplayInSearchCriteria&gt;
+&lt;/FilterXmlData&gt;</xml_data>
+    </filter_item>
+  </filters>
+  <fltr_expr xmlns="urn:obj.api.rightnow.com">1 2 &amp;</fltr_expr>
+  <folder_id xmlns="urn:obj.api.rightnow.com">109626</folder_id>
+  <image xmlns="urn:obj.api.rightnow.com">8</image>
   <interface_id xmlns="urn:obj.api.rightnow.com">1</interface_id>
   <items xmlns="urn:obj.api.rightnow.com" />
   <label xmlns="urn:obj.api.rightnow.com">
@@ -48,13 +99,14 @@
           <val_col_refs>inc_performance.intv_type.10;76:inc_performance.rel_time;76</val_col_refs>
           <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;UnitType&gt;Auto&lt;/UnitType&gt;
+  &lt;UnitType&gt;Percentage&lt;/UnitType&gt;
   &lt;Header&gt;
     &lt;LabelStr&gt;Handle Time&lt;/LabelStr&gt;
   &lt;/Header&gt;
   &lt;NumberFormat&gt;
     &lt;NumberType&gt;Number&lt;/NumberType&gt;
   &lt;/NumberFormat&gt;
+  &lt;Width&gt;22.5983524&lt;/Width&gt;
   &lt;HeaderAlignment&gt;Far&lt;/HeaderAlignment&gt;
   &lt;DataAlignment&gt;Far&lt;/DataAlignment&gt;
   &lt;Description&gt;
@@ -85,13 +137,14 @@
           <val_col_refs>inc_performance.intv_type.10;76:inc_performance.rel_time;76</val_col_refs>
           <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;UnitType&gt;Auto&lt;/UnitType&gt;
+  &lt;UnitType&gt;Percentage&lt;/UnitType&gt;
   &lt;Header&gt;
     &lt;LabelStr&gt;Response Time&lt;/LabelStr&gt;
   &lt;/Header&gt;
   &lt;NumberFormat&gt;
     &lt;NumberType&gt;Number&lt;/NumberType&gt;
   &lt;/NumberFormat&gt;
+  &lt;Width&gt;26.53248&lt;/Width&gt;
   &lt;HeaderAlignment&gt;Far&lt;/HeaderAlignment&gt;
   &lt;DataAlignment&gt;Far&lt;/DataAlignment&gt;
 &lt;/ColumnXmlData&gt;</xml_data>
@@ -117,7 +170,7 @@
           <val_col_refs>inc_performance.intv_type.10;76:inc_performance.rel_time;76</val_col_refs>
           <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;UnitType&gt;Auto&lt;/UnitType&gt;
+  &lt;UnitType&gt;Percentage&lt;/UnitType&gt;
   &lt;Header&gt;
     &lt;LabelStr&gt;Percent %&lt;/LabelStr&gt;
   &lt;/Header&gt;
@@ -125,6 +178,7 @@
     &lt;NumberType&gt;Decimal&lt;/NumberType&gt;
     &lt;DecimalDigits&gt;2&lt;/DecimalDigits&gt;
   &lt;/NumberFormat&gt;
+  &lt;Width&gt;17.9322968&lt;/Width&gt;
   &lt;HeaderAlignment&gt;Far&lt;/HeaderAlignment&gt;
   &lt;DataAlignment&gt;Far&lt;/DataAlignment&gt;
   &lt;Description&gt;
@@ -153,13 +207,14 @@
           <val_col_refs>inc_performance.intv_type.10;76:inc_performance.rel_time;76</val_col_refs>
           <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;UnitType&gt;Auto&lt;/UnitType&gt;
+  &lt;UnitType&gt;Percentage&lt;/UnitType&gt;
   &lt;Header&gt;
     &lt;LabelStr&gt;1st Resolution Time&lt;/LabelStr&gt;
   &lt;/Header&gt;
   &lt;NumberFormat&gt;
     &lt;NumberType&gt;Number&lt;/NumberType&gt;
   &lt;/NumberFormat&gt;
+  &lt;Width&gt;32.93687&lt;/Width&gt;
   &lt;HeaderAlignment&gt;Far&lt;/HeaderAlignment&gt;
   &lt;DataAlignment&gt;Far&lt;/DataAlignment&gt;
   &lt;Description&gt;
@@ -317,10 +372,15 @@
     </node_item>
   </nodes>
   <notes xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
-  <opts xmlns="urn:obj.api.rightnow.com">4</opts>
-  <owner_acct_id xmlns="urn:obj.api.rightnow.com">2045</owner_acct_id>
+  <opts xmlns="urn:obj.api.rightnow.com">0</opts>
+  <owner_acct_id xmlns="urn:obj.api.rightnow.com">2</owner_acct_id>
   <params xmlns="urn:obj.api.rightnow.com" />
-  <perms xmlns="urn:obj.api.rightnow.com" />
+  <perms xmlns="urn:obj.api.rightnow.com">
+    <perm_item>
+      <perms>3</perms>
+      <profile_id>2</profile_id>
+    </perm_item>
+  </perms>
   <rpt xmlns="urn:obj.api.rightnow.com" />
   <run_vals xmlns="urn:obj.api.rightnow.com" />
   <schedules xmlns="urn:obj.api.rightnow.com" />
@@ -338,22 +398,22 @@
       <tbl_id>1</tbl_id>
     </table_item>
     <table_item>
-      <alias>incidents</alias>
-      <join_def_enum>inc_performance$76$i_id$$incidents$1$i_id</join_def_enum>
-      <join_def_idx>0</join_def_idx>
+      <alias>accounts</alias>
+      <join_def_enum>inc_performance$76$acct_id$$accounts$24$acct_id</join_def_enum>
+      <join_def_idx>6</join_def_idx>
       <join_filters />
       <join_fltr_expr xsi:nil="true" />
       <join_to_tbl_idx>0</join_to_tbl_idx>
       <join_type>1</join_type>
-      <tbl>1</tbl>
+      <tbl>24</tbl>
       <tbl_id>2</tbl_id>
     </table_item>
   </tables>
   <time_zone xmlns="urn:obj.api.rightnow.com">0</time_zone>
-  <updated xmlns="urn:obj.api.rightnow.com">2016-07-12T22:33:34Z</updated>
+  <updated xmlns="urn:obj.api.rightnow.com">2016-08-26T22:08:02Z</updated>
   <version xmlns="urn:obj.api.rightnow.com">0</version>
   <xml_data xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
   <xml_report xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
 </analytics_core>
 Version: 
-R0USnXTmHbro/cH4Y9FZjH1Hw24sVsf4
+qHerQV9UwUU/94+o4Z/Hk3PrQFAQ7sJM

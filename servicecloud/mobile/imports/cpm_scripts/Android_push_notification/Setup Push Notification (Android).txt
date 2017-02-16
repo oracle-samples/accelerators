@@ -1,0 +1,74 @@
+Setup GCM
+1) Go to Google Developer Console
+2) Create a project
+3) Enable the GCM service of this project
+4) Create API Key
+	- Go to Credentials
+	- Create a server key
+
+
+
+Setup Custom Configuration
+1) Log into Google Developer Console
+	- Go to your project
+	- Get Project ID
+	- Get the API key in Credentials
+2) Edit CUSTOM_CFG_Accel_Mobile in Configuration Settings
+	- Go to Site Configuration -> Configuration Settings in Console	
+	- Create/Find Custom Config CUSTOM_CFG_Accel_Mobile
+	- Add "gcm" part in "push_notification"
+		"gcm":{  
+            "senderId":"",
+            "appKey":""
+            }
+	- Define the Project ID in "senderId"
+	- Define the API key in "appKey"
+
+
+Configuration in Mobile Project (Optional)
+Note: If you configure the GCM Sender ID in Mobile Project, you need to deploy it after configuration
+	  If you do not configurat the GCM Sender ID in Mobile Project, you cannot get the notification when the first-time you run the Android application
+1) Log into Google Developer Console
+	- Go to your project
+	- Get Project ID
+2) Go to maf-application.xml -> Preference in your application (under folder ADF META-INF)
+	- Add your Project ID to "GCM Sender ID" as Default value
+
+
+
+Setup Custom Field and Event Handler
+1) Create custom attribute gcm_token, via Database -> Object Designer
+	- gcm_token 
+	  object: Account under OracleServiceCloud
+	  type: Text
+      package: Mobile
+2) Go to Process Designer
+	- New Object Event Handler, check "Execute Asynchronously"
+	- Upload CPM script, e.g. gcm_incident.php file, Save and Test
+	- Deploy the Handler
+	Note: For the test case, the fetched incident id maybe need to change based on the server
+
+
+Associate Event Handler to Creating/Updating Object 
+Approach 1: using Business Rules
+	- Go to Site Configuration -> Rules
+	- Select the object, e.g. Incident
+	- Select "Edit" in Ribbon to update the rules
+	- Select the State with initial state OR create a State with initial state
+	- Right Click on this State and "New Rule"
+		Rule Name: Push Notification
+		IF condition: Select your expected condition, e.g. Incident.Severty equals High
+		Then Action: Execute Object Event Handler - Select "apns_incident"
+	- Save, Compile and Active the new rule
+	
+
+Approach 2: using Process Designer
+	- Go to Process Designer
+	- Select the Process Model, e.g. Incident
+	- Associate the deployed Event Handler with Create/Update action, Save and Deploy
+	Note: In this case, we can have separate CPM scripts for Create and Update. However, only one event handler can be attached to each action.
+
+
+
+
+

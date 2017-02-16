@@ -1,20 +1,22 @@
 /* *********************************************************************************************
- *  This file is part of the Oracle Service Cloud Accelerator Reference Integration set published
+ *  This file is part of the Oracle Service Cloud Accelerator Reference Integration set published 
+ *  by Oracle Service Cloud under the Universal Permissive License (UPL), Version 1.0 
+ *  included in the original distribution. 
+ *  Copyright (c) 2014, 2015, 2016, Oracle and/or its affiliates. All rights reserved. 
+  ***********************************************************************************************
+ *  Accelerator Package: OSVC Mobile Application Accelerator 
+ *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html 
+ *  OSvC release: 16.11 (November 2016) 
+ *  date: Mon Dec 12 02:05:30 PDT 2016 
+ *  revision: rnw-16-11
+
+ *  SHA1: $Id$
+ * *********************************************************************************************
+ *  File: This file is part of the Oracle Service Cloud Accelerator Reference Integration set published
  *  by Oracle Service Cloud under the Universal Permissive License (UPL), Version 1.0
  *  included in the original distribution.
- *  Copyright (c) 2014, 2015, 2016 Oracle and/or its affiliates. All rights reserved.
- ***********************************************************************************************
- *  Accelerator Package: Mobile Agent App Accelerator
- *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
- *  OSvC release: 16.8 (August 2016)
- *  MAF release: 2.3
- *  reference: 151217-000185
- *  date: Tue Aug 23 16:35:57 PDT 2016
+ *  Copyright (c) 2014, 2015, 2016, Oracle and/or its affiliates. All rights reserved.
 
- *  revision: rnw-16-8-fixes-release-01
- *  SHA1: $Id: 8fcd6da4292c884d3272799431283f113ba2df6c $
- * *********************************************************************************************
- *  File: Incident.java
  * *********************************************************************************************/
 
 package incidents;
@@ -328,4 +330,74 @@ public class Incident {
         return _assetSerialNumber;
     }
 
+    private boolean _gpsAvailable;
+    private String _gpsLatitude;
+    private String _gpsLongitude;
+    private double _gpsLatitudeCurrent;
+    private double _gpsLongitudeCurrent;
+
+    public String getLocationTitle() {
+        return this.isLocationSaved() ? "Stored Location" : "Current Location";
+    }
+
+    public boolean isLocationSaved() {
+        return
+            Util.isNullOrEmpty(this.getGpsLatitude())
+            || Util.isNullOrEmpty(this.getGpsLongitude())
+            ? false : true;
+    }
+
+    public double getGeoLatitude() {
+        return
+            this.isLocationSaved()
+            ? Double.parseDouble(this.getGpsLatitude())
+            : this.getGpsLatitudeCurrent();
+    }
+
+    public double getGeoLongitude() {
+        return
+            this.isLocationSaved()
+            ? Double.parseDouble(this.getGpsLongitude())
+            : this.getGpsLongitudeCurrent();
+    }
+
+    public void setGpsAvailable(boolean _gpsAvailable) {
+        this._gpsAvailable = _gpsAvailable;
+    }
+
+    public boolean isGpsAvailable() {
+        return _gpsAvailable;
+    }
+
+    public void setGpsLatitude(String _gpsLatitude) {
+        this._gpsLatitude = _gpsLatitude;
+    }
+
+    public String getGpsLatitude() {
+        return _gpsLatitude;
+    }
+
+    public void setGpsLongitude(String _gpsLongitude) {
+        this._gpsLongitude = _gpsLongitude;
+    }
+
+    public String getGpsLongitude() {
+        return _gpsLongitude;
+    }
+
+    public void setGpsLatitudeCurrent(double _gpsLatitudeCurrent) {
+        this._gpsLatitudeCurrent = _gpsLatitudeCurrent;
+    }
+
+    public double getGpsLatitudeCurrent() {
+        return _gpsLatitudeCurrent;
+    }
+
+    public void setGpsLongitudeCurrent(double _gpsLongitudeCurrent) {
+        this._gpsLongitudeCurrent = _gpsLongitudeCurrent;
+    }
+
+    public double getGpsLongitudeCurrent() {
+        return _gpsLongitudeCurrent;
+    }
 }

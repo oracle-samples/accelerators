@@ -695,8 +695,8 @@
             </hash>
             <hash n="iosDeploymentOptions">
                <value n="disableAppTransportSecurity" v="true"/>
-               <value n="simulatorDeviceId" v="5679B6F2-9C6E-403E-B549-1964F8065318"/>
-               <value n="simulatorTarget" v="iPhone 6 (iOS 9.3 - iPhone 6)"/>
+               <value n="simulatorDeviceId" v="DFC6689D-0B78-42A6-BACE-A01A9935294C"/>
+               <value n="simulatorTarget" v="iPhone 6 (iOS 9.2 - iPhone 6)"/>
                <value n="targetFamilyVersion" v="iPhone"/>
             </hash>
             <url n="jarURL" path="deploy/iOS-iPhone6-Simulator/iOS-iPhone6-Simulator.jar/"/>

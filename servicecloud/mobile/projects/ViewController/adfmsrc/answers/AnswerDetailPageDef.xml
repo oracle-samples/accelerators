@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/* *********************************************************************************************
+ *  This file is part of the Oracle Service Cloud Accelerator Reference Integration set published 
+ *  by Oracle Service Cloud under the Universal Permissive License (UPL), Version 1.0 
+ *  included in the original distribution. 
+ *  Copyright (c) 2014, 2015, 2016, Oracle and/or its affiliates. All rights reserved. 
+  ***********************************************************************************************
+ *  Accelerator Package: OSVC Mobile Application Accelerator 
+ *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html 
+ *  OSvC release: 16.11 (November 2016) 
+ *  date: Mon Dec 12 02:05:30 PDT 2016 
+ *  revision: rnw-16-11
+
+ *  SHA1: $Id$
+ * *********************************************************************************************
+ *  File: This file is part of the Oracle Service Cloud Accelerator Reference Integration set published
+ *  by Oracle Service Cloud under the Universal Permissive License (UPL), Version 1.0
+ *  included in the original distribution.
+ *  Copyright (c) 2014, 2015, 2016, Oracle and/or its affiliates. All rights reserved.
+
+ * *********************************************************************************************/
+-->
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.8.41" id="AnswerDetailPageDef"
+                Package="answers">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="AnswerController" id="AnswerControllerIterator"/>
+    <accessorIterator MasterBinding="AnswerControllerIterator" Binds="answer" RangeSize="25"
+                      DataControl="AnswerController" BeanClass="answers.Answer" id="answerIterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="answerIterator" id="summary">
+      <AttrNames>
+        <Item Value="summary"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="answerIterator" id="question">
+      <AttrNames>
+        <Item Value="question"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="answerIterator" id="solution">
+      <AttrNames>
+        <Item Value="solution"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="answerIterator" id="updatedTimeString">
+      <AttrNames>
+        <Item Value="updatedTimeString"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="answerIterator" id="status">
+      <AttrNames>
+        <Item Value="status"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="answerIterator" id="product">
+      <AttrNames>
+        <Item Value="product"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

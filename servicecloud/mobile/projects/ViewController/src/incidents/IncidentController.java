@@ -1,34 +1,44 @@
 /* *********************************************************************************************
- *  This file is part of the Oracle Service Cloud Accelerator Reference Integration set published
+ *  This file is part of the Oracle Service Cloud Accelerator Reference Integration set published 
+ *  by Oracle Service Cloud under the Universal Permissive License (UPL), Version 1.0 
+ *  included in the original distribution. 
+ *  Copyright (c) 2014, 2015, 2016, Oracle and/or its affiliates. All rights reserved. 
+  ***********************************************************************************************
+ *  Accelerator Package: OSVC Mobile Application Accelerator 
+ *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html 
+ *  OSvC release: 16.11 (November 2016) 
+ *  date: Mon Dec 12 02:05:30 PDT 2016 
+ *  revision: rnw-16-11
+
+ *  SHA1: $Id$
+ * *********************************************************************************************
+ *  File: This file is part of the Oracle Service Cloud Accelerator Reference Integration set published
  *  by Oracle Service Cloud under the Universal Permissive License (UPL), Version 1.0
  *  included in the original distribution.
- *  Copyright (c) 2014, 2015, 2016 Oracle and/or its affiliates. All rights reserved.
- ***********************************************************************************************
- *  Accelerator Package: Mobile Agent App Accelerator
- *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
- *  OSvC release: 16.8 (August 2016)
- *  MAF release: 2.3
- *  reference: 151217-000185
- *  date: Tue Aug 23 16:35:58 PDT 2016
+ *  Copyright (c) 2014, 2015, 2016, Oracle and/or its affiliates. All rights reserved.
 
- *  revision: rnw-16-8-fixes-release-01
- *  SHA1: $Id: 602fc25eec144f29783a65c331a781bc14130ca7 $
- * *********************************************************************************************
- *  File: IncidentController.java
  * *********************************************************************************************/
 
 package incidents;
+
+import java.text.SimpleDateFormat;
+
+import java.util.HashMap;
 
 import javax.el.ValueExpression;
 
 import lov.ListOfValue;
 import lov.ListOfValueController;
 
+import oracle.adf.model.datacontrols.device.DeviceManagerFactory;
+import oracle.adf.model.datacontrols.device.Location;
+
 import oracle.adfmf.bindings.dbf.AmxIteratorBinding;
 import oracle.adfmf.framework.api.AdfmfContainerUtilities;
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
 
 import oracle.adfmf.json.JSONArray;
+import oracle.adfmf.json.JSONException;
 import oracle.adfmf.json.JSONObject;
 
 import rest_adapter.RestAdapter;
@@ -96,7 +106,7 @@ public class IncidentController {
             }
                         
             cachedIncident = null;
-            //initLocation();
+            initLocation();
             return incident; 
         }
 
@@ -111,7 +121,7 @@ public class IncidentController {
                 incident = (Incident) obj;
             }
         }
-        //initLocation();
+        initLocation();
         return incident;
     }
     
@@ -217,6 +227,8 @@ public class IncidentController {
     }
 
     public Incident newIncident() {
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.saveLocation}", false);
+        isLocationAvailable();
         // set the pageFlowScope.ScannerPage for barcode scanner js check
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.ScannerPage}", "AssetQuickSearch");
         if(cachedIncident != null){
@@ -315,6 +327,16 @@ public class IncidentController {
         incident.setOrganizationId(getOrgIdByContactId(incident.getContactId()));
         // create incident
        String res = Util.createObject(incident, "incidents", IncidentAttributes.incidentEditAttrs);
+       
+        // add gps location
+       try {
+           addGeoLocation(res);
+        }
+        catch (Exception e) {
+            if (null != e) {
+                System.out.println("Failed to update location " + e.getMessage());
+            }
+        }
 
         AdfmfContainerUtilities.invokeContainerJavaScriptFunction(
             AdfmfJavaUtilities.getFeatureId(),
@@ -348,6 +370,183 @@ public class IncidentController {
     
     public void setSeverities(ListOfValue[] severities) {
         this.severities = severities;
+    }
+
+    private Location _location;
+
+    /**
+     * Find the current geo location.
+     * @return true if it finds a location
+     */
+    public boolean isLocationAvailable() {
+        boolean result = false;
+        try {
+//            String deviceOS = DeviceManagerFactory.getDeviceManager().getOs();
+//            String deviceName = DeviceManagerFactory.getDeviceManager().getName();
+            // due to MAF defect, geolocation does not work on real android devices or iOS devices
+            // so, we only enable the position detecting in iOS Simulator
+//            if (deviceOS.contains("iOS") && deviceName.contains("Simulator")) {
+                this._location = DeviceManagerFactory.getDeviceManager().getCurrentPosition(1000, 5000, true);
+                result = true;
+                System.out.println("Current location is " + this._location.getLatitude() + "," + this._location.getLongitude());
+//            } else {
+//                result = false;
+//            }
+        }
+        catch (Exception e) {
+            result = false;
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.saveLocation}", false);
+            System.out.println("Failed to obtain a geolocation " + e.getMessage());
+        }
+        return result;
+    }
+
+    public boolean initLocation() {
+        if (!this.isLocationAvailable()) return false;
+        if (null != this.incident) {
+            this.incident.setGpsLatitudeCurrent(this._location.getLatitude());
+            this.incident.setGpsLongitudeCurrent(this._location.getLongitude());
+        }
+        if (null != this.cachedIncident) {
+            this.cachedIncident.setGpsLatitudeCurrent(this._location.getLatitude());
+            this.cachedIncident.setGpsLongitudeCurrent(this._location.getLongitude());
+        }
+        return true;
+    }
+
+    private void addGeoLocation(String res) {
+        boolean sl = false;
+        try {
+            Object o = AdfmfJavaUtilities.getELValue("#{pageFlowScope.saveLocation}");
+            if (null != o && o instanceof Boolean) {
+                sl = ((Boolean)o).booleanValue();
+            }
+        }
+        catch (Exception e) {
+            System.out.println("Failed to read the property saveLocation " + e.getMessage());
+            return;
+        }
+
+        if (!sl) return;
+
+        JSONObject prjo;
+        Integer id;
+        try {
+            prjo = new JSONObject(res);
+            id = (Integer) prjo.get("id");
+        } catch (JSONException e) {
+            System.out.println("Cannot parse incident id");
+            return;
+        }
+        if (null == id || JSONObject.NULL == id || 0 == id) return;
+
+        // Get the location
+        Location loc = null;
+
+        loc = null == loc ? this._location : null;
+
+        if (null == loc) {
+            return;
+        }
+        double latd = loc.getLatitude();
+        double lgtd = loc.getLongitude();
+
+        // Create payload
+        JSONObject payload = new JSONObject();
+        JSONObject customFields = new JSONObject();
+        JSONObject Mobile = new JSONObject();
+        try {
+            payload.put("customFields", customFields);
+            customFields.put("Mobile", Mobile);
+            Mobile.put("gps_latitude", 0 == latd ? JSONObject.NULL : String.valueOf(latd));
+            Mobile.put("gps_longitude", 0 == lgtd ? JSONObject.NULL : String.valueOf(lgtd));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        // Update
+        RestAdapter.Status suc;
+        suc = Util.updateObject(payload, "incidents/" + Integer.toString(id));
+        boolean success = false;
+        if ("200".equals(suc.getStatus())){
+            success = true;
+        }
+        else {
+            success = false;
+        }
+        if (success) {
+            System.out.println("Added location to incident " + id + " location " + Mobile.toString());
+        }
+    }
+
+    public void removeGeoLocation() {
+
+        // Create payload
+        JSONObject payload = new JSONObject();
+        JSONObject customFields = new JSONObject();
+        JSONObject Mobile = new JSONObject();
+        try {
+            payload.put("customFields", customFields);
+            customFields.put("Mobile", Mobile);
+            Mobile.put("gps_latitude", JSONObject.NULL);
+            Mobile.put("gps_longitude", JSONObject.NULL);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        // Remove location
+        RestAdapter.Status suc;
+        suc = Util.updateObject(payload, "incidents/" + Integer.toString(this.incident.getId()));
+        boolean success = false;
+        if ("200".equals(suc.getStatus())){
+            success = true;
+        }
+        else {
+            success = false;
+        }
+        if (success) {
+            System.out.println("Removed location from incident " + Integer.toString(this.incident.getId()));
+        }
+    }
+
+    public void addCurrentGeoLocation() {
+        // Get the location
+        Location loc = null;
+
+        loc = null == loc ? this._location : null;
+
+        if (null == loc) {
+            return;
+        }
+        double latd = loc.getLatitude();
+        double lgtd = loc.getLongitude();
+
+        // Create payload
+        JSONObject payload = new JSONObject();
+        JSONObject customFields = new JSONObject();
+        JSONObject Mobile = new JSONObject();
+        try {
+            payload.put("customFields", customFields);
+            customFields.put("Mobile", Mobile);
+            Mobile.put("gps_latitude", 0 == latd ? JSONObject.NULL : String.valueOf(latd));
+            Mobile.put("gps_longitude", 0 == lgtd ? JSONObject.NULL : String.valueOf(lgtd));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        // Add location
+        RestAdapter.Status suc;
+        suc = Util.updateObject(payload, "incidents/" + Integer.toString(this.incident.getId()));
+        boolean success = false;
+        if ("200".equals(suc.getStatus())){
+            success = true;
+        }
+        else {
+            success = false;
+        }
+        if (success) {
+            System.out.println("Added location to incident " + Integer.toString(this.incident.getId()));
+        }
     }
 
 }

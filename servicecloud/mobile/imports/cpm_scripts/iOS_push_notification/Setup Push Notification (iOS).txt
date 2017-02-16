@@ -1,0 +1,89 @@
+Note: Because we cannot call APNs server directly from CPM scripts, we are using Mobile Cloud Service (MCS) as the intermediate web service. 
+Here is the documentation about MCS push notification service. 
+https://docs.oracle.com/cloud/latest/mobilecs_gs/MCSUA/GUID-C39695F6-9012-4A63-ADDF-47F04BF0AC73.htm#MCSUA-GUID-C39695F6-9012-4A63-ADDF-47F04BF0AC73
+
+
+Setup APNs 
+1) Go to developer.apple.com
+2) Go to Certificates, Identifiers & Profiles.
+3) Add your App ID in Identifiers and enable the "Push Notifications" Application Service 
+4) Create your application certificate, if it did not exist
+5) Create "Push Notification" certificate in Certificates
+	- Add a new Certificate
+	- Choose "Apple Push Notification service SSL (Sandbox & Production)"
+	- Select your App ID
+6) Add your "Push Notification" certificates to your App ID services
+7) Create/Update your Provisioning Profile with the new App ID and application certificate
+8) Download and install your certificates
+
+
+Set up MCS (for iOS)
+1) Export your "Push Notification" certificates from Key Access, and save as ".p12" file
+2) Log in your MCS Server with your username and password
+3) Choose Applications -> Mobile Backends
+4) Create/Edit your Mobile Backend
+5) Register your mobile application in your Mobile Backend
+	- Go to "Clients" in your Mobile Backend
+	- Click on "Register Application"
+	- Choose your platform, input your App Name and App ID
+	- Choose Certificate Type and upload the exported ".p12" file 
+	- Click on "Register"
+
+
+Setup Custom Configuration
+1) Log into MCS server
+	- Go to Settings of your Mobile Backend
+	- Get Basic URL
+	- Get Mobile Backend ID and Anonymous Key in HTTP Basic
+2) Edit CUSTOM_CFG_Accel_Mobile in Configuration Settings
+	- Go to Site Configuration -> Configuration Settings in Console	
+	- Create/Find Custom Config CUSTOM_CFG_Accel_Mobile
+	- Add "mcs" part in "push_notification"
+		"mcs":{
+	     	"username":"",
+            "password":"",
+            "basedURL":"",
+            "mobileBackendId":"",
+            "basicAuthKey":""
+            }
+	- Define the Basic URL in "basedURL"
+	- Define the Mobile Backend ID in "mobileBackendId"
+	- Define the Anonymous Key in "basicAuthKey"
+	- Define your MCS login username/password as "username" and "password"
+
+
+Setup Custom Field and Event Handler
+1) Create custom attribute apns_token, via Database -> Object Designer
+	- apns_token 
+	  object: Account under OracleServiceCloud
+	  type: Text
+      package: Mobile
+2) Go to Process Designer
+	- New Object Event Handler, check "Execute Asynchronously"
+	- Upload CPM script, e.g. apns_incident.php file, Save and Test
+	- Deploy the Handler
+	Note: For the test case, the fetched incident id maybe need to change based on the server
+
+
+
+Associate Event Handler to Creating/Updating Object 
+Approach 1: using Business Rules
+	- Go to Site Configuration -> Rules
+	- Select the object, e.g. Incident
+	- Select "Edit" in Ribbon to update the rules
+	- Select the State with initial state OR create a State with initial state
+	- Right Click on this State and "New Rule"
+		Rule Name: Push Notification
+		IF condition: Select your expected condition, e.g. Incident.Severty equals High
+		Then Action: Execute Object Event Handler - Select "apns_incident"
+	- Save, Compile and Active the new rule
+
+Approach 2: using PRocess Designer
+	- Go to Process Designer
+	- Select the Process Model, e.g. Incident
+	- Associate the deployed Event Handler with Create/Update action, Save and Deploy
+	Note: In this case, we can have separate CPM scripts for Create and Update. However, only one event handler can be attached to each action.
+	
+
+
+

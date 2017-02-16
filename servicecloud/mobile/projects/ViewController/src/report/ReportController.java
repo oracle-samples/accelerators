@@ -1,20 +1,22 @@
 /* *********************************************************************************************
- *  This file is part of the Oracle Service Cloud Accelerator Reference Integration set published
+ *  This file is part of the Oracle Service Cloud Accelerator Reference Integration set published 
+ *  by Oracle Service Cloud under the Universal Permissive License (UPL), Version 1.0 
+ *  included in the original distribution. 
+ *  Copyright (c) 2014, 2015, 2016, Oracle and/or its affiliates. All rights reserved. 
+  ***********************************************************************************************
+ *  Accelerator Package: OSVC Mobile Application Accelerator 
+ *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html 
+ *  OSvC release: 16.11 (November 2016) 
+ *  date: Mon Dec 12 02:05:30 PDT 2016 
+ *  revision: rnw-16-11
+
+ *  SHA1: $Id$
+ * *********************************************************************************************
+ *  File: This file is part of the Oracle Service Cloud Accelerator Reference Integration set published
  *  by Oracle Service Cloud under the Universal Permissive License (UPL), Version 1.0
  *  included in the original distribution.
- *  Copyright (c) 2014, 2015, 2016 Oracle and/or its affiliates. All rights reserved.
- ***********************************************************************************************
- *  Accelerator Package: Mobile Agent App Accelerator
- *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
- *  OSvC release: 16.8 (August 2016)
- *  MAF release: 2.3
- *  reference: 151217-000185
- *  date: Tue Aug 23 16:35:59 PDT 2016
+ *  Copyright (c) 2014, 2015, 2016, Oracle and/or its affiliates. All rights reserved.
 
- *  revision: rnw-16-8-fixes-release-01
- *  SHA1: $Id: 71386f427b336c2537ae8f78db8fd75be1bcd7d0 $
- * *********************************************************************************************
- *  File: ReportController.java
  * *********************************************************************************************/
 
 package report;
@@ -22,6 +24,8 @@ package report;
 import contacts.ContactSearchFiltersController;
 import incidents.IncidentSearchFilters;
 import incidents.IncidentSearchFiltersController;
+import assets.AssetSearchFiltersController;
+import answers.AnswerSearchFiltersController;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -342,6 +346,15 @@ public class ReportController implements RangeChangeListener {
             TaskSearchFiltersController taskFilCon = (TaskSearchFiltersController) filters;
             searchCriteria = taskFilCon.updateFilters();
             break;
+        case "AcceleratorPopularAnswerList":
+            AnswerSearchFiltersController answerFilCon = (AnswerSearchFiltersController) filters;
+            searchCriteria = answerFilCon.updateFilters();
+            break;
+        case "AcceleratorAssetList":
+            AssetSearchFiltersController assetFilCon = (AssetSearchFiltersController) filters;
+            assetFilCon.getFilters().setAssigned("");
+            searchCriteria = assetFilCon.updateFilters();
+            break;
         }
         return searchCriteria;
     }
@@ -376,6 +389,14 @@ public class ReportController implements RangeChangeListener {
             TaskSearchFiltersController taskFilCon = (TaskSearchFiltersController) filters;
             this._searchCriteria = taskFilCon.updateFilters();
             break;
+        case "AcceleratorPopularAnswerList":
+            AnswerSearchFiltersController answerFilCon = (AnswerSearchFiltersController) filters;
+            this._searchCriteria = answerFilCon.updateFilters();
+            break;
+        case "AcceleratorAssetList":
+            AssetSearchFiltersController assetFilCon = (AssetSearchFiltersController) filters;
+            this._searchCriteria = assetFilCon.updateFilters();
+            break;
         }
     }
 
@@ -397,6 +418,14 @@ public class ReportController implements RangeChangeListener {
             TaskSearchFiltersController taskFilCon = (TaskSearchFiltersController) filters;
             taskFilCon.resetFilters();
             break;
+        case "AcceleratorPopularAnswerList":
+            AnswerSearchFiltersController answerFilCon = (AnswerSearchFiltersController) filters;
+            answerFilCon.resetFilters();
+            break;
+        case "AcceleratorAssetList":
+            AssetSearchFiltersController assetFilCon = (AssetSearchFiltersController) filters;
+            assetFilCon.resetFilters();
+            break;
         }
     }
 
@@ -417,6 +446,14 @@ public class ReportController implements RangeChangeListener {
         case "AcceleratorTaskList":
             TaskSearchFiltersController taskFilCon = (TaskSearchFiltersController) filters;
             taskFilCon.cancelModifiedFilters();
+            break;
+        case "AcceleratorPopularAnswerList":
+            AnswerSearchFiltersController answerFilCon = (AnswerSearchFiltersController) filters;
+            answerFilCon.cancelModifiedFilters();
+            break;
+        case "AcceleratorAssetList":
+            AssetSearchFiltersController assetFilCon = (AssetSearchFiltersController) filters;
+            assetFilCon.cancelModifiedFilters();
             break;
         }
     }

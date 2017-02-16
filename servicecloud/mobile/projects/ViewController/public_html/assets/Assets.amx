@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
 /* *********************************************************************************************
- *  This file is part of the Oracle Service Cloud Accelerator Reference Integration set published
+ *  This file is part of the Oracle Service Cloud Accelerator Reference Integration set published 
+ *  by Oracle Service Cloud under the Universal Permissive License (UPL), Version 1.0 
+ *  included in the original distribution. 
+ *  Copyright (c) 2014, 2015, 2016, Oracle and/or its affiliates. All rights reserved. 
+  ***********************************************************************************************
+ *  Accelerator Package: OSVC Mobile Application Accelerator 
+ *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html 
+ *  OSvC release: 16.11 (November 2016) 
+ *  date: Mon Dec 12 02:05:30 PDT 2016 
+ *  revision: rnw-16-11
+
+ *  SHA1: $Id$
+ * *********************************************************************************************
+ *  File: This file is part of the Oracle Service Cloud Accelerator Reference Integration set published
  *  by Oracle Service Cloud under the Universal Permissive License (UPL), Version 1.0
  *  included in the original distribution.
- *  Copyright (c) 2014, 2015, 2016 Oracle and/or its affiliates. All rights reserved.
- ***********************************************************************************************
- *  Accelerator Package: Mobile Agent App Accelerator
- *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
- *  OSvC release: 16.8 (August 2016)
- *  MAF release: 2.3
- *  reference: 151217-000185
- *  date: Tue Aug 23 16:35:52 PDT 2016
+ *  Copyright (c) 2014, 2015, 2016, Oracle and/or its affiliates. All rights reserved.
 
- *  revision: rnw-16-8-fixes-release-01
- *  SHA1: $Id: 8ac7a6a1382f82fb8e297f2540c763448b2036a6 $
- * *********************************************************************************************
- *  File: Assets.amx
  * *********************************************************************************************/
 -->
 <amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
@@ -35,7 +37,7 @@
         <amx:facet name="secondary">
             <amx:commandLink id="cl5" action="goToCreate" shortDesc="Go to create">
                 <amx:image id="i2" source="/images/func_plus_32@2x.png" shortDesc="Add icon" styleClass="actionIcon"
-                           />
+                           rendered="#{applicationScope.CanAddEdit_Asset}"/>
             </amx:commandLink>
             <amx:commandLink id="cl2" shortDesc="go to search">
                 <amx:showPopupBehavior id="spb1" popupId="p1" type="action" align="overlapMiddleCenter" alignId="pp1"/>
@@ -147,6 +149,12 @@
                                 <amx:cellFormat id="cf70">
                                     <amx:inputText value="#{bindings.assetSerialNumber.inputValue}" id="it10"
                                                    maximumLength="80"/>
+                                </amx:cellFormat>
+                                <amx:cellFormat id="cf80">
+                                    <amx:commandLink actionListener="#{bindings.LaunchScanner.execute}"
+                                                     disabled="#{!bindings.LaunchScanner.enabled}" id="cl20">
+                                        <amx:image id="i20" source="/images/barcodeIcon_sml.png"/>
+                                    </amx:commandLink>
                                 </amx:cellFormat>
                             </amx:rowLayout>
                         </amx:tableLayout>

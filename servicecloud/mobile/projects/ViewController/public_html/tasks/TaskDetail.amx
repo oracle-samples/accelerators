@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
 /* *********************************************************************************************
- *  This file is part of the Oracle Service Cloud Accelerator Reference Integration set published
+ *  This file is part of the Oracle Service Cloud Accelerator Reference Integration set published 
+ *  by Oracle Service Cloud under the Universal Permissive License (UPL), Version 1.0 
+ *  included in the original distribution. 
+ *  Copyright (c) 2014, 2015, 2016, Oracle and/or its affiliates. All rights reserved. 
+  ***********************************************************************************************
+ *  Accelerator Package: OSVC Mobile Application Accelerator 
+ *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html 
+ *  OSvC release: 16.11 (November 2016) 
+ *  date: Mon Dec 12 02:05:30 PDT 2016 
+ *  revision: rnw-16-11
+
+ *  SHA1: $Id$
+ * *********************************************************************************************
+ *  File: This file is part of the Oracle Service Cloud Accelerator Reference Integration set published
  *  by Oracle Service Cloud under the Universal Permissive License (UPL), Version 1.0
  *  included in the original distribution.
- *  Copyright (c) 2014, 2015, 2016 Oracle and/or its affiliates. All rights reserved.
- ***********************************************************************************************
- *  Accelerator Package: Mobile Agent App Accelerator
- *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
- *  OSvC release: 16.8 (August 2016)
- *  MAF release: 2.3
- *  reference: 151217-000185
- *  date: Tue Aug 23 16:35:56 PDT 2016
+ *  Copyright (c) 2014, 2015, 2016, Oracle and/or its affiliates. All rights reserved.
 
- *  revision: rnw-16-8-fixes-release-01
- *  SHA1: $Id: 86ad3f1d30ab13f3bbae08a6f2a37c478b0c110d $
- * *********************************************************************************************
- *  File: TaskDetail.amx
  * *********************************************************************************************/
 -->
 <amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
@@ -28,7 +30,19 @@
         <amx:facet name="primary">
             <amx:commandButton id="cb1" action="__back" shortDesc="go back" iconPosition="leading"></amx:commandButton>
         </amx:facet>
-        <amx:facet name="secondary"/>
+        <amx:facet name="secondary">
+            <amx:commandLink id="cln2" action="goToNewNote"
+                shortDesc="Go to create"
+                rendered="#{pageFlowScope.summaryView eq 'note'}">
+                <amx:image id="i2" source="/images/func_plus_32@2x.png"
+                    shortDesc="Add icon" styleClass="actionIcon" rendered="#{applicationScope.CanAddEdit_Task}"/>
+            </amx:commandLink>
+            <amx:commandLink id="cl5" action="goToEdit" shortDesc="edit task"
+                             rendered="#{pageFlowScope.summaryView eq 'summary' ? 'true' : 'false'}">
+                <amx:image id="i3" source="/images/func_pencil01_32@2x.png" shortDesc="edit task"
+                           styleClass="actionIcon" rendered="#{applicationScope.CanAddEdit_Task}"/>
+            </amx:commandLink>
+        </amx:facet>
         <amx:deck id="d1" displayedChild="#{pageFlowScope.summaryView}" shortDesc="Detail Deck" styleClass="fullSize">
             <amx:panelStretchLayout id="summary" scrollPolicy="scroll">
                 <amx:facet name="center">
@@ -166,6 +180,19 @@
                             <amx:setPropertyListener id="spl5" from="summary" to="#{pageFlowScope.summaryView}"/>
                         </amx:commandLink>
                         </amx:cellFormat>
+                    <amx:cellFormat id="cf1" width="25%">
+                        <amx:commandLink text="" id="cl4"
+                        styleClass="fullSize phoneToolbarItem#{pageFlowScope.summaryView eq 'note' ? 'Selected' : 'Enabled'}"
+                                         shortDesc="note Toolbar Link">
+                            <amx:panelGroupLayout id="pgl1" halign="center">
+                                <amx:image id="i1" source="/images/note_#{pageFlowScope.summaryView eq 'note' ? 'selected' : 'enabled'}_nav_bar_icon.png"
+                                           shortDesc="note Toolbar Image"/>
+                                <amx:outputText value="Notes" id="ot3"/>
+                            </amx:panelGroupLayout>
+                            <amx:setPropertyListener id="spl6" from="note" to="#{pageFlowScope.summaryView}"/>
+                            <amx:actionListener id="al1" binding="#{bindings.initTaskNoteReport.execute}"/>
+                        </amx:commandLink>
+                    </amx:cellFormat>
                 </amx:rowLayout>
             </amx:tableLayout>
         </amx:facet>

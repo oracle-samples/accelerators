@@ -1,12 +1,4 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<!--
-/* *********************************************************************************************
- *  $ACCELERATOR_HEADER_PLACE_HOLDER$
- *  SHA1: $Id: a1541895c5ab6b5b420a1eb6dea4372d1dd937ec $
- * *********************************************************************************************
- *  File: $ACCELERATOR_HEADER_FILE_NAME_PLACE_HOLDER$
- * *********************************************************************************************/
--->
 <jpr:project xmlns:jpr="http://xmlns.oracle.com/ide/project">
    <hash n="component-versions">
       <value n="oracle.adfdt.controller.adfc.source.migration.AdfControllerSchemaMigrator" v="11.1.1.1.0"/>
@@ -27,7 +19,7 @@
       <value n="oracle.adfdtinternal.view.rich.binding.migration.JarResourceMigrator" v="11.1.1.1.0"/>
       <value n="oracle.adfdtinternal.view.rich.migration.ComponentIdNodeMigratorHelper" v="11.1.1.1.0.01"/>
       <value n="oracle.adfdtinternal.view.rich.migration.FacesLibraryVersionMigrator" v="11.1.1.1.0.1"/>
-      <value n="oracle.adfmf.framework.dt.migration.ApplicationMigrator" v="12.1.3.1.0.2.1.0.0.0;12.1.3.1.0.2.1.3.0.0;12.1.3.1.0.2.2.0.0.0;12.1.3.1.0.2.2.1.0.0;12.2.1.0.0.2.3.0.0.0"/>
+      <value n="oracle.adfmf.framework.dt.migration.ApplicationMigrator" v="12.1.3.1.0.2.1.0.0.0;12.1.3.1.0.2.1.3.0.0;12.1.3.1.0.2.2.0.0.0;12.1.3.1.0.2.2.1.0.0;12.2.1.0.0.2.3.0.0.0;12.2.1.0.0.2.3.2.0.0"/>
       <value n="oracle.ide.model.Project" v="12.1.3.0.0;12.2.1.0.0"/>
       <value n="oracle.ide.model.ResourcePathsMigrator" v="11.1.1.1.0"/>
       <value n="oracle.ideimpl.model.TechnologyScopeUpdateMigrator" v="11.1.2.0.0.5;11.1.2.0.0.6"/>

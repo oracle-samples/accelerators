@@ -1,20 +1,22 @@
 /* *********************************************************************************************
- *  This file is part of the Oracle Service Cloud Accelerator Reference Integration set published
+ *  This file is part of the Oracle Service Cloud Accelerator Reference Integration set published 
+ *  by Oracle Service Cloud under the Universal Permissive License (UPL), Version 1.0 
+ *  included in the original distribution. 
+ *  Copyright (c) 2014, 2015, 2016, Oracle and/or its affiliates. All rights reserved. 
+  ***********************************************************************************************
+ *  Accelerator Package: OSVC Mobile Application Accelerator 
+ *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html 
+ *  OSvC release: 16.11 (November 2016) 
+ *  date: Mon Dec 12 02:05:30 PDT 2016 
+ *  revision: rnw-16-11
+
+ *  SHA1: $Id$
+ * *********************************************************************************************
+ *  File: This file is part of the Oracle Service Cloud Accelerator Reference Integration set published
  *  by Oracle Service Cloud under the Universal Permissive License (UPL), Version 1.0
  *  included in the original distribution.
- *  Copyright (c) 2014, 2015, 2016 Oracle and/or its affiliates. All rights reserved.
- ***********************************************************************************************
- *  Accelerator Package: Mobile Agent App Accelerator
- *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
- *  OSvC release: 16.8 (August 2016)
- *  MAF release: 2.3
- *  reference: 151217-000185
- *  date: Tue Aug 23 16:35:59 PDT 2016
+ *  Copyright (c) 2014, 2015, 2016, Oracle and/or its affiliates. All rights reserved.
 
- *  revision: rnw-16-8-fixes-release-01
- *  SHA1: $Id: 40606a16734f611357330f9bca39fa7fd47a5a3a $
- * *********************************************************************************************
- *  File: DashboardReportController.java
  * *********************************************************************************************/
 
 package springboard;
@@ -75,8 +77,7 @@ public class DashboardReportController {
             
             JSONArray filterArray = new JSONArray();
             //
-            queryObj.put("filters", filterArray);                  
-            
+            queryObj.put("filters", filterArray);         
             queryObj.put("limit", DEFAULT_LIMIT);
             queryObj.put("offset", 0);
 
@@ -129,7 +130,7 @@ public class DashboardReportController {
                         
                         int number = fields.getInt(1);
                         if (isPercents && _totalNumber != 0) {
-                            //slice.setNumber(Math.ceil(((double)number / _totalNumber)*10000) / 100);
+                            // slice.setNumber(Math.ceil(((double)number / _totalNumber)*10000) / 100);
                             slice.setNumber( (((double)number / _totalNumber)) );
                         } else {
                             _totalNumber += number;                                                
@@ -193,15 +194,18 @@ public class DashboardReportController {
 //        returnValue.add(ri);
         
         try {
+            String login = (String) AdfmfJavaUtilities.evaluateELExpression("#{securityContext.userName}");
             JSONObject queryObj = new JSONObject();
 
             queryObj.put("lookupName", "AcceleratorDashPerformance");
             
             JSONArray filterArray = new JSONArray();
-            //
-            queryObj.put("filters", filterArray);                  
+            // Created date *should be* default in the filter for how much time you want. 
+            // filterArray.put( new JSONObject().put("name", "Created Date").put("values", new JSONArray().put( "-4 Weeks Exactly" )) );
+            filterArray.put( new JSONObject().put("name", "Account").put("values", new JSONArray().put( login )) );
+            queryObj.put("filters", filterArray);
             
-            queryObj.put("limit", 20);  // CHANGE to DEFAULT_LIMIT IF WILL BE CALCULATING DATA! 
+            queryObj.put("limit", 20);  // CHANGE to DEFAULT_LIMIT IF WILL BE CALCULATING DATA (if report is not averaging)! 
             queryObj.put("offset", 0);
 
             String response = RestAdapter.doPOST(REPORT_URL_CONNECTION, REPORT_GET_URI, queryObj.toString());
@@ -266,6 +270,28 @@ public class DashboardReportController {
         propertyChangeSupport.removePropertyChangeListener(l);
     }
 
+    private static String zeroOrSecOrHours(String time) {
+        Long l;
+        String s;
+        try {
+            l = Long.valueOf(time);
+        } catch (Exception e ){
+            l = new Long (0);
+        }
+        // if too many seconds..(5 or more not really fitting on UI
+        if (l > 99999) {
+            double hrs = l.doubleValue() / 3600.0;
+            hrs = Math.round( hrs * 100.0 ) / 100.0;
+            s = String.valueOf(hrs)  + 'h';
+        } else if (time == null || time.equals("")) {
+            s = "0s";
+        } else {
+            // just seconds
+            s = time + 's';
+        }
+        return s;
+    }
+    
     public static class PieSlice extends ReportItem {
         private String name;
         private double number;
@@ -293,7 +319,7 @@ public class DashboardReportController {
         private String percent;
 
         public void setTime1(String time1) {
-            this.time1 = time1;
+            this.time1 = zeroOrSecOrHours( time1 );
         }
 
         public String getTime1() {
@@ -301,7 +327,7 @@ public class DashboardReportController {
         }
 
         public void setTime2(String time2) {
-            this.time2 = time2;
+            this.time2 = zeroOrSecOrHours ( time2 );
         }
 
         public String getTime2() {
@@ -309,6 +335,8 @@ public class DashboardReportController {
         }
 
         public void setPercent(String percent) {
+            if (percent == null)
+                percent = "0";
             this.percent = percent;
         }
 

@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
 /* *********************************************************************************************
- *  This file is part of the Oracle Service Cloud Accelerator Reference Integration set published
+ *  This file is part of the Oracle Service Cloud Accelerator Reference Integration set published 
+ *  by Oracle Service Cloud under the Universal Permissive License (UPL), Version 1.0 
+ *  included in the original distribution. 
+ *  Copyright (c) 2014, 2015, 2016, Oracle and/or its affiliates. All rights reserved. 
+  ***********************************************************************************************
+ *  Accelerator Package: OSVC Mobile Application Accelerator 
+ *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html 
+ *  OSvC release: 16.11 (November 2016) 
+ *  date: Mon Dec 12 02:05:30 PDT 2016 
+ *  revision: rnw-16-11
+
+ *  SHA1: $Id$
+ * *********************************************************************************************
+ *  File: This file is part of the Oracle Service Cloud Accelerator Reference Integration set published
  *  by Oracle Service Cloud under the Universal Permissive License (UPL), Version 1.0
  *  included in the original distribution.
- *  Copyright (c) 2014, 2015, 2016 Oracle and/or its affiliates. All rights reserved.
- ***********************************************************************************************
- *  Accelerator Package: Mobile Agent App Accelerator
- *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
- *  OSvC release: 16.8 (August 2016)
- *  MAF release: 2.3
- *  reference: 151217-000185
- *  date: Tue Aug 23 16:35:53 PDT 2016
+ *  Copyright (c) 2014, 2015, 2016, Oracle and/or its affiliates. All rights reserved.
 
- *  revision: rnw-16-8-fixes-release-01
- *  SHA1: $Id: 56e206333ec06e9b674af6df5854aa740d4c8ff4 $
- * *********************************************************************************************
- *  File: Dashboard.amx
  * *********************************************************************************************/
 -->
 <amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
@@ -77,18 +79,18 @@
                 <amx:cellFormat id="cf20" height="124px" width="33%" halign="center" shortDesc="cell">
                 
                     <amx:panelGroupLayout styleClass="dashCircleYellow" halign="center" id="pgl3">
-                        <amx:outputText value="45s" styleClass="dashCircleText" id="ot4"/>
+                        <amx:outputText value="#{bindings.perfTime1.inputValue}" styleClass="dashCircleText" id="ot4"/>
                     </amx:panelGroupLayout>
                 </amx:cellFormat>
                 <amx:cellFormat id="cf21" height="124px" width="33%" halign="center" shortDesc="cell">
                     
                     <amx:panelGroupLayout styleClass="dashCircleGreen" halign="center" id="pgl4">
-                        <amx:outputText value="12s" styleClass="dashCircleText" id="ot5"/>
+                        <amx:outputText value="#{bindings.perfTime2.inputValue}" styleClass="dashCircleText" id="ot5"/>
                     </amx:panelGroupLayout>
                     
                 </amx:cellFormat>
                 <amx:cellFormat id="cf5" height="124px" width="34%" halign="center" shortDesc="cell">
-                    <dvtm:statusMeterGauge id="statusMeterGauge1" orientation="circular" value="67" 
+                    <dvtm:statusMeterGauge id="statusMeterGauge1" orientation="circular" value="#{bindings.perfPercent.inputValue}" 
                         thresholdDisplay="currentOnly" minValue="0" maxValue="100" 
                         animationOnDisplay="auto" animationOnDataChange="auto" animationDuration="1000" 
                         styleClass="dashGauge">
@@ -96,7 +98,9 @@
                         <!-- The Filling . #6BC387 v.green #EBEBF2 needed dk. gray -->
                         <!--<dvtm:threshold  id="t1" maxValue="00" color="#6BC387"/>
                         <dvtm:threshold  id="t2" maxValue="100" color="#EBEBF2"/>-->
-                        <dvtm:gaugeLabelFormat id="glf1" scaling="none"/>
+                        <dvtm:gaugeLabelFormat id="glf1" scaling="none">
+                            <amx:convertNumber id="cn1" minFractionDigits="0" maxFractionDigits="2"/>
+                        </dvtm:gaugeLabelFormat>
                     </dvtm:statusMeterGauge>
                 </amx:cellFormat>
             </amx:rowLayout>
@@ -113,7 +117,7 @@
                 </amx:cellFormat>
             </amx:rowLayout>
         </amx:tableLayout>
-        
+
         <amx:spacer id="sp3" height="30"/>
         <amx:tableLayout id="tl4" shortDesc="table4for tasks title" width="100%">
             <amx:rowLayout id="rl2">

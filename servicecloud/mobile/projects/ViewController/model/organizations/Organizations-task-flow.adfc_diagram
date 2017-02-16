@@ -170,7 +170,18 @@
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
-      id="ControlFlowCase26">
+      id="ControlFlowCase26"
+      from="View2">
+      <property
+         name="tosrcid">__19</property>
+      <property
+         name="fromOutcome">goToSearch</property>
+      <property
+         name="fromsrcid">__1</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase27">
       <property
          name="tosrcid">__17</property>
       <property
@@ -180,24 +191,13 @@
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
-      id="ControlFlowCase27">
+      id="ControlFlowCase28">
       <property
          name="tosrcid">__20</property>
       <property
          name="fromOutcome">goToResults</property>
       <property
          name="fromsrcid">__18</property>
-   </ControlFlowCase>
-   <ControlFlowCase
-      islink="true"
-      id="ControlFlowCase28"
-      from="View2">
-      <property
-         name="tosrcid">__19</property>
-      <property
-         name="fromOutcome">goToSearch</property>
-      <property
-         name="fromsrcid">__1</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"

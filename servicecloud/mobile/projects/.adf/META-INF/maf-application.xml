@@ -1,24 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!--
-/* *********************************************************************************************
- *  This file is part of the Oracle Service Cloud Accelerator Reference Integration set published
- *  by Oracle Service Cloud under the Universal Permissive License (UPL), Version 1.0
- *  included in the original distribution.
- *  Copyright (c) 2014, 2015, 2016 Oracle and/or its affiliates. All rights reserved.
- ***********************************************************************************************
- *  Accelerator Package: Mobile Agent App Accelerator
- *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
- *  OSvC release: 16.8 (August 2016)
- *  MAF release: 2.3
- *  reference: 151217-000185
- *  date: Tue Aug 23 16:35:46 PDT 2016
-
- *  revision: rnw-16-8-fixes-release-01
- *  SHA1: $Id: 90bdeb1f780ac5167c3cc6754136844658b00dc2 $
- * *********************************************************************************************
- *  File: maf-application.xml
- * *********************************************************************************************/
--->
 <adfmf:application xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:adfmf="http://xmlns.oracle.com/adf/mf"
                    version="1.0" name="Service Cloud"
                    id="com.company.OracleServiceCloud"
@@ -30,7 +10,10 @@
   <adfmf:featureReference refId="Incidents" id="fr1" loginConnRefId="LoginServer" showOnNavigationBar="false"/>
   <adfmf:featureReference refId="Contacts" id="fr3" showOnNavigationBar="false"/>
   <adfmf:featureReference refId="Organizations" id="fr4" showOnNavigationBar="false"/>
+  <adfmf:featureReference refId="Tasks" id="fr5" showOnNavigationBar="false" showOnSpringboard="true"/>
   <adfmf:featureReference refId="Settings" id="fr6" showOnNavigationBar="false" showOnSpringboard="false"/>
+  <adfmf:featureReference refId="Assets" id="fr7" showOnNavigationBar="false" showOnSpringboard="true"/>
+  <adfmf:featureReference refId="Answers" id="fr11" showOnSpringboard="true"/>
   <adfmf:featureReference refId="About" id="fr8" showOnNavigationBar="false"/>
   <adfmf:preferences>
     <adfmf:preferenceGroup id="config" label="Configuration">
