@@ -1,0 +1,1443 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="urn:objects.ws.rightnow.com/v1_3"
+		xmlns:xs="http://www.w3.org/2001/XMLSchema"
+		xmlns="urn:objects.ws.rightnow.com/v1_3"
+		xmlns:rnb_v1_3="urn:base.ws.rightnow.com/v1_3"
+		xmlns:rng_v1_3="urn:generic.ws.rightnow.com/v1_3"
+		xmlns:rnn_v1_3="urn:nullfields.ws.rightnow.com/v1_3"
+		xmlns:rno_v1_3="urn:objects.ws.rightnow.com/v1_3"
+		elementFormDefault="qualified" version="1.0">
+	<xs:import namespace="urn:base.ws.rightnow.com/v1_3" schemaLocation="C:\accelerator\social\cx\AcceleratorSRMSolution\RightNowWsdl\rnowBase.xsd"/>
+	<xs:import namespace="urn:generic.ws.rightnow.com/v1_3" schemaLocation="C:\accelerator\social\cx\AcceleratorSRMSolution\RightNowWsdl\rnowGeneric.xsd"/>
+	<xs:import namespace="urn:nullfields.ws.rightnow.com/v1_3" schemaLocation="C:\accelerator\social\cx\AcceleratorSRMSolution\RightNowWsdl\rnowNullfields.xsd"/>
+	<xs:element name="AccessControlAbility" type="AccessControlAbility"/>
+	<xs:complexType name="AccessControlAbility"><xs:complexContent><xs:extension base="rnb_v1_3:NamedID">
+	</xs:extension></xs:complexContent></xs:complexType>
+	<xs:element name="AccessControlPermission" type="AccessControlPermission"/>
+	<xs:complexType name="AccessControlPermission"><xs:complexContent><xs:extension base="rnb_v1_3:NamedID">
+	</xs:extension></xs:complexContent></xs:complexType>
+	<xs:element name="AccessControlRoleSet" type="AccessControlRoleSet"/>
+	<xs:complexType name="AccessControlRoleSet"><xs:complexContent><xs:extension base="rnb_v1_3:NamedID">
+	</xs:extension></xs:complexContent></xs:complexType>
+	<xs:element name="AccessLevelType" type="AccessLevelType"/>
+	<xs:complexType name="AccessLevelType"><xs:complexContent><xs:extension base="rnb_v1_3:NamedID">
+	</xs:extension></xs:complexContent></xs:complexType>
+	<xs:element name="Account" type="Account"/>
+	<xs:complexType name="Account"><xs:complexContent><xs:extension base="rnb_v1_3:RNObject">
+		<xs:sequence>
+			<xs:element name="AccountHierarchy" type="rnb_v1_3:NamedIDList" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Attributes" type="AccountOptions" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Country" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="CustomFields" type="rng_v1_3:GenericObject" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="DisplayName" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="DisplayOrder" type="xs:int" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="EmailNotification" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Emails" type="EmailList" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Login" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Manager" type="rnb_v1_3:NamedIDHierarchy" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Name" type="PersonFullName" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="NameFurigana" type="PersonName" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="NewPassword" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="NotificationPending" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="PasswordExpirationTime" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Phones" type="PhoneList" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Profile" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="SalesSettings" type="AccountSalesSettings" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ServiceSettings" type="AccountServiceSettings" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Signature" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="StaffGroup" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ValidNullFields" type="rnn_v1_3:AccountNullFields" minOccurs="0" maxOccurs="1" nillable="true"/>
+		</xs:sequence>
+	</xs:extension></xs:complexContent></xs:complexType>
+	<xs:element name="AccountOptions" type="AccountOptions"/>
+	<xs:complexType name="AccountOptions">
+		<xs:sequence>
+			<xs:element name="AccountLocked" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="CanModifyEmailSignature" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ForcePasswordChange" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="InfrequentUser" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="PasswordNeverExpires" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="PermanentlyDisabled" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="StaffAssignmentDisabled" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ViewsReportsDisabled" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="VirtualAccount" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="AccountSalesSettings" type="AccountSalesSettings"/>
+	<xs:complexType name="AccountSalesSettings">
+		<xs:sequence>
+			<xs:element name="DefaultCurrency" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Territory" type="rnb_v1_3:NamedIDHierarchy" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="ValidNullFields" type="rnn_v1_3:AccountSalesSettingsNullFields" minOccurs="0" maxOccurs="1" nillable="true"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="AccountServiceSettings" type="AccountServiceSettings"/>
+	<xs:complexType name="AccountServiceSettings">
+		<xs:sequence>
+			<xs:element name="ScreenPopPort" type="xs:int" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Address" type="Address"/>
+	<xs:complexType name="Address">
+		<xs:sequence>
+			<xs:element name="City" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Country" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="PostalCode" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="StateOrProvince" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Street" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="ValidNullFields" type="rnn_v1_3:AddressNullFields" minOccurs="0" maxOccurs="1" nillable="true"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="AnalyticsReport" type="AnalyticsReport"/>
+	<xs:complexType name="AnalyticsReport"><xs:complexContent><xs:extension base="rnb_v1_3:RNObject">
+		<xs:sequence>
+			<xs:element name="Columns" type="AnalyticsReportColumn" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="Filters" type="AnalyticsReportFilter" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="Name" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Names" type="LabelRequiredList" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:extension></xs:complexContent></xs:complexType>
+	<xs:element name="AnalyticsReportColumn" type="AnalyticsReportColumn"/>
+	<xs:complexType name="AnalyticsReportColumn">
+		<xs:sequence>
+			<xs:element name="DataType" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Heading" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="AnalyticsReportFilter" type="AnalyticsReportFilter"/>
+	<xs:complexType name="AnalyticsReportFilter"><xs:complexContent><xs:extension base="rno_v1_3:AnalyticsReportSearchFilter">
+		<xs:sequence>
+			<xs:element name="Attributes" type="AnalyticsReportFilterAttributes" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="DataType" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Prompt" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:extension></xs:complexContent></xs:complexType>
+	<xs:element name="AnalyticsReportFilterAttributes" type="AnalyticsReportFilterAttributes"/>
+	<xs:complexType name="AnalyticsReportFilterAttributes">
+		<xs:sequence>
+			<xs:element name="Editable" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Required" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="AnalyticsReportSearchFilter" type="AnalyticsReportSearchFilter"/>
+	<xs:complexType name="AnalyticsReportSearchFilter">
+		<xs:sequence>
+			<xs:element name="Name" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Operator" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Values" type="xs:string" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Answer" type="Answer"/>
+	<xs:complexType name="Answer"><xs:complexContent><xs:extension base="rnb_v1_3:RNObject">
+		<xs:sequence>
+			<xs:element name="AccessLevels" type="rnb_v1_3:NamedIDDeltaList" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="AdminLastAccessTime" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="AnswerType" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="AssignedSibling" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="AssignedTo" type="GroupAccount" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Banner" type="Banner" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Categories" type="rnb_v1_3:NamedIDHierarchyList" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="CommonAttachments" type="FileAttachmentSharedList" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="CustomFields" type="rng_v1_3:GenericObject" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ExpiresDate" type="xs:date" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="FileAttachments" type="FileAttachmentAnswerList" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="GuidedAssistance" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Keywords" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Language" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="LastAccessTime" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="LastNotificationTime" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Name" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="NextNotificationTime" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Notes" type="NoteList" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="OriginalReferenceNumber" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="PositionInList" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Products" type="rnb_v1_3:NamedIDHierarchyList" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="PublishOnDate" type="xs:date" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Question" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="RelatedAnswers" type="AnswerRelatedAnswerList" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="SiblingAnswers" type="rnb_v1_3:NamedIDList" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Solution" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="StatusWithType" type="StatusWithType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Summary" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="UpdatedByAccount" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="URL" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="ValidNullFields" type="rnn_v1_3:AnswerNullFields" minOccurs="0" maxOccurs="1" nillable="true"/>
+		</xs:sequence>
+	</xs:extension></xs:complexContent></xs:complexType>
+	<xs:element name="AnswerNotification" type="AnswerNotification"/>
+	<xs:complexType name="AnswerNotification">
+		<xs:sequence>
+			<xs:element name="Answer" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Interface" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="StartTime" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="ValidNullFields" type="rnn_v1_3:AnswerNotificationNullFields" minOccurs="0" maxOccurs="1" nillable="true"/>
+		</xs:sequence>
+		<xs:attribute name="action" type="rnb_v1_3:ActionEnum" use="optional"/>
+	</xs:complexType>
+	<xs:element name="AnswerNotificationList" type="AnswerNotificationList"/>
+	<xs:complexType name="AnswerNotificationList">
+		<xs:sequence>
+			<xs:element name="AnswerNotificationList" type="AnswerNotification" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="AnswerRelatedAnswer" type="AnswerRelatedAnswer"/>
+	<xs:complexType name="AnswerRelatedAnswer">
+		<xs:sequence>
+			<xs:element name="LearnedStrength" type="xs:int" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ManualStrength" type="xs:int" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="SimilarityStrength" type="xs:int" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ToAnswer" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ValidNullFields" type="rnn_v1_3:AnswerRelatedAnswerNullFields" minOccurs="0" maxOccurs="1" nillable="true"/>
+		</xs:sequence>
+		<xs:attribute name="action" type="rnb_v1_3:ActionEnum" use="optional"/>
+	</xs:complexType>
+	<xs:element name="AnswerRelatedAnswerList" type="AnswerRelatedAnswerList"/>
+	<xs:complexType name="AnswerRelatedAnswerList">
+		<xs:sequence>
+			<xs:element name="AnswerRelatedAnswerList" type="AnswerRelatedAnswer" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Asset" type="Asset"/>
+	<xs:complexType name="Asset"><xs:complexContent><xs:extension base="rnb_v1_3:RNObject">
+		<xs:sequence>
+			<xs:element name="Contact" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="CustomFields" type="rng_v1_3:GenericObject" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Description" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="InstalledDate" type="xs:date" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Name" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Organization" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Price" type="MonetaryValue" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Product" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="PurchasedDate" type="xs:date" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="RetiredDate" type="xs:date" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="SerialNumber" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="SLAInstances" type="AssetSLAInstanceList" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="StatusWithType" type="AssetStatuses" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="ValidNullFields" type="rnn_v1_3:AssetNullFields" minOccurs="0" maxOccurs="1" nillable="true"/>
+		</xs:sequence>
+	</xs:extension></xs:complexContent></xs:complexType>
+	<xs:element name="AssetSLAInstance" type="AssetSLAInstance"/>
+	<xs:complexType name="AssetSLAInstance">
+		<xs:sequence>
+			<xs:element name="ActiveDate" type="xs:date" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ExpireDate" type="xs:date" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ID" type="rnb_v1_3:ID" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="NameOfSLA" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="RemainingFromChat" type="xs:int" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="RemainingFromCSR" type="xs:int" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="RemainingFromEmail" type="xs:int" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="RemainingFromWeb" type="xs:int" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="RemainingTotal" type="xs:int" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="SLASet" type="xs:int" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="StateOfSLA" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+		<xs:attribute name="action" type="rnb_v1_3:ActionEnum" use="optional"/>
+	</xs:complexType>
+	<xs:element name="AssetSLAInstanceList" type="AssetSLAInstanceList"/>
+	<xs:complexType name="AssetSLAInstanceList">
+		<xs:sequence>
+			<xs:element name="AssetSLAInstanceList" type="AssetSLAInstance" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="AssetStatus" type="AssetStatus"/>
+	<xs:complexType name="AssetStatus"><xs:complexContent><xs:extension base="rnb_v1_3:RNObject">
+		<xs:sequence>
+			<xs:element name="DisplayOrder" type="xs:int" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Name" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Names" type="LabelRequiredList" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="StatusType" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:extension></xs:complexContent></xs:complexType>
+	<xs:element name="AssetStatuses" type="AssetStatuses"/>
+	<xs:complexType name="AssetStatuses">
+		<xs:sequence>
+			<xs:element name="Status" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="StatusType" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="AssignedSLAInstance" type="AssignedSLAInstance"/>
+	<xs:complexType name="AssignedSLAInstance">
+		<xs:sequence>
+			<xs:element name="ActiveDate" type="xs:date" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ExpireDate" type="xs:date" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ID" type="rnb_v1_3:ID" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="NameOfSLA" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="RemainingFromChat" type="xs:int" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="RemainingFromCSR" type="xs:int" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="RemainingFromEmail" type="xs:int" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="RemainingFromWeb" type="xs:int" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="RemainingTotal" type="xs:int" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="SLASet" type="xs:int" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="StateOfSLA" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ValidNullFields" type="rnn_v1_3:AssignedSLAInstanceNullFields" minOccurs="0" maxOccurs="1" nillable="true"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Banner" type="Banner"/>
+	<xs:complexType name="Banner">
+		<xs:sequence>
+			<xs:element name="ImportanceFlag" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Text" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="UpdatedByAccount" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="UpdatedTime" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="ValidNullFields" type="rnn_v1_3:BannerNullFields" minOccurs="0" maxOccurs="1" nillable="true"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="CategoryNotification" type="CategoryNotification"/>
+	<xs:complexType name="CategoryNotification">
+		<xs:sequence>
+			<xs:element name="Category" type="rnb_v1_3:NamedIDHierarchy" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Interface" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="StartTime" type="xs:dateTime" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ValidNullFields" type="rnn_v1_3:CategoryNotificationNullFields" minOccurs="0" maxOccurs="1" nillable="true"/>
+		</xs:sequence>
+		<xs:attribute name="action" type="rnb_v1_3:ActionEnum" use="optional"/>
+	</xs:complexType>
+	<xs:element name="CategoryNotificationList" type="CategoryNotificationList"/>
+	<xs:complexType name="CategoryNotificationList">
+		<xs:sequence>
+			<xs:element name="CategoryNotificationList" type="CategoryNotification" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ChannelType" type="ChannelType"/>
+	<xs:complexType name="ChannelType"><xs:complexContent><xs:extension base="rnb_v1_3:RNObject">
+		<xs:sequence>
+			<xs:element name="Attributes" type="ChannelTypeOptions" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ContactVisibility" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="DisplayOrder" type="xs:int" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Name" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Names" type="LabelRequiredList" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:extension></xs:complexContent></xs:complexType>
+	<xs:element name="ChannelTypeOptions" type="ChannelTypeOptions"/>
+	<xs:complexType name="ChannelTypeOptions">
+		<xs:sequence>
+			<xs:element name="ContactVisibility" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Incoming" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Monitoring" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Outgoing" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Subscription" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ChannelUsername" type="ChannelUsername"/>
+	<xs:complexType name="ChannelUsername">
+		<xs:sequence>
+			<xs:element name="ChannelType" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="UserNumber" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Username" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="ValidNullFields" type="rnn_v1_3:ChannelUsernameNullFields" minOccurs="0" maxOccurs="1" nillable="true"/>
+		</xs:sequence>
+		<xs:attribute name="action" type="rnb_v1_3:ActionEnum" use="optional"/>
+	</xs:complexType>
+	<xs:element name="ChannelUsernameList" type="ChannelUsernameList"/>
+	<xs:complexType name="ChannelUsernameList">
+		<xs:sequence>
+			<xs:element name="ChannelUsernameList" type="ChannelUsername" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Configuration" type="Configuration"/>
+	<xs:complexType name="Configuration"><xs:complexContent><xs:extension base="rnb_v1_3:RNObject">
+		<xs:sequence>
+			<xs:element name="DataType" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Name" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Value" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+		</xs:sequence>
+	</xs:extension></xs:complexContent></xs:complexType>
+	<xs:element name="Contact" type="Contact"/>
+	<xs:complexType name="Contact"><xs:complexContent><xs:extension base="rnb_v1_3:RNObject">
+		<xs:sequence>
+			<xs:element name="Address" type="Address" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Banner" type="Banner" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="ChannelUsernames" type="ChannelUsernameList" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="ContactType" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="CRMModules" type="CRMModules" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="CustomFields" type="rng_v1_3:GenericObject" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Disabled" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Emails" type="EmailList" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="ExternalReference" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="FileAttachments" type="FileAttachmentCommonList" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Login" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="MarketingSettings" type="ContactMarketingSettings" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Name" type="PersonName" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="NameFurigana" type="PersonName" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="NewPassword" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Notes" type="NoteList" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="OpenIDAccounts" type="ContactOpenIDAccountList" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Organization" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="PasswordEmailExpirationTime" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="PasswordExpirationTime" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Phones" type="PhoneList" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="SalesSettings" type="ContactSalesSettings" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ServiceSettings" type="ContactServiceSettings" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Source" type="rnb_v1_3:NamedIDHierarchy" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Title" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="ValidNullFields" type="rnn_v1_3:ContactNullFields" minOccurs="0" maxOccurs="1" nillable="true"/>
+		</xs:sequence>
+	</xs:extension></xs:complexContent></xs:complexType>
+	<xs:element name="ContactMarketingSettings" type="ContactMarketingSettings"/>
+	<xs:complexType name="ContactMarketingSettings">
+		<xs:sequence>
+			<xs:element name="ContactLists" type="rnb_v1_3:NamedIDDeltaList" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="EmailFormat" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="MarketingOptIn" type="xs:boolean" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="MarketingOrganizationName" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="MarketingOrganizationNameAlt" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="SurveyOptIn" type="xs:boolean" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="ValidNullFields" type="rnn_v1_3:ContactMarketingSettingsNullFields" minOccurs="0" maxOccurs="1" nillable="true"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ContactOpenIDAccount" type="ContactOpenIDAccount"/>
+	<xs:complexType name="ContactOpenIDAccount">
+		<xs:sequence>
+			<xs:element name="ID" type="rnb_v1_3:ID" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="URL" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+		<xs:attribute name="action" type="rnb_v1_3:ActionEnum" use="optional"/>
+	</xs:complexType>
+	<xs:element name="ContactOpenIDAccountList" type="ContactOpenIDAccountList"/>
+	<xs:complexType name="ContactOpenIDAccountList">
+		<xs:sequence>
+			<xs:element name="ContactOpenIDAccountList" type="ContactOpenIDAccount" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ContactSalesSettings" type="ContactSalesSettings"/>
+	<xs:complexType name="ContactSalesSettings">
+		<xs:sequence>
+			<xs:element name="AcquiredDate" type="xs:date" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="SalesAccount" type="rnb_v1_3:NamedIDHierarchy" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="ValidNullFields" type="rnn_v1_3:ContactSalesSettingsNullFields" minOccurs="0" maxOccurs="1" nillable="true"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ContactServiceSettings" type="ContactServiceSettings"/>
+	<xs:complexType name="ContactServiceSettings">
+		<xs:sequence>
+			<xs:element name="AnswerNotifications" type="AnswerNotificationList" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="CategoryNotifications" type="CategoryNotificationList" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="ProductNotifications" type="ProductNotificationList" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="SLAInstances" type="SLAInstanceList" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="ValidNullFields" type="rnn_v1_3:ContactServiceSettingsNullFields" minOccurs="0" maxOccurs="1" nillable="true"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Country" type="Country"/>
+	<xs:complexType name="Country"><xs:complexContent><xs:extension base="rnb_v1_3:RNObject">
+		<xs:sequence>
+			<xs:element name="Abbreviation" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="DisplayOrder" type="xs:int" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ISOCode" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Name" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Names" type="LabelRequiredList" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="PhoneCode" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="PhoneMask" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="PostalMask" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Provinces" type="ProvinceList" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="ValidNullFields" type="rnn_v1_3:CountryNullFields" minOccurs="0" maxOccurs="1" nillable="true"/>
+		</xs:sequence>
+	</xs:extension></xs:complexContent></xs:complexType>
+	<xs:element name="CRMModules" type="CRMModules"/>
+	<xs:complexType name="CRMModules">
+		<xs:sequence>
+			<xs:element name="Marketing" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Sales" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Service" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Email" type="Email"/>
+	<xs:complexType name="Email">
+		<xs:sequence>
+			<xs:element name="Address" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="AddressType" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Certificate" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Invalid" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+		<xs:attribute name="action" type="rnb_v1_3:ActionEnum" use="optional"/>
+	</xs:complexType>
+	<xs:element name="EmailList" type="EmailList"/>
+	<xs:complexType name="EmailList">
+		<xs:sequence>
+			<xs:element name="EmailList" type="Email" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="EventSubscription" type="EventSubscription"/>
+	<xs:complexType name="EventSubscription"><xs:complexContent><xs:extension base="rnb_v1_3:RNObject">
+		<xs:sequence>
+			<xs:element name="EndPoint" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="EventType" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="IntegrationUser" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Name" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ObjectShape" type="rnb_v1_3:RNObject" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Status" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:extension></xs:complexContent></xs:complexType>
+	<xs:element name="FileAttachment" type="FileAttachment"/>
+	<xs:complexType name="FileAttachment">
+		<xs:sequence>
+			<xs:element name="ContentType" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="CreatedTime" type="xs:dateTime" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Data" type="xs:base64Binary" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="FileName" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ID" type="rnb_v1_3:ID" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Size" type="xs:int" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="UpdatedTime" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+		</xs:sequence>
+		<xs:attribute name="action" type="rnb_v1_3:ActionEnum" use="optional"/>
+	</xs:complexType>
+	<xs:element name="FileAttachmentAnswer" type="FileAttachmentAnswer"/>
+	<xs:complexType name="FileAttachmentAnswer"><xs:complexContent><xs:extension base="rno_v1_3:FileAttachmentCommon">
+		<xs:sequence>
+			<xs:element name="Disabled" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Indexed" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Private" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:extension></xs:complexContent></xs:complexType>
+	<xs:element name="FileAttachmentAnswerList" type="FileAttachmentAnswerList"/>
+	<xs:complexType name="FileAttachmentAnswerList">
+		<xs:sequence>
+			<xs:element name="FileAttachmentList" type="FileAttachmentAnswer" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="FileAttachmentCommon" type="FileAttachmentCommon"/>
+	<xs:complexType name="FileAttachmentCommon"><xs:complexContent><xs:extension base="rno_v1_3:FileAttachment">
+		<xs:sequence>
+			<xs:element name="Description" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Name" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:extension></xs:complexContent></xs:complexType>
+	<xs:element name="FileAttachmentCommonList" type="FileAttachmentCommonList"/>
+	<xs:complexType name="FileAttachmentCommonList">
+		<xs:sequence>
+			<xs:element name="FileAttachmentList" type="FileAttachmentCommon" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="FileAttachmentIncident" type="FileAttachmentIncident"/>
+	<xs:complexType name="FileAttachmentIncident"><xs:complexContent><xs:extension base="rno_v1_3:FileAttachmentCommon">
+		<xs:sequence>
+			<xs:element name="Private" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:extension></xs:complexContent></xs:complexType>
+	<xs:element name="FileAttachmentIncidentList" type="FileAttachmentIncidentList"/>
+	<xs:complexType name="FileAttachmentIncidentList">
+		<xs:sequence>
+			<xs:element name="FileAttachmentList" type="FileAttachmentIncident" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="FileAttachmentList" type="FileAttachmentList"/>
+	<xs:complexType name="FileAttachmentList">
+		<xs:sequence>
+			<xs:element name="FileAttachmentList" type="FileAttachment" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="FileAttachmentShared" type="FileAttachmentShared"/>
+	<xs:complexType name="FileAttachmentShared"><xs:complexContent><xs:extension base="rno_v1_3:FileAttachment">
+		<xs:sequence>
+			<xs:element name="Disabled" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Names" type="LabelRequiredList" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Private" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:extension></xs:complexContent></xs:complexType>
+	<xs:element name="FileAttachmentSharedList" type="FileAttachmentSharedList"/>
+	<xs:complexType name="FileAttachmentSharedList">
+		<xs:sequence>
+			<xs:element name="FileAttachmentList" type="FileAttachmentShared" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="GroupAccount" type="GroupAccount"/>
+	<xs:complexType name="GroupAccount">
+		<xs:sequence>
+			<xs:element name="Account" type="rnb_v1_3:NamedIDHierarchy" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="StaffGroup" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="ValidNullFields" type="rnn_v1_3:GroupAccountNullFields" minOccurs="0" maxOccurs="1" nillable="true"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Holiday" type="Holiday"/>
+	<xs:complexType name="Holiday"><xs:complexContent><xs:extension base="rnb_v1_3:RNObject">
+		<xs:sequence>
+			<xs:element name="AdminVisibleInterfaces" type="rnb_v1_3:NamedIDDeltaList" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="DisplayOrder" type="xs:int" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="HolidayDate" type="xs:date" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Name" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ValidNullFields" type="rnn_v1_3:HolidayNullFields" minOccurs="0" maxOccurs="1" nillable="true"/>
+		</xs:sequence>
+	</xs:extension></xs:complexContent></xs:complexType>
+	<xs:element name="Incident" type="Incident"/>
+	<xs:complexType name="Incident"><xs:complexContent><xs:extension base="rnb_v1_3:RNObject">
+		<xs:sequence>
+			<xs:element name="Asset" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="AssignedTo" type="GroupAccount" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Banner" type="Banner" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="BilledMinutes" type="TimeBilledList" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Category" type="rnb_v1_3:NamedIDHierarchy" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Channel" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="ChatQueue" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="ClosedTime" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="CreatedByAccount" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="CustomFields" type="rng_v1_3:GenericObject" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Disposition" type="rnb_v1_3:NamedIDHierarchy" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="FileAttachments" type="FileAttachmentIncidentList" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="InitialResponseDueTime" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="InitialSolutionTime" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Interface" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Language" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="LastResponseTime" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="LastSurveyScore" type="xs:int" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Mailbox" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Mailing" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="MilestoneInstances" type="IncidentMilestoneInstanceList" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Organization" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="OtherContacts" type="IncidentContactList" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="PrimaryContact" type="IncidentContact" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Product" type="rnb_v1_3:NamedIDHierarchy" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Queue" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="ReferenceNumber" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ResolutionInterval" type="xs:int" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="ResponseEmailAddressType" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ResponseInterval" type="xs:int" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Severity" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="SLAInstance" type="AssignedSLAInstance" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="SmartSenseCustomer" type="xs:int" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="SmartSenseStaff" type="xs:int" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Source" type="rnb_v1_3:NamedIDHierarchy" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="StatusWithType" type="StatusWithType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Subject" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Threads" type="ThreadList" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ValidNullFields" type="rnn_v1_3:IncidentNullFields" minOccurs="0" maxOccurs="1" nillable="true"/>
+		</xs:sequence>
+	</xs:extension></xs:complexContent></xs:complexType>
+	<xs:element name="IncidentContact" type="IncidentContact"/>
+	<xs:complexType name="IncidentContact">
+		<xs:sequence>
+			<xs:element name="Contact" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="IncidentContactDelta" type="IncidentContactDelta"/>
+	<xs:complexType name="IncidentContactDelta"><xs:complexContent><xs:extension base="rno_v1_3:IncidentContact">
+		<xs:attribute name="action" type="rnb_v1_3:ActionEnum" use="optional"/>
+	</xs:extension></xs:complexContent></xs:complexType>
+	<xs:element name="IncidentContactList" type="IncidentContactList"/>
+	<xs:complexType name="IncidentContactList">
+		<xs:sequence>
+			<xs:element name="IncidentContactList" type="IncidentContactDelta" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="IncidentMilestoneInstance" type="IncidentMilestoneInstance"/>
+	<xs:complexType name="IncidentMilestoneInstance">
+		<xs:sequence>
+			<xs:element name="ResolutionDueTime" type="xs:dateTime" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Milestone" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+		<xs:attribute name="action" type="rnb_v1_3:ActionEnum" use="optional"/>
+	</xs:complexType>
+	<xs:element name="IncidentMilestoneInstanceList" type="IncidentMilestoneInstanceList"/>
+	<xs:complexType name="IncidentMilestoneInstanceList">
+		<xs:sequence>
+			<xs:element name="IncidentMilestoneInstanceList" type="IncidentMilestoneInstance" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="InheritOptions" type="InheritOptions"/>
+	<xs:complexType name="InheritOptions">
+		<xs:sequence>
+			<xs:element name="InheritContact" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="InheritOrganization" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="InheritStaffAssignment" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="InterfaceValue" type="InterfaceValue"/>
+	<xs:complexType name="InterfaceValue">
+		<xs:sequence>
+			<xs:element name="Interface" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Value" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+		<xs:attribute name="action" type="rnb_v1_3:ActionEnum" use="optional"/>
+	</xs:complexType>
+	<xs:element name="InterfaceValueList" type="InterfaceValueList"/>
+	<xs:complexType name="InterfaceValueList">
+		<xs:sequence>
+			<xs:element name="InterfaceValueList" type="InterfaceValue" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Label" type="Label"/>
+	<xs:complexType name="Label">
+		<xs:sequence>
+			<xs:element name="LabelText" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Language" type="rnb_v1_3:NamedID" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="ValidNullFields" type="rnn_v1_3:LabelNullFields" minOccurs="0" maxOccurs="1" nillable="true"/>
+		</xs:sequence>
+		<xs:attribute name="action" type="rnb_v1_3:ActionEnum" use="optional"/>
+	</xs:complexType>
+	<xs:element name="LabelList" type="LabelList"/>
+	<xs:complexType name="LabelList">
+		<xs:sequence>
+			<xs:element name="LabelList" type="Label" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="LabelRequired" type="LabelRequired"/>
+	<xs:complexType name="LabelRequired">
+		<xs:sequence>
+			<xs:element name="LabelText" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Language" type="rnb_v1_3:NamedID" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+		<xs:attribute name="action" type="rnb_v1_3:ActionEnum" use="optional"/>
+	</xs:complexType>
+	<xs:element name="LabelRequiredList" type="LabelRequiredList"/>
+	<xs:complexType name="LabelRequiredList">
+		<xs:sequence>
+			<xs:element name="LabelList" type="LabelRequired" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Mailbox" type="Mailbox"/>
+	<xs:complexType name="Mailbox"><xs:complexContent><xs:extension base="rnb_v1_3:RNObject">
+		<xs:sequence>
+			<xs:element name="IncomingEmailSettings" type="MailboxIncomingEmailSettings" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Interface" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="IsDefault" type="xs:boolean" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Name" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="OutgoingEmailSettings" type="MailboxOutgoingEmailSettings" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Type" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="ValidNullFields" type="rnn_v1_3:MailboxNullFields" minOccurs="0" maxOccurs="1" nillable="true"/>
+		</xs:sequence>
+	</xs:extension></xs:complexContent></xs:complexType>
+	<xs:element name="MailboxIncomingEmailSettings" type="MailboxIncomingEmailSettings"/>
+	<xs:complexType name="MailboxIncomingEmailSettings">
+		<xs:sequence>
+			<xs:element name="ForceReplyBetweenLines" type="xs:boolean" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="ForwardRejectMessageAddress" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="IsEnabled" type="xs:boolean" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="ValidNullFields" type="rnn_v1_3:MailboxIncomingEmailSettingsNullFields" minOccurs="0" maxOccurs="1" nillable="true"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="MailboxOutgoingEmailSettings" type="MailboxOutgoingEmailSettings"/>
+	<xs:complexType name="MailboxOutgoingEmailSettings">
+		<xs:sequence>
+			<xs:element name="DisplayName" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="FriendlyFromAddress" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="FromAddress" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="IsEnabled" type="xs:boolean" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="ReplyToAddress" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="ValidNullFields" type="rnn_v1_3:MailboxOutgoingEmailSettingsNullFields" minOccurs="0" maxOccurs="1" nillable="true"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="MailMessage" type="MailMessage"/>
+	<xs:complexType name="MailMessage">
+		<xs:sequence>
+			<xs:element name="BCC" type="MailMessageRecipients" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Body" type="MailMessageBody" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="CC" type="MailMessageRecipients" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="FileAttachments" type="FileAttachmentList" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="FriendlyFromAddress" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="FromMailbox" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Headers" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="Options" type="MailMessageOptions" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ReplyToAddress" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Status" type="MailMessageStatus" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Subject" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="To" type="MailMessageRecipients" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ValidNullFields" type="rnn_v1_3:MailMessageNullFields" minOccurs="0" maxOccurs="1" nillable="true"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="MailMessageBody" type="MailMessageBody"/>
+	<xs:complexType name="MailMessageBody">
+		<xs:sequence>
+			<xs:element name="Html" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Text" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="MailMessageOptions" type="MailMessageOptions"/>
+	<xs:complexType name="MailMessageOptions">
+		<xs:sequence>
+			<xs:element name="HonorMarketingOptIn" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="HonorGlobalSuppressionList" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="IncludeOECustomHeaders" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="MailMessageRecipients" type="MailMessageRecipients"/>
+	<xs:complexType name="MailMessageRecipients">
+		<xs:sequence>
+			<xs:element name="EmailAddresses" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="EmailUsers" type="rnb_v1_3:RNObject" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+			<xs:element name="ValidNullFields" type="rnn_v1_3:MailMessageRecipientsNullFields" minOccurs="0" maxOccurs="1" nillable="true"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="MailMessageStatus" type="MailMessageStatus"/>
+	<xs:complexType name="MailMessageStatus">
+		<xs:sequence>
+			<xs:element name="Errors" type="rnb_v1_3:ConnectError" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="RemainingRecipients" type="xs:int" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Sent" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="SentRecipients" type="xs:int" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="MarketingMailbox" type="MarketingMailbox"/>
+	<xs:complexType name="MarketingMailbox"><xs:complexContent><xs:extension base="rno_v1_3:Mailbox">
+	</xs:extension></xs:complexContent></xs:complexType>
+	<xs:element name="MenuAssignableAccount" type="MenuAssignableAccount"/>
+	<xs:complexType name="MenuAssignableAccount"><xs:complexContent><xs:extension base="rnb_v1_3:NamedID">
+	</xs:extension></xs:complexContent></xs:complexType>
+	<xs:element name="MessageBase" type="MessageBase"/>
+	<xs:complexType name="MessageBase"><xs:complexContent><xs:extension base="rnb_v1_3:RNObject">
+		<xs:sequence>
+			<xs:element name="Name" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Usage" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Value" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+		</xs:sequence>
+	</xs:extension></xs:complexContent></xs:complexType>
+	<xs:element name="MessageContentType" type="MessageContentType"/>
+	<xs:complexType name="MessageContentType"><xs:complexContent><xs:extension base="rnb_v1_3:NamedID">
+	</xs:extension></xs:complexContent></xs:complexType>
+	<xs:element name="MonetaryValue" type="MonetaryValue"/>
+	<xs:complexType name="MonetaryValue">
+		<xs:sequence>
+			<xs:element name="Currency" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ExchangeRate" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Value" type="xs:double" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ValidNullFields" type="rnn_v1_3:MonetaryValueNullFields" minOccurs="0" maxOccurs="1" nillable="true"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Note" type="Note"/>
+	<xs:complexType name="Note">
+		<xs:sequence>
+			<xs:element name="Channel" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="CreatedByAccount" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="CreatedTime" type="xs:dateTime" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ID" type="rnb_v1_3:ID" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Text" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="UpdatedByAccount" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="UpdatedTime" type="xs:dateTime" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ValidNullFields" type="rnn_v1_3:NoteNullFields" minOccurs="0" maxOccurs="1" nillable="true"/>
+		</xs:sequence>
+		<xs:attribute name="action" type="rnb_v1_3:ActionEnum" use="optional"/>
+	</xs:complexType>
+	<xs:element name="NoteList" type="NoteList"/>
+	<xs:complexType name="NoteList">
+		<xs:sequence>
+			<xs:element name="NoteList" type="Note" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Opportunity" type="Opportunity"/>
+	<xs:complexType name="Opportunity"><xs:complexContent><xs:extension base="rnb_v1_3:RNObject">
+		<xs:sequence>
+			<xs:element name="AccountHierarchy" type="rnb_v1_3:NamedIDList" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="AssignedToAccount" type="rnb_v1_3:NamedIDHierarchy" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Banner" type="Banner" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Campaign" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="ClosedTime" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="ClosedValue" type="MonetaryValue" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="CostOfSale" type="MonetaryValue" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="CustomFields" type="rng_v1_3:GenericObject" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="FileAttachments" type="FileAttachmentCommonList" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="ForecastCloseDate" type="xs:date" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="InitialContactDate" type="xs:date" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Interface" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="LeadRejectDateTime" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="LeadRejectDescription" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="LeadRejectReason" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="LostTime" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="ManagerCommit" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ManagerValue" type="MonetaryValue" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Name" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Notes" type="NoteList" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Organization" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="OtherContacts" type="OpportunityContactList" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="PrimaryContact" type="OpportunityContact" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Quotes" type="QuoteList" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="RecallTime" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="ReturnValue" type="MonetaryValue" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="SalesRepresentativeCommit" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="SalesRepresentativeValue" type="MonetaryValue" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Source" type="rnb_v1_3:NamedIDHierarchy" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="StageWithStrategy" type="StageWithStrategy" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="StatusWithType" type="StatusWithType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Summary" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Survey" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Territory" type="rnb_v1_3:NamedIDHierarchy" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="TerritoryHierarchy" type="rnb_v1_3:NamedIDList" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="WinLossDescription" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="WinLossReason" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="ValidNullFields" type="rnn_v1_3:OpportunityNullFields" minOccurs="0" maxOccurs="1" nillable="true"/>
+		</xs:sequence>
+	</xs:extension></xs:complexContent></xs:complexType>
+	<xs:element name="OpportunityContact" type="OpportunityContact"/>
+	<xs:complexType name="OpportunityContact">
+		<xs:sequence>
+			<xs:element name="Contact" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ContactRole" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="ValidNullFields" type="rnn_v1_3:OpportunityContactNullFields" minOccurs="0" maxOccurs="1" nillable="true"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="OpportunityContactDelta" type="OpportunityContactDelta"/>
+	<xs:complexType name="OpportunityContactDelta"><xs:complexContent><xs:extension base="rno_v1_3:OpportunityContact">
+		<xs:attribute name="action" type="rnb_v1_3:ActionEnum" use="optional"/>
+	</xs:extension></xs:complexContent></xs:complexType>
+	<xs:element name="OpportunityContactList" type="OpportunityContactList"/>
+	<xs:complexType name="OpportunityContactList">
+		<xs:sequence>
+			<xs:element name="OpportunityContactList" type="OpportunityContactDelta" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Organization" type="Organization"/>
+	<xs:complexType name="Organization"><xs:complexContent><xs:extension base="rnb_v1_3:RNObject">
+		<xs:sequence>
+			<xs:element name="Addresses" type="TypedAddressList" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Banner" type="Banner" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="CRMModules" type="CRMModules" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="CustomFields" type="rng_v1_3:GenericObject" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ExternalReference" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="FileAttachments" type="FileAttachmentCommonList" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Industry" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Login" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Name" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="NameFurigana" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="NewPassword" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Notes" type="NoteList" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="NumberOfEmployees" type="xs:int" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="OrganizationHierarchy" type="rnb_v1_3:NamedIDList" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Parent" type="rnb_v1_3:NamedIDHierarchy" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="SalesSettings" type="OrganizationSalesSettings" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ServiceSettings" type="OrganizationServiceSettings" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Source" type="rnb_v1_3:NamedIDHierarchy" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ValidNullFields" type="rnn_v1_3:OrganizationNullFields" minOccurs="0" maxOccurs="1" nillable="true"/>
+		</xs:sequence>
+	</xs:extension></xs:complexContent></xs:complexType>
+	<xs:element name="OrganizationSalesSettings" type="OrganizationSalesSettings"/>
+	<xs:complexType name="OrganizationSalesSettings">
+		<xs:sequence>
+			<xs:element name="AcquiredDate" type="xs:date" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="SalesAccount" type="rnb_v1_3:NamedIDHierarchy" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="TotalRevenue" type="MonetaryValue" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="ValidNullFields" type="rnn_v1_3:OrganizationSalesSettingsNullFields" minOccurs="0" maxOccurs="1" nillable="true"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="OrganizationServiceSettings" type="OrganizationServiceSettings"/>
+	<xs:complexType name="OrganizationServiceSettings">
+		<xs:sequence>
+			<xs:element name="SLAInstances" type="SLAInstanceList" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="ValidNullFields" type="rnn_v1_3:OrganizationServiceSettingsNullFields" minOccurs="0" maxOccurs="1" nillable="true"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="PersonFullName" type="PersonFullName"/>
+	<xs:complexType name="PersonFullName">
+		<xs:sequence>
+			<xs:element name="First" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Last" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="PersonName" type="PersonName"/>
+	<xs:complexType name="PersonName">
+		<xs:sequence>
+			<xs:element name="First" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Last" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="ValidNullFields" type="rnn_v1_3:PersonNameNullFields" minOccurs="0" maxOccurs="1" nillable="true"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Phone" type="Phone"/>
+	<xs:complexType name="Phone">
+		<xs:sequence>
+			<xs:element name="Number" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="PhoneType" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="RawNumber" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+		<xs:attribute name="action" type="rnb_v1_3:ActionEnum" use="optional"/>
+	</xs:complexType>
+	<xs:element name="PhoneList" type="PhoneList"/>
+	<xs:complexType name="PhoneList">
+		<xs:sequence>
+			<xs:element name="PhoneList" type="Phone" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ProductNotification" type="ProductNotification"/>
+	<xs:complexType name="ProductNotification">
+		<xs:sequence>
+			<xs:element name="Interface" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Product" type="rnb_v1_3:NamedIDHierarchy" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="StartTime" type="xs:dateTime" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ValidNullFields" type="rnn_v1_3:ProductNotificationNullFields" minOccurs="0" maxOccurs="1" nillable="true"/>
+		</xs:sequence>
+		<xs:attribute name="action" type="rnb_v1_3:ActionEnum" use="optional"/>
+	</xs:complexType>
+	<xs:element name="ProductNotificationList" type="ProductNotificationList"/>
+	<xs:complexType name="ProductNotificationList">
+		<xs:sequence>
+			<xs:element name="ProductNotificationList" type="ProductNotification" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Province" type="Province"/>
+	<xs:complexType name="Province">
+		<xs:sequence>
+			<xs:element name="ID" type="rnb_v1_3:ID" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="DisplayOrder" type="xs:int" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Name" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Names" type="LabelRequiredList" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+		<xs:attribute name="action" type="rnb_v1_3:ActionEnum" use="optional"/>
+	</xs:complexType>
+	<xs:element name="ProvinceList" type="ProvinceList"/>
+	<xs:complexType name="ProvinceList">
+		<xs:sequence>
+			<xs:element name="ProvinceList" type="Province" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="PurchasedProduct" type="PurchasedProduct"/>
+	<xs:complexType name="PurchasedProduct"><xs:complexContent><xs:extension base="rnb_v1_3:RNObject">
+		<xs:sequence>
+			<xs:element name="Campaign" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Comment" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Contact" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="CustomFields" type="rng_v1_3:GenericObject" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="FinalizedByAccount" type="rnb_v1_3:NamedIDHierarchy" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="LicenseEndTime" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="LicenseStartTime" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Mailing" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Opportunity" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Organization" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Price" type="MonetaryValue" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="PurchaseTime" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="SalesProduct" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="SerialNumber" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="ValidNullFields" type="rnn_v1_3:PurchasedProductNullFields" minOccurs="0" maxOccurs="1" nillable="true"/>
+		</xs:sequence>
+	</xs:extension></xs:complexContent></xs:complexType>
+	<xs:element name="Quote" type="Quote"/>
+	<xs:complexType name="Quote">
+		<xs:sequence>
+			<xs:element name="AdjustedTotal" type="MonetaryValue" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Comment" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="CreatedTime" type="xs:dateTime" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="CustomFields" type="rng_v1_3:GenericObject" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="DiscountPercent" type="xs:int" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="FileAttachments" type="FileAttachmentList" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Forecasted" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ID" type="rnb_v1_3:ID" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="LineItems" type="QuoteLineItemList" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Name" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="OfferEndTime" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="OfferStartTime" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="PriceSchedule" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="SentTime" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="SentTo" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Status" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Template" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Total" type="MonetaryValue" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="UpdatedTime" type="xs:dateTime" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ValidNullFields" type="rnn_v1_3:QuoteNullFields" minOccurs="0" maxOccurs="1" nillable="true"/>
+		</xs:sequence>
+		<xs:attribute name="action" type="rnb_v1_3:ActionEnum" use="optional"/>
+	</xs:complexType>
+	<xs:element name="QuoteLineItem" type="QuoteLineItem"/>
+	<xs:complexType name="QuoteLineItem">
+		<xs:sequence>
+			<xs:element name="AdjustedDescription" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="AdjustedName" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="AdjustedPartNumber" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="AdjustedPrice" type="MonetaryValue" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="AdjustedTotal" type="MonetaryValue" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Comment" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="CustomFields" type="rng_v1_3:GenericObject" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="DiscountPercent" type="xs:int" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="DisplayOrder" type="xs:int" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ID" type="rnb_v1_3:ID" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="OriginalDescription" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="OriginalName" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="OriginalPartNumber" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="OriginalPrice" type="MonetaryValue" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Product" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Quantity" type="xs:int" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ValidNullFields" type="rnn_v1_3:QuoteLineItemNullFields" minOccurs="0" maxOccurs="1" nillable="true"/>
+		</xs:sequence>
+		<xs:attribute name="action" type="rnb_v1_3:ActionEnum" use="optional"/>
+	</xs:complexType>
+	<xs:element name="QuoteLineItemList" type="QuoteLineItemList"/>
+	<xs:complexType name="QuoteLineItemList">
+		<xs:sequence>
+			<xs:element name="QuoteLineItemList" type="QuoteLineItem" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="QuoteList" type="QuoteList"/>
+	<xs:complexType name="QuoteList">
+		<xs:sequence>
+			<xs:element name="QuoteList" type="Quote" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="SalesProduct" type="SalesProduct"/>
+	<xs:complexType name="SalesProduct"><xs:complexContent><xs:extension base="rnb_v1_3:RNObject">
+		<xs:sequence>
+			<xs:element name="AcceptCount" type="xs:int" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="AdminVisibleInterfaces" type="rnb_v1_3:NamedIDDeltaList" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Attributes" type="SalesProductOptions" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="CustomFields" type="rng_v1_3:GenericObject" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Descriptions" type="LabelList" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="DisplayOrder" type="xs:int" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ExcludeFromOfferAdvisor" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Folder" type="rnb_v1_3:NamedIDHierarchy" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Name" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Names" type="LabelRequiredList" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="PartNumber" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="RespondCount" type="xs:int" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Schedules" type="SalesProductScheduleList" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="ServiceProduct" type="rnb_v1_3:NamedIDHierarchy" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="ValidNullFields" type="rnn_v1_3:SalesProductNullFields" minOccurs="0" maxOccurs="1" nillable="true"/>
+		</xs:sequence>
+	</xs:extension></xs:complexContent></xs:complexType>
+	<xs:element name="SalesProductOptions" type="SalesProductOptions"/>
+	<xs:complexType name="SalesProductOptions">
+		<xs:sequence>
+			<xs:element name="Disabled" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="HasSerialNumber" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="IsSalesProduct" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="IsServiceProduct" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="SalesProductSchedule" type="SalesProductSchedule"/>
+	<xs:complexType name="SalesProductSchedule">
+		<xs:sequence>
+			<xs:element name="Comment" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Price" type="MonetaryValue" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Schedule" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ScheduleEndDate" type="xs:date" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="ScheduleStartDate" type="xs:date" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ValidNullFields" type="rnn_v1_3:SalesProductScheduleNullFields" minOccurs="0" maxOccurs="1" nillable="true"/>
+		</xs:sequence>
+		<xs:attribute name="action" type="rnb_v1_3:ActionEnum" use="optional"/>
+	</xs:complexType>
+	<xs:element name="SalesProductScheduleList" type="SalesProductScheduleList"/>
+	<xs:complexType name="SalesProductScheduleList">
+		<xs:sequence>
+			<xs:element name="SalesProductScheduleList" type="SalesProductSchedule" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="SalesTerritory" type="SalesTerritory"/>
+	<xs:complexType name="SalesTerritory"><xs:complexContent><xs:extension base="rnb_v1_3:RNObject">
+		<xs:sequence>
+			<xs:element name="AdminVisibleInterfaces" type="rnb_v1_3:NamedIDDeltaList" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Comment" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Disabled" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="DisplayOrder" type="xs:int" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Name" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Names" type="LabelRequiredList" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Parent" type="rnb_v1_3:NamedIDHierarchy" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="TerritoryHierarchy" type="rnb_v1_3:NamedIDList" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="ValidNullFields" type="rnn_v1_3:SalesTerritoryNullFields" minOccurs="0" maxOccurs="1" nillable="true"/>
+		</xs:sequence>
+	</xs:extension></xs:complexContent></xs:complexType>
+	<xs:element name="ServiceCategory" type="ServiceCategory"/>
+	<xs:complexType name="ServiceCategory"><xs:complexContent><xs:extension base="rnb_v1_3:RNObject">
+		<xs:sequence>
+			<xs:element name="AdminVisibleInterfaces" type="rnb_v1_3:NamedIDDeltaList" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="CategoryHierarchy" type="rnb_v1_3:NamedIDList" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Descriptions" type="LabelList" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="DisplayOrder" type="xs:int" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="EndUserVisibleInterfaces" type="rnb_v1_3:NamedIDDeltaList" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Name" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Names" type="LabelRequiredList" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Parent" type="rnb_v1_3:NamedIDHierarchy" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="ProductLinks" type="ServiceProductList" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="ValidNullFields" type="rnn_v1_3:ServiceCategoryNullFields" minOccurs="0" maxOccurs="1" nillable="true"/>
+		</xs:sequence>
+	</xs:extension></xs:complexContent></xs:complexType>
+	<xs:element name="ServiceCategoryDelta" type="ServiceCategoryDelta"/>
+	<xs:complexType name="ServiceCategoryDelta">
+		<xs:sequence>
+			<xs:element name="ServiceCategory" type="rnb_v1_3:NamedIDHierarchy" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+		<xs:attribute name="action" type="rnb_v1_3:ActionEnum" use="optional"/>
+	</xs:complexType>
+	<xs:element name="ServiceCategoryList" type="ServiceCategoryList"/>
+	<xs:complexType name="ServiceCategoryList">
+		<xs:sequence>
+			<xs:element name="ServiceCategoryList" type="ServiceCategoryDelta" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ServiceDisposition" type="ServiceDisposition"/>
+	<xs:complexType name="ServiceDisposition"><xs:complexContent><xs:extension base="rnb_v1_3:RNObject">
+		<xs:sequence>
+			<xs:element name="AdminVisibleInterfaces" type="rnb_v1_3:NamedIDDeltaList" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Descriptions" type="LabelList" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="DisplayOrder" type="xs:int" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="DispositionHierarchy" type="rnb_v1_3:NamedIDList" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Name" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Names" type="LabelRequiredList" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Parent" type="rnb_v1_3:NamedIDHierarchy" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="ProductLinks" type="ServiceProductList" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="ValidNullFields" type="rnn_v1_3:ServiceDispositionNullFields" minOccurs="0" maxOccurs="1" nillable="true"/>
+		</xs:sequence>
+	</xs:extension></xs:complexContent></xs:complexType>
+	<xs:element name="ServiceDispositionDelta" type="ServiceDispositionDelta"/>
+	<xs:complexType name="ServiceDispositionDelta">
+		<xs:sequence>
+			<xs:element name="ServiceDisposition" type="rnb_v1_3:NamedIDHierarchy" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+		<xs:attribute name="action" type="rnb_v1_3:ActionEnum" use="optional"/>
+	</xs:complexType>
+	<xs:element name="ServiceDispositionList" type="ServiceDispositionList"/>
+	<xs:complexType name="ServiceDispositionList">
+		<xs:sequence>
+			<xs:element name="ServiceDispositionList" type="ServiceDispositionDelta" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ServiceMailbox" type="ServiceMailbox"/>
+	<xs:complexType name="ServiceMailbox"><xs:complexContent><xs:extension base="rno_v1_3:Mailbox">
+	</xs:extension></xs:complexContent></xs:complexType>
+	<xs:element name="ServiceProduct" type="ServiceProduct"/>
+	<xs:complexType name="ServiceProduct"><xs:complexContent><xs:extension base="rnb_v1_3:RNObject">
+		<xs:sequence>
+			<xs:element name="AdminVisibleInterfaces" type="rnb_v1_3:NamedIDDeltaList" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="CategoryLinks" type="ServiceCategoryList" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Descriptions" type="LabelList" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="DisplayOrder" type="xs:int" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="DispositionLinks" type="ServiceDispositionList" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="EndUserVisibleInterfaces" type="rnb_v1_3:NamedIDDeltaList" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Name" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Names" type="LabelRequiredList" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Parent" type="rnb_v1_3:NamedIDHierarchy" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="ProductHierarchy" type="rnb_v1_3:NamedIDList" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ValidNullFields" type="rnn_v1_3:ServiceProductNullFields" minOccurs="0" maxOccurs="1" nillable="true"/>
+		</xs:sequence>
+	</xs:extension></xs:complexContent></xs:complexType>
+	<xs:element name="ServiceProductDelta" type="ServiceProductDelta"/>
+	<xs:complexType name="ServiceProductDelta">
+		<xs:sequence>
+			<xs:element name="ServiceProduct" type="rnb_v1_3:NamedIDHierarchy" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+		<xs:attribute name="action" type="rnb_v1_3:ActionEnum" use="optional"/>
+	</xs:complexType>
+	<xs:element name="ServiceProductList" type="ServiceProductList"/>
+	<xs:complexType name="ServiceProductList">
+		<xs:sequence>
+			<xs:element name="ServiceProductList" type="ServiceProductDelta" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="SharedFileAttachmentAnswer" type="SharedFileAttachmentAnswer"/>
+	<xs:complexType name="SharedFileAttachmentAnswer"><xs:complexContent><xs:extension base="rno_v1_3:FileAttachmentAnswer">
+		<xs:sequence>
+			<xs:element name="AttachmentOwner" type="rnb_v1_3:RNObject" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:extension></xs:complexContent></xs:complexType>
+	<xs:element name="SharedFileAttachmentCommon" type="SharedFileAttachmentCommon"/>
+	<xs:complexType name="SharedFileAttachmentCommon"><xs:complexContent><xs:extension base="rno_v1_3:FileAttachmentCommon">
+		<xs:sequence>
+			<xs:element name="AttachmentOwner" type="rnb_v1_3:RNObject" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:extension></xs:complexContent></xs:complexType>
+	<xs:element name="SharedFileAttachmentIncident" type="SharedFileAttachmentIncident"/>
+	<xs:complexType name="SharedFileAttachmentIncident"><xs:complexContent><xs:extension base="rno_v1_3:FileAttachmentIncident">
+		<xs:sequence>
+			<xs:element name="AttachmentOwner" type="rnb_v1_3:RNObject" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:extension></xs:complexContent></xs:complexType>
+	<xs:element name="SharedFileAttachmentShared" type="SharedFileAttachmentShared"/>
+	<xs:complexType name="SharedFileAttachmentShared"><xs:complexContent><xs:extension base="rno_v1_3:FileAttachmentShared">
+		<xs:sequence>
+			<xs:element name="AttachmentOwner" type="rnb_v1_3:RNObject" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:extension></xs:complexContent></xs:complexType>
+	<xs:element name="SiteInterface" type="SiteInterface"/>
+	<xs:complexType name="SiteInterface"><xs:complexContent><xs:extension base="rnb_v1_3:RNObject">
+		<xs:sequence>
+			<xs:element name="DisplayName" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Language" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Name" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:extension></xs:complexContent></xs:complexType>
+	<xs:element name="SLAInstance" type="SLAInstance"/>
+	<xs:complexType name="SLAInstance">
+		<xs:sequence>
+			<xs:element name="ActiveDate" type="xs:date" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ExpireDate" type="xs:date" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ID" type="rnb_v1_3:ID" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="NameOfSLA" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="RemainingFromChat" type="xs:int" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="RemainingFromCSR" type="xs:int" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="RemainingFromEmail" type="xs:int" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="RemainingFromWeb" type="xs:int" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="RemainingTotal" type="xs:int" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="SLASet" type="xs:int" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="StateOfSLA" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+		<xs:attribute name="action" type="rnb_v1_3:ActionEnum" use="optional"/>
+	</xs:complexType>
+	<xs:element name="SLAInstanceList" type="SLAInstanceList"/>
+	<xs:complexType name="SLAInstanceList">
+		<xs:sequence>
+			<xs:element name="SLAInstanceList" type="SLAInstance" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="StageWithStrategy" type="StageWithStrategy"/>
+	<xs:complexType name="StageWithStrategy">
+		<xs:sequence>
+			<xs:element name="Stage" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Strategy" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="ValidNullFields" type="rnn_v1_3:StageWithStrategyNullFields" minOccurs="0" maxOccurs="1" nillable="true"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="StandardContent" type="StandardContent"/>
+	<xs:complexType name="StandardContent"><xs:complexContent><xs:extension base="rnb_v1_3:RNObject">
+		<xs:sequence>
+			<xs:element name="AdminVisibleInterfaces" type="rnb_v1_3:NamedIDDeltaList" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Attributes" type="StandardContentAttributes" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ContentValues" type="StandardContentContentValueList" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="DisplayOrder" type="xs:int" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Folder" type="rnb_v1_3:NamedIDHierarchy" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="HotKey" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Name" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Usage" type="StandardContentUsage" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ValidNullFields" type="rnn_v1_3:StandardContentNullFields" minOccurs="0" maxOccurs="1" nillable="true"/>
+		</xs:sequence>
+	</xs:extension></xs:complexContent></xs:complexType>
+	<xs:element name="StandardContentAttributes" type="StandardContentAttributes"/>
+	<xs:complexType name="StandardContentAttributes">
+		<xs:sequence>
+			<xs:element name="DisplayRightToLeft" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="StandardContentContentValue" type="StandardContentContentValue"/>
+	<xs:complexType name="StandardContentContentValue">
+		<xs:sequence>
+			<xs:element name="ContentType" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Value" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="ValidNullFields" type="rnn_v1_3:StandardContentContentValueNullFields" minOccurs="0" maxOccurs="1" nillable="true"/>
+		</xs:sequence>
+		<xs:attribute name="action" type="rnb_v1_3:ActionEnum" use="optional"/>
+	</xs:complexType>
+	<xs:element name="StandardContentContentValueList" type="StandardContentContentValueList"/>
+	<xs:complexType name="StandardContentContentValueList">
+		<xs:sequence>
+			<xs:element name="ContentValueList" type="StandardContentContentValue" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="StandardContentUsage" type="StandardContentUsage"/>
+	<xs:complexType name="StandardContentUsage">
+		<xs:sequence>
+			<xs:element name="ChatText" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ChatURL" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="IncidentText" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="RuleText" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="StatusWithType" type="StatusWithType"/>
+	<xs:complexType name="StatusWithType">
+		<xs:sequence>
+			<xs:element name="Status" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="StatusType" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="StringFileAttachment" type="StringFileAttachment"/>
+	<xs:complexType name="StringFileAttachment"><xs:complexContent><xs:extension base="rno_v1_3:FileAttachment">
+		<xs:sequence>
+			<xs:element name="Content" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:extension></xs:complexContent></xs:complexType>
+	<xs:element name="Task" type="Task"/>
+	<xs:complexType name="Task"><xs:complexContent><xs:extension base="rnb_v1_3:RNObject">
+		<xs:sequence>
+			<xs:element name="AssignedToAccount" type="rnb_v1_3:NamedIDHierarchy" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="CompletedTime" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Contact" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="CustomFields" type="rng_v1_3:GenericObject" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="DueTime" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="FileAttachments" type="FileAttachmentCommonList" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Inherit" type="InheritOptions" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="MarketingSettings" type="TaskMarketingSettings" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Name" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Notes" type="NoteList" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Organization" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="PercentComplete" type="xs:int" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="PlannedCompletionTime" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Priority" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="SalesSettings" type="TaskSalesSettings" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ServiceSettings" type="TaskServiceSettings" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="StartTime" type="xs:dateTime" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="StatusWithType" type="StatusWithType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="TaskTemplate" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="TaskType" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="ValidNullFields" type="rnn_v1_3:TaskNullFields" minOccurs="0" maxOccurs="1" nillable="true"/>
+		</xs:sequence>
+	</xs:extension></xs:complexContent></xs:complexType>
+	<xs:element name="TaskMarketingSettings" type="TaskMarketingSettings"/>
+	<xs:complexType name="TaskMarketingSettings">
+		<xs:sequence>
+			<xs:element name="Campaign" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Document" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Mailing" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Survey" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="ValidNullFields" type="rnn_v1_3:TaskMarketingSettingsNullFields" minOccurs="0" maxOccurs="1" nillable="true"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="TaskSalesSettings" type="TaskSalesSettings"/>
+	<xs:complexType name="TaskSalesSettings">
+		<xs:sequence>
+			<xs:element name="Opportunity" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="ValidNullFields" type="rnn_v1_3:TaskSalesSettingsNullFields" minOccurs="0" maxOccurs="1" nillable="true"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="TaskServiceSettings" type="TaskServiceSettings"/>
+	<xs:complexType name="TaskServiceSettings">
+		<xs:sequence>
+			<xs:element name="Answer" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Incident" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="ValidNullFields" type="rnn_v1_3:TaskServiceSettingsNullFields" minOccurs="0" maxOccurs="1" nillable="true"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Thread" type="Thread"/>
+	<xs:complexType name="Thread">
+		<xs:sequence>
+			<xs:element name="Account" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Channel" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Contact" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="ContentType" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="CreatedTime" type="xs:dateTime" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="DisplayOrder" type="xs:int" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="EntryType" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ID" type="rnb_v1_3:ID" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="MailHeader" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Text" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ValidNullFields" type="rnn_v1_3:ThreadNullFields" minOccurs="0" maxOccurs="1" nillable="true"/>
+		</xs:sequence>
+		<xs:attribute name="action" type="rnb_v1_3:ActionEnum" use="optional"/>
+	</xs:complexType>
+	<xs:element name="ThreadList" type="ThreadList"/>
+	<xs:complexType name="ThreadList">
+		<xs:sequence>
+			<xs:element name="ThreadList" type="Thread" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="TimeBilled" type="TimeBilled"/>
+	<xs:complexType name="TimeBilled">
+		<xs:sequence>
+			<xs:element name="Account" type="rnb_v1_3:NamedIDHierarchy" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="BillableTask" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="BillTime" type="xs:dateTime" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Comment" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="ID" type="rnb_v1_3:ID" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Minutes" type="xs:int" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ValidNullFields" type="rnn_v1_3:TimeBilledNullFields" minOccurs="0" maxOccurs="1" nillable="true"/>
+		</xs:sequence>
+		<xs:attribute name="action" type="rnb_v1_3:ActionEnum" use="optional"/>
+	</xs:complexType>
+	<xs:element name="TimeBilledList" type="TimeBilledList"/>
+	<xs:complexType name="TimeBilledList">
+		<xs:sequence>
+			<xs:element name="TimeBilledList" type="TimeBilled" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="TypedAddress" type="TypedAddress"/>
+	<xs:complexType name="TypedAddress"><xs:complexContent><xs:extension base="rno_v1_3:Address">
+		<xs:sequence>
+			<xs:element name="AddressType" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+		<xs:attribute name="action" type="rnb_v1_3:ActionEnum" use="optional"/>
+	</xs:extension></xs:complexContent></xs:complexType>
+	<xs:element name="TypedAddressList" type="TypedAddressList"/>
+	<xs:complexType name="TypedAddressList">
+		<xs:sequence>
+			<xs:element name="TypedAddressList" type="TypedAddress" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Variable" type="Variable"/>
+	<xs:complexType name="Variable"><xs:complexContent><xs:extension base="rnb_v1_3:RNObject">
+		<xs:sequence>
+			<xs:element name="DisplayOrder" type="xs:int" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Folder" type="rnb_v1_3:NamedIDHierarchy" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="InterfaceValues" type="InterfaceValueList" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="Name" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="SearchIndexable" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="ValidNullFields" type="rnn_v1_3:VariableNullFields" minOccurs="0" maxOccurs="1" nillable="true"/>
+		</xs:sequence>
+	</xs:extension></xs:complexContent></xs:complexType>
+</xs:schema>

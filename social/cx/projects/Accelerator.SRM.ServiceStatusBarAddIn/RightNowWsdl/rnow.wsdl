@@ -1,0 +1,1800 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Copyright @ 2009, 2016, Oracle and/or its affiliates. All rights reserved.
+	http://www.oracle.com
+-->
+
+<wsdl:definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+	targetNamespace="urn:wsdl.ws.rightnow.com/v1_3"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:rnb_v1_3="urn:base.ws.rightnow.com/v1_3"
+	xmlns:rng_v1_3="urn:generic.ws.rightnow.com/v1_3"
+	xmlns:rnn_v1_3="urn:nullfields.ws.rightnow.com/v1_3"
+	xmlns:rno_v1_3="urn:objects.ws.rightnow.com/v1_3"
+	xmlns:rna_v1_3="urn:metadata.ws.rightnow.com/v1_3"
+	xmlns:rnf_v1_3="urn:faults.ws.rightnow.com/v1_3"
+	xmlns:rnm_v1_3="urn:messages.ws.rightnow.com/v1_3"
+	xmlns:rnw_v1_3="urn:wsdl.ws.rightnow.com/v1_3"
+	name="RightNow">
+
+	<wsdl:documentation><version>1.3</version><wsdlRevision>1.3.16.8</wsdlRevision></wsdl:documentation>
+
+	<wsp:Policy xmlns:sp='http://schemas.xmlsoap.org/ws/2005/07/securitypolicy' xmlns:wsu='http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd' wsu:Id='SyncPolicy' xmlns:wsp='http://schemas.xmlsoap.org/ws/2004/09/policy'>
+	  <wsp:ExactlyOne>
+	    <wsp:All>
+	
+	      <sp:TransportBinding>
+	        <wsp:Policy>
+	          <wsp:ExactlyOne>
+	            <wsp:All>
+	
+	              <sp:TransportToken>
+	                <wsp:Policy>
+	                  <wsp:ExactlyOne>
+	                    <sp:HttpsToken />
+	                  </wsp:ExactlyOne>
+	                </wsp:Policy>
+	              </sp:TransportToken>
+	
+	              <sp:AlgorithmSuite>
+	                <wsp:Policy>
+	                  <sp:Basic256 />
+	                </wsp:Policy>
+	              </sp:AlgorithmSuite>
+	
+	              <sp:Layout>
+	                <wsp:Policy>
+	                  <wsp:ExactlyOne>
+	                    <sp:Lax />
+	                  </wsp:ExactlyOne>
+	                </wsp:Policy>
+	              </sp:Layout>
+	
+	            </wsp:All>
+	          </wsp:ExactlyOne>
+	        </wsp:Policy>
+	      </sp:TransportBinding>
+	
+	      <wsp:ExactlyOne>
+	
+	        <!-- Begin SignedSupportingTokens -->
+	
+	        <sp:SignedSupportingTokens>
+	          <wsp:Policy>
+	            <wsp:ExactlyOne>
+	              <sp:UsernameToken sp:IncludeToken='http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient'>
+	                <wsp:Policy>
+	                  <wsp:ExactlyOne>
+	                    <sp:WssUsernameToken10 />
+	                  </wsp:ExactlyOne>
+	                </wsp:Policy>
+	              </sp:UsernameToken>
+	            </wsp:ExactlyOne>
+	          </wsp:Policy>
+	        </sp:SignedSupportingTokens>
+	
+	        <!-- End SignedSupportingTokens -->
+	
+	        <!-- Begin SupportingTokens -->
+	
+	        <sp:SupportingTokens>
+	          <wsp:Policy>
+	            <wsp:ExactlyOne>
+	              <sp:UsernameToken sp:IncludeToken='http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient'>
+	                <wsp:Policy>
+	                  <wsp:ExactlyOne>
+	                    <sp:WssUsernameToken10 />
+	                  </wsp:ExactlyOne>
+	                </wsp:Policy>
+	              </sp:UsernameToken>
+	            </wsp:ExactlyOne>
+	          </wsp:Policy>
+	        </sp:SupportingTokens>
+	
+	        <!-- End SupportingTokens -->
+	
+	      </wsp:ExactlyOne>
+	
+	    </wsp:All>
+	  </wsp:ExactlyOne>
+	</wsp:Policy>
+	
+	<wsp:Policy xmlns:wsp='http://www.w3.org/ns/ws-policy' xmlns:wsu='http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd' wsu:Id='FedAuthSyncPolicy' xmlns:wsam='http://www.w3.org/2007/05/addressing/metadata' xmlns:sp='http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702' xmlns:t='http://docs.oasis-open.org/ws-sx/ws-trust/200512' xmlns:wsaw='http://www.w3.org/2005/08/addressing' xmlns:wsx='http://schemas.xmlsoap.org/ws/2004/09/mex'>
+	  <wsp:ExactlyOne>
+	    <wsp:All>
+	
+	      <sp:TransportBinding>
+	        <wsp:Policy>
+	
+	          <sp:TransportToken>
+	            <wsp:Policy>
+	              <sp:HttpsToken/>
+	            </wsp:Policy>
+	          </sp:TransportToken>
+	
+	          <sp:AlgorithmSuite>
+	            <wsp:Policy>
+	              <sp:Basic256/>
+	            </wsp:Policy>
+	          </sp:AlgorithmSuite>
+	
+	          <sp:Layout>
+	            <wsp:Policy>
+	              <sp:Lax/>
+	            </wsp:Policy>
+	          </sp:Layout>
+	        </wsp:Policy>
+	      </sp:TransportBinding>
+	
+	      <sp:SignedSupportingTokens xmlns:sp='http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702'>
+	        <wsp:Policy>
+	          <sp:IssuedToken sp:IncludeToken='http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702/IncludeToken/AlwaysToRecipient'>
+	            <sp:RequestSecurityTokenTemplate>
+	              <t:TokenType>http://docs.oasis-open.org/wss/oasis-wss-saml-token-profile-1.1#SAMLV2.0</t:TokenType>
+	              <t:KeyType>http://docs.oasis-open.org/ws-sx/ws-trust/200512/Bearer</t:KeyType>
+	              <t:CanonicalizationAlgorithm>http://www.w3.org/2001/10/xml-exc-c14n#</t:CanonicalizationAlgorithm>
+	              <t:SignWith>http://www.w3.org/2000/09/xmldsig#hmac-sha1</t:SignWith>
+	              <t:SignatureAlgorithm>http://www.w3.org/2000/09/xmldsig#rsa-sha1</t:SignatureAlgorithm>
+	            </sp:RequestSecurityTokenTemplate>
+	            <wsp:Policy>
+	              <sp:RequireInternalReference/>
+	            </wsp:Policy>
+	            <sp:Issuer>
+	              <wsaw:Address></wsaw:Address>
+	              <wsaw:Metadata>
+	                <wsx:Metadata>
+	                  <wsx:MetadataSection>
+	                    <wsx:MetadataReference>
+	                      <wsaw:Address></wsaw:Address>
+	                    </wsx:MetadataReference>
+	                  </wsx:MetadataSection>
+	                </wsx:Metadata>
+	              </wsaw:Metadata>
+	            </sp:Issuer>
+	          </sp:IssuedToken>
+	        </wsp:Policy>
+	      </sp:SignedSupportingTokens>
+	        
+	      <sp:Wss11>
+	        <wsp:Policy/>
+	      </sp:Wss11>
+	        
+	      <sp:Trust13>
+	        <wsp:Policy>
+	          <sp:MustSupportIssuedTokens/>
+	        </wsp:Policy>
+	      </sp:Trust13>
+	
+	    </wsp:All>
+	  </wsp:ExactlyOne>
+	</wsp:Policy>
+
+	<wsdl:types>
+       		<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+       			<xs:import namespace="urn:base.ws.rightnow.com/v1_3" schemaLocation="C:\accelerator\social\cx\AcceleratorSRMSolution\RightNowWsdl\rnowBase.xsd"/>
+       			<xs:import namespace="urn:generic.ws.rightnow.com/v1_3" schemaLocation="C:\accelerator\social\cx\AcceleratorSRMSolution\RightNowWsdl\rnowGeneric.xsd"/>
+       			<xs:import namespace="urn:nullfields.ws.rightnow.com/v1_3" schemaLocation="C:\accelerator\social\cx\AcceleratorSRMSolution\RightNowWsdl\rnowNullfields.xsd"/>
+       			<xs:import namespace="urn:objects.ws.rightnow.com/v1_3" schemaLocation="C:\accelerator\social\cx\AcceleratorSRMSolution\RightNowWsdl\rnowObjects.xsd"/>
+       			<xs:import namespace="urn:metadata.ws.rightnow.com/v1_3" schemaLocation="C:\accelerator\social\cx\AcceleratorSRMSolution\RightNowWsdl\rnowMetadata.xsd"/>
+       			<xs:import namespace="urn:faults.ws.rightnow.com/v1_3" schemaLocation="C:\accelerator\social\cx\AcceleratorSRMSolution\RightNowWsdl\rnowFaults.xsd"/>
+       			<xs:import namespace="urn:messages.ws.rightnow.com/v1_3" schemaLocation="C:\accelerator\social\cx\AcceleratorSRMSolution\RightNowWsdl\rnowMessagestyped.xsd"/>
+       		</xs:schema>
+	</wsdl:types>
+
+	<!--  Fault messages  -->
+
+	<wsdl:message name="RNFault">
+		<wsdl:part name="fault" type="rnf_v1_3:RNFault"/>
+	</wsdl:message>
+
+	<wsdl:message name="RequestErrorFault">
+		<wsdl:part name="fault" element="rnf_v1_3:RequestErrorFault"/>
+	</wsdl:message>
+	
+	<wsdl:message name="RequestErrorFaultDetail">
+		<wsdl:part name="fault" element="rnf_v1_3:RequestErrorFaultDetail"/>
+	</wsdl:message>
+
+	<wsdl:message name="ServerErrorFault">
+		<wsdl:part name="fault" element="rnf_v1_3:ServerErrorFault"/>
+	</wsdl:message>
+
+	<wsdl:message name="UnexpectedErrorFault">
+		<wsdl:part name="fault" element="rnf_v1_3:UnexpectedErrorFault"/>
+	</wsdl:message>
+
+
+	
+
+	<!--  Basic CRUD operations  -->
+
+	<wsdl:message name="ClientInfoHeader">
+		<wsdl:part name="request_header" element="rnm_v1_3:ClientInfoHeader"/>
+	</wsdl:message>
+
+	<wsdl:message name="CreateRequest">
+		<wsdl:part name="parameters" element="rnm_v1_3:Create"/>
+	</wsdl:message>
+	<wsdl:message name="CreateResponse">
+		<wsdl:part name="parameters" element="rnm_v1_3:CreateResponse"/>
+	</wsdl:message>
+	
+	<wsdl:message name="GetRequest">
+		<wsdl:part name="parameters" element="rnm_v1_3:Get"/>
+	</wsdl:message>
+	<wsdl:message name="GetResponse">
+		<wsdl:part name="parameters" element="rnm_v1_3:GetResponse"/>
+	</wsdl:message>
+
+	<wsdl:message name="UpdateRequest">
+		<wsdl:part name="parameters" element="rnm_v1_3:Update"/>
+	</wsdl:message>
+	<wsdl:message name="UpdateResponse">
+		<wsdl:part name="parameters" element="rnm_v1_3:UpdateResponse"/>
+	</wsdl:message>
+
+	<wsdl:message name="DestroyRequest">
+		<wsdl:part name="parameters" element="rnm_v1_3:Destroy"/>
+	</wsdl:message>
+	<wsdl:message name="DestroyResponse">
+		<wsdl:part name="parameters" element="rnm_v1_3:DestroyResponse"/>
+	</wsdl:message>
+
+
+	<!--  ROQL operations  -->
+
+	<wsdl:message name="QueryCSVRequest">
+		<wsdl:part name="parameters" element="rnm_v1_3:QueryCSV"/>
+	</wsdl:message>
+	<wsdl:message name="QueryCSVResponse">
+		<wsdl:part name="parameters" element="rnm_v1_3:QueryCSVResponse"/>
+	</wsdl:message>
+	
+	<wsdl:message name="QueryObjectsRequest">
+		<wsdl:part name="parameters" element="rnm_v1_3:QueryObjects"/>
+	</wsdl:message>
+	<wsdl:message name="QueryObjectsResponse">
+		<wsdl:part name="parameters" element="rnm_v1_3:QueryObjectsResponse"/>
+	</wsdl:message>
+	
+	<!--  RunAnalyticsReport operations  -->
+
+	<wsdl:message name="RunAnalyticsReportRequest">
+		<wsdl:part name="parameters" element="rnm_v1_3:RunAnalyticsReport"/>
+	</wsdl:message>
+	<wsdl:message name="RunAnalyticsReportResponse">
+		<wsdl:part name="parameters" element="rnm_v1_3:RunAnalyticsReportResponse"/>
+	</wsdl:message>
+
+	
+	<!--  Miscellaneous operations  -->
+
+	<wsdl:message name="ExecuteMarketingFlowRequest">
+		<wsdl:part name="parameters" element="rnm_v1_3:ExecuteMarketingFlow"/>
+	</wsdl:message>
+	<wsdl:message name="ExecuteMarketingFlowResponse">
+		<wsdl:part name="parameters" element="rnm_v1_3:ExecuteMarketingFlowResponse"/>
+	</wsdl:message>
+
+	<wsdl:message name="GetFileDataRequest">
+		<wsdl:part name="parameters" element="rnm_v1_3:GetFileData"/>
+	</wsdl:message>
+	<wsdl:message name="GetFileDataResponse">
+		<wsdl:part name="parameters" element="rnm_v1_3:GetFileDataResponse"/>
+	</wsdl:message>
+
+	<wsdl:message name="ResetContactPasswordRequest">
+		<wsdl:part name="parameters" element="rnm_v1_3:ResetContactPassword"/>
+	</wsdl:message>
+	<wsdl:message name="ResetContactPasswordResponse">
+		<wsdl:part name="parameters" element="rnm_v1_3:ResetContactPasswordResponse"/>
+	</wsdl:message>
+
+	<wsdl:message name="SendMailingToContactRequest">
+		<wsdl:part name="parameters" element="rnm_v1_3:SendMailingToContact"/>
+	</wsdl:message>
+	<wsdl:message name="SendMailingToContactResponse">
+		<wsdl:part name="parameters" element="rnm_v1_3:SendMailingToContactResponse"/>
+	</wsdl:message>
+
+    <wsdl:message name="TransferSubObjectsRequest">
+        <wsdl:part name="parameters" element="rnm_v1_3:TransferSubObjects"/>
+    </wsdl:message>
+    <wsdl:message name="TransferSubObjectsResponse">
+        <wsdl:part name="parameters" element="rnm_v1_3:TransferSubObjectsResponse"/>
+    </wsdl:message>
+
+	<!--  Batch operations  -->
+
+	<wsdl:message name="BatchRequest">
+		<wsdl:part name="parameters" element="rnm_v1_3:Batch"/>
+	</wsdl:message>
+	<wsdl:message name="BatchResponse">
+		<wsdl:part name="parameters" element="rnm_v1_3:BatchResponse"/>
+	</wsdl:message>
+
+	<!--  Metadata operations  -->
+
+	<wsdl:message name="GetMetaDataRequest">
+		<wsdl:part name="parameters" element="rnm_v1_3:GetMetaData"/>
+	</wsdl:message>
+	<wsdl:message name="GetMetaDataResponse">
+		<wsdl:part name="parameters" element="rnm_v1_3:GetMetaDataResponse"/>
+	</wsdl:message>
+
+	<wsdl:message name="GetMetaDataForClassRequest">
+		<wsdl:part name="parameters" element="rnm_v1_3:GetMetaDataForClass"/>
+	</wsdl:message>
+	<wsdl:message name="GetMetaDataForClassResponse">
+		<wsdl:part name="parameters" element="rnm_v1_3:GetMetaDataForClassResponse"/>
+	</wsdl:message>
+
+	<wsdl:message name="GetMetaDataForOperationRequest">
+		<wsdl:part name="parameters" element="rnm_v1_3:GetMetaDataForOperation"/>
+	</wsdl:message>
+	<wsdl:message name="GetMetaDataForOperationResponse">
+		<wsdl:part name="parameters" element="rnm_v1_3:GetMetaDataForOperationResponse"/>
+	</wsdl:message>
+
+	<wsdl:message name="GetMetaDataLastChangeTimeRequest">
+		<wsdl:part name="parameters" element="rnm_v1_3:GetMetaDataLastChangeTime"/>
+	</wsdl:message>
+	<wsdl:message name="GetMetaDataLastChangeTimeResponse">
+		<wsdl:part name="parameters" element="rnm_v1_3:GetMetaDataLastChangeTimeResponse"/>
+	</wsdl:message>
+
+	<wsdl:message name="GetPrimaryClassNamesRequest">
+		<wsdl:part name="parameters" element="rnm_v1_3:GetPrimaryClassNames"/>
+	</wsdl:message>
+	<wsdl:message name="GetPrimaryClassNamesResponse">
+		<wsdl:part name="parameters" element="rnm_v1_3:GetPrimaryClassNamesResponse"/>
+	</wsdl:message>
+
+	<wsdl:message name="GetValuesForNamedIDRequest">
+		<wsdl:part name="parameters" element="rnm_v1_3:GetValuesForNamedID"/>
+	</wsdl:message>
+	<wsdl:message name="GetValuesForNamedIDResponse">
+		<wsdl:part name="parameters" element="rnm_v1_3:GetValuesForNamedIDResponse"/>
+	</wsdl:message>
+
+	<wsdl:message name="GetValuesForNamedIDHierarchyRequest">
+		<wsdl:part name="parameters" element="rnm_v1_3:GetValuesForNamedIDHierarchy"/>
+	</wsdl:message>
+	<wsdl:message name="GetValuesForNamedIDHierarchyResponse">
+		<wsdl:part name="parameters" element="rnm_v1_3:GetValuesForNamedIDHierarchyResponse"/>
+	</wsdl:message>
+
+	<wsdl:message name="GetSubscribableObjectsRequest">
+		<wsdl:part name="parameters" element="rnm_v1_3:GetSubscribableObjects"/>
+	</wsdl:message>
+	<wsdl:message name="GetSubscribableObjectsResponse">
+		<wsdl:part name="parameters" element="rnm_v1_3:GetSubscribableObjectsResponse"/>
+	</wsdl:message>
+    <!--  Conversion Routines for Generic Objects  -->
+
+	<wsdl:message name="ConvertGenericToObjectRequest">
+		<wsdl:part name="parameters" element="rnm_v1_3:ConvertGenericToObject"/>
+	</wsdl:message>
+	
+	<wsdl:message name="ConvertGenericToObjectResponse">
+		<wsdl:part name="parameters" element="rnm_v1_3:ConvertGenericToObjectResponse"/>
+	</wsdl:message>
+	
+	<wsdl:message name="ConvertObjectToGenericRequest">
+		<wsdl:part name="parameters" element="rnm_v1_3:ConvertObjectToGeneric"/>
+	</wsdl:message>
+	
+	<wsdl:message name="ConvertObjectToGenericResponse">
+		<wsdl:part name="parameters" element="rnm_v1_3:ConvertObjectToGenericResponse"/>
+	</wsdl:message>
+	
+
+	<wsdl:portType name="RightNowSyncPort">
+
+
+		<!--  Basic CRUD operations, plus batching  -->
+
+		<wsdl:operation name="Create">
+			<wsdl:input message="rnw_v1_3:CreateRequest"/>
+			<wsdl:output message="rnw_v1_3:CreateResponse"/>
+			<wsdl:fault message="rnw_v1_3:RequestErrorFault" name="RequestErrorFault"/>
+			<wsdl:fault message="rnw_v1_3:RequestErrorFaultDetail" name="RequestErrorFaultDetail"/>
+			<wsdl:fault message="rnw_v1_3:ServerErrorFault" name="ServerErrorFault"/>
+			<wsdl:fault message="rnw_v1_3:UnexpectedErrorFault" name="UnexpectedErrorFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="Get">
+			<wsdl:input message="rnw_v1_3:GetRequest"/>
+			<wsdl:output message="rnw_v1_3:GetResponse"/>
+			<wsdl:fault message="rnw_v1_3:RequestErrorFault" name="RequestErrorFault"/>
+			<wsdl:fault message="rnw_v1_3:RequestErrorFaultDetail" name="RequestErrorFaultDetail"/>
+			<wsdl:fault message="rnw_v1_3:ServerErrorFault" name="ServerErrorFault"/>
+			<wsdl:fault message="rnw_v1_3:UnexpectedErrorFault" name="UnexpectedErrorFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="Update">
+			<wsdl:input message="rnw_v1_3:UpdateRequest"/>
+			<wsdl:output message="rnw_v1_3:UpdateResponse"/>
+			<wsdl:fault message="rnw_v1_3:RequestErrorFault" name="RequestErrorFault"/>
+			<wsdl:fault message="rnw_v1_3:RequestErrorFaultDetail" name="RequestErrorFaultDetail"/>
+			<wsdl:fault message="rnw_v1_3:ServerErrorFault" name="ServerErrorFault"/>
+			<wsdl:fault message="rnw_v1_3:UnexpectedErrorFault" name="UnexpectedErrorFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="Destroy">
+			<wsdl:input message="rnw_v1_3:DestroyRequest"/>
+			<wsdl:output message="rnw_v1_3:DestroyResponse"/>
+			<wsdl:fault message="rnw_v1_3:RequestErrorFault" name="RequestErrorFault"/>
+			<wsdl:fault message="rnw_v1_3:RequestErrorFaultDetail" name="RequestErrorFaultDetail"/>
+			<wsdl:fault message="rnw_v1_3:ServerErrorFault" name="ServerErrorFault"/>
+			<wsdl:fault message="rnw_v1_3:UnexpectedErrorFault" name="UnexpectedErrorFault"/>
+		</wsdl:operation>
+
+
+		<!--  ROQL operations  -->
+
+		<wsdl:operation name="QueryObjects">
+			<wsdl:input message="rnw_v1_3:QueryObjectsRequest"/>
+			<wsdl:output message="rnw_v1_3:QueryObjectsResponse"/>
+			<wsdl:fault message="rnw_v1_3:RequestErrorFault" name="RequestErrorFault"/>
+			<wsdl:fault message="rnw_v1_3:ServerErrorFault" name="ServerErrorFault"/>
+			<wsdl:fault message="rnw_v1_3:UnexpectedErrorFault" name="UnexpectedErrorFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="QueryCSV">
+			<wsdl:input message="rnw_v1_3:QueryCSVRequest"/>
+			<wsdl:output message="rnw_v1_3:QueryCSVResponse"/>
+			<wsdl:fault message="rnw_v1_3:RequestErrorFault" name="RequestErrorFault"/>
+			<wsdl:fault message="rnw_v1_3:ServerErrorFault" name="ServerErrorFault"/>
+			<wsdl:fault message="rnw_v1_3:UnexpectedErrorFault" name="UnexpectedErrorFault"/>
+		</wsdl:operation>
+
+
+		<!--  RunAnalyticsReport operations  -->
+
+		<wsdl:operation name="RunAnalyticsReport">
+			<wsdl:input message="rnw_v1_3:RunAnalyticsReportRequest"/>
+			<wsdl:output message="rnw_v1_3:RunAnalyticsReportResponse"/>
+			<wsdl:fault message="rnw_v1_3:RequestErrorFault" name="RequestErrorFault"/>
+			<wsdl:fault message="rnw_v1_3:ServerErrorFault" name="ServerErrorFault"/>
+			<wsdl:fault message="rnw_v1_3:UnexpectedErrorFault" name="UnexpectedErrorFault"/>
+		</wsdl:operation>
+
+
+		<!--  Miscellaneous operations  -->
+
+		<wsdl:operation name="ExecuteMarketingFlow">
+			<wsdl:input message="rnw_v1_3:ExecuteMarketingFlowRequest"></wsdl:input>
+			<wsdl:output message="rnw_v1_3:ExecuteMarketingFlowResponse"></wsdl:output>
+			<wsdl:fault message="rnw_v1_3:RequestErrorFault" name="RequestErrorFault"/>
+			<wsdl:fault message="rnw_v1_3:ServerErrorFault" name="ServerErrorFault"/>
+			<wsdl:fault message="rnw_v1_3:UnexpectedErrorFault" name="UnexpectedErrorFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetFileData">
+			<wsdl:input message="rnw_v1_3:GetFileDataRequest"></wsdl:input>
+			<wsdl:output message="rnw_v1_3:GetFileDataResponse"></wsdl:output>
+			<wsdl:fault message="rnw_v1_3:RequestErrorFault" name="RequestErrorFault"/>
+			<wsdl:fault message="rnw_v1_3:ServerErrorFault" name="ServerErrorFault"/>
+			<wsdl:fault message="rnw_v1_3:UnexpectedErrorFault" name="UnexpectedErrorFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="ResetContactPassword">
+			<wsdl:input message="rnw_v1_3:ResetContactPasswordRequest"></wsdl:input>
+			<wsdl:output message="rnw_v1_3:ResetContactPasswordResponse"></wsdl:output>
+			<wsdl:fault message="rnw_v1_3:RequestErrorFault" name="RequestErrorFault"/>
+			<wsdl:fault message="rnw_v1_3:ServerErrorFault" name="ServerErrorFault"/>
+			<wsdl:fault message="rnw_v1_3:UnexpectedErrorFault" name="UnexpectedErrorFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="SendMailingToContact">
+			<wsdl:input message="rnw_v1_3:SendMailingToContactRequest"></wsdl:input>
+			<wsdl:output message="rnw_v1_3:SendMailingToContactResponse"></wsdl:output>
+			<wsdl:fault message="rnw_v1_3:RequestErrorFault" name="RequestErrorFault"/>
+			<wsdl:fault message="rnw_v1_3:ServerErrorFault" name="ServerErrorFault"/>
+			<wsdl:fault message="rnw_v1_3:UnexpectedErrorFault" name="UnexpectedErrorFault"/>
+		</wsdl:operation>
+        <wsdl:operation name="TransferSubObjects">
+            <wsdl:input message="rnw_v1_3:TransferSubObjectsRequest"/>
+            <wsdl:output message="rnw_v1_3:TransferSubObjectsResponse"/>
+            <wsdl:fault message="rnw_v1_3:RequestErrorFault" name="RequestErrorFault"/>
+            <wsdl:fault message="rnw_v1_3:ServerErrorFault" name="ServerErrorFault"/>
+            <wsdl:fault message="rnw_v1_3:UnexpectedErrorFault" name="UnexpectedErrorFault"/>
+        </wsdl:operation>
+
+		<!--  Batch operations  -->
+
+		<wsdl:operation name="Batch">
+			<wsdl:input message="rnw_v1_3:BatchRequest"/>
+			<wsdl:output message="rnw_v1_3:BatchResponse"/>
+			<wsdl:fault message="rnw_v1_3:RequestErrorFault" name="RequestErrorFault"/>
+			<wsdl:fault message="rnw_v1_3:RequestErrorFaultDetail" name="RequestErrorFaultDetail"/>
+			<wsdl:fault message="rnw_v1_3:ServerErrorFault" name="ServerErrorFault"/>
+			<wsdl:fault message="rnw_v1_3:UnexpectedErrorFault" name="UnexpectedErrorFault"/>
+		</wsdl:operation>
+
+
+
+		<!--  Metadata operations  -->
+
+		<wsdl:operation name="GetMetaData">
+			<wsdl:input message="rnw_v1_3:GetMetaDataRequest"/>
+			<wsdl:output message="rnw_v1_3:GetMetaDataResponse"/>
+			<wsdl:fault name="RequestErrorFault" message="rnw_v1_3:RequestErrorFault"/>
+			<wsdl:fault name="ServerErrorFault" message="rnw_v1_3:ServerErrorFault"/>
+			<wsdl:fault name="UnexpectedErrorFault" message="rnw_v1_3:UnexpectedErrorFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetMetaDataForClass">
+			<wsdl:input message="rnw_v1_3:GetMetaDataForClassRequest"/>
+			<wsdl:output message="rnw_v1_3:GetMetaDataForClassResponse"/>
+			<wsdl:fault name="RequestErrorFault" message="rnw_v1_3:RequestErrorFault"/>
+			<wsdl:fault name="ServerErrorFault" message="rnw_v1_3:ServerErrorFault"/>
+			<wsdl:fault name="UnexpectedErrorFault" message="rnw_v1_3:UnexpectedErrorFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetMetaDataForOperation">
+			<wsdl:input message="rnw_v1_3:GetMetaDataForOperationRequest"/>
+			<wsdl:output message="rnw_v1_3:GetMetaDataForOperationResponse"/>
+			<wsdl:fault name="RequestErrorFault" message="rnw_v1_3:RequestErrorFault"/>
+			<wsdl:fault name="ServerErrorFault" message="rnw_v1_3:ServerErrorFault"/>
+			<wsdl:fault name="UnexpectedErrorFault" message="rnw_v1_3:UnexpectedErrorFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetMetaDataLastChangeTime">
+			<wsdl:input message="rnw_v1_3:GetMetaDataLastChangeTimeRequest"/>
+			<wsdl:output message="rnw_v1_3:GetMetaDataLastChangeTimeResponse"/>
+			<wsdl:fault name="RequestErrorFault" message="rnw_v1_3:RequestErrorFault"/>
+			<wsdl:fault name="ServerErrorFault" message="rnw_v1_3:ServerErrorFault"/>
+			<wsdl:fault name="UnexpectedErrorFault" message="rnw_v1_3:UnexpectedErrorFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetPrimaryClassNames">
+			<wsdl:input message="rnw_v1_3:GetPrimaryClassNamesRequest"/>
+			<wsdl:output message="rnw_v1_3:GetPrimaryClassNamesResponse"/>
+			<wsdl:fault name="RequestErrorFault" message="rnw_v1_3:RequestErrorFault"/>
+			<wsdl:fault name="ServerErrorFault" message="rnw_v1_3:ServerErrorFault"/>
+			<wsdl:fault name="UnexpectedErrorFault" message="rnw_v1_3:UnexpectedErrorFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetValuesForNamedID">
+			<wsdl:input message="rnw_v1_3:GetValuesForNamedIDRequest"/>
+			<wsdl:output message="rnw_v1_3:GetValuesForNamedIDResponse"/>
+			<wsdl:fault name="RequestErrorFault" message="rnw_v1_3:RequestErrorFault"/>
+			<wsdl:fault name="ServerErrorFault" message="rnw_v1_3:ServerErrorFault"/>
+			<wsdl:fault name="UnexpectedErrorFault" message="rnw_v1_3:UnexpectedErrorFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetValuesForNamedIDHierarchy">
+			<wsdl:input message="rnw_v1_3:GetValuesForNamedIDHierarchyRequest"/>
+			<wsdl:output message="rnw_v1_3:GetValuesForNamedIDHierarchyResponse"/>
+			<wsdl:fault name="RequestErrorFault" message="rnw_v1_3:RequestErrorFault"/>
+			<wsdl:fault name="ServerErrorFault" message="rnw_v1_3:ServerErrorFault"/>
+			<wsdl:fault name="UnexpectedErrorFault" message="rnw_v1_3:UnexpectedErrorFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetSubscribableObjects">
+			<wsdl:input message="rnw_v1_3:GetSubscribableObjectsRequest"/>
+			<wsdl:output message="rnw_v1_3:GetSubscribableObjectsResponse"/>
+			<wsdl:fault name="RequestErrorFault" message="rnw_v1_3:RequestErrorFault"/>
+			<wsdl:fault name="ServerErrorFault" message="rnw_v1_3:ServerErrorFault"/>
+			<wsdl:fault name="UnexpectedErrorFault" message="rnw_v1_3:UnexpectedErrorFault"/>
+		</wsdl:operation>
+        <!--  Conversion operations for Generic Objects  -->
+
+		<wsdl:operation name="ConvertGenericToObject">
+			<wsdl:input message="rnw_v1_3:ConvertGenericToObjectRequest"/>
+			<wsdl:output message="rnw_v1_3:ConvertGenericToObjectResponse"/>
+			<wsdl:fault message="rnw_v1_3:RequestErrorFault" name="RequestErrorFault"/>
+			<wsdl:fault message="rnw_v1_3:ServerErrorFault" name="ServerErrorFault"/>
+			<wsdl:fault message="rnw_v1_3:UnexpectedErrorFault" name="UnexpectedErrorFault"/>
+		</wsdl:operation>
+
+		<wsdl:operation name="ConvertObjectToGeneric">
+			<wsdl:input message="rnw_v1_3:ConvertObjectToGenericRequest"/>
+			<wsdl:output message="rnw_v1_3:ConvertObjectToGenericResponse"/>
+			<wsdl:fault message="rnw_v1_3:RequestErrorFault" name="RequestErrorFault"/>
+			<wsdl:fault message="rnw_v1_3:ServerErrorFault" name="ServerErrorFault"/>
+			<wsdl:fault message="rnw_v1_3:UnexpectedErrorFault" name="UnexpectedErrorFault"/>
+		</wsdl:operation>
+	</wsdl:portType>
+
+
+	<wsdl:binding name="RightNowSyncBinding" type="rnw_v1_3:RightNowSyncPort">
+		<wsp:PolicyReference URI="#SyncPolicy"
+			xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"/>
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http"/>
+
+	
+		<!--  Basic CRUD operations, plus batching  -->
+	
+		<wsdl:operation name="Create">
+			<soap:operation soapAction="Create" style="document"/>
+			<wsdl:input>
+				<soap:body parts="parameters" use="literal"/>
+				<soap:header message="rnw_v1_3:ClientInfoHeader" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="RequestErrorFault">
+				<soap:fault name="RequestErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="RequestErrorFaultDetail">
+				<soap:fault name="RequestErrorFaultDetail" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ServerErrorFault">
+				<soap:fault name="ServerErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="UnexpectedErrorFault">
+				<soap:fault name="UnexpectedErrorFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+	
+		<wsdl:operation name="Get">
+			<soap:operation soapAction="Get" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+				<soap:header message="rnw_v1_3:ClientInfoHeader" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="RequestErrorFault">
+				<soap:fault name="RequestErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="RequestErrorFaultDetail">
+				<soap:fault name="RequestErrorFaultDetail" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ServerErrorFault">
+				<soap:fault name="ServerErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="UnexpectedErrorFault">
+				<soap:fault name="UnexpectedErrorFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+	
+		<wsdl:operation name="Update">
+			<soap:operation soapAction="Update" style="document"/>
+			<wsdl:input>
+				<soap:body parts="parameters" use="literal"/>
+				<soap:header message="rnw_v1_3:ClientInfoHeader" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="RequestErrorFault">
+				<soap:fault name="RequestErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="RequestErrorFaultDetail">
+				<soap:fault name="RequestErrorFaultDetail" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ServerErrorFault">
+				<soap:fault name="ServerErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="UnexpectedErrorFault">
+				<soap:fault name="UnexpectedErrorFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+	
+		<wsdl:operation name="Destroy">
+			<soap:operation soapAction="Destroy" style="document"/>
+			<wsdl:input>
+				<soap:body parts="parameters" use="literal"/>
+				<soap:header message="rnw_v1_3:ClientInfoHeader" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="RequestErrorFault">
+				<soap:fault name="RequestErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="RequestErrorFaultDetail">
+				<soap:fault name="RequestErrorFaultDetail" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ServerErrorFault">
+				<soap:fault name="ServerErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="UnexpectedErrorFault">
+				<soap:fault name="UnexpectedErrorFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+	
+	
+		<!--  ROQL operations  -->
+	
+		<wsdl:operation name="QueryCSV">
+			<soap:operation soapAction="QueryCSV" style="document"/>
+			<wsdl:input>
+				<soap:body parts="parameters" use="literal"/>
+				<soap:header message="rnw_v1_3:ClientInfoHeader" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="RequestErrorFault">
+				<soap:fault name="RequestErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ServerErrorFault">
+				<soap:fault name="ServerErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="UnexpectedErrorFault">
+				<soap:fault name="UnexpectedErrorFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+	
+		<wsdl:operation name="QueryObjects">
+			<soap:operation soapAction="QueryObjects" style="document"/>
+			<wsdl:input>
+				<soap:body parts="parameters" use="literal"/>
+				<soap:header message="rnw_v1_3:ClientInfoHeader" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="RequestErrorFault">
+				<soap:fault name="RequestErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ServerErrorFault">
+				<soap:fault name="ServerErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="UnexpectedErrorFault">
+				<soap:fault name="UnexpectedErrorFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+	
+	
+		<!--  RunAnalyticsReport operations  -->
+
+		<wsdl:operation name="RunAnalyticsReport">
+			<soap:operation soapAction="RunAnalyticsReport" style="document"/>
+			<wsdl:input>
+				<soap:body parts="parameters" use="literal"/>
+				<soap:header message="rnw_v1_3:ClientInfoHeader" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="RequestErrorFault">
+				<soap:fault name="RequestErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ServerErrorFault">
+				<soap:fault name="ServerErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="UnexpectedErrorFault">
+				<soap:fault name="UnexpectedErrorFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+
+	
+		<!--  Miscellaneous operations  -->
+	
+		<wsdl:operation name="ExecuteMarketingFlow">
+			<soap:operation soapAction="ExecuteMarketingFlow" style="document"/>
+			<wsdl:input>
+				<soap:body parts="parameters" use="literal"/>
+				<soap:header message="rnw_v1_3:ClientInfoHeader" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="RequestErrorFault">
+				<soap:fault name="RequestErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ServerErrorFault">
+				<soap:fault name="ServerErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="UnexpectedErrorFault">
+				<soap:fault name="UnexpectedErrorFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+	
+		<wsdl:operation name="GetFileData">
+			<soap:operation soapAction="GetFileData" style="document"/>
+			<wsdl:input>
+				<soap:body parts="parameters" use="literal"/>
+				<soap:header message="rnw_v1_3:ClientInfoHeader" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="RequestErrorFault">
+				<soap:fault name="RequestErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ServerErrorFault">
+				<soap:fault name="ServerErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="UnexpectedErrorFault">
+				<soap:fault name="UnexpectedErrorFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+	
+		<wsdl:operation name="ResetContactPassword">
+			<soap:operation soapAction="ResetContactPassword" style="document"/>
+			<wsdl:input>
+				<soap:body parts="parameters" use="literal"/>
+				<soap:header message="rnw_v1_3:ClientInfoHeader" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="RequestErrorFault">
+				<soap:fault name="RequestErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ServerErrorFault">
+				<soap:fault name="ServerErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="UnexpectedErrorFault">
+				<soap:fault name="UnexpectedErrorFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+	
+		<wsdl:operation name="SendMailingToContact">
+			<soap:operation soapAction="SendMailingToContact" style="document"/>
+			<wsdl:input>
+				<soap:body parts="parameters" use="literal"/>
+				<soap:header message="rnw_v1_3:ClientInfoHeader" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="RequestErrorFault">
+				<soap:fault name="RequestErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ServerErrorFault">
+				<soap:fault name="ServerErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="UnexpectedErrorFault">
+				<soap:fault name="UnexpectedErrorFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+
+        <wsdl:operation name="TransferSubObjects">
+            <soap:operation soapAction="TransferSubObjects" style="document"/>
+                <wsdl:input>
+                    <soap:body parts="parameters" use="literal"/>
+                    <soap:header message="rnw_v1_3:ClientInfoHeader" part="request_header" use="literal"/>
+               </wsdl:input>
+               <wsdl:output>
+                   <soap:body use="literal"/>
+               </wsdl:output>
+               <wsdl:fault name="RequestErrorFault">
+                   <soap:fault name="RequestErrorFault" use="literal"/>
+               </wsdl:fault>
+               <wsdl:fault name="ServerErrorFault">
+                   <soap:fault name="ServerErrorFault" use="literal"/>
+               </wsdl:fault>
+               <wsdl:fault name="UnexpectedErrorFault">
+                   <soap:fault name="UnexpectedErrorFault" use="literal"/>
+               </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetSubscribableObjects">
+            <soap:operation soapAction="GetSubscribableObjects" style="document"/>
+                <wsdl:input>
+                    <soap:body parts="parameters" use="literal"/>
+                    <soap:header message="rnw_v1_3:ClientInfoHeader" part="request_header" use="literal"/>
+               </wsdl:input>
+               <wsdl:output>
+                   <soap:body use="literal"/>
+               </wsdl:output>
+               <wsdl:fault name="RequestErrorFault">
+                   <soap:fault name="RequestErrorFault" use="literal"/>
+               </wsdl:fault>
+               <wsdl:fault name="ServerErrorFault">
+                   <soap:fault name="ServerErrorFault" use="literal"/>
+               </wsdl:fault>
+               <wsdl:fault name="UnexpectedErrorFault">
+                   <soap:fault name="UnexpectedErrorFault" use="literal"/>
+               </wsdl:fault>
+        </wsdl:operation>
+	
+		<!--  Batch operations  -->
+	
+		<wsdl:operation name="Batch">
+			<soap:operation soapAction="Batch" style="document"/>
+			<wsdl:input>
+				<soap:body parts="parameters" use="literal"/>
+				<soap:header message="rnw_v1_3:ClientInfoHeader" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="RequestErrorFault">
+				<soap:fault name="RequestErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="RequestErrorFaultDetail">
+				<soap:fault name="RequestErrorFaultDetail" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ServerErrorFault">
+				<soap:fault name="ServerErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="UnexpectedErrorFault">
+				<soap:fault name="UnexpectedErrorFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+
+        <!--  Conversion operations for Generic Objects  -->
+
+		<wsdl:operation name="ConvertGenericToObject">
+			<soap:operation soapAction="ConvertGenericToObject" style="document"/>
+			<wsdl:input>
+				<soap:body parts="parameters" use="literal"/>
+				<soap:header message="rnw_v1_3:ClientInfoHeader" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="RequestErrorFault">
+				<soap:fault name="RequestErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ServerErrorFault">
+				<soap:fault name="ServerErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="UnexpectedErrorFault">
+				<soap:fault name="UnexpectedErrorFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+
+		<wsdl:operation name="ConvertObjectToGeneric">
+			<soap:operation soapAction="ConvertObjectToGeneric" style="document"/>
+			<wsdl:input>
+				<soap:body parts="parameters" use="literal"/>
+				<soap:header message="rnw_v1_3:ClientInfoHeader" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="RequestErrorFault">
+				<soap:fault name="RequestErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ServerErrorFault">
+				<soap:fault name="ServerErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="UnexpectedErrorFault">
+				<soap:fault name="UnexpectedErrorFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+
+		<!--  Metadata operations  -->
+	
+		<wsdl:operation name="GetMetaData">
+			<soap:operation soapAction="GetMetaData" style="document"/>
+			<wsdl:input>
+				<soap:body parts="parameters" use="literal"/>
+				<soap:header message="rnw_v1_3:ClientInfoHeader" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="RequestErrorFault">
+				<soap:fault name="RequestErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ServerErrorFault">
+				<soap:fault name="ServerErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="UnexpectedErrorFault">
+				<soap:fault name="UnexpectedErrorFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+	
+		<wsdl:operation name="GetMetaDataForClass">
+			<soap:operation soapAction="GetMetaDataForClass" style="document"/>
+			<wsdl:input>
+				<soap:body parts="parameters" use="literal"/>
+				<soap:header message="rnw_v1_3:ClientInfoHeader" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="RequestErrorFault">
+				<soap:fault name="RequestErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ServerErrorFault">
+				<soap:fault name="ServerErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="UnexpectedErrorFault">
+				<soap:fault name="UnexpectedErrorFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+	
+		<wsdl:operation name="GetMetaDataForOperation">
+			<soap:operation soapAction="GetMetaDataForOperation" style="document"/>
+			<wsdl:input>
+				<soap:body parts="parameters" use="literal"/>
+				<soap:header message="rnw_v1_3:ClientInfoHeader" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="RequestErrorFault">
+				<soap:fault name="RequestErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ServerErrorFault">
+				<soap:fault name="ServerErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="UnexpectedErrorFault">
+				<soap:fault name="UnexpectedErrorFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+
+		<wsdl:operation name="GetMetaDataLastChangeTime">
+			<soap:operation soapAction="GetMetaDataLastChangeTime" style="document"/>
+			<wsdl:input>
+				<soap:body parts="parameters" use="literal"/>
+				<soap:header message="rnw_v1_3:ClientInfoHeader" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="RequestErrorFault">
+				<soap:fault name="RequestErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ServerErrorFault">
+				<soap:fault name="ServerErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="UnexpectedErrorFault">
+				<soap:fault name="UnexpectedErrorFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+	
+		<wsdl:operation name="GetPrimaryClassNames">
+			<soap:operation soapAction="GetPrimaryClassNames" style="document"/>
+			<wsdl:input>
+				<soap:body parts="parameters" use="literal"/>
+				<soap:header message="rnw_v1_3:ClientInfoHeader" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="RequestErrorFault">
+				<soap:fault name="RequestErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ServerErrorFault">
+				<soap:fault name="ServerErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="UnexpectedErrorFault">
+				<soap:fault name="UnexpectedErrorFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+
+		<wsdl:operation name="GetValuesForNamedID">
+			<soap:operation soapAction="GetValuesForNamedID" style="document"/>
+			<wsdl:input>
+				<soap:body parts="parameters" use="literal"/>
+				<soap:header message="rnw_v1_3:ClientInfoHeader" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="RequestErrorFault">
+				<soap:fault name="RequestErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ServerErrorFault">
+				<soap:fault name="ServerErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="UnexpectedErrorFault">
+				<soap:fault name="UnexpectedErrorFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+	
+		<wsdl:operation name="GetValuesForNamedIDHierarchy">
+			<soap:operation soapAction="GetValuesForNamedIDHierarchy" style="document"/>
+			<wsdl:input>
+				<soap:body parts="parameters" use="literal"/>
+				<soap:header message="rnw_v1_3:ClientInfoHeader" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="RequestErrorFault">
+				<soap:fault name="RequestErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ServerErrorFault">
+				<soap:fault name="ServerErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="UnexpectedErrorFault">
+				<soap:fault name="UnexpectedErrorFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+	</wsdl:binding>
+
+
+	<wsdl:portType name="RightNowFedAuthSyncPort">
+
+    
+
+		<!--  Basic CRUD operations, plus batching  -->
+
+		<wsdl:operation name="Create">
+			<wsdl:input message="rnw_v1_3:CreateRequest"/>
+			<wsdl:output message="rnw_v1_3:CreateResponse"/>
+			<wsdl:fault message="rnw_v1_3:RequestErrorFault" name="RequestErrorFault"/>
+			<wsdl:fault message="rnw_v1_3:RequestErrorFaultDetail" name="RequestErrorFaultDetail"/>
+			<wsdl:fault message="rnw_v1_3:ServerErrorFault" name="ServerErrorFault"/>
+			<wsdl:fault message="rnw_v1_3:UnexpectedErrorFault" name="UnexpectedErrorFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="Get">
+			<wsdl:input message="rnw_v1_3:GetRequest"/>
+			<wsdl:output message="rnw_v1_3:GetResponse"/>
+			<wsdl:fault message="rnw_v1_3:RequestErrorFault" name="RequestErrorFault"/>
+			<wsdl:fault message="rnw_v1_3:RequestErrorFaultDetail" name="RequestErrorFaultDetail"/>
+			<wsdl:fault message="rnw_v1_3:ServerErrorFault" name="ServerErrorFault"/>
+			<wsdl:fault message="rnw_v1_3:UnexpectedErrorFault" name="UnexpectedErrorFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="Update">
+			<wsdl:input message="rnw_v1_3:UpdateRequest"/>
+			<wsdl:output message="rnw_v1_3:UpdateResponse"/>
+			<wsdl:fault message="rnw_v1_3:RequestErrorFault" name="RequestErrorFault"/>
+			<wsdl:fault message="rnw_v1_3:RequestErrorFaultDetail" name="RequestErrorFaultDetail"/>
+			<wsdl:fault message="rnw_v1_3:ServerErrorFault" name="ServerErrorFault"/>
+			<wsdl:fault message="rnw_v1_3:UnexpectedErrorFault" name="UnexpectedErrorFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="Destroy">
+			<wsdl:input message="rnw_v1_3:DestroyRequest"/>
+			<wsdl:output message="rnw_v1_3:DestroyResponse"/>
+			<wsdl:fault message="rnw_v1_3:RequestErrorFault" name="RequestErrorFault"/>
+			<wsdl:fault message="rnw_v1_3:RequestErrorFaultDetail" name="RequestErrorFaultDetail"/>
+			<wsdl:fault message="rnw_v1_3:ServerErrorFault" name="ServerErrorFault"/>
+			<wsdl:fault message="rnw_v1_3:UnexpectedErrorFault" name="UnexpectedErrorFault"/>
+		</wsdl:operation>
+
+
+		<!--  ROQL operations  -->
+
+		<wsdl:operation name="QueryObjects">
+			<wsdl:input message="rnw_v1_3:QueryObjectsRequest"/>
+			<wsdl:output message="rnw_v1_3:QueryObjectsResponse"/>
+			<wsdl:fault message="rnw_v1_3:RequestErrorFault" name="RequestErrorFault"/>
+			<wsdl:fault message="rnw_v1_3:ServerErrorFault" name="ServerErrorFault"/>
+			<wsdl:fault message="rnw_v1_3:UnexpectedErrorFault" name="UnexpectedErrorFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="QueryCSV">
+			<wsdl:input message="rnw_v1_3:QueryCSVRequest"/>
+			<wsdl:output message="rnw_v1_3:QueryCSVResponse"/>
+			<wsdl:fault message="rnw_v1_3:RequestErrorFault" name="RequestErrorFault"/>
+			<wsdl:fault message="rnw_v1_3:ServerErrorFault" name="ServerErrorFault"/>
+			<wsdl:fault message="rnw_v1_3:UnexpectedErrorFault" name="UnexpectedErrorFault"/>
+		</wsdl:operation>
+
+
+		<!--  RunAnalyticsReport operations  -->
+
+		<wsdl:operation name="RunAnalyticsReport">
+			<wsdl:input message="rnw_v1_3:RunAnalyticsReportRequest"/>
+			<wsdl:output message="rnw_v1_3:RunAnalyticsReportResponse"/>
+			<wsdl:fault message="rnw_v1_3:RequestErrorFault" name="RequestErrorFault"/>
+			<wsdl:fault message="rnw_v1_3:ServerErrorFault" name="ServerErrorFault"/>
+			<wsdl:fault message="rnw_v1_3:UnexpectedErrorFault" name="UnexpectedErrorFault"/>
+		</wsdl:operation>
+
+
+		<!--  Miscellaneous operations  -->
+
+		<wsdl:operation name="ExecuteMarketingFlow">
+			<wsdl:input message="rnw_v1_3:ExecuteMarketingFlowRequest"></wsdl:input>
+			<wsdl:output message="rnw_v1_3:ExecuteMarketingFlowResponse"></wsdl:output>
+			<wsdl:fault message="rnw_v1_3:RequestErrorFault" name="RequestErrorFault"/>
+			<wsdl:fault message="rnw_v1_3:ServerErrorFault" name="ServerErrorFault"/>
+			<wsdl:fault message="rnw_v1_3:UnexpectedErrorFault" name="UnexpectedErrorFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetFileData">
+			<wsdl:input message="rnw_v1_3:GetFileDataRequest"></wsdl:input>
+			<wsdl:output message="rnw_v1_3:GetFileDataResponse"></wsdl:output>
+			<wsdl:fault message="rnw_v1_3:RequestErrorFault" name="RequestErrorFault"/>
+			<wsdl:fault message="rnw_v1_3:ServerErrorFault" name="ServerErrorFault"/>
+			<wsdl:fault message="rnw_v1_3:UnexpectedErrorFault" name="UnexpectedErrorFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="ResetContactPassword">
+			<wsdl:input message="rnw_v1_3:ResetContactPasswordRequest"></wsdl:input>
+			<wsdl:output message="rnw_v1_3:ResetContactPasswordResponse"></wsdl:output>
+			<wsdl:fault message="rnw_v1_3:RequestErrorFault" name="RequestErrorFault"/>
+			<wsdl:fault message="rnw_v1_3:ServerErrorFault" name="ServerErrorFault"/>
+			<wsdl:fault message="rnw_v1_3:UnexpectedErrorFault" name="UnexpectedErrorFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="SendMailingToContact">
+			<wsdl:input message="rnw_v1_3:SendMailingToContactRequest"></wsdl:input>
+			<wsdl:output message="rnw_v1_3:SendMailingToContactResponse"></wsdl:output>
+			<wsdl:fault message="rnw_v1_3:RequestErrorFault" name="RequestErrorFault"/>
+			<wsdl:fault message="rnw_v1_3:ServerErrorFault" name="ServerErrorFault"/>
+			<wsdl:fault message="rnw_v1_3:UnexpectedErrorFault" name="UnexpectedErrorFault"/>
+		</wsdl:operation>
+        <wsdl:operation name="TransferSubObjects">
+            <wsdl:input message="rnw_v1_3:TransferSubObjectsRequest"/>
+            <wsdl:output message="rnw_v1_3:TransferSubObjectsResponse"/>
+            <wsdl:fault message="rnw_v1_3:RequestErrorFault" name="RequestErrorFault"/>
+            <wsdl:fault message="rnw_v1_3:ServerErrorFault" name="ServerErrorFault"/>
+            <wsdl:fault message="rnw_v1_3:UnexpectedErrorFault" name="UnexpectedErrorFault"/>
+        </wsdl:operation>
+
+		<!--  Batch operations  -->
+
+		<wsdl:operation name="Batch">
+			<wsdl:input message="rnw_v1_3:BatchRequest"/>
+			<wsdl:output message="rnw_v1_3:BatchResponse"/>
+			<wsdl:fault message="rnw_v1_3:RequestErrorFault" name="RequestErrorFault"/>
+			<wsdl:fault message="rnw_v1_3:ServerErrorFault" name="ServerErrorFault"/>
+			<wsdl:fault message="rnw_v1_3:UnexpectedErrorFault" name="UnexpectedErrorFault"/>
+		</wsdl:operation>
+
+
+
+		<!--  Metadata operations  -->
+
+		<wsdl:operation name="GetMetaData">
+			<wsdl:input message="rnw_v1_3:GetMetaDataRequest"/>
+			<wsdl:output message="rnw_v1_3:GetMetaDataResponse"/>
+			<wsdl:fault name="RequestErrorFault" message="rnw_v1_3:RequestErrorFault"/>
+			<wsdl:fault name="ServerErrorFault" message="rnw_v1_3:ServerErrorFault"/>
+			<wsdl:fault name="UnexpectedErrorFault" message="rnw_v1_3:UnexpectedErrorFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetMetaDataForClass">
+			<wsdl:input message="rnw_v1_3:GetMetaDataForClassRequest"/>
+			<wsdl:output message="rnw_v1_3:GetMetaDataForClassResponse"/>
+			<wsdl:fault name="RequestErrorFault" message="rnw_v1_3:RequestErrorFault"/>
+			<wsdl:fault name="ServerErrorFault" message="rnw_v1_3:ServerErrorFault"/>
+			<wsdl:fault name="UnexpectedErrorFault" message="rnw_v1_3:UnexpectedErrorFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetMetaDataForOperation">
+			<wsdl:input message="rnw_v1_3:GetMetaDataForOperationRequest"/>
+			<wsdl:output message="rnw_v1_3:GetMetaDataForOperationResponse"/>
+			<wsdl:fault name="RequestErrorFault" message="rnw_v1_3:RequestErrorFault"/>
+			<wsdl:fault name="ServerErrorFault" message="rnw_v1_3:ServerErrorFault"/>
+			<wsdl:fault name="UnexpectedErrorFault" message="rnw_v1_3:UnexpectedErrorFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetMetaDataLastChangeTime">
+			<wsdl:input message="rnw_v1_3:GetMetaDataLastChangeTimeRequest"/>
+			<wsdl:output message="rnw_v1_3:GetMetaDataLastChangeTimeResponse"/>
+			<wsdl:fault name="RequestErrorFault" message="rnw_v1_3:RequestErrorFault"/>
+			<wsdl:fault name="ServerErrorFault" message="rnw_v1_3:ServerErrorFault"/>
+			<wsdl:fault name="UnexpectedErrorFault" message="rnw_v1_3:UnexpectedErrorFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetPrimaryClassNames">
+			<wsdl:input message="rnw_v1_3:GetPrimaryClassNamesRequest"/>
+			<wsdl:output message="rnw_v1_3:GetPrimaryClassNamesResponse"/>
+			<wsdl:fault name="RequestErrorFault" message="rnw_v1_3:RequestErrorFault"/>
+			<wsdl:fault name="ServerErrorFault" message="rnw_v1_3:ServerErrorFault"/>
+			<wsdl:fault name="UnexpectedErrorFault" message="rnw_v1_3:UnexpectedErrorFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetValuesForNamedID">
+			<wsdl:input message="rnw_v1_3:GetValuesForNamedIDRequest"/>
+			<wsdl:output message="rnw_v1_3:GetValuesForNamedIDResponse"/>
+			<wsdl:fault name="RequestErrorFault" message="rnw_v1_3:RequestErrorFault"/>
+			<wsdl:fault name="ServerErrorFault" message="rnw_v1_3:ServerErrorFault"/>
+			<wsdl:fault name="UnexpectedErrorFault" message="rnw_v1_3:UnexpectedErrorFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetValuesForNamedIDHierarchy">
+			<wsdl:input message="rnw_v1_3:GetValuesForNamedIDHierarchyRequest"/>
+			<wsdl:output message="rnw_v1_3:GetValuesForNamedIDHierarchyResponse"/>
+			<wsdl:fault name="RequestErrorFault" message="rnw_v1_3:RequestErrorFault"/>
+			<wsdl:fault name="ServerErrorFault" message="rnw_v1_3:ServerErrorFault"/>
+			<wsdl:fault name="UnexpectedErrorFault" message="rnw_v1_3:UnexpectedErrorFault"/>
+		</wsdl:operation>
+
+        <!--  Conversion operations for Generic Objects  -->
+
+		<wsdl:operation name="ConvertGenericToObject">
+			<wsdl:input message="rnw_v1_3:ConvertGenericToObjectRequest"/>
+			<wsdl:output message="rnw_v1_3:ConvertGenericToObjectResponse"/>
+			<wsdl:fault message="rnw_v1_3:RequestErrorFault" name="RequestErrorFault"/>
+			<wsdl:fault message="rnw_v1_3:ServerErrorFault" name="ServerErrorFault"/>
+			<wsdl:fault message="rnw_v1_3:UnexpectedErrorFault" name="UnexpectedErrorFault"/>
+		</wsdl:operation>
+
+		<wsdl:operation name="ConvertObjectToGeneric">
+			<wsdl:input message="rnw_v1_3:ConvertObjectToGenericRequest"/>
+			<wsdl:output message="rnw_v1_3:ConvertObjectToGenericResponse"/>
+			<wsdl:fault message="rnw_v1_3:RequestErrorFault" name="RequestErrorFault"/>
+			<wsdl:fault message="rnw_v1_3:ServerErrorFault" name="ServerErrorFault"/>
+			<wsdl:fault message="rnw_v1_3:UnexpectedErrorFault" name="UnexpectedErrorFault"/>
+		</wsdl:operation>
+
+		<wsdl:operation name="GetSubscribableObjects">
+			<wsdl:input message="rnw_v1_3:GetSubscribableObjectsRequest"/>
+			<wsdl:output message="rnw_v1_3:GetSubscribableObjectsResponse"/>
+			<wsdl:fault name="RequestErrorFault" message="rnw_v1_3:RequestErrorFault"/>
+			<wsdl:fault name="ServerErrorFault" message="rnw_v1_3:ServerErrorFault"/>
+			<wsdl:fault name="UnexpectedErrorFault" message="rnw_v1_3:UnexpectedErrorFault"/>
+		</wsdl:operation>
+
+	</wsdl:portType>
+
+
+	<wsdl:binding name="RightNowFedAuthSyncBinding" type="rnw_v1_3:RightNowFedAuthSyncPort">
+		<wsp:PolicyReference URI="#FedAuthSyncPolicy"
+			xmlns:wsp="http://www.w3.org/ns/ws-policy"/>
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http"/>
+
+	
+		<!--  Basic CRUD operations, plus batching  -->
+	
+		<wsdl:operation name="Create">
+			<soap:operation soapAction="Create" style="document"/>
+			<wsdl:input>
+				<soap:body parts="parameters" use="literal"/>
+				<soap:header message="rnw_v1_3:ClientInfoHeader" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="RequestErrorFault">
+				<soap:fault name="RequestErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="RequestErrorFaultDetail">
+				<soap:fault name="RequestErrorFaultDetail" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ServerErrorFault">
+				<soap:fault name="ServerErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="UnexpectedErrorFault">
+				<soap:fault name="UnexpectedErrorFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+	
+		<wsdl:operation name="Get">
+			<soap:operation soapAction="Get" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+				<soap:header message="rnw_v1_3:ClientInfoHeader" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="RequestErrorFault">
+				<soap:fault name="RequestErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="RequestErrorFaultDetail">
+				<soap:fault name="RequestErrorFaultDetail" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ServerErrorFault">
+				<soap:fault name="ServerErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="UnexpectedErrorFault">
+				<soap:fault name="UnexpectedErrorFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+	
+		<wsdl:operation name="Update">
+			<soap:operation soapAction="Update" style="document"/>
+			<wsdl:input>
+				<soap:body parts="parameters" use="literal"/>
+				<soap:header message="rnw_v1_3:ClientInfoHeader" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="RequestErrorFault">
+				<soap:fault name="RequestErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="RequestErrorFaultDetail">
+				<soap:fault name="RequestErrorFaultDetail" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ServerErrorFault">
+				<soap:fault name="ServerErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="UnexpectedErrorFault">
+				<soap:fault name="UnexpectedErrorFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+	
+		<wsdl:operation name="Destroy">
+			<soap:operation soapAction="Destroy" style="document"/>
+			<wsdl:input>
+				<soap:body parts="parameters" use="literal"/>
+				<soap:header message="rnw_v1_3:ClientInfoHeader" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="RequestErrorFault">
+				<soap:fault name="RequestErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="RequestErrorFaultDetail">
+				<soap:fault name="RequestErrorFaultDetail" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ServerErrorFault">
+				<soap:fault name="ServerErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="UnexpectedErrorFault">
+				<soap:fault name="UnexpectedErrorFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+	
+	
+		<!--  ROQL operations  -->
+	
+		<wsdl:operation name="QueryCSV">
+			<soap:operation soapAction="QueryCSV" style="document"/>
+			<wsdl:input>
+				<soap:body parts="parameters" use="literal"/>
+				<soap:header message="rnw_v1_3:ClientInfoHeader" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="RequestErrorFault">
+				<soap:fault name="RequestErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ServerErrorFault">
+				<soap:fault name="ServerErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="UnexpectedErrorFault">
+				<soap:fault name="UnexpectedErrorFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+	
+		<wsdl:operation name="QueryObjects">
+			<soap:operation soapAction="QueryObjects" style="document"/>
+			<wsdl:input>
+				<soap:body parts="parameters" use="literal"/>
+				<soap:header message="rnw_v1_3:ClientInfoHeader" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="RequestErrorFault">
+				<soap:fault name="RequestErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ServerErrorFault">
+				<soap:fault name="ServerErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="UnexpectedErrorFault">
+				<soap:fault name="UnexpectedErrorFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+	
+	
+		<!--  RunAnalyticsReport operations  -->
+
+		<wsdl:operation name="RunAnalyticsReport">
+			<soap:operation soapAction="RunAnalyticsReport" style="document"/>
+			<wsdl:input>
+				<soap:body parts="parameters" use="literal"/>
+				<soap:header message="rnw_v1_3:ClientInfoHeader" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="RequestErrorFault">
+				<soap:fault name="RequestErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ServerErrorFault">
+				<soap:fault name="ServerErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="UnexpectedErrorFault">
+				<soap:fault name="UnexpectedErrorFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+
+	
+		<!--  Miscellaneous operations  -->
+	
+		<wsdl:operation name="ExecuteMarketingFlow">
+			<soap:operation soapAction="ExecuteMarketingFlow" style="document"/>
+			<wsdl:input>
+				<soap:body parts="parameters" use="literal"/>
+				<soap:header message="rnw_v1_3:ClientInfoHeader" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="RequestErrorFault">
+				<soap:fault name="RequestErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ServerErrorFault">
+				<soap:fault name="ServerErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="UnexpectedErrorFault">
+				<soap:fault name="UnexpectedErrorFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+	
+		<wsdl:operation name="GetFileData">
+			<soap:operation soapAction="GetFileData" style="document"/>
+			<wsdl:input>
+				<soap:body parts="parameters" use="literal"/>
+				<soap:header message="rnw_v1_3:ClientInfoHeader" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="RequestErrorFault">
+				<soap:fault name="RequestErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ServerErrorFault">
+				<soap:fault name="ServerErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="UnexpectedErrorFault">
+				<soap:fault name="UnexpectedErrorFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+	
+		<wsdl:operation name="ResetContactPassword">
+			<soap:operation soapAction="ResetContactPassword" style="document"/>
+			<wsdl:input>
+				<soap:body parts="parameters" use="literal"/>
+				<soap:header message="rnw_v1_3:ClientInfoHeader" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="RequestErrorFault">
+				<soap:fault name="RequestErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ServerErrorFault">
+				<soap:fault name="ServerErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="UnexpectedErrorFault">
+				<soap:fault name="UnexpectedErrorFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+	
+		<wsdl:operation name="SendMailingToContact">
+			<soap:operation soapAction="SendMailingToContact" style="document"/>
+			<wsdl:input>
+				<soap:body parts="parameters" use="literal"/>
+				<soap:header message="rnw_v1_3:ClientInfoHeader" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="RequestErrorFault">
+				<soap:fault name="RequestErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ServerErrorFault">
+				<soap:fault name="ServerErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="UnexpectedErrorFault">
+				<soap:fault name="UnexpectedErrorFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+
+        <wsdl:operation name="TransferSubObjects">
+            <soap:operation soapAction="TransferSubObjects" style="document"/>
+                <wsdl:input>
+                    <soap:body parts="parameters" use="literal"/>
+                    <soap:header message="rnw_v1_3:ClientInfoHeader" part="request_header" use="literal"/>
+               </wsdl:input>
+               <wsdl:output>
+                   <soap:body use="literal"/>
+               </wsdl:output>
+               <wsdl:fault name="RequestErrorFault">
+                   <soap:fault name="RequestErrorFault" use="literal"/>
+               </wsdl:fault>
+               <wsdl:fault name="ServerErrorFault">
+                   <soap:fault name="ServerErrorFault" use="literal"/>
+               </wsdl:fault>
+               <wsdl:fault name="UnexpectedErrorFault">
+                   <soap:fault name="UnexpectedErrorFault" use="literal"/>
+               </wsdl:fault>
+        </wsdl:operation>
+	
+		<!--  Batch operations  -->
+	
+		<wsdl:operation name="Batch">
+			<soap:operation soapAction="Batch" style="document"/>
+			<wsdl:input>
+				<soap:body parts="parameters" use="literal"/>
+				<soap:header message="rnw_v1_3:ClientInfoHeader" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="RequestErrorFault">
+				<soap:fault name="RequestErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ServerErrorFault">
+				<soap:fault name="ServerErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="UnexpectedErrorFault">
+				<soap:fault name="UnexpectedErrorFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+
+        <!--  Conversion operations for Generic Objects  -->
+
+		<wsdl:operation name="ConvertGenericToObject">
+			<soap:operation soapAction="ConvertGenericToObject" style="document"/>
+			<wsdl:input>
+				<soap:body parts="parameters" use="literal"/>
+				<soap:header message="rnw_v1_3:ClientInfoHeader" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="RequestErrorFault">
+				<soap:fault name="RequestErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ServerErrorFault">
+				<soap:fault name="ServerErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="UnexpectedErrorFault">
+				<soap:fault name="UnexpectedErrorFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+
+		<wsdl:operation name="ConvertObjectToGeneric">
+			<soap:operation soapAction="ConvertObjectToGeneric" style="document"/>
+			<wsdl:input>
+				<soap:body parts="parameters" use="literal"/>
+				<soap:header message="rnw_v1_3:ClientInfoHeader" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="RequestErrorFault">
+				<soap:fault name="RequestErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ServerErrorFault">
+				<soap:fault name="ServerErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="UnexpectedErrorFault">
+				<soap:fault name="UnexpectedErrorFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+
+		<!--  Metadata operations  -->
+	
+		<wsdl:operation name="GetMetaData">
+			<soap:operation soapAction="GetMetaData" style="document"/>
+			<wsdl:input>
+				<soap:body parts="parameters" use="literal"/>
+				<soap:header message="rnw_v1_3:ClientInfoHeader" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="RequestErrorFault">
+				<soap:fault name="RequestErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ServerErrorFault">
+				<soap:fault name="ServerErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="UnexpectedErrorFault">
+				<soap:fault name="UnexpectedErrorFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+	
+		<wsdl:operation name="GetMetaDataForClass">
+			<soap:operation soapAction="GetMetaDataForClass" style="document"/>
+			<wsdl:input>
+				<soap:body parts="parameters" use="literal"/>
+				<soap:header message="rnw_v1_3:ClientInfoHeader" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="RequestErrorFault">
+				<soap:fault name="RequestErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ServerErrorFault">
+				<soap:fault name="ServerErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="UnexpectedErrorFault">
+				<soap:fault name="UnexpectedErrorFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+	
+		<wsdl:operation name="GetMetaDataForOperation">
+			<soap:operation soapAction="GetMetaDataForOperation" style="document"/>
+			<wsdl:input>
+				<soap:body parts="parameters" use="literal"/>
+				<soap:header message="rnw_v1_3:ClientInfoHeader" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="RequestErrorFault">
+				<soap:fault name="RequestErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ServerErrorFault">
+				<soap:fault name="ServerErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="UnexpectedErrorFault">
+				<soap:fault name="UnexpectedErrorFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+	
+		<wsdl:operation name="GetMetaDataLastChangeTime">
+			<soap:operation soapAction="GetMetaDataLastChangeTime" style="document"/>
+			<wsdl:input>
+				<soap:body parts="parameters" use="literal"/>
+				<soap:header message="rnw_v1_3:ClientInfoHeader" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="RequestErrorFault">
+				<soap:fault name="RequestErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ServerErrorFault">
+				<soap:fault name="ServerErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="UnexpectedErrorFault">
+				<soap:fault name="UnexpectedErrorFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+	
+		<wsdl:operation name="GetPrimaryClassNames">
+			<soap:operation soapAction="GetPrimaryClassNames" style="document"/>
+			<wsdl:input>
+				<soap:body parts="parameters" use="literal"/>
+				<soap:header message="rnw_v1_3:ClientInfoHeader" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="RequestErrorFault">
+				<soap:fault name="RequestErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ServerErrorFault">
+				<soap:fault name="ServerErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="UnexpectedErrorFault">
+				<soap:fault name="UnexpectedErrorFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+
+		<wsdl:operation name="GetValuesForNamedID">
+			<soap:operation soapAction="GetValuesForNamedID" style="document"/>
+			<wsdl:input>
+				<soap:body parts="parameters" use="literal"/>
+				<soap:header message="rnw_v1_3:ClientInfoHeader" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="RequestErrorFault">
+				<soap:fault name="RequestErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ServerErrorFault">
+				<soap:fault name="ServerErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="UnexpectedErrorFault">
+				<soap:fault name="UnexpectedErrorFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+	
+		<wsdl:operation name="GetValuesForNamedIDHierarchy">
+			<soap:operation soapAction="GetValuesForNamedIDHierarchy" style="document"/>
+			<wsdl:input>
+				<soap:body parts="parameters" use="literal"/>
+				<soap:header message="rnw_v1_3:ClientInfoHeader" part="request_header" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="RequestErrorFault">
+				<soap:fault name="RequestErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ServerErrorFault">
+				<soap:fault name="ServerErrorFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="UnexpectedErrorFault">
+				<soap:fault name="UnexpectedErrorFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+
+        <wsdl:operation name="GetSubscribableObjects">
+            <soap:operation soapAction="GetSubscribableObjects" style="document"/>
+                <wsdl:input>
+                    <soap:body parts="parameters" use="literal"/>
+                    <soap:header message="rnw_v1_3:ClientInfoHeader" part="request_header" use="literal"/>
+               </wsdl:input>
+               <wsdl:output>
+                   <soap:body use="literal"/>
+               </wsdl:output>
+               <wsdl:fault name="RequestErrorFault">
+                   <soap:fault name="RequestErrorFault" use="literal"/>
+               </wsdl:fault>
+               <wsdl:fault name="ServerErrorFault">
+                   <soap:fault name="ServerErrorFault" use="literal"/>
+               </wsdl:fault>
+               <wsdl:fault name="UnexpectedErrorFault">
+                   <soap:fault name="UnexpectedErrorFault" use="literal"/>
+               </wsdl:fault>
+        </wsdl:operation>
+        		
+	</wsdl:binding>
+
+    <wsdl:service name="RightNowSyncService">
+        <wsdl:port name="RightNowSyncPort" binding="rnw_v1_3:RightNowSyncBinding">
+            <soap:address location="https://klau01-16800-sql-204h.dv.lan/cgi-bin/klau01_16800_sql_204h.cfg/services/soap"/>
+        </wsdl:port>
+        <wsdl:port name="RightNowFedAuthSyncPort" binding="rnw_v1_3:RightNowFedAuthSyncBinding">
+            <soap:address location="https://klau01-16800-sql-204h.dv.lan/cgi-bin/klau01_16800_sql_204h.cfg/services/soap"/>
+        </wsdl:port>
+    </wsdl:service>
+
+</wsdl:definitions>

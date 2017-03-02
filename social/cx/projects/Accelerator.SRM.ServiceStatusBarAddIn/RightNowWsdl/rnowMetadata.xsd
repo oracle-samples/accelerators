@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="urn:metadata.ws.rightnow.com/v1_3"
+		xmlns:xs="http://www.w3.org/2001/XMLSchema"
+		xmlns="urn:metadata.ws.rightnow.com/v1_3"
+		xmlns:rng_v1_3="urn:generic.ws.rightnow.com/v1_3"
+		xmlns:rna_v1_3="urn:metadata.ws.rightnow.com/v1_3"
+		elementFormDefault="qualified" version="1.0">
+	<xs:import namespace="urn:generic.ws.rightnow.com/v1_3" schemaLocation="C:\accelerator\social\cx\AcceleratorSRMSolution\RightNowWsdl\rnowGeneric.xsd"/>
+	<xs:element name="MetaDataAttribute" type="MetaDataAttribute"/>
+	<xs:complexType name="MetaDataAttribute">
+		<xs:sequence>
+			<xs:element name="DataType" type="rng_v1_3:DataTypeEnum" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="DataTypeName" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="MetaDataLink" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="InputMask" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="IsDeprecated" type="xs:boolean" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="IsEnumerable" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Description" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="Label" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="MaxBytes" type="xs:long" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="MaxDepth" type="xs:int" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="MaxLength" type="xs:long" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="MaxValue" type="xs:long" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="MinLength" type="xs:long" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="MinValue" type="xs:long" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="Nullable" type="xs:boolean" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="PasswordExpirationInterval" type="xs:int" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="PasswordGracePeriod" type="xs:int" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="PasswordMaxOccurrence" type="xs:int" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="PasswordMaxOldPasswords" type="xs:int" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="PasswordMaxRepetitions" type="xs:int" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="PasswordMinLowerCase" type="xs:int" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="PasswordMinNumericSpecial" type="xs:int" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="PasswordMinSpecial" type="xs:int" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="PasswordMinUpperCase" type="xs:int" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="PasswordWarningPeriod" type="xs:int" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Pattern" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="UsageOnCreate" type="MetaDataUsageEnum" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="UsageOnDestroy" type="MetaDataUsageEnum" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="UsageOnGet" type="MetaDataUsageEnum" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="UsageOnUpdate" type="MetaDataUsageEnum" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="UsageType" type="UsageTypeEnum" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="UsedAsName" type="xs:boolean" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="MetaDataAttributeList" type="MetaDataAttributeList"/>
+	<xs:complexType name="MetaDataAttributeList">
+		<xs:sequence>
+			<xs:element name="MetaDataAttributeList" type="MetaDataAttribute" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="MetaDataAttributeUsage" type="MetaDataAttributeUsage"/>
+	<xs:complexType name="MetaDataAttributeUsage">
+		<xs:sequence>
+			<xs:element name="DataType" type="rng_v1_3:DataTypeEnum" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="Path" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="Usage" type="MetaDataUsageEnum" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="MetaDataAttributeUsageList" type="MetaDataAttributeUsageList"/>
+	<xs:complexType name="MetaDataAttributeUsageList">
+		<xs:sequence>
+			<xs:element name="MetaDataAttributeUsageList" type="MetaDataAttributeUsage" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="MetaDataCardinalityEnum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="ZERO_OR_ONE"/>
+			<xs:enumeration value="ZERO_OR_MORE"/>
+			<xs:enumeration value="ONE"/>
+			<xs:enumeration value="ONE_OR_MORE"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="MetaDataClass" type="MetaDataClass"/>
+	<xs:complexType name="MetaDataClass">
+		<xs:sequence>
+			<xs:element name="Attributes" type="MetaDataAttributeList" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="CanCreate" type="xs:boolean" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="CanDestroy" type="xs:boolean" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="CanGet" type="xs:boolean" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="CanUpdate" type="xs:boolean" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="DerivedFrom" type="rng_v1_3:RNObjectType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Description" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="IsMenu" type="xs:boolean" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="Label" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="MetaDataLink" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="Name" type="rng_v1_3:RNObjectType" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="Relationships" type="MetaDataRelationship" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="SupportedEvents" type="SubscriptionEvents" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="MetaDataClassOperation" type="MetaDataClassOperation"/>
+	<xs:complexType name="MetaDataClassOperation">
+		<xs:sequence>
+			<xs:element name="Name" type="rng_v1_3:RNObjectType" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="Operations" type="MetaDataOperationList" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="MetaDataKeyTypeEnum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="NONE"/>
+			<xs:enumeration value="PRIMARY"/>
+			<xs:enumeration value="PRIMARY_COMPOSITE"/>
+			<xs:enumeration value="FOREIGN_AGGREGATION"/>
+			<xs:enumeration value="FOREIGN_COMPOSITION"/>
+			<xs:enumeration value="FOREIGN_RELATION"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="MetaDataNavigabilityEnum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="INCOMING"/>
+			<xs:enumeration value="OUTGOING"/>
+			<xs:enumeration value="BIDIRECTIONAL"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="MetaDataOperation" type="MetaDataOperation"/>
+	<xs:complexType name="MetaDataOperation">
+		<xs:sequence>
+			<xs:element name="AttributeUsage" type="MetaDataAttributeUsageList" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="MetaDataOperationList" type="MetaDataOperationList"/>
+	<xs:complexType name="MetaDataOperationList">
+		<xs:sequence>
+			<xs:element name="MetaDataOperationList" type="MetaDataOperation" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="MetaDataRelationship" type="MetaDataRelationship"/>
+	<xs:complexType name="MetaDataRelationship">
+		<xs:sequence>
+			<xs:element name="MyCardinality" type="MetaDataCardinalityEnum" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="MyKeyAttributes" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="MyKeyType" type="MetaDataKeyTypeEnum" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="Name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="Navigability" type="MetaDataNavigabilityEnum" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="OtherClassCardinality" type="MetaDataCardinalityEnum" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="OtherClassKeyAttributes" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="OtherClassKeyType" type="MetaDataKeyTypeEnum" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="OtherClassName" type="rng_v1_3:RNObjectType" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="MetaDataUsageEnum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="NOT_ALLOWED"/>
+			<xs:enumeration value="ALLOWED"/>
+			<xs:enumeration value="IGNORED"/>
+			<xs:enumeration value="REQUIRED"/>
+			<xs:enumeration value="SPECIFIED"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="SubscriptionEvents" type="SubscriptionEvents"/>
+	<xs:complexType name="SubscriptionEvents">
+		<xs:sequence>
+			<xs:element name="Create" type="xs:boolean" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="Update" type="xs:boolean" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="Destroy" type="xs:boolean" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="UsageTypeEnum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="USAGE_EMAIL_ADDRESS"/>
+			<xs:enumeration value="USAGE_URI"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="urn:generic.ws.rightnow.com/v1_3"
+		xmlns:xs="http://www.w3.org/2001/XMLSchema"
+		xmlns="urn:generic.ws.rightnow.com/v1_3"
+		xmlns:rnb_v1_3="urn:base.ws.rightnow.com/v1_3"
+		xmlns:rng_v1_3="urn:generic.ws.rightnow.com/v1_3"
+		elementFormDefault="qualified" version="1.0">
+	<xs:import namespace="urn:base.ws.rightnow.com/v1_3" schemaLocation="C:\accelerator\social\cx\AcceleratorSRMSolution\RightNowWsdl\rnowBase.xsd"/>
+	<xs:simpleType name="DataTypeEnum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="BASE64_BINARY"/>
+			<xs:enumeration value="BOOLEAN"/>
+			<xs:enumeration value="BOOLEAN_LIST"/>
+			<xs:enumeration value="DATE"/>
+			<xs:enumeration value="DATE_LIST"/>
+			<xs:enumeration value="DATETIME"/>
+			<xs:enumeration value="DATETIME_LIST"/>
+			<xs:enumeration value="DECIMAL"/>
+			<xs:enumeration value="DECIMAL_LIST"/>
+			<xs:enumeration value="ID"/>
+			<xs:enumeration value="ID_LIST"/>
+			<xs:enumeration value="INTEGER"/>
+			<xs:enumeration value="INTEGER_LIST"/>
+			<xs:enumeration value="LONG"/>
+			<xs:enumeration value="LONG_LIST"/>
+			<xs:enumeration value="NAMED_ID"/>
+			<xs:enumeration value="NAMED_ID_DELTA_LIST"/>
+			<xs:enumeration value="NAMED_ID_LIST"/>
+			<xs:enumeration value="NAMED_ID_HIERARCHY"/>
+			<xs:enumeration value="NAMED_ID_HIERARCHY_LIST"/>
+			<xs:enumeration value="OBJECT"/>
+			<xs:enumeration value="OBJECT_LIST"/>
+			<xs:enumeration value="STRING"/>
+			<xs:enumeration value="STRING_LIST"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="DataValue" type="DataValue"/>
+	<xs:complexType name="DataValue">
+		<xs:choice minOccurs="1" maxOccurs="1">
+			<xs:element name="Base64BinaryValue" type="xs:base64Binary" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="BooleanValue" type="xs:boolean" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="BooleanValueList" type="xs:boolean" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="DateTimeValue" type="xs:dateTime" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="DateTimeValueList" type="xs:dateTime" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="DateValue" type="xs:date" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="DateValueList" type="xs:date" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="DecimalValue" type="xs:double" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="DecimalValueList" type="xs:double" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="IDValue" type="rnb_v1_3:ID" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="IDValueList" type="rnb_v1_3:ID" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="IntegerValue" type="xs:int" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="IntegerValueList" type="xs:int" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="LongValue" type="xs:long" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="LongValueList" type="xs:long" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="NamedIDDeltaValueList" type="rnb_v1_3:NamedIDDelta" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="NamedIDHierarchyValue" type="rnb_v1_3:NamedIDHierarchy" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="NamedIDHierarchyValueList" type="rnb_v1_3:NamedIDHierarchy" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="NamedIDValue" type="rnb_v1_3:NamedID" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="NamedIDValueList" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="ObjectValue" type="GenericObject" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="ObjectValueList" type="GenericObject" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="StringValue" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="StringValueList" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:element name="GenericField" type="GenericField"/>
+	<xs:complexType name="GenericField">
+		<xs:sequence>
+			<xs:element name="DataValue" type="DataValue" minOccurs="1" maxOccurs="1" nillable="true"/>
+		</xs:sequence>
+		<xs:attribute name="dataType" type="DataTypeEnum" use="optional"/>
+		<xs:attribute name="name" type="xs:string" use="required"/>
+	</xs:complexType>
+	<xs:element name="GenericObject" type="GenericObject"/>
+	<xs:complexType name="GenericObject"><xs:complexContent><xs:extension base="rnb_v1_3:RNObject">
+		<xs:sequence>
+			<xs:element name="ObjectType" type="RNObjectType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="GenericFields" type="GenericField" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:extension></xs:complexContent></xs:complexType>
+	<xs:element name="RNObjectType" type="RNObjectType"/>
+	<xs:complexType name="RNObjectType">
+		<xs:sequence>
+			<xs:element name="Namespace" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<xs:element name="TypeName" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

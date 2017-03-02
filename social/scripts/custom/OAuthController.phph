@@ -1,0 +1,760 @@
+<?php
+
+namespace Oracle\Accelerator\SRM;
+
+//Include the SCLog class for Logging
+if (!defined('DOCROOT'))
+{
+    $docroot = get_cfg_var('doc_root');
+    define('DOCROOT', $docroot);
+}
+require_once DOCROOT . "/ConnectPHP/Connect_init.php";
+initConnectAPI();
+
+require_once DOCROOT . "/custom/sclog.php";
+
+use RightNow\Connect\v1_3 as RNCPHP;
+
+/**
+ * OAuthController class.
+ */
+class OAuthController
+{
+    /**
+     * The server config containing information about this integration.
+     */
+    const CONFIG_VERB = 'Accel_Ext_Integrations';
+
+    /**
+     * The access token URL.
+     *
+     * @var string
+     * @access private
+     */
+    private $accessTokenUrl = '';
+
+    /**
+     * Authorization URL for SRM.
+     *
+     * @var string
+     * @access private
+     * @deprecated No longer used within this script
+     */
+    private $authurl = '';
+
+    /**
+     * Client ID hash
+     *
+     * @var string
+     * @access private
+     */
+    private $clientKey = '';
+
+    /**
+     * Shared application secret
+     *
+     * @var string
+     * @access private
+     */
+    private $clientSecret = '';
+
+    /**
+     * The number of seconds until the current SRM token expires.
+     *
+     * (default value: 7200)
+     *
+     * @var int
+     * @access private
+     */
+    private $expires_in = 7200;
+
+    /**
+     * The time that the last request was sent to the SRM server for authorization.
+     * Format: 'Thu, 18 Aug 2016 16:51:29 GMT'
+     *
+     * @var string
+     * @access private
+     */
+    private $last_time_string = '';
+
+    /**
+     * Last valid token received from the API
+     * Obtained from the last token response.
+     *
+     * @var string
+     * @access private
+     */
+    private $last_valid_access_token = '';
+
+    /**
+     * Path to store the sensitive oauth data between post to SRM and callback.
+     * This file is only used in the initial configuration setup.
+     *
+     * (default value: "/tmp/srmoath")
+     *
+     * @var string
+     * @access private
+     * @static
+     */
+    private static $oauth_auth_file = "/tmp/srmoath";
+
+    /**
+     * The refresh token received from the API
+     *
+     * @var string
+     * @access private
+     */
+    private $refresh_token = '';
+
+    /**
+     * Variable to host the SC Log Instance
+     *
+     * @var mixed
+     * @access private
+     */
+    private $sclog;
+
+    /**
+     * Scope of SRM access
+     *
+     * (default value: 'engage')
+     *
+     * @var string
+     * @access private
+     */
+    private $scope = 'engage';
+
+    /**
+     * The temporary file that will host json token data instead of requiring a DB request
+     * each time that the information is needed.
+     *
+     * (default value: '/tmp/accelerator_token.json')
+     *
+     * @var string
+     * @access private
+     */
+    private $token_file_name = '/tmp/accelerator_token.json';
+
+    /**
+     * Constructor.  Setup SCLog for use in this class.
+     *
+     * @access public
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->sclog = new \scTools\SCLog();
+    }
+
+    /**
+     * Generates the callback URL for the Oauth process for SRM.
+     *
+     * @access public
+     * @static
+     * @param array $serverVars
+     * @param mixed $session_id
+     * @return void
+     */
+    public static function getCallbackUrl(array $serverVars, $session_id)
+    {
+        //Break the current URI into parts so that we can rebuild the callback URL with the proper interface in the path
+        $uriParts = explode('?', $serverVars['REQUEST_URI'], 2);
+        $pathParts = explode('/', $uriParts[0]);
+        $pathParts[sizeof($pathParts) - 1] = "srmoauthcallback.php";
+        $newUri = implode('/', $pathParts);
+
+        return "https://" . $serverVars[HTTP_HOST] . $newUri . "?session_id=" . $session_id;
+    }
+
+    /**
+     * Loads data from the OAuthConfigs object into the variables in this class.
+     *
+     * @access public
+     * @return RNCPHP\Accelerator\OAuthConfig|string
+     */
+    public function getOauthConfigsFromServer()
+    {
+        // Get the client configs in case we need to request a new access token.
+        $oauthConfigs = RNCPHP\Accelerator\OAuthConfig::first("ID > 0");
+        if (!empty($oauthConfigs))
+        {
+            $this->scope = $oauthConfigs->Scope;
+            $this->clientSecret = $oauthConfigs->ClientSecret;
+            $this->clientKey = $oauthConfigs->ClientID;
+            $this->accessTokenUrl = $oauthConfigs->AccessTokenURL;
+            return $oauthConfigs;
+        }
+        else
+        {
+            $errorMessage = "No Accelerator.OAuthConfig custom object";
+            $this->sclog->error("Get Config Failed", $errorMessage, null, null, __FILE__, __FUNCTION__);
+            RNCPHP\ConnectAPI::commit();
+        }
+
+        return false;
+    }
+
+    /**
+     * Loads data from the OAuthTokens object into the variables in this class.
+     *
+     * @access public
+     * @param int $accountId ID of the account to query for tokens
+     * @return RNCPHP\Accelerator\OAuthTokens|string
+     */
+    public function getOauthTokensFromServer($accountId)
+    {
+        // reading tokens
+        $tokenInfo = RNCPHP\Accelerator\OAuthTokens::first(sprintf("Account = %d", $accountId));
+        if (!empty($tokenInfo))
+        {
+            $this->sclog->debug("SRM Access Token Found for Account: " . $accountId, null, null, null, __FILE__, __FUNCTION__);
+
+            $this->last_valid_access_token = $tokenInfo->LastAccessToken;
+            $this->last_time_string = $tokenInfo->LastTimeString;
+            $this->refresh_token = $tokenInfo->RefreshToken;
+            $this->expires_in = $tokenInfo->ExpiresIn == null ? intval(7200) : $tokenInfo->ExpiresIn;
+            return $tokenInfo;
+        }
+        else
+        {
+            $errorMessage = "No Accelerator.OAuthTokens record for account " . $accountId;
+            $this->sclog->error("Get Token Failed", $errorMessage, null, null, __FILE__, __FUNCTION__);
+            RNCPHP\ConnectAPI::commit();
+        }
+
+        return false;
+    }
+
+    /**
+     * This will be the function called from OSvC to get the access token.
+     *
+     * @access public
+     * @param int $accountId Account ID
+     * @return void
+     */
+    public function get_token($accountId)
+    {
+        if (!is_numeric($accountId))
+        {
+            echo "Account ID not provided.";
+            return false;
+        }
+
+        $oauthConfigs = $this->getOauthConfigsFromServer();
+        $tokenInfo = $this->getOauthTokensFromServer($accountId);
+
+        if (!empty($oauthConfigs) && !empty($tokenInfo))
+        {
+            // get current time.
+            $curtime = time();
+
+            // when did we last get token?
+            $lasttime = strtotime($this->last_time_string); // int, in seconds
+
+            //Add 300 seconds (5 minutes) to reduce the risk that the token will fail before it actually expires.
+            //This will refresh the token 5 minutes before its actual expiration.
+            $difference = intval($curtime - $lasttime) + 300;
+
+            //If the different is greater than the expires in calc, then we need to refresh the token
+            if (($difference > $this->expires_in || $tokenInfo->RefreshTokenFailure))
+            {
+                $this->sclog->debug("Get Token", "Getting new token.", null, null, __FILE__, __FUNCTION__);
+
+                try {
+                    // this refreshes and makes new tokens and a new time string
+                    $response = $this->refresh_access_token($accountId);
+
+                    $this->last_valid_access_token = $response['access_token'];
+                    $this->refresh_token = $response['refresh_token'];
+                    $this->expires_in = $response['expires_in'];
+
+                    // Writing..
+                    $this->save_refresh_token(
+                        $this->last_valid_access_token,
+                        $this->refresh_token,
+                        $this->last_time_string, // assigned in refresh_access_token()
+                        $this->expires_in,
+                        $accountId,
+                        $oauthConfigs);
+                }
+                catch (\Exception $e)
+                {
+                    $this->sclog->error("Refresh Token Exception", $e->getMessage(), null, null, __FILE__, __FUNCTION__);
+                }
+            }
+            else
+            {
+                $this->sclog->debug("Get Token", "Token still valid.", null, null, __FILE__, __FUNCTION__);
+                $response['access_token'] = $this->last_valid_access_token;
+            }
+
+            // just in case; always remove refresh token IFF sending it externally.
+            unset($response['refresh_token']);
+
+            // Prepare response as the array can differ in elements up to this point
+            $response['last_request_time'] = $this->last_time_string;
+            $response['expires_in'] = $this->expires_in;
+
+            $this->sclog->debug("Get Token", print_r($response, true), null, null, __FILE__, __FUNCTION__);
+
+            echo json_encode($response);
+
+            return true;
+        }
+
+        echo "Could not retrieve SRM configs from server. Have you setup SRM OAuth yet?";
+
+        return false;
+    }
+
+    /**
+     * Constructs the redirect URL for SRM OAuth auth code requests.
+     * Stores data required after callback into a temp file to a CBO isn't needed for a one row data set that is very temporary.
+     *
+     * @access public
+     * @static
+     * @param string $clientId
+     * @param string $clientSecret
+     * @param string $authEndpoint
+     * @param string $tokenEndpoint
+     * @param string $scope
+     * @param string $responseType
+     * @param string $redirectUri
+     * @param bool $saveConfigs Flag to indicate if this operation should save any changes to the configs before trying to pass the user to the SRM endpoint.  This should happen when an admin creates or updates configs, but not when a user needs to be redirected.
+     * @return string
+     */
+    public static function prepareRedirectForOauth($clientId, $clientSecret, $authEndpoint, $tokenEndpoint, $scope, $responseType, $redirectUri, $saveConfigs = true)
+    {
+        $log = new \scTools\SCLog();
+        $log->debug("OAuth Redirect", "Redirecting to SRM for token. ", null, null, __FILE__, __FUNCTION__);
+
+        //Remove any saved config that may be lingering for unknown reasons.
+        if (file_exists(static::$oauth_auth_file))
+        {
+            unlink(static::$oauth_auth_file);
+        }
+
+        $clientData = array(
+            'client_id' => $clientId,
+            'client_secret' => $clientSecret,
+            'token_endpoint' => $tokenEndpoint,
+            'scope' => $scope,
+            'authorization_endpoint' => $authEndpoint
+        );
+
+        $json = json_encode($clientData);
+
+        try {
+            if($saveConfigs){
+                $configs = static::saveOauthConfigValues($clientData);
+            }
+
+            //The redirect endpoint only exist during this process, so we don't save it to the DB.
+            $dataNotStoredInDB = array(
+                'redirect_endpoint' => $redirectUri
+            );
+
+            file_put_contents(static::$oauth_auth_file, json_encode($dataNotStoredInDB));
+
+            $url = sprintf("%s?response_type=%s&client_id=%s&scope=%s&redirect_uri=%s",
+                $authEndpoint,
+                $responseType,
+                $clientId,
+                $scope,
+                $redirectUri);
+
+            $log->debug("OAuth Redirect", "At URL: " . $url, null, null, __FILE__, __FUNCTION__);
+
+            return $url;
+        }
+        catch (\Exception $e)
+        {
+            $log->error("Save Configs Error: " . $e->getMessage(), $e->getTraceAsString(), null, null, __FILE__, __FUNCTION__);
+        }
+
+        return null;
+    }
+
+    /**
+     * Method called on OAuth config callback.  If successful, SRM will have provided an auth token that
+     * can then be used to get access tokens by the other processes defined in this class.
+     *
+     * @access public
+     * @param mixed $authCode
+     * @param int $accountId ID of the account that the token will be assigned to.
+     * @return void
+     */
+    public function requestAccessToken($authCode, $accountId)
+    {
+        $this->sclog->debug("OAuth Request", "Getting data for auth token: " . $authCode, null, null, __FILE__, __FUNCTION__);
+        if (file_exists(static::$oauth_auth_file))
+        {
+            $json = file_get_contents(static::$oauth_auth_file);
+            $oauthRedirectData = json_decode($json);
+            unlink(static::$oauth_auth_file);
+            $this->sclog->debug("OAuth Redirect Data", print_r($oauthRedirectData, true), null, null, __FILE__, __FUNCTION__);
+
+            $configs = $this->getOauthConfigsFromServer();
+
+            //setup Curl
+            $ip_dbreq = true;
+            require_once 'include/init.phph';
+            // init curl // load curl
+            if (!extension_loaded('curl') && !\load_curl())
+            {
+                $this->sclog->debug("cURL Load Error", 'curl: Server Error : cUrl cannot be loaded', null, null, __FILE__, __FUNCTION__);
+                return false;
+            }
+
+            $postArray = array(
+                "code" => $_GET['code'],
+                "scope" => '',
+                "grant_type" => "authorization_code",
+                "client_id" => $configs->ClientID,
+                "client_secret" => $configs->ClientSecret,
+                "redirect_uri" => $oauthRedirectData->redirect_endpoint
+            );
+
+            $accessTokenEndpoint = $configs->AccessTokenURL;
+
+            //Load the detail CA cert file for SSL validation in production cURL calls.
+            $pathParts = explode('.cfg', $_SERVER['REQUEST_URI']);
+            $caPath = sprintf("%s.db/certs/", $pathParts[0]);
+            $caFile = $caPath . "ca.pem";
+
+            //Get the access and reassign tokens from SRM with the provided auth token
+            $s = curl_init();
+            curl_setopt($s, CURLOPT_URL, $accessTokenEndpoint);
+            curl_setopt($s, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($s, CURLOPT_FOLLOWLOCATION, true);
+            curl_setopt($s, CURLOPT_CAINFO, $caFile);
+            curl_setopt($s, CURLOPT_CAPATH, $caPath);
+            curl_setopt($s, CURLOPT_SSL_VERIFYPEER, false); // SET TO TRUE IN PRODUCTION!!
+            curl_setopt($s, CURLOPT_SSL_VERIFYHOST, 1);
+            curl_setopt($s, CURLOPT_SSLVERSION, CURL_SSLVERSION_TLSv1_2);
+            curl_setopt($s, CURLOPT_POST, true);
+            curl_setopt($s, CURLOPT_POSTFIELDS, $postArray);
+
+            $requestTime = gmdate("D, j M Y H:i:s \G\M\T");
+            $results = curl_exec($s);
+            $errors = curl_error($s);
+            $response = curl_getinfo($s, CURLINFO_HTTP_CODE);
+
+            curl_close($s);
+
+            if ($response == 200)
+            {
+                // Save the returned token info
+                $parsedData = json_decode($results);
+
+                if (!empty($parsedData) && !empty($parsedData->access_token) && !empty($parsedData->refresh_token) && !empty($parsedData->expires_in))
+                {
+                    $parsedData->last_time_string = $requestTime;
+                }
+
+                static::save_refresh_token($parsedData->access_token, $parsedData->refresh_token, $parsedData->last_time_string, $parsedData->expires_in, $accountId, $configs);
+
+                return $parsedData;
+            }
+
+            $this->sclog->error("cURL errors", print_r($errors, true), null, null, __FILE__, __FUNCTION__);
+        }
+        else
+        {
+            $this->sclog->error("OAuth Error", "Client secret and client ID are unknown", null, null, __FILE__, __FUNCTION__);
+            throw new \Exception("Client secret and client ID are unknown");
+        }
+
+        return false;
+    }
+
+    /**
+     * Validates the agent ID passed to the admin profile that is configured in the accelerator custom config.
+     *
+     * @access public
+     * @static
+     * @param int $accountId
+     * @return bool
+     */
+    public static function validateAgentProfile($accountId)
+    {
+        $log = new \scTools\SCLog();
+        $log->debug("Agent Validation", "Validating ID: " . $accountId, null, null, __FILE__, __FUNCTION__);
+        try {
+            $verb = sprintf("CUSTOM_CFG_%s", self::CONFIG_VERB);
+            $log->debug("Config Verb Search", "Config Verb: " . $verb, null, null, __FILE__, __FUNCTION__);
+            $configs = RNCPHP\Configuration::fetch($verb);
+            if (!empty($configs))
+            {
+                $json = $configs->Value;
+                $data = json_decode($json);
+
+                $results = RNCPHP\ROQL::query(sprintf("SELECT Profile.ID FROM Account WHERE ID = %s", $accountId))->next()->next();
+                $log->debug("Config Verb Data Found", "Config Verb: \n" . $json, null, null, __FILE__, __FUNCTION__);
+                if (!empty($results['ID']) && $results['ID'] == $data->AdminProfileID)
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                $log->error("No Configs Set", "Config Verb: " . $verb, null, null, __FILE__, __FUNCTION__);
+            }
+        }
+        catch (\Exception $e)
+        {
+            $log->error("Agent Validation Error", $e->getMessage(), null, null, __FILE__, __FUNCTION__);
+        }
+
+        return false;
+    }
+
+    /**
+     * Method to validate a request to the custom scripts endpoint beyond just the session ID.
+     * This method requires that the add-in(s) keep track of custom fields, oauth_valid_time and oauth_process_id,
+     * and increase the time every x seconds in an agent custom field to ensure valid requests.
+     * This method then checks that time, to verify that the request is coming
+     * from the expected source.
+     *
+     * @access public
+     * @static
+     * @param int $accountId The ID of the agent record
+     * @param int $process_id The ID of the CX process that sent the request
+     * @param int $request_time The timestamp of the current request
+     * @return bool True if the check succeeds; false if it fails.
+     */
+    public static function validate_request($accountId, $process_id, $request_time)
+    {
+        $log = new \scTools\SCLog();
+        try {
+            $validityCheckTimestamp = null;
+            $fetchedProcessId = null;
+
+            //If the validity timestamp is less than the current time, then we need to check the DB to see if the user is still actively using the SRM add-ins
+            $query = sprintf("SELECT CustomFields.Accelerator.OAuthProcessId, CustomFields.Accelerator.OAuthRequestValidUntil FROM Account WHERE ID = %d", $accountId);
+            $result = RNCPHP\ROQL::query($query)->next()->next();
+
+            if (!empty($result['OAuthRequestValidUntil']) && !empty($result['OAuthProcessId']))
+            {
+                $validDateTimeToTimestamp = strtotime($result['OAuthRequestValidUntil']);
+                $validityCheckTimestamp = is_int($validDateTimeToTimestamp) ? $validDateTimeToTimestamp : intval($validDateTimeToTimestamp);
+                $fetchedProcessId = $result['OAuthProcessId'];
+            }
+            else
+            {
+                $log->error("Custom Field Error", "Process ID or valid oauth time are not returned from the DB.", null, null, __FILE__, __FUNCTION__);
+            }
+
+            return ($request_time < $validityCheckTimestamp && $fetchedProcessId == $process_id);
+        }
+        catch (\Exception $e)
+        {
+            $log->error("Exception Thrown", $e->getMessage(), null, null, __FILE__, __FUNCTION__);
+        }
+
+        return false;
+    }
+
+    /**
+     * Retrieves a new access token from SRM using the refresh token.
+     *
+     * @access private
+     * @param int $accountId Account ID
+     * @return void
+     */
+    private function refresh_access_token($accountId)
+    {
+        $content = array(
+            'client_secret' => $this->clientSecret,
+            'client_id' => $this->clientKey,
+            'grant_type' => 'refresh_token',
+            'refresh_token' => $this->refresh_token
+        );
+
+        $this->sclog->debug("Refreshing Access Token", print_r($content, true), null, null, __FILE__, __FUNCTION__);
+        RNCPHP\ConnectAPI::commit();
+
+        // init curl // load curl
+        $ip_dbreq = true;
+        require_once 'include/init.phph';
+        if (!\load_curl() && !extension_loaded('curl'))
+        {
+            $result['status'] = false;
+            $result['response'] = 'cURL not loaded by PHP.';
+            $this->sclog->debug("cURL Load Error", $result['response'], null, null, __FILE__, __FUNCTION__);
+            return $result;
+        }
+
+        //Load the detail CA cert file for SSL validation in production cURL calls.
+        $pathParts = explode('.cfg', $_SERVER['REQUEST_URI']);
+        $caPath = sprintf("%s.db/certs/", $pathParts[0]);
+        $caFile = $caPath . "ca.pem";
+
+        $curlobj = \curl_init();
+        curl_setopt($curlobj, CURLOPT_URL, $this->accessTokenUrl);
+        curl_setopt($curlobj, CURLOPT_CONNECTTIMEOUT, 100);
+        curl_setopt($curlobj, CURLOPT_TIMEOUT, 1000);
+        curl_setopt($curlobj, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curlobj, CURLOPT_CAINFO, $caFile);
+        curl_setopt($curlobj, CURLOPT_CAPATH, $caPath);
+        curl_setopt($curlobj, CURLOPT_SSL_VERIFYPEER, false); // SET TO TRUE IN PRODUCTION!!
+        curl_setopt($curlobj, CURLOPT_SSL_VERIFYHOST, 1);
+        curl_setopt($curlobj, CURLOPT_SSLVERSION, CURL_SSLVERSION_TLSv1_2);
+        curl_setopt($curlobj, CURLOPT_HTTPHEADER, array("Content-type: application/x-www-form-urlencoded"));
+        curl_setopt($curlobj, CURLOPT_POST, true);
+        curl_setopt($curlobj, CURLOPT_POSTFIELDS, http_build_query($content));
+        curl_setopt($curlobj, CURLOPT_HEADER, true); // to get the header in the response, too
+
+        $http_response = curl_exec($curlobj);
+        $status = curl_getinfo($curlobj, CURLINFO_HTTP_CODE);
+        $header_size = curl_getinfo($curlobj, CURLINFO_HEADER_SIZE);
+
+        curl_close($curlobj);
+
+        if (!in_array($status, array(200, 201)))
+        {
+            $errorMessage = "Error: cURL $this->accessTokenUrl failed with status $status, <br>response $http_response, <br>curl_error " . curl_error($curlobj) . ", curl_errno " . curl_errno($curlobj);
+
+            //Purge the existing tokens if the refresh fails as the refresh token is not valid and the server needs reauthorization.
+            $this->removeTokens();
+
+            $this->sclog->error("Refresh Token cURL Error", $errorMessage, null, null, __FILE__, __FUNCTION__);
+            $this->sclog->error("Refresh Token Error", "Refresh tokens removed. Admin will be alerted to reinitialize OAuth.", null, null, __FILE__, __FUNCTION__);
+            RNCPHP\ConnectAPI::commit();
+
+            die($errorMessage);
+        }
+        else
+        {
+            $header = substr($http_response, 0, $header_size);
+            $headers = $this->split_headers($header);
+            $token_time = $headers['Date'];
+            $this->last_time_string = $token_time;
+
+            // body
+            $body = substr($http_response, $header_size);
+            $this->sclog->debug("cURL Success", $body, null, null, __FILE__, __FUNCTION__);
+        }
+
+        $response = json_decode($body, true);
+
+        return $response;
+    }
+
+    /**
+     * Method to remove the existing token record.
+     *
+     * @access private
+     * @static
+     * @return void
+     */
+    private static function removeTokens($accountId)
+    {
+        // reading tokens
+        $tokenInfo = RNCPHP\Accelerator\OAuthTokens::first(sprintf("Account = %d", $accountId));
+        if (!empty($tokenInfo))
+        {
+            $tokenInfo->destroy();
+        }
+    }
+
+    /**
+     * Saves the client data that was posted in the setup form to the oauth config object.
+     *
+     * @access private
+     * @static
+     * @param mixed $clientData
+     * @return void
+     */
+    private static function saveOauthConfigValues($clientData)
+    {
+        $log = new \scTools\SCLog();
+        $log->debug("OAuth Save", "Saving Client Data to DB", null, null, __FILE__, __FUNCTION__);
+        try {
+            $oauthConfig = RNCPHP\Accelerator\OAuthConfig::first("ID > 0");
+            if (empty($oauthConfig))
+            {
+                $oauthConfig = new RNCPHP\Accelerator\OAuthConfig();
+            }
+
+            $oauthConfig->ClientID = $clientData['client_id'];
+            $oauthConfig->ClientSecret = $clientData['client_secret'];
+            $oauthConfig->AccessTokenURL = $clientData['token_endpoint'];
+            $oauthConfig->AuthTokenURL = $clientData['authorization_endpoint'];
+            $oauthConfig->Scope = $clientData['scope'];
+
+            $oauthConfig->save();
+            $log->debug("OAuth Saved", "Client Data Saved", null, null, __FILE__, __FUNCTION__);
+
+            return $oauthConfig;
+        }
+        catch (\Exception $e)
+        {
+            $log->error("OAuth Save Error", "Error saving client data: " . $e->getMessage(), null, null, __FILE__, __FUNCTION__);
+        }
+
+        return null;
+    }
+
+    /**
+     * Saves the refresh token to the OAuthTokens Custom Object.
+     *
+     * @access private
+     * @param string $access_token
+     * @param string $refresh_token
+     * @param string $time_string
+     * @param int $expires_in
+     * @param int $accountId The account ID to assign the config to
+     * @param RNCPHP\Accelerator\OAuthConfig $configSet The configs used to generate this access token
+     * @return void
+     */
+    private function save_refresh_token($access_token, $refresh_token, $time_string, $expires_in, $accountId, RNCPHP\Accelerator\OAuthConfig $oauthConfig)
+    {
+        $this->sclog->debug("Saving Refresh Token", "Saving Refresh Token", null, null, __FILE__, __FUNCTION__);
+
+        $accessTokenRecord = RNCPHP\Accelerator\OAuthTokens::first(sprintf("Account = %d", $accountId));
+
+        if ($accessTokenRecord == null)
+        {
+            $accessTokenRecord = new RNCPHP\Accelerator\OAuthTokens();
+        }
+
+        $accessTokenRecord->LastAccessToken = $access_token;
+        $accessTokenRecord->LastTimeString = $time_string;
+        $accessTokenRecord->RefreshToken = $refresh_token;
+        $accessTokenRecord->ExpiresIn = $expires_in;
+        $accessTokenRecord->OAuthConfig = $oauthConfig;
+        $accessTokenRecord->Account = RNCPHP\Account::fetch($accountId);
+        $accessTokenRecord->RefreshTokenFailure = false;
+
+        return $accessTokenRecord->save();
+    }
+
+    /**
+     * Parse the headers. Used in token refresh.
+     *
+     * @access private
+     * @param string $headers
+     * @return void
+     */
+    private function split_headers($headers)
+    {
+        $arr = array();
+        $data = explode("\n", $headers);
+
+        // if you want to get the status, this is it:  special key
+        $arr['status'] = $data[0];
+        array_shift($data);
+
+        foreach ($data as $line)
+        {
+            $parts = explode(":", $line, 2);
+            if (isset($parts[0]))
+            {
+                // Because some header Might have: Notice: Undefined offset: 1
+                $arr[trim($parts[0])] = isset($parts[1]) ? trim($parts[1]) : '';
+            }
+        }
+        return $arr;
+    }
+}

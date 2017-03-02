@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="urn:nullfields.ws.rightnow.com/v1_3"
+		xmlns:xs="http://www.w3.org/2001/XMLSchema"
+		xmlns="urn:nullfields.ws.rightnow.com/v1_3"
+		xmlns:rnn_v1_3="urn:nullfields.ws.rightnow.com/v1_3"
+		elementFormDefault="qualified" version="1.0">
+	<xs:element name="AccountNullFields" type="AccountNullFields"/>
+	<xs:complexType name="AccountNullFields">
+		<xs:attribute name="DisplayName" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="EmailNotification" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Emails" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Manager" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="NewPassword" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Phones" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Profile" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Signature" type="xs:boolean" default="false" use="optional"/>
+	</xs:complexType>
+	<xs:element name="AccountSalesSettingsNullFields" type="AccountSalesSettingsNullFields"/>
+	<xs:complexType name="AccountSalesSettingsNullFields">
+		<xs:attribute name="Territory" type="xs:boolean" default="false" use="optional"/>
+	</xs:complexType>
+	<xs:element name="AddressNullFields" type="AddressNullFields"/>
+	<xs:complexType name="AddressNullFields">
+		<xs:attribute name="City" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Country" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="PostalCode" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="StateOrProvince" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Street" type="xs:boolean" default="false" use="optional"/>
+	</xs:complexType>
+	<xs:element name="AnswerNotificationNullFields" type="AnswerNotificationNullFields"/>
+	<xs:complexType name="AnswerNotificationNullFields">
+		<xs:attribute name="Interface" type="xs:boolean" default="false" use="optional"/>
+	</xs:complexType>
+	<xs:element name="AnswerNullFields" type="AnswerNullFields"/>
+	<xs:complexType name="AnswerNullFields">
+		<xs:attribute name="AccessLevels" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="AssignedSibling" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Banner" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Categories" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="CommonAttachments" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="ExpiresDate" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="FileAttachments" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Keywords" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="NextNotificationTime" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Notes" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="OriginalReferenceNumber" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Products" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="PublishOnDate" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Question" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="RelatedAnswers" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Solution" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="URL" type="xs:boolean" default="false" use="optional"/>
+	</xs:complexType>
+	<xs:element name="AnswerRelatedAnswerNullFields" type="AnswerRelatedAnswerNullFields"/>
+	<xs:complexType name="AnswerRelatedAnswerNullFields">
+		<xs:attribute name="ManualStrength" type="xs:boolean" default="false" use="optional"/>
+	</xs:complexType>
+	<xs:element name="AssetNullFields" type="AssetNullFields"/>
+	<xs:complexType name="AssetNullFields">
+		<xs:attribute name="Contact" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Description" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="InstalledDate" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Organization" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Price" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Product" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="PurchasedDate" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="RetiredDate" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="SerialNumber" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="SLAInstances" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="StatusWithType" type="xs:boolean" default="false" use="optional"/>
+	</xs:complexType>
+	<xs:element name="AssignedSLAInstanceNullFields" type="AssignedSLAInstanceNullFields"/>
+	<xs:complexType name="AssignedSLAInstanceNullFields">
+		<xs:attribute name="NameOfSLA" type="xs:boolean" default="false" use="optional"/>
+	</xs:complexType>
+	<xs:element name="BannerNullFields" type="BannerNullFields"/>
+	<xs:complexType name="BannerNullFields">
+		<xs:attribute name="ImportanceFlag" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Text" type="xs:boolean" default="false" use="optional"/>
+	</xs:complexType>
+	<xs:element name="CategoryNotificationNullFields" type="CategoryNotificationNullFields"/>
+	<xs:complexType name="CategoryNotificationNullFields">
+		<xs:attribute name="Interface" type="xs:boolean" default="false" use="optional"/>
+	</xs:complexType>
+	<xs:element name="ChannelUsernameNullFields" type="ChannelUsernameNullFields"/>
+	<xs:complexType name="ChannelUsernameNullFields">
+		<xs:attribute name="UserNumber" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Username" type="xs:boolean" default="false" use="optional"/>
+	</xs:complexType>
+	<xs:element name="ContactMarketingSettingsNullFields" type="ContactMarketingSettingsNullFields"/>
+	<xs:complexType name="ContactMarketingSettingsNullFields">
+		<xs:attribute name="ContactLists" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="EmailFormat" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="MarketingOptIn" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="MarketingOrganizationName" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="MarketingOrganizationNameAlt" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="SurveyOptIn" type="xs:boolean" default="false" use="optional"/>
+	</xs:complexType>
+	<xs:element name="ContactNullFields" type="ContactNullFields"/>
+	<xs:complexType name="ContactNullFields">
+		<xs:attribute name="Address" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Banner" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="ChannelUsernames" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="ContactType" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Emails" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="ExternalReference" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="FileAttachments" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Login" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="NewPassword" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Notes" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Organization" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Phones" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Title" type="xs:boolean" default="false" use="optional"/>
+	</xs:complexType>
+	<xs:element name="ContactSalesSettingsNullFields" type="ContactSalesSettingsNullFields"/>
+	<xs:complexType name="ContactSalesSettingsNullFields">
+		<xs:attribute name="SalesAccount" type="xs:boolean" default="false" use="optional"/>
+	</xs:complexType>
+	<xs:element name="ContactServiceSettingsNullFields" type="ContactServiceSettingsNullFields"/>
+	<xs:complexType name="ContactServiceSettingsNullFields">
+		<xs:attribute name="AnswerNotifications" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="CategoryNotifications" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="ProductNotifications" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="SLAInstances" type="xs:boolean" default="false" use="optional"/>
+	</xs:complexType>
+	<xs:element name="CountryNullFields" type="CountryNullFields"/>
+	<xs:complexType name="CountryNullFields">
+		<xs:attribute name="Provinces" type="xs:boolean" default="false" use="optional"/>
+	</xs:complexType>
+	<xs:element name="GroupAccountNullFields" type="GroupAccountNullFields"/>
+	<xs:complexType name="GroupAccountNullFields">
+		<xs:attribute name="Account" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="StaffGroup" type="xs:boolean" default="false" use="optional"/>
+	</xs:complexType>
+	<xs:element name="HolidayNullFields" type="HolidayNullFields"/>
+	<xs:complexType name="HolidayNullFields">
+		<xs:attribute name="AdminVisibleInterfaces" type="xs:boolean" default="false" use="optional"/>
+	</xs:complexType>
+	<xs:element name="IncidentNullFields" type="IncidentNullFields"/>
+	<xs:complexType name="IncidentNullFields">
+		<xs:attribute name="Asset" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="BilledMinutes" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Category" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Channel" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="ChatQueue" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Disposition" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="FileAttachments" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Language" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Mailbox" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Organization" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="OtherContacts" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Product" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Queue" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Severity" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="SLAInstance" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Subject" type="xs:boolean" default="false" use="optional"/>
+	</xs:complexType>
+	<xs:element name="LabelNullFields" type="LabelNullFields"/>
+	<xs:complexType name="LabelNullFields">
+		<xs:attribute name="LabelText" type="xs:boolean" default="false" use="optional"/>
+	</xs:complexType>
+	<xs:element name="MailboxIncomingEmailSettingsNullFields" type="MailboxIncomingEmailSettingsNullFields"/>
+	<xs:complexType name="MailboxIncomingEmailSettingsNullFields">
+		<xs:attribute name="ForceReplyBetweenLines" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="ForwardRejectMessageAddress" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="IsEnabled" type="xs:boolean" default="false" use="optional"/>
+	</xs:complexType>
+	<xs:element name="MailboxNullFields" type="MailboxNullFields"/>
+	<xs:complexType name="MailboxNullFields">
+		<xs:attribute name="IsDefault" type="xs:boolean" default="false" use="optional"/>
+	</xs:complexType>
+	<xs:element name="MailboxOutgoingEmailSettingsNullFields" type="MailboxOutgoingEmailSettingsNullFields"/>
+	<xs:complexType name="MailboxOutgoingEmailSettingsNullFields">
+		<xs:attribute name="DisplayName" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="FriendlyFromAddress" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="FromAddress" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="IsEnabled" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="ReplyToAddress" type="xs:boolean" default="false" use="optional"/>
+	</xs:complexType>
+	<xs:element name="MailMessageNullFields" type="MailMessageNullFields"/>
+	<xs:complexType name="MailMessageNullFields">
+		<xs:attribute name="FileAttachments" type="xs:boolean" default="false" use="optional"/>
+	</xs:complexType>
+	<xs:element name="MailMessageRecipientsNullFields" type="MailMessageRecipientsNullFields"/>
+	<xs:complexType name="MailMessageRecipientsNullFields">
+		<xs:attribute name="EmailUsers" type="xs:boolean" default="false" use="optional"/>
+	</xs:complexType>
+	<xs:element name="MonetaryValueNullFields" type="MonetaryValueNullFields"/>
+	<xs:complexType name="MonetaryValueNullFields">
+		<xs:attribute name="ExchangeRate" type="xs:boolean" default="false" use="optional"/>
+	</xs:complexType>
+	<xs:element name="NoteNullFields" type="NoteNullFields"/>
+	<xs:complexType name="NoteNullFields">
+		<xs:attribute name="Channel" type="xs:boolean" default="false" use="optional"/>
+	</xs:complexType>
+	<xs:element name="OpportunityContactNullFields" type="OpportunityContactNullFields"/>
+	<xs:complexType name="OpportunityContactNullFields">
+		<xs:attribute name="ContactRole" type="xs:boolean" default="false" use="optional"/>
+	</xs:complexType>
+	<xs:element name="OpportunityNullFields" type="OpportunityNullFields"/>
+	<xs:complexType name="OpportunityNullFields">
+		<xs:attribute name="AssignedToAccount" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Banner" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="ClosedTime" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="ClosedValue" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="CostOfSale" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="FileAttachments" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="ForecastCloseDate" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="InitialContactDate" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="LeadRejectDateTime" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="LeadRejectDescription" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="LeadRejectReason" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="LostTime" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="ManagerValue" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Name" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Notes" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Organization" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="OtherContacts" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="PrimaryContact" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Quotes" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="RecallTime" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="ReturnValue" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="SalesRepresentativeValue" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Summary" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Territory" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="WinLossDescription" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="WinLossReason" type="xs:boolean" default="false" use="optional"/>
+	</xs:complexType>
+	<xs:element name="OrganizationNullFields" type="OrganizationNullFields"/>
+	<xs:complexType name="OrganizationNullFields">
+		<xs:attribute name="Addresses" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Banner" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="ExternalReference" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="FileAttachments" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Industry" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Login" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="NameFurigana" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="NewPassword" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Notes" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="NumberOfEmployees" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Parent" type="xs:boolean" default="false" use="optional"/>
+	</xs:complexType>
+	<xs:element name="OrganizationSalesSettingsNullFields" type="OrganizationSalesSettingsNullFields"/>
+	<xs:complexType name="OrganizationSalesSettingsNullFields">
+		<xs:attribute name="SalesAccount" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="TotalRevenue" type="xs:boolean" default="false" use="optional"/>
+	</xs:complexType>
+	<xs:element name="OrganizationServiceSettingsNullFields" type="OrganizationServiceSettingsNullFields"/>
+	<xs:complexType name="OrganizationServiceSettingsNullFields">
+		<xs:attribute name="SLAInstances" type="xs:boolean" default="false" use="optional"/>
+	</xs:complexType>
+	<xs:element name="PersonNameNullFields" type="PersonNameNullFields"/>
+	<xs:complexType name="PersonNameNullFields">
+		<xs:attribute name="First" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Last" type="xs:boolean" default="false" use="optional"/>
+	</xs:complexType>
+	<xs:element name="ProductNotificationNullFields" type="ProductNotificationNullFields"/>
+	<xs:complexType name="ProductNotificationNullFields">
+		<xs:attribute name="Interface" type="xs:boolean" default="false" use="optional"/>
+	</xs:complexType>
+	<xs:element name="PurchasedProductNullFields" type="PurchasedProductNullFields"/>
+	<xs:complexType name="PurchasedProductNullFields">
+		<xs:attribute name="Campaign" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Comment" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Contact" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="FinalizedByAccount" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="LicenseEndTime" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="LicenseStartTime" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Mailing" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Opportunity" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Organization" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Price" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="PurchaseTime" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="SalesProduct" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="SerialNumber" type="xs:boolean" default="false" use="optional"/>
+	</xs:complexType>
+	<xs:element name="QuoteLineItemNullFields" type="QuoteLineItemNullFields"/>
+	<xs:complexType name="QuoteLineItemNullFields">
+		<xs:attribute name="AdjustedDescription" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="AdjustedName" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="AdjustedPartNumber" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="AdjustedPrice" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="AdjustedTotal" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Comment" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Product" type="xs:boolean" default="false" use="optional"/>
+	</xs:complexType>
+	<xs:element name="QuoteNullFields" type="QuoteNullFields"/>
+	<xs:complexType name="QuoteNullFields">
+		<xs:attribute name="AdjustedTotal" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Comment" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="FileAttachments" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="LineItems" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="OfferEndTime" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="OfferStartTime" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="PriceSchedule" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="SentTime" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="SentTo" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Status" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Template" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Total" type="xs:boolean" default="false" use="optional"/>
+	</xs:complexType>
+	<xs:element name="SalesProductNullFields" type="SalesProductNullFields"/>
+	<xs:complexType name="SalesProductNullFields">
+		<xs:attribute name="AdminVisibleInterfaces" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Descriptions" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Folder" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="PartNumber" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Schedules" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="ServiceProduct" type="xs:boolean" default="false" use="optional"/>
+	</xs:complexType>
+	<xs:element name="SalesProductScheduleNullFields" type="SalesProductScheduleNullFields"/>
+	<xs:complexType name="SalesProductScheduleNullFields">
+		<xs:attribute name="Comment" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="ScheduleEndDate" type="xs:boolean" default="false" use="optional"/>
+	</xs:complexType>
+	<xs:element name="SalesTerritoryNullFields" type="SalesTerritoryNullFields"/>
+	<xs:complexType name="SalesTerritoryNullFields">
+		<xs:attribute name="AdminVisibleInterfaces" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Comment" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Parent" type="xs:boolean" default="false" use="optional"/>
+	</xs:complexType>
+	<xs:element name="ServiceCategoryNullFields" type="ServiceCategoryNullFields"/>
+	<xs:complexType name="ServiceCategoryNullFields">
+		<xs:attribute name="AdminVisibleInterfaces" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Descriptions" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="EndUserVisibleInterfaces" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Parent" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="ProductLinks" type="xs:boolean" default="false" use="optional"/>
+	</xs:complexType>
+	<xs:element name="ServiceDispositionNullFields" type="ServiceDispositionNullFields"/>
+	<xs:complexType name="ServiceDispositionNullFields">
+		<xs:attribute name="AdminVisibleInterfaces" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Descriptions" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Parent" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="ProductLinks" type="xs:boolean" default="false" use="optional"/>
+	</xs:complexType>
+	<xs:element name="ServiceProductNullFields" type="ServiceProductNullFields"/>
+	<xs:complexType name="ServiceProductNullFields">
+		<xs:attribute name="AdminVisibleInterfaces" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="CategoryLinks" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Descriptions" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="DispositionLinks" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="EndUserVisibleInterfaces" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Parent" type="xs:boolean" default="false" use="optional"/>
+	</xs:complexType>
+	<xs:element name="StageWithStrategyNullFields" type="StageWithStrategyNullFields"/>
+	<xs:complexType name="StageWithStrategyNullFields">
+		<xs:attribute name="Stage" type="xs:boolean" default="false" use="optional"/>
+	</xs:complexType>
+	<xs:element name="StandardContentContentValueNullFields" type="StandardContentContentValueNullFields"/>
+	<xs:complexType name="StandardContentContentValueNullFields">
+		<xs:attribute name="Value" type="xs:boolean" default="false" use="optional"/>
+	</xs:complexType>
+	<xs:element name="StandardContentNullFields" type="StandardContentNullFields"/>
+	<xs:complexType name="StandardContentNullFields">
+		<xs:attribute name="AdminVisibleInterfaces" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="ContentValues" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Folder" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="HotKey" type="xs:boolean" default="false" use="optional"/>
+	</xs:complexType>
+	<xs:element name="TaskMarketingSettingsNullFields" type="TaskMarketingSettingsNullFields"/>
+	<xs:complexType name="TaskMarketingSettingsNullFields">
+		<xs:attribute name="Campaign" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Document" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Mailing" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Survey" type="xs:boolean" default="false" use="optional"/>
+	</xs:complexType>
+	<xs:element name="TaskNullFields" type="TaskNullFields"/>
+	<xs:complexType name="TaskNullFields">
+		<xs:attribute name="AssignedToAccount" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="CompletedTime" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Contact" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="DueTime" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="FileAttachments" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Notes" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Organization" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="PercentComplete" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="PlannedCompletionTime" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Priority" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="StartTime" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="TaskType" type="xs:boolean" default="false" use="optional"/>
+	</xs:complexType>
+	<xs:element name="TaskSalesSettingsNullFields" type="TaskSalesSettingsNullFields"/>
+	<xs:complexType name="TaskSalesSettingsNullFields">
+		<xs:attribute name="Opportunity" type="xs:boolean" default="false" use="optional"/>
+	</xs:complexType>
+	<xs:element name="TaskServiceSettingsNullFields" type="TaskServiceSettingsNullFields"/>
+	<xs:complexType name="TaskServiceSettingsNullFields">
+		<xs:attribute name="Answer" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Incident" type="xs:boolean" default="false" use="optional"/>
+	</xs:complexType>
+	<xs:element name="ThreadNullFields" type="ThreadNullFields"/>
+	<xs:complexType name="ThreadNullFields">
+		<xs:attribute name="Channel" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Contact" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="MailHeader" type="xs:boolean" default="false" use="optional"/>
+	</xs:complexType>
+	<xs:element name="TimeBilledNullFields" type="TimeBilledNullFields"/>
+	<xs:complexType name="TimeBilledNullFields">
+		<xs:attribute name="Account" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="BillableTask" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="Comment" type="xs:boolean" default="false" use="optional"/>
+	</xs:complexType>
+	<xs:element name="VariableNullFields" type="VariableNullFields"/>
+	<xs:complexType name="VariableNullFields">
+		<xs:attribute name="Folder" type="xs:boolean" default="false" use="optional"/>
+		<xs:attribute name="InterfaceValues" type="xs:boolean" default="false" use="optional"/>
+	</xs:complexType>
+</xs:schema>

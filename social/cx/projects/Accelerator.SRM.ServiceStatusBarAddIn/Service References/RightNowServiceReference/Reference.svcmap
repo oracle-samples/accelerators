@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="bf344477-3ce6-48f5-a4a0-97c1b96aeb83" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="C:\Users\klau.ORADEV\Downloads\rnow.wsdl" Protocol="file" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="rnowFaults.xsd" MetadataType="Schema" ID="7868988f-493a-4daa-be78-d3af17b40774" SourceId="1" SourceUrl="file:///C:/Users/klau.ORADEV/Downloads/rnowFaults.xsd" />
+    <MetadataFile FileName="RightNow.wsdl" MetadataType="Wsdl" ID="29a1efc3-17bf-45c6-8005-18862e838361" SourceId="1" SourceUrl="file:///C:/Users/klau.ORADEV/Downloads/rnow.wsdl" />
+    <MetadataFile FileName="rnowNullfields.xsd" MetadataType="Schema" ID="f9be5992-bddb-4912-8f6d-3f339c7b02bc" SourceId="1" SourceUrl="file:///C:/Users/klau.ORADEV/Downloads/rnowNullfields.xsd" />
+    <MetadataFile FileName="rnowMessagestyped.xsd" MetadataType="Schema" ID="14d5863d-a8f3-4f85-8ab6-faa2ac411a3c" SourceId="1" SourceUrl="file:///C:/Users/klau.ORADEV/Downloads/rnowMessagestyped.xsd" />
+    <MetadataFile FileName="rnowGeneric.xsd" MetadataType="Schema" ID="53ba60b9-eb78-45e4-90c1-cdd69948283f" SourceId="1" SourceUrl="file:///C:/Users/klau.ORADEV/Downloads/rnowGeneric.xsd" />
+    <MetadataFile FileName="rnowMetadata.xsd" MetadataType="Schema" ID="7f315fdc-c72d-4ce7-b657-e8876cfcbda2" SourceId="1" SourceUrl="file:///C:/Users/klau.ORADEV/Downloads/rnowMetadata.xsd" />
+    <MetadataFile FileName="rnowBase.xsd" MetadataType="Schema" ID="06859156-b7f4-4297-9753-a3ed5021131b" SourceId="1" SourceUrl="file:///C:/Users/klau.ORADEV/Downloads/rnowBase.xsd" />
+    <MetadataFile FileName="rnowObjects.xsd" MetadataType="Schema" ID="547df462-f6a0-4b26-82d8-f06a234b3935" SourceId="1" SourceUrl="file:///C:/Users/klau.ORADEV/Downloads/rnowObjects.xsd" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

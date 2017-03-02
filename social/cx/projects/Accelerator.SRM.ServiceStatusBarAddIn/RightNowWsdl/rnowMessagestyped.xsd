@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="urn:messages.ws.rightnow.com/v1_3"
+	targetNamespace="urn:messages.ws.rightnow.com/v1_3"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:rnb_v1_3="urn:base.ws.rightnow.com/v1_3"
+	xmlns:rno_v1_3="urn:objects.ws.rightnow.com/v1_3"
+	xmlns:rnc_v1_3="urn:common.ws.rightnow.com/v1"
+	xmlns:rng_v1_3="urn:generic.ws.rightnow.com/v1_3"
+	xmlns:rnm_v1_3="urn:messages.ws.rightnow.com/v1_3"
+	xmlns:rna_v1_3="urn:metadata.ws.rightnow.com/v1_3"
+	xmlns:rnf_v1_3="urn:faults.ws.rightnow.com/v1_3"
+	elementFormDefault="qualified"
+	attributeFormDefault="unqualified" version="1.0">
+
+<!--
+	Contains definitions for all the message objects that are the
+	outer-most elements on the wire.
+-->
+
+	<xs:import namespace="urn:base.ws.rightnow.com/v1_3" schemaLocation="C:\accelerator\social\cx\AcceleratorSRMSolution\RightNowWsdl\rnowBase.xsd"/>
+	<xs:import namespace="urn:generic.ws.rightnow.com/v1_3" schemaLocation="C:\accelerator\social\cx\AcceleratorSRMSolution\RightNowWsdl\rnowGeneric.xsd"/>
+	<xs:import namespace="urn:objects.ws.rightnow.com/v1_3" schemaLocation="C:\accelerator\social\cx\AcceleratorSRMSolution\RightNowWsdl\rnowObjects.xsd"/>
+	<xs:import namespace="urn:metadata.ws.rightnow.com/v1_3" schemaLocation="C:\accelerator\social\cx\AcceleratorSRMSolution\RightNowWsdl\rnowMetadata.xsd"/>
+	<xs:import namespace="urn:faults.ws.rightnow.com/v1_3" schemaLocation="C:\accelerator\social\cx\AcceleratorSRMSolution\RightNowWsdl\rnowFaults.xsd"/>
+
+	<xs:complexType name="RNObjectsResult">
+		<xs:sequence>
+			<xs:element name="RNObjects" type="rnb_v1_3:RNObject" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="ClientInfoHeader">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="AppID" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<!--  MailMessage operations  -->
+
+	<xs:element name="MailMessageSend" type="MailMessageSendMsg"/>
+	<xs:complexType name="MailMessageSendMsg">
+		<xs:sequence>
+			<xs:element name="MailMessage" type="rno_v1_3:MailMessage"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="MailMessageSendResponse" type="MailMessageSendResponseMsg"/>
+	<xs:complexType name="MailMessageSendResponseMsg">
+		<xs:sequence>
+			<xs:element name="MailMessageStatus" type="rno_v1_3:MailMessageStatus"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<!--  Basic CRUD operations  -->
+
+	<xs:element name="Create" type="CreateMsg"/>
+	<xs:complexType name="CreateMsg">
+		<xs:sequence>
+			<xs:element name="RNObjects" type="rnb_v1_3:RNObject" minOccurs="1" maxOccurs="unbounded"/>
+			<xs:element name="ProcessingOptions" type="rnm_v1_3:CreateProcessingOptions" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="CreateProcessingOptions">
+		<xs:sequence>
+			<xs:element name="SuppressExternalEvents" type="xs:boolean"/>
+			<xs:element name="SuppressRules" type="xs:boolean"/>
+			<xs:element name="ReturnExpandedSoapFaults" type="xs:boolean" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="CreateResponse" type="CreateResponseMsg"/>
+	<xs:complexType name="CreateResponseMsg">
+		<xs:sequence>
+			<xs:element name="RNObjectsResult" type="RNObjectsResult"/>
+		</xs:sequence>
+	</xs:complexType>
+
+
+	<xs:element name="Get" type="GetMsg"/>
+	<xs:complexType name="GetMsg">
+		<xs:sequence>
+			<xs:element name="RNObjects" type="rnb_v1_3:RNObject" minOccurs="1" maxOccurs="unbounded"/>
+			<xs:element name="ProcessingOptions" type="rnm_v1_3:GetProcessingOptions" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="GetProcessingOptions">
+		<xs:sequence>
+			<xs:element name="FetchAllNames" type="xs:boolean"/>
+			<xs:element name="ReturnExpandedSoapFaults" type="xs:boolean" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="GetResponse" type="GetResponseMsg"/>
+	<xs:complexType name="GetResponseMsg">
+		<xs:sequence>
+			<xs:element name="RNObjectsResult" type="RNObjectsResult"/>
+		</xs:sequence>
+	</xs:complexType>
+
+
+	<xs:element name="Update" type="UpdateMsg"/>
+	<xs:complexType name="UpdateMsg">
+		<xs:sequence>
+			<xs:element name="RNObjects" type="rnb_v1_3:RNObject" minOccurs="1" maxOccurs="unbounded"/>
+			<xs:element name="ProcessingOptions" type="rnm_v1_3:UpdateProcessingOptions" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="UpdateProcessingOptions">
+		<xs:sequence>
+			<xs:element name="SuppressExternalEvents" type="xs:boolean"/>
+			<xs:element name="SuppressRules" type="xs:boolean"/>
+			<xs:element name="ReturnExpandedSoapFaults" type="xs:boolean" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="UpdateResponse" type="UpdateResponseMsg"/>
+	<xs:complexType name="UpdateResponseMsg"/>
+
+
+	<xs:element name="Destroy" type="DestroyMsg"/>
+	<xs:complexType name="DestroyMsg">
+		<xs:sequence>
+			<xs:element name="RNObjects" type="rnb_v1_3:RNObject" minOccurs="1" maxOccurs="unbounded"/>
+			<xs:element name="ProcessingOptions" type="rnm_v1_3:DestroyProcessingOptions" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="DestroyProcessingOptions">
+		<xs:sequence>
+			<xs:element name="SuppressExternalEvents" type="xs:boolean"/>
+			<xs:element name="SuppressRules" type="xs:boolean"/>
+			<xs:element name="ReturnExpandedSoapFaults" type="xs:boolean" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="DestroyResponse" type="DestroyResponseMsg"/>
+	<xs:complexType name="DestroyResponseMsg"/>
+
+
+	<!--  ROQL operations  -->
+
+	<xs:complexType name="QueryMsg">
+		<xs:sequence>
+			<xs:element name="Query" type="xs:string"/>
+			<xs:element name="PageSize" type="xs:int" minOccurs="0"/>
+            <xs:element name="Delimiter" type="xs:string" minOccurs="0"/>
+			<xs:element name="ReturnRawResult" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="DisableMTOM" type="xs:boolean" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+
+	<xs:element name="QueryCSV" type="QueryMsg"/>
+
+	<xs:element name="QueryCSVResponse" type="QueryCSVResponseMsg"/>
+	<xs:complexType name="QueryCSVResponseMsg" >
+		<xs:sequence>
+			<xs:element name="CSVTableSet" type="CSVTableSet" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="FileData" type="xs:base64Binary" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="CSVRow" >
+		<xs:sequence>
+			<xs:element name="Row" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="CSVTable" >
+		<xs:sequence>
+			<xs:element name="Name" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Columns" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Rows" type="CSVRow" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="CSVTables" >
+		<xs:sequence>
+			<xs:element name="CSVTable" type="CSVTable" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="CSVTableSet" >
+		<xs:sequence>
+			<xs:element name="CSVTables" type="CSVTables" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+
+	<xs:element name="QueryObjects" type="QueryObjectsMsg"/>
+	<xs:complexType name="QueryObjectsMsg">
+		<xs:sequence>
+			<xs:element name="Query" type="xs:string"/>
+			<xs:element name="ObjectTemplates" type="rnb_v1_3:RNObject" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="PageSize" type="xs:int" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="QueryObjectsResponse" type="QueryObjectsResponseMsg"/>
+	<xs:complexType name="QueryObjectsResponseMsg">
+		<xs:sequence>
+			<xs:element name="Result" type="QueryResultData" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="QueryResultData">
+		<xs:sequence>
+			<xs:element name="RNObjectsResult" type="RNObjectsResult"/>
+			<xs:element name="Paging"          type="PagingResponse"/>
+			<xs:element name="Fault"           type="rnf_v1_3:RNFault" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="PagingResponse">
+		<xs:sequence>
+			<xs:element name="ReturnedCount" type="xs:int"/>
+			<xs:element name="StartIndex"    type="xs:int"/>
+			<xs:element name="QueryHandle"   type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<!--  RunAnalyticsReport operations  -->
+
+	<xs:element name="RunAnalyticsReport" type="RunAnalyticsReportMsg"/>
+	<xs:complexType name="RunAnalyticsReportMsg">
+		<xs:sequence>
+			<xs:element name="AnalyticsReport" type="rno_v1_3:AnalyticsReport" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="Limit" type="xs:int" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="Start" type="xs:int" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="Delimiter" type="xs:string" minOccurs="0"/>
+			<xs:element name="ReturnRawResult" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="DisableMTOM" type="xs:boolean" minOccurs="0"/>                        
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="RunAnalyticsReportResponse" type="RunAnalyticsReportResponseMsg"/>
+	<xs:complexType name="RunAnalyticsReportResponseMsg" >
+		<xs:sequence>
+			<xs:element name="CSVTableSet" type="CSVTableSet" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="FileData" type="xs:base64Binary" minOccurs="0" maxOccurs="1"/>                        
+		</xs:sequence>
+	</xs:complexType>
+
+	<!--  Miscellaneous operations  -->
+
+	<xs:element name="ExecuteMarketingFlow" type="ExecuteMarketingFlowMsg"/>
+	<xs:complexType name="ExecuteMarketingFlowMsg">
+		<xs:sequence>
+			<xs:element name="ContactID"  type="rnb_v1_3:ID"/>
+			<xs:element name="CampaignID" type="rnb_v1_3:ID"/>
+			<xs:element name="EntryPoint" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="ExecuteMarketingFlowResponse" type="ExecuteMarketingFlowResponseMsg"/>
+	<xs:complexType name="ExecuteMarketingFlowResponseMsg"/>
+
+
+	<xs:element name="GetFileData" type="GetFileDataMsg"/>
+	<xs:complexType name="GetFileDataMsg">
+		<xs:sequence>
+            <xs:element name="RNObject" type="rnb_v1_3:RNObject" />
+			<xs:element name="FileID" type="rnb_v1_3:ID"/>
+			<xs:element name="DisableMTOM" type="xs:boolean" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="GetFileDataResponse" type="GetFileDataResponseMsg"/>
+	<xs:complexType name="GetFileDataResponseMsg">
+		<xs:sequence>
+			<xs:element name="FileData" type="xs:base64Binary"/>
+		</xs:sequence>
+	</xs:complexType>
+
+
+	<xs:element name="ResetContactPassword" type="ResetContactPasswordMsg"/>
+	<xs:complexType name="ResetContactPasswordMsg">
+		<xs:sequence>
+			<xs:element name="ContactID" type="rnb_v1_3:ID"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="ResetContactPasswordResponse" type="ResetContactPasswordResponseMsg"/>
+	<xs:complexType name="ResetContactPasswordResponseMsg"/>
+
+
+	<xs:element name="SendMailingToContact" type="SendMailingToContactMsg"/>
+	<xs:complexType name="SendMailingToContactMsg">
+		<xs:sequence>
+			<xs:element name="ContactID" type="rnb_v1_3:ID"/>
+			<xs:element name="MailingID" type="rnb_v1_3:ID"/>
+			<xs:element name="ScheduledTime" type="xs:dateTime" nillable='true' />
+			<xs:element name="IncidentID" type="rnb_v1_3:ID" nillable='true' />
+			<xs:element name="OpportunityID" type="rnb_v1_3:ID" nillable='true' />
+            <xs:element name="ChatID" type="rnb_v1_3:ID" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="SendMailingToContactResponse" type="SendMailingToContactResponseMsg"/>
+	<xs:complexType name="SendMailingToContactResponseMsg"/>
+
+
+    <xs:element name="TransferSubObjects" type="TransferSubObjectsMsg"/>
+    <xs:complexType name="TransferSubObjectsMsg">
+        <xs:sequence>
+            <xs:element name="DestinationRNObject" type="rnb_v1_3:RNObject" minOccurs="1" maxOccurs="1" />     
+            <xs:element name="SourceRNObjects" type="rnb_v1_3:RNObject" minOccurs="1" maxOccurs="unbounded" /> 
+        </xs:sequence>
+    </xs:complexType>        
+
+    <xs:element name="TransferSubObjectsResponse" type="TransferSubObjectsResponseMsg"/>
+    <xs:complexType name="TransferSubObjectsResponseMsg"/>
+
+	<!--  Metadata operations  -->
+
+	<xs:element name="GetMetaData" type="GetMetaDataMsg"/>
+	<xs:complexType name="GetMetaDataMsg"/>
+
+	<xs:element name="GetMetaDataResponse" type="GetMetaDataResponseMsg"/>
+	<xs:complexType name="GetMetaDataResponseMsg">
+		<xs:sequence>
+			<xs:element name="MetaDataClass" type="rna_v1_3:MetaDataClass" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="GetMetaDataForClass" type="GetMetaDataForClassMsg"/>
+	<xs:complexType name="GetMetaDataForClassMsg">
+		<xs:sequence>
+			<xs:element name="ClassName" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="QualifiedClassName" type="rng_v1_3:RNObjectType" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="MetaDataLink" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>            
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="GetMetaDataForClassResponse" type="GetMetaDataForClassResponseMsg"/>
+	<xs:complexType name="GetMetaDataForClassResponseMsg">
+		<xs:sequence>
+			<xs:element name="MetaDataClass" type="rna_v1_3:MetaDataClass" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+        <xs:element name="GetMetaDataForOperation" type="GetMetaDataForOperationMsg"/>
+        <xs:complexType name="GetMetaDataForOperationMsg">
+            <xs:sequence>
+                <xs:element name="Operation" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element name="ClassName" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="QualifiedClassName" type="rng_v1_3:RNObjectType" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+
+        <xs:element name="GetMetaDataForOperationResponse" type="GetMetaDataForOperationResponseMsg"/>
+        <xs:complexType name="GetMetaDataForOperationResponseMsg">
+            <xs:sequence>
+                <xs:element name="MetaDataClassOperation" type="rna_v1_3:MetaDataClassOperation" minOccurs="1" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+
+	<xs:element name="GetMetaDataLastChangeTime" type="GetMetaDataLastChangeTimeMsg"/>
+	<xs:complexType name="GetMetaDataLastChangeTimeMsg"/>
+
+	<xs:element name="GetMetaDataLastChangeTimeResponse" type="GetMetaDataLastChangeTimeResponseMsg"/>
+	<xs:complexType name="GetMetaDataLastChangeTimeResponseMsg">
+		<xs:sequence>
+			<xs:element name="LastChangeDateTime" type="xs:dateTime"/>
+		</xs:sequence>
+	</xs:complexType>
+
+        <xs:element name="GetPrimaryClassNames" type="GetPrimaryClassNamesMsg"/>
+        <xs:complexType name="GetPrimaryClassNamesMsg"/>
+
+        <xs:element name="GetPrimaryClassNamesResponse" type="GetPrimaryClassNamesResponseMsg"/>
+        <xs:complexType name="GetPrimaryClassNamesResponseMsg">
+            <xs:sequence>
+                <xs:element name="PrimaryClassName" type="rng_v1_3:RNObjectType" minOccurs="1" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+
+	<xs:element name="GetValuesForNamedID" type="GetValuesForNamedIDMsg"/>
+	<xs:complexType name="GetValuesForNamedIDMsg">
+		<xs:sequence>
+			<xs:element name="PackageName" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="FieldName" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="GetValuesForNamedIDResponse" type="GetValuesForNamedIDResponseMsg"/>
+	<xs:complexType name="GetValuesForNamedIDResponseMsg">
+		<xs:sequence>
+			<xs:element name="Entry" type="rnb_v1_3:NamedID" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="GetValuesForNamedIDHierarchy" type="GetValuesForNamedIDHierarchyMsg"/>
+	<xs:complexType name="GetValuesForNamedIDHierarchyMsg">
+		<xs:sequence>
+			<xs:element name="FieldName" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="GetValuesForNamedIDHierarchyResponse" type="GetValuesForNamedIDHierarchyResponseMsg"/>
+	<xs:complexType name="GetValuesForNamedIDHierarchyResponseMsg">
+		<xs:sequence>
+			<xs:element name="Entry" type="rnb_v1_3:NamedIDWithParent" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="GetSubscribableObjects" type="GetSubscribableObjectsMsg"/>
+	<xs:complexType name="GetSubscribableObjectsMsg">
+	</xs:complexType>
+
+	<xs:complexType name="SubscribableObject">
+		<xs:sequence>
+			<xs:element name="RNObject" type="rng_v1_3:GenericObject"/>
+			<xs:element name="SupportedEvents" type="rna_v1_3:SubscriptionEvents"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="GetSubscribableObjectsResponse" type="GetSubscribableObjectsResponseMsg"/>
+	<xs:complexType name="GetSubscribableObjectsResponseMsg">
+		<xs:sequence>
+			<xs:element name="SubscribableObjects" type="SubscribableObject" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<!-- Batch messages  -->
+
+	<xs:complexType name="BatchRequestItem">
+		<xs:sequence>
+			<xs:choice>
+				<xs:element name="CreateMsg"                type="CreateMsg"/>
+				<xs:element name="GetMsg"                   type="GetMsg"/>
+				<xs:element name="UpdateMsg"                type="UpdateMsg"/>
+				<xs:element name="DestroyMsg"               type="DestroyMsg"/>
+				<xs:element name="QueryCSVMsg"              type="QueryMsg"/>
+				<xs:element name="QueryObjectsMsg"          type="QueryObjectsMsg"/>
+				<xs:element name="ExecuteMarketingFlowMsg"  type="ExecuteMarketingFlowMsg"/>
+				<xs:element name="GetFileDataMsg"           type="GetFileDataMsg"/>
+				<xs:element name="ResetContactPasswordMsg"  type="ResetContactPasswordMsg"/>
+				<xs:element name="SendMailingToContactMsg"  type="SendMailingToContactMsg"/>
+                <xs:element name="TransferSubObjectsMsg"    type="TransferSubObjectsMsg"/>                                               
+                <xs:element name="GetMetaDataMsg"           type="GetMetaDataMsg"/>
+				<xs:element name="GetMetaDataForClassMsg"   type="GetMetaDataForClassMsg"/>
+				<xs:element name="GetMetaDataForOperationMsg"   type="GetMetaDataForOperationMsg"/>
+				<xs:element name="GetMetaDataLastChangeTimeMsg"     type="GetMetaDataLastChangeTimeMsg"/>
+				<xs:element name="GetPrimaryClassNamesMsg"   type="GetPrimaryClassNamesMsg"/>
+				<xs:element name="GetValuesForNamedIDMsg"   type="GetValuesForNamedIDMsg"/>
+				<xs:element name="GetValuesForNamedIDHierarchyMsg"
+				                                            type="GetValuesForNamedIDHierarchyMsg"/>
+				<xs:element name="RunAnalyticsReportMsg"    type="RunAnalyticsReportMsg"/>
+			</xs:choice>
+			<xs:element name="CommitAfter"     type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="PreserveChainID" type="xs:boolean" minOccurs="0" maxOccurs="1"/>        
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="BatchResponseItem">
+		<xs:choice>
+			<xs:element name="CreateResponseMsg"        type="CreateResponseMsg"/>
+			<xs:element name="GetResponseMsg"           type="GetResponseMsg"/>
+			<xs:element name="UpdateResponseMsg"        type="UpdateResponseMsg"/>
+			<xs:element name="DestroyResponseMsg"       type="DestroyResponseMsg"/>
+			<xs:element name="QueryCSVResponseMsg"      type="QueryCSVResponseMsg"/>
+			<xs:element name="QueryObjectsResponseMsg"  type="QueryObjectsResponseMsg"/>
+			<xs:element name="ExecuteMarketingFlowResponseMsg"
+			                                            type="ExecuteMarketingFlowResponseMsg"/>
+			<xs:element name="GetFileDataResponseMsg"   type="GetFileDataResponseMsg"/>
+			<xs:element name="ResetContactPasswordResponseMsg"
+			                                            type="ResetContactPasswordResponseMsg"/>
+			<xs:element name="SendMailingToContactResponseMsg"
+			                                            type="SendMailingToContactResponseMsg"/>
+			<xs:element name="GetMetaDataResponseMsg"   type="GetMetaDataResponseMsg"/>
+            <xs:element name="TransferSubObjectsResponseMsg"
+                                                        type="TransferSubObjectsResponseMsg"/>                                             
+			<xs:element name="GetMetaDataForClassResponseMsg" 
+			                                            type="GetMetaDataForClassResponseMsg"/>
+			<xs:element name="GetMetaDataForOperationResponseMsg" 
+			                                            type="GetMetaDataForOperationResponseMsg"/>
+			<xs:element name="GetMetaDataLastChangeTimeResponseMsg"
+			                                            type="GetMetaDataLastChangeTimeResponseMsg"/>
+			<xs:element name="GetPrimaryClassNamesResponseMsg" 
+			                                            type="GetPrimaryClassNamesResponseMsg"/>
+			<xs:element name="GetValuesForNamedIDResponseMsg" 
+			                                            type="GetValuesForNamedIDResponseMsg"/>
+			<xs:element name="GetValuesForNamedIDHierarchyResponseMsg"
+			                                            type="GetValuesForNamedIDHierarchyResponseMsg"/>
+			<xs:element name="RunAnalyticsReportResponseMsg"
+                                                        type="RunAnalyticsReportResponseMsg"/>
+			<xs:element name="RequestErrorFault"        type="rnf_v1_3:RequestErrorFaultType"/>
+			<xs:element name="RequestErrorFaultDetail"  type="rnf_v1_3:RequestErrorFaultDetailType"/>
+			<xs:element name="ServerErrorFault"         type="rnf_v1_3:ServerErrorFaultType"/>
+			<xs:element name="UnexpectedErrorFault"     type="rnf_v1_3:UnexpectedErrorFaultType"/>
+		</xs:choice>
+	</xs:complexType>
+
+	<xs:element name="Batch" type="BatchMsg"/>
+	<xs:complexType name="BatchMsg">
+		<xs:sequence>
+			<xs:element name="BatchRequestItem" type="BatchRequestItem" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="BatchResponse" type="BatchResponseMsg"/>
+	<xs:complexType name="BatchResponseMsg">
+		<xs:sequence>
+			<xs:element name="BatchResponseItem" type="BatchResponseItem" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+    <!-- GenericObject to Typed Object Converter Messages -->
+	<xs:element name="ConvertGenericToObject" type="ConvertObjectMsg"/>
+	<xs:element name="ConvertObjectToGeneric" type="ConvertObjectMsg"/>
+	<xs:complexType name="ConvertObjectMsg">
+		<xs:sequence>
+			<xs:element name="RNObjects" type="rnb_v1_3:RNObject" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="ConvertGenericToObjectResponse" type="ConvertObjectResponseMsg"/>
+	<xs:element name="ConvertObjectToGenericResponse" type="ConvertObjectResponseMsg"/>
+	<xs:complexType name="ConvertObjectResponseMsg">
+		<xs:sequence>
+			<xs:element name="RNObjectsResult" type="RNObjectsResult"/>
+		</xs:sequence>
+	</xs:complexType>
+
+</xs:schema>

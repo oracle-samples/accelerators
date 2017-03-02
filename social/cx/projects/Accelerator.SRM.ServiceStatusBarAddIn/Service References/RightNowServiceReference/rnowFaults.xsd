@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="urn:faults.ws.rightnow.com/v1_3" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:faults.ws.rightnow.com/v1_3" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="RNFault">
+    <xs:sequence>
+      <xs:element name="exceptionCode" type="ExceptionCode" />
+      <xs:element name="exceptionMessage" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RequestErrorFaultType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="RNFault" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="RequestErrorFaultDetailType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="RNFault">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="FailedItemIndex" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RequestErrorFault" type="RequestErrorFaultType" />
+  <xs:element name="RequestErrorFaultDetail" type="RequestErrorFaultDetailType" />
+  <xs:complexType name="ServerErrorFaultType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="RNFault" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ServerErrorFault" type="ServerErrorFaultType" />
+  <xs:complexType name="UnexpectedErrorFaultType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="RNFault" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UnexpectedErrorFault" type="UnexpectedErrorFaultType" />
+  <xs:simpleType name="ExceptionCode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ACCESS_DENIED" />
+      <xs:enumeration value="INVALID_FIELD" />
+      <xs:enumeration value="INVALID_LOGIN" />
+      <xs:enumeration value="BAD_ID" />
+      <xs:enumeration value="MISSING_ARGUMENT" />
+      <xs:enumeration value="QUERY_TIMEOUT" />
+      <xs:enumeration value="UNKNOWN_EXCEPTION" />
+      <xs:enumeration value="INVALID_REQUEST" />
+      <xs:enumeration value="CONSTRAINT_EXCEPTION" />
+      <xs:enumeration value="API_VERSION_UNAVAILABLE" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

@@ -1,0 +1,62 @@
+{
+  "AdminProfileID":2,
+  "hosts": [
+    {
+      "rnt_host": "replace.me.with.osvc.site.name",
+      "integration": 
+       {
+        "server_type": "SRM",
+        "ext_base_url": "http://replace.me.with.srm.server.base.url/",
+        "log_type": "SCLog",
+        "log_level": "Debug",
+		"max_srm_rows_fetch": 200,
+        "channel_constraints": [
+             {
+                "channel": "twitter",
+                "constraints": [
+                 {
+                     "reply_mode": "public",
+                     "char_limit": 140,
+                     "include_social_handle": true
+                 },
+                 {
+                     "reply_mode": "private",
+                     "include_social_handle": false
+                 }]
+            },
+            {
+             "channel": "facebook",
+                "constraints": [
+                 {
+                     "reply_mode": "public",
+                     "char_limit": 20,
+                     "include_social_handle": false
+                 },
+                 {
+                     "reply_mode": "private",
+                     "char_limit": 30
+                 }]
+            }],
+ 
+        "ext_services": 
+  {
+           "conversation": 
+    {
+       "update": {
+              "relative_path": "engage/v1/conversations/{0}/external_references/{1}?bundleId={2}"
+              }
+           },
+           "conversation_reply": 
+    {
+              "list": {
+              "relative_path": "engage/v1/conversations/{0}/contributions?bundleId={1}&limit={2}&flatten=true&category=original,private"
+              },
+		"create": {
+              "relative_path": "engage/v1/conversations/{0}/contributions?bundleId={1}"
+              }      
+            }
+         }
+       }
+     }
+ ]
+}

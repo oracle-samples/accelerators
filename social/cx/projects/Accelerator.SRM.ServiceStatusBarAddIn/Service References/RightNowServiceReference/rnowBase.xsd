@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="urn:base.ws.rightnow.com/v1_3" xmlns:rnb_v1_3="urn:base.ws.rightnow.com/v1_3" elementFormDefault="qualified" targetNamespace="urn:base.ws.rightnow.com/v1_3" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="ActionEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="none" />
+      <xs:enumeration value="add" />
+      <xs:enumeration value="remove" />
+      <xs:enumeration value="update" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ChainDestinationID" type="rnb_v1_3:ChainDestinationID" />
+  <xs:complexType name="ChainDestinationID">
+    <xs:complexContent mixed="false">
+      <xs:extension base="rnb_v1_3:ID">
+        <xs:attribute name="variableName" type="xs:string" use="optional" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ChainSourceID" type="rnb_v1_3:ChainSourceID" />
+  <xs:complexType name="ChainSourceID">
+    <xs:complexContent mixed="false">
+      <xs:extension base="rnb_v1_3:ID">
+        <xs:attribute name="variableName" type="xs:string" use="optional" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ConnectError" type="rnb_v1_3:ConnectError" />
+  <xs:complexType name="ConnectError">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="ErrorCode" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ErrorDescription" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Errors" type="rnb_v1_3:ConnectErrorDetail" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ConnectErrorDetail" type="rnb_v1_3:ConnectErrorDetail" />
+  <xs:complexType name="ConnectErrorDetail">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="ErrorCode" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ErrorValues" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ID" type="rnb_v1_3:ID" />
+  <xs:complexType name="ID">
+    <xs:attribute name="id" type="xs:long" use="optional" />
+  </xs:complexType>
+  <xs:element name="NamedID" type="rnb_v1_3:NamedID" />
+  <xs:complexType name="NamedID">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="ID" type="rnb_v1_3:ID" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NamedIDDelta" type="rnb_v1_3:NamedIDDelta" />
+  <xs:complexType name="NamedIDDelta">
+    <xs:complexContent mixed="false">
+      <xs:extension base="rnb_v1_3:NamedID">
+        <xs:attribute name="action" type="rnb_v1_3:ActionEnum" use="optional" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="NamedIDDeltaList" type="rnb_v1_3:NamedIDDeltaList" />
+  <xs:complexType name="NamedIDDeltaList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="NamedIDDeltaList" type="rnb_v1_3:NamedIDDelta" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NamedIDHierarchy" type="rnb_v1_3:NamedIDHierarchy" />
+  <xs:complexType name="NamedIDHierarchy">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="ID" type="rnb_v1_3:ID" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="12" name="Parents" type="rnb_v1_3:NamedReadOnlyID" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NamedIDHierarchyList" type="rnb_v1_3:NamedIDHierarchyList" />
+  <xs:complexType name="NamedIDHierarchyList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="NamedIDHierarchyList" type="rnb_v1_3:NamedIDHierarchy" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NamedIDList" type="rnb_v1_3:NamedIDList" />
+  <xs:complexType name="NamedIDList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="NamedIDList" type="rnb_v1_3:NamedID" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NamedIDWithParent" type="rnb_v1_3:NamedIDWithParent" />
+  <xs:complexType name="NamedIDWithParent">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="ID" type="xs:long" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Name" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="ParentID" nillable="true" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NamedReadOnlyID" type="rnb_v1_3:NamedReadOnlyID" />
+  <xs:complexType name="NamedReadOnlyID">
+    <xs:complexContent mixed="false">
+      <xs:extension base="rnb_v1_3:NamedID" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RNObject" type="rnb_v1_3:RNObject" />
+  <xs:complexType name="RNObject">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="ID" type="rnb_v1_3:ID" />
+      <xs:element minOccurs="0" maxOccurs="1" name="LookupName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="CreatedTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" maxOccurs="1" name="UpdatedTime" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
