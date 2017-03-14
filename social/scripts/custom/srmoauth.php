@@ -41,10 +41,6 @@ use Oracle\Accelerator\SRM as SRM;
 //Include the SRM controller class
 require_once DOCROOT . "/custom/oauthcontroller.phph";
 
-//Include the SCLog class for Logging
-require_once DOCROOT . "/custom/sclog.php";
-$log = new scTools\SCLog();
-
 //We will get the agent session ID
 $session_id = !empty($_GET['session_id']) ? $_GET['session_id'] : -1;
 
@@ -75,18 +71,15 @@ if (!empty($account['acct_id']) && !empty($_POST['f']) && !empty($_POST['process
         }
         else
         {
-            $log->error("Function Error", "Invalid function requested");
             echo "Invalid function request";
         }
     }
     else
     {
-        $log->error("Account Validation Error", "Account that submitted this request does not have a valid request time in oauth_valid_until or process id in oauth_process_id.");
         echo "Invalid information provided. This action has been logged.";
     }
 }
 else
 {
-    $log->error("Data Parse Error", "Required data not provided in request.  Post Contents: " . print_r($_POST, true));
     echo "Data not provided in request";
 }

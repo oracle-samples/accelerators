@@ -19,7 +19,6 @@
 
 namespace Oracle\Accelerator\SRM;
 
-//Include the SCLog class for Logging
 if (!defined('DOCROOT'))
 {
     $docroot = get_cfg_var('doc_root');
@@ -27,8 +26,6 @@ if (!defined('DOCROOT'))
 }
 require_once DOCROOT . "/ConnectPHP/Connect_init.php";
 initConnectAPI();
-
-require_once DOCROOT . "/custom/sclog.php";
 
 use RightNow\Connect\v1_3 as RNCPHP;
 
@@ -124,14 +121,6 @@ class OAuthController
     private $refresh_token = '';
 
     /**
-     * Variable to host the SC Log Instance
-     *
-     * @var mixed
-     * @access private
-     */
-    private $sclog;
-
-    /**
      * Scope of SRM access
      *
      * (default value: 'engage')
@@ -153,14 +142,14 @@ class OAuthController
     private $token_file_name = '/tmp/accelerator_token.json';
 
     /**
-     * Constructor.  Setup SCLog for use in this class.
+     * Constructor.
      *
      * @access public
      * @return void
      */
     public function __construct()
     {
-        $this->sclog = new \scTools\SCLog();
+        
     }
 
     /**
@@ -204,7 +193,8 @@ class OAuthController
         else
         {
             $errorMessage = "No Accelerator.OAuthConfig custom object";
-            $this->sclog->error("Get Config Failed", $errorMessage, null, null, __FILE__, __FUNCTION__);
+            //Insert your own logic to manage the error
+            
             RNCPHP\ConnectAPI::commit();
         }
 
@@ -224,8 +214,6 @@ class OAuthController
         $tokenInfo = RNCPHP\Accelerator\OAuthTokens::first(sprintf("Account = %d", $accountId));
         if (!empty($tokenInfo))
         {
-            $this->sclog->debug("SRM Access Token Found for Account: " . $accountId, null, null, null, __FILE__, __FUNCTION__);
-
             $this->last_valid_access_token = $tokenInfo->LastAccessToken;
             $this->last_time_string = $tokenInfo->LastTimeString;
             $this->refresh_token = $tokenInfo->RefreshToken;
@@ -235,7 +223,8 @@ class OAuthController
         else
         {
             $errorMessage = "No Accelerator.OAuthTokens record for account " . $accountId;
-            $this->sclog->error("Get Token Failed", $errorMessage, null, null, __FILE__, __FUNCTION__);
+            //Insert your own logic to manage the error
+            //
             RNCPHP\ConnectAPI::commit();
         }
 
@@ -275,8 +264,6 @@ class OAuthController
             //If the different is greater than the expires in calc, then we need to refresh the token
             if (($difference > $this->expires_in || $tokenInfo->RefreshTokenFailure))
             {
-                $this->sclog->debug("Get Token", "Getting new token.", null, null, __FILE__, __FUNCTION__);
-
                 try {
                     // this refreshes and makes new tokens and a new time string
                     $response = $this->refresh_access_token($accountId);
@@ -296,12 +283,11 @@ class OAuthController
                 }
                 catch (\Exception $e)
                 {
-                    $this->sclog->error("Refresh Token Exception", $e->getMessage(), null, null, __FILE__, __FUNCTION__);
+                    //Insert your own logic to manage the error
                 }
             }
             else
             {
-                $this->sclog->debug("Get Token", "Token still valid.", null, null, __FILE__, __FUNCTION__);
                 $response['access_token'] = $this->last_valid_access_token;
             }
 
@@ -311,8 +297,6 @@ class OAuthController
             // Prepare response as the array can differ in elements up to this point
             $response['last_request_time'] = $this->last_time_string;
             $response['expires_in'] = $this->expires_in;
-
-            $this->sclog->debug("Get Token", print_r($response, true), null, null, __FILE__, __FUNCTION__);
 
             echo json_encode($response);
 
@@ -342,9 +326,6 @@ class OAuthController
      */
     public static function prepareRedirectForOauth($clientId, $clientSecret, $authEndpoint, $tokenEndpoint, $scope, $responseType, $redirectUri, $saveConfigs = true)
     {
-        $log = new \scTools\SCLog();
-        $log->debug("OAuth Redirect", "Redirecting to SRM for token. ", null, null, __FILE__, __FUNCTION__);
-
         //Remove any saved config that may be lingering for unknown reasons.
         if (file_exists(static::$oauth_auth_file))
         {
@@ -380,13 +361,11 @@ class OAuthController
                 $scope,
                 $redirectUri);
 
-            $log->debug("OAuth Redirect", "At URL: " . $url, null, null, __FILE__, __FUNCTION__);
-
             return $url;
         }
         catch (\Exception $e)
         {
-            $log->error("Save Configs Error: " . $e->getMessage(), $e->getTraceAsString(), null, null, __FILE__, __FUNCTION__);
+            //Insert your own logic to manage the error
         }
 
         return null;
@@ -403,13 +382,11 @@ class OAuthController
      */
     public function requestAccessToken($authCode, $accountId)
     {
-        $this->sclog->debug("OAuth Request", "Getting data for auth token: " . $authCode, null, null, __FILE__, __FUNCTION__);
         if (file_exists(static::$oauth_auth_file))
         {
             $json = file_get_contents(static::$oauth_auth_file);
             $oauthRedirectData = json_decode($json);
             unlink(static::$oauth_auth_file);
-            $this->sclog->debug("OAuth Redirect Data", print_r($oauthRedirectData, true), null, null, __FILE__, __FUNCTION__);
 
             $configs = $this->getOauthConfigsFromServer();
 
@@ -419,7 +396,6 @@ class OAuthController
             // init curl // load curl
             if (!extension_loaded('curl') && !\load_curl())
             {
-                $this->sclog->debug("cURL Load Error", 'curl: Server Error : cUrl cannot be loaded', null, null, __FILE__, __FUNCTION__);
                 return false;
             }
 
@@ -473,12 +449,9 @@ class OAuthController
 
                 return $parsedData;
             }
-
-            $this->sclog->error("cURL errors", print_r($errors, true), null, null, __FILE__, __FUNCTION__);
         }
         else
         {
-            $this->sclog->error("OAuth Error", "Client secret and client ID are unknown", null, null, __FILE__, __FUNCTION__);
             throw new \Exception("Client secret and client ID are unknown");
         }
 
@@ -495,11 +468,9 @@ class OAuthController
      */
     public static function validateAgentProfile($accountId)
     {
-        $log = new \scTools\SCLog();
-        $log->debug("Agent Validation", "Validating ID: " . $accountId, null, null, __FILE__, __FUNCTION__);
         try {
             $verb = sprintf("CUSTOM_CFG_%s", self::CONFIG_VERB);
-            $log->debug("Config Verb Search", "Config Verb: " . $verb, null, null, __FILE__, __FUNCTION__);
+
             $configs = RNCPHP\Configuration::fetch($verb);
             if (!empty($configs))
             {
@@ -507,7 +478,7 @@ class OAuthController
                 $data = json_decode($json);
 
                 $results = RNCPHP\ROQL::query(sprintf("SELECT Profile.ID FROM Account WHERE ID = %s", $accountId))->next()->next();
-                $log->debug("Config Verb Data Found", "Config Verb: \n" . $json, null, null, __FILE__, __FUNCTION__);
+                
                 if (!empty($results['ID']) && $results['ID'] == $data->AdminProfileID)
                 {
                     return true;
@@ -515,12 +486,12 @@ class OAuthController
             }
             else
             {
-                $log->error("No Configs Set", "Config Verb: " . $verb, null, null, __FILE__, __FUNCTION__);
+                //Insert your own logic to manage the error
             }
         }
         catch (\Exception $e)
         {
-            $log->error("Agent Validation Error", $e->getMessage(), null, null, __FILE__, __FUNCTION__);
+            //Insert your own logic to manage the error
         }
 
         return false;
@@ -542,7 +513,6 @@ class OAuthController
      */
     public static function validate_request($accountId, $process_id, $request_time)
     {
-        $log = new \scTools\SCLog();
         try {
             $validityCheckTimestamp = null;
             $fetchedProcessId = null;
@@ -559,14 +529,14 @@ class OAuthController
             }
             else
             {
-                $log->error("Custom Field Error", "Process ID or valid oauth time are not returned from the DB.", null, null, __FILE__, __FUNCTION__);
+                //Insert your own logic to manage the error
             }
 
             return ($request_time < $validityCheckTimestamp && $fetchedProcessId == $process_id);
         }
         catch (\Exception $e)
         {
-            $log->error("Exception Thrown", $e->getMessage(), null, null, __FILE__, __FUNCTION__);
+            //Insert your own logic to manage the error
         }
 
         return false;
@@ -588,9 +558,6 @@ class OAuthController
             'refresh_token' => $this->refresh_token
         );
 
-        $this->sclog->debug("Refreshing Access Token", print_r($content, true), null, null, __FILE__, __FUNCTION__);
-        RNCPHP\ConnectAPI::commit();
-
         // init curl // load curl
         $ip_dbreq = true;
         require_once 'include/init.phph';
@@ -598,7 +565,6 @@ class OAuthController
         {
             $result['status'] = false;
             $result['response'] = 'cURL not loaded by PHP.';
-            $this->sclog->debug("cURL Load Error", $result['response'], null, null, __FILE__, __FUNCTION__);
             return $result;
         }
 
@@ -635,8 +601,6 @@ class OAuthController
             //Purge the existing tokens if the refresh fails as the refresh token is not valid and the server needs reauthorization.
             $this->removeTokens();
 
-            $this->sclog->error("Refresh Token cURL Error", $errorMessage, null, null, __FILE__, __FUNCTION__);
-            $this->sclog->error("Refresh Token Error", "Refresh tokens removed. Admin will be alerted to reinitialize OAuth.", null, null, __FILE__, __FUNCTION__);
             RNCPHP\ConnectAPI::commit();
 
             die($errorMessage);
@@ -650,7 +614,6 @@ class OAuthController
 
             // body
             $body = substr($http_response, $header_size);
-            $this->sclog->debug("cURL Success", $body, null, null, __FILE__, __FUNCTION__);
         }
 
         $response = json_decode($body, true);
@@ -685,8 +648,6 @@ class OAuthController
      */
     private static function saveOauthConfigValues($clientData)
     {
-        $log = new \scTools\SCLog();
-        $log->debug("OAuth Save", "Saving Client Data to DB", null, null, __FILE__, __FUNCTION__);
         try {
             $oauthConfig = RNCPHP\Accelerator\OAuthConfig::first("ID > 0");
             if (empty($oauthConfig))
@@ -701,13 +662,12 @@ class OAuthController
             $oauthConfig->Scope = $clientData['scope'];
 
             $oauthConfig->save();
-            $log->debug("OAuth Saved", "Client Data Saved", null, null, __FILE__, __FUNCTION__);
 
             return $oauthConfig;
         }
         catch (\Exception $e)
         {
-            $log->error("OAuth Save Error", "Error saving client data: " . $e->getMessage(), null, null, __FILE__, __FUNCTION__);
+            //Insert your own logic to manage the error
         }
 
         return null;
@@ -727,8 +687,6 @@ class OAuthController
      */
     private function save_refresh_token($access_token, $refresh_token, $time_string, $expires_in, $accountId, RNCPHP\Accelerator\OAuthConfig $oauthConfig)
     {
-        $this->sclog->debug("Saving Refresh Token", "Saving Refresh Token", null, null, __FILE__, __FUNCTION__);
-
         $accessTokenRecord = RNCPHP\Accelerator\OAuthTokens::first(sprintf("Account = %d", $accountId));
 
         if ($accessTokenRecord == null)
