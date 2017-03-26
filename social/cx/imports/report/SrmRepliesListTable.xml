@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <analytics_core xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <ac_id xmlns="urn:obj.api.rightnow.com">101486</ac_id>
+  <ac_id xmlns="urn:obj.api.rightnow.com">100333</ac_id>
   <ac_public xmlns="urn:obj.api.rightnow.com">true</ac_public>
   <ac_type xmlns="urn:obj.api.rightnow.com">1</ac_type>
   <aux xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
   <cdate_offset xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
   <co_version xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
-  <created xmlns="urn:obj.api.rightnow.com">2016-12-15T21:48:01Z</created>
+  <created xmlns="urn:obj.api.rightnow.com">2017-03-02T22:07:57Z</created>
   <file_id xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
   <filters xmlns="urn:obj.api.rightnow.com">
     <filter_item>
@@ -20,7 +20,7 @@
       <type>1</type>
       <val1>SRM_Data$SrmRepliesListTable.BundleID</val1>
       <val1_attrs>1</val1_attrs>
-      <val1_col_refs>SRM_Data$SrmRepliesListTable.BundleID;32002</val1_col_refs>
+      <val1_col_refs>SRM_Data$SrmRepliesListTable.BundleID;32000</val1_col_refs>
       <val2 xsi:nil="true" />
       <val2_col_refs xsi:nil="true" />
       <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
@@ -45,7 +45,7 @@
       <type>1</type>
       <val1>SRM_Data$SrmRepliesListTable.ConversationID</val1>
       <val1_attrs>1</val1_attrs>
-      <val1_col_refs>SRM_Data$SrmRepliesListTable.ConversationID;32002</val1_col_refs>
+      <val1_col_refs>SRM_Data$SrmRepliesListTable.ConversationID;32000</val1_col_refs>
       <val2 xsi:nil="true" />
       <val2_col_refs xsi:nil="true" />
       <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
@@ -61,13 +61,13 @@
     </filter_item>
   </filters>
   <fltr_expr xmlns="urn:obj.api.rightnow.com">1 2 &amp;</fltr_expr>
-  <folder_id xmlns="urn:obj.api.rightnow.com">109694</folder_id>
+  <folder_id xmlns="urn:obj.api.rightnow.com">101712</folder_id>
   <image xmlns="urn:obj.api.rightnow.com">8</image>
   <interface_id xmlns="urn:obj.api.rightnow.com">1</interface_id>
   <items xmlns="urn:obj.api.rightnow.com" />
   <label xmlns="urn:obj.api.rightnow.com">
     <lbl_item>
-      <label>SrmRepliesListTableCF</label>
+      <label>SrmRepliesListTable</label>
       <lang_id>1</lang_id>
     </lbl_item>
   </label>
@@ -96,7 +96,7 @@
           <type>1</type>
           <val>SRM_Data$SrmRepliesListTable.body</val>
           <val_attrs>1</val_attrs>
-          <val_col_refs>SRM_Data$SrmRepliesListTable.body;32002</val_col_refs>
+          <val_col_refs>SRM_Data$SrmRepliesListTable.body;32000</val_col_refs>
           <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;UnitType&gt;Percentage&lt;/UnitType&gt;
@@ -135,7 +135,7 @@
           <type>1</type>
           <val>SRM_Data$SrmRepliesListTable.status</val>
           <val_attrs>1</val_attrs>
-          <val_col_refs>SRM_Data$SrmRepliesListTable.status;32002</val_col_refs>
+          <val_col_refs>SRM_Data$SrmRepliesListTable.status;32000</val_col_refs>
           <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;UnitType&gt;Auto&lt;/UnitType&gt;
@@ -168,7 +168,7 @@
           <type>1</type>
           <val>SRM_Data$SrmRepliesListTable.type</val>
           <val_attrs>1</val_attrs>
-          <val_col_refs>SRM_Data$SrmRepliesListTable.type;32002</val_col_refs>
+          <val_col_refs>SRM_Data$SrmRepliesListTable.type;32000</val_col_refs>
           <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;UnitType&gt;Auto&lt;/UnitType&gt;
@@ -201,7 +201,7 @@
           <type>1</type>
           <val>SRM_Data$SrmRepliesListTable.postedAt</val>
           <val_attrs>1</val_attrs>
-          <val_col_refs>SRM_Data$SrmRepliesListTable.postedAt;32002</val_col_refs>
+          <val_col_refs>SRM_Data$SrmRepliesListTable.postedAt;32000</val_col_refs>
           <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;UnitType&gt;Percentage&lt;/UnitType&gt;
@@ -235,7 +235,7 @@
           <type>1</type>
           <val>SRM_Data$SrmRepliesListTable.authorName</val>
           <val_attrs>1</val_attrs>
-          <val_col_refs>SRM_Data$SrmRepliesListTable.authorName;32002</val_col_refs>
+          <val_col_refs>SRM_Data$SrmRepliesListTable.authorName;32000</val_col_refs>
           <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;UnitType&gt;Auto&lt;/UnitType&gt;
@@ -340,7 +340,7 @@
           <type>1</type>
           <val>SRM_Data$SrmRepliesListTable.authorImage</val>
           <val_attrs>1</val_attrs>
-          <val_col_refs>SRM_Data$SrmRepliesListTable.authorImage;32002</val_col_refs>
+          <val_col_refs>SRM_Data$SrmRepliesListTable.authorImage;32000</val_col_refs>
           <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;UnitType&gt;Percentage&lt;/UnitType&gt;
@@ -531,7 +531,7 @@
   &lt;/Name&gt;
   &lt;SearchCriteriaStyle&gt;None&lt;/SearchCriteriaStyle&gt;
   &lt;OutputDescriptionStyle&gt;Rollover&lt;/OutputDescriptionStyle&gt;
-  &lt;DisplayOptions&gt;ShowDataAreaAsGrid ShowAllColumnsMultLine&lt;/DisplayOptions&gt;
+  &lt;DisplayOptions&gt;ShowDataAreaAsGrid ShowAllColumnsMultLine CrispRendering&lt;/DisplayOptions&gt;
   &lt;RowsPerPage&gt;20&lt;/RowsPerPage&gt;
   &lt;PageSettings&gt;
     &lt;PrintMargin&gt;Normal&lt;/PrintMargin&gt;
@@ -543,9 +543,18 @@
   </nodes>
   <notes xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
   <opts xmlns="urn:obj.api.rightnow.com">4</opts>
-  <owner_acct_id xmlns="urn:obj.api.rightnow.com">2</owner_acct_id>
+  <owner_acct_id xmlns="urn:obj.api.rightnow.com">646</owner_acct_id>
   <params xmlns="urn:obj.api.rightnow.com" />
-  <perms xmlns="urn:obj.api.rightnow.com" />
+  <perms xmlns="urn:obj.api.rightnow.com">
+    <perm_item>
+      <perms>3</perms>
+      <profile_id>2</profile_id>
+    </perm_item>
+    <perm_item>
+      <perms>3</perms>
+      <profile_id>25</profile_id>
+    </perm_item>
+  </perms>
   <rpt xmlns="urn:obj.api.rightnow.com" />
   <run_vals xmlns="urn:obj.api.rightnow.com" />
   <schedules xmlns="urn:obj.api.rightnow.com" />
@@ -559,15 +568,15 @@
       <join_fltr_expr xsi:nil="true" />
       <join_to_tbl_idx xsi:nil="true" />
       <join_type xsi:nil="true" />
-      <tbl>32002</tbl>
+      <tbl>32000</tbl>
       <tbl_id>1</tbl_id>
     </table_item>
   </tables>
   <time_zone xmlns="urn:obj.api.rightnow.com">0</time_zone>
-  <updated xmlns="urn:obj.api.rightnow.com">2016-12-15T21:48:01Z</updated>
+  <updated xmlns="urn:obj.api.rightnow.com">2017-03-15T14:51:10Z</updated>
   <version xmlns="urn:obj.api.rightnow.com">0</version>
   <xml_data xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
   <xml_report xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
 </analytics_core>
 Version: 
-p7/3/kSn6DO/qAkfEN4hn11z4IbXOaKpgfvl
+0UTZg4ZMMHGZaZFKWTrVCjKa7u7wWqGO+mrw
