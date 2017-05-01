@@ -292,9 +292,8 @@ namespace Accelerator.SRM.ReportTablesAddIn
                                 break;
                             case "SRM_Data$SrmRepliesListTable.postedAt":
                                 DateTime utcTime = DateTime.Parse(req.content.postedAt);
-                                TimeZoneInfo localZone = TimeZoneInfo.FindSystemTimeZoneById(TimeZone.CurrentTimeZone.StandardName);
-                                DateTime localTime = TimeZoneInfo.ConvertTime(utcTime, localZone);
-                                reportDataCell.GenericValue = localTime.ToString();
+                                DateTime localTime = utcTime.ToLocalTime();
+                                reportDataCell.GenericValue = localTime != null ? localTime.ToString() : "";
                                 break;
                             case "SRM_Data$SrmRepliesListTable.status":
                                 reportDataCell.GenericValue = req.content.status;
