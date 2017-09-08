@@ -117,18 +117,7 @@ public class DashboardHandler implements LifeCycleListener {
             }
             
             if(currentHost == null)
-                return;
-            
-            //Parse config of current host
-            String serverTimezone = currentHost.optString("server_timezone");
-            if (serverTimezone.equals("") || serverTimezone == null){
-                AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(),
-                            "navigator.notification.alert",
-                            new Object[] {"Configuration server_timezone is empty. Default America/Los_Angeles is used", null, "Warning", "OK"});
-            }
-            else 
-                AdfmfJavaUtilities.setELValue("#{applicationScope.configuration.server_timezone}", serverTimezone);
-            
+                return;            
 
             String client_datetime_format = currentHost.optString("client_datetime_format");
             if (client_datetime_format.equals("") || client_datetime_format == null){

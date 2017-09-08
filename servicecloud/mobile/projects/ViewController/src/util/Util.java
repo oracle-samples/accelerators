@@ -473,12 +473,14 @@ public class Util {
      * @return
      */
     public static String attributeToDateString(String attributeName, String value) {
+        String input = value;
         if (value!=null) {
             // checking if it it's a date; change the Pattern if the Report Format changes.
-            Pattern pattern = Pattern.compile("'([\\d :\\-]+)'");  // gettz
+            Pattern pattern = Pattern.compile("\\b[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\\.[0-9]{3}Z\\b");  // gettz
             Matcher matcher = pattern.matcher( value );
             if (matcher.find()) {
-                value = matcher.group(1);
+                value = value.replace('T', ' ');
+                value = value.substring(0, value.length() - 5);
                 // System.out.println("Got report "+attributeName+" date: "+value);
             } else {
                 return value; // exit
@@ -496,6 +498,7 @@ public class Util {
             
             LocalDateTime serverTime = LocalDateTime.parse(value, reportFormat);
             String serverTimeZone = (String)AdfmfJavaUtilities.evaluateELExpression("#{applicationScope.configuration.server_timezone}");
+            serverTimeZone = "UTC"; //Reports will always return time in UTC
            
             try {
                 ZoneId serverZone = ZoneId.of(serverTimeZone); 
@@ -514,8 +517,8 @@ public class Util {
                 ZonedDateTime localZonedTime = serverZonedTime.withZoneSameInstant(localZone);
            
                 value = localZonedTime.format(localFormat);
-                System.out.println("serverZonedTime: " + serverZonedTime.format(reportFormat) + " " + serverZone);
-                System.out.println("localZonedTime: " + value + " " + localZone);
+                //System.out.println("serverZonedTime: " + serverZonedTime.format(reportFormat) + " " + serverZone);
+                //System.out.println("localZonedTime: " + value + " " + localZone);
 
             } catch (DateTimeException e) {
                 System.out.println("DateTimeException while formatting date: "+e.getMessage());

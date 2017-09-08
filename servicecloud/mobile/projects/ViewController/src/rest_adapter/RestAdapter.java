@@ -117,6 +117,7 @@ public class RestAdapter {
         restServiceAdapter.setRequestMethod(RestServiceAdapter.REQUEST_TYPE_POST);
         restServiceAdapter.setRetryLimit(0);
         restServiceAdapter.setRequestURI(requestURL);
+		restServiceAdapter.addRequestProperty("OSvC-CREST-Time-UTC", "yes");
 
         String response;
 
