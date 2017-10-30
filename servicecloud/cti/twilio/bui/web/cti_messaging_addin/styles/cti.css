@@ -1,0 +1,167 @@
+/* * *******************************************************************************************
+ *  This file is part of the Oracle Service Cloud Accelerator Reference Integration set 
+ *  published by Oracle under the Universal Permissive License (UPL), Version 1.0
+ *  Copyright (c) 2017 Oracle and/or its affiliates. All rights reserved.
+ ***********************************************************************************************
+ *  Accelerator Package: Telephony and SMS Accelerator for Twilio
+ *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
+ *  OSvC release: 17D (November 2017)
+ *  reference: 161212-000059
+ *  date: Monday Oct 30 13:8:16 UTC 2017
+ *  revision: rnw-17-11-fixes-releases
+ * 
+ *  SHA1: $Id: a13bb982550064707dfbb9891b29a6df7e71e184 $
+ * *********************************************************************************************
+ *  File: cti.css
+ * ****************************************************************************************** */
+
+#panel_body h5{
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis !important;
+    width:100%;
+}
+
+.container {
+    margin:2px;
+}
+
+.canvas {
+    margin: 5px;
+    text-align: center;
+}
+
+.panel-padding {
+    padding: 3px !important;
+}
+
+.content-area {
+    margin:5px;
+    margin-top:10px;
+    margin-bottom:20px;
+    border: 1px solid #ddd;
+    padding-bottom: 5px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.caption-area {
+    margin:3px;
+    border: 1px solid #ddd;
+    padding-top: 10px;
+    padding-bottom: 15px;
+    border-radius: 5px;
+}
+
+.caption-text {
+    margin-top: 15px;
+    padding: 5px;
+}
+
+.button {
+    color: #fff;
+    padding: 6px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    white-space: nowrap;
+    vertical-align: middle;
+    pointer-events: auto;
+}
+
+.button.disabled
+{
+    cursor: not-allowed;
+    filter: alpha(opacity=65);
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    opacity: .65;
+    pointer-events: none !important;
+}
+
+.button-green {
+    color: #fff;
+    background-color: #4CAF50;
+    border-color: #4cae4c;
+}
+
+.button-green:hover {
+    color: #fff;
+    background-color: #449d44;
+    border-color: #398439;
+}
+
+.button-red {
+    color: #fff;
+    background-color: #d9534f;
+    border-color: #d43f3a;
+}
+
+.button-red:hover {
+    color: #fff;
+    background-color: #c9302c;
+    border-color: #ac2925;
+}
+
+.button-blue {
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #2e6da4;
+}
+
+.button-blue:hover {
+    color: #fff;
+    background-color: #286090;
+    border-color: #204d74;
+}
+
+.button-default {
+    padding: 6px 25px;
+    color: #333;
+    background-color: #ffffff;
+    border-color: #ccc;
+    margin: 0px;
+}
+
+.button-default:hover {
+    color: #333;
+    background-color: #e6e6e6;
+    border-color: #adadad;
+}
+
+.input-text {
+    width: 95%;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    margin: 5px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+.break_hr {
+    margin: 5px 5px;
+}
+
+.button-bar{
+    text-align: left;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.collapse {
+    display: none;
+}
+

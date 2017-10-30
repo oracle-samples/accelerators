@@ -1,0 +1,21 @@
+"folder_id","entry_key","text","type","max_length"
+"CTI Accelerator","CUSTOM_MSG_Click_to_Call","Click to Call",Plain,500
+"CTI Accelerator","CUSTOM_MSG_CTI_Flow_3_ErrorDialogs","The incident reference number you entered is invalid.",Plain,500
+"CTI Accelerator","CUSTOM_MSG_CTI_Flow_4_Repeat","Sorry, I did't get that.",Plain,500
+"CTI Accelerator","CUSTOM_MSG_CTI_Flow_4_ErrorDialogs","The product number you entered is invalid.",Plain,500
+"CTI Accelerator","CUSTOM_MSG_CTI_Flow_2_Dialogs_OpenIncident_P1","If you are calling in regards to your open incident ",Plain,500
+"CTI Accelerator","CUSTOM_MSG_CTI_Flow_2_Dialogs_OpenIncident_P2",", please press 1. To enter a product number, press 2. Press 3 to leave a voice message. Press 0 to speak to an agent.",Plain,500
+"CTI Accelerator","CUSTOM_MSG_CTI_Flow_2_Dialogs_NoIncidents","To enter a product number, press 1. Press 2 to leave a voice message. Press 0 to speak to an agent.",Plain,500
+"CTI Accelerator","CUSTOM_MSG_CTI_Flow_2_Dialogs_OpenIncidents","If you are calling in regards any of your open incidents, please press 1. To enter a product number, press 2. Press 3 to leave a voice message. Press 0 to speak to an agent.",Plain,500
+"CTI Accelerator","CUSTOM_MSG_CTI_Timeout_Escalate_Dialog","All of our agents are currently busy helping other customers. A link has been sent to your mobile phone number to continue with a chat agent. You may remain in the call until you navigate to the link.",Plain,500
+"CTI Accelerator","CUSTOM_MSG_CTI_Flow_0_Dialogs","Thank you for Calling Go Smartly, the global leader in home appliances. Please listen closely as our menu is changed recently.",Plain,500
+"CTI Accelerator","CUSTOM_MSG_CTI_Flow_1_Dialogs","Please wait while we connect your call to an agent.",Plain,500
+"CTI Accelerator","CUSTOM_MSG_CTI_Flow_2_Dialogs","To enter an incident reference number, please press 1. To enter a product number, press 2. Press 3 to leave a voice message . Press 0 to speak to an agent.",Plain,500
+"CTI Accelerator","CUSTOM_MSG_CTI_Flow_2_Repeat","You didn't make a choice. Please try again.",Plain,500
+"CTI Accelerator","CUSTOM_MSG_CTI_Flow_2_ErrorDialogs","You entered an invalid number. Please try again.",Plain,500
+"CTI Accelerator","CUSTOM_MSG_CTI_Flow_3_Dialogs","Please enter the 12 digit incident reference number.",Plain,500
+"CTI Accelerator","CUSTOM_MSG_CTI_Flow_3_Repeat","Sorry, I didn't get that.",Plain,500
+"CTI Accelerator","CUSTOM_MSG_CTI_Flow_4_Dialogs","Please enter a product number followed by hash.",Plain,500
+"CTI Accelerator","CUSTOM_MSG_CTI_Flow_5_Dialogs","Please record your voice mail after the beep. Press the # key when finished.",Plain,500
+"CTI Accelerator","CUSTOM_MSG_CTI_Flow_6_Dialogs","Thank you for calling Go Smartly! Good bye!",Plain,500
+"CTI Accelerator","CUSTOM_MSG_CTI_DropCall","Thank you for calling Go Smartly. A chat agent will help you momentarily.  Good bye!",Plain,500

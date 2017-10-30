@@ -1,0 +1,32 @@
+{
+    "cti": {
+        "twilio": {
+            "account_sid": "replace_me",
+            "auth_token": "replace_me",
+            "app_sid": "replace_me",
+            "phone_number": "+12675923969",
+            "workspace": {
+                "name": "osvc_workspace",
+                "sid": "replace_me"
+            },
+            "activities": {
+                "Offline": "replace_me",
+                "Idle": "replace_me",
+                "Busy": "replace_me",
+                "Reserved": "replace_me",
+                "Ready": "replace_me",
+                "Not Available": "replace_me",
+            },
+            "queue": {
+                "name": "osvc_voice_queue",
+                "sid": "replace_me"
+            },
+            "workflow": {
+                "name": "osvc_workflow",
+                "sid": "replace_me"
+            },
+            "voice": "woman",
+            "chat_offer_threshold": 20
+        }
+    }
+}

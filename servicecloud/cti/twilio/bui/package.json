@@ -1,0 +1,12 @@
+{
+  "name": "CtiAccelerator",
+  "version": "1.0.0",
+  "description": "CTI Accelerator Phase 1",
+  "private": true,
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "requirejs": "^2.1.22",
+    "tslint": "^4.2.0",
+    "typescript": "^2.4.2"
+  }
+}

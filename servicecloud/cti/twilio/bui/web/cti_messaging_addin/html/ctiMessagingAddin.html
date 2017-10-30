@@ -1,0 +1,75 @@
+<!--
+/* * *******************************************************************************************
+ *  This file is part of the Oracle Service Cloud Accelerator Reference Integration set 
+ *  published by Oracle under the Universal Permissive License (UPL), Version 1.0
+ *  Copyright (c) 2017 Oracle and/or its affiliates. All rights reserved.
+ ***********************************************************************************************
+ *  Accelerator Package: Telephony and SMS Accelerator for Twilio
+ *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
+ *  OSvC release: 17D (November 2017)
+ *  reference: 161212-000059
+ *  date: Monday Oct 30 13:8:16 UTC 2017
+ *  revision: rnw-17-11-fixes-releases
+ * 
+ *  SHA1: $Id: a988f51370bd2e1242dd11bb10facb44cbea0ca3 $
+ * *********************************************************************************************
+ *  File: ctiMessagingAddin.html
+ * ****************************************************************************************** */
+-->
+
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>BUI CTI MESSAGING ADDIN CLIENT</title>
+    <!--//TODO - Modify the relative path-->
+    <script type='text/javascript' src='../../ext-lib/requirejs/require.js' data-main='../scripts/app_messaging'></script>
+    <link rel='stylesheet' href='//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' integrity='sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN' crossorigin='anonymous'>
+    <link rel='stylesheet' href='../styles/oj-alta.css'>
+    <link rel='stylesheet' href='../styles/cti.css'>
+</head>
+
+<body>
+
+<div class='container'>
+    <div class='oj-flex'>
+        <div class='oj-sm-12 oj-md-4 oj-lg-2 oj-flex-item'>
+            <div class='oj-panel oj-panel-shadow-md panel-padding'>
+                <div class='panel-body' style='padding: 8px' id='panel_body'>
+
+                    <div id='messagingdialog'>
+                        <div >
+                            <div class='content-area'>
+                                <div class='caption-area'>
+                                    <div class=''>
+                                        <img style='border-radius: 50%; width: 50px; height: 50px' src='' alt='' id='messaging_contact_image' class='contact_image'>
+                                        <div class='caption-text' style='text-overflow: ellipsis'>
+                                            <h5 id='messaging_name' class='contact_name' style='text-align: center; font-weight: bold'></h5>
+                                            <h5 style='text-align: center;'>
+                                                <i class='fa fa-phone'></i> <span id='messaging_contact_number' class='contact_phone' ></span>
+                                            </h5>
+
+                                            <textarea class="input-text" rows="5" id="messaging_content" placeholder="Type your message.."></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class=''>
+                                        <div style='text-align: center'>
+                                            <button class='button button-green' role='button' id='message_send_btn'>Send</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>

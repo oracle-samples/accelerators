@@ -1,0 +1,239 @@
+// Cti build file
+
+defaultTasks 'build'
+
+apply plugin: 'typescript'
+apply plugin: 'com.moowork.node'
+
+buildscript {
+    repositories {
+        maven {
+            url 'https://plugins.gradle.org/m2/'
+        }
+
+    }
+    dependencies {
+        classpath('org.jfrog.buildinfo:build-info-extractor-gradle:3.0.3')
+        classpath('de.richsource.gradle.plugins:typescript-gradle-plugin:1.5')
+        classpath('com.moowork.gradle:gradle-node-plugin:0.11')
+    }
+}
+
+apply plugin: 'typescript'
+apply plugin: 'com.moowork.node'
+
+node {
+    // Version of node to use.
+    version = "${node_version}"
+
+    // Version of npm to use.
+    npmVersion = "${npm_version}"
+
+    // Base URL for fetching node distributions (change if you have a mirror).
+    distBaseUrl = "${node_dist_url}"
+
+    // If true, it will download node using above parameters.
+    // If false, it will try to use globally installed node.
+    download = true
+
+    // Set the work directory for unpacking node
+    workDir = file("${rootProject.projectDir}/${node_dist_directory}")
+
+    // Set the work directory where node_modules should be located
+    nodeModulesDir = file("${rootProject.projectDir}")
+}
+
+npm_install{
+	args = ['--no-optional']
+	print 'npm install running'
+}
+
+task cleanBuildDir(type: Delete, group: 'build') {
+    File baseBuildDir = new File(rootProject.projectDir, "build")
+    delete baseBuildDir.path
+
+    File extLibDir = new File(rootProject.projectDir, "web/ext-lib")
+    delete extLibDir.path
+
+    if (!baseBuildDir.exists()) {
+        baseBuildDir.mkdirs()
+    }
+
+    if (!extLibDir.exists()) {
+        extLibDir.mkdirs()
+    }
+}
+
+task jsClean(type: NodeTask, group: 'build') {
+    outputs.upToDateWhen { false }
+
+    script = new File(rootProject.projectDir, "scripts/jsClean.js")
+}
+
+task clean(group: 'build') {
+    mustRunAfter npm_install
+    mustRunAfter npm_rebuild
+
+    dependsOn npm_install
+    def destinationDir = new File(rootProject.projectDir, "build")
+	destinationDir.deleteDir()
+
+	File clientWebLibBuildDir = new File(rootProject.projectDir, "web/ext-lib/")
+	clientWebLibBuildDir.deleteDir()
+
+    dependsOn jsClean
+}
+
+task cleanArtifacts(type: Delete, group: 'build') {
+    mustRunAfter clean
+
+    outputs.upToDateWhen { false }
+
+    File baseBuildDir = new File(rootProject.projectDir, "build/")
+    if (baseBuildDir.exists()) {
+        delete baseBuildDir.path
+    }
+
+    File baseOutDir = new File(rootProject.projectDir, "out/artifacts/")
+    if (baseOutDir.exists()) {
+        delete baseOutDir.path
+    }
+}
+
+task copyWebLibFiles(type: Copy) {
+	dependsOn npm_install
+    outputs.upToDateWhen { false }
+	
+	def libFilePattern = ["**/require.*"]
+	
+	File webLibDir = new File(rootProject.projectDir,"node_modules")
+	File clientWebLibBuildDir = new File(rootProject.projectDir, "web/ext-lib/")
+	File nodeModule = new File(project.projectDir,"node_modules")
+	nodeModule.mkdirs()
+	nodeModule.eachDir() { dir ->  
+		libFilePattern.push(dir.name+"/**/"+dir.name+".*")
+	}
+	includes = libFilePattern
+	excludes = ["**/*.ts","**/src/*.*"]
+	from webLibDir 
+	into clientWebLibBuildDir
+	includeEmptyDirs = false
+}
+
+task build(group: 'build') {
+    mustRunAfter npm_install
+    mustRunAfter cleanArtifacts
+    mustRunAfter npm_rebuild
+	dependsOn clean
+    dependsOn npm_install
+    dependsOn npm_rebuild
+	dependsOn copyWebLibFiles
+    dependsOn compileTypeScript
+}
+
+
+task copyWebFiles(type: Copy) {
+    dependsOn compileTypeScript
+
+    outputs.upToDateWhen { false }
+
+    File webDir = new File(project.projectDir, "web")
+    File clientBuildDir = new File(rootProject.projectDir, "build/web")
+
+    from webDir
+    into clientBuildDir
+}
+
+task buildCtiTelephony(type: Zip, group: 'build') {
+	dependsOn build
+    dependsOn copyWebFiles
+
+    destinationDir = new File(rootProject.projectDir, "build")
+	def extensionName = 'cti_telephony_addin'
+    archiveName = extensionName + '-phase-2.zip'
+	def includedFolderNames = [extensionName , 'ext-lib' ]
+	def supportedFileExtensions = ['*.js','*.css','*.html', '*.json']
+	supportedFileExtensions.each{ fileExtension -> 
+		includedFolderNames.each{ folderName -> 
+			includes.add('**/'+folderName+'/**/'+fileExtension)
+		}
+	}
+
+    from('build/web') {
+        into 'cti'
+    }
+	includeEmptyDirs = false
+}
+
+
+task buildCtiMessaging(type: Zip, group: 'build') {
+    dependsOn build
+    dependsOn copyWebFiles
+
+    destinationDir = new File(rootProject.projectDir, "build")
+    def extensionName = 'cti_messaging_addin'
+    archiveName = extensionName + '-phase-2.zip'
+    def includedFolderNames = [extensionName , 'ext-lib' ]
+    def supportedFileExtensions = ['*.js','*.css','*.html', '*.json']
+    supportedFileExtensions.each{ fileExtension ->
+        includedFolderNames.each{ folderName ->
+            includes.add('**/'+folderName+'/**/'+fileExtension)
+        }
+    }
+
+    from('build/web') {
+        into 'cti'
+    }
+    includeEmptyDirs = false
+}
+
+task buildCtiReporting(type: Zip, group: 'build') {
+    dependsOn build
+    dependsOn copyWebFiles
+
+    destinationDir = new File(rootProject.projectDir, "build")
+    def extensionName = 'cti_reporting_addin'
+    archiveName = extensionName + '-phase-2.zip'
+    def includedFolderNames = [extensionName , 'ext-lib' ]
+    def supportedFileExtensions = ['*.js','*.css','*.html', '*.json']
+    supportedFileExtensions.each{ fileExtension ->
+        includedFolderNames.each{ folderName ->
+            includes.add('**/'+folderName+'/**/'+fileExtension)
+        }
+    }
+
+    from('build/web') {
+        into 'cti'
+    }
+    includeEmptyDirs = false
+}
+
+task buildToolZip(type: Zip, group: 'build') {
+	dependsOn buildCtiTelephony
+    dependsOn buildCtiMessaging
+    dependsOn buildCtiReporting
+}
+
+task run(group: 'ci') {
+    dependsOn npm_cache_clean
+    dependsOn npm_install
+    dependsOn npm_rebuild
+    dependsOn clean
+    dependsOn build
+}
+
+compileTypeScript {
+    group = 'build'
+
+    //this is added so gradle UP-TO-DATE check works
+    source = [file('./web')]
+    //force the output to be next to the ts files
+    outputDir = file('./web')
+    //this line causes the above line to be ignored and uses configs/source off tsconfig.json
+    projectFileDir = new File(project.projectDir, "/web/")
+    if (System.properties['os.name'].toLowerCase().contains('windows')) {
+        compilerExecutable = new File(rootProject.projectDir, "/scripts/tsc.cmd")
+    } else {
+        compilerExecutable = new File(rootProject.projectDir, "/node_modules/typescript/bin/tsc")
+    }
+}
