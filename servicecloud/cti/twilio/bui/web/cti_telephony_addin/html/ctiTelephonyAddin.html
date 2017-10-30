@@ -1,0 +1,188 @@
+<!--
+/* * *******************************************************************************************
+ *  This file is part of the Oracle Service Cloud Accelerator Reference Integration set 
+ *  published by Oracle under the Universal Permissive License (UPL), Version 1.0
+ *  Copyright (c) 2017 Oracle and/or its affiliates. All rights reserved.
+ ***********************************************************************************************
+ *  Accelerator Package: Telephony and SMS Accelerator for Twilio
+ *  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
+ *  OSvC release: 17D (November 2017)
+ *  reference: 161212-000059
+ *  date: Monday Oct 30 13:4:53 UTC 2017
+ *  revision: rnw-17-11-fixes-releases
+ * 
+ *  SHA1: $Id: 21078e07f9c670444de26d696533c4fbfe6f03fd $
+ * *********************************************************************************************
+ *  File: ctiTelephonyAddin.html
+ * ****************************************************************************************** */
+-->
+
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>BUI_CTI_CLIENT</title>
+
+    <script type="text/javascript" src="//media.twiliocdn.com/sdk/js/client/v1.3/twilio.min.js"></script>
+    <script type="text/javascript" src="//media.twiliocdn.com/taskrouter/js/v1.7.1/taskrouter.min.js"></script>
+
+    <script type='text/javascript' src='../../ext-lib/requirejs/require.js' data-main='../scripts/app_main'></script>
+
+    
+    <link rel='stylesheet' href='//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' integrity='sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN' crossorigin='anonymous'>
+    <link rel='stylesheet' href='../styles/oj-alta.css'>
+    <link rel='stylesheet' href='../styles/cti.css'>
+</head>
+
+<body>
+
+<div class='container'>
+    <div class='oj-flex'>
+        <div class='oj-sm-12 oj-md-4 oj-lg-2 oj-flex-item'>
+            <div class='oj-panel oj-panel-shadow-md panel-padding'>
+                <div class='canvas' id='panel_body'>
+                    <!-- Incoming dialog -->
+                    <div class='collapse' id='incomingdialog'>
+                        <div >
+                            <div class='content-area'>
+                                <h4><i class='fa fa-volume-control-phone'></i> Incoming Call</h4>
+                                <!--<div id='timeout'><kbd id='timeout_kbd'></kbd>&nbsp;Seconds</div>-->
+                                <div class='caption-area'>
+                                    <div class=''>
+                                        <img style='border-radius: 50%; width: 50px; height: 50px' src='' alt='' id='incoming_contact_image' class='contact_image'>
+                                        <div class='caption-text' style='text-overflow: ellipsis'>
+                                            <h5 id='incoming_name' class='contact_name' style='text-align: center; font-weight: bold'></h5>
+                                            <h5 style='text-align: center;'>
+                                                <i class='fa fa-phone'></i> <span id='incoming_number' class='contact_phone' ></span>
+                                            </h5>
+                                            <h5 style='text-align: center;' id='incoming_contact_mail'>
+
+                                            </h5>
+                                        </div>
+                                    </div>
+
+                                    <div class=''>
+                                        <div style='text-align: center'>
+                                            <button class='button button-red' role='button' id='notif_reject_btn'>Reject</button>
+                                            <button class='button button-green' role='button' id='notif_accept_btn'>Accept</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Incoming Dialog -->
+
+                    <!-- On call dialog -->
+                    <div class='collapse' id='oncalldialog'>
+                        <div >
+                            <div class=''>
+                                <div class='content-area'>
+                                    <div class='caption-area' style='margin-bottom: 10px'>
+                                        <img style='border-radius: 50%; width: 50px; height: 50px' src='' alt='' id='oncall_contact_image' class='contact_image'>
+                                        <div class='caption-text'>
+                                            <h5 id='oncall_name' class='contact_name' style='text-align: center; font-weight: bold'></h5>
+                                            <h5 style='text-align: center;'>
+                                                <i class='fa fa-phone'></i> <span id='oncall_number' class='contact_phone'></span>
+                                            </h5>
+                                            <h5 style='text-align: center;' id='oncall_contact_mail'>
+
+                                            </h5>
+                                        </div>
+                                    </div>
+                                    <div class=''>
+                                        <div class=' text-center'>
+                                            <div id='call_in_clock' style='font-weight: bold;'>
+                                                00:00:00
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr class="break_hr">
+                                    <div>
+                                        <div class='button-bar'>
+                                            <div class='button button-blue' id='oncall_mute_btn'><i
+                                                    class='fa fa-microphone'></i></div>
+
+                                            <div class="pull-right">
+                                                <div class="button button-blue disabled" id="oncall_transfer_btn"> <i id='oncall_transfer_icon' class="fa fa-angle-double-right"></i> </div>
+
+                                                <div class="button button-red disabled" id="oncall_hangup_btn"> <i class="fa fa-stop"></i></div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Available agents -->
+                    <div id="cti_connected_agents" class="collapse">
+                        <div id='agent_list' class="agent-list">
+                            <div class='agent-search'>
+                                Searching for agents...<br>
+                                <i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Available agents -->
+
+                    <!-- ~ On call dialog -->
+
+                    <!-- Dialer -->
+                    <div id='dialer'>
+                        <div>
+                            <div class='content-area' style='margin: 5px;'>
+
+                                <div style='margin: 5px;'>
+                                    <input id='bui_cti_dialer_number' class='input-text' type='text' maxlength='30'>
+                                </div>
+
+                                <div style='padding-left:5px;padding-right:5px; padding-bottom:1px;'>
+                                    <span id='dialpad_1' class='button button-default' style='font-size:large; font-weight:bold;'>1</span>
+                                    <span id='dialpad_2' class='button button-default' style='font-size:large; font-weight:bold;'>2</span>
+                                    <span id='dialpad_3' class='button button-default' style='font-size:large; font-weight:bold;'>3</span>
+                                </div>
+
+                                <div style='padding-left:5px;padding-right:5px; padding-bottom:1px;'>
+                                    <span id='dialpad_4' class='button button-default' style='font-size:large; font-weight:bold;'>4</span>
+                                    <span id='dialpad_5' class='button button-default' style='font-size:large; font-weight:bold;'>5</span>
+                                    <span id='dialpad_6' class='button button-default' style='font-size:large; font-weight:bold;'>6</span>
+                                </div>
+
+                                <div style='padding-left:5px;padding-right:5px; padding-bottom:1px;'>
+                                    <span id='dialpad_7' class='button button-default' style='font-size:large; font-weight:bold;'>7</span>
+                                    <span id='dialpad_8' class='button button-default' style='font-size:large; font-weight:bold;'>8</span>
+                                    <span id='dialpad_9' class='button button-default' style='font-size:large; font-weight:bold;'>9</span>
+                                </div>
+
+                                <div style='padding-left:5px;padding-right:5px; padding-bottom:1px;'>
+                                    <span id='dialpad_plus' class='button button-default' style='font-size:large; font-weight:bold; padding:6px 24px;'>+</span>
+                                    <span id='dialpad_0' class='button button-default' style='font-size:large; font-weight:bold;'>0</span>
+                                    <span id='dialpad_hash' class='button button-default' style='font-size:large; font-weight:bold;'>#</span>
+                                </div>
+
+                                <div style='text-align: center; padding: 5px;'>
+                                    <i id='dialpad_make_call' class='button button-green' style='width:90px;'>
+                                        <i class='fa fa-phone fa-lg' aria-hidden='true'></i>
+                                    </i>
+                                    <i id='dialpad_remove_digit' class='button button-red'>
+                                        <i class='fa fa-chevron-left' aria-hidden='true'></i>
+                                    </i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ~ Dialer -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>

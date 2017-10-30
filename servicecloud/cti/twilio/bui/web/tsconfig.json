@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "module": "amd",
+    "removeComments": false,
+    "preserveConstEnums": true,
+    "inlineSourceMap": true,
+    "inlineSources": true,
+    "listFiles": true,
+    "noImplicitAny": false
+  },
+  "exclude": [
+    ".git",
+    ".gradle",
+    ".idea",
+    "build",
+    "node_modules"
+  ]
+}

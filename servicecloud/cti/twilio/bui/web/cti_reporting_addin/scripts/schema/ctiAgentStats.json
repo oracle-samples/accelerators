@@ -1,0 +1,144 @@
+{
+reportTablePackages: [{
+ name: 'accelerator',
+ tables: [{
+  name: 'CtiAgentStats',
+  label: 'Cti Agent Stats',
+  description: 'CtiAgentStats',
+  columns: [
+   {
+   name: 'agentName',
+   label: 'Agent ID',
+   description: 'Agent ID',
+   dataType: 3,
+   canDisplay: true,
+   canFilter: true,
+   canEdit: false,
+   isKey: true,
+   isNullable: true
+   },
+   {
+   name: 'reservationAccepted',
+   label: 'Calls Accepted',
+   description: 'Calls Accepted',
+   dataType: 3,
+   canDisplay: true,
+   canFilter: true,
+   canEdit: false,
+   isKey: true,
+   isNullable: true
+   },
+   {
+   name: 'reservationCancelled',
+   label: 'Calls Cancelled',
+   description: 'Calls Cancelled',
+   dataType: 3,
+   canDisplay: true,
+   canFilter: true,
+   canEdit: false,
+   isKey: true,
+   isNullable: true
+   },
+   {
+   name: 'reservationCreated',
+   label: 'Reservations Created',
+   description: 'Reservations Created',
+   dataType: 3,
+   canDisplay: true,
+   canFilter: true,
+   canEdit: false,
+   isKey: true,
+   isNullable: true
+   },
+   {
+   name: 'reservationRejected',
+   label: 'Calls Rejected',
+   description: 'Calls Rejected',
+   dataType: 3,
+   canDisplay: true,
+   canFilter: true,
+   canEdit: false,
+   isKey: true,
+   isNullable: true
+   },
+   {
+   name: 'reservationTimedOut',
+   label: 'Calls Timed Out',
+   description: 'Calls Timed Out',
+   dataType: 3,
+   canDisplay: true,
+   canFilter: true,
+   canEdit: false,
+   isKey: true,
+   isNullable: true
+   },
+   {
+   name: 'readyDuration',
+   label: 'Available(M)',
+   description: 'Agent status Available in minutes',
+   dataType: 3,
+   canDisplay: true,
+   canFilter: true,
+   canEdit: false,
+   isKey: true,
+   isNullable: true
+   },
+   {
+   name: 'offlineDuration',
+   label: 'Not Available(M)',
+   description: 'Agent status Not Available in minutes',
+   dataType: 3,
+   canDisplay: true,
+   canFilter: true,
+   canEdit: false,
+   isKey: true,
+   isNullable: true
+   },
+   {
+   name: 'reservedDuration',
+   label: 'On Call (M)',
+   description: 'On Call(M)',
+   dataType: 3,
+   canDisplay: true,
+   canFilter: true,
+   canEdit: false,
+   isKey: true,
+   isNullable: true
+   },
+   {
+   name: 'busyDuration',
+   label: 'Busy(M)',
+   description: 'Agent status Busy in minutes',
+   dataType: 3,
+   canDisplay: true,
+   canFilter: true,
+   canEdit: false,
+   isKey: true,
+   isNullable: true
+   },
+   {
+    name: 'fromDate',
+    label: 'fromDate',
+    description: 'fromDate',
+    dataType: 2,
+    canDisplay: true,
+    canFilter: true,
+    canEdit: false,
+    isKey: true,
+    isNullable: true
+   },
+   {
+    name: 'toDate',
+    label: 'toDate',
+    description: 'toDate',
+    dataType: 2,
+    canDisplay: true,
+    canFilter: true,
+    canEdit: false,
+    isKey: true,
+    isNullable: true
+   }
+   ]
+  }]
+ }]
+}
