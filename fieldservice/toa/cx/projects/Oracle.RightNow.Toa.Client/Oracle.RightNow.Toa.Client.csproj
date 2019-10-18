@@ -81,7 +81,7 @@
     <Compile Include="Common\ToaEnumsUtil.cs" />
     <Compile Include="Common\ToaBackgroundServiceUtil.cs" />
     <Compile Include="Common\ToaEnums.cs" />
-    <Compile Include="Common\ToaMD5HashUtil.cs" />
+    <Compile Include="Common\ToaHashUtil.cs" />
     <Compile Include="Common\ToaStringConstants.cs" />
     <Compile Include="Common\ToaStringsUtil.cs" />
     <Compile Include="Common\ToaUserUtil.cs" />
