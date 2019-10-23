@@ -32,6 +32,12 @@ namespace Oracle.RightNow.Toa.Client.Common
     /// </summary>
     internal static class ToaUserUtil
     {
+
+        //Note: 
+        //This boolean flag needs to be turned off/false for Oracle Field Service Cloud 19B and below to disable SHA256 hasing and use MD5 hashing instead.
+        //For OFSC 19C and above this flag needs to be true to enable SHA256 hashing.
+        static Boolean isSHA256Enabled = true;
+
         /// <summary>
         /// Get instance of 'user' class used in Activity service
         /// </summary>
@@ -46,7 +52,12 @@ namespace Oracle.RightNow.Toa.Client.Common
             var password = RightNowConfigService.GetConfigValue(RightNowConfigKeyNames.Password);
 
             userObj.now = now;
-            userObj.auth_string = ToaMD5HashUtil.AuthString(now, password);
+            if(isSHA256Enabled){
+                userObj.auth_string = ToaHashUtil.SHA256AuthString(now, userObj.login, password);
+            }else{
+                userObj.auth_string = ToaHashUtil.MD5AuthString(now, password);
+            }
+            
 
             return userObj;
         }
@@ -65,7 +76,15 @@ namespace Oracle.RightNow.Toa.Client.Common
             userObj.company = RightNowConfigService.GetConfigValue(RightNowConfigKeyNames.CompanyName);
             var password = RightNowConfigService.GetConfigValue(RightNowConfigKeyNames.Password);
             userObj.now = now;
-            userObj.auth_string = ToaMD5HashUtil.AuthString(now, password);
+
+            if (isSHA256Enabled)
+            {
+                userObj.auth_string = ToaHashUtil.SHA256AuthString(now, userObj.login, password);
+            }
+            else
+            {
+                userObj.auth_string = ToaHashUtil.MD5AuthString(now, password);
+            }
 
             return userObj;
         }
@@ -83,7 +102,15 @@ namespace Oracle.RightNow.Toa.Client.Common
             userObj.company = RightNowConfigService.GetConfigValue(RightNowConfigKeyNames.CompanyName);
             var password = RightNowConfigService.GetConfigValue(RightNowConfigKeyNames.Password);
             userObj.now = now;
-            userObj.auth_string = ToaMD5HashUtil.AuthString(now, password);
+
+            if (isSHA256Enabled)
+            {
+                userObj.auth_string = ToaHashUtil.SHA256AuthString(now, userObj.login, password);
+            }
+            else
+            {
+                userObj.auth_string = ToaHashUtil.MD5AuthString(now, password);
+            }
 
             return userObj;
         }
