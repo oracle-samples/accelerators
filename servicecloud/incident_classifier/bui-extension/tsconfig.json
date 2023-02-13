@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+      "module": "amd",
+      "target": "ES5",
+      "noImplicitAny": false,
+      "removeComments": true,
+      "preserveConstEnums": true,
+      "inlineSourceMap": true,
+      "inlineSources": true,
+      "listFiles": false,
+      "skipLibCheck": true,
+      "lib": ["es5", "dom", "es2015.promise", "es2015"],
+      "alwaysStrict": false,
+      "moduleResolution":"node"
+    }
+  }

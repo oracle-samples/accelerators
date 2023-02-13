@@ -1,0 +1,26 @@
+################################################################################################
+#  This file is part of the Oracle Service Cloud Accelerator Reference Integration set published
+#  by Oracle Service Cloud under the Universal Permissive License (UPL), Version 1.0 as shown at 
+#  http://oss.oracle.com/licenses/upl
+#  Copyright (c) 2023, Oracle and/or its affiliates.
+################################################################################################
+#  Accelerator Package: Incident Text Based Classification
+#  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
+#  OSvC release: 23A (February 2023) 
+#  date: Tue Jan 31 13:02:45 IST 2023
+ 
+#  revision: rnw-23-02-initial
+#  SHA1: $Id: ef73da840e8a1cca4e955e5c9ba8be317718dd34 $
+################################################################################################
+#  File: func.yaml
+################################################################################################
+
+schema_version: 20180708
+name: predictor
+version: 0.0.0
+runtime: python3.8
+build_image: fnproject/python:3.8-dev
+run_image: fnproject/python:3.8
+entrypoint: /python/bin/fdk /function/func.py handler
+type: http
+memory: 1024
