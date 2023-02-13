@@ -34,6 +34,5 @@ Instructions for contributing to the Oracle Service Cloud accelerators is provid
     *  This file is part of the Oracle Service Cloud Accelerator Reference Integration set published
     *  by Oracle Service Cloud under the Universal Permissive License (UPL), Version 1.0
     *  included in the original distribution.
-    *  Copyright (c) 2014, 2015, 2016, Oracle and/or its affiliates. All rights reserved.
+    *  Copyright (c) 2014, 2015, 2016, 2023, Oracle and/or its affiliates. All rights reserved.
     ***********************************************************************************************/
-##
