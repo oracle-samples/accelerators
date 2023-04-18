@@ -1,3 +1,5 @@
+# Accelerators
+
 ## Getting Started
 
 This repo is designed for customers of the Oracle Service Cloud software who want to enhance functionality of their platform with the provided accelerators.
@@ -19,20 +21,21 @@ Follow the instructions provided in the documentation on the OTN page. Each acce
 * [Short documentation](http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html)
 * [Usage examples](http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html)
 
-## How to Contribute
+## Contributing
 
-Instructions for contributing to the Oracle Service Cloud accelerators is provided within the [contributing file](https://github.com/oracle/Accelerators/CONTRIBUTING.md)
+This project welcomes contributions from the community. Before submitting a pull request, please [review our contribution guide](./CONTRIBUTING.md)
+
+## Security
+
+Please consult the [security guide](./SECURITY.md) for our responsible security vulnerability disclosure process
+
+## License
+
+Copyright (c) 2014, 2023 Oracle and/or its affiliates.
+
+Released under the Universal Permissive License v1.0 as shown at
+<https://oss.oracle.com/licenses/upl/>.
 
 ## Other Links
 
 - [Links to OTN Community Platform related topics](http://communities.rightnow.com/search?find=accelerators&daysBack=365&type=)
-
-## License
-
-
-    /* * *******************************************************************************************
-    *  This file is part of the Oracle Service Cloud Accelerator Reference Integration set published
-    *  by Oracle Service Cloud under the Universal Permissive License (UPL), Version 1.0
-    *  included in the original distribution.
-    *  Copyright (c) 2014, 2015, 2016, 2023, Oracle and/or its affiliates. All rights reserved.
-    ***********************************************************************************************/
