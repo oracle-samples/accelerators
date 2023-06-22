@@ -2,9 +2,6 @@
 
 defaultTasks 'build'
 
-apply plugin: 'typescript'
-apply plugin: 'com.moowork.node'
-
 buildscript {
     repositories {
         maven {
@@ -13,14 +10,14 @@ buildscript {
 
     }
     dependencies {
-        classpath('org.jfrog.buildinfo:build-info-extractor-gradle:3.0.3')
-        classpath('de.richsource.gradle.plugins:typescript-gradle-plugin:1.5')
-        classpath('com.moowork.gradle:gradle-node-plugin:0.11')
+        classpath('org.jfrog.buildinfo:build-info-extractor-gradle:4.29.3')
+        classpath('de.richsource.gradle.plugins:typescript-gradle-plugin:1.8.0')
+        classpath('com.github.node-gradle:gradle-node-plugin:3.5.0')
     }
 }
 
-apply plugin: 'typescript'
-apply plugin: 'com.moowork.node'
+apply plugin: 'de.richsource.gradle.plugins.typescript'
+apply plugin: "com.github.node-gradle.node"
 
 node {
     // Version of node to use.
@@ -75,8 +72,8 @@ task clean(group: 'build') {
     mustRunAfter npm_rebuild
 
     dependsOn npm_install
-    def destinationDir = new File(rootProject.projectDir, "build")
-	destinationDir.deleteDir()
+    def destinationDirectory = new File(rootProject.projectDir, "build")
+    destinationDirectory.deleteDir()
 
 	File clientWebLibBuildDir = new File(rootProject.projectDir, "web/ext-lib/")
 	clientWebLibBuildDir.deleteDir()
@@ -103,19 +100,19 @@ task cleanArtifacts(type: Delete, group: 'build') {
 task copyWebLibFiles(type: Copy) {
 	dependsOn npm_install
     outputs.upToDateWhen { false }
-	
+
 	def libFilePattern = ["**/require.*"]
-	
+
 	File webLibDir = new File(rootProject.projectDir,"node_modules")
 	File clientWebLibBuildDir = new File(rootProject.projectDir, "web/ext-lib/")
 	File nodeModule = new File(project.projectDir,"node_modules")
 	nodeModule.mkdirs()
-	nodeModule.eachDir() { dir ->  
+	nodeModule.eachDir() { dir ->
 		libFilePattern.push(dir.name+"/**/"+dir.name+".*")
 	}
 	includes = libFilePattern
 	excludes = ["**/*.ts","**/src/*.*"]
-	from webLibDir 
+	from webLibDir
 	into clientWebLibBuildDir
 	includeEmptyDirs = false
 }
@@ -148,13 +145,13 @@ task buildCtiTelephony(type: Zip, group: 'build') {
 	dependsOn build
     dependsOn copyWebFiles
 
-    destinationDir = new File(rootProject.projectDir, "build")
+    destinationDirectory = new File(rootProject.projectDir, "build")
 	def extensionName = 'cti_telephony_addin'
-    archiveName = extensionName + '-phase-2.zip'
+    archiveFileName = extensionName + '-phase-2.zip'
 	def includedFolderNames = [extensionName , 'ext-lib' ]
 	def supportedFileExtensions = ['*.js','*.css','*.html', '*.json']
-	supportedFileExtensions.each{ fileExtension -> 
-		includedFolderNames.each{ folderName -> 
+	supportedFileExtensions.each{ fileExtension ->
+		includedFolderNames.each{ folderName ->
 			includes.add('**/'+folderName+'/**/'+fileExtension)
 		}
 	}
@@ -170,9 +167,9 @@ task buildCtiMessaging(type: Zip, group: 'build') {
     dependsOn build
     dependsOn copyWebFiles
 
-    destinationDir = new File(rootProject.projectDir, "build")
+    destinationDirectory = new File(rootProject.projectDir, "build")
     def extensionName = 'cti_messaging_addin'
-    archiveName = extensionName + '-phase-2.zip'
+    archiveFileName = extensionName + '-phase-2.zip'
     def includedFolderNames = [extensionName , 'ext-lib' ]
     def supportedFileExtensions = ['*.js','*.css','*.html', '*.json']
     supportedFileExtensions.each{ fileExtension ->
@@ -191,9 +188,9 @@ task buildCtiReporting(type: Zip, group: 'build') {
     dependsOn build
     dependsOn copyWebFiles
 
-    destinationDir = new File(rootProject.projectDir, "build")
+    destinationDirectory = new File(rootProject.projectDir, "build")
     def extensionName = 'cti_reporting_addin'
-    archiveName = extensionName + '-phase-2.zip'
+    archiveFileName = extensionName + '-phase-2.zip'
     def includedFolderNames = [extensionName , 'ext-lib' ]
     def supportedFileExtensions = ['*.js','*.css','*.html', '*.json']
     supportedFileExtensions.each{ fileExtension ->
@@ -226,11 +223,11 @@ compileTypeScript {
     group = 'build'
 
     //this is added so gradle UP-TO-DATE check works
-    source = [file('./web')]
+    inputs.dir(file('./web'))
     //force the output to be next to the ts files
-    outputDir = file('./web')
+    outputs.dir(file('./web'))
     //this line causes the above line to be ignored and uses configs/source off tsconfig.json
-    projectFileDir = new File(project.projectDir, "/web/")
+    projectFile = new File(project.projectDir, "/web/")
     if (System.properties['os.name'].toLowerCase().contains('windows')) {
         compilerExecutable = new File(rootProject.projectDir, "/scripts/tsc.cmd")
     } else {
