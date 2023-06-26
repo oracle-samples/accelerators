@@ -7,10 +7,10 @@
 #  Accelerator Package: Incident Text Based Classification
 #  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
 #  OSvC release: 23A (February 2023) 
-#  date: Tue Jan 31 13:02:51 IST 2023
+#  date: Mon Jun 26 10:43:23 IST 2023
  
 #  revision: rnw-23-02-initial
-#  SHA1: $Id: 976e0d01eefe8cf2f1f54a94818e85c1bd598fe2 $
+#  SHA1: $Id: d25fcac4513e71cdc03655f6fc8fc3c566849441 $
 ################################################################################################
 #  File: data.py
 ################################################################################################

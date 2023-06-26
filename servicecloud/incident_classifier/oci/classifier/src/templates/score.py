@@ -7,10 +7,10 @@
 #  Accelerator Package: Incident Text Based Classification
 #  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
 #  OSvC release: 23A (February 2023) 
-#  date: Tue Jan 31 13:02:53 IST 2023
+#  date: Mon Jun 26 10:43:25 IST 2023
  
 #  revision: rnw-23-02-initial
-#  SHA1: $Id: 8964ec05bf0ad18a8735d57d74b345b65ae0b703 $
+#  SHA1: $Id: 305d1ae9f9781f4ea9e62009a89cfb5356884750 $
 ################################################################################################
 #  File: score.py
 ################################################################################################
@@ -74,7 +74,8 @@ def load_model(model_file_name=model_name):
         logger_pred.info("Model is successfully loaded.")
         return loaded_model
     else:
-        raise Exception(f'{model_file_name} is not found in templates directory {model_dir}')
+        logger_pred.error(f'{model_file_name} is not found in templates directory {model_dir}')
+        return None
 
 
 @lru_cache(maxsize=50)
@@ -142,19 +143,15 @@ def predict(data, model=load_model()):
     logger_pred.debug(data)
     features = pre_inference(data)
     if len(features) == 0:
-        logger_pred.error(f"Features Length:{len(features) }")
         return {"error": True, "message": "Invalid Input"}
     else:
-        try:
-            input_data = features[DATA_COLUMN]
-            isEmpty = input_data.isna().to_list()[0] or len(input_data.to_list()[0]) == 0
-            if isEmpty:
-                return {"error": True, "message": "After processing, incident gets empty body"}
-            yhat = post_inference(
-                model.predict_proba(features)
-            )
-            logger_pred.info(yhat)
-            return {'prediction': yhat}
-        except AttributeError as err:
-            logger_pred.error(err)
-            return {"error": True, "message": f"{err}"}
+        input_data = features[DATA_COLUMN]
+        isEmpty = input_data.isna().to_list()[0] or len(input_data.to_list()[0]) == 0
+        if isEmpty:
+            return {"error": True, "message": "After processing, incident gets empty body"}
+        yhat = post_inference(
+            model.predict_proba(features)
+        )
+        # to logging service:
+        logger_pred.info(yhat)
+        return {'prediction': yhat}
