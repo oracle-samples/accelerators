@@ -8,10 +8,10 @@
 #  Accelerator Package: Incident Text Based Classification
 #  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
 #  OSvC release: 23A (February 2023) 
-#  date: Tue Jan 31 13:02:56 IST 2023
+#  date: Mon Jun 26 10:43:27 IST 2023
  
 #  revision: rnw-23-02-initial
-#  SHA1: $Id: 23df1ed3a162596910b00a9358c0ca31a8ec50fb $
+#  SHA1: $Id: 63c79e8d33f0edba9396e9b9fdbab5913839e4be $
 ################################################################################################
 #  File: download_model.sh
 ################################################################################################
@@ -24,7 +24,7 @@ set -eo pipefail
 
 COMPARTMENT_ID=$1
 MODEL_LOCATION=$2
-MODEL_FILE="${MODEL_LOCATION}/templates.pkl"
+MODEL_FILE="${MODEL_LOCATION}/model.txt"
 
 if [[ -z "$COMPARTMENT_ID" ]]; then
   echo "*** Please set variable COMPARTMENT_ID in environment ***"
@@ -66,11 +66,8 @@ function checkModelAvailable() {
       fi
       if [[ ${DIFF_IN_SECONDS} -gt ${FIVE_MINUTE_FORWARD_DIFFERENCE} ]]; then
         echo "*** Model To Download: ${MODEL_ID} ***"
-        rm ./artifacts.zip || echo "No Existing Artifact File"
-        oci data-science model get-artifact-content --model-id "${MODEL_ID}" --file ./artifacts.zip
-        unzip -o artifacts.zip -d "${MODEL_LOCATION}"
-        echo "!!! Model Downloaded at ${MODEL_LOCATION} !!!"
-        sleep 20
+        echo -n "${MODEL_ID}" >>"${MODEL_FILE}"
+        echo "!!! Model id stored in ${MODEL_LOCATION} !!!"
         break
       fi
     done

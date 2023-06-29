@@ -7,10 +7,10 @@
 #  Accelerator Package: Incident Text Based Classification
 #  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
 #  OSvC release: 23A (February 2023) 
-#  date: Tue Jan 31 13:02:57 IST 2023
+#  date: Mon Jun 26 10:43:28 IST 2023
  
 #  revision: rnw-23-02-initial
-#  SHA1: $Id: cf74866bf9a20e7f56ee0e158867a1d9792ba4c5 $
+#  SHA1: $Id: f2a29f3b07728ee73174ef7ef9140f81d1396178 $
 ################################################################################################
 #  File: resources.tf
 ################################################################################################
@@ -32,23 +32,9 @@ resource "oci_identity_compartment" "tf_compartment" {
     }
 }
 
-resource "oci_identity_user" "tf_accelerator_user" {
+data "oci_identity_user" "tf_user" {
     #Required
-    compartment_id = var.tenancy_ocid
-    description = "User for Accelerator"
-    name = "accelerator_user_${oci_identity_compartment.tf_compartment.name}"
-}
-
-resource "oci_identity_user_capabilities_management" "test_user_capabilities_management" {
-    #Required
-    user_id = oci_identity_user.tf_accelerator_user.id
-
-    #Optional
-    can_use_api_keys             = "true"
-    can_use_auth_tokens          = "true"
-    can_use_console_password     = "true"
-    can_use_customer_secret_keys = "true"
-    can_use_smtp_credentials     = "true"
+    user_id = var.user_ocid
 }
 
 /*
@@ -62,8 +48,8 @@ resource "oci_identity_group" "tf_group" {
 
 resource "oci_identity_user_group_membership" "tf_user_group_membership" {
     #Required
-    group_id = oci_identity_group.tf_group.id
-    user_id = oci_identity_user.tf_accelerator_user.id
+    group_id    = oci_identity_group.tf_group.id
+    user_id     = var.user_ocid
 }
 
 /*
@@ -109,6 +95,32 @@ resource "oci_vault_secret" "tf_secret" {
         name = "INGESTION_SECRET_${local.timestamp_in_numeric}"
     }
     secret_name = local.secret-name
+    vault_id = data.oci_kms_vault.tf_vault.id
+    key_id = oci_kms_key.tf_key.id
+}
+
+resource "oci_vault_secret" "tf_oci_private_secret" {
+    compartment_id = oci_identity_compartment.tf_compartment.id
+    description = "Private Key of OCI Config"
+    secret_content {
+        content_type = "BASE64"
+        content = var.user_private_key
+        name = "OCI_KEY_${local.timestamp_in_numeric}"
+    }
+    secret_name = local.oci-secret-name
+    vault_id = data.oci_kms_vault.tf_vault.id
+    key_id = oci_kms_key.tf_key.id
+}
+
+resource "oci_vault_secret" "tf_oci_auth_token" {
+    compartment_id = oci_identity_compartment.tf_compartment.id
+    description = "Auth Token of OCI for Registry Artifacts"
+    secret_content {
+        content_type = "BASE64"
+        content = var.user_auth_token
+        name = "OCI_AUTH_TOKEN_${local.timestamp_in_numeric}"
+    }
+    secret_name = local.oci-auth-secret-name
     vault_id = data.oci_kms_vault.tf_vault.id
     key_id = oci_kms_key.tf_key.id
 }

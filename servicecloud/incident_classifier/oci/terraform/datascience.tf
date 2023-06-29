@@ -7,10 +7,10 @@
 #  Accelerator Package: Incident Text Based Classification
 #  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
 #  OSvC release: 23A (February 2023) 
-#  date: Tue Jan 31 13:02:56 IST 2023
+#  date: Mon Jun 26 10:43:27 IST 2023
  
 #  revision: rnw-23-02-initial
-#  SHA1: $Id: 8db9217180a9f0e0730e7eb42315ccb6fb659b60 $
+#  SHA1: $Id: bb5648f30c911a43c6846facc28ee344673848e1 $
 ################################################################################################
 #  File: datascience.tf
 ################################################################################################
@@ -78,44 +78,16 @@ resource "oci_logging_log_group" "tf_log_group" {
     }
 }
 
-data "oci_datascience_notebook_session" "conda" {
-  notebook_session_id = resource.oci_datascience_notebook_session.tf_create_conda.id
-}
-
-/*
-* Create Conda Package From Notebook Terminal
-*/
-resource oci_datascience_notebook_session tf_create_conda {
-  compartment_id = resource.oci_identity_compartment.tf_compartment.id
-  display_name = "Create Conda Package"
-  notebook_session_config_details {
-    block_storage_size_in_gbs = "50"
-    shape     = "VM.Standard2.1"
-    subnet_id = oci_core_subnet.tf_private_subnet.id
-  }
-  notebook_session_configuration_details {
-    block_storage_size_in_gbs = "50"
-    shape     = "VM.Standard2.1"
-    subnet_id = oci_core_subnet.tf_private_subnet.id
-  }
-  project_id = oci_datascience_project.tf_project.id
-  state      = "ACTIVE"
-}
 
 data "oci_identity_tenancy" "tf_tenancy" {
     tenancy_id = var.tenancy_ocid
 }
 
-resource "random_password" "password" {
-  length           = 10
-  special          = true
-  override_special = "!#$%&*()-_=+[]{}<>:?"
-}
 
 /*
-* Run Conda Selenium Job
+* Publish Conda Job
 */
-resource oci_datascience_job "tf_run_conda" {
+resource oci_datascience_job "tf_publish_conda" {
   compartment_id = resource.oci_identity_compartment.tf_compartment.id
   delete_related_job_runs = "true"
   display_name = "Run Conda Selenium Job"
@@ -127,11 +99,12 @@ resource oci_datascience_job "tf_run_conda" {
   job_configuration_details {
     environment_variables = {
       "JOB_RUN_ENTRYPOINT"           = "./src/training_scripts/jobs/run_selenium.sh"
-      "NOTEBOOK_SESSION_URL"         = oci_datascience_notebook_session.tf_create_conda.notebook_session_url
       "RAW_GIT_ENV_URL"              = "${var.environment_yaml_path}"
-      "SELENIUM_USER"                = oci_identity_user.tf_accelerator_user.name
-      "SELENIUM_PASSWORD"            = data.local_file.temp_pass.content
-      "SELENIUM_CONFIRM_PASS"        = random_password.password.result
+      "OCI_USER_ID"                  = "${var.user_ocid}"
+      "OCI_FINGERPRINT"              = "${var.user_fingerprint}"
+      "OCI_REGION"                   = "${var.region}"
+      "OCI_TENANCY_ID"               = "${var.tenancy_ocid}"
+      "OCI_PRIVATE_KEY"              = oci_vault_secret.tf_oci_private_secret.id
       "BUCKET_NAME"                  = "${var.bucket_name}"
       "TENANCY"                      = data.oci_identity_tenancy.tf_tenancy.name
       "NAMESPACE"                    = data.oci_objectstorage_namespace.tf_namespace.namespace
@@ -150,7 +123,7 @@ resource oci_datascience_job "tf_run_conda" {
     log_group_id             = oci_logging_log_group.tf_log_group.id
   }
   project_id = oci_datascience_project.tf_project.id
-  depends_on = [oci_datascience_notebook_session.tf_create_conda, null_resource.create_temp_token, oci_objectstorage_bucket.tf_bucket, random_password.password]
+  depends_on = [oci_objectstorage_bucket.tf_bucket]
   provisioner "local-exec" {
     when    = destroy
     command = "sh ./scripts/destroy_jobs.sh ${self.compartment_id}"
@@ -158,11 +131,11 @@ resource oci_datascience_job "tf_run_conda" {
   }
 }
 
-resource oci_datascience_job_run "tf_conda_job_run" {
+resource oci_datascience_job_run "tf_publish_conda_job_run" {
   #Required
   depends_on = [oci_objectstorage_bucket.tf_bucket]
   compartment_id = resource.oci_identity_compartment.tf_compartment.id
-  job_id = oci_datascience_job.tf_run_conda.id
+  job_id = oci_datascience_job.tf_publish_conda.id
   project_id = oci_datascience_project.tf_project.id
   asynchronous   = false
   job_configuration_override_details {
@@ -226,7 +199,7 @@ resource oci_datascience_job "tf_one_time_ingestion_job" {
     log_group_id             = oci_logging_log_group.tf_log_group.id
   }
   project_id = oci_datascience_project.tf_project.id
-  depends_on = [oci_datascience_job.tf_run_conda, oci_datascience_job_run.tf_conda_job_run, oci_vault_secret.tf_secret]
+  depends_on = [oci_vault_secret.tf_secret, oci_datascience_job.tf_publish_conda, oci_datascience_job_run.tf_publish_conda_job_run]
   provisioner "local-exec" {
     when    = destroy
     command = "sh ./scripts/destroy_jobs.sh ${self.compartment_id}"
@@ -392,6 +365,11 @@ resource null_resource "check_for_deployed_model" {
   depends_on = [oci_datascience_job_run.tf_schedule_build_model_job_run]
   triggers  =  { always_run = "${timestamp()}" }
   provisioner "local-exec" {
-    command = "sh ${path.module}/download_model.sh ${resource.oci_identity_compartment.tf_compartment.id} ${path.module}/../classifier/src/templates"
+    command = "sh ${path.module}/download_model.sh ${resource.oci_identity_compartment.tf_compartment.id} ${path.module}"
   }
+}
+
+data local_file "model_id" {
+    depends_on = [null_resource.check_for_deployed_model]
+    filename = "${path.module}/model.txt"
 }

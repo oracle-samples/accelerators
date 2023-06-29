@@ -7,10 +7,10 @@
 #  Accelerator Package: Incident Text Based Classification
 #  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
 #  OSvC release: 23A (February 2023) 
-#  date: Tue Jan 31 13:02:56 IST 2023
+#  date: Mon Jun 26 10:43:27 IST 2023
  
 #  revision: rnw-23-02-initial
-#  SHA1: $Id: 211fae76252c442fa95ad97a417608cee191f4fe $
+#  SHA1: $Id: 113e30ff16d4f76db814edb937efb42bbce35052 $
 ################################################################################################
 #  File: functions.tf
 ################################################################################################
@@ -39,11 +39,13 @@ resource "oci_artifacts_container_repository" "tf_container_repository" {
 }
 
 resource "oci_functions_application" "tf_application" {
+    depends_on = [null_resource.check_for_deployed_model]
     compartment_id = resource.oci_identity_compartment.tf_compartment.id
     display_name = local.application_display_name
     subnet_ids = [oci_core_subnet.tf_private_subnet.id]
     config = {
          DOMAIN = var.domain
+         MODEL_OCID = data.local_file.model_id.content
     }
 }
 
@@ -69,49 +71,49 @@ locals {
   }
 }
 
-resource null_resource "create_auth_token" {
+resource null_resource "save_auth_token" {
+  count     = var.user_auth_token != "" ? 1 : 0
   triggers  =  { always_run = "${timestamp()}" }
   provisioner "local-exec" {
     command     = <<-EOT
-      oci iam auth-token delete --force --user-id ${oci_identity_user.tf_accelerator_user.id} --auth-token-id $(oci iam auth-token list --user-id ${oci_identity_user.tf_accelerator_user.id} | jq -r '.data[0].id') 2> /dev/null
-      oci iam auth-token create --description "registry" --user-id ${oci_identity_user.tf_accelerator_user.id} | jq -r '.data.token' | tail -1 | tr -d '\n' >> ${path.module}/token.txt
+      oci secrets secret-bundle get --secret-id ${oci_vault_secret.tf_oci_auth_token.id} | jq -r '.data."secret-bundle-content".content' | base64 -d | tr -d '\n' >> ${path.module}/token.txt
     EOT
   }
 }
 
-resource null_resource "create_temp_token" {
+resource null_resource "create_auth_token_with_config" {
+  count     = var.user_auth_token != "" ? 0 : 1
+  depends_on = [null_resource.save_job_artifact_size]
   triggers  =  { always_run = "${timestamp()}" }
   provisioner "local-exec" {
-    command = "oci iam user ui-password create-or-reset --user-id ${oci_identity_user.tf_accelerator_user.id} | jq -r '.data.password' | tail -1 | tr -d '\n' >> ${path.module}/temp.txt"
+    command     = <<-EOT
+      oci iam auth-token delete --force --user-id ${var.user_ocid} --auth-token-id $(oci iam auth-token list --user-id ${var.user_ocid} | jq -r '.data[0].id') 2> /dev/null
+      oci iam auth-token create --description "registry" --user-id ${var.user_ocid} | jq -r '.data.token' | tail -1 | tr -d '\n' >> ${path.module}/token.txt
+    EOT
   }
 }
 
-data local_file "temp_pass" {
-    depends_on = [null_resource.create_temp_token]
-    filename = "${path.module}/temp.txt"
-}
-
-resource null_resource "login2ocir" {
-  depends_on = [null_resource.create_auth_token]
+resource null_resource "login2ocir_with_config" {
+  depends_on = [null_resource.create_auth_token_with_config, null_resource.save_auth_token]
   triggers = {
     always_run = "${timestamp()}"
   }
   provisioner "local-exec" {
     command     = <<-EOT
       sleep 20
-      cat ${path.module}/token.txt | docker login --username '${data.oci_objectstorage_namespace.tf_namespace.namespace}/${oci_identity_user.tf_accelerator_user.name}' ${data.local_file.region_code.content}.ocir.io --password-stdin
+      cat ${path.module}/token.txt | docker login --username '${data.oci_objectstorage_namespace.tf_namespace.namespace}/${data.oci_identity_user.tf_user.name}' ${data.local_file.region_code.content}.ocir.io --password-stdin
     EOT
   }
 }
 
+
 resource null_resource "build_function" {
-  depends_on = [null_resource.check_for_deployed_model, null_resource.login2ocir, oci_artifacts_container_repository.tf_container_repository]
+  depends_on = [null_resource.check_for_deployed_model, null_resource.login2ocir_with_config, oci_artifacts_container_repository.tf_container_repository]
   triggers = {
     fnversion = local.fndata.version
   }
   provisioner "local-exec" {
-    command = "ls -la ./src/templates/"
-    working_dir = local.fnroot
+    command = "cat ${path.module}/model.txt"
   }
   provisioner "local-exec" {
     command = "docker build . -t ${data.local_file.region_code.content}.ocir.io/${data.oci_objectstorage_namespace.tf_namespace.namespace}/${oci_artifacts_container_repository.tf_container_repository.display_name}:predictor"
@@ -120,7 +122,7 @@ resource null_resource "build_function" {
 }
 
 resource null_resource "deploy_function" {
-  depends_on = [null_resource.check_for_deployed_model, null_resource.login2ocir, null_resource.build_function]
+  depends_on = [null_resource.check_for_deployed_model, null_resource.login2ocir_with_config, null_resource.build_function]
   triggers = {
     fnversion = local.fndata.version
   }
@@ -153,7 +155,7 @@ resource "oci_functions_function" "tf_fn_predictor" {
 }
 
 resource null_resource "deploy_auth_fn" {
-  depends_on = [null_resource.login2ocir]
+  depends_on = [null_resource.login2ocir_with_config]
   triggers = {
     fnversion = "auth"
   }

@@ -7,10 +7,10 @@
 #  Accelerator Package: Incident Text Based Classification
 #  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
 #  OSvC release: 23A (February 2023) 
-#  date: Tue Jan 31 13:02:54 IST 2023
+#  date: Mon Jun 26 10:43:25 IST 2023
  
 #  revision: rnw-23-02-initial
-#  SHA1: $Id: b47b9d9fc8f839bb34525a67bb44109b70e322db $
+#  SHA1: $Id: c89bed90542effaa3279429fee0ef26947793f5d $
 ################################################################################################
 #  File: constants.py
 ################################################################################################
@@ -43,6 +43,7 @@ AUTH_TYPE = "AUTH_TYPE"
 AUTH_TYPE_VALUE = "OAUTH"
 JWT_TIME_EXPIRY_IN_MINUTE = "jwt_time_expiry_in_minute"
 INCIDENT_CLASSIFIER = "INCIDENT_CLASSIFIER"
+MODEL_OCID = "MODEL_OCID"
 
 # job interval related constant
 INGESTION_JOB_INITIAL_DATA_FETCH_DAYS = "ingestion_job_initial_data_fetch_days"

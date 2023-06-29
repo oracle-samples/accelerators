@@ -7,10 +7,10 @@
 #  Accelerator Package: Incident Text Based Classification
 #  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
 #  OSvC release: 23A (February 2023) 
-#  date: Tue Jan 31 12:34:02 IST 2023
+#  date: Mon Jun 26 10:43:28 IST 2023
  
 #  revision: rnw-23-02-initial
-#  SHA1: $Id: a9d9b47185544a1eef204b8e23d7c8f1dfe9f150 $
+#  SHA1: $Id: 222dbad90da9c3e9f6d4c8c6db1ebe02bd71ec17 $
 ################################################################################################
 #  File: variables.tf
 ################################################################################################
@@ -24,6 +24,10 @@ variable "compartment" {
     type        = string
     default = "accelerator_incident_classifier_some"
     description = "Please provide compartment name"
+    validation {
+        condition     = can(regex("^[a-z0-9_]+$", var.compartment))
+        error_message = "Variable must contain only lowercase letters, numerical values from 0-9, and underscores."
+    }
 }
 
 variable "group" {
@@ -110,7 +114,31 @@ variable "oauth_path" {
 
 variable "cx_rest_api_key" {
   default = ""
-  description = "Please provide your CX API Key"
+  description = "Please provide your Base64 encoded CX API Key"
+}
+
+variable "user_ocid" {
+  type        = string
+  description = "Please provide your Base64 encoded OCI user ocid"
+  sensitive   = true
+}
+
+variable "user_fingerprint" {
+  type        = string
+  description = "Please provide your Base64 encoded fingerprint of oci config"
+  sensitive   = true
+}
+
+variable "user_private_key" {
+  type        = string
+  description = "Please provide your Base64 encoded private key of oci config"
+  sensitive   = true
+}
+
+variable "user_auth_token" {
+  default = ""
+  description = "Please provide your Base64 encoded user auth token of oci"
+  sensitive   = true
 }
 
 variable "environment_yaml_path" {
@@ -137,6 +165,8 @@ locals {
   matching-rules      = "any {${join(",",local.service-names)}}"
   repo-name = "accelerator_functions"
   secret-name = "secret_${local.timestamp_in_numeric}"
+  oci-secret-name = "ocisecret_${local.timestamp_in_numeric}"
+  oci-auth-secret-name = "ocisecretauth_${local.timestamp_in_numeric}"
   policy_statements = [ format("Allow service datascience to use virtual-network-family in compartment %s", resource.oci_identity_compartment.tf_compartment.name),
                         format("Allow service faas to use apm-domains in compartment %s", resource.oci_identity_compartment.tf_compartment.name),
                         format("Allow service faas to read repos in compartment %s where request.operation='ListContainerImageSignatures'", resource.oci_identity_compartment.tf_compartment.name),

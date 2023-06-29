@@ -8,10 +8,10 @@
 #  Accelerator Package: Incident Text Based Classification
 #  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
 #  OSvC release: 23A (February 2023) 
-#  date: Tue Jan 31 13:02:54 IST 2023
+#  date: Mon Jun 26 10:43:26 IST 2023
  
 #  revision: rnw-23-02-initial
-#  SHA1: $Id: 6ebcf0dc4197aa477f123cd1e8b5d533d6daa8c7 $
+#  SHA1: $Id: ab62ee95d2c254fcadfe07e7212ba07a22b629a3 $
 ################################################################################################
 #  File: run_selenium.sh
 ################################################################################################
@@ -21,40 +21,58 @@
 
 set -eo pipefail
 
-WORKSPACE=$(dirname "$(readlink -f "$0")" )/..
-
-echo "*** Installing selenium relared linux dependencies ***"
-sudo yum -y install tk-devel gdbm-devel
-sudo yum -y install openssl-devel
-sudo yum -y install libffi-devel
-
-echo "*** Downloading & Installing Python-3.8.0 ***"
-mkdir python
-cd python || exit
-wget https://www.python.org/ftp/python/3.8.0/Python-3.8.0.tgz
-tar xvzf Python-3.8.0.tgz
-cd Python-3.8.0 || exit
-./configure --prefix=/opt/python3.8
-make
-sudo make altinstall
-
-echo "*** Creating virtual enviornment ****"
-/opt/python3.8/bin/python3.8 -m venv .env
-source .env/bin/activate
-
-echo "*** Downloading & Installing Selenium releated dependencies ***"
-pip install --upgrade pip
-pip install selenium==4.6.0
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
-sudo yum -y install ./google-chrome-stable_current_*.rpm
-CHROME_VERSION=$(/usr/bin/google-chrome --version | awk '{print $3}')
-echo "CHROME_VERSION : ${CHROME_VERSION}"
-CHROME_DRIVER_WEB_PATH=$(curl https://chromedriver.storage.googleapis.com/ | grep -o "<Key>${CHROME_VERSION%\.*}.*</Key>" | awk -F">" '{print $2}' | awk -F"<" '{print $1}')
-wget https://chromedriver.storage.googleapis.com/"${CHROME_DRIVER_WEB_PATH}"
-FILE_PATH=$(echo "${CHROME_DRIVER_WEB_PATH}" | awk -F'/' '{print $2}')
-unzip "$FILE_PATH"
+if [ -z "$OCI_USER_ID" ]; then
+  echo "Please share OCI_USER_ID as env variable"
+  exit 1
+fi
 
 
-echo "${WORKSPACE}";
-python "${WORKSPACE}"/jobs/run_notebook.py
-echo "!!! Conda Environment Created !!!"
+echo "*** Creating Conda Enviornment with ${OCI_USER_ID} ***"
+sudo yum install yum-utils
+sudo yum-config-manager --enable public_ol6_addons
+sudo yum -y install jq
+echo "*** JQ Installed ***"
+
+# Set the path to the OCI directory
+OCI_DIR="./oci"
+CONDA_ENV_NAME="b2c_env"
+CONFIG_FILE=./oci/config
+KEY_FILE=./oci/key.pem
+
+mkdir -p $OCI_DIR
+
+echo "[DEFAULT]" > $CONFIG_FILE;
+
+echo "*** Retrieving Private Key ***"
+export OCI_CLI_AUTH=resource_principal
+OCI_PRIVATE_KEY=$(oci secrets secret-bundle get --secret-id "${OCI_PRIVATE_KEY}" | jq -r '.data."secret-bundle-content".content' | base64 -d)
+echo "$OCI_PRIVATE_KEY" > $KEY_FILE
+echo "*** Private Key Retrieved ***"
+
+echo "user=${OCI_USER_ID}" >> $CONFIG_FILE
+echo "fingerprint=${OCI_FINGERPRINT}" >> $CONFIG_FILE
+echo "key_file=${KEY_FILE}" >> $CONFIG_FILE
+echo "tenancy=${OCI_TENANCY_ID}" >> $CONFIG_FILE
+echo "region=${OCI_REGION}" >> $CONFIG_FILE
+
+# Set the environment variables
+export OCI_CLI_PROFILE_FILE=./oci/config
+
+# moving the config to default directory
+sudo mkdir -p "${HOME}/.oci"/
+sudo cp -r ${OCI_DIR}/* "${HOME}/.oci"/
+
+echo "*** Downloading the enviornment yaml file ***"
+curl -o environment.yml "${RAW_GIT_ENV_URL}"
+
+echo "*** CREATING CONDA ENV ***"
+odsc conda create --file ./environment.yml --name ${CONDA_ENV_NAME} --slug ${CONDA_ENV_NAME}_slug
+sleep 2
+echo "*** INIT CONDA ENV ***"
+odsc conda init -b "${BUCKET_NAME}" -n "${NAMESPACE}" -a api_key --api_key_profile "DEFAULT" --api_key_config ${CONFIG_FILE}
+sleep 2
+echo "*** PUBLISH CONDA ENV ***"
+odsc conda publish -s ${CONDA_ENV_NAME}_slug
+sleep 10
+echo "!!! PUBLISHED !!!"
+

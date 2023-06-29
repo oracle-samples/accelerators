@@ -7,10 +7,10 @@
 #  Accelerator Package: Incident Text Based Classification
 #  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
 #  OSvC release: 23A (February 2023) 
-#  date: Tue Jan 31 13:02:57 IST 2023
+#  date: Mon Jun 26 10:43:28 IST 2023
  
 #  revision: rnw-23-02-initial
-#  SHA1: $Id: 4dda5697ff556feb4c7a6022759dffd7ad1164d6 $
+#  SHA1: $Id: 1bc309c1bb7b4fa13535c1e2770ed999d1942f0d $
 ################################################################################################
 #  File: provider.tf
 ################################################################################################
@@ -22,8 +22,3 @@ provider "oci" {
    auth = "InstancePrincipal"
    region = "${var.region}"
 }
-
-#provider "oci" {
-#  tenancy_ocid = var.tenancy_ocid
-#  config_file_profile= "DEFAULT"
-#}
