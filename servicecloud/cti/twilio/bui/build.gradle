@@ -78,7 +78,6 @@ task clean(group: 'build') {
 	File clientWebLibBuildDir = new File(rootProject.projectDir, "web/ext-lib/")
 	clientWebLibBuildDir.deleteDir()
 
-    dependsOn jsClean
 }
 
 task cleanArtifacts(type: Delete, group: 'build') {
@@ -121,11 +120,11 @@ task build(group: 'build') {
     mustRunAfter npm_install
     mustRunAfter cleanArtifacts
     mustRunAfter npm_rebuild
-	dependsOn clean
     dependsOn npm_install
     dependsOn npm_rebuild
-	dependsOn copyWebLibFiles
     dependsOn compileTypeScript
+    dependsOn copyWebLibFiles
+
 }
 
 
@@ -144,6 +143,7 @@ task copyWebFiles(type: Copy) {
 task buildCtiTelephony(type: Zip, group: 'build') {
 	dependsOn build
     dependsOn copyWebFiles
+    dependsOn jsClean
 
     destinationDirectory = new File(rootProject.projectDir, "build")
 	def extensionName = 'cti_telephony_addin'
@@ -166,6 +166,7 @@ task buildCtiTelephony(type: Zip, group: 'build') {
 task buildCtiMessaging(type: Zip, group: 'build') {
     dependsOn build
     dependsOn copyWebFiles
+    dependsOn jsClean
 
     destinationDirectory = new File(rootProject.projectDir, "build")
     def extensionName = 'cti_messaging_addin'
@@ -187,6 +188,7 @@ task buildCtiMessaging(type: Zip, group: 'build') {
 task buildCtiReporting(type: Zip, group: 'build') {
     dependsOn build
     dependsOn copyWebFiles
+    dependsOn jsClean
 
     destinationDirectory = new File(rootProject.projectDir, "build")
     def extensionName = 'cti_reporting_addin'
@@ -222,15 +224,22 @@ task run(group: 'ci') {
 compileTypeScript {
     group = 'build'
 
-    //this is added so gradle UP-TO-DATE check works
-    inputs.dir(file('./web'))
-    //force the output to be next to the ts files
-    outputs.dir(file('./web'))
-    //this line causes the above line to be ignored and uses configs/source off tsconfig.json
-    projectFile = new File(project.projectDir, "/web/")
-    if (System.properties['os.name'].toLowerCase().contains('windows')) {
-        compilerExecutable = new File(rootProject.projectDir, "/scripts/tsc.cmd")
-    } else {
-        compilerExecutable = new File(rootProject.projectDir, "/node_modules/typescript/bin/tsc")
+    // Include all TypeScript files in subfolders of 'web'
+    def inputFiles = fileTree('web') {
+        include '**/*.ts'
     }
+
+    // Specify the input files for the task
+    inputs.files(inputFiles)
+
+    // Specify the output directory for the task
+    outputs.dir(file('web'))
+
+
+    def tscCommand = System.properties['os.name'].toLowerCase().contains('windows') ? 'tsc.cmd' : 'tsc'
+    def tsConfigFile = new File('web', 'tsconfig.json')
+    exec {
+        commandLine tscCommand, '-p', tsConfigFile
+    }
+
 }
