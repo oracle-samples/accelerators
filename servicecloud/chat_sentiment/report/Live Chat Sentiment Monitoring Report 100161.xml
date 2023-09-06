@@ -1,0 +1,809 @@
+<?xml version="1.0" encoding="utf-8"?>
+<analytics_core xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ac_id xmlns="urn:obj.api.rightnow.com">100161</ac_id>
+  <ac_public xmlns="urn:obj.api.rightnow.com">true</ac_public>
+  <ac_type xmlns="urn:obj.api.rightnow.com">1</ac_type>
+  <aux xmlns="urn:obj.api.rightnow.com">1.0.10029,1.0.24,1.0.2,1.31.2,1.0.3,1.32.3</aux>
+  <cdate_offset xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
+  <co_version xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
+  <created xmlns="urn:obj.api.rightnow.com">2023-07-03T06:50:11Z</created>
+  <file_id xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
+  <filters xmlns="urn:obj.api.rightnow.com">
+    <filter_item>
+      <applies_to xsi:nil="true" />
+      <data_type>1</data_type>
+      <fltr_id>1</fltr_id>
+      <oper>1</oper>
+      <optl_id>16777217</optl_id>
+      <opts>1</opts>
+      <revision>1</revision>
+      <type>1</type>
+      <val1>AIML$ChatAIResultSummary.IsActive</val1>
+      <val1_attrs>1</val1_attrs>
+      <val1_col_refs>AIML$ChatAIResultSummary.IsActive;10029</val1_col_refs>
+      <val2>1</val2>
+      <val2_col_refs xsi:nil="true" />
+      <val2_original xsi:nil="true" />
+      <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;FilterXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;Prompt&gt;
+    &lt;LabelStr&gt;active&lt;/LabelStr&gt;
+  &lt;/Prompt&gt;
+  &lt;Name&gt;
+    &lt;LabelStr&gt;active&lt;/LabelStr&gt;
+  &lt;/Name&gt;
+  &lt;DisplayInSearchCriteria&gt;true&lt;/DisplayInSearchCriteria&gt;
+  &lt;FilterLayoutInfo&gt;
+    &lt;Width&gt;230&lt;/Width&gt;
+    &lt;Height&gt;50&lt;/Height&gt;
+    &lt;Revision&gt;1&lt;/Revision&gt;
+    &lt;FilterType&gt;VIEW_FTYPE_FILTER&lt;/FilterType&gt;
+    &lt;SplitterPosition&gt;0&lt;/SplitterPosition&gt;
+    &lt;Modified&gt;true&lt;/Modified&gt;
+  &lt;/FilterLayoutInfo&gt;
+&lt;/FilterXmlData&gt;</xml_data>
+    </filter_item>
+    <filter_item>
+      <applies_to xsi:nil="true" />
+      <data_type>3</data_type>
+      <fltr_id>2</fltr_id>
+      <oper>1</oper>
+      <optl_id xsi:nil="true" />
+      <opts>1</opts>
+      <revision>2</revision>
+      <type>1</type>
+      <val1>AIML$ChatAIResultSummary.ChatId</val1>
+      <val1_attrs>1</val1_attrs>
+      <val1_col_refs>AIML$ChatAIResultSummary.ChatId;10029</val1_col_refs>
+      <val2 xsi:nil="true" />
+      <val2_col_refs xsi:nil="true" />
+      <val2_original xsi:nil="true" />
+      <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;FilterXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;Prompt&gt;
+    &lt;LabelStr&gt;Chat Id&lt;/LabelStr&gt;
+  &lt;/Prompt&gt;
+  &lt;DockedFilterOrder&gt;0&lt;/DockedFilterOrder&gt;
+  &lt;Name&gt;
+    &lt;LabelStr&gt;Chat Id&lt;/LabelStr&gt;
+  &lt;/Name&gt;
+  &lt;DisplayInSearchCriteria&gt;true&lt;/DisplayInSearchCriteria&gt;
+  &lt;FilterLayoutInfo&gt;
+    &lt;Index&gt;4&lt;/Index&gt;
+    &lt;Width&gt;230&lt;/Width&gt;
+    &lt;Height&gt;50&lt;/Height&gt;
+    &lt;Revision&gt;2&lt;/Revision&gt;
+    &lt;FilterType&gt;VIEW_FTYPE_FILTER&lt;/FilterType&gt;
+    &lt;SplitterPosition&gt;0&lt;/SplitterPosition&gt;
+    &lt;Modified&gt;true&lt;/Modified&gt;
+  &lt;/FilterLayoutInfo&gt;
+&lt;/FilterXmlData&gt;</xml_data>
+    </filter_item>
+    <filter_item>
+      <applies_to xsi:nil="true" />
+      <data_type>4</data_type>
+      <fltr_id>3</fltr_id>
+      <oper>5</oper>
+      <optl_id xsi:nil="true" />
+      <opts>1</opts>
+      <revision>3</revision>
+      <type>1</type>
+      <val1>AIML$ChatAIResultSummary.CreatedTime</val1>
+      <val1_attrs>1</val1_attrs>
+      <val1_col_refs>AIML$ChatAIResultSummary.CreatedTime;10029</val1_col_refs>
+      <val2>DATE_ADD(SYSDATE(), -1, DAYS, 1)</val2>
+      <val2_col_refs xsi:nil="true" />
+      <val2_original xsi:nil="true" />
+      <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;FilterXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;Prompt&gt;
+    &lt;LabelStr&gt;date&lt;/LabelStr&gt;
+  &lt;/Prompt&gt;
+  &lt;Name&gt;
+    &lt;LabelStr&gt;date&lt;/LabelStr&gt;
+  &lt;/Name&gt;
+  &lt;DisplayInSearchCriteria&gt;true&lt;/DisplayInSearchCriteria&gt;
+  &lt;FilterLayoutInfo&gt;
+    &lt;Index&gt;2&lt;/Index&gt;
+    &lt;Width&gt;230&lt;/Width&gt;
+    &lt;Height&gt;63&lt;/Height&gt;
+    &lt;Revision&gt;3&lt;/Revision&gt;
+    &lt;FilterType&gt;VIEW_FTYPE_FILTER&lt;/FilterType&gt;
+    &lt;SplitterPosition&gt;0&lt;/SplitterPosition&gt;
+    &lt;Modified&gt;true&lt;/Modified&gt;
+  &lt;/FilterLayoutInfo&gt;
+&lt;/FilterXmlData&gt;</xml_data>
+    </filter_item>
+    <filter_item>
+      <applies_to xsi:nil="true" />
+      <data_type>1</data_type>
+      <fltr_id>4</fltr_id>
+      <oper>1</oper>
+      <optl_id>16777217</optl_id>
+      <opts>1</opts>
+      <revision>4</revision>
+      <type>1</type>
+      <val1>AIML$ChatAIResultSummary.IsPrivateChat</val1>
+      <val1_attrs>1</val1_attrs>
+      <val1_col_refs>AIML$ChatAIResultSummary.IsPrivateChat;10029</val1_col_refs>
+      <val2>0</val2>
+      <val2_col_refs xsi:nil="true" />
+      <val2_original xsi:nil="true" />
+      <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;FilterXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;Prompt&gt;
+    &lt;LabelStr&gt;private&lt;/LabelStr&gt;
+  &lt;/Prompt&gt;
+  &lt;Name&gt;
+    &lt;LabelStr&gt;private&lt;/LabelStr&gt;
+  &lt;/Name&gt;
+  &lt;DisplayInSearchCriteria&gt;true&lt;/DisplayInSearchCriteria&gt;
+  &lt;FilterLayoutInfo&gt;
+    &lt;Index&gt;1&lt;/Index&gt;
+    &lt;Width&gt;230&lt;/Width&gt;
+    &lt;Height&gt;50&lt;/Height&gt;
+    &lt;Revision&gt;4&lt;/Revision&gt;
+    &lt;FilterType&gt;VIEW_FTYPE_FILTER&lt;/FilterType&gt;
+    &lt;SplitterPosition&gt;0&lt;/SplitterPosition&gt;
+    &lt;Modified&gt;true&lt;/Modified&gt;
+  &lt;/FilterLayoutInfo&gt;
+&lt;/FilterXmlData&gt;</xml_data>
+    </filter_item>
+    <filter_item>
+      <applies_to xsi:nil="true" />
+      <data_type>1</data_type>
+      <fltr_id>5</fltr_id>
+      <oper>1</oper>
+      <optl_id>44</optl_id>
+      <opts>1</opts>
+      <revision>8</revision>
+      <type>1</type>
+      <val1>AIML$ChatAIResultSummary.CurrentQueue</val1>
+      <val1_attrs>513</val1_attrs>
+      <val1_col_refs>AIML$ChatAIResultSummary.CurrentQueue;10029</val1_col_refs>
+      <val2>~any~</val2>
+      <val2_col_refs xsi:nil="true" />
+      <val2_original xsi:nil="true" />
+      <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;FilterXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;Prompt&gt;
+    &lt;LabelStr&gt;Queue&lt;/LabelStr&gt;
+  &lt;/Prompt&gt;
+  &lt;DockedFilterOrder&gt;1&lt;/DockedFilterOrder&gt;
+  &lt;Name&gt;
+    &lt;LabelStr&gt;Queue&lt;/LabelStr&gt;
+  &lt;/Name&gt;
+  &lt;DisplayInSearchCriteria&gt;true&lt;/DisplayInSearchCriteria&gt;
+&lt;/FilterXmlData&gt;</xml_data>
+    </filter_item>
+    <filter_item>
+      <applies_to xsi:nil="true" />
+      <data_type>1</data_type>
+      <fltr_id>6</fltr_id>
+      <oper>1</oper>
+      <optl_id>16777217</optl_id>
+      <opts>1</opts>
+      <revision>9</revision>
+      <type>1</type>
+      <val1>AIML$ChatAIResultSummary.IsEndUserInNegativeEmotion</val1>
+      <val1_attrs>1</val1_attrs>
+      <val1_col_refs>AIML$ChatAIResultSummary.IsEndUserInNegativeEmotion;10029</val1_col_refs>
+      <val2>~any~</val2>
+      <val2_col_refs xsi:nil="true" />
+      <val2_original xsi:nil="true" />
+      <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;FilterXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;Prompt&gt;
+    &lt;LabelStr&gt;Negative Sentiment&lt;/LabelStr&gt;
+  &lt;/Prompt&gt;
+  &lt;DockedFilterOrder&gt;2&lt;/DockedFilterOrder&gt;
+  &lt;Name&gt;
+    &lt;LabelStr&gt;Negative Sentiment&lt;/LabelStr&gt;
+  &lt;/Name&gt;
+  &lt;DisplayInSearchCriteria&gt;true&lt;/DisplayInSearchCriteria&gt;
+&lt;/FilterXmlData&gt;</xml_data>
+    </filter_item>
+    <filter_item>
+      <applies_to xsi:nil="true" />
+      <data_type>1</data_type>
+      <fltr_id>7</fltr_id>
+      <oper>1</oper>
+      <optl_id>16777217</optl_id>
+      <opts>1</opts>
+      <revision>10</revision>
+      <type>1</type>
+      <val1>AIML$ChatAIResultSummary.RequestManagerIntervene</val1>
+      <val1_attrs>1</val1_attrs>
+      <val1_col_refs>AIML$ChatAIResultSummary.RequestManagerIntervene;10029</val1_col_refs>
+      <val2>~any~</val2>
+      <val2_col_refs xsi:nil="true" />
+      <val2_original xsi:nil="true" />
+      <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;FilterXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;Prompt&gt;
+    &lt;LabelStr&gt;Manager Asked&lt;/LabelStr&gt;
+  &lt;/Prompt&gt;
+  &lt;DockedFilterOrder&gt;3&lt;/DockedFilterOrder&gt;
+  &lt;Name&gt;
+    &lt;LabelStr&gt;Manager Asked&lt;/LabelStr&gt;
+  &lt;/Name&gt;
+  &lt;DisplayInSearchCriteria&gt;true&lt;/DisplayInSearchCriteria&gt;
+&lt;/FilterXmlData&gt;</xml_data>
+    </filter_item>
+  </filters>
+  <fltr_expr xmlns="urn:obj.api.rightnow.com">1 2 &amp; 3 &amp; 4 &amp; 5 &amp; 6 &amp; 7 &amp;</fltr_expr>
+  <folder_id xmlns="urn:obj.api.rightnow.com">100504</folder_id>
+  <image xmlns="urn:obj.api.rightnow.com">8</image>
+  <interface_id xmlns="urn:obj.api.rightnow.com">1</interface_id>
+  <items xmlns="urn:obj.api.rightnow.com" />
+  <label xmlns="urn:obj.api.rightnow.com">
+    <lbl_item>
+      <label>Live Chat Sentiment Monitoring Report</label>
+      <lang_id>1</lang_id>
+    </lbl_item>
+  </label>
+  <nodes xmlns="urn:obj.api.rightnow.com">
+    <node_item>
+      <branch_col_link_idx xsi:nil="true" />
+      <branch_tbl_idx xsi:nil="true" />
+      <branch_type xsi:nil="true" />
+      <charts />
+      <cols>
+        <cols_item>
+          <calc_units xsi:nil="true" />
+          <col_id>1</col_id>
+          <col_rf>1</col_rf>
+          <comp_opts xsi:nil="true" />
+          <data_type>3</data_type>
+          <display_order>1</display_order>
+          <group_order xsi:nil="true" />
+          <max_len xsi:nil="true" />
+          <min_vuse>223</min_vuse>
+          <opts xsi:nil="true" />
+          <rpt_links>
+            <rpt_link_item>
+              <cond_col_id xsi:nil="true" />
+              <cond_oper xsi:nil="true" />
+              <cond_value xsi:nil="true" />
+              <rpt_link_ac_id>100158</rpt_link_ac_id>
+              <rpt_link_id>1</rpt_link_id>
+              <rpt_link_run_vals>
+                <rpt_link_run_val_item>
+                  <child_ac_id xsi:nil="true" />
+                  <fltr_map_id>1</fltr_map_id>
+                  <fltr_map_type>1</fltr_map_type>
+                  <linked_fltr_map_type>1</linked_fltr_map_type>
+                  <revision>2</revision>
+                  <rpt_link_run_val_id>1</rpt_link_run_val_id>
+                  <value xsi:nil="true" />
+                </rpt_link_run_val_item>
+              </rpt_link_run_vals>
+              <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;RptLinkXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;DisplayType&gt;SameWindow&lt;/DisplayType&gt;
+&lt;/RptLinkXmlData&gt;</xml_data>
+            </rpt_link_item>
+          </rpt_links>
+          <sort_direction xsi:nil="true" />
+          <sort_order xsi:nil="true" />
+          <trend_opts xsi:nil="true" />
+          <type>1</type>
+          <val>AIML$ChatAIResultSummary.ChatId</val>
+          <val_attrs>1</val_attrs>
+          <val_col_refs>AIML$ChatAIResultSummary.ChatId;10029</val_col_refs>
+          <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;UnitType&gt;Auto&lt;/UnitType&gt;
+  &lt;Header&gt;
+    &lt;LabelStr&gt;Chat Id&lt;/LabelStr&gt;
+  &lt;/Header&gt;
+  &lt;NumberFormat&gt;
+    &lt;NumberType&gt;Number&lt;/NumberType&gt;
+  &lt;/NumberFormat&gt;
+  &lt;HeaderAlignment&gt;Far&lt;/HeaderAlignment&gt;
+  &lt;DataAlignment&gt;Far&lt;/DataAlignment&gt;
+&lt;/ColumnXmlData&gt;</xml_data>
+        </cols_item>
+        <cols_item>
+          <calc_units xsi:nil="true" />
+          <col_id>2</col_id>
+          <col_rf>2</col_rf>
+          <comp_opts xsi:nil="true" />
+          <data_type>5</data_type>
+          <display_order>2</display_order>
+          <group_order xsi:nil="true" />
+          <max_len xsi:nil="true" />
+          <min_vuse>157</min_vuse>
+          <opts xsi:nil="true" />
+          <rpt_links />
+          <sort_direction xsi:nil="true" />
+          <sort_order xsi:nil="true" />
+          <trend_opts xsi:nil="true" />
+          <type>1</type>
+          <val>accounts.full_name</val>
+          <val_attrs>17</val_attrs>
+          <val_col_refs>accounts.full_name;24</val_col_refs>
+          <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;UnitType&gt;Auto&lt;/UnitType&gt;
+  &lt;Header&gt;
+    &lt;LabelStr&gt;Agent&lt;/LabelStr&gt;
+  &lt;/Header&gt;
+  &lt;HeaderAlignment&gt;Near&lt;/HeaderAlignment&gt;
+  &lt;DataAlignment&gt;Near&lt;/DataAlignment&gt;
+&lt;/ColumnXmlData&gt;</xml_data>
+        </cols_item>
+        <cols_item>
+          <calc_units xsi:nil="true" />
+          <col_id>3</col_id>
+          <col_rf>3</col_rf>
+          <comp_opts xsi:nil="true" />
+          <data_type>5</data_type>
+          <display_order>3</display_order>
+          <group_order xsi:nil="true" />
+          <max_len xsi:nil="true" />
+          <min_vuse>157</min_vuse>
+          <opts xsi:nil="true" />
+          <rpt_links />
+          <sort_direction xsi:nil="true" />
+          <sort_order xsi:nil="true" />
+          <trend_opts xsi:nil="true" />
+          <type>1</type>
+          <val>contacts.full_name</val>
+          <val_attrs>17</val_attrs>
+          <val_col_refs>contacts.full_name;2</val_col_refs>
+          <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;UnitType&gt;Auto&lt;/UnitType&gt;
+  &lt;Header&gt;
+    &lt;LabelStr&gt;Customer&lt;/LabelStr&gt;
+  &lt;/Header&gt;
+  &lt;HeaderAlignment&gt;Near&lt;/HeaderAlignment&gt;
+  &lt;DataAlignment&gt;Near&lt;/DataAlignment&gt;
+&lt;/ColumnXmlData&gt;</xml_data>
+        </cols_item>
+        <cols_item>
+          <calc_units xsi:nil="true" />
+          <col_id>4</col_id>
+          <col_rf>4</col_rf>
+          <comp_opts xsi:nil="true" />
+          <data_type>1</data_type>
+          <display_order>4</display_order>
+          <group_order xsi:nil="true" />
+          <max_len xsi:nil="true" />
+          <min_vuse>223</min_vuse>
+          <opts xsi:nil="true" />
+          <rpt_links />
+          <sort_direction xsi:nil="true" />
+          <sort_order xsi:nil="true" />
+          <trend_opts xsi:nil="true" />
+          <type>1</type>
+          <val>AIML$ChatAIResultSummary.IsEndUserInNegativeEmotion</val>
+          <val_attrs>1</val_attrs>
+          <val_col_refs>AIML$ChatAIResultSummary.IsEndUserInNegativeEmotion;10029</val_col_refs>
+          <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;UnitType&gt;Auto&lt;/UnitType&gt;
+  &lt;Header&gt;
+    &lt;LabelStr&gt;Flagged for Negative Sentiment&lt;/LabelStr&gt;
+  &lt;/Header&gt;
+  &lt;HeaderAlignment&gt;Near&lt;/HeaderAlignment&gt;
+  &lt;DataAlignment&gt;Near&lt;/DataAlignment&gt;
+&lt;/ColumnXmlData&gt;</xml_data>
+        </cols_item>
+        <cols_item>
+          <calc_units xsi:nil="true" />
+          <col_id>5</col_id>
+          <col_rf>5</col_rf>
+          <comp_opts xsi:nil="true" />
+          <data_type>1</data_type>
+          <display_order>5</display_order>
+          <group_order xsi:nil="true" />
+          <max_len xsi:nil="true" />
+          <min_vuse>223</min_vuse>
+          <opts xsi:nil="true" />
+          <rpt_links />
+          <sort_direction xsi:nil="true" />
+          <sort_order xsi:nil="true" />
+          <trend_opts xsi:nil="true" />
+          <type>1</type>
+          <val>AIML$ChatAIResultSummary.RequestManagerIntervene</val>
+          <val_attrs>1</val_attrs>
+          <val_col_refs>AIML$ChatAIResultSummary.RequestManagerIntervene;10029</val_col_refs>
+          <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;UnitType&gt;Auto&lt;/UnitType&gt;
+  &lt;Header&gt;
+    &lt;LabelStr&gt;Customer asked for Manager&lt;/LabelStr&gt;
+  &lt;/Header&gt;
+  &lt;HeaderAlignment&gt;Near&lt;/HeaderAlignment&gt;
+  &lt;DataAlignment&gt;Near&lt;/DataAlignment&gt;
+&lt;/ColumnXmlData&gt;</xml_data>
+        </cols_item>
+        <cols_item>
+          <calc_units xsi:nil="true" />
+          <col_id>6</col_id>
+          <col_rf>6</col_rf>
+          <comp_opts xsi:nil="true" />
+          <data_type>1</data_type>
+          <display_order>6</display_order>
+          <group_order xsi:nil="true" />
+          <max_len xsi:nil="true" />
+          <min_vuse>223</min_vuse>
+          <opts xsi:nil="true" />
+          <rpt_links />
+          <sort_direction xsi:nil="true" />
+          <sort_order xsi:nil="true" />
+          <trend_opts xsi:nil="true" />
+          <type>1</type>
+          <val>AIML$ChatAIResultSummary.CurrentQueue</val>
+          <val_attrs>513</val_attrs>
+          <val_col_refs>AIML$ChatAIResultSummary.CurrentQueue;10029</val_col_refs>
+          <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;UnitType&gt;Auto&lt;/UnitType&gt;
+  &lt;Header&gt;
+    &lt;LabelStr&gt;Queue Assigned&lt;/LabelStr&gt;
+  &lt;/Header&gt;
+  &lt;HeaderAlignment&gt;Near&lt;/HeaderAlignment&gt;
+  &lt;DataAlignment&gt;Near&lt;/DataAlignment&gt;
+&lt;/ColumnXmlData&gt;</xml_data>
+        </cols_item>
+        <cols_item>
+          <calc_units xsi:nil="true" />
+          <col_id>7</col_id>
+          <col_rf>7</col_rf>
+          <comp_opts xsi:nil="true" />
+          <data_type>3</data_type>
+          <display_order>7</display_order>
+          <group_order xsi:nil="true" />
+          <max_len xsi:nil="true" />
+          <min_vuse>223</min_vuse>
+          <opts xsi:nil="true" />
+          <rpt_links />
+          <sort_direction xsi:nil="true" />
+          <sort_order xsi:nil="true" />
+          <trend_opts xsi:nil="true" />
+          <type>1</type>
+          <val>date_diff(sysdate(),AIML$ChatAIResultSummary.FirstEngagementTime)</val>
+          <val_attrs>2</val_attrs>
+          <val_col_refs>AIML$ChatAIResultSummary.FirstEngagementTime;10029</val_col_refs>
+          <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ColumnXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;UnitType&gt;Auto&lt;/UnitType&gt;
+  &lt;Header&gt;
+    &lt;LabelStr&gt;Chat Duration&lt;/LabelStr&gt;
+  &lt;/Header&gt;
+  &lt;NumberFormat&gt;
+    &lt;NumberType&gt;Seconds&lt;/NumberType&gt;
+    &lt;TimespanFormat&gt;HoursMinutesSeconds&lt;/TimespanFormat&gt;
+  &lt;/NumberFormat&gt;
+  &lt;HeaderAlignment&gt;Far&lt;/HeaderAlignment&gt;
+  &lt;DataAlignment&gt;Far&lt;/DataAlignment&gt;
+  &lt;URLText /&gt;
+  &lt;URLTarget /&gt;
+&lt;/ColumnXmlData&gt;</xml_data>
+        </cols_item>
+      </cols>
+      <excepts>
+        <excepts_item>
+          <chart_line_color xsi:nil="true" />
+          <col_id xsi:nil="true" />
+          <col_refs>AIML$ChatAIResultSummary.IsEndUserInNegativeEmotion;10029</col_refs>
+          <data_type>1</data_type>
+          <e_id>1</e_id>
+          <oper>1</oper>
+          <optl_id>16777217</optl_id>
+          <opts>47</opts>
+          <val1>AIML$ChatAIResultSummary.IsEndUserInNegativeEmotion</val1>
+          <val1_attrs>1</val1_attrs>
+          <val2>1</val2>
+          <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ExceptionXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;Name&gt;
+    &lt;LabelStr&gt;NegativeEmotion&lt;/LabelStr&gt;
+  &lt;/Name&gt;
+  &lt;Style&gt;
+    &lt;AllCaps&gt;false&lt;/AllCaps&gt;
+    &lt;ForeColorString&gt;FFFF0000&lt;/ForeColorString&gt;
+    &lt;Padding&gt;
+      &lt;Bottom&gt;0&lt;/Bottom&gt;
+      &lt;Left&gt;0&lt;/Left&gt;
+      &lt;Right&gt;0&lt;/Right&gt;
+      &lt;Top&gt;0&lt;/Top&gt;
+    &lt;/Padding&gt;
+    &lt;Spacing&gt;0&lt;/Spacing&gt;
+    &lt;FontSize&gt;9&lt;/FontSize&gt;
+    &lt;FontStyle&gt;Regular&lt;/FontStyle&gt;
+    &lt;FontFamily&gt;Segoe UI&lt;/FontFamily&gt;
+    &lt;StyleType&gt;None&lt;/StyleType&gt;
+    &lt;Sequence&gt;0&lt;/Sequence&gt;
+  &lt;/Style&gt;
+&lt;/ExceptionXmlData&gt;</xml_data>
+        </excepts_item>
+        <excepts_item>
+          <chart_line_color xsi:nil="true" />
+          <col_id xsi:nil="true" />
+          <col_refs>AIML$ChatAIResultSummary.RequestManagerIntervene;10029</col_refs>
+          <data_type>1</data_type>
+          <e_id>2</e_id>
+          <oper>1</oper>
+          <optl_id>16777217</optl_id>
+          <opts>47</opts>
+          <val1>AIML$ChatAIResultSummary.RequestManagerIntervene</val1>
+          <val1_attrs>1</val1_attrs>
+          <val2>1</val2>
+          <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ExceptionXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;Name&gt;
+    &lt;LabelStr&gt;MangerAsk&lt;/LabelStr&gt;
+  &lt;/Name&gt;
+  &lt;Style&gt;
+    &lt;AllCaps&gt;false&lt;/AllCaps&gt;
+    &lt;ForeColorString&gt;FFFF0000&lt;/ForeColorString&gt;
+    &lt;Padding&gt;
+      &lt;Bottom&gt;0&lt;/Bottom&gt;
+      &lt;Left&gt;0&lt;/Left&gt;
+      &lt;Right&gt;0&lt;/Right&gt;
+      &lt;Top&gt;0&lt;/Top&gt;
+    &lt;/Padding&gt;
+    &lt;Spacing&gt;0&lt;/Spacing&gt;
+    &lt;FontSize&gt;9&lt;/FontSize&gt;
+    &lt;FontStyle&gt;Regular&lt;/FontStyle&gt;
+    &lt;FontFamily&gt;Segoe UI&lt;/FontFamily&gt;
+    &lt;StyleType&gt;None&lt;/StyleType&gt;
+    &lt;Sequence&gt;0&lt;/Sequence&gt;
+  &lt;/Style&gt;
+&lt;/ExceptionXmlData&gt;</xml_data>
+        </excepts_item>
+      </excepts>
+      <filters />
+      <fltr_expr xsi:nil="true" />
+      <group_by_col_idx xsi:nil="true" />
+      <group_type>0</group_type>
+      <having_expr xsi:nil="true" />
+      <having_filters />
+      <n_id>1</n_id>
+      <opts>0</opts>
+      <parent_node_idx xsi:nil="true" />
+      <row_limit xsi:nil="true" />
+      <scripts />
+      <starting_level xsi:nil="true" />
+      <style_id>12</style_id>
+      <xml_data>&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;NodeXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;Sections&gt;
+    &lt;ReportSection&gt;
+      &lt;Height&gt;75&lt;/Height&gt;
+      &lt;SectionType&gt;DockedFilters&lt;/SectionType&gt;
+      &lt;StyleType&gt;DockedFiltersArea&lt;/StyleType&gt;
+      &lt;LayoutType&gt;Fixed&lt;/LayoutType&gt;
+      &lt;AutoHeight&gt;false&lt;/AutoHeight&gt;
+      &lt;Visible&gt;true&lt;/Visible&gt;
+    &lt;/ReportSection&gt;
+    &lt;ReportSection&gt;
+      &lt;Fields&gt;
+        &lt;ReportField xsi:type="ReportTextField"&gt;
+          &lt;Padding&gt;
+            &lt;Bottom&gt;1&lt;/Bottom&gt;
+            &lt;Left&gt;1&lt;/Left&gt;
+            &lt;Right&gt;1&lt;/Right&gt;
+            &lt;Top&gt;0&lt;/Top&gt;
+          &lt;/Padding&gt;
+          &lt;StyleType&gt;CurrentDate&lt;/StyleType&gt;
+          &lt;AnchorStyles&gt;Top Right&lt;/AnchorStyles&gt;
+          &lt;AutoSize&gt;true&lt;/AutoSize&gt;
+          &lt;TextAlign&gt;Far&lt;/TextAlign&gt;
+          &lt;LineAlign&gt;Center&lt;/LineAlign&gt;
+          &lt;TextType&gt;CurrentDate&lt;/TextType&gt;
+        &lt;/ReportField&gt;
+      &lt;/Fields&gt;
+      &lt;Height&gt;25&lt;/Height&gt;
+      &lt;SectionType&gt;PageHeader&lt;/SectionType&gt;
+      &lt;StyleType&gt;PageHeader&lt;/StyleType&gt;
+      &lt;LayoutType&gt;Fixed&lt;/LayoutType&gt;
+      &lt;AutoHeight&gt;false&lt;/AutoHeight&gt;
+      &lt;Visible&gt;true&lt;/Visible&gt;
+    &lt;/ReportSection&gt;
+    &lt;ReportSection&gt;
+      &lt;Fields&gt;
+        &lt;ReportField xsi:type="ReportTextField"&gt;
+          &lt;Padding&gt;
+            &lt;Bottom&gt;1&lt;/Bottom&gt;
+            &lt;Left&gt;1&lt;/Left&gt;
+            &lt;Right&gt;1&lt;/Right&gt;
+            &lt;Top&gt;0&lt;/Top&gt;
+          &lt;/Padding&gt;
+          &lt;StyleType&gt;Title&lt;/StyleType&gt;
+          &lt;AnchorStyles&gt;Top Left Right&lt;/AnchorStyles&gt;
+          &lt;AutoSize&gt;true&lt;/AutoSize&gt;
+          &lt;TextAlign&gt;Near&lt;/TextAlign&gt;
+          &lt;LineAlign&gt;Center&lt;/LineAlign&gt;
+          &lt;Text&gt;
+            &lt;LabelStr&gt;Live Chat Sentiment Monitoring Report&lt;/LabelStr&gt;
+          &lt;/Text&gt;
+          &lt;TextType&gt;Title&lt;/TextType&gt;
+        &lt;/ReportField&gt;
+      &lt;/Fields&gt;
+      &lt;Height&gt;57&lt;/Height&gt;
+      &lt;SectionType&gt;ReportHeader&lt;/SectionType&gt;
+      &lt;StyleType&gt;ReportHeader&lt;/StyleType&gt;
+      &lt;LayoutType&gt;Fixed&lt;/LayoutType&gt;
+      &lt;AutoHeight&gt;false&lt;/AutoHeight&gt;
+      &lt;Visible&gt;true&lt;/Visible&gt;
+    &lt;/ReportSection&gt;
+    &lt;ReportSection&gt;
+      &lt;Height&gt;-1&lt;/Height&gt;
+      &lt;SectionType&gt;Descriptions&lt;/SectionType&gt;
+      &lt;StyleType&gt;DefinitionArea&lt;/StyleType&gt;
+      &lt;LayoutType&gt;Fixed&lt;/LayoutType&gt;
+      &lt;AutoHeight&gt;false&lt;/AutoHeight&gt;
+      &lt;Visible&gt;true&lt;/Visible&gt;
+    &lt;/ReportSection&gt;
+    &lt;ReportSection&gt;
+      &lt;Height&gt;-1&lt;/Height&gt;
+      &lt;SectionType&gt;SearchCriteria&lt;/SectionType&gt;
+      &lt;StyleType&gt;SearchCriteriaArea&lt;/StyleType&gt;
+      &lt;LayoutType&gt;Fixed&lt;/LayoutType&gt;
+      &lt;AutoHeight&gt;false&lt;/AutoHeight&gt;
+      &lt;Visible&gt;false&lt;/Visible&gt;
+    &lt;/ReportSection&gt;
+    &lt;ReportSection&gt;
+      &lt;Height&gt;250&lt;/Height&gt;
+      &lt;SectionType&gt;Charts&lt;/SectionType&gt;
+      &lt;StyleType&gt;ChartArea&lt;/StyleType&gt;
+      &lt;LayoutType&gt;Fixed&lt;/LayoutType&gt;
+      &lt;AutoHeight&gt;false&lt;/AutoHeight&gt;
+      &lt;Visible&gt;false&lt;/Visible&gt;
+    &lt;/ReportSection&gt;
+    &lt;ReportSection&gt;
+      &lt;Height&gt;-1&lt;/Height&gt;
+      &lt;SectionType&gt;DataArea&lt;/SectionType&gt;
+      &lt;StyleType&gt;DataArea&lt;/StyleType&gt;
+      &lt;LayoutType&gt;Fixed&lt;/LayoutType&gt;
+      &lt;AutoHeight&gt;false&lt;/AutoHeight&gt;
+      &lt;Visible&gt;true&lt;/Visible&gt;
+    &lt;/ReportSection&gt;
+    &lt;ReportSection&gt;
+      &lt;Fields&gt;
+        &lt;ReportField xsi:type="ReportTextField"&gt;
+          &lt;Padding&gt;
+            &lt;Bottom&gt;1&lt;/Bottom&gt;
+            &lt;Left&gt;1&lt;/Left&gt;
+            &lt;Right&gt;1&lt;/Right&gt;
+            &lt;Top&gt;0&lt;/Top&gt;
+          &lt;/Padding&gt;
+          &lt;StyleType&gt;RecordCounts&lt;/StyleType&gt;
+          &lt;AnchorStyles&gt;Top Left&lt;/AnchorStyles&gt;
+          &lt;AutoSize&gt;true&lt;/AutoSize&gt;
+          &lt;TextAlign&gt;Near&lt;/TextAlign&gt;
+          &lt;LineAlign&gt;Center&lt;/LineAlign&gt;
+          &lt;TextType&gt;RecordCount&lt;/TextType&gt;
+        &lt;/ReportField&gt;
+      &lt;/Fields&gt;
+      &lt;Height&gt;32&lt;/Height&gt;
+      &lt;SectionType&gt;ReportFooter&lt;/SectionType&gt;
+      &lt;StyleType&gt;ReportFooter&lt;/StyleType&gt;
+      &lt;LayoutType&gt;Fixed&lt;/LayoutType&gt;
+      &lt;AutoHeight&gt;false&lt;/AutoHeight&gt;
+      &lt;Visible&gt;true&lt;/Visible&gt;
+    &lt;/ReportSection&gt;
+    &lt;ReportSection&gt;
+      &lt;Height&gt;-1&lt;/Height&gt;
+      &lt;SectionType&gt;Exceptions&lt;/SectionType&gt;
+      &lt;StyleType&gt;ExceptionsArea&lt;/StyleType&gt;
+      &lt;LayoutType&gt;Fixed&lt;/LayoutType&gt;
+      &lt;AutoHeight&gt;false&lt;/AutoHeight&gt;
+      &lt;Visible&gt;false&lt;/Visible&gt;
+    &lt;/ReportSection&gt;
+    &lt;ReportSection&gt;
+      &lt;Fields&gt;
+        &lt;ReportField xsi:type="ReportTextField"&gt;
+          &lt;Padding&gt;
+            &lt;Bottom&gt;1&lt;/Bottom&gt;
+            &lt;Left&gt;1&lt;/Left&gt;
+            &lt;Right&gt;1&lt;/Right&gt;
+            &lt;Top&gt;0&lt;/Top&gt;
+          &lt;/Padding&gt;
+          &lt;StyleType&gt;PageNumber&lt;/StyleType&gt;
+          &lt;AnchorStyles&gt;Top Right&lt;/AnchorStyles&gt;
+          &lt;AutoSize&gt;true&lt;/AutoSize&gt;
+          &lt;TextAlign&gt;Far&lt;/TextAlign&gt;
+          &lt;LineAlign&gt;Center&lt;/LineAlign&gt;
+          &lt;TextType&gt;PageNumber&lt;/TextType&gt;
+        &lt;/ReportField&gt;
+      &lt;/Fields&gt;
+      &lt;Height&gt;29&lt;/Height&gt;
+      &lt;SectionType&gt;PageFooter&lt;/SectionType&gt;
+      &lt;StyleType&gt;PageFooter&lt;/StyleType&gt;
+      &lt;LayoutType&gt;Fixed&lt;/LayoutType&gt;
+      &lt;AutoHeight&gt;false&lt;/AutoHeight&gt;
+      &lt;Visible&gt;true&lt;/Visible&gt;
+    &lt;/ReportSection&gt;
+  &lt;/Sections&gt;
+  &lt;PageWidthOptions&gt;
+    &lt;WidthType&gt;Auto&lt;/WidthType&gt;
+  &lt;/PageWidthOptions&gt;
+  &lt;PageReport&gt;false&lt;/PageReport&gt;
+  &lt;Name&gt;
+    &lt;LabelStr&gt;Standard Report&lt;/LabelStr&gt;
+  &lt;/Name&gt;
+  &lt;SearchCriteriaStyle&gt;None&lt;/SearchCriteriaStyle&gt;
+  &lt;OutputDescriptionStyle&gt;Rollover&lt;/OutputDescriptionStyle&gt;
+  &lt;DisplayOptions&gt;ShowDataAreaAsGrid&lt;/DisplayOptions&gt;
+  &lt;PageSettings&gt;
+    &lt;PrintMargin&gt;Normal&lt;/PrintMargin&gt;
+    &lt;Landscape&gt;false&lt;/Landscape&gt;
+    &lt;PrintToFit&gt;false&lt;/PrintToFit&gt;
+  &lt;/PageSettings&gt;
+&lt;/NodeXmlData&gt;</xml_data>
+    </node_item>
+  </nodes>
+  <notes xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
+  <opts xmlns="urn:obj.api.rightnow.com">7</opts>
+  <owner_acct_id xmlns="urn:obj.api.rightnow.com">86</owner_acct_id>
+  <params xmlns="urn:obj.api.rightnow.com" />
+  <perms xmlns="urn:obj.api.rightnow.com" />
+  <rpt xmlns="urn:obj.api.rightnow.com" />
+  <run_vals xmlns="urn:obj.api.rightnow.com" />
+  <schedules xmlns="urn:obj.api.rightnow.com" />
+  <style_id xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
+  <tables xmlns="urn:obj.api.rightnow.com">
+    <table_item>
+      <alias>AIML$ChatAIResultSummary</alias>
+      <join_def_enum xsi:nil="true" />
+      <join_def_idx xsi:nil="true" />
+      <join_filters />
+      <join_fltr_expr xsi:nil="true" />
+      <join_to_tbl_idx xsi:nil="true" />
+      <join_type xsi:nil="true" />
+      <tbl>10029</tbl>
+      <tbl_id>1</tbl_id>
+    </table_item>
+    <table_item>
+      <alias>accounts</alias>
+      <join_def_enum>AIML$ChatAIResultSummary$AccountId$$accounts$acct_id</join_def_enum>
+      <join_def_idx>4</join_def_idx>
+      <join_filters />
+      <join_fltr_expr xsi:nil="true" />
+      <join_to_tbl_idx>0</join_to_tbl_idx>
+      <join_type>1</join_type>
+      <tbl>24</tbl>
+      <tbl_id>2</tbl_id>
+    </table_item>
+    <table_item>
+      <alias>contacts</alias>
+      <join_def_enum>AIML$ChatAIResultSummary$ContactId$$contacts$c_id</join_def_enum>
+      <join_def_idx>6</join_def_idx>
+      <join_filters />
+      <join_fltr_expr xsi:nil="true" />
+      <join_to_tbl_idx>0</join_to_tbl_idx>
+      <join_type>1</join_type>
+      <tbl>2</tbl>
+      <tbl_id>3</tbl_id>
+    </table_item>
+  </tables>
+  <time_zone xmlns="urn:obj.api.rightnow.com">0</time_zone>
+  <updated xmlns="urn:obj.api.rightnow.com">2023-08-04T08:47:58Z</updated>
+  <version xmlns="urn:obj.api.rightnow.com">0</version>
+  <xml_data xmlns="urn:obj.api.rightnow.com">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;AnalyticsCoreXmlData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;AutoRefreshOptions&gt;
+    &lt;Interval&gt;30&lt;/Interval&gt;
+    &lt;Enabled&gt;true&lt;/Enabled&gt;
+  &lt;/AutoRefreshOptions&gt;
+  &lt;FilterLayoutInfo&gt;
+    &lt;FilterLayoutInfo&gt;
+      &lt;AppliesTo&gt;WindowSize&lt;/AppliesTo&gt;
+      &lt;Index&gt;-1&lt;/Index&gt;
+      &lt;Width&gt;718&lt;/Width&gt;
+      &lt;Height&gt;324&lt;/Height&gt;
+      &lt;PanelIndex&gt;-1&lt;/PanelIndex&gt;
+      &lt;Modified&gt;true&lt;/Modified&gt;
+    &lt;/FilterLayoutInfo&gt;
+  &lt;/FilterLayoutInfo&gt;
+&lt;/AnalyticsCoreXmlData&gt;</xml_data>
+  <xml_report xsi:nil="true" xmlns="urn:obj.api.rightnow.com" />
+</analytics_core>
+Version: 
+2.0J2d6EZL3FAs0P1tZnIrMwyBhYy061sHbWJ/CDgoPywO2+M/
