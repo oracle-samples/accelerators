@@ -1,0 +1,8 @@
+fdk==0.1.54
+oci==2.94.0
+beautifulsoup4==4.11.1
+html5lib==1.1
+numpy==1.22.2
+lxml
+urllib3==1.26.14
+
