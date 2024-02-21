@@ -1,9 +1,19 @@
 
 ################################################################################################
-#  $ACCELERATOR_HEADER_PLACE_HOLDER$
-#  SHA1: $Id:  $
+#  This file is part of the Oracle Service Cloud Accelerator Reference Integration set published
+#  by Oracle Service Cloud under the Universal Permissive License (UPL), Version 1.0 as shown at 
+#  http://oss.oracle.com/licenses/upl
+#  Copyright (c) 2024, Oracle and/or its affiliates.
 ################################################################################################
-#  File: $ACCELERATOR_HEADER_FILE_NAME_PLACE_HOLDER$
+#  Accelerator Package: Incident Text Based Classification
+#  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
+#  OSvC release: 24B (February 2024) 
+#  date: Thu Feb 15 09:26:00 IST 2024
+ 
+#  revision: rnw-24-02-initial
+#  SHA1: $Id: 604f9dd9b887f3e611a7eebf3d0396841f80be06 $
+################################################################################################
+#  File: preprocess.py
 ################################################################################################
 ####################################
 # DataScience related resources
