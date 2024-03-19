@@ -2,7 +2,7 @@ channels:
   - conda-forge
   - anaconda
 dependencies:
-  - python=3.8.15
+  - python=3.8
   - numpy
   - pandas
   - pyjwt=2.4.0
