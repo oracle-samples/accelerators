@@ -3,14 +3,14 @@
 #  This file is part of the Oracle Service Cloud Accelerator Reference Integration set published
 #  by Oracle Service Cloud under the Universal Permissive License (UPL), Version 1.0 as shown at 
 #  http://oss.oracle.com/licenses/upl
-#  Copyright (c) 2023, Oracle and/or its affiliates.
+#  Copyright (c) 2024, Oracle and/or its affiliates.
 ################################################################################################
 #  Accelerator Package: Incident Text Based Classification
 #  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
-#  OSvC release: 23A (February 2023) 
-#  date: Mon Jun 26 10:43:26 IST 2023
+#  OSvC release: 24A (March 2024) 
+#  date: Wed March 24 20:05:26 IST 2024
  
-#  revision: rnw-23-02-initial
+#  revision: rnw-24-03-initial
 #  SHA1: $Id: ab62ee95d2c254fcadfe07e7212ba07a22b629a3 $
 ################################################################################################
 #  File: run_selenium.sh
@@ -65,8 +65,21 @@ sudo cp -r ${OCI_DIR}/* "${HOME}/.oci"/
 echo "*** Downloading the enviornment yaml file ***"
 curl -o environment.yml "${RAW_GIT_ENV_URL}"
 
+echo "*** Creating Virtual Env ***"
+
+python -m venv .env
+source .env/bin/activate
+python -m pip install --upgrade pip
+
+pip uninstall -y notebook
+pip install notebook==6.4.12
+pip uninstall -y traitlets
+pip install traitlets==5.9.0
+
+export PYTHONPATH=.env/lib/python3.8/site-packages:$PYTHONPATH
+
 echo "*** CREATING CONDA ENV ***"
-odsc conda create --file ./environment.yml --name ${CONDA_ENV_NAME} --slug ${CONDA_ENV_NAME}_slug
+odsc conda create --file ./environment.yml --name ${CONDA_ENV_NAME} --slug ${CONDA_ENV_NAME}_slug --empty
 sleep 2
 echo "*** INIT CONDA ENV ***"
 odsc conda init -b "${BUCKET_NAME}" -n "${NAMESPACE}" -a api_key --api_key_profile "DEFAULT" --api_key_config ${CONFIG_FILE}
@@ -75,4 +88,3 @@ echo "*** PUBLISH CONDA ENV ***"
 odsc conda publish -s ${CONDA_ENV_NAME}_slug
 sleep 10
 echo "!!! PUBLISHED !!!"
-
