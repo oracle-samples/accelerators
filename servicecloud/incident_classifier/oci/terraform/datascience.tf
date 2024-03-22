@@ -6,10 +6,10 @@
 ################################################################################################
 #  Accelerator Package: Incident Text Based Classification
 #  link: http://www.oracle.com/technetwork/indexes/samplecode/accelerator-osvc-2525361.html
-#  OSvC release: 23A (February 2023) 
-#  date: Mon Jun 26 10:43:27 IST 2023
+#  OSvC release: 24A (March 2024) 
+#  date: Fri March 22 11:08:27 IST 2024
  
-#  revision: rnw-23-02-initial
+#  revision: rnw-24-03-initial
 #  SHA1: $Id: bb5648f30c911a43c6846facc28ee344673848e1 $
 ################################################################################################
 #  File: datascience.tf
@@ -114,7 +114,11 @@ resource oci_datascience_job "tf_publish_conda" {
   job_infrastructure_configuration_details {
     block_storage_size_in_gbs = "50"
     job_infrastructure_type   = "STANDALONE"
-    shape_name = var.ingestion_job_shape
+    shape_name = "VM.Standard3.Flex"
+    job_shape_config_details {
+        memory_in_gbs = 32
+        ocpus = 1
+    }
     subnet_id  = oci_core_subnet.tf_private_subnet.id
   }
   job_log_configuration_details {
